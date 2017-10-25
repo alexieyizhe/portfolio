@@ -1,0 +1,51 @@
+[class*=uk-animation-]
+{
+	-webkit-animation-duration: .5s;
+	animation-duration: .5s;
+	-webkit-animation-timing-function: ease-out;
+	animation-timing-function: ease-out;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+[data-uk-scrollspy*=uk-animation-]
+{
+	opacity: 0;
+}
+
+.uk-animation-fade
+{
+	-webkit-animation-name: uk-fade;
+	animation-name: uk-fade;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-timing-function: linear;
+	animation-timing-function: linear;
+}
+
+@-webkit-keyframes uk-fade
+{
+	0%
+	{
+		opacity: 0;
+	}
+	
+	100%
+	{
+		opacity: 1;
+	}
+}
+
+@keyframes uk-fade
+{
+	0%
+	{
+		opacity: 0;
+	}
+	
+	100%
+	{
+		opacity: 1;
+	}
+}
+
