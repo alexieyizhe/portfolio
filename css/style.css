@@ -127,7 +127,7 @@ h1, h2, h3
 
 .colour2
 {
-	background: #1ABC9C;
+	background: #f4cb42;
 }
 
 .colour3
@@ -172,7 +172,7 @@ h1, h2, h3
 		
 		.arrow-themelight:after
 		{
-			border-color: #1ABC9C rgba(26,188,156,0) rgba(26,188,156,0) rgba(26,188,156,0);
+			border-color: #f4cb42 rgba(26,188,156,0) rgba(26,188,156,0) rgba(26,188,156,0);
 		}
 
 		.arrow-grey:after
@@ -231,7 +231,7 @@ h1, h2, h3
 	{
 		font-size: 90px;
 		line-height: 90px;
-		color: #1abc9c;
+		color: #f4cb42;
 	}
 	
 #countdown
@@ -281,7 +281,7 @@ h1, h2, h3
 	#maincont a
 	{
 		color: #FFF;
-		opacity: 0.6;
+		opacity: 0.9;
 	}
 	
 		#maincont a:hover
@@ -387,7 +387,7 @@ h1, h2, h3
 		#quotecont .owl-theme .owl-controls .owl-page.active span,
 		#quotecont .owl-theme .owl-controls.clickable .owl-page:hover span
 		{
-			background: #1ABC9C;
+			background: #f4cb42;
 		}
 
 #footercont
@@ -416,7 +416,7 @@ h1, h2, h3
 		
 			#footercont #socialmedia ul li a:hover
 			{
-				color: #1ABC9C;
+				color: #f4cb42;
 			}
 			
 	#footercont p.backtotop
@@ -441,7 +441,7 @@ h1, h2, h3
 		
 			#footercont p.backtotop a:hover
 			{
-				background-color: #1ABC9C;
+				background-color: #f4cb42;
 				color: #FFF;
 				text-decoration: none;
 			}
