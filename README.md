@@ -1,2 +1,4 @@
 # alexieyizhe.github.io
-Personal website/portfolio of Alex Xie, a University of Waterloo student studying computer science.
+Personal Website/Portfolio of Alex Yizhe Xie, a computer science student at the University of Waterloo.
+
+*Created Dec 2017.*
