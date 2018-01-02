@@ -49,7 +49,7 @@
 
 		<p class="comment" id="contact"><em>// contact me</em><br>
 		<strong><span class="var">email</span> = </strong> "<a href="mailto:alexieyizhe@gmail.com">alexieyizhe@gmail.com</a>";<br>
-		<strong><span class="var">resume</span> = </strong> "<a href="1B_resume_alex_xie.pdf" download="download">1B_resume_alex_xie.pdf</a>";<br>
+		<strong><span class="var">resume</span> = </strong> "<a href="1B_resume_alex_xie.pdf" target="_blank">1B_resume_alex_xie.pdf</a>";<br>
 		<strong><span class="var">github</span> = </strong> "<a href="https://github.com/alexieyizhe" target="_blank">https://github.com/alexieyizhe</a>";<br>
 		<strong><span class="var">linkedin</span> = </strong> "<a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">https://www.linkedin.com/in/alexieyizhe</a>";<br>
 		<strong><span class="var">facebook</span> = </strong> "<a href="https://www.facebook.com/alexieyizhe" target="_blank">https://www.facebook.com/alexieyizhe</a>";<br>
@@ -148,28 +148,28 @@
 		for(i = 1; i <= countLines(document.getElementById("top")); i++){
 			var new_line =  '<span style="vertical-align:top;">' + i + "</span><br>";
 			if(i == 8){
-				new_line = '<a class="testing" title="" href="#" rel="external"><span class="fa fa-envelope"></span></a><br>';
+				new_line = '<a class="testing" title="" href="mailto:alexieyizhe@gmail.com" rel="external" target="_blank"><span class="fa fa-envelope"></span></a><br>';
 			}
 			else if(i == 9){
-				new_line = '<a class="testing" title="" href="#" rel="external"><span class="fa fa-id-badge"></span></a><br>';
+				new_line = '<a class="testing" title="" href="1B_resume_alex_xie.pdf" rel="external" target="_blank"><span class="fa fa-id-badge"></span></a><br>';
 			}
 			else if(i == 10){
-				new_line = '<a class="testing" title="" href="#" rel="external"><span class="fa fa-github"></span></a><br>';
+				new_line = '<a class="testing" title="" href="https://github.com/alexieyizhe" rel="external" target="_blank"><span class="fa fa-github"></span></a><br>';
 			}
 			else if(i == 11){
-				new_line = '<a class="testing" title="" href="#" rel="external"><span class="fa fa-linkedin"></span></a><br>';
+				new_line = '<a class="testing" title="" href="https://www.linkedin.com/in/alexieyizhe" rel="external" target="_blank"><span class="fa fa-linkedin"></span></a><br>';
 			}
 			else if(i == 12){
-				new_line = '<a class="testing" title="" href="#" rel="external"><span class="fa fa-facebook"></span></a><br>';
+				new_line = '<a class="testing" title="" href="https://www.facebook.com/alexieyizhe" rel="external" target="_blank"><span class="fa fa-facebook"></span></a><br>';
 			}
 			else if(i == 16 | i == 23 | i == 30){
-				new_line = '<a class="testing" title="" href="#" rel="external"><span class="fa fa-align-left"></span></a><br>';
+				new_line = '<a class="testing" title="github projects" href="https://github.com/alexieyizhe" rel="external" target="_blank"><span class="fa fa-align-left"></span></a><br>';
 			}
 			else if(i == 36){
-				new_line = '<a class="testing" title="" href="#" rel="external"><span class="fa fa-briefcase"></span></a><br>';
+				new_line = '<span class="fa fa-briefcase"></span><br>';
 			}
 			else if(i == 46){
-				new_line = '<a class="testing" title="" href="#" rel="external"><span class="fa fa-graduation-cap"></span></a><br>';
+				new_line = '<span class="fa fa-graduation-cap"></span><br>';
 			}
 			document.getElementById("line_ct").innerHTML += new_line;
 		}
