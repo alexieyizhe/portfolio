@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta desc="Personal Website/Portfolio of Alex Yizhe Xie, a computer science student at the University of Waterloo.">
 	<link rel="shortcut icon" type="image/png" href="images/ico/faveicon.png">
-	<link rel="stylesheet" href="insert stylesheet here">
+	<link rel="stylesheet" href="index.css">
 
 </head>
 <body>
@@ -13,15 +13,17 @@
 	<p><strong>name = </strong> "Alex Xie"; </p>
 	<p><strong>title = </strong> "student. coder. adventurer."; </p>
 	<p></p>
-	<p><strong>attribute </strong> 
-		<a href="index.html#contact">contact</a>, 
-		<a href="#projects">projects</a>, 
-		<a href="#experience">experience</a>, 
-		<a href="#education">education</a>;
+	<p><strong id="att">attribute </strong> 
+		<a class="variable" href="index.html#contact">contact</a>, 
+		<a class="variable" href="#projects">projects</a>, 
+		<a class="variable" href="#experience">experience</a>, 
+		<a class="variable" href="#education">education</a>;
 	</p>
+
 	<br>
-	<p id="contact"><em>// contact me</em><br>
-	<strong>email = </strong> "<a href="mailto:alexieyizhe@gmail.com">alexieyizhe@gmail.com</a>";</p>
+
+	<p class="comment" id="contact"><em>// contact me</em></p>
+	<p><strong>email = </strong> "<a href="mailto:alexieyizhe@gmail.com">alexieyizhe@gmail.com</a>";</p>
 	<p><strong>github = </strong> "<a href="https://github.com/alexieyizhe" target="_blank">https://github.com/alexieyizhe</a>";</p>
 	<p><strong>linkedin = </strong> "<a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">https://www.linkedin.com/in/alexieyizhe</a>";</p>
 	<p><strong>facebook = </strong> "<a href="https://www.facebook.com/alexieyizhe" target="_blank">https://www.facebook.com/alexieyizhe</a>";</p>
@@ -29,75 +31,90 @@
 	
 	<br>
 
-	<p id="projects"><em>// major projects</em><br>
-	for(<strong>Kanye Quest</strong>){ <br>
+	<p class="comment" id="projects"><em>// major projects</em></p>
+	<p>
+		for (<strong>Kanye Quest</strong>) { <br>
 			&emsp; desc = "a top down horde shooter featuring Kanye West, handcrafted maps, power-ups, and various weapons. <br>
-	               &emsp; &emsp; &emsp; created for ICS4U final summative project with Prushoth Vivekanantha."; <br>
+	               	&emsp; &emsp; &emsp; &emsp; &emsp; created for ICS4U final summative project with Prushoth Vivekanantha."; <br>
 			&emsp; tech[] = {Java, Java graphics2D library}; <br>
 			&emsp; more  = "<a href="https://github.com/alexieyizhe/kanye-quest">https://github.com/alexieyizhe/kanye-quest</a>"; <br>
 		}<br>
 	</p>
-	<p>for(<strong>PokePaint</strong>){ <br>
+	<p>
+		for (<strong>PokePaint</strong>) { <br>
 			&emsp; desc = "Pokemon themed paint program with a suite of tools, including stickers, undo/redo, and file I/O.<br>
-	               &emsp; &emsp; &emsp; created for ICS3U final summative project."; <br>
+	               	&emsp; &emsp; &emsp; &emsp; &emsp; created for ICS3U final summative project."; <br>
 			&emsp; tech[] = {Python 2.7, Pygame 3.2}; <br>
 			&emsp; more  = "<a href="https://github.com/alexieyizhe/pokepaint">https://github.com/alexieyizhe/pokepaint</a>"; <br>
 		}<br>
 	</p>
-	<p>for(<strong>Bejeweled 2.0</strong>){ <br>
+	<!--
+	<p>
+		for (<strong>Bejeweled 2.0</strong>) { <br>
 			&emsp; desc = "polished (no pun intended) version of the gem swapping game. <br>
-	               &emsp; &emsp; &emsp; created in 2015 for self-interest and education."; <br>
+	               	&emsp; &emsp; &emsp; &emsp; &emsp; created in 2015 for self-interest and education."; <br>
 			&emsp; tech[] = {Python 2.7, Pygame 3.2}; <br>
 			&emsp; more  = "<a href="https://github.com/alexieyizhe/bejeweled2-minimal">https://github.com/alexieyizhe/bejeweled2-minimal</a>";" <br>
 		}<br>
 	</p>
-	<p>for(<strong>PokeBattle</strong>){ <br>
+	<p>
+		for (<strong>PokeBattle</strong>) { <br>
 			&emsp; desc = "a text-based Pokemon arena battle game with support for user customization, save-files, and high score tracking.<br>
-	               &emsp; &emsp; &emsp; created using tools learned during ICS4U and for self interest."; <br>
+	               	&emsp; &emsp; &emsp; &emsp; &emsp; created using tools learned during ICS4U and for self interest."; <br>
 			&emsp; tech[] = {Java}; <br>
 			&emsp; more  = "<a href="https://github.com/alexieyizhe/pokebattle">https://github.com/alexieyizhe/pokebattle</a>";" <br>
 		}<br>
 	</p>
-	<p>for(<strong>more</strong>){ <br>
+	-->
+	<p>
+		for(<strong>more</strong>){ <br>
 			&emsp; visit_my_github_at = "<a href="https://github.com/alexieyizhe/">https://github.com/alexieyizhe/</a>"; <br>
 		}<br>
 	</p>
 	
 	<br>
 
-	<p id="experience"><em>// experience</em><br>
-	for(<strong>Equithon</strong>){ <br>
+	<p class="comment" id="experience"><em>// experience</em></p>
+	<p>
+		for (<strong>Equithon</strong>) { <br>
 			&emsp; position = "Operations Coordinator";<br>
 			&emsp; timeframe[] = {Oct 2017, Present};<br>
 			&emsp; desc =  "executive in charge of organizing Waterloo's largest social innovation hackathon. <br>
-	               &emsp; &emsp; &emsp; responsible for overseeing all logistics as part of a team of 4. ";<br>
+	               	&emsp; &emsp; &emsp; &emsp; &emsp; responsible for overseeing all logistics as part of a team of 4.";<br>
 			&emsp; contact = "<a href="mailto:alex@equithon.org">alex@equithon.org</a>";<br>
 			&emsp; more  = "<a href="https://equithon.org/">https://equithon.org/</a>"; <br>
 		}<br>
 	</p>
-	<p>for(<strong>Parc Régional de la Rivière-du-Nord</strong>){ <br>
+
+	<!--
+	<p>
+		for(<strong>Parc Régional de la Rivière-du-Nord</strong>){ <br>
 			&emsp; position = "Patrouille de Parc";<br>
 			&emsp; timeframe[] = {June 2016, Sept 2016};<br>
 			&emsp; desc =  "full time employee in St-Jerome, Quebec, responsible for park patrol and miscellaneous tasks.  <br>
-	               &emsp; &emsp; &emsp; part of my participation in YMCA Summer Work Student Exchange, where I was 1 of 8 in my region selected to live and work in Quebec for the entire summer.";<br>
+	               	&emsp; &emsp; &emsp; &emsp; &emsp; part of the YMCA Summer Work Student Exchange, where I was 1 of 8 in my region selected to live and work in Quebec for the entire summer.";<br>
 			&emsp; more  = "<a href="http://www.parcrivieredunord.ca/">http://www.parcrivieredunord.ca/</a>"; <br>
 		}<br>
 	</p>
-	
+	-->
+
 	<br>
 
-	<p id="education"><em>// education</em><br>
-	for(<strong>Bachelor of Computer Science</strong> (Candidate)){ <br>
-			&emsp; school = "University of Waterloo";<br>
+	<p class="comment" id="education"><em>// education</em></p>
+	<p>
+		for (<strong>University of Waterloo</strong>) { <br>
+			&emsp; discipline = "Honours Computer Science (with co-op)";<br>
 			&emsp; timeframe[] = {Sept 2017, July 2022 (expected)};<br>
 			&emsp; desc =  "97% Major Average (CS Courses). <br>
-			&emsp; &emsp; &emsp; 87% Cumulative Average.  <br>
-	               &emsp; &emsp; &emsp; 1A Term Dean's Honour List.";<br>
-	               &emsp; contact = "<a href="mailto:yizhe.xie@uwaterloo.ca">yizhe.xie@uwaterloo.ca</a>";<br>
+			&emsp; &emsp; &emsp; &emsp; &emsp; 87% Cumulative Average.  <br>
+	               	&emsp; &emsp; &emsp; &emsp; &emsp; Dean's Honour List (1A).";<br>
+	               	&emsp; contact = "<a href="mailto:yizhe.xie@uwaterloo.ca">yizhe.xie@uwaterloo.ca</a>";<br>
 		}<br>
 	</p>
 
-<a href="index.html#top">return to top</a>
+	<br> 
+
+	<a id="return_top" href="index.html#top">return to top</a>
 
 </body>
 </html>

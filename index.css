@@ -1,0 +1,48 @@
+body {
+	background-color: #2b2929;
+	padding-left: 20px;
+}
+
+p, div, a{
+	font-family: Consolas, monaco, monospace;
+	font-size: 14px;
+	color: white;
+}
+
+a {
+	color: #ffee34;
+	text-decoration-line: none;
+}
+
+a:hover {
+	color: grey;
+}
+
+strong {
+	color: #17e8cc;
+}
+
+.comment {
+	color: #b1b4bc;
+	display: inline;
+}
+
+.comment + p {
+	margin: 0;
+	padding: 0;
+}
+
+.variable {
+	color: #ff2020;
+}
+
+#att {
+	color: #d514fc;
+}
+#return_top {
+	color: #ffad21;
+}
+
+#top { /* remove this later */
+	color: #36383a;
+}
