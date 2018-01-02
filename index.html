@@ -4,9 +4,11 @@
 	<title>Alex Xie</title>
 	<meta charset="utf-8">
 	<meta desc="Personal Website/Portfolio of Alex Yizhe Xie, a computer science student at the University of Waterloo.">
-	<link rel="shortcut icon" type="image/png" href="favicon_alt.png">
+	<link rel="shortcut icon" type="image/png" href="favicon_alt.png"> <!-- icon found on Google Images -->
 	<link rel="stylesheet" href="index.css">
 	<script>
+		/* credit to Jeff on StackOverflow for the line number calculation function code 
+		source: https://stackoverflow.com/questions/783899/how-can-i-count-text-lines-inside-an-dom-element-can-i */
 		function countLines(target) {
 		      var style = window.getComputedStyle(target, null);
 		      var height = parseInt(style.getPropertyValue("height"));
@@ -14,7 +16,7 @@
 		      var line_height = parseInt(style.getPropertyValue("line-height"));
 		      var box_sizing = style.getPropertyValue("box-sizing");
 		      
-		      if(isNaN(line_height)) line_height = font_size * 1.2;
+		      if(isNaN(line_height)) line_height = font_size * 1;
 		     
 		      if(box_sizing=='border-box')
 		      {
@@ -33,13 +35,14 @@
 
 </head>
 <body>
-	<div id="line_ct"> </div>
-	<div id="top">
+	<div id="line_ct"></div>
+	<div id="main">
 		<p><strong><span class="var">name</span> = </strong> "Alex Xie"; <br>
 		<strong><span class="var">title </span>= </strong> "university, coding, and other adventures."; </p>
-		<p></p>
+
 		<p><strong class="line" id="att">var </strong> 
 			<a class="var_init" href="#contact">contact</a>, 
+			<a class="var_init" href="#skills">skills/interests</a>;
 			<a class="var_init" href="#projects">projects</a>, 
 			<a class="var_init" href="#experience">experience</a>, 
 			<a class="var_init" href="#education">education</a>;
@@ -47,32 +50,53 @@
 
 		<br>
 
-		<p class="comment" id="contact"><em>// contact me</em><br>
-		<strong><span class="var">email</span> = </strong> "<a href="mailto:alexieyizhe@gmail.com">alexieyizhe@gmail.com</a>";<br>
-		<strong><span class="var">resume</span> = </strong> "<a href="1B_resume_alex_xie.pdf" target="_blank">1B_resume_alex_xie.pdf</a>";<br>
-		<strong><span class="var">github</span> = </strong> "<a href="https://github.com/alexieyizhe" target="_blank">https://github.com/alexieyizhe</a>";<br>
-		<strong><span class="var">linkedin</span> = </strong> "<a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">https://www.linkedin.com/in/alexieyizhe</a>";<br>
-		<strong><span class="var">facebook</span> = </strong> "<a href="https://www.facebook.com/alexieyizhe" target="_blank">https://www.facebook.com/alexieyizhe</a>";<br>
+		<p class="comment" id="contact"><em>// contact me</em><br></p>
+		<p>
+			<strong><span class="var">email</span> = </strong> "<a href="mailto:alexieyizhe@gmail.com">alexieyizhe@gmail.com</a>";<br>
+			<strong><span class="var">resume</span> = </strong> "<a href="1B_resume_alex_xie.pdf" target="_blank">1B_resume_alex_xie.pdf</a>";<br>
+			<strong><span class="var">github</span> = </strong> "<a href="https://github.com/alexieyizhe" target="_blank">https://github.com/alexieyizhe</a>";<br>
+			<strong><span class="var">linkedin</span> = </strong> "<a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">https://www.linkedin.com/in/alexieyizhe</a>";<br>
+			<strong><span class="var">facebook</span> = </strong> "<a href="https://www.facebook.com/alexieyizhe" target="_blank">https://www.facebook.com/alexieyizhe</a>";<br>
 		</p>
 		
 		<br>
-		<br>
+
+		<div id="in">
+			<p class="comment" id="skills"><em>// some things i'm proficient at: </em></p>
+			<p>
+				<span class="var">Python</span>;<br>
+				<span class="var">Java</span>;<br>
+				<span class="var">LaTeX</span>;<br>
+				<span class="var">HTML</span>;<br>
+				<span class="var">CSS</span>;<br>
+				<span class="var">Scheme</span>;<br>
+				<span class="var">git</span>;<br>
+			</p>
+		</div>
+		<div id="in2">
+			<p class="comment" id="interests"><em>// some things i enjoy: </em></p>
+			<p>
+				<span class="var">soccer</span>;<br>
+				<span class="var">piano</span>;<br>
+				<span class="var">working out</span>;<br>
+				<span class="var">music</span>;<br>
+				<span class="var">travelling</span>;<br>
+				<span class="var">friends</span> &amp; <span class="var">family</span>;<br>
+			</p>
+		</div>
 
 		<p class="comment" id="projects"><em>// major projects</em></p>
 		<p>
-			<span class="fn">for</span>  (<strong class="var_init">Kanye Quest</strong>) { <br>
-				&emsp; <span class="var">desc</span> = "a top down horde shooter featuring Kanye West, handcrafted maps, power-ups, and various weapons. <br>
-		               	&emsp; &emsp; &emsp; &emsp; &emsp; created for ICS4U final summative project with Prushoth Vivekanantha."; <br>
+			<span class="fn">for</span>  (<a class="var_init" href="https://github.com/alexieyizhe/kanye-quest" target="_blank"><strong>Kanye Quest</strong></a>) { <br>
+				&emsp; <span class="var">desc</span> = "a top down horde shooter featuring Kanye West, handcrafted maps, power-ups, and various weapons.";<br>
 				&emsp; <span class="var">tech[]</span> = {Java, Java graphics2D library}; <br>
-				&emsp; <span class="var">more</span>  = "<a href="https://github.com/alexieyizhe/kanye-quest">https://github.com/alexieyizhe/kanye-quest</a>"; <br>
 			}<br>
 		</p>
 		<p>
-			<span class="fn">for</span> (<strong class="var_init">PokePaint</strong>) { <br>
+			<span class="fn">for</span> (<a class="var_init" href="https://github.com/alexieyizhe/pokepaint" target="_blank"><strong>PokePaint</strong></a>) { <br>
 				&emsp; <span class="var">desc</span> = "Pokemon themed paint program with a suite of tools, including stickers, undo/redo, and file I/O.<br>
 		               	&emsp; &emsp; &emsp; &emsp; &emsp; created for ICS3U final summative project."; <br>
-				&emsp; <span class="var">tech[]</span> = {Python 2.7, Pygame 3.2}; <br>
-				&emsp; <span class="var">more</span>  = "<a href="https://github.com/alexieyizhe/pokepaint">https://github.com/alexieyizhe/pokepaint</a>"; <br>
+				&emsp; <span class="var">tech[]</span> = {Python 2.7, Pygame 3 library}; <br>
 			}<br>
 		</p>
 		<!--
@@ -92,38 +116,32 @@
 				&emsp; more  = "<a href="https://github.com/alexieyizhe/pokebattle">https://github.com/alexieyizhe/pokebattle</a>";" <br>
 			}<br>
 		</p>
-		-->
+	
 		<p>
 			<span class="fn">for</span> (<strong class="var_init">more</strong>) { <br>
 				&emsp; <span class="var">visit_my_github_at </span>= "<a href="https://github.com/alexieyizhe/">https://github.com/alexieyizhe/</a>"; <br>
 			}<br>
 		</p>
-		
+		-->
 		<br>
 
 		<p class="comment" id="experience"><em>// experience</em></p>
 		<p>
-			<span class="fn">for</span>  (<strong class="var_init">Equithon</strong>) { <br>
+			<span class="fn">for</span>  (<a class="var_init" href="https://equithon.org/"><strong>Equithon</strong></a>) { <br>
 				&emsp; <span class="var">position</span> = "Operations Coordinator";<br>
 				&emsp; <span class="var">timeframe[]</span> = {Oct 2017, Present};<br>
 				&emsp; <span class="var">desc</span> =  "executive in charge of organizing Waterloo's largest social innovation hackathon. <br>
 		               	&emsp; &emsp; &emsp; &emsp; &emsp; responsible for overseeing all logistics as part of a team of 4.";<br>
 				&emsp; <span class="var">contact </span>= "<a href="mailto:alex@equithon.org">alex@equithon.org</a>";<br>
-				&emsp; <span class="var">more</span>  = "<a href="https://equithon.org/">https://equithon.org/</a>"; <br>
 			}<br>
 		</p>
-
-		<!--
 		<p>
-			<span class="fn">for</span> (<strong class="var_init">Parc Régional de la Rivière-du-Nord</strong>){ <br>
-				&emsp; position = "Patrouille de Parc";<br>
-				&emsp; timeframe[] = {June 2016, Sept 2016};<br>
-				&emsp; desc =  "full time employee in St-Jerome, Quebec, responsible for park patrol and miscellaneous tasks.  <br>
-		               	&emsp; &emsp; &emsp; &emsp; &emsp; part of the YMCA Summer Work Student Exchange, where I was 1 of 8 in my region selected to live and work in Quebec for the entire summer.";<br>
-				&emsp; more  = "<a href="http://www.parcrivieredunord.ca/">http://www.parcrivieredunord.ca/</a>"; <br>
+			<span class="fn">for</span> (<a class="var_init" href="http://my.ymcagta.org/netcommunity/page.aspx?pid=536" target="_blank"><strong>YMCA Summer Work Student Exchange</strong></a>){ <br>
+				&emsp; <span class="var">timeframe[]</span> = {June 2016, Sept 2016};<br>
+				&emsp; <span class="var">desc</span> =  "1 of 8 selected to live and work full-time in St-Jerome, Quebec for an entire summer. <br>
+		               	&emsp; &emsp; &emsp; &emsp; &emsp; took initiative to improve my problem solving, communication, and teamwork skills.";<br>
 			}<br>
 		</p>
-		-->
 
 		<br>
 
@@ -132,47 +150,30 @@
 			<span class="fn">for</span>  (<strong class="var_init">University of Waterloo</strong>) { <br>
 				&emsp; <span class="var">discipline</span> = "Honours Computer Science (with co-op)";<br>
 				&emsp; <span class="var">timeframe[]</span> = {Sept 2017, July 2022 (expected)};<br>
-				&emsp; <span class="var">desc</span> =  "97% Major Average (CS Courses). <br>
-				&emsp; &emsp; &emsp; &emsp; &emsp; 87% Cumulative Average.  <br>
-		               	&emsp; &emsp; &emsp; &emsp; &emsp; Dean's Honour List (1A).";<br>
-		               	&emsp; <span class="var">contact</span> = "<a href="mailto:yizhe.xie@uwaterloo.ca">yizhe.xie@uwaterloo.ca</a>";<br>
+				&emsp; <span class="var">desc</span> =  "97% Major Avg. <span class="comment"> // cs courses</span><br>
+				&emsp; &emsp; &emsp; &emsp; &emsp; 87% Cumulative Avg. <span class="comment"> // 3.9 GPA</span><br>
+		               	&emsp; &emsp; &emsp; &emsp; &emsp; Dean's Honour List."; <span class="comment"> // 1A term</span><br>
 			}<br>
 		</p>
-		<a id="return_top" href="#top">return to top</a><span class="blinking_cursor">|</span>
+
+		<br>
+
+		<a id="return_top" href="#main">return to top</a><span class="blinking_cursor">|</span>
+
 		<br> 
 
 		
 	</div>
 
 	<script>
-		for(i = 1; i <= countLines(document.getElementById("top")); i++){
-			var new_line =  '<span style="vertical-align:top;">' + i + "</span><br>";
-			if(i == 8){
-				new_line = '<a class="testing" title="" href="mailto:alexieyizhe@gmail.com" rel="external" target="_blank"><span class="fa fa-envelope"></span></a><br>';
+		function addLineNum(target){
+			var specialLines = {8: "envelope", 9:"id-badge", 10:"github", 11:"linkedin", 12:"facebook", 25: "align-left", 30:"align-left", 38:"briefcase", 46:"briefcase", 54:"graduation-cap"};
+			for(i = 1; i <= countLines(document.getElementById("main")); i++){
+				var new_line = (specialLines[i] ?  ('<span class="fa fa-' + specialLines[i] + '"></span><br>') : (i + '<br>'));
+				document.getElementById(target).innerHTML += new_line;
 			}
-			else if(i == 9){
-				new_line = '<a class="testing" title="" href="1B_resume_alex_xie.pdf" rel="external" target="_blank"><span class="fa fa-id-badge"></span></a><br>';
-			}
-			else if(i == 10){
-				new_line = '<a class="testing" title="" href="https://github.com/alexieyizhe" rel="external" target="_blank"><span class="fa fa-github"></span></a><br>';
-			}
-			else if(i == 11){
-				new_line = '<a class="testing" title="" href="https://www.linkedin.com/in/alexieyizhe" rel="external" target="_blank"><span class="fa fa-linkedin"></span></a><br>';
-			}
-			else if(i == 12){
-				new_line = '<a class="testing" title="" href="https://www.facebook.com/alexieyizhe" rel="external" target="_blank"><span class="fa fa-facebook"></span></a><br>';
-			}
-			else if(i == 16 | i == 23 | i == 30){
-				new_line = '<a class="testing" title="github projects" href="https://github.com/alexieyizhe" rel="external" target="_blank"><span class="fa fa-align-left"></span></a><br>';
-			}
-			else if(i == 36){
-				new_line = '<span class="fa fa-briefcase"></span><br>';
-			}
-			else if(i == 46){
-				new_line = '<span class="fa fa-graduation-cap"></span><br>';
-			}
-			document.getElementById("line_ct").innerHTML += new_line;
 		}
+		addLineNum("line_ct");
 	</script>
 </body>
 </html>

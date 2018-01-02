@@ -21,21 +21,36 @@ a:hover {
 	color: grey;
 }
 
-div:nth-of-type(1) {
+div#line_ct{
 	width: 5%;
 	float: left;
 	background-color: #262424;
 	text-align: right;
-	padding-right: 1%;
-	padding-top: 1.3%;
+	padding-top: 1em;
 }
 
-div:nth-of-type(2) {
+div#main {
 	width: 93%;
 	float: right;
 	background-color: #2b2929;
 	margin: 0;
 	line-height: 1.4;
+}
+
+div#table{
+	width:100%;
+}
+
+div#in {
+	width: 30%;
+	float: left;
+	padding-bottom: 2em;
+}
+
+div#in2 {
+	width: 70%;
+	float: right;
+	padding-bottom: 4em;
 }
 
 /*strong {
@@ -77,6 +92,8 @@ div:nth-of-type(2) {
 	color: #ffad21;
 }
 
+/* Credit to Artem Gordinsky on CodePen for the blinking cursor CSS code.
+source: https://codepen.io/ArtemGordinsky/pen/GnLBq */
 .blinking_cursor {
   font-weight: 50;
   font-size: 20px;
