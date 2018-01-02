@@ -34,11 +34,11 @@
 </head>
 <body>
 	<div id="line_ct"> </div>
-	<div id="test">
-		<p id="top"><strong><span class="var">name</span> = </strong> "Alex Xie"; <br>
+	<div id="top">
+		<p><strong><span class="var">name</span> = </strong> "Alex Xie"; <br>
 		<strong><span class="var">title </span>= </strong> "university, coding, and other adventures."; </p>
 		<p></p>
-		<p><strong class="line" id="att">attribute </strong> 
+		<p><strong class="line" id="att">var </strong> 
 			<a class="var_init" href="#contact">contact</a>, 
 			<a class="var_init" href="#projects">projects</a>, 
 			<a class="var_init" href="#experience">experience</a>, 
@@ -138,14 +138,14 @@
 		               	&emsp; <span class="var">contact</span> = "<a href="mailto:yizhe.xie@uwaterloo.ca">yizhe.xie@uwaterloo.ca</a>";<br>
 			}<br>
 		</p>
-		<a id="return_top" href="index.html#top">return to top</a>
+		<a id="return_top" href="#top">return to top</a>
 		<br> 
 
 		
 	</div>
 
 	<script>
-		for(i = 1; i <= countLines(document.getElementById("test")); i++){
+		for(i = 1; i <= countLines(document.getElementById("top")); i++){
 			var new_line =  '<span style="vertical-align:top;">' + i + "</span><br>";
 			if(i == 8){
 				new_line = '<a class="testing" title="" href="#" rel="external"><span class="fa fa-envelope"></span></a><br>';
