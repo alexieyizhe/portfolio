@@ -62,7 +62,7 @@
 		<br>
 
 		<div id="in">
-			<p class="comment" id="skills"><em>// some things i'm proficient at: </em></p>
+			<p class="comment" id="skills"><em>// some things i'm experienced with: </em></p>
 			<p>
 				<span class="var">Python</span>;<br>
 				<span class="var">Java</span>;<br>
@@ -136,6 +136,13 @@
 			}<br>
 		</p>
 		<p>
+			<span class="fn">for</span> (<a class="var_init" href="http://mathsoc.uwaterloo.ca/positions/details?position=csrep" target="_blank"><strong>MathSoc Computer Science Representative</strong></a>){ <br>
+				&emsp; <span class="var">timeframe[]</span> = {Jan 2018, Present};<br>
+				&emsp; <span class="var">desc</span> =  "voting member in Mathematics Society, the Faculty of Mathematics' student council.<br>
+				&emsp; &emsp; &emsp; &emsp; &emsp; elected by and representing the interests of computer science students in the faculty."<br>
+			}<br>
+		</p>
+		<p>
 			<span class="fn">for</span> (<a class="var_init" href="http://my.ymcagta.org/netcommunity/page.aspx?pid=536" target="_blank"><strong>YMCA Summer Work Student Exchange</strong></a>){ <br>
 				&emsp; <span class="var">timeframe[]</span> = {June 2016, Sept 2016};<br>
 				&emsp; <span class="var">desc</span> =  "1 of 8 selected to live and work full-time in St-Jerome, Quebec for an entire summer. <br>
@@ -167,7 +174,7 @@
 
 	<script>
 		function addLineNum(target){
-			var specialLines = {8: "envelope", 9:"id-badge", 10:"github", 11:"linkedin", 12:"facebook", 25: "align-left", 30:"align-left", 38:"briefcase", 46:"briefcase", 54:"graduation-cap"};
+			var specialLines = {8: "envelope", 9:"id-badge", 10:"github", 11:"linkedin", 12:"facebook", 25: "align-left", 30:"align-left", 38:"briefcase", 46:"briefcase", 52:"briefcase", 60:"graduation-cap"};
 			for(i = 1; i <= countLines(document.getElementById("main")); i++){
 				var new_line = (specialLines[i] ?  ('<span class="fa fa-' + specialLines[i] + '"></span><br>') : (i + '<br>'));
 				document.getElementById(target).innerHTML += new_line;
