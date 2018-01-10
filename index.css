@@ -34,7 +34,7 @@ div#main {
 	float: right;
 	background-color: #2b2929;
 	margin: 0;
-	line-height: 1.4;
+	padding-top: 1em;
 }
 
 div#table{
@@ -52,11 +52,6 @@ div#in2 {
 	float: right;
 	padding-bottom: 4em;
 }
-
-/*strong {
-	color: #17e8cc;
-}*/
-
 
 .comment {
 	color: #b1b4bc;
@@ -95,9 +90,9 @@ div#in2 {
 /* Credit to Artem Gordinsky on CodePen for the blinking cursor CSS code.
 source: https://codepen.io/ArtemGordinsky/pen/GnLBq */
 .blinking_cursor {
-  font-weight: 50;
-  font-size: 20px;
-  color: #2E3D48;
+  font-weight: 100;
+  /*font-size: 20px;*/
+  color: #ffad21;
   -webkit-animation: 1s blink step-end infinite;
   -moz-animation: 1s blink step-end infinite;
   -ms-animation: 1s blink step-end infinite;
@@ -110,7 +105,7 @@ source: https://codepen.io/ArtemGordinsky/pen/GnLBq */
     color: transparent;
   }
   50% {
-    color: white;
+    color: #ffad21;
   }
 }
 
@@ -119,7 +114,7 @@ source: https://codepen.io/ArtemGordinsky/pen/GnLBq */
     color: transparent;
   }
   50% {
-    color: white;
+    color: #ffad21;
   }
 }
 
@@ -128,7 +123,7 @@ source: https://codepen.io/ArtemGordinsky/pen/GnLBq */
     color: transparent;
   }
   50% {
-    color: white;
+    color: #ffad21;
   }
 }
 
@@ -137,7 +132,7 @@ source: https://codepen.io/ArtemGordinsky/pen/GnLBq */
     color: transparent;
   }
   50% {
-    color: white;
+    color: #ffad21;
   }
 }
 
@@ -146,6 +141,6 @@ source: https://codepen.io/ArtemGordinsky/pen/GnLBq */
     color: transparent;
   }
   50% {
-    color: white;
+    color: #ffad21;
   }
 }

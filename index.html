@@ -11,12 +11,17 @@
 		source: https://stackoverflow.com/questions/783899/how-can-i-count-text-lines-inside-an-dom-element-can-i */
 		function countLines(target) {
 		      var style = window.getComputedStyle(target, null);
+		      console.log(style);
 		      var height = parseInt(style.getPropertyValue("height"));
+		      console.log(height);
 		      var font_size = parseInt(style.getPropertyValue("font-size"));
-		      var line_height = parseInt(style.getPropertyValue("line-height"));
+		      console.log(font_size);
+		      var line_height = (isNaN(parseInt(style.getPropertyValue("line-height"))) ? font_size : parseInt(style.getPropertyValue("line-height"))) + 5;
+
+		      console.log(line_height);
 		      var box_sizing = style.getPropertyValue("box-sizing");
-		      
-		      if(isNaN(line_height)) line_height = font_size * 1;
+		      console.log(box_sizing);
+
 		     
 		      if(box_sizing=='border-box')
 		      {
@@ -25,9 +30,12 @@
 		        var border_top = parseInt(style.getPropertyValue("border-top-width"));
 		        var border_bottom = parseInt(style.getPropertyValue("border-bottom-width"));
 		        height = height - padding_top - padding_bottom - border_top - border_bottom;
-		      }
+		      } 
+
 		      var lines = Math.ceil(height / line_height);
+		      console.log("total lines = " + lines);
 		      return lines;
+
 		  }
 	</script>
 	<script src="https://use.fontawesome.com/40e165af7e.js"></script>
@@ -37,30 +45,47 @@
 <body>
 	<div id="line_ct"></div>
 	<div id="main">
-		<p><strong><span class="var">name</span> = </strong> "Alex Xie"; <br>
-		<strong><span class="var">title </span>= </strong> "university, coding, and other adventures."; </p>
-
-		<p><strong class="line" id="att">var </strong> 
-			<a class="var_init" href="#contact">contact</a>, 
-			<a class="var_init" href="#skills">skills/interests</a>;
-			<a class="var_init" href="#projects">projects</a>, 
-			<a class="var_init" href="#experience">experience</a>, 
-			<a class="var_init" href="#education">education</a>;
-		</p>
+		<strong><span class="var">name</span> = </strong> "Alex Xie"; <br>
+		<strong><span class="var">title </span>= </strong> "university, coding, and other adventures."; 
 
 		<br>
+		<br>
 
-		<p class="comment" id="contact"><em>// contact me</em><br></p>
-		<p>
-			<strong><span class="var">email</span> = </strong> "<a href="mailto:alexieyizhe@gmail.com">alexieyizhe@gmail.com</a>";<br>
-			<strong><span class="var">resume</span> = </strong> "<a href="resources/files/alex_xie_resume_1B_alt.pdf" target="_blank">alex_xie_resume_1B.pdf</a>";<br>
-			<strong><span class="var">github</span> = </strong> "<a href="https://github.com/alexieyizhe" target="_blank">https://github.com/alexieyizhe</a>";<br>
-			<strong><span class="var">linkedin</span> = </strong> "<a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">https://www.linkedin.com/in/alexieyizhe</a>";<br>
-			<strong><span class="var">facebook</span> = </strong> "<a href="https://www.facebook.com/alexieyizhe" target="_blank">https://www.facebook.com/alexieyizhe</a>";<br>
-		</p>
+		<strong class="line" id="att">var </strong> 
+		<a class="var_init" href="#contact">contact</a>, 
+		<a class="var_init" href="#skills">skills/interests</a>;
+		<a class="var_init" href="#education">education</a>;
+		<a class="var_init" href="#projects">projects</a>, 
+		<a class="var_init" href="#experience">experience</a>, 
+
+		<br>
+		<br>
+		<br>
+
+		<em class="comment" id="contact">// contact me</em><br>
+
+		<strong><span class="var">email</span> = </strong> "<a href="mailto:alexieyizhe@gmail.com">alexieyizhe@gmail.com</a>";<br>
+		<strong><span class="var">resume</span> = </strong> "<a href="resources/files/alex_xie_resume_1B_alt.pdf" target="_blank">alex_xie_resume_1B.pdf</a>";<br>
+		<strong><span class="var">github</span> = </strong> "<a href="https://github.com/alexieyizhe" target="_blank">https://github.com/alexieyizhe</a>";<br>
+		<strong><span class="var">linkedin</span> = </strong> "<a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">https://www.linkedin.com/in/alexieyizhe</a>";<br>
+		<strong><span class="var">facebook</span> = </strong> "<a href="https://www.facebook.com/alexieyizhe" target="_blank">https://www.facebook.com/alexieyizhe</a>";<br>
 		
 		<br>
+		<br>
 
+		<em class="comment" id="education">// education</em>  <br>
+
+		<span class="fn">for</span>  (<strong class="var_init">University of Waterloo</strong>) { <br>
+			&emsp; <span class="var">discipline</span> = "Honours Computer Science (with co-op)";<br>
+			&emsp; <span class="var">timeframe[]</span> = {Sept 2017, July 2022 (expected)};<br>
+			&emsp; <span class="var">desc</span> =  "97% Major Avg. <span class="comment"> // cs courses</span><br>
+			&emsp; &emsp; &emsp; &emsp; &emsp; 87% Cumulative Avg. <span class="comment"> // 3.9 GPA</span><br>
+	               	&emsp; &emsp; &emsp; &emsp; &emsp; Dean's Honour List."; <span class="comment"> // 1A term</span><br>
+		}<br>
+
+		<br>
+		<br>
+		<!--
 		<div id="in">
 			<p class="comment" id="skills"><em>// some things i'm experienced with: </em></p>
 			<p>
@@ -83,22 +108,22 @@
 				<span class="var">travelling</span>;<br>
 				<span class="var">friends</span> &amp; <span class="var">family</span>;<br>
 			</p>
-		</div>
+		</div> -->
 
-		<p class="comment" id="projects"><em>// major projects</em></p>
-		<p>
-			<span class="fn">for</span>  (<a class="var_init" href="https://github.com/alexieyizhe/kanye-quest" target="_blank"><strong>Kanye Quest</strong></a>) { <br>
-				&emsp; <span class="var">desc</span> = "a top down horde shooter featuring Kanye West, handcrafted maps, power-ups, and various weapons.";<br>
-				&emsp; <span class="var">tech[]</span> = {Java, Java graphics2D library}; <br>
-			}<br>
-		</p>
-		<p>
-			<span class="fn">for</span> (<a class="var_init" href="https://github.com/alexieyizhe/pokepaint" target="_blank"><strong>PokePaint</strong></a>) { <br>
-				&emsp; <span class="var">desc</span> = "Pokemon themed paint program with a suite of tools, including stickers, undo/redo, and file I/O.<br>
-		               	&emsp; &emsp; &emsp; &emsp; &emsp; created for ICS3U final summative project."; <br>
-				&emsp; <span class="var">tech[]</span> = {Python 2.7, Pygame 3 library}; <br>
-			}<br>
-		</p>
+		<em class="comment" id="projects">// major projects</em> <br>
+		<span class="fn">for</span>  (<a class="var_init" href="https://github.com/alexieyizhe/kanye-quest" target="_blank"><strong>Kanye Quest</strong></a>) { <br>
+			&emsp; <span class="var">desc</span> = "a top down horde shooter featuring Kanye West, handcrafted maps, power-ups, and various weapons.";<br>
+			&emsp; <span class="var">tech[]</span> = {Java, Java graphics2D library}; <br>
+		}<br>
+
+		<br>
+
+		<span class="fn">for</span> (<a class="var_init" href="https://github.com/alexieyizhe/pokepaint" target="_blank"><strong>PokePaint</strong></a>) { <br>
+			&emsp; <span class="var">desc</span> = "Pokemon themed paint program with a suite of tools, including stickers, undo/redo, and file I/O.<br>
+	               	&emsp; &emsp; &emsp; &emsp; &emsp; created for ICS3U final summative project."; <br>
+			&emsp; <span class="var">tech[]</span> = {Python 2.7, Pygame 3 library}; <br>
+		}<br>
+
 		<!--
 		<p>
 			<span class="fn">for</span>  (<strong class="var_init">Bejeweled 2.0</strong>) { <br>
@@ -124,59 +149,46 @@
 		</p>
 		-->
 		<br>
+		<br>
 
-		<p class="comment" id="experience"><em>// experience</em></p>
-		<p>
-			<span class="fn">for</span>  (<a class="var_init" href="https://equithon.org/"><strong>Equithon</strong></a>) { <br>
-				&emsp; <span class="var">position</span> = "Operations Coordinator";<br>
-				&emsp; <span class="var">timeframe[]</span> = {Oct 2017, Present};<br>
-				&emsp; <span class="var">desc</span> =  "executive in charge of organizing Waterloo's largest social innovation hackathon. <br>
-		               	&emsp; &emsp; &emsp; &emsp; &emsp; responsible for overseeing all logistics as part of a team of 4.";<br>
-				&emsp; <span class="var">contact </span>= "<a href="mailto:alex@equithon.org">alex@equithon.org</a>";<br>
-			}<br>
-		</p>
-		<p>
-			<span class="fn">for</span> (<a class="var_init" href="http://mathsoc.uwaterloo.ca/positions/details?position=csrep" target="_blank"><strong>MathSoc Computer Science Representative</strong></a>){ <br>
-				&emsp; <span class="var">timeframe[]</span> = {Jan 2018, Present};<br>
-				&emsp; <span class="var">desc</span> =  "voting member in Mathematics Society, the Faculty of Mathematics' student council.<br>
-				&emsp; &emsp; &emsp; &emsp; &emsp; elected by and representing the interests of computer science students in the faculty."<br>
-			}<br>
-		</p>
-		<p>
-			<span class="fn">for</span> (<a class="var_init" href="http://my.ymcagta.org/netcommunity/page.aspx?pid=536" target="_blank"><strong>YMCA Summer Work Student Exchange</strong></a>){ <br>
-				&emsp; <span class="var">timeframe[]</span> = {June 2016, Sept 2016};<br>
-				&emsp; <span class="var">desc</span> =  "1 of 8 selected to live and work full-time in St-Jerome, Quebec for an entire summer. <br>
-		               	&emsp; &emsp; &emsp; &emsp; &emsp; took initiative to improve my problem solving, communication, and teamwork skills.";<br>
-			}<br>
-		</p>
+		<em class="comment" id="experience">// experience</em> <br>
+
+		<span class="fn">for</span>  (<a class="var_init" href="https://equithon.org/"><strong>Equithon</strong></a>) { <br>
+			&emsp; <span class="var">position</span> = "Operations Coordinator";<br>
+			&emsp; <span class="var">timeframe[]</span> = {Oct 2017, Present};<br>
+			&emsp; <span class="var">desc</span> =  "executive in charge of organizing Waterloo's largest social innovation hackathon. <br>
+	               	&emsp; &emsp; &emsp; &emsp; &emsp; responsible for overseeing all logistics as part of a team of 4.";<br>
+			&emsp; <span class="var">contact </span>= "<a href="mailto:alex@equithon.org">alex@equithon.org</a>";<br>
+		}<br>
 
 		<br>
 
-		<p class="comment" id="education"><em>// education</em></p>
-		<p>
-			<span class="fn">for</span>  (<strong class="var_init">University of Waterloo</strong>) { <br>
-				&emsp; <span class="var">discipline</span> = "Honours Computer Science (with co-op)";<br>
-				&emsp; <span class="var">timeframe[]</span> = {Sept 2017, July 2022 (expected)};<br>
-				&emsp; <span class="var">desc</span> =  "97% Major Avg. <span class="comment"> // cs courses</span><br>
-				&emsp; &emsp; &emsp; &emsp; &emsp; 87% Cumulative Avg. <span class="comment"> // 3.9 GPA</span><br>
-		               	&emsp; &emsp; &emsp; &emsp; &emsp; Dean's Honour List."; <span class="comment"> // 1A term</span><br>
-			}<br>
-		</p>
+		<span class="fn">for</span> (<a class="var_init" href="http://mathsoc.uwaterloo.ca/positions/details?position=csrep" target="_blank"><strong>MathSoc Computer Science Representative</strong></a>){ <br>
+			&emsp; <span class="var">timeframe[]</span> = {Jan 2018, Present};<br>
+			&emsp; <span class="var">desc</span> =  "voting member in Mathematics Society, the Faculty of Mathematics' student council.<br>
+			&emsp; &emsp; &emsp; &emsp; &emsp; elected by and representing the interests of computer science students in the faculty."<br>
+		}<br>
 
+		<br>
+
+		<span class="fn">for</span> (<a class="var_init" href="http://my.ymcagta.org/netcommunity/page.aspx?pid=536" target="_blank"><strong>YMCA Summer Work Student Exchange</strong></a>){ <br>
+			&emsp; <span class="var">timeframe[]</span> = {June 2016, Sept 2016};<br>
+			&emsp; <span class="var">desc</span> =  "1 of 8 selected to live and work full-time in St-Jerome, Quebec for an entire summer. <br>
+	               	&emsp; &emsp; &emsp; &emsp; &emsp; took initiative to improve my problem solving, communication, and teamwork skills.";<br>
+		}<br>
+
+		<br>
 		<br>
 
 		<a id="return_top" href="#main">return to top</a><span class="blinking_cursor">|</span>
-
-		<br> 
-
-		
 	</div>
 
 	<script>
 		function addLineNum(target){
-			var specialLines = {8: "envelope", 9:"id-badge", 10:"github", 11:"linkedin", 12:"facebook", 25: "align-left", 30:"align-left", 38:"briefcase", 46:"briefcase", 52:"briefcase", 60:"graduation-cap"};
-			for(i = 1; i <= countLines(document.getElementById("main")); i++){
-				var new_line = (specialLines[i] ?  ('<span class="fa fa-' + specialLines[i] + '"></span><br>') : (i + '<br>'));
+			var special_lines = {8: "envelope", 9:"id-badge", 10:"github", 11:"linkedin", 12:"facebook", 16:"graduation-cap", 26: "align-left", 31:"align-left", 39:"briefcase", 47:"briefcase", 53:"briefcase", 60:"arrow-circle-o-up "};
+			var total_lines = countLines(document.getElementById("main"));
+			for(i = 1; i <= total_lines; i++){
+				var new_line = (special_lines[i] ?  ('<span class="fa fa-' + special_lines[i] + '"></span><br>') : (i + '<br>'));
 				document.getElementById(target).innerHTML += new_line;
 			}
 		}
