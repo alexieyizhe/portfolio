@@ -6,36 +6,6 @@
 	<meta desc="Personal Website/Portfolio of Alex Yizhe Xie, a computer science student at the University of Waterloo.">
 	<link rel="shortcut icon" type="image/png" href="resources/images/favicon_alt.png"> <!-- icon found on Google Images -->
 	<link rel="stylesheet" href="index.css">
-	<script>
-		function countLines(target) {
-		      var style = window.getComputedStyle(target, null);
-		      console.log(style);
-		      var height = parseInt(style.getPropertyValue("height"));
-		      console.log(height);
-		      var font_size = parseInt(style.getPropertyValue("font-size"));
-		      console.log(font_size);
-		      var line_height = (isNaN(parseInt(style.getPropertyValue("line-height"))) ? font_size : parseInt(style.getPropertyValue("line-height"))) + 5;
-
-		      console.log(line_height);
-		      var box_sizing = style.getPropertyValue("box-sizing");
-		      console.log(box_sizing);
-
-		     
-		      if(box_sizing=='border-box')
-		      {
-		        var padding_top = parseInt(style.getPropertyValue("padding-top"));
-		        var padding_bottom = parseInt(style.getPropertyValue("padding-bottom"));
-		        var border_top = parseInt(style.getPropertyValue("border-top-width"));
-		        var border_bottom = parseInt(style.getPropertyValue("border-bottom-width"));
-		        height = height - padding_top - padding_bottom - border_top - border_bottom;
-		      } 
-
-		      var lines = Math.ceil(height / line_height);
-		      console.log("total lines = " + lines);
-		      return lines;
-
-		  }
-	</script>
 	<script src="https://use.fontawesome.com/40e165af7e.js"></script>
 
 
@@ -83,38 +53,47 @@
 
 		<br>
 		<br>
-		<!--
-		<div id="in">
-			<p class="comment" id="skills"><em>// some things i'm experienced with: </em></p>
-			<p>
-				<span class="var">Python</span>;<br>
-				<span class="var">Java</span>;<br>
-				<span class="var">LaTeX</span>;<br>
-				<span class="var">HTML</span>;<br>
-				<span class="var">CSS</span>;<br>
-				<span class="var">Scheme</span>;<br>
-				<span class="var">git</span>;<br>
-			</p>
-		</div>
-		<div id="in2">
-			<p class="comment" id="interests"><em>// some things i enjoy: </em></p>
-			<p>
-				<span class="var">soccer</span>;<br>
-				<span class="var">piano</span>;<br>
-				<span class="var">fitness</span>;<br>
-				<span class="var">music</span>;<br>
-				<span class="var">travelling</span>;<br>
-				<span class="var">friends</span> &amp; <span class="var">family</span>;<br>
-			</p>
-		</div> -->
+		
+		<span id="in">
+			<em class="comment" id="skills">// some things i'm experienced with: </em><br>
+			<span class="var">Python</span>;<br>
+			<span class="var">Java</span>;<br>
+			<span class="var">LaTeX</span>;<br>
+			<span class="var">HTML</span>;<br>
+			<span class="var">CSS</span>;<br>
+			<span class="var">Scheme</span>;<br>
+			<span class="var">git</span>;<br>
+		</span>
+		<span id="in2">
+			<em class="comment" id="interests">// some things i enjoy: </em></p>
+			<span class="var">soccer</span>;<br>
+			<span class="var">piano</span>;<br>
+			<span class="var">fitness</span>;<br>
+			<span class="var">music</span>;<br>
+			<span class="var">travelling</span>;<br>
+			<span class="var">graphic design</span>; <span class="comment">//view <a href="https://goo.gl/368B5s" class="comment"><u>my portfolio</u></a></span><br>
+			<span class="var">good puns</span>;<br>
+		</span> 
+
+		<span class="ph">.   </span>
+		<br>
+		<span class="ph">.   </span>
+		<br>
 
 		<em class="comment" id="projects">// major projects</em> <br>
+		<span class="fn">for</span>  (<a class="var_init" href="https://github.com/alexieyizhe/WATBus" target="_blank"><strong>WATBus(shouldItake?)</strong></a>) { <br>
+			&emsp; <span class="var">desc</span> = "a Facebook Messenger Bot that allows users to easily obtain GRT transit info and set reminders in-app.";<br>
+			&emsp; <span class="var">tech[]</span> = {Python, Flask framework, Wit.ai NLP API, GRT/FB API, Heroku}; <br>
+		}<br>
+		<br>
+
+
 		<span class="fn">for</span>  (<a class="var_init" href="https://github.com/alexieyizhe/kanye-quest" target="_blank"><strong>Kanye Quest</strong></a>) { <br>
 			&emsp; <span class="var">desc</span> = "a top down horde shooter featuring Kanye West, handcrafted maps, power-ups, and various weapons.";<br>
 			&emsp; <span class="var">tech[]</span> = {Java, Java graphics2D library}; <br>
 		}<br>
-
 		<br>
+
 
 		<span class="fn">for</span> (<a class="var_init" href="https://github.com/alexieyizhe/pokepaint" target="_blank"><strong>PokePaint</strong></a>) { <br>
 			&emsp; <span class="var">desc</span> = "Pokemon themed paint program with a suite of tools, including stickers, undo/redo, and file I/O.<br>
@@ -182,14 +161,46 @@
 	</div>
 
 	<script>
+		function countLines(target) {
+		      var style = window.getComputedStyle(target, null);
+		      console.log(style);
+		      var height = parseInt(style.getPropertyValue("height"));
+		      console.log(height);
+		      var font_size = parseInt(style.getPropertyValue("font-size"));
+		      console.log(font_size);
+		      var line_height = (isNaN(parseInt(style.getPropertyValue("line-height"))) ? font_size : parseInt(style.getPropertyValue("line-height"))) + 5;
+
+		      console.log(line_height);
+		      var box_sizing = style.getPropertyValue("box-sizing");
+		      console.log(box_sizing);
+
+		     
+		      if(box_sizing=='border-box')
+		      {
+		        var padding_top = parseInt(style.getPropertyValue("padding-top"));
+		        var padding_bottom = parseInt(style.getPropertyValue("padding-bottom"));
+		        var border_top = parseInt(style.getPropertyValue("border-top-width"));
+		        var border_bottom = parseInt(style.getPropertyValue("border-bottom-width"));
+		        height = height - padding_top - padding_bottom - border_top - border_bottom;
+		      } 
+
+		      var lines = Math.ceil(height / line_height);
+		      console.log("total lines = " + lines);
+		      return lines;
+
+		 }
+
 		function addLineNum(target){
-			var special_lines = {8: "envelope", 9:"id-badge", 10:"github", 11:"linkedin", 12:"facebook", 16:"graduation-cap", 26: "align-left", 31:"align-left", 39:"briefcase", 47:"briefcase", 53:"briefcase", 60:"arrow-circle-o-up "};
+			var special_lines = {8: "envelope", 9:"id-badge", 10:"github", 11:"linkedin", 12:"facebook", 16:"graduation-cap", 25:"cog", 36: "align-left", 41: "align-left", 46:"align-left", 54:"briefcase", 62:"briefcase", 68:"briefcase"};
 			var total_lines = countLines(document.getElementById("main"));
-			for(i = 1; i <= total_lines; i++){
+			for(i = 1; i < total_lines; i++){
 				var new_line = (special_lines[i] ?  ('<span class="fa fa-' + special_lines[i] + '"></span><br>') : (i + '<br>'));
 				document.getElementById(target).innerHTML += new_line;
 			}
+			document.getElementById(target).innerHTML += '<span class="fa fa-arrow-circle-o-up"></span><br>'
 		}
+
+
 		addLineNum("line_ct");
 	</script>
 </body>

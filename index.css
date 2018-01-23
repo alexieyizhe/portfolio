@@ -1,5 +1,5 @@
 body{
-	background-color: #2b2929;
+	background-color: #262424;
 }
 
 p, a, div {
@@ -25,6 +25,7 @@ div#line_ct{
 	width: 5%;
 	float: left;
 	background-color: #262424;
+      border-radius: 5px;
 	text-align: right;
 	padding-top: 1em;
 }
@@ -35,22 +36,28 @@ div#main {
 	background-color: #2b2929;
 	margin: 0;
 	padding-top: 1em;
+      padding-left: 1em;
 }
 
 div#table{
 	width:100%;
 }
 
-div#in {
+#in {
 	width: 30%;
 	float: left;
-	padding-bottom: 2em;
+      display: inline;
 }
 
-div#in2 {
+#in2 {
 	width: 70%;
+      height: 20%;
 	float: right;
-	padding-bottom: 4em;
+      display: inline;
+
+}
+.ph {
+  color: #2b2929;
 }
 
 .comment {
