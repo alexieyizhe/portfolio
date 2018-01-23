@@ -45,9 +45,9 @@
 
 		<span class="fn">for</span>  (<strong class="var_init">University of Waterloo</strong>) { <br>
 			&emsp; <span class="var">discipline</span> = "Honours Computer Science (co-op)";<br>
-			&emsp; <span class="var">timeframe[]</span> = {Sept 2017, July 2022 (expected)};<br>
-			&emsp; <span class="var">desc</span> =  "97% Major Avg. <span class="comment"> // cs courses</span><br>
-			&emsp; &emsp; &emsp; &emsp; &emsp; 87% Cumulative Avg. <span class="comment"> // 3.9 GPA</span><br>
+			&emsp; <span class="var">timeframe[]</span> = {Sept 2017, May 2022 (expected)};<br>
+			&emsp; <span class="var">desc</span> =  "96% Major Avg. <span class="comment"> // cs courses</span><br>
+			&emsp; &emsp; &emsp; &emsp; &emsp; 88% Cumulative Avg. <span class="comment"> // 3.9 GPA</span><br>
 	               	&emsp; &emsp; &emsp; &emsp; &emsp; Dean's Honour List."; <span class="comment"> // 1A term</span><br>
 		}<br>
 
@@ -58,11 +58,12 @@
 			<em class="comment" id="skills">// some things i'm experienced with: </em><br>
 			<span class="var">Python</span>;<br>
 			<span class="var">Java</span>;<br>
-			<span class="var">LaTeX</span>;<br>
+			<span class="var">Scheme</span>;<br>
+			<span class="var">C</span>;<br>
 			<span class="var">HTML</span>;<br>
 			<span class="var">CSS</span>;<br>
-			<span class="var">Scheme</span>;<br>
-			<span class="var">git</span>;<br>
+			<span class="var">LaTeX</span>;<br>
+			<span class="var">Git</span>;<br>
 		</span>
 		<span id="in2">
 			<em class="comment" id="interests">// some things i enjoy: </em></p>
@@ -72,7 +73,7 @@
 			<span class="var">music</span>;<br>
 			<span class="var">travelling</span>;<br>
 			<span class="var">graphic design</span>; <span class="comment">//view <a href="https://goo.gl/368B5s" class="comment"><u>my portfolio</u></a></span><br>
-			<span class="var">good puns</span>;<br>
+			<span class="var">puns (good AND bad)</span>;<br>
 		</span> 
 
 		<span class="ph">.   </span>
@@ -130,20 +131,21 @@
 
 		<em class="comment" id="experience">// experience</em> <br>
 
+
+		<span class="fn">for</span> (<a class="var_init" href="http://mathsoc.uwaterloo.ca/positions/details?position=csrep" target="_blank"><strong>MathSoc Computer Science Representative</strong></a>){ <br>
+			&emsp; <span class="var">timeframe[]</span> = {Jan 2018, Present};<br>
+			&emsp; <span class="var">desc</span> =  "voting member in Mathematics Society, the Faculty of Mathematics' student council.<br>
+			&emsp; &emsp; &emsp; &emsp; &emsp; elected by and representing the interests of computer science students in the faculty."<br>
+		}<br>
+
+		<br>
+
 		<span class="fn">for</span>  (<a class="var_init" href="https://equithon.org/"><strong>Equithon</strong></a>) { <br>
 			&emsp; <span class="var">position</span> = "Operations Coordinator";<br>
 			&emsp; <span class="var">timeframe[]</span> = {Oct 2017, Present};<br>
 			&emsp; <span class="var">desc</span> =  "executive in charge of organizing Waterloo's largest social innovation hackathon. <br>
 	               	&emsp; &emsp; &emsp; &emsp; &emsp; responsible for overseeing all logistics as part of a team of 4.";<br>
 			&emsp; <span class="var">contact </span>= "<a href="mailto:alex@equithon.org">alex@equithon.org</a>";<br>
-		}<br>
-
-		<br>
-
-		<span class="fn">for</span> (<a class="var_init" href="http://mathsoc.uwaterloo.ca/positions/details?position=csrep" target="_blank"><strong>MathSoc Computer Science Representative</strong></a>){ <br>
-			&emsp; <span class="var">timeframe[]</span> = {Jan 2018, Present};<br>
-			&emsp; <span class="var">desc</span> =  "voting member in Mathematics Society, the Faculty of Mathematics' student council.<br>
-			&emsp; &emsp; &emsp; &emsp; &emsp; elected by and representing the interests of computer science students in the faculty."<br>
 		}<br>
 
 		<br>
@@ -157,10 +159,17 @@
 		<br>
 		<br>
 
-		<a id="return_top" href="#main">return to top</a><span class="blinking_cursor">|</span>
+		<span id="return_top" onclick="smoothscroll()" >return to top</span><span class="blinking_cursor">|</span>
 	</div>
 
 	<script>
+		function smoothscroll(){
+			var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+			if (currentScroll > 0) {
+				window.requestAnimationFrame(smoothscroll);window.scrollTo (0,currentScroll - (currentScroll/10));
+		    	}
+		}
+
 		function countLines(target) {
 		      var style = window.getComputedStyle(target, null);
 		      console.log(style);
@@ -191,7 +200,7 @@
 		 }
 
 		function addLineNum(target){
-			var special_lines = {8: "envelope", 9:"id-badge", 10:"github", 11:"linkedin", 12:"facebook", 16:"graduation-cap", 25:"cog", 36: "align-left", 41: "align-left", 46:"align-left", 54:"briefcase", 62:"briefcase", 68:"briefcase"};
+			var special_lines = {8: "envelope", 9:"id-badge", 10:"github", 11:"linkedin", 12:"facebook", 16:"graduation-cap", 25:"cog", 36: "align-left", 41: "align-left", 46:"align-left", 54:"briefcase", 60:"briefcase", 68:"briefcase"};
 			var total_lines = countLines(document.getElementById("main"));
 			for(i = 1; i < total_lines; i++){
 				var new_line = (special_lines[i] ?  ('<span class="fa fa-' + special_lines[i] + '"></span><br>') : (i + '<br>'));

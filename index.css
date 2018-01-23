@@ -92,6 +92,7 @@ div#table{
 
 #return_top {
 	color: #ffad21;
+      cursor: pointer;
 }
 
 /* Credit to Artem Gordinsky on CodePen for the blinking cursor CSS code.
