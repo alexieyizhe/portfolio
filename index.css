@@ -17,7 +17,7 @@ a {
 	text-decoration-line: none;
 }
 
-a:hover {
+a:hover, .var_init:hover, #return_top:hover {
 	color: grey;
 }
 
@@ -83,7 +83,8 @@ div#table{
 }
 
 .var_init {
-	color: #ff2020;
+    color: #ff2020;
+    cursor: pointer;
 }
 
 #att {
@@ -91,8 +92,8 @@ div#table{
 }
 
 #return_top {
-	color: #ffad21;
-      cursor: pointer;
+    color: #ffad21;
+    cursor: pointer;
 }
 
 /* Credit to Artem Gordinsky on CodePen for the blinking cursor CSS code.
