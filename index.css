@@ -17,8 +17,9 @@ a {
 	text-decoration-line: none;
 }
 
-a:hover, .var_init:hover, #return_top:hover {
-	color: grey;
+a:hover, .var_init_link:hover, #return_top:hover {
+    color: grey;
+    cursor: pointer;
 }
 
 div#line_ct{
@@ -82,9 +83,8 @@ div#table{
 	color: cyan;
 }
 
-.var_init {
+.var_init, .var_init_link {
     color: #ff2020;
-    cursor: pointer;
 }
 
 #att {
