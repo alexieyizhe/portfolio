@@ -15,10 +15,10 @@ function smooth_scroll_up(){
 
 function smooth_scroll_down(){
 	var current_pos = document.documentElement.scrollTop || document.body.scrollTop;
-	
-	var difference = Math.min((stop_pos - current_pos)/10, ((bottom - current_pos - 800) / 10));
-	difference = ((difference * 10 < 10) ?  1 : difference);
-	console.log("difference " + (difference*10) + " diff bottom " + (current_pos + difference + 800) + " bottom " + bottom);  
+	var window_height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+	var difference = Math.min((stop_pos - current_pos)/10, ((bottom - current_pos - window_height) / 10));
+	difference = ((difference * 10 < 10) ?  1 : difference); //stops the scroll from infinitely approaching window_height
+	console.log("difference " + (difference*10) + " diff bottom " + (current_pos + difference + window_height) + " bottom " + bottom);  
 	if ((current_pos < stop_pos) && (current_pos + difference + 780 < bottom)){ //if can't scroll all the way to bottom, it wont stop trying
 		window.requestAnimationFrame(smooth_scroll_down);
 		window.scrollTo (0, current_pos + difference);
