@@ -1,13 +1,15 @@
 var stop_pos;
 var bottom;
-var special_lines = {8: "envelope", 9:"id-badge", 10:"github", 11:"linkedin", 12:"facebook", 16:"graduation-cap", 25:"cog", 36: "align-left", 41: "align-left", 46:"align-left", 54:"briefcase", 60:"briefcase", 68:"briefcase"};
+var special_lines = {8: "envelope", 9:"id-badge", 10:"github", 11:"linkedin", 12:"facebook", 16:"graduation-cap", 
+		        25:"cog", 37: "align-left", 42: "align-left", 47:"align-left", 55:"briefcase", 61:"briefcase", 69:"briefcase"};
 
 function smooth_scroll_up(){
 	var current_pos = document.documentElement.scrollTop || document.body.scrollTop;
+	var difference = (current_pos/10);
+
 	if (current_pos > stop_pos) {
-		//console.log(current_pos/10); for testing
 		window.requestAnimationFrame(smooth_scroll_up);
-		window.scrollTo (0, current_pos - (current_pos/10));
+		window.scrollTo (0, current_pos - difference);
 	} else {
 		window.scrollTo (0, stop_pos);
 	}
@@ -17,8 +19,8 @@ function smooth_scroll_down(){
 	var current_pos = document.documentElement.scrollTop || document.body.scrollTop;
 	var window_height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	var difference = Math.min((stop_pos - current_pos)/10, ((bottom - current_pos - window_height) / 10));
-	difference = ((difference * 10 < 10) ?  1 : difference); //stops the scroll from infinitely approaching window_height
-	console.log("difference " + (difference*10) + " diff bottom " + (current_pos + difference + window_height) + " bottom " + bottom);  
+	difference = ((difference * 10 < 10) ?  1 : difference); //stops the scroll from infinitely approaching window_height but never reaching
+	
 	if ((current_pos < stop_pos) && (current_pos + window_height - 20 < bottom)){ 
 		window.requestAnimationFrame(smooth_scroll_down);
 		window.scrollTo (0, current_pos + difference);
@@ -63,6 +65,7 @@ function countLines(target) {
  function addLineNum(){
 	var total_lines = countLines(document.getElementById("main"));
 	var line_ct_elem = document.getElementById("line_ct");
+	line_ct_elem.innerHTML = "";
 	for(i = 1; i < total_lines; i++){
 		var new_line = (special_lines[i] ?  ('<span class="fa fa-' + special_lines[i] + '"></span><br>') : (i + '<br>'));
 		line_ct_elem.innerHTML += new_line;
