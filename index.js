@@ -19,8 +19,8 @@ function smooth_scroll_down(){
 	var current_pos = document.documentElement.scrollTop || document.body.scrollTop;
 	var window_height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	var difference = Math.min((stop_pos - current_pos)/10, ((bottom - current_pos - window_height) / 10));
-	difference = ((difference * 10 < 10) ?  1 : difference); //stops the scroll from infinitely approaching window_height but never reaching
-	
+	difference = ((difference < 1) ?  1 : difference); //stops the scroll from infinitely approaching window_height but never reaching it
+
 	if ((current_pos < stop_pos) && (current_pos + window_height - 20 < bottom)){ 
 		window.requestAnimationFrame(smooth_scroll_down);
 		window.scrollTo (0, current_pos + difference);
