@@ -1,7 +1,7 @@
 var stop_pos;
 var bottom;
 var special_lines = {8: "envelope", 9:"id-badge", 10:"github", 11:"linkedin", 12:"facebook", 16:"graduation-cap", 
-		        25:"cog", 37: "align-left", 42: "align-left", 47:"align-left", 55:"briefcase", 61:"briefcase", 69:"briefcase"};
+		        25:"cog", 37: "align-left", 42: "align-left", 47:"align-left", 52:"align-left", 60:"briefcase", 66:"briefcase", 74:"briefcase"};
 
 function smooth_scroll_up(){
 	var current_pos = document.documentElement.scrollTop || document.body.scrollTop;
