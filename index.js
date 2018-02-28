@@ -1,7 +1,8 @@
 var stop_pos;
 var bottom;
-var special_lines = {8: "fas fa-envelope", 9:"fas fa-id-badge", 10:"fab fa-github", 11:"fab fa-linkedin", 12:"fab fa-facebook", 16:"fas fa-graduation-cap", 
-25:"fas fa-cogs", 37: "fas fa-align-left", 42: "fas fa-align-left", 47:"fas fa-align-left", 52:"fas fa-align-left", 60:"fas fa-briefcase", 66:"fas fa-briefcase", 74:"fas fa-briefcase"};
+var special_lines = {8: "fas fa-envelope", 9:"fas fa-id-badge", 10:"fab fa-github", 11:"fab fa-linkedin", 12:"fab fa-facebook", 16:"fas fa-cogs", 
+		        25:"fas fa-graduation-cap", 35: "fas fa-align-left", 40: "fas fa-align-left", 45:"fas fa-align-left", 50:"fas fa-align-left",  55:"fas fa-align-left", 
+		        63:"fas fa-briefcase", 69:"fas fa-briefcase", 77:"fas fa-briefcase"};
 
 function smooth_scroll_up(){
 	var current_pos = document.documentElement.scrollTop || document.body.scrollTop;
