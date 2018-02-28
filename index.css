@@ -1,5 +1,7 @@
 body{
 	background-color: #262424;
+	padding: 0px;
+	margin: 0px;
 }
 
 p, a, div {
@@ -8,27 +10,78 @@ p, a, div {
 	
 }
 
-/*p:before, a:before {
-	content: counter(line);
-}*/
-
 a {
 	color: #ffee34;
 	text-decoration-line: none;
 }
 
 a:hover, .var_init_link:hover, #return_top:hover {
-    color: grey;
-    cursor: pointer;
+	color: grey;
+	cursor: pointer;
+}
+
+
+div#nav_bar {
+	position: fixed;
+	width: 100%;
+	max-height: 50px;
+	border: 2px solid white;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	background-color: white;
+	padding-top: 0px;
+	margin-top: 0px;
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+	-webkit-box-shadow: 0px 4px 2px 0px rgba(194,194,194,1);
+	-moz-box-shadow: 0px 4px 2px 0px rgba(194,194,194,1);
+	box-shadow: 0px 4px 2px 0px rgba(194,194,194,1);
+}
+
+
+/* first font awesome icon */
+div#nav_bar svg:first-of-type { 
+	margin-left: 5px;
+}
+/* font awesome icons */
+div#nav_bar svg { 
+	margin: 6px 0 4px 0;
+	opacity: 0.8;
+}
+
+div#nav_bar svg:hover { 
+	opacity: 1;
+}
+
+ul {
+	columns: 2; 
+	-webkit-columns: 2; 
+	-moz-columns: 2; 
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+
+.left_col {
+	float: left;
+	width: 35%;
+}
+
+.right_col {
+	float: right;
+	margin-right:10%;
+	width: 55%;
 }
 
 div#line_ct{
 	width: 5%;
 	float: left;
-	background-color: #262424;
-      border-radius: 5px;
+	background-color:#262424;
+	border-radius: 5px;
 	text-align: right;
-	padding-top: 1em;
+	padding-top: 45px;
 }
 
 div#main {
@@ -36,8 +89,8 @@ div#main {
 	float: right;
 	background-color: #2b2929;
 	margin: 0;
-	padding-top: 1em;
-      padding-left: 1em;
+	padding-top: 45px;
+	padding-left: 1em;
 }
 
 div#table{
@@ -47,18 +100,18 @@ div#table{
 #in {
 	width: 30%;
 	float: left;
-      display: inline;
+	display: inline;
 }
 
 #in2 {
 	width: 70%;
-      height: 20%;
+	height: 20%;
 	float: right;
-      display: inline;
+	display: inline;
 
 }
 .ph {
-  color: #2b2929;
+	color: #2b2929;
 }
 
 .comment {
@@ -84,7 +137,7 @@ div#table{
 }
 
 .var_init, .var_init_link {
-    color: #ff2020;
+	color: #ff2020;
 }
 
 #att {
@@ -92,64 +145,70 @@ div#table{
 }
 
 #return_top {
-    color: #ffad21;
-    cursor: pointer;
+	color: #ffad21;
+	cursor: pointer;
 }
+
+
+:-webkit-full-screen {
+    background-color: #262424;
+}
+
 
 /* Credit to Artem Gordinsky on CodePen for the blinking cursor CSS code.
 source: https://codepen.io/ArtemGordinsky/pen/GnLBq */
 .blinking_cursor {
-  font-weight: 100;
-  /*font-size: 20px;*/
-  color: #ffad21;
-  -webkit-animation: 1s blink step-end infinite;
-  -moz-animation: 1s blink step-end infinite;
-  -ms-animation: 1s blink step-end infinite;
-  -o-animation: 1s blink step-end infinite;
-  animation: 1s blink step-end infinite;
+	font-weight: 100;
+	/*font-size: 20px;*/
+	color: #ffad21;
+	-webkit-animation: 1s blink step-end infinite;
+	-moz-animation: 1s blink step-end infinite;
+	-ms-animation: 1s blink step-end infinite;
+	-o-animation: 1s blink step-end infinite;
+	animation: 1s blink step-end infinite;
 }
 
 @keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: #ffad21;
-  }
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: #ffad21;
+	}
 }
 
 @-moz-keyframes blink {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: #ffad21;
-  }
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: #ffad21;
+	}
 }
 
 @-webkit-keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: #ffad21;
-  }
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: #ffad21;
+	}
 }
 
 @-ms-keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: #ffad21;
-  }
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: #ffad21;
+	}
 }
 
 @-o-keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: #ffad21;
-  }
+	from, to {
+		color: transparent;
+	}
+	50% {
+		color: #ffad21;
+	}
 }
