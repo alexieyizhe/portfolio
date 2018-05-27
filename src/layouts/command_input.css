@@ -1,0 +1,7 @@
+.commandInputLine {
+  white-space:pre-wrap;
+}
+
+span:focus {
+  outline: none;
+}
