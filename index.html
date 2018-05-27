@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
-	<title>Alex Xie</title>
-	<meta charset="utf-8">
-	<meta desc="Personal Website/Portfolio of Alex Yizhe Xie, a computer science student at the University of Waterloo.">
-	<meta name="author" content="Alex Yizhe Xie">
-	<link rel="shortcut icon" type="image/png" href="resources/images/favicon_alt.png"> <!-- icon found on Google Images -->
-	<link rel="stylesheet" href="index.css">
-	<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-	<script src="index.js"></script>
-	<script type="text/javascript" src="resources/jackhammer/jackhammer.js"></script>
-	<link rel="stylesheet" type="text/css" href="resources/jackhammer/jackhammer.css">
-	<link rel="stylesheet" type="text/css" href="resources/jackhammer/jackhammer-character.css">
+  <title>Alex Xie</title>
+  <meta charset="utf-8">
+  <meta desc="Personal Website/Portfolio of Alex Yizhe Xie, a computer science student at the University of Waterloo.">
+  <meta name="author" content="Alex Yizhe Xie">
+  <link rel="shortcut icon" type="image/png" href="resources/images/favicon_alt.png">
+  <!-- icon found on Google Images -->
+  <link rel="stylesheet" href="index.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <script src="index.js"></script>
+  <script type="text/javascript" src="resources/jackhammer/jackhammer.js"></script>
+  <link rel="stylesheet" type="text/css" href="resources/jackhammer/jackhammer.css">
+  <link rel="stylesheet" type="text/css" href="resources/jackhammer/jackhammer-character.css">
 
 </head>
 
-<body onresize="addLineNum()"> <!--recalculates line numbers after resize of window-->
-	<div id="underConstructionOverlay">
-		<div id="underConstructionInfo">
-			<h1>
+<body onresize="addLineNum()">
+  <!--recalculates line numbers after resize of window-->
+  <div id="underConstructionOverlay">
+    <div id="underConstructionInfo">
+      <h1>
 				alex's shiny brand new site is under construction. <!-- maybe have the "under" text look like it's getting drilled?-->
 			</h1>
-			<div class="svg_holder">
-				<svg id="jackhammerSVG" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 196.3 276.8" enable-background="new 0 0 196.3 276.8" xml:space="preserve" preserveAspectRatio="xMidYMax" style="opacity: 1;">
+      <div class="svg_holder">
+        <svg id="jackhammerSVG" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 196.3 276.8" enable-background="new 0 0 196.3 276.8" xml:space="preserve" preserveAspectRatio="xMidYMax" style="opacity: 1;">
 					<g id="jackhammerMan">
 						<g id="jackBody" transform="translate(0,-2.6833057347140383)">
 							<circle class="vestColor" cx="98.2" cy="118.8" r="88.6"></circle>
@@ -132,187 +135,174 @@
 						</g>
 					</g>
 				</svg>
-			</div>
+      </div>
 
-			<h3>
+      <h3>
 				check back <span class="beingDrilledText">before</span> Sept 2018.
 			</h3>
 
 
-			<a href="mailto:alexieyizhe@gmail.com">email</a> /
-			<a href="resources/docs/resume.pdf" target="_blank">old resume</a> /
-			<a href="https://github.com/alexieyizhe" target="_blank">github</a> /
-			<a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">linkedin</a>
+      <a href="mailto:alexieyizhe@gmail.com">email</a> /
+      <a href="resources/docs/resume.pdf" target="_blank">old resume</a> /
+      <a href="https://github.com/alexieyizhe" target="_blank">github</a> /
+      <a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">linkedin</a>
 
-			<h6 id="dismissOverlayButton" onclick="dismissOverlay()">
+      <h6 id="dismissOverlayButton" onclick="dismissOverlay()">
 				can't wait? view the old boring outdated site
 			</h6>
 
-		</div>
-	</div>
+    </div>
+  </div>
 
-	<div id="nav_bar">
-		<i class="fas fa-times-circle" style="color:#ff6961"></i>
-		<i class="fas fa-minus-circle" style="color:#f4e842"></i>
-		<i class="fas fa-chevron-circle-up" style="color:#24cc24" onclick='toggleFullScreen()' ></i>
-	</div>
+  <div id="nav_bar">
+    <i class="fas fa-times-circle" style="color:#ff6961"></i>
+    <i class="fas fa-minus-circle" style="color:#f4e842"></i>
+    <i class="fas fa-chevron-circle-up" style="color:#24cc24" onclick='toggleFullScreen()'></i>
+  </div>
 
-	<div id="line_ct"></div>
+  <div id="line_ct"></div>
 
-	<div id="main">
-		<strong><span class="var">name</span> = </strong> "Alex Xie"; <br>
-		<strong><span class="var">title </span>= </strong> "university, programming, and other adventures.";
+  <div id="main">
+    <strong><span class="var">name</span> = </strong> "Alex Xie"; <br>
+    <strong><span class="var">title </span>= </strong> "university, programming, and other adventures.";
 
-		<br>
-		<br>
+    <br>
+    <br>
 
-		<strong class="line" id="att">var </strong>
-		<span class="var_init_link" onclick='smooth_scroll_wrapper("contact")' >contact</span>,
-		<span class="var_init_link" onclick='smooth_scroll_wrapper("skills")' >skills/interests</span>,
-		<span class="var_init_link" onclick='smooth_scroll_wrapper("education")' >education</span>,
-		<span class="var_init_link" onclick='smooth_scroll_wrapper("projects")' >projects</span>,
-		<span class="var_init_link" onclick='smooth_scroll_wrapper("experience")' >experience</span>;
+    <strong class="line" id="att">var </strong>
+    <span class="var_init_link" onclick='smooth_scroll_wrapper("contact")'>contact</span>,
+    <span class="var_init_link" onclick='smooth_scroll_wrapper("skills")'>skills/interests</span>,
+    <span class="var_init_link" onclick='smooth_scroll_wrapper("education")'>education</span>,
+    <span class="var_init_link" onclick='smooth_scroll_wrapper("projects")'>projects</span>,
+    <span class="var_init_link" onclick='smooth_scroll_wrapper("experience")'>experience</span>;
 
-		<br>
-		<br>
-		<br>
+    <br>
+    <br>
+    <br>
 
-		<em class="comment" id="contact">// contact me!</em><br>
+    <em class="comment" id="contact">// contact me!</em><br>
 
-		<strong><span class="var">email</span> = </strong> "<a href="mailto:alexieyizhe@gmail.com">alexieyizhe@gmail.com</a>";<br>
-		<strong><span class="var">resume</span> = </strong> "CURRENTLY BEING UPDATED!";<em class="comment"> // if you really wanna see it, <a href="resources/docs/resume.pdf" target="_blank">here ya go</a></em><br>
-		<strong><span class="var">github</span> = </strong> "<a href="https://github.com/alexieyizhe" target="_blank">https://github.com/alexieyizhe</a>";<br>
-		<strong><span class="var">linkedin</span> = </strong> "<a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">https://www.linkedin.com/in/alexieyizhe</a>";<br>
-		<strong><span class="var">facebook</span> = </strong> "<a href="https://www.facebook.com/alexieyizhe" target="_blank">https://www.facebook.com/alexieyizhe</a>";<br>
+    <strong><span class="var">email</span> = </strong> "<a href="mailto:alexieyizhe@gmail.com">alexieyizhe@gmail.com</a>";<br>
+    <strong><span class="var">resume</span> = </strong> "CURRENTLY BEING UPDATED!";<em class="comment"> // if you really wanna see it, <a href="resources/docs/resume.pdf" target="_blank">here ya go</a></em><br>
+    <strong><span class="var">github</span> = </strong> "<a href="https://github.com/alexieyizhe" target="_blank">https://github.com/alexieyizhe</a>";<br>
+    <strong><span class="var">linkedin</span> = </strong> "<a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">https://www.linkedin.com/in/alexieyizhe</a>";<br>
+    <strong><span class="var">facebook</span> = </strong> "<a href="https://www.facebook.com/alexieyizhe" target="_blank">https://www.facebook.com/alexieyizhe</a>";<br>
 
-		<br>
-		<br>
+    <br>
+    <br>
 
-		<div>
-			<div class="left_col">
-				<em class="comment" id="skills">// some things i'm experienced with </em><br>
-				<ul>
-					<li><span class="var">Python</span>;</li>
-					<li><span class="var">Ruby</span>;</li>
-					<li><span class="var">Rails</span>;</li>
-					<li><span class="var">APIs</span>;</li>
-					<li><span class="var">Java</span>;</li>
-					<li><span class="var">Scheme</span>;</li>
-					<li><span class="var">C</span>;</li>
-					<li><span class="var">HTML</span>;</li>
-					<li><span class="var">CSS</span>;</li>
-					<li><span class="var">LaTeX</span>;</li>
-					<li><span class="var">Git</span>;</li>
+    <div>
+      <div class="left_col">
+        <em class="comment" id="skills">// some things i'm experienced with </em><br>
+        <ul>
+          <li><span class="var">Python</span>;</li>
+          <li><span class="var">Ruby</span>;</li>
+          <li><span class="var">Rails</span>;</li>
+          <li><span class="var">APIs</span>;</li>
+          <li><span class="var">Java</span>;</li>
+          <li><span class="var">Scheme</span>;</li>
+          <li><span class="var">C</span>;</li>
+          <li><span class="var">HTML</span>;</li>
+          <li><span class="var">CSS</span>;</li>
+          <li><span class="var">LaTeX</span>;</li>
+          <li><span class="var">Git</span>;</li>
 
-				</ul>
-			</div>
-			<div class="right_col">
-				<em class="comment" id="interests">// some of the things i enjoy </em><br>
-				<ul >
-					<li><span class="var">soccer</span>;</li>
-					<li><span class="var">hackathons</span>;</li>
-					<li><span class="var">travel</span>;</li>
-					<li><span class="var">volunteering</span>;</li>
-					<li><span class="var">coding</span>;</li>
-					<li><span class="var">graphic design</span>; <span class="comment">//view <a href="https://goo.gl/368B5s" class="comment" target="_blank"><u>my portfolio</u></a></span></li>
-					<li><span class="var">friends and family</span>;</li>
-					<li><span class="var">puns (preferably bad ones)</span>;</li>
-				</ul>
-				<br>
-				<br>
-				<br>
-				<br>
-			</div>
-		</div>
-
-
-		<div style="display:inline-block">
-			<em class="comment" id="education">// education</em>  <br>
-			<span class="fn">for</span>  (<strong class="var_init">University of Waterloo</strong>) { <br>
-			&emsp; <span class="var">discipline</span> = "Honours Computer Science (co-op)";<br>
-			&emsp; <span class="var">timeframe[]</span> = {Sept 2017, May 2022 (expected)};<br>
-			&emsp; <span class="var">desc</span> =  "96% Major Avg. <span class="comment"> // cs courses</span><br>
-			&emsp; &emsp; &emsp; &emsp; &emsp; 88% Cumulative Avg. <span class="comment"> // 3.9 GPA</span><br>
-			&emsp; &emsp; &emsp; &emsp; &emsp; Dean's Honour List."; <span class="comment"> // 1A term</span><br>}
-		</div>
+        </ul>
+      </div>
+      <div class="right_col">
+        <em class="comment" id="interests">// some of the things i enjoy </em><br>
+        <ul>
+          <li><span class="var">soccer</span>;</li>
+          <li><span class="var">hackathons</span>;</li>
+          <li><span class="var">travel</span>;</li>
+          <li><span class="var">volunteering</span>;</li>
+          <li><span class="var">coding</span>;</li>
+          <li><span class="var">graphic design</span>; <span class="comment">//view <a href="https://goo.gl/368B5s" class="comment" target="_blank"><u>my portfolio</u></a></span></li>
+          <li><span class="var">friends and family</span>;</li>
+          <li><span class="var">puns (preferably bad ones)</span>;</li>
+        </ul>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
 
 
-		<div style="display: inline-block">
-			<br>
-			<br>
-			<em class="comment" id="projects">// major projects</em> <br>
-
-			<span class="fn">for</span>  (<a class="var_init" href="https://easy-recipeasy.herokuapp.com/" target="_blank"><strong>Easy Recipeasy</strong></a>) { <br>
-			&emsp; <span class="var">desc</span> = "a recipe web app with user profiles, recipe search, and Flipp ingredient deal finder!";<br>
-			&emsp; <span class="var">tech[]</span> = {Ruby on Rails, MySQL, Edamam Recipe API, Selenium WebDriver, BCrypt, Nokogiri, Heroku}; <br>}
-
-			<br>
-			<br>
-
-			<span class="fn">for</span>  (<a class="var_init" href="https://github.com/alexieyizhe/WATBus" target="_blank"><strong>WATBus(shouldItake?)</strong></a>) { <br>
-			&emsp; <span class="var">desc</span> = "a Facebook Messenger Bot that allows users to easily obtain GRT transit info and set reminders in-app.";<br>
-			&emsp; <span class="var">tech[]</span> = {Python, Flask framework, Wit.ai NLP API, GRT/FB API, Heroku}; <br>}
-
-			<br>
-			<br>
-
-			<span class="fn">for</span>  (<a class="var_init" href="https://github.com/alexieyizhe/alexieyizhe.github.io" target="_blank"><strong>alexieyizhe.me</strong></a>) { <br>
-			&emsp; <span class="var">desc</span> = "this <a href="http://alexieyizhe.me/">personal website/portfolio</a> you're currently looking at!"; <em class="comment">// error: maximum recursion depth exceeded</em><br>
-			&emsp; <span class="var">tech[]</span> = {HTML, CSS, JavaScript}; <br>}
-			<br>
-			<br>
+    <div style="display:inline-block">
+      <em class="comment" id="education">// education</em> <br>
+      <span class="fn">for</span> (<strong class="var_init">University of Waterloo</strong>) { <br> &emsp; <span class="var">discipline</span> = "Honours Computer Science (co-op)";<br> &emsp; <span class="var">timeframe[]</span> = {Sept 2017, May 2022
+      (expected)};<br> &emsp; <span class="var">desc</span> = "96% Major Avg. <span class="comment"> // cs courses</span><br> &emsp; &emsp; &emsp; &emsp; &emsp; 88% Cumulative Avg. <span class="comment"> // 3.9 GPA</span><br> &emsp; &emsp; &emsp; &emsp;
+      &emsp; Dean's Honour List."; <span class="comment"> // 1A term</span><br>}
+    </div>
 
 
-			<span class="fn">for</span>  (<a class="var_init" href="https://github.com/alexieyizhe/kanye-quest" target="_blank"><strong>Kanye Quest</strong></a>) { <br>
-			&emsp; <span class="var">desc</span> = "a top down horde shooter featuring Kanye West, handcrafted maps, power-ups, and various weapons.";<br>
-			&emsp; <span class="var">tech[]</span> = {Java, Java graphics2D library}; <br>}
-			<br>
-			<br>
+    <div style="display: inline-block">
+      <br>
+      <br>
+      <em class="comment" id="projects">// major projects</em> <br>
+
+      <span class="fn">for</span> (<a class="var_init" href="https://easy-recipeasy.herokuapp.com/" target="_blank"><strong>Easy Recipeasy</strong></a>) { <br> &emsp; <span class="var">desc</span> = "a recipe web app with user profiles, recipe search,
+      and Flipp ingredient deal finder!";<br> &emsp; <span class="var">tech[]</span> = {Ruby on Rails, MySQL, Edamam Recipe API, Selenium WebDriver, BCrypt, Nokogiri, Heroku}; <br>}
+
+      <br>
+      <br>
+
+      <span class="fn">for</span> (<a class="var_init" href="https://github.com/alexieyizhe/WATBus" target="_blank"><strong>WATBus(shouldItake?)</strong></a>) { <br> &emsp; <span class="var">desc</span> = "a Facebook Messenger Bot that allows users to
+      easily obtain GRT transit info and set reminders in-app.";<br> &emsp; <span class="var">tech[]</span> = {Python, Flask framework, Wit.ai NLP API, GRT/FB API, Heroku}; <br>}
+
+      <br>
+      <br>
+
+      <span class="fn">for</span> (<a class="var_init" href="https://github.com/alexieyizhe/alexieyizhe.github.io" target="_blank"><strong>alexieyizhe.me</strong></a>) { <br> &emsp; <span class="var">desc</span> = "this <a href="http://alexieyizhe.me/">personal website/portfolio</a>      you're currently looking at!"; <em class="comment">// error: maximum recursion depth exceeded</em><br> &emsp; <span class="var">tech[]</span> = {HTML, CSS, JavaScript}; <br>}
+      <br>
+      <br>
 
 
-			<span class="fn">for</span> (<a class="var_init" href="https://github.com/alexieyizhe/pokepaint" target="_blank"><strong>PokePaint</strong></a>) { <br>
-			&emsp; <span class="var">desc</span> = "Pokemon themed paint program with a suite of tools, including stickers, undo/redo, and file I/O.<br>
-			&emsp; &emsp; &emsp; &emsp; &emsp; created for ICS3U final summative project."; <br>
-			&emsp; <span class="var">tech[]</span> = {Python 2.7, Pygame 3 library}; <br>}
-			<br>
-		</div>
+      <span class="fn">for</span> (<a class="var_init" href="https://github.com/alexieyizhe/kanye-quest" target="_blank"><strong>Kanye Quest</strong></a>) { <br> &emsp; <span class="var">desc</span> = "a top down horde shooter featuring Kanye West, handcrafted
+      maps, power-ups, and various weapons.";<br> &emsp; <span class="var">tech[]</span> = {Java, Java graphics2D library}; <br>}
+      <br>
+      <br>
 
-		<br>
-		<br>
-		<br>
 
-		<em class="comment" id="experience">// experience</em> <br>
-		<span class="fn">for</span> (<a class="var_init" href="http://mathsoc.uwaterloo.ca/positions/details?position=csrep" target="_blank"><strong>MathSoc Computer Science Representative</strong></a>){ <br>
-		&emsp; <span class="var">timeframe[]</span> = {Jan 2018, Present};<br>
-		&emsp; <span class="var">desc</span> =  "voting member in Mathematics Society, the Faculty of Mathematics' student council.<br>
-		&emsp; &emsp; &emsp; &emsp; &emsp; elected by and representing the interests of computer science students in the faculty."<br>}
-		<br>
+      <span class="fn">for</span> (<a class="var_init" href="https://github.com/alexieyizhe/pokepaint" target="_blank"><strong>PokePaint</strong></a>) { <br> &emsp; <span class="var">desc</span> = "Pokemon themed paint program with a suite of tools, including
+      stickers, undo/redo, and file I/O.<br> &emsp; &emsp; &emsp; &emsp; &emsp; created for ICS3U final summative project."; <br> &emsp; <span class="var">tech[]</span> = {Python 2.7, Pygame 3 library}; <br>}
+      <br>
+    </div>
 
-		<br>
+    <br>
+    <br>
+    <br>
 
-		<span class="fn">for</span>  (<a class="var_init" href="https://equithon.org/"><strong>Equithon</strong></a>) { <br>
-		&emsp; <span class="var">position</span> = "Operations Coordinator";<br>
-		&emsp; <span class="var">timeframe[]</span> = {Oct 2017, Present};<br>
-		&emsp; <span class="var">desc</span> =  "executive in charge of organizing Waterloo's largest social innovation hackathon. <br>
-		&emsp; &emsp; &emsp; &emsp; &emsp; responsible for overseeing all logistics as part of a team of 4.";<br>
-		&emsp; <span class="var">contact </span>= "<a href="mailto:alex@equithon.org">alex@equithon.org</a>";<br>}
-		<br>
+    <em class="comment" id="experience">// experience</em> <br>
+    <span class="fn">for</span> (<a class="var_init" href="http://mathsoc.uwaterloo.ca/positions/details?position=csrep" target="_blank"><strong>MathSoc Computer Science Representative</strong></a>){ <br> &emsp; <span class="var">timeframe[]</span> =
+    {Jan 2018, Present};<br> &emsp; <span class="var">desc</span> = "voting member in Mathematics Society, the Faculty of Mathematics' student council.<br> &emsp; &emsp; &emsp; &emsp; &emsp; elected by and representing the interests of computer science
+    students in the faculty."<br>}
+    <br>
 
-		<br>
+    <br>
 
-		<span class="fn">for</span> (<a class="var_init" href="http://my.ymcagta.org/netcommunity/page.aspx?pid=536" target="_blank"><strong>YMCA Summer Work Student Exchange</strong></a>){ <br>
-		&emsp; <span class="var">timeframe[]</span> = {June 2016, Sept 2016};<br>
-		&emsp; <span class="var">desc</span> =  "1 of 8 selected to live and work full-time in St-Jerome, Quebec for an entire summer. <br>
-		&emsp; &emsp; &emsp; &emsp; &emsp; took initiative to improve my problem solving, communication, and teamwork skills.";<br>}
-		<br>
+    <span class="fn">for</span> (<a class="var_init" href="https://equithon.org/"><strong>Equithon</strong></a>) { <br> &emsp; <span class="var">position</span> = "Operations Coordinator";<br> &emsp; <span class="var">timeframe[]</span> = {Oct 2017, Present};<br>    &emsp; <span class="var">desc</span> = "executive in charge of organizing Waterloo's largest social innovation hackathon. <br> &emsp; &emsp; &emsp; &emsp; &emsp; responsible for overseeing all logistics as part of a team of 4.";<br> &emsp; <span class="var">contact </span>=
+    "<a href="mailto:alex@equithon.org">alex@equithon.org</a>";<br>}
+    <br>
 
-		<br>
-		<br>
+    <br>
 
-		<span id="return_top" onclick='smooth_scroll_wrapper("main")' >return to top</span><span class="blinking_cursor">|</span>
-	</div>
+    <span class="fn">for</span> (<a class="var_init" href="http://my.ymcagta.org/netcommunity/page.aspx?pid=536" target="_blank"><strong>YMCA Summer Work Student Exchange</strong></a>){ <br> &emsp; <span class="var">timeframe[]</span> = {June 2016, Sept
+    2016};<br> &emsp; <span class="var">desc</span> = "1 of 8 selected to live and work full-time in St-Jerome, Quebec for an entire summer. <br> &emsp; &emsp; &emsp; &emsp; &emsp; took initiative to improve my problem solving, communication, and teamwork
+    skills.";<br>}
+    <br>
 
-	<script> addLineNum(); </script>
+    <br>
+    <br>
+
+    <span id="return_top" onclick='smooth_scroll_wrapper("main")'>return to top</span><span class="blinking_cursor">|</span>
+  </div>
+
+  <script>
+    addLineNum();
+  </script>
 
 </body>
+
 </html>
