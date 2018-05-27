@@ -1,26 +1,16 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
-  "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "dependencies": {
-    "gatsby": "^1.9.247",
-    "gatsby-link": "^1.6.40",
-    "gatsby-plugin-react-helmet": "^2.0.10",
-    "react-contenteditable": "^2.1.0",
-    "react-helmet": "^5.2.0"
-  },
-  "keywords": [
-    "gatsby"
-  ],
+  "name": "gatsby-starter-hello-world",
+  "description": "Gatsby hello world starter",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write 'src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gatsby build",
+    "serve": "gatsby serve"
   },
-  "devDependencies": {
-    "prettier": "^1.12.0"
+  "dependencies": {
+    "gatsby": "^1.9.250",
+    "gatsby-link": "^1.6.40",
+    "react-fontawesome": "^1.6.1",
+    "styled-components": "^3.3.0"
   }
 }

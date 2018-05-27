@@ -1,0 +1,16 @@
+#curCmdLine {
+  white-space:pre-wrap;
+  color: white;
+}
+
+.prevCmdLine {
+  white-space:pre-wrap;
+  color: #C8C8C8;
+}
+
+p:focus {
+  outline: none;
+}
+
+span {
+}
