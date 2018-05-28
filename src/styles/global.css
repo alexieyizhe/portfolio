@@ -1,0 +1,37 @@
+body {
+  font-family: monospace, sans-serif;
+  background-color: #F6F6F6;
+}
+
+#terminalWindow {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 300px;
+  max-height: 300px;
+  margin-top: 20%;
+  color: white;
+  background-color: black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+#terminalWindow p {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0.25em;
+  padding: 0 0 0 10px;
+
+}
+
+#terminalNavbar {
+  height: 25px;
+  background-color: white;
+  color: black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-bottom: 20px;
+}
