@@ -4,119 +4,315 @@
 	<title>Alex Xie</title>
 	<meta charset="utf-8">
 	<meta desc="Personal Website/Portfolio of Alex Yizhe Xie, a computer science student at the University of Waterloo.">
-	<link rel="shortcut icon" type="image/png" href="images/ico/faveicon.png">
+	<meta name="author" content="Alex Yizhe Xie">
+	<link rel="shortcut icon" type="image/png" href="resources/images/favicon_alt.png"> <!-- icon found on Google Images -->
 	<link rel="stylesheet" href="index.css">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	<script src="index.js"></script>
+	<script type="text/javascript" src="resources/jackhammer/jackhammer.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/jackhammer/jackhammer.css">
+	<link rel="stylesheet" type="text/css" href="resources/jackhammer/jackhammer-character.css">
 
 </head>
-<body>
-	<p id="top">-</p>
-	<p><strong>name = </strong> "Alex Xie"; </p>
-	<p><strong>title = </strong> "student. coder. adventurer."; </p>
-	<p></p>
-	<p><strong id="att">attribute </strong> 
-		<a class="variable" href="index.html#contact">contact</a>, 
-		<a class="variable" href="#projects">projects</a>, 
-		<a class="variable" href="#experience">experience</a>, 
-		<a class="variable" href="#education">education</a>;
-	</p>
 
-	<br>
+<body onresize="addLineNum()"> <!--recalculates line numbers after resize of window-->
+	<div id="underConstructionOverlay">
+		<div id="underConstructionInfo">
+			<h1>
+				alex's shiny brand new site is under construction. <!-- maybe have the "under" text look like it's getting drilled?-->
+			</h1>
+			<div class="svg_holder">
+				<svg id="jackhammerSVG" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 196.3 276.8" enable-background="new 0 0 196.3 276.8" xml:space="preserve" preserveAspectRatio="xMidYMax" style="opacity: 1;">
+					<g id="jackhammerMan">
+						<g id="jackBody" transform="translate(0,-2.6833057347140383)">
+							<circle class="vestColor" cx="98.2" cy="118.8" r="88.6"></circle>
+							<rect x="37.2" y="144" class="vestColor" width="121.9" height="45.2"></rect>
+							<rect x="34.2" y="133.9" class="vestStipeColor" width="127.7" height="20.2"></rect>
+							<polygon class="chestColor" points="98.2,125.7 64.2,75.9 131.5,75.9 		"></polygon>
+							<g>
 
-	<p class="comment" id="contact"><em>// contact me</em></p>
-	<p><strong>email = </strong> "<a href="mailto:alexieyizhe@gmail.com">alexieyizhe@gmail.com</a>";</p>
-	<p><strong>github = </strong> "<a href="https://github.com/alexieyizhe" target="_blank">https://github.com/alexieyizhe</a>";</p>
-	<p><strong>linkedin = </strong> "<a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">https://www.linkedin.com/in/alexieyizhe</a>";</p>
-	<p><strong>facebook = </strong> "<a href="https://www.facebook.com/alexieyizhe" target="_blank">https://www.facebook.com/alexieyizhe</a>";</p>
-	<p><strong>resume = </strong> "<a href="https://drive.google.com/open?id=0BzpciCloOsZEOHBHeUJVOUtFY0E" target="_blank">https://drive.google.com/download-resume</a>";</p>
-	
-	<br>
+									<line class="chestHairColor" fill="none" stroke-width="3.312" stroke-linecap="round" stroke-miterlimit="10" x1="88" y1="100.4" x2="88" y2="105.4"></line>
 
-	<p class="comment" id="projects"><em>// major projects</em></p>
-	<p>
-		for (<strong>Kanye Quest</strong>) { <br>
-			&emsp; desc = "a top down horde shooter featuring Kanye West, handcrafted maps, power-ups, and various weapons. <br>
-	               	&emsp; &emsp; &emsp; &emsp; &emsp; created for ICS4U final summative project with Prushoth Vivekanantha."; <br>
-			&emsp; tech[] = {Java, Java graphics2D library}; <br>
-			&emsp; more  = "<a href="https://github.com/alexieyizhe/kanye-quest">https://github.com/alexieyizhe/kanye-quest</a>"; <br>
-		}<br>
-	</p>
-	<p>
-		for (<strong>PokePaint</strong>) { <br>
-			&emsp; desc = "Pokemon themed paint program with a suite of tools, including stickers, undo/redo, and file I/O.<br>
-	               	&emsp; &emsp; &emsp; &emsp; &emsp; created for ICS3U final summative project."; <br>
-			&emsp; tech[] = {Python 2.7, Pygame 3.2}; <br>
-			&emsp; more  = "<a href="https://github.com/alexieyizhe/pokepaint">https://github.com/alexieyizhe/pokepaint</a>"; <br>
-		}<br>
-	</p>
-	<!--
-	<p>
-		for (<strong>Bejeweled 2.0</strong>) { <br>
-			&emsp; desc = "polished (no pun intended) version of the gem swapping game. <br>
-	               	&emsp; &emsp; &emsp; &emsp; &emsp; created in 2015 for self-interest and education."; <br>
-			&emsp; tech[] = {Python 2.7, Pygame 3.2}; <br>
-			&emsp; more  = "<a href="https://github.com/alexieyizhe/bejeweled2-minimal">https://github.com/alexieyizhe/bejeweled2-minimal</a>";" <br>
-		}<br>
-	</p>
-	<p>
-		for (<strong>PokeBattle</strong>) { <br>
-			&emsp; desc = "a text-based Pokemon arena battle game with support for user customization, save-files, and high score tracking.<br>
-	               	&emsp; &emsp; &emsp; &emsp; &emsp; created using tools learned during ICS4U and for self interest."; <br>
-			&emsp; tech[] = {Java}; <br>
-			&emsp; more  = "<a href="https://github.com/alexieyizhe/pokebattle">https://github.com/alexieyizhe/pokebattle</a>";" <br>
-		}<br>
-	</p>
-	-->
-	<p>
-		for(<strong>more</strong>){ <br>
-			&emsp; visit_my_github_at = "<a href="https://github.com/alexieyizhe/">https://github.com/alexieyizhe/</a>"; <br>
-		}<br>
-	</p>
-	
-	<br>
+									<line class="chestHairColor" fill="none" stroke-width="3.312" stroke-linecap="round" stroke-miterlimit="10" x1="97.6" y1="103.2" x2="97.7" y2="108.2"></line>
 
-	<p class="comment" id="experience"><em>// experience</em></p>
-	<p>
-		for (<strong>Equithon</strong>) { <br>
-			&emsp; position = "Operations Coordinator";<br>
-			&emsp; timeframe[] = {Oct 2017, Present};<br>
-			&emsp; desc =  "executive in charge of organizing Waterloo's largest social innovation hackathon. <br>
-	               	&emsp; &emsp; &emsp; &emsp; &emsp; responsible for overseeing all logistics as part of a team of 4.";<br>
-			&emsp; contact = "<a href="mailto:alex@equithon.org">alex@equithon.org</a>";<br>
-			&emsp; more  = "<a href="https://equithon.org/">https://equithon.org/</a>"; <br>
-		}<br>
-	</p>
+									<line class="chestHairColor" fill="none" stroke-width="3.312" stroke-linecap="round" stroke-miterlimit="10" x1="92.8" y1="105.8" x2="92.8" y2="110.7"></line>
 
-	<!--
-	<p>
-		for(<strong>Parc Régional de la Rivière-du-Nord</strong>){ <br>
-			&emsp; position = "Patrouille de Parc";<br>
-			&emsp; timeframe[] = {June 2016, Sept 2016};<br>
-			&emsp; desc =  "full time employee in St-Jerome, Quebec, responsible for park patrol and miscellaneous tasks.  <br>
-	               	&emsp; &emsp; &emsp; &emsp; &emsp; part of the YMCA Summer Work Student Exchange, where I was 1 of 8 in my region selected to live and work in Quebec for the entire summer.";<br>
-			&emsp; more  = "<a href="http://www.parcrivieredunord.ca/">http://www.parcrivieredunord.ca/</a>"; <br>
-		}<br>
-	</p>
-	-->
+									<line class="chestHairColor" fill="none" stroke-width="3.312" stroke-linecap="round" stroke-miterlimit="10" x1="102.4" y1="105.9" x2="102.5" y2="110.9"></line>
 
-	<br>
+									<line class="chestHairColor" fill="none" stroke-width="3.312" stroke-linecap="round" stroke-miterlimit="10" x1="107.4" y1="100.4" x2="107.5" y2="105.3"></line>
+							</g>
+						</g>
+						<g id="jackhammerTip" transform="translate(0,-3)">
+							<rect x="92.5" y="210.9" class="jackhammerShaftColor" width="11.4" height="61.1"></rect>
+							<rect x="92.5" y="265.2" class="jackhammerTipColor" width="11.4" height="6.8"></rect>
+						</g>
+						<g id="head_1_">
+							<path class="skinColor" d="M98.2,96.2L98.2,96.2c-21.2,0-38.6-17.4-38.6-38.6v-6.7c0-21.2,17.4-38.6,38.6-38.6h0
+								c21.2,0,38.6,17.4,38.6,38.6v6.7C136.7,78.8,119.4,96.2,98.2,96.2z"></path>
+							<g id="hat_1_">
+								<path class="hatColorDk" d="M55.6,42.5h85.2c0-24.5-22.2-41.2-42.6-41.2h0C77.8,1.2,55.6,17,55.6,42.5z"></path>
+								<polygon class="hatColorLt" points="98,33 85.1,0 110.7,0 			"></polygon>
+								<polygon class="hatColorLt" points="145.4,45.7 50.9,45.7 56,36.8 140.4,36.8 			"></polygon>
+							</g>
+							<g id="mask_1_">
+								<ellipse class="maskColor" cx="98.2" cy="76.6" rx="23.1" ry="19.6"></ellipse>
+								<rect x="85" y="72.6" class="maskVentColor" width="26.4" height="2.2"></rect>
+								<rect x="85" y="78.5" class="maskVentColor" width="26.4" height="2.2"></rect>
+								<rect x="85" y="84.4" class="maskVentColor" width="26.4" height="2.2"></rect>
+							</g>
+						</g>
+						<g id="legs_1_">
+							<path class="pantsColor" d="M169.2,171.9H27.1c8,10.8,18.4,19.7,30.5,25.9c-0.7,1.1-1.4,2.3-2.1,3.6c-3.3,5.9-6.5,13.3-8.4,22.1
+								c-4.1,0.7-7.3,4.3-7.3,8.7c0,3.7,2.3,6.9,5.5,8.2c0,8.8,1.5,18.6,5.2,29.2l17.6-6.1c-6.5-18.7-5.4-36.2,3.3-52.2
+								c1.3-2.3,2.6-4.5,4-6.4c7.3,1.9,14.9,3,22.8,3c7.9,0,15.5-1,22.8-3c1.2,1.8,2.5,3.7,3.7,5.8c9,16.1,10.3,33.9,3.7,52.8l17.6,6.1
+								c3.7-10.6,5.2-20.3,5.2-29.2c3.2-1.3,5.5-4.5,5.5-8.2c0-4.3-3.1-7.9-7.3-8.7c-1.9-8.8-5.1-16.2-8.4-22.1c-0.7-1.2-1.4-2.4-2.1-3.6
+								C150.8,191.6,161.2,182.7,169.2,171.9z"></path>
+							<path class="feetColor" d="M147.8,249.2c12.6,0,22.8,10.2,22.8,22.8H125C125,259.4,135.2,249.2,147.8,249.2z"></path>
+							<path class="feetColor" d="M48.5,249.2c-12.6,0-22.8,10.2-22.8,22.8h45.6C71.3,259.4,61.1,249.2,48.5,249.2z"></path>
+						</g>
+						<g id="jackhammer" transform="translate(0,-0.9037373755756913)">
+							<rect x="54.5" y="184.5" class="jackhammerHandleColorDk" width="87.3" height="10.3"></rect>
+							<rect x="54.5" y="184.5" class="jackhammerHandleColorLt" width="87.3" height="5.1"></rect>
+							<path class="jackhammerHandleColorLt" d="M99.7,232.6h-3.1c-6.1,0-11-5-11-11v-34.5c0-6.1,5-11,11-11h3.1c6.1,0,11,5,11,11v34.5
+								C110.8,227.6,105.8,232.6,99.7,232.6z"></path>
+							<rect x="85.6" y="200.8" class="jackhammerHandleColorDk" width="25.1" height="19.1"></rect>
+							<path class="jackhammerMainColor" d="M105.4,213.3H90.9c-6.1,0-11-5-11-11v-26.1c0-6.1,5-11,11-11h14.5c6.1,0,11,5,11,11v26.1
+								C116.5,208.3,111.5,213.3,105.4,213.3z"></path>
+							<rect x="88.9" y="165.1" class="jackhammerHandleColorLt" width="18.5" height="9.1"></rect>
+						</g>
+						<g id="jackArms" transform="translate(0,-2.6833057347140383)">
+							<path class="skinColor" d="M182.8,145.4l-15.8,50.4c-3,9.4-13.2,14.7-22.6,11.7l0,0c-9.4-3-14.7-13.2-11.7-22.6l15.8-50.4l21.6-68
+								C185.9,88.5,191.6,117.6,182.8,145.4z"></path>
+							<path class="skinColor" d="M13.6,145.5l15.8,50.4c3,9.4,13.2,14.7,22.6,11.7l0,0c9.4-3,14.7-13.2,11.7-22.6l-15.8-50.4l-21.6-68
+								C10.4,88.6,4.7,117.6,13.6,145.5z"></path>
 
-	<p class="comment" id="education"><em>// education</em></p>
-	<p>
-		for (<strong>University of Waterloo</strong>) { <br>
-			&emsp; discipline = "Honours Computer Science (with co-op)";<br>
-			&emsp; timeframe[] = {Sept 2017, July 2022 (expected)};<br>
-			&emsp; desc =  "97% Major Average (CS Courses). <br>
-			&emsp; &emsp; &emsp; &emsp; &emsp; 87% Cumulative Average.  <br>
-	               	&emsp; &emsp; &emsp; &emsp; &emsp; Dean's Honour List (1A).";<br>
-	               	&emsp; contact = "<a href="mailto:yizhe.xie@uwaterloo.ca">yizhe.xie@uwaterloo.ca</a>";<br>
-		}<br>
-	</p>
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="25.9" y1="171.4" x2="34.5" y2="168.8"></line>
 
-	<br> 
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="28.8" y1="180.7" x2="37.3" y2="178.2"></line>
 
-	<a id="return_top" href="index.html#top">return to top</a>
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="23.4" y1="162" x2="32" y2="159.5"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="20.6" y1="152.7" x2="29.2" y2="150.2"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="18.1" y1="143.3" x2="26.7" y2="140.8"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="29.8" y1="165.3" x2="38.3" y2="162.7"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="32.6" y1="174.6" x2="41.2" y2="172.1"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="27.3" y1="155.9" x2="35.8" y2="153.4"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="24.4" y1="146.6" x2="33" y2="144.1"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="21.9" y1="137.2" x2="30.5" y2="134.7"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="15.2" y1="134" x2="23.8" y2="131.5"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="169.9" y1="171.4" x2="161.4" y2="168.8"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="167.1" y1="180.7" x2="158.6" y2="178.2"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="172.5" y1="162" x2="163.9" y2="159.5"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="175.3" y1="152.7" x2="166.7" y2="150.2"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="177.8" y1="143.3" x2="169.2" y2="140.8"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="166.1" y1="165.3" x2="157.5" y2="162.7"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="163.3" y1="174.6" x2="154.7" y2="172.1"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="168.6" y1="155.9" x2="160.1" y2="153.4"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="171.4" y1="146.6" x2="162.9" y2="144.1"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="174" y1="137.2" x2="165.4" y2="134.7"></line>
+
+								<line class="armHairColor" fill="none" stroke-width="2.208" stroke-linecap="round" stroke-miterlimit="10" x1="180.7" y1="134" x2="172.1" y2="131.5"></line>
+						</g>
+					</g>
+				</svg>
+			</div>
+
+			<h3>
+				check back <span class="beingDrilledText">before</span> Sept 2018.
+			</h3>
+
+
+			<a href="mailto:alexieyizhe@gmail.com">email</a> /
+			<a href="resources/docs/resume.pdf" target="_blank">old resume</a> /
+			<a href="https://github.com/alexieyizhe" target="_blank">github</a> /
+			<a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">linkedin</a>
+
+			<h6 id="dismissOverlayButton" onclick="dismissOverlay()">
+				can't wait? view the old boring outdated site
+			</h6>
+
+		</div>
+	</div>
+
+	<div id="nav_bar">
+		<i class="fas fa-times-circle" style="color:#ff6961"></i>
+		<i class="fas fa-minus-circle" style="color:#f4e842"></i>
+		<i class="fas fa-chevron-circle-up" style="color:#24cc24" onclick='toggleFullScreen()' ></i>
+	</div>
+
+	<div id="line_ct"></div>
+
+	<div id="main">
+		<strong><span class="var">name</span> = </strong> "Alex Xie"; <br>
+		<strong><span class="var">title </span>= </strong> "university, programming, and other adventures.";
+
+		<br>
+		<br>
+
+		<strong class="line" id="att">var </strong>
+		<span class="var_init_link" onclick='smooth_scroll_wrapper("contact")' >contact</span>,
+		<span class="var_init_link" onclick='smooth_scroll_wrapper("skills")' >skills/interests</span>,
+		<span class="var_init_link" onclick='smooth_scroll_wrapper("education")' >education</span>,
+		<span class="var_init_link" onclick='smooth_scroll_wrapper("projects")' >projects</span>,
+		<span class="var_init_link" onclick='smooth_scroll_wrapper("experience")' >experience</span>;
+
+		<br>
+		<br>
+		<br>
+
+		<em class="comment" id="contact">// contact me!</em><br>
+
+		<strong><span class="var">email</span> = </strong> "<a href="mailto:alexieyizhe@gmail.com">alexieyizhe@gmail.com</a>";<br>
+		<strong><span class="var">resume</span> = </strong> "CURRENTLY BEING UPDATED!";<em class="comment"> // if you really wanna see it, <a href="resources/docs/resume.pdf" target="_blank">here ya go</a></em><br>
+		<strong><span class="var">github</span> = </strong> "<a href="https://github.com/alexieyizhe" target="_blank">https://github.com/alexieyizhe</a>";<br>
+		<strong><span class="var">linkedin</span> = </strong> "<a href="https://www.linkedin.com/in/alexieyizhe" target="_blank">https://www.linkedin.com/in/alexieyizhe</a>";<br>
+		<strong><span class="var">facebook</span> = </strong> "<a href="https://www.facebook.com/alexieyizhe" target="_blank">https://www.facebook.com/alexieyizhe</a>";<br>
+
+		<br>
+		<br>
+
+		<div>
+			<div class="left_col">
+				<em class="comment" id="skills">// some things i'm experienced with </em><br>
+				<ul>
+					<li><span class="var">Python</span>;</li>
+					<li><span class="var">Ruby</span>;</li>
+					<li><span class="var">Rails</span>;</li>
+					<li><span class="var">APIs</span>;</li>
+					<li><span class="var">Java</span>;</li>
+					<li><span class="var">Scheme</span>;</li>
+					<li><span class="var">C</span>;</li>
+					<li><span class="var">HTML</span>;</li>
+					<li><span class="var">CSS</span>;</li>
+					<li><span class="var">LaTeX</span>;</li>
+					<li><span class="var">Git</span>;</li>
+
+				</ul>
+			</div>
+			<div class="right_col">
+				<em class="comment" id="interests">// some of the things i enjoy </em><br>
+				<ul >
+					<li><span class="var">soccer</span>;</li>
+					<li><span class="var">hackathons</span>;</li>
+					<li><span class="var">travel</span>;</li>
+					<li><span class="var">volunteering</span>;</li>
+					<li><span class="var">coding</span>;</li>
+					<li><span class="var">graphic design</span>; <span class="comment">//view <a href="https://goo.gl/368B5s" class="comment" target="_blank"><u>my portfolio</u></a></span></li>
+					<li><span class="var">friends and family</span>;</li>
+					<li><span class="var">puns (preferably bad ones)</span>;</li>
+				</ul>
+				<br>
+				<br>
+				<br>
+				<br>
+			</div>
+		</div>
+
+
+		<div style="display:inline-block">
+			<em class="comment" id="education">// education</em>  <br>
+			<span class="fn">for</span>  (<strong class="var_init">University of Waterloo</strong>) { <br>
+			&emsp; <span class="var">discipline</span> = "Honours Computer Science (co-op)";<br>
+			&emsp; <span class="var">timeframe[]</span> = {Sept 2017, May 2022 (expected)};<br>
+			&emsp; <span class="var">desc</span> =  "96% Major Avg. <span class="comment"> // cs courses</span><br>
+			&emsp; &emsp; &emsp; &emsp; &emsp; 88% Cumulative Avg. <span class="comment"> // 3.9 GPA</span><br>
+			&emsp; &emsp; &emsp; &emsp; &emsp; Dean's Honour List."; <span class="comment"> // 1A term</span><br>}
+		</div>
+
+
+		<div style="display: inline-block">
+			<br>
+			<br>
+			<em class="comment" id="projects">// major projects</em> <br>
+
+			<span class="fn">for</span>  (<a class="var_init" href="https://easy-recipeasy.herokuapp.com/" target="_blank"><strong>Easy Recipeasy</strong></a>) { <br>
+			&emsp; <span class="var">desc</span> = "a recipe web app with user profiles, recipe search, and Flipp ingredient deal finder!";<br>
+			&emsp; <span class="var">tech[]</span> = {Ruby on Rails, MySQL, Edamam Recipe API, Selenium WebDriver, BCrypt, Nokogiri, Heroku}; <br>}
+
+			<br>
+			<br>
+
+			<span class="fn">for</span>  (<a class="var_init" href="https://github.com/alexieyizhe/WATBus" target="_blank"><strong>WATBus(shouldItake?)</strong></a>) { <br>
+			&emsp; <span class="var">desc</span> = "a Facebook Messenger Bot that allows users to easily obtain GRT transit info and set reminders in-app.";<br>
+			&emsp; <span class="var">tech[]</span> = {Python, Flask framework, Wit.ai NLP API, GRT/FB API, Heroku}; <br>}
+
+			<br>
+			<br>
+
+			<span class="fn">for</span>  (<a class="var_init" href="https://github.com/alexieyizhe/alexieyizhe.github.io" target="_blank"><strong>alexieyizhe.me</strong></a>) { <br>
+			&emsp; <span class="var">desc</span> = "this <a href="http://alexieyizhe.me/">personal website/portfolio</a> you're currently looking at!"; <em class="comment">// error: maximum recursion depth exceeded</em><br>
+			&emsp; <span class="var">tech[]</span> = {HTML, CSS, JavaScript}; <br>}
+			<br>
+			<br>
+
+
+			<span class="fn">for</span>  (<a class="var_init" href="https://github.com/alexieyizhe/kanye-quest" target="_blank"><strong>Kanye Quest</strong></a>) { <br>
+			&emsp; <span class="var">desc</span> = "a top down horde shooter featuring Kanye West, handcrafted maps, power-ups, and various weapons.";<br>
+			&emsp; <span class="var">tech[]</span> = {Java, Java graphics2D library}; <br>}
+			<br>
+			<br>
+
+
+			<span class="fn">for</span> (<a class="var_init" href="https://github.com/alexieyizhe/pokepaint" target="_blank"><strong>PokePaint</strong></a>) { <br>
+			&emsp; <span class="var">desc</span> = "Pokemon themed paint program with a suite of tools, including stickers, undo/redo, and file I/O.<br>
+			&emsp; &emsp; &emsp; &emsp; &emsp; created for ICS3U final summative project."; <br>
+			&emsp; <span class="var">tech[]</span> = {Python 2.7, Pygame 3 library}; <br>}
+			<br>
+		</div>
+
+		<br>
+		<br>
+		<br>
+
+		<em class="comment" id="experience">// experience</em> <br>
+		<span class="fn">for</span> (<a class="var_init" href="http://mathsoc.uwaterloo.ca/positions/details?position=csrep" target="_blank"><strong>MathSoc Computer Science Representative</strong></a>){ <br>
+		&emsp; <span class="var">timeframe[]</span> = {Jan 2018, Present};<br>
+		&emsp; <span class="var">desc</span> =  "voting member in Mathematics Society, the Faculty of Mathematics' student council.<br>
+		&emsp; &emsp; &emsp; &emsp; &emsp; elected by and representing the interests of computer science students in the faculty."<br>}
+		<br>
+
+		<br>
+
+		<span class="fn">for</span>  (<a class="var_init" href="https://equithon.org/"><strong>Equithon</strong></a>) { <br>
+		&emsp; <span class="var">position</span> = "Operations Coordinator";<br>
+		&emsp; <span class="var">timeframe[]</span> = {Oct 2017, Present};<br>
+		&emsp; <span class="var">desc</span> =  "executive in charge of organizing Waterloo's largest social innovation hackathon. <br>
+		&emsp; &emsp; &emsp; &emsp; &emsp; responsible for overseeing all logistics as part of a team of 4.";<br>
+		&emsp; <span class="var">contact </span>= "<a href="mailto:alex@equithon.org">alex@equithon.org</a>";<br>}
+		<br>
+
+		<br>
+
+		<span class="fn">for</span> (<a class="var_init" href="http://my.ymcagta.org/netcommunity/page.aspx?pid=536" target="_blank"><strong>YMCA Summer Work Student Exchange</strong></a>){ <br>
+		&emsp; <span class="var">timeframe[]</span> = {June 2016, Sept 2016};<br>
+		&emsp; <span class="var">desc</span> =  "1 of 8 selected to live and work full-time in St-Jerome, Quebec for an entire summer. <br>
+		&emsp; &emsp; &emsp; &emsp; &emsp; took initiative to improve my problem solving, communication, and teamwork skills.";<br>}
+		<br>
+
+		<br>
+		<br>
+
+		<span id="return_top" onclick='smooth_scroll_wrapper("main")' >return to top</span><span class="blinking_cursor">|</span>
+	</div>
+
+	<script> addLineNum(); </script>
 
 </body>
 </html>
-
-
