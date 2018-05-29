@@ -1,6 +1,6 @@
 /*!
  * node-version
- * Copyright(c) 2011-2017 Rodolphe Stoclin
+ * Copyright(c) 2011-2018 Rodolphe Stoclin
  * MIT Licensed
  */
 

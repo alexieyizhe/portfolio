@@ -5,24 +5,24 @@
       "jsonName": "dev-404-page.json",
       "internalComponentName": "ComponentDev404Page",
       "path": "/dev-404-page/",
-      "component": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/.cache/dev-404-page.js",
+      "component": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/.cache/dev-404-page.js",
       "componentChunkName": "component---cache-dev-404-page-js",
       "context": {},
       "pluginCreator___NODE": "Plugin dev-404-page",
       "pluginCreatorId": "Plugin dev-404-page",
-      "componentPath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/.cache/dev-404-page.js",
+      "componentPath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/.cache/dev-404-page.js",
       "id": "SitePage /dev-404-page/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "2cbbeff44e96790a536d57ba34c7540a",
+        "contentDigest": "820e08d35b331f16f1f1ee804d1935f6",
         "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin dev-404-page": {
-      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/node_modules/gatsby/dist/internal-plugins/dev-404-page",
+      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/node_modules/gatsby/dist/internal-plugins/dev-404-page",
       "id": "Plugin dev-404-page",
       "name": "dev-404-page",
       "version": "1.0.0",
@@ -34,7 +34,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/node_modules/gatsby/dist/internal-plugins/dev-404-page",
+      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/node_modules/gatsby/dist/internal-plugins/dev-404-page",
       "packageJson": {
         "name": "dev-404-page",
         "description": "Internal plugin to add a 404 page in development with helpful information",
@@ -51,13 +51,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "8ed1fa566a54795b0a2553f3d32e8dd5",
+        "contentDigest": "27b7fc58d809e71d3eec9bd9379c9653",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin component-page-creator": {
-      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/node_modules/gatsby/dist/internal-plugins/component-page-creator",
+      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/node_modules/gatsby/dist/internal-plugins/component-page-creator",
       "id": "Plugin component-page-creator",
       "name": "component-page-creator",
       "version": "1.0.0",
@@ -69,7 +69,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/node_modules/gatsby/dist/internal-plugins/component-page-creator",
+      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/node_modules/gatsby/dist/internal-plugins/component-page-creator",
       "packageJson": {
         "name": "component-page-creator",
         "description": "An internal Gatsby plugin that creates pages from component files in src/pages",
@@ -90,13 +90,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "8808170c8dc95c3e7fdd3906e1f6dc82",
+        "contentDigest": "6d67d6902e8e3ccb25413311190cc417",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin component-layout-creator": {
-      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
+      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
       "id": "Plugin component-layout-creator",
       "name": "component-layout-creator",
       "version": "1.0.0",
@@ -108,7 +108,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
+      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
       "packageJson": {
         "name": "component-layout-creator",
         "description": "An internal Gatsby plugin that creates pages from component files in src/layouts",
@@ -129,13 +129,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "652a7f6a992268cf49301612654949a9",
+        "contentDigest": "b7b98903a5a692240d2dc38e51a77c4a",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin internal-data-bridge": {
-      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/node_modules/gatsby/dist/internal-plugins/internal-data-bridge",
+      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/node_modules/gatsby/dist/internal-plugins/internal-data-bridge",
       "id": "Plugin internal-data-bridge",
       "name": "internal-data-bridge",
       "version": "1.0.0",
@@ -148,7 +148,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/node_modules/gatsby/dist/internal-plugins/internal-data-bridge",
+      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/node_modules/gatsby/dist/internal-plugins/internal-data-bridge",
       "packageJson": {
         "name": "internal-data-bridge",
         "description": "An internal Gatsby plugin which creates data nodes from internal data",
@@ -165,13 +165,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "89cc1447973987e15316ec7b385f5089",
+        "contentDigest": "233e03efbadf5650f4d85f98ca52da9c",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin prod-404": {
-      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/node_modules/gatsby/dist/internal-plugins/prod-404",
+      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/node_modules/gatsby/dist/internal-plugins/prod-404",
       "id": "Plugin prod-404",
       "name": "prod-404",
       "version": "1.0.0",
@@ -183,7 +183,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/node_modules/gatsby/dist/internal-plugins/prod-404",
+      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/node_modules/gatsby/dist/internal-plugins/prod-404",
       "packageJson": {
         "name": "prod-404",
         "description": "Internal plugin to detect various flavors of 404 pages and ensure there's a 404.html path created as well to ensure compatability with static hosts",
@@ -200,13 +200,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "a9ad7bde7ddeef9dbed31df2b0802b89",
+        "contentDigest": "9d1361284774e14ed7fe4e58cf0ba6db",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin query-runner": {
-      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/node_modules/gatsby/dist/internal-plugins/query-runner",
+      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/node_modules/gatsby/dist/internal-plugins/query-runner",
       "id": "Plugin query-runner",
       "name": "query-runner",
       "version": "1.0.0",
@@ -219,7 +219,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/node_modules/gatsby/dist/internal-plugins/query-runner",
+      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/node_modules/gatsby/dist/internal-plugins/query-runner",
       "packageJson": {
         "name": "query-runner",
         "description": "Internal plugin for running queries",
@@ -236,13 +236,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "1473fe4482caf06814de912d8590d40d",
+        "contentDigest": "cb74ef5c43103d3c364094d799451f1c",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin default-site-plugin": {
-      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2",
+      "resolve": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io",
       "id": "Plugin default-site-plugin",
       "name": "default-site-plugin",
       "version": "d41d8cd98f00b204e9800998ecf8427e",
@@ -252,15 +252,19 @@
       "nodeAPIs": [],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2",
+      "pluginFilepath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io",
       "packageJson": {
         "name": "gatsby-starter-hello-world",
         "description": "Gatsby hello world starter",
         "license": "MIT",
         "dependencies": [
           {
+            "name": "create-react-ref",
+            "version": "^0.1.0"
+          },
+          {
             "name": "gatsby",
-            "version": "^1.9.250"
+            "version": "^1.9.261"
           },
           {
             "name": "gatsby-cli",
@@ -268,11 +272,15 @@
           },
           {
             "name": "gatsby-link",
-            "version": "^1.6.40"
+            "version": "^1.6.44"
           },
           {
             "name": "react-fontawesome",
             "version": "^1.6.1"
+          },
+          {
+            "name": "react-rendered-size",
+            "version": "^1.1.0"
           },
           {
             "name": "styled-components",
@@ -287,7 +295,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "7f5c94190b6dec2093e4903c92e0a084",
+        "contentDigest": "0e44f7ab573ce9a1174d92b95fb44770",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -298,12 +306,12 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-05-29T00:48:17.362Z",
+      "buildTime": "2018-05-29T05:06:32.332Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "8ab975fd11ff66790d53bc9c2e0c5608",
+        "contentDigest": "7ad86c96c63438a74830efa56b33cfac",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -313,18 +321,18 @@
       "jsonName": "index.json",
       "internalComponentName": "ComponentIndex",
       "path": "/",
-      "component": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/src/pages/index.js",
+      "component": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/src/pages/index.js",
       "componentChunkName": "component---src-pages-index-js",
       "context": {},
       "pluginCreator___NODE": "Plugin component-page-creator",
       "pluginCreatorId": "Plugin component-page-creator",
-      "componentPath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/site-redesign-2/src/pages/index.js",
+      "componentPath": "/Users/alexxie/Documents/Projects/alexieyizhe.github.io/src/pages/index.js",
       "id": "SitePage /",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "6b034fa9d69ed029a27468f9defbe31c",
+        "contentDigest": "b321522cc88798863e6b66b168230c00",
         "description": "Plugin component-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -332,7 +340,7 @@
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "0fd8c9b5840ce054c0c281c265a20af8"
+    "PLUGINS_HASH": "3020fe547969e130f1bedd9d573a2133"
   },
   "componentDataDependencies": {
     "nodes": {},
