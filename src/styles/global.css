@@ -1,0 +1,46 @@
+body {
+  font-family: monospace, sans-serif;
+  background-color: #F6F6F6;
+}
+
+#mainIntro {
+  font-family: "SF UI Display", serif;
+  font-weight: lighter;
+  font-size: 7em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 25%;
+  cursor: pointer;
+}
+
+#terminalWindow {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 300px;
+  max-height: 300px;
+  margin-top: 10%;
+  color: white;
+  background-color: #171717;
+  border-radius: 8px;
+  -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+#terminalWindow p {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0.25em;
+  padding: 0 0 0 10px;
+
+}
+
+#terminalNavbar {
+  height: 25px;
+  background-color: #171717;
+  color: black;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
