@@ -21,12 +21,11 @@ const MainContainer = styled.div``;
 
 function IndexPage(props) {
   return (
-
     <MainContainer>
       <Intro> alex xie. </Intro>
       <TerminalWindow />
     </MainContainer>
-  )
+  );
 }
 
 export default IndexPage;

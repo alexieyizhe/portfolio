@@ -5,11 +5,18 @@ import WindowBorder from '../WindowBorder.js';
 import WindowNavBar from '../WindowNavBar.js';
 
 const terminalCommands = {
-  '--exit': 'qui\n\ntt\ning...',
-  '--quit': 'quitting...',
+  '--exit': 'Quitting...',
+  '--quit': 'Quitting...',
+  '--help': 'Showing help...',
+  '--credits': 'Built with ♥ by Alex Yizhe Xie (2018)',
+  'show --resume': 'Displaying resume...',
+  'show --projects': 'Displaying projects...',
+  'show --contact': 'Psst...hover over my name!',
+  'ls': 'resume.pdf   contact.csv    projects.html   about.html',
+  'ls -a': 'resume.pdf   contact.csv    projects.html   about.html\n   .DS_Store   .supersecrettxt',
   'hi': 'hey!',
-  '--help': 'showing help...',
 }
+const maxTerminalHistory = 5;
 
 
 
@@ -19,14 +26,21 @@ class TerminalWindow extends React.Component {
     super(props);
     this.state = {
       prevLines: [],
-      curCommand: ['', ''],
+      curCommand: '',
+      curLine: 0,
       curPos: 0,
     };
+  }
 
+  componentDidMount() {
+    this.lineHeight = this.calcLineHeight();
+  }
+
+  calcLineHeight() {
+    return getRenderedSize(<TerminalLine command={'this is a dummy component'} result={null} curLine={false} />).height;
   }
 
   enterCommand(key) {
-    console.log(key)
     switch(key) {
       case 'Enter': // match enter to issue command
         this.setState((prevState) => {
@@ -34,11 +48,12 @@ class TerminalWindow extends React.Component {
             prevLines: this.fitLinesToWindow(
               prevState.prevLines.concat([{
                   command: prevState.curCommand,
-                  result: this.parseCommand(prevState.curCommand.join('')),
-                  height: getRenderedSize(<TerminalLine command={prevState.curCommand} result={this.parseCommand(prevState.curCommand.join(''))} curLine={false} />).height,
+                  result: this.parseCommand(prevState.curCommand),
+                  height: this.lineHeight * ((this.parseCommand(prevState.curCommand).match(/\r?\n/g) || '').length + 2),
               }])
             ),
-            curCommand: ['', ''],
+            curCommand: '',
+            curLine: 0,
             curPos: 0,
           }
         });
@@ -47,62 +62,57 @@ class TerminalWindow extends React.Component {
       case 'Backspace': // match backspace to edit command
         this.setState((prevState) => {
           return {
-            curCommand: [prevState.curCommand[0].substring(0, prevState.curCommand[0].length - 1), prevState.curCommand[1]],
-          };
-        });
-        break;
-
-      /*// UNFINISHED
-      case 'ArrowUp':
-        this.setState((prevState) => {
-          return {
-            curCommand: prevState.prevLines[prevState.prevLines.length - prevState.curPos] || prevState.curCommand,
-            curPos: Math.min(prevState.prevLines.length - 1, prevState.curPos + 1),
-          };
-        });
-        break;
-
-      // UNFINISHED
-      case 'ArrowDown':
-        this.setState((prevState) => {
-          return {
-            curCommand: prevState.prevLines[prevState.prevLines.length - prevState.curPos + 1] || prevState.curCommand,
+            curCommand: prevState.curCommand.substring(0, prevState.curCommand.length - 1),
             curPos: Math.max(0, prevState.curPos - 1),
           };
         });
         break;
 
-      // UNFINISHED
-      case 'ArrowLeft':
+      case 'ArrowUp':
         this.setState((prevState) => {
+          const newLinePos = Math.min(maxTerminalHistory, Math.max(prevState.prevLines.length - 1, 0), prevState.curLine + 1);
+          const newCommand = (prevState.prevLines.slice(-1 * newLinePos).shift() || {command: prevState.curCommand}).command;
           return {
-            curCommand: [
-              prevState.curCommand[0].substring(0, prevState.curCommand[0].length - 1),
-              prevState.curCommand[0][prevState.curCommand[0].length - 1] + prevState.curCommand[1]
-            ],
+            curCommand: newCommand,
+            curLine: newLinePos,
+            curPos: newCommand.length,
           };
         });
         break;
 
-      // UNFINISHED
+      case 'ArrowDown':
+        this.setState((prevState) => {
+          const newLinePos = Math.max(0, prevState.curLine - 1);
+          const newCommand = newLinePos === 0 ? '' : (prevState.prevLines.slice(-1 * newLinePos).shift() || {command: prevState.curCommand}).command;
+          return {
+            curCommand: newCommand,
+            curLine: newLinePos,
+            curPos: newCommand.length,
+          };
+        });
+        break;
+
+      case 'ArrowLeft':
+        this.setState((prevState) => {
+          return {
+            curPos: Math.max(0, prevState.curPos - 1),
+          };
+        });
+        break;
+
       case 'ArrowRight':
         this.setState((prevState) => {
           return {
-            curCommand: [
-              prevState.curCommand[0] + prevState.curCommand[1][0],
-              prevState.curCommand[1].substring(1)
-            ],
+            curPos: Math.min(prevState.curCommand.length, prevState.curPos + 1),
           };
         });
-        break; */
+        break;
 
       case (key.match(/[ -~]/) || {}).input: // match all printable non-return characters
         this.setState((prevState) => {
           return {
-            curCommand: [
-              prevState.curCommand[0] + (key.length === 1 ? key : ''),
-              prevState.curCommand[1]
-            ],
+            curCommand: [prevState.curCommand.slice(0, prevState.curPos), (key.length === 1 ? key : ''), prevState.curCommand.slice(prevState.curPos)].join(''),
+            curPos: prevState.curPos + 1,
           };
         });
         break;
@@ -110,33 +120,34 @@ class TerminalWindow extends React.Component {
   }
 
   parseCommand(cmd) {
-    return terminalCommands[cmd.toLowerCase()] || ('Command not found: ' + cmd);
+    return terminalCommands[cmd.toLowerCase()] || ('Command not found: ' + cmd + '\n        Enter \'--help\' for help or \'--quit\' to view regular site.');
   }
 
   fitLinesToWindow(prevLineArr) {
-    let windowHeight = this.windowDiv.clientHeight - getRenderedSize(<WindowNavBar />).height * 2;
+    this.windowHeight = this.windowDiv.clientHeight - getRenderedSize(<WindowNavBar />).height * 2;
 
     prevLineArr.reverse(); // reverse to put oldest commands at end of list (so they can be removed first)
     prevLineArr = prevLineArr.filter(line => {
-      if(windowHeight >= 0) {
-        windowHeight -= line.height;
+      if(this.windowHeight >= 0) {
+        this.windowHeight -= line.height;
         return true;
       }
       return false;
     });
-
     return prevLineArr.reverse(); // reverse again to preserve original input order
   }
 
   render() {
-    console.log(this.state);
+    // TODO: Fix bug where element will overflow outside top of window
     return (
-      <div ref={windowDiv => {this.windowDiv = windowDiv}}>
+      <div ref={windowDiv => {this.windowDiv = windowDiv}} >
         <WindowBorder>
-          {this.state.prevLines.map((line, indx) => {
-            return <TerminalLine key={indx} command={line.command} result={line.result} curLine={false} />;
-          })}
-          <TerminalLine command={this.state.curCommand} enterCommand={(k) => this.enterCommand(k)} curLine={true} />
+          <div style={{marginTop: this.windowHeight <= 10 ? this.windowHeight : 'default'}}>
+            {this.state.prevLines.map((line, indx) => {
+              return <TerminalLine key={indx} command={line.command} result={line.result} activeLine={false} />;
+            })}
+            <TerminalLine command={this.state.curCommand} cmdPos={this.state.curPos} enterCommand={(k) => this.enterCommand(k)} activeLine={true} />
+          </div>
         </WindowBorder>
       </div>
     );

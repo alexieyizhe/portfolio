@@ -33,13 +33,12 @@ class TerminalLine extends React.Component {
   }
 
   componentDidMount() {
-    if(this.props.curLine){
+    if(this.props.activeLine){
       this.timerID = setInterval(
         () => this.blink(),
         500
       )
     }
-
   }
 
   componentWillUnmount() {
@@ -57,16 +56,28 @@ class TerminalLine extends React.Component {
   }
 
   render() {
+    const beforeCursor = this.props.command.substring(0, this.props.cmdPos);
+    let atCursor;
+    if(this.state.blinkShow && this.state.cursorShow) {
+      if(this.props.cmdPos < this.props.command.length) {
+        atCursor = <span style={{textDecoration: 'underline'}}>{this.props.command[this.props.cmdPos]}</span>;
+      } else {
+        atCursor = (this.props.command[this.props.cmdPos] || '') + '_';
+      }
+    } else {
+      atCursor = this.props.command[this.props.cmdPos];
+    }
+    const afterCursor = this.props.command.substring(this.props.cmdPos + 1);
     return (
-      this.props.curLine ?
+      this.props.activeLine ?
       <Line current
         id='curCmdLine'
         tabIndex='0'
         onKeyDown={(e) => this.handleInput(e)}
         onBlur={() => this.setState({cursorShow: false})}
-        onFocus={() => this.setState({cursorShow: true})}
-       >> {this.props.command[0]}{this.state.blinkShow && this.state.cursorShow ? '_' : ''}{this.props.command[1]}
-     </Line>
+        onFocus={() => this.setState({cursorShow: true})} >
+        > {beforeCursor}{atCursor}{afterCursor}
+      </Line>
        :
       <Line className='prevCmdLine'>
         {this.props.command !== null ? <div>> {this.props.command}</div> : null}

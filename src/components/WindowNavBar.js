@@ -6,7 +6,9 @@ const WindowNavBar = styled.div`
   background-color: #171717;
   color: black;
   border-radius: 8px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
+  z-index: 2;
+  position: relative;
 `;
 
 const WindowButton = styled.span`
