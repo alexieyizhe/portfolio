@@ -7,19 +7,18 @@ import WindowBorder from '../components/WindowBorder.js';
 import BlinkInput from '../components/BlinkInput.js';
 import '../styles/global.css';
 
-const Intro = styled.div`
+const Title = styled.div`
+  display: inline;
   font-family: "SF UI Display", serif;
   font-weight: lighter;
   font-size: 7em;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  margin-top: 10%;
   cursor: pointer;
+  width: 100%;
   white-space: pre;
 `;
 
-const Fields = styled.div`
+const Subtitle = styled.div`
+  display: inline;
   font-family: "SF UI Display", serif;
   font-weight: lighter;
   font-size: 1.25em;
@@ -27,23 +26,26 @@ const Fields = styled.div`
   margin-right: auto;
   text-align: center;
   cursor: pointer;
+  width: 100%;
   white-space: pre;
 `;
 
 const MainContainer = styled.div``;
 
-function IndexPage(props) {
-  return (
-    <MainContainer>
-      <Page>
-        <Intro> alex xie</Intro>
-        <Fields>contact  /  resume  /  github  /  linkedin</Fields>
-      </Page>
-      <Page>
-        <TerminalWindow />
-      </Page>
-    </MainContainer>
-  );
+class IndexPage extends React.Component {
+  render() {
+    return (
+      <MainContainer>
+        <div id="page0" style={{position: 'absolute', top: '0%', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Title>alex xie</Title>
+          <Subtitle>contact  /  resume  /  github  /  linkedin</Subtitle>
+        </div>
+        <div id="page1" style={{position: 'absolute', top: '100%', width: '100%', height: '100%' }}>
+          <TerminalWindow />
+        </div>
+      </MainContainer>
+    )
+  }
 }
 
 export default IndexPage;
