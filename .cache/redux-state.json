@@ -16,7 +16,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "feed856dcafd8a0a1ba61178914be214",
+        "contentDigest": "330c2a939aa071519ede3181c4178b69",
         "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
@@ -279,6 +279,10 @@
             "version": "^1.6.1"
           },
           {
+            "name": "react-pose",
+            "version": "^2.1.2"
+          },
+          {
             "name": "react-rendered-size",
             "version": "^1.1.0"
           },
@@ -306,12 +310,12 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-06-06T03:54:12.839Z",
+      "buildTime": "2018-06-11T03:24:57.705Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "52076d4071bb60746caebb5a1aaf5b0b",
+        "contentDigest": "e39b7f3a4e98dacb841dc39668164a6e",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -332,7 +336,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "919146c0f3eb5f4f595e179e27c99ca9",
+        "contentDigest": "98eb8616260e7d9a71e3fde86dedcdc1",
         "description": "Plugin component-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -340,7 +344,7 @@
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "3020fe547969e130f1bedd9d573a2133"
+    "PLUGINS_HASH": "113e72f3ac3071415a4563607e71d73c"
   },
   "componentDataDependencies": {
     "nodes": {},

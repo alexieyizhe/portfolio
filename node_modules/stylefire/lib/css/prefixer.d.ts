@@ -1,0 +1,2 @@
+declare const _default: (key: string, asDashCase?: boolean) => any;
+export default _default;
