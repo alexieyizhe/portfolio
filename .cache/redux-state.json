@@ -16,7 +16,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "330c2a939aa071519ede3181c4178b69",
+        "contentDigest": "b76d54c3abec6a604e978c05ba322904",
         "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
@@ -310,12 +310,12 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-06-11T03:24:57.705Z",
+      "buildTime": "2018-06-13T01:53:28.641Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "e39b7f3a4e98dacb841dc39668164a6e",
+        "contentDigest": "9732dfde0c6b23157158073ff72fc507",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -336,7 +336,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "98eb8616260e7d9a71e3fde86dedcdc1",
+        "contentDigest": "0f2215b8adbc4eabfbd5b3acb63d17b9",
         "description": "Plugin component-page-creator",
         "owner": "internal-data-bridge"
       }
