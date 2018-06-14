@@ -18,19 +18,66 @@ hi@alexieyizhe.me
 > alexieyizhe
 resume_alex_xie.pdf
 > alexieyizhe
+
+SITE LAYOUT
+ - main info/contact
+ - FLIPP OVER (entire area is clickable to flip): profile pic, intro, skills/interests
+ - WIPE TO REVEAL UNDERNEATH:
+    - MASONRY GRID: experience
+    - ANOTHER MASONRY GRID: projects
+    - ANOTHER GRID: photography
+ - DOTS ON SIDE: switch between sections
+ ON MOBILE----
+  - same, except masonry grid is one tile on screen at a time
 */
 
+const MainContainer = styled.div`
+  height: 100%;
+`;
+
+const Page = styled.section`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: ${props => props.active ? '100%' : '0'};
+  width: 100%;
+  background-color: #F6F6F6;
+  overflow: auto;
+  transition: height 0.7s ease-in-out;
+
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+
+  &:nth-child(1) {
+    z-index: 500;
+  }
+  &:nth-child(2) {
+    z-index: 400;
+  }
+  &:nth-child(3) {
+    z-index: 300;
+  }
+  &:nth-child(4) {
+    z-index: 200;
+  }
+  &:nth-child(5) {
+    z-index: 100;
+  }
+`;
 
 const Title = styled.div`
   display: flex;
   font-family: "SF UI Display", serif;
-  font-weight: lighter;
+  font-weight: normal;
   font-size: 15vmin;
   justify-content: center;
   align-items: center;
   width: 100%;
   padding-left: 5vmin;
-  color: #383838;
+  color: black;
   cursor: pointer;
 
   &:hover {
@@ -38,10 +85,10 @@ const Title = styled.div`
   }
 `;
 
-const Subtitle = styled.div`
+const MainPageSubtitle = styled.div`
   display: flex;
   font-family: "SF UI Display", serif;
-  font-weight: lighter;
+  font-weight: normal;
   font-size: 2.5vmin;
   justify-content: center;
   align-items: center;
@@ -50,7 +97,7 @@ const Subtitle = styled.div`
   cursor: default;
 `;
 
-const MainLink = styled.span`
+const MainPageLink = styled.span`
   position: relative;
   cursor: pointer;
 
@@ -61,13 +108,10 @@ const MainLink = styled.span`
     right: 0;
     margin: auto;
     top: 3.2vmin;
-    border-bottom: 3px solid #656565;
+    border-bottom: 3px solid;
     opacity: 0;
     width: 0;
     transition: width .5s ease, opacity .5s ease;
-  }
-  &:hover {
-    text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
   }
 
   &:hover:after, &.selected:after {
@@ -76,9 +120,7 @@ const MainLink = styled.span`
   }
 `;
 
-const MainContainer = styled.div``;
-
-const linkInfo = {
+const LINK_INFO = {
   profile: {
     link: 'https://www.facebook.com/alexieyizhe',
     text: 'alex xie',
@@ -109,59 +151,123 @@ const linkInfo = {
     desc: 'about me',
     animations: null
   },
-}
+};
+
+const PAGE_INFO = {
+  main: {},
+  experience: {},
+  portfolio: {},
+  photography: {},
+};
+
+const SCROLL_THRESHOLD = 38;
+const NUM_PAGES = Object.keys(PAGE_INFO).length;
 
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayContents: 'profile'
+      mainPageContent: 'profile',
+      activePageIndex: 1
     }
+    this.deltaOnPage = 0;
+  }
+
+  prevSlide() {
+    this.setState((prevState) => {
+      this.deltaOnPage = 0;
+      return {activePageIndex: (prevState.activePageIndex - 1 <= 0) ? 0 : prevState.activePageIndex - 1};
+    })
+
+
+  }
+
+  nextSlide() {
+    this.setState((prevState) => {
+      this.deltaOnPage = 0;
+      return {activePageIndex: (prevState.activePageIndex + 1 >= NUM_PAGES) ? NUM_PAGES : prevState.activePageIndex + 1};
+    })
+  }
+
+  handleScroll(e) {
+    if (e.deltaY < 0) { // Scroll down
+        this.deltaOnPage--;
+        if (Math.abs(this.deltaOnPage) >= SCROLL_THRESHOLD) {
+          this.prevSlide();
+        }
+    }
+    else { // Scroll up
+        this.deltaOnPage++;
+        if (this.deltaOnPage >= SCROLL_THRESHOLD) {
+          this.nextSlide();
+        }
+    }
+
+    return false; // Prevent page from scrolling
+  }
+
+  componentDidMount() {
+    window.addEventListener('mousewheel', (e) => this.handleScroll(e));
+    window.addEventListener('DOMMouseScroll', (e) => this.handleScroll(e));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousewheel', (e) => this.handleScroll(e));
+    window.removeEventListener('DOMMouseScroll', (e) => this.handleScroll(e));
   }
 
   selectLink(link) {
-    if(link === this.state.displayContents) {
+    if(link === this.state.mainPageContent) {
       this.setState({
-        displayContents: 'profile'
+        mainPageContent: 'profile'
       });
     } else {
       this.setState({
-        displayContents: link
+        mainPageContent: link
       });
     }
   }
 
   openLink() {
-    window.open(linkInfo[this.state.displayContents].link, '_blank')
+    window.open(LINK_INFO[this.state.mainPageContent].link, '_blank')
   }
 
   render() {
     return (
       <MainContainer>
 
-        <div id="page0" style={{position: 'absolute', top: '0%', width: '100%', height: '100%', display: 'flex', alignItems: 'center', flexFlow: 'row wrap', justifyContent: 'center', alignContent: 'center' }}>
-          <Title onClick={() => this.openLink()}>{linkInfo[this.state.displayContents].text}<BlinkInput /></Title>
-          <Subtitle>
-            <MainLink onClick={() => this.selectLink('contact')} className={this.state.displayContents === 'contact' ? 'selected' : ''}>
+        <Page id="mainInfo" active={this.state.activePageIndex <= 1}>
+          <Title onClick={() => this.openLink()}>{LINK_INFO[this.state.mainPageContent].text}<BlinkInput /></Title>
+          <MainPageSubtitle>
+            <MainPageLink onClick={() => this.selectLink('contact')} className={this.state.mainPageContent === 'contact' ? 'selected' : ''}>
               contact
-            </MainLink>
+            </MainPageLink>
             &nbsp;&nbsp;/&nbsp;&nbsp;
-            <MainLink onClick={() => this.selectLink('resume')} className={this.state.displayContents === 'resume' ? 'selected' : ''}>
+            <MainPageLink onClick={() => this.selectLink('resume')} className={this.state.mainPageContent === 'resume' ? 'selected' : ''}>
               resume
-            </MainLink>
+            </MainPageLink>
             &nbsp;&nbsp;/&nbsp;&nbsp;
-            <MainLink onClick={() => this.selectLink('github')} className={this.state.displayContents === 'github' ? 'selected' : ''}>
+            <MainPageLink onClick={() => this.selectLink('github')} className={this.state.mainPageContent === 'github' ? 'selected' : ''}>
               projects
-            </MainLink>
+            </MainPageLink>
             &nbsp;&nbsp;/&nbsp;&nbsp;
-            <MainLink onClick={() => this.selectLink('linkedin')} className={this.state.displayContents === 'linkedin' ? 'selected' : ''}>
+            <MainPageLink onClick={() => this.selectLink('linkedin')} className={this.state.mainPageContent === 'linkedin' ? 'selected' : ''}>
               connect
-            </MainLink>
-          </Subtitle>
-        </div>
-        <div id="page1" style={{position: 'absolute', top: '100%', width: '100%', height: '100%' }}>
-          <TerminalWindow />
-        </div>
+            </MainPageLink>
+          </MainPageSubtitle>
+        </Page>
+
+        <Page id="experiencePage" active={this.state.activePageIndex <= 2}>
+          <Title>Experience</Title>
+        </Page>
+
+        <Page id="projectPage" active={this.state.activePageIndex <= 3}>
+          <Title>Portfolio</Title>
+        </Page>
+
+        <Page id="photographyPage" active={this.state.activePageIndex <= 4}>
+          <Title>Photography</Title>
+        </Page>
 
       </MainContainer>
     )
