@@ -8,6 +8,12 @@ import DropMenu from "./DropMenu.js";
 // Global styles go here!
 const TemplateContainer = styled.div`
   font-family: "SF UI Display";
+  color: #464646;
+  position: absolute;
+  top: ${props => props.outerBounds.top || 0};
+  left: ${props => props.outerBounds.left || 0};
+  right: ${props => props.outerBounds.right || 0};
+  bottom: ${props => props.outerBounds.bottom || 0};
 `;
 
 class TemplateWrapper extends React.Component {
@@ -21,7 +27,7 @@ class TemplateWrapper extends React.Component {
 
   render() {
     return (
-      <TemplateContainer>
+      <TemplateContainer outerBounds={this.props.outerBounds}>
         <Helmet
           title="Portfolio Site of Alex Yizhe Xie"
           meta={[
@@ -29,11 +35,9 @@ class TemplateWrapper extends React.Component {
             { name: `keywords`, content: `Alex, Yizhe, Xie, alexieyizhe, website, portfolio, university, waterloo, projects, work, experience, resume, contact` },
           ]}
         />
-        <div>
-          {this.props.children}
-        </div>
-        {this.state.showMenu ? <DropMenu /> : null}
-        {this.state.showFooter ? <Footer /> : null}
+        {this.state.showMenu ? <DropMenu className="navMenu"/> : null}
+        {this.props.children}
+        {this.state.showFooter ? <Footer className="pageFooter"/> : null}
       </TemplateContainer>
     )
   }

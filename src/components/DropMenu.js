@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Link from "gatsby-link";
 import posed from "react-pose";
 
-import {menuPageOptions} from "../data/navigation.js";
+import {menuPageOptions, contactOptions} from "../data/configOptions.js";
 
 
 const MenuButton = posed.div({
@@ -46,17 +46,18 @@ const MenuLinkBg = posed.div({
 });
 
 const Menu = styled(MenuButton)`
-  width: 4vmax;
-  height: 4vmax;
+  width: 2.5em;
+  height: 2.5em;
   background-color: #56C6DF;
   opacity: 0.8;
+  position: relative;
+  z-index: 100; // Allow menu to always be on top for navigation
 
-  position: fixed;
-  top: 7%;
-  right: 11%;
+  outline: 2px solid #fff;
+  outline-offset: -0.7em;
+  float: right;
 
-  outline: 1px solid #fff;
-  outline-offset: -1.2vmax;
+  grid-area: menu;
 
   &:hover {
     cursor: pointer;
@@ -68,12 +69,11 @@ const NavLink = styled(MenuLink)`
   text-decoration: none;
   text-align: justify;
   direction: rtl;
-  overflow-x: hidden;
   padding-top: 0.5em;
   float: right;
 
   &:first-child {
-    margin-top: 4vmax;
+    margin-top: 2.5em;
   }
 
   .navLinkText {
@@ -91,6 +91,8 @@ const NavLinkBg = styled(MenuLinkBg)`
   height: 0.9em;
 `;
 
+
+
 class DropMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -101,7 +103,6 @@ class DropMenu extends React.Component {
   }
 
   render() {
-    console.log(this.state.menuOpen);
     return (
       <Menu
         pose={this.state.menuOpen ? 'open' : 'closed'}
@@ -113,13 +114,11 @@ class DropMenu extends React.Component {
                          to={option.route}
                          className="navLinkText"
                          onMouseEnter={() => this.setState({ menuLink: option.text })}
-                         onMouseLeave={() => this.setState({ menuLink: null })}
-                       >
+                         onMouseLeave={() => this.setState({ menuLink: null })} >
                          <NavLinkBg
                            pose={(this.state.menuLink === option.text && this.state.menuOpen) ? 'hovered' : 'closed'}
                            colour={option.colour}
-                           length={option.text.length}
-                         />
+                           length={option.text.length} />
                          <div style={{ position: 'relative', paddingRight: '5px' }}>{option.text}</div>
                        </Link>
                      </NavLink>;
