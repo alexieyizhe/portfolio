@@ -12,7 +12,7 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <TemplateWrapper>
+      <TemplateWrapper menu footer>
         <div id="greetings">
           hi! i'm
         </div>
