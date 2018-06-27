@@ -10,10 +10,10 @@ const TemplateContainer = styled.div`
   font-family: "SF UI Display";
   color: #464646;
   position: absolute;
-  top: ${props => props.outerBounds.top || 0};
-  left: ${props => props.outerBounds.left || 0};
-  right: ${props => props.outerBounds.right || 0};
-  bottom: ${props => props.outerBounds.bottom || 0};
+  top: ${props => props.outerBounds && props.outerBounds.top || 0};
+  left: ${props => props.outerBounds && props.outerBounds.left || 0};
+  right: ${props => props.outerBounds && props.outerBounds.right || 0};
+  bottom: ${props => props.outerBounds && props.outerBounds.bottom || 0};
 `;
 
 class TemplateWrapper extends React.Component {

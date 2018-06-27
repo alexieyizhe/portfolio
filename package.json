@@ -16,6 +16,7 @@
     "react-icons": "^2.2.7",
     "react-mt-svg-lines": "^0.8.4",
     "react-particles-js": "^2.2.0",
+    "react-pdf": "^3.0.5",
     "react-pose": "^2.1.2",
     "styled-components": "^3.3.3"
   }

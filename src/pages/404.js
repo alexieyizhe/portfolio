@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import TemplateWrapper from "../components/TemplateWrapper.js";
 
-class LinkNotFoundPage extends React.Component {
+class InvalidURLPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -11,7 +11,7 @@ class LinkNotFoundPage extends React.Component {
 
   render() {
     return (
-      <TemplateWrapper>
+      <TemplateWrapper footer>
         <div>
           The page was not found.
         </div>
@@ -21,4 +21,4 @@ class LinkNotFoundPage extends React.Component {
 }
 
 
-export default LinkNotFoundPage;
+export default InvalidURLPage;
