@@ -84,7 +84,7 @@ const NavLink = styled(MenuLink)`
 
 const NavLinkBg = styled(MenuLinkBg)`
   background-color: ${props => props.colour};
-
+  opacity: 0.6;
   position: absolute;
   float: right;
   margin-top: 0.45em;
@@ -103,6 +103,7 @@ class DropMenu extends React.Component {
   }
 
   render() {
+    const isMobile = "ontouchstart" in document.documentElement;
     return (
       <Menu
         pose={this.state.menuOpen ? 'open' : 'closed'}
@@ -116,7 +117,8 @@ class DropMenu extends React.Component {
                          onMouseEnter={() => this.setState({ menuLink: option.text })}
                          onMouseLeave={() => this.setState({ menuLink: null })} >
                          <NavLinkBg
-                           pose={(this.state.menuLink === option.text && this.state.menuOpen) ? 'hovered' : 'closed'}
+                           initialPose = 'closed'
+                           pose={((this.state.menuLink === option.text || isMobile) && this.state.menuOpen) ? 'hovered' : 'closed'}
                            colour={option.colour}
                            length={option.text.length} />
                          <div style={{ position: 'relative', paddingRight: '5px' }}>{option.text}</div>
