@@ -5,8 +5,8 @@ import MtSvgLines from 'react-mt-svg-lines';
 import { mediaSize } from "../data/configOptions.js";
 
 const Shadow = styled.span`
-  position: relative;
-
+  position: absolute;
+  z-index: 1;
   & path {
     stroke: #C4C4C4;
   }
@@ -15,12 +15,11 @@ const Shadow = styled.span`
     width: ${props => props.size};
     height: ${props => props.size};
   }
-
 `
 
 const Outline = styled.span`
   position: relative;
-  left: ${props => "-" + props.size};
+  z-index: 3;
   cursor: pointer;
 
   & svg {
@@ -31,8 +30,10 @@ const Outline = styled.span`
 
 const Icon = styled.span`
   display: inline;
-
+  position: relative;
   margin-bottom: 2vh;
+  margin-left: 2vh;
+  margin-right: 2vh;
   width: ${props => props.size};
   height: ${props => props.size};
 `

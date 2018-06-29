@@ -5,16 +5,41 @@ import { Document } from 'react-pdf/dist/entry.webpack';
 
 import TemplateWrapper from "../components/TemplateWrapper.js";
 import Resume from "../../alex_xie_resume_2A.pdf";
+import PageHeader from "../components/PageHeader.js";
 
-const ResumeBox = styled.span`
+const ResumeBox = styled.div`
+  width: 100%;
+  text-align: center;
 
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+  & * {
+    display: inline-block;
+  }
 
-  &:hover {
-    cursor: pointer;
-    box-shadow: 0px 0px 53px 1px rgba(194,194,194,1);
+  & canvas {
+    margin-top: 1em;
+  }
+
+  & .react-pdf__Page {
+    &:before {
+      /* Position the pseudo-element. */
+      content: ' ';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      /* Create the box shadow at expanded size. */
+      box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.5);
+
+      /* Hidden by default. */
+      opacity: 0;
+      transition: opacity 500ms;
+    }
+
+    &:hover:before {
+      opacity: 1;
+    }
   }
 `;
 
@@ -28,12 +53,17 @@ class ResumePage extends React.Component {
   render() {
     return (
       <TemplateWrapper menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
+        <PageHeader>Resume</PageHeader>
         <ResumeBox>
-          <Document
-            file={Resume}>
-            <Page pageNumber={1} />
-          </Document>
+          <a href={Resume} download="Alex Xie - Resume (2A)">
+            <Document
+              file={Resume}>
+              <Page pageNumber={1} />
+            </Document>
+          </a>
+
         </ResumeBox>
+
 
       </TemplateWrapper>
     );
