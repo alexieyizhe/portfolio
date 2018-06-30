@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 
 const displaySizes = {
-  desktop: 1080,
-  tablet: 800,
+  desktop: 2160,
+  tablet: 1024,
   phone: 425
 }
 
@@ -66,15 +66,6 @@ export const contactOptions = [
     text: 'linkedin'
   }
 ];
-
-export const projectsList = [
-  {
-    name: 'Easy Recipeasy',
-    color: '#686BB6',
-    imgSource: './easy_recipeasy_displayPic.png'
-
-  }
-]
 
 export const greetingOptions = ['Hi!', 'Hey!', 'Sup?', 'Howdy!', 'Heya!', 'Yo!', '你好!', '👋 !']
 

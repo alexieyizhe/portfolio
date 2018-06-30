@@ -15,46 +15,13 @@ const Container = styled.div`
   cursor: pointer;
 
   display: grid;
-  grid-template-columns: ${props => props.picRight ? '6fr 2fr' : '2fr 6fr'};
+  grid-template-columns: ${props => props.picRight ? '4fr 2fr' : '2fr 4fr'};
   grid-template-rows: 2fr 3fr;
   grid-template-areas: ${props => props.picRight ? '"title pic" "desc pic"' : '"pic title" "pic desc"'};
 
 
-  & p {
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-    right: 100px;
-    margin: 0;
-  }
-
-  /* TODO: add props to showing or hiding the shadow so that touch-only devices can have it always show by default */
-  &:before {
-    /* Position the pseudo-element. */
-    content: ' ';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    /* Create the box shadow at expanded size. */
-    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.5);
-
-    /* Hidden by default. */
-    opacity: 0;
-    transition: opacity 500ms;
-  }
-
-/*
-  &:hover:before {
-    opacity: 1;
-
-  }*/
-
   ${mediaSize.tablet`
     &:before {
-      //opacity: 1;
       border-radius: 8px;
     }
   `}
@@ -65,7 +32,6 @@ const Container = styled.div`
     border-radius: 8px;
 
     &:before {
-      //opacity: 1;
       border-radius: 8px;
     }
   `}
@@ -104,8 +70,8 @@ const ProjectPic = styled.img`
   justify-self: center;
   align-self: center;
 
-  max-width: 30vh;
-  max-height: 25vh;
+  max-width: 100%;
+  max-height: 100%;
 
   filter: grayscale(100%);
   transition: 1s filter;

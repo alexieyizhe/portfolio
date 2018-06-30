@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Link from "gatsby-link";
 import posed from "react-pose";
 
-import {menuPageOptions, contactOptions} from "../data/configOptions.js";
+import { menuPageOptions, contactOptions, mediaSize } from "../data/configOptions.js";
 
 
 const MenuButton = posed.div({
@@ -50,22 +50,30 @@ const Menu = styled(MenuButton)`
   height: 2.5em;
   background-color: #56C6DF;
   opacity: 0.8;
-  position: relative;
+  position: fixed;
+  right: 11%;
+  display: inline-block;
   z-index: 100; // Allow menu to always be on top for navigation
 
   outline: 2px solid #fff;
   outline-offset: -0.7em;
-  float: right;
+
 
   grid-area: menu;
 
   &:hover {
     cursor: pointer;
   }
+
+  ${props => props.default ? null :
+    mediaSize.phone`
+    right: auto;
+    bottom: 7%;
+    left: 11%;
+  `}
 `
 
 const NavLink = styled(MenuLink)`
-  color: white;
   text-decoration: none;
   text-align: justify;
   direction: rtl;
@@ -80,6 +88,18 @@ const NavLink = styled(MenuLink)`
     text-decoration: none;
     color: #545454;
   }
+
+  ${props => props.default ? null :
+    mediaSize.phone`
+    direction: ltr;
+    float: none;
+    position: relative;
+    top: ${props => props.mobileoffset * -50}px;
+
+    &:first-child {
+      margin-top: -2.5em;
+    }
+  `}
 `;
 
 const NavLinkBg = styled(MenuLinkBg)`
@@ -93,7 +113,7 @@ const NavLinkBg = styled(MenuLinkBg)`
 
 
 
-class DropMenu extends React.Component {
+class NavMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -108,9 +128,10 @@ class DropMenu extends React.Component {
       <Menu
         pose={this.state.menuOpen ? 'open' : 'closed'}
         onMouseEnter={() => this.setState({ menuOpen: true })}
-        onMouseLeave={() => this.setState({ menuOpen: false })} >
+        onMouseLeave={() => this.setState({ menuOpen: false })}
+        default={this.props.showDefault} >
           { menuPageOptions.map((option, i) => {
-              return <NavLink key={i} pose={this.state.menuOpen ? 'open' : 'closed'}>
+              return <NavLink key={i} pose={this.state.menuOpen ? 'open' : 'closed'} default={this.props.showDefault} mobileoffset={i} >
                        <Link
                          to={option.route}
                          className="navLinkText"
@@ -130,4 +151,4 @@ class DropMenu extends React.Component {
   }
 }
 
-export default DropMenu;
+export default NavMenu;
