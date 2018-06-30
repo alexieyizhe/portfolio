@@ -15,10 +15,9 @@ const Container = styled.div`
   cursor: pointer;
 
   display: grid;
-  grid-template-columns: 6fr 2fr;
+  grid-template-columns: ${props => props.picRight ? '6fr 2fr' : '2fr 6fr'};
   grid-template-rows: 2fr 3fr;
-  grid-template-areas: "title pic"
-                       "desc pic";
+  grid-template-areas: ${props => props.picRight ? '"title pic" "desc pic"' : '"pic title" "pic desc"'};
 
 
   & p {
@@ -134,7 +133,8 @@ class ProjectShowcase extends React.Component {
     return (
       <Container
         onMouseEnter={() => this.setState({hovered: true})}
-        onMouseLeave={() => this.setState({hovered: false})}>
+        onMouseLeave={() => this.setState({hovered: false})}
+        picRight={this.props.picRight} >
         <ProjectTitle>
           <div style={{zIndex: 3, position: 'relative'}}>{this.props.project.name}</div>
           <TitleBg

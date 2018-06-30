@@ -55,9 +55,9 @@ class ProjectsPage extends React.Component {
       <TemplateWrapper menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
         <PageHeader>Featured Works</PageHeader>
         <div id="centerDiv">
-          <ProjectShowcase project={projectsList[0]} />
-          <ProjectShowcase project={projectsList[0]} />
-          <ProjectShowcase project={projectsList[0]} />
+          <ProjectShowcase project={projectsList[0]} picRight />
+          <ProjectShowcase project={projectsList[0]} picLeft />
+          <ProjectShowcase project={projectsList[0]} picRight />
         </div>
       </TemplateWrapper>
     );

@@ -14,6 +14,7 @@ const Shadow = styled.span`
   & svg {
     width: ${props => props.size};
     height: ${props => props.size};
+    stroke: ${props => props.color};
   }
 `
 
@@ -25,6 +26,7 @@ const Outline = styled.span`
   & svg {
     width: ${props => props.size};
     height: ${props => props.size};
+    stroke: ${props => props.color};
   }
 `;
 
@@ -56,10 +58,10 @@ class SVGDrawIcon extends React.Component {
       <Icon size={this.props.size}
         onMouseEnter={() => this.setState({hovering: true})}
         onMouseLeave={() => this.setState({hovering: false})}>
-        <Shadow size={this.props.size}>
+        <Shadow size={this.props.size} color={this.props.color}>
           {this.props.children}
         </Shadow>
-        <Outline size={this.props.size}>
+        <Outline size={this.props.size} color={this.props.color}>
           <MtSvgLines animate={ shouldAnimate } duration={ 500 }>
             {this.props.children}
           </MtSvgLines>
