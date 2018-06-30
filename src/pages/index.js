@@ -38,6 +38,7 @@ const ParticlesStyle = {
   height: "100%",
   zIndex: "-2"
 }
+
 const MainInfoContainer = styled.div`
   position: relative;
   left: -3vmax;
@@ -144,12 +145,12 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <div id="background">
+      <div id="particleBgContainer">
         <Particles params={particleConfig} style={ParticlesStyle} />
         <TemplateWrapper menu outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
 
           <Logo src={LogoPic} initialPose={'enter'} pose={'normal'} />
-          {/* script font in logo is BarleyScript */}
+          {/* NOTE: script font in logo is BarleyScript */}
 
           <Greeting initialPose={'enter'} pose={'normal'}>
             {this.state.greeting + " I'm"}
@@ -196,11 +197,11 @@ class HomePage extends React.Component {
                   <path d="M2,4a2,2 0 1,0 4,0a2,2 0 1,0 -4,0"/>
                 </svg>
               </SVGDrawIcon>
+              {/* TODO: extract these out into their own hoverable icons */}
             </a>
           </ImportantInfo>
 
           <MainPagePic src={IntroPic} initialPose={'enter'} pose={'normal'} />
-          {/* TODO: add transition for image, fade from white? */}
 
         </TemplateWrapper>
       </div>

@@ -2,10 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { Page } from 'react-pdf';
 import { Document } from 'react-pdf/dist/entry.webpack';
+import { particleConfig } from "../data/configOptions.js";
 
+import Particles from 'react-particles-js';
 import TemplateWrapper from "../components/TemplateWrapper.js";
 import Resume from "../../alex_xie_resume_2A.pdf";
 import PageHeader from "../components/PageHeader.js";
+
+const ParticlesStyle = {
+  position: "fixed",
+  width: "100%",
+  height: "100%",
+  zIndex: "-2"
+}
 
 const ResumeBox = styled.div`
   width: 100%;
@@ -52,20 +61,20 @@ class ResumePage extends React.Component {
 
   render() {
     return (
-      <TemplateWrapper menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
-        <PageHeader>Resume</PageHeader>
-        <ResumeBox>
-          <a href={Resume} download="Alex Xie - Resume (2A)">
-            <Document
-              file={Resume}>
-              <Page pageNumber={1} />
-            </Document>
-          </a>
-
-        </ResumeBox>
-
-
-      </TemplateWrapper>
+      <div id="particleBgContainer">
+        <Particles params={particleConfig} style={ParticlesStyle} />
+        <TemplateWrapper menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
+          <PageHeader>Resume</PageHeader>
+          <ResumeBox>
+            <a href={Resume} download="Alex Xie - Resume (2A)">
+              <Document
+                file={Resume}>
+                <Page pageNumber={1} />
+              </Document>
+            </a>
+          </ResumeBox>
+        </TemplateWrapper>
+      </div>
     );
   }
 }

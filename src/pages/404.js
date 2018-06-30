@@ -15,6 +15,7 @@ class InvalidURLPage extends React.Component {
         <div>
           The page was not found.
         </div>
+        {/* IDEA: use glitch text effect here??? */}
       </TemplateWrapper>
     );
   }

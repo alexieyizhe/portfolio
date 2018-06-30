@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Link from "gatsby-link";
 import Helmet from "react-helmet";
-import Footer from "./Footer.js";
+import PageFooter from "./PageFooter.js";
 import DropMenu from "./DropMenu.js";
 
 // Global styles go here!
@@ -37,7 +37,7 @@ class TemplateWrapper extends React.Component {
         />
         {this.state.showMenu ? <DropMenu className="navMenu"/> : null}
         {this.props.children}
-        {this.state.showFooter ? <Footer className="pageFooter"/> : null}
+        {this.state.showFooter ? <PageFooter className="pageFooter"/> : null}
       </TemplateContainer>
     )
   }

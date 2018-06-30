@@ -1,9 +1,9 @@
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 const displaySizes = {
-  desktop: 992,
-  tablet: 768,
-  phone: 376
+  desktop: 1080,
+  tablet: 800,
+  phone: 425
 }
 
 // Iterate through the sizes and create a media template
@@ -66,6 +66,15 @@ export const contactOptions = [
     text: 'linkedin'
   }
 ];
+
+export const projectsList = [
+  {
+    name: 'Easy Recipeasy',
+    color: '#686BB6',
+    imgSource: './easy_recipeasy_displayPic.png'
+
+  }
+]
 
 export const greetingOptions = ['Hi!', 'Hey!', 'Sup?', 'Howdy!', 'Heya!', 'Yo!', '你好!', '👋 !']
 

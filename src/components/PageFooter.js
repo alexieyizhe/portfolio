@@ -14,7 +14,7 @@ const FooterContainer = styled.span`
                        "copyright copyright copyright copyright copyright";
 `;
 
-const Footer = () => (
+const PageFooter = () => (
   <div style={{width: '100%', alignItems: 'center'}}>
     <FooterContainer>
       <a href="mailto:alex@alexieyizhe.me" target="_blank" style={{gridArea: 'contactIcon'}}>
@@ -55,10 +55,10 @@ const Footer = () => (
         </SVGDrawIcon>
       </a>
     <p style={{gridArea: 'copyright'}}>
-      © alex xie, 2018.
+      © alex xie, mmxviii.
     </p>
   </FooterContainer>
 </div>
 );
 
-export default Footer;
+export default PageFooter;
