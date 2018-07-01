@@ -13,7 +13,7 @@ const ParticlesStyle = {
   position: "fixed",
   width: "100%",
   height: "100%",
-  zIndex: "-2"
+  zIndex: "-5"
 }
 
 const ResumeBox = styled.div`
@@ -63,7 +63,7 @@ class ResumePage extends React.Component {
     return (
       <div id="particleBgContainer">
         <Particles params={particleConfig} style={ParticlesStyle} />
-        <TemplateWrapper header="resume." menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
+        <TemplateWrapper header="resume." menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Resume">
           <ResumeBox>
             <a href={Resume} download="Alex Xie - Resume (2A)">
               <Document

@@ -16,7 +16,7 @@ class ProjectsPage extends React.Component {
 
   render() {
     return (
-      <TemplateWrapper header="experience." menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
+      <TemplateWrapper header="experience." menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Experience">
         <div id="centerDiv">
           {experienceList.map((work, i) => {
             return <WorkShowcase key={i} work={work} />

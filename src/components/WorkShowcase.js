@@ -24,8 +24,10 @@ const Container = styled.div`
                        "role role";
 
   background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(${bg});
+  filter: grayscale(50%);
   background-size: cover;
   background-position: center;
+  transition: all 0.3s ease-in;
 
   /* TODO: add props to showing or hiding the shadow so that touch-only devices can have it always show by default */
   &:before {
@@ -45,9 +47,12 @@ const Container = styled.div`
     transition: opacity 500ms;
   }
 
+  &:hover {
+    filter: none;
 
-  &:hover:before {
-    opacity: 1;
+    :before {
+      opacity: 1;
+    }
   }
 
   ${mediaSize.tablet`
@@ -63,6 +68,7 @@ const Container = styled.div`
     width: 80%;
     height: 50vh;
     padding: 0 10% 0 10%;
+    margin-bottom: 12vh;
     border-radius: 8px;
 
     grid-template-columns: 2fr 1fr;
@@ -110,10 +116,12 @@ const WorkLogo = styled.img`
 
 
   filter: grayscale(100%);
-  transition: 1s filter;
+  opacity: 0;
+  transition: all 0.3s ease-in;
 
   &.hovered {
     filter: none;
+    opacity: 1;
   }
 
   ${mediaSize.tablet`

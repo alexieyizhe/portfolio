@@ -29,32 +29,32 @@ const FooterContainer = styled.span`
 `;
 
 const PageFooter = () => (
-    <FooterContainer>
-      <a href="mailto:alex@alexieyizhe.me" target="_blank" style={{gridArea: 'contactIcon'}}>
-        <SVGDrawIcon size="2vh" color="#80D07F">
-          <Icon name="paper_plane" />
-        </SVGDrawIcon>
-      </a>
-      <a href="/resume" style={{gridArea: 'resumeIcon'}}>
-        <SVGDrawIcon size="2vh" color="#DE7947">
-          <Icon name="file" />
-        </SVGDrawIcon>
-      </a>
-      <span style={{gridArea: 'topIcon'}} onClick={() => animateScroll.scrollToTop()}>
-        <SVGDrawIcon size="4vh" color="#000">
-          <Icon name="up_arrow" />
-        </SVGDrawIcon>
-      </span>
-      <a href="https://github.com/alexieyizhe" target="_blank" style={{gridArea: 'githubIcon'}}>
-        <SVGDrawIcon size="2vh" color="#B29CE7">
-          <Icon name="github" />
-        </SVGDrawIcon>
-      </a>
-      <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank" style={{gridArea: 'linkedinIcon'}}>
-        <SVGDrawIcon size="2vh" color="#4092DE">
-          <Icon name="linkedin" />
-        </SVGDrawIcon>
-      </a>
+  <FooterContainer>
+    <a href="mailto:alex@alexieyizhe.me" target="_blank" style={{gridArea: 'contactIcon'}}>
+      <SVGDrawIcon>
+        <Icon name="paper_plane" size="2vh" color="#80D07F" />
+      </SVGDrawIcon>
+    </a>
+    <a href="/resume" style={{gridArea: 'resumeIcon'}}>
+      <SVGDrawIcon>
+        <Icon name="file" size="2vh" color="#DE7947" />
+      </SVGDrawIcon>
+    </a>
+    <span style={{gridArea: 'topIcon'}} onClick={() => animateScroll.scrollToTop()}>
+      <SVGDrawIcon>
+        <Icon name="up_arrow" size="4vh" color="#000" />
+      </SVGDrawIcon>
+    </span>
+    <a href="https://github.com/alexieyizhe" target="_blank" style={{gridArea: 'githubIcon'}}>
+      <SVGDrawIcon>
+        <Icon name="github" size="2vh" color="#B29CE7" />
+      </SVGDrawIcon>
+    </a>
+    <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank" style={{gridArea: 'linkedinIcon'}}>
+      <SVGDrawIcon>
+        <Icon name="linkedin"  size="2vh" color="#4092DE"/>
+      </SVGDrawIcon>
+    </a>
     <p style={{gridArea: 'copyright'}}>
       © alex xie, mmxviii.
     </p>

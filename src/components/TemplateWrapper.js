@@ -5,7 +5,7 @@ import Helmet from "react-helmet";
 import PageFooter from "./PageFooter.js";
 import PageHeader from "./PageHeader.js";
 import NavMenu from "./NavMenu.js";
-import Logo from "../../logo.png";
+import Favicon from "../../logo_favicon.png";
 
 // Global styles go here!
 const TemplateContainer = styled.div`
@@ -25,24 +25,35 @@ class TemplateWrapper extends React.Component {
       showMenu: props.menu,
       showDefaultMenu: props.defaultMenu,
       showHeader: props.header,
-      showFooter: props.footer
+      showFooter: props.footer,
+      title: props.title,
     }
   }
+  /* this code changes the title of the tab when it's not in focus
+  componentDidMount() {
+    window.addEventListener("focus", () => this.changeFocus(true));
+    window.addEventListener("blur", () => this.changeFocus(false));
+  }
+
+  componentWilUnmount() {
+      window.removeEventListener("focus", () => this.changeFocus(true));
+      window.removeEventListener("blur", () => this.changeFocus(false));
+  }
+
+  changeFocus(focused) {
+      this.setState({title: focused ? "Alex Xie" : "Hey! What's up?"});
+      document.title = "Hey! What's up?"
+  } */
 
   render() {
     return (
       <TemplateContainer outerBounds={this.props.outerBounds}>
-        <Helmet
-          title="Alex Xie"
-          meta={[
-            { name: `description`, content: `The personal website/portfolio of Alex Xie, a computer science student at the University of Waterloo.` },
-            { name: `keywords`, content: `Alex, Yizhe, Xie, alexieyizhe, website, portfolio, university, waterloo, projects, work, experience, resume, contact` },
-          ]}
-          links={[
-            { rel:'icon', type: 'image/png', sizes:'16x16', href:{Logo} }
-          ]}
-        />
-        {/* TODO: get favicon working! */}
+        <Helmet>
+          <title>{this.state.title}</title>
+          <meta name="description" content="The personal website/portfolio of Alex Xie, a computer science student at the University of Waterloo." />
+          <meta name="keywords" content="Alex, Yizhe, Xie, alexieyizhe, website, portfolio, university, waterloo, projects, work, experience, resume, contact, gatsbyjs, react, developer" />
+          <link rel="icon" href={Favicon} sizes="16x16" type="image/png" />
+        </Helmet>
         <div>
           {this.state.showHeader ? <PageHeader className="navMenu" title={this.state.showHeader} /> : null}
           {this.state.showMenu || this.state.showDefaultMenu ? <NavMenu showDefault={this.state.showDefaultMenu} /> : null}

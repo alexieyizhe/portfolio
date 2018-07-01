@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const Header = styled.div`
   display: inline-block;
-  margin-bottom: 5%;
-  font-size: 3em;
+  margin-bottom: 5vh;
+  font-size: 6vh;
   font-weight: bold;
 `;
 

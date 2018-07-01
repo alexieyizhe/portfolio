@@ -7,7 +7,8 @@ import TestPic from "../../testaboutpic.png";
 
 const ParagraphPic = styled.figure`
   padding: 0;
-  margin: 5px;
+  margin: 2vmin;
+
   float: ${props => props.imgAlign || 'none'};
 
   & figcaption {
@@ -19,6 +20,25 @@ const ParagraphPic = styled.figure`
   & img {
     display: block;
     margin: 0 auto;
+    max-width: ${props => props.dims && props.dims.width};
+    max-height: ${props => props.dims && props.dims.height};
+  }
+`
+
+const Intro = styled.div`
+  font-size: 2.5vh;
+  font-family: "PT Serif";
+
+  & > div {
+    margin-bottom: 1em;
+  }
+
+  & > div:last-child {
+    margin-bottom: 0;
+  }
+
+  & a {
+
   }
 `
 
@@ -30,8 +50,8 @@ class AboutPage extends React.Component {
 
   render() {
     return (
-      <TemplateWrapper header="Alex who?" menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
-        <div style={{fontSize: "3vh"}}>
+      <TemplateWrapper header="alex who?" menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="About">
+        <Intro>
           <div>
             Yes, I know, it's hard to pronounce my last name. You don't have to tell me.
           </div>
@@ -41,42 +61,29 @@ class AboutPage extends React.Component {
           </div>
 
           <div>
-            Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum. Duis at consectetur lorem donec massa. Volutpat consequat mauris nunc congue nisi vitae suscipit. Consequat mauris nunc congue nisi vitae suscipit tellus mauris a. Nunc vel risus commodo viverra.
-
-            <ParagraphPic center captionAlign="center">
-              <img src={TestPic}/>
-              <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
-            </ParagraphPic>
-
-            Lacus luctus accumsan tortor posuere. Enim blandit volutpat maecenas volutpat blandit. Magna fermentum iaculis eu non diam phasellus vestibulum lorem. Ipsum faucibus vitae aliquet nec. Nibh ipsum consequat nisl vel. Integer enim neque volutpat ac tincidunt vitae semper. Sed euismod nisi porta lorem mollis aliquam ut. Elementum eu facilisis sed odio morbi quis commodo odio. Mattis pellentesque id nibh tortor id aliquet lectus proin nibh.
-          </div>
-
-          <div>
-            Facilisi cras fermentum odio eu. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Donec et odio pellentesque diam volutpat commodo sed egestas egestas. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat. Est lorem ipsum dolor sit amet consectetur adipiscing elit.
-
-            <ParagraphPic imgAlign="right" captionAlign="center">
+            That's awesome! I'm Alex Yizhe Xie, and I'm currently two-fifths of my way into a Bachelor of Computer Science at the University of Waterloo.
+            <ParagraphPic imgAlign="right" captionAlign="center" dims={{width: "35vw", height: "20vh"}}>
               <img src={TestPic}/>
               <figcaption>me!</figcaption>
-            </ParagraphPic>
-
-            Parturient montes nascetur ridiculus mus. Sit amet purus gravida quis. Volutpat sed cras ornare arcu. Est velit egestas dui id. Consectetur adipiscing elit duis tristique sollicitudin. Sed vulputate mi sit amet mauris. Duis at tellus at urna condimentum mattis pellentesque id nibh. Id diam maecenas ultricies mi eget mauris pharetra et ultrices. Mattis pellentesque id nibh tortor id aliquet lectus proin nibh. Viverra vitae congue eu consequat ac felis donec et odio. Vitae auctor eu augue ut. A erat nam at lectus urna duis convallis convallis tellus. Sed egestas egestas fringilla phasellus faucibus.
+            </ParagraphPic> I'm Chinese, but my hometown is the city-state of Singapore, Singapore (trippy, I know). These days, I'm proudly Canadian and working as a back-end software engineer at <a href="https://flipp.com/home" target="_blank">Flipp Corp</a>. As a member of the Item Data Platform team, I'm working with some other awesome peeps on the system responsible for indexing retailer products to power the results on Flipp's flyers and search results.
           </div>
 
           <div>
-            Lacus vestibulum sed arcu non odio euismod lacinia at. Tortor at risus viverra adipiscing at in. Eu tincidunt tortor aliquam nulla facilisi cras fermentum odio eu. Ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum. Massa tincidunt dui ut ornare lectus sit amet est. Imperdiet massa tincidunt nunc pulvinar sapien. Quam pellentesque nec nam aliquam sem et. Eu nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Vel facilisis volutpat est velit. In nulla posuere sollicitudin aliquam. Sed arcu non odio euismod lacinia at quis.
-
-            <ParagraphPic imgAlign="left" captionAlign="center">
-              <img src={TestPic}/>
-              <figcaption>me!</figcaption>
-            </ParagraphPic>
-
-            Integer quis auctor elit sed vulputate mi. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat. Congue quisque egestas diam in arcu cursus euismod quis. Risus nullam eget felis eget nunc lobortis mattis aliquam.
+            I'm a diehard soccer fan, whether it's watching FC Barcelona - my favourite team - or getting on the field myself. Apart from soccer and coding, my other interests are <s>nonexistent</s> fitness, cooking, my husky-malamute Storm, and travelling. I've done a couple of solo trips that you can read about on my blog!
           </div>
 
           <div>
-            Purus sit amet luctus venenatis lectus magna fringilla. Ultricies mi quis hendrerit dolor magna eget est lorem ipsum. Pharetra magna ac placerat vestibulum lectus. Interdum consectetur libero id faucibus nisl tincidunt. Risus quis varius quam quisque id. Amet dictum sit amet justo donec. Eget nulla facilisi etiam dignissim. Adipiscing at in tellus integer feugiat. Lectus quam id leo in vitae. Vulputate mi sit amet mauris commodo quis. Malesuada proin libero nunc consequat interdum varius sit amet mattis. Nisl nunc mi ipsum faucibus vitae aliquet. At erat pellentesque adipiscing commodo elit. Turpis egestas integer eget aliquet.
+            Even though almost all of the work I'm doing at Flipp is on the back-end, I'm extremely interested in the workings of the entire web stack. Stemming from the fact that I'm a very visual learner, I have a deep fascination with user interfaces and UX design. I absolutely love trawling the web for interesting articles and demos/case studies of said topic - stuff like human-computer interactions and subtle effects on user experience are my bread and butter. It's a major contributing factor to why I'm learning JavaScript, React, responsive design, and how to use tools like Figma and Adobe XD.
           </div>
-        </div>
+
+          <div>
+            My friends always tell me that I'm addicted to coding, but I like to think of it less as an addiction to coding and more as a passion for solving problems. I find myself engrossed in creating solutions to tough problems and pushing myself to always improve my skills and abilities; before you know it, I've been programming for hours upon hours. This is also one aspect of my skills that I hope to improve upon, so I'm also interested in more sustainable and long-term coding practices like Agile development and working in a professional environment.
+          </div>
+
+          <div>
+            However, I also believe that creating solutions to problems and learning new ideas aren't limited to the scope of studying and coding. I'm currently working with a huge amount of passionate individuals on organizing a <a href="https://www.tedxuw.com/" target="_blank">700+ attendee TEDx event</a>, powering one of the <a href="https://teamwaterloop.ca/" target="_blank">world's top 25 hyperloop teams</a>, and leading the next iteration of <a href="https://equithon.org/" target="_blank">Waterloo's largest social innovation hackathon</a>. These have been incredibly rewarding learning experiences that I cherish greatly, and I'm hoping to continue contributing and getting involved with various communities now and into the future.
+          </div>
+        </Intro>
       </TemplateWrapper>
     );
   }

@@ -103,7 +103,10 @@ const ImportantInfo = styled(posed.div(fadeEnter))`
   `}
 
   & a {
-    color: inherit
+    color: inherit;
+    margin-bottom: 2vh;
+    margin-left: 2vh;
+    margin-right: 2vh;
   }
 
   & span:first-child {
@@ -147,7 +150,7 @@ class HomePage extends React.Component {
     return (
       <div id="particleBgContainer">
         <Particles params={particleConfig} style={ParticlesStyle} />
-        <TemplateWrapper defaultMenu outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
+        <TemplateWrapper defaultMenu outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Alex Xie">
 
           <Logo src={LogoPic} initialPose={'enter'} pose={'normal'} />
           {/* NOTE: script font in logo is BarleyScript */}
@@ -161,31 +164,31 @@ class HomePage extends React.Component {
           </MainInfoText>
           {/* TODO: add floating animation for text??? */}
           <BriefBioText initialPose={'enter'} pose={'normal'}>
-            <div>code enthusiast.</div>
-            <div>event inspirer.</div>
+            <div>web developer.</div>
+            <div>opportunity pursuer.</div>
             <div>soccer fanatic.</div>
             <div>lover of bad puns.</div>
           </BriefBioText>
 
           <ImportantInfo initialPose={'enter'} pose={'normal'} >
             <a href="mailto:alex@alexieyizhe.me" target="_blank">
-              <SVGDrawIcon size="4vh" color="#80D07F">
-                <Icon name="paper_plane" />
+              <SVGDrawIcon>
+                <Icon name="paper_plane" size="4vh" color="#80D07F" />
               </SVGDrawIcon>
             </a>
             <a href="/resume">
-              <SVGDrawIcon size="4vh" color="#DE7947">
-                <Icon name="file" />
+              <SVGDrawIcon>
+                <Icon name="file" size="4vh" color="#DE7947" />
               </SVGDrawIcon>
             </a>
             <a href="https://github.com/alexieyizhe" target="_blank">
-              <SVGDrawIcon size="4vh" color="#B29CE7">
-                <Icon name="github" />
+              <SVGDrawIcon>
+                <Icon name="github" size="4vh" color="#B29CE7" />
               </SVGDrawIcon>
             </a>
             <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank">
-              <SVGDrawIcon size="4vh" color="#4092DE">
-                <Icon name="linkedin" />
+              <SVGDrawIcon>
+                <Icon name="linkedin" size="4vh" color="#4092DE" />
               </SVGDrawIcon>
             </a>
           </ImportantInfo>

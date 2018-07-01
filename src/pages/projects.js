@@ -16,12 +16,10 @@ class ProjectsPage extends React.Component {
 
   render() {
     return (
-      <TemplateWrapper header="featured work." menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
-        <div id="centerDiv">
-          <ProjectShowcase project={projectsList[0]} picRight />
-          <ProjectShowcase project={projectsList[0]} picLeft />
-          <ProjectShowcase project={projectsList[0]} picRight />
-        </div>
+      <TemplateWrapper header="featured work." menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Projects">
+        {projectsList.map((project, i) => {
+          return <ProjectShowcase key={i} project={project} layout={i % 2 ? "left" : "right"} />
+        })}
       </TemplateWrapper>
     );
   }

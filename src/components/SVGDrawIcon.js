@@ -7,14 +7,9 @@ import { mediaSize } from "../data/configOptions.js";
 const Shadow = styled.span`
   position: absolute;
   z-index: 1;
+
   & path {
     stroke: #C4C4C4;
-  }
-
-  & svg {
-    width: ${props => props.size};
-    height: ${props => props.size};
-    stroke: ${props => props.color};
   }
 `
 
@@ -22,22 +17,11 @@ const Outline = styled.span`
   position: relative;
   z-index: 3;
   cursor: pointer;
-
-  & svg {
-    width: ${props => props.size};
-    height: ${props => props.size};
-    stroke: ${props => props.color};
-  }
 `;
 
 const Icon = styled.span`
   display: inline;
   position: relative;
-  margin-bottom: 2vh;
-  margin-left: 2vh;
-  margin-right: 2vh;
-  width: ${props => props.size};
-  height: ${props => props.size};
 `
 
 
@@ -45,24 +29,35 @@ class SVGDrawIcon extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hovering: false,
-      nextFill: this.props.color
-    };
+      animate: false,
+    }
+  }
+
+  handleHover(hovering) {
+    if(this.props.ignoreHover) {
+
+    } else {
+      this.setState({animate: hovering});
+    }
   }
 
   render() {
-    // Animate icons by default if on mobile, otherwise wait for hover
-    const shouldAnimate = this.state.hovering ? true : "ontouchstart" in document.documentElement ? 2500 : "hide";
+    let shouldAnimate = "hide";
+    if(this.props && this.props.animate) {
+      shouldAnimate = true;
+    } else {
+      shouldAnimate = this.state.animate || "hide";
+    }
 
     return (
-      <Icon size={this.props.size}
-        onMouseEnter={() => this.setState({hovering: true})}
-        onMouseLeave={() => this.setState({hovering: false})}>
-        <Shadow size={this.props.size} color={this.props.color}>
+      <Icon
+        onMouseEnter={() => this.handleHover(true)}
+        onMouseLeave={() => this.handleHover(false)}>
+        <Shadow>
           {this.props.children}
         </Shadow>
-        <Outline size={this.props.size} color={this.props.color}>
-          <MtSvgLines animate={ shouldAnimate } duration={ 500 }>
+        <Outline>
+          <MtSvgLines animate={ shouldAnimate } duration={ this.props.duration || 500 }>
             {this.props.children}
           </MtSvgLines>
         </Outline>
