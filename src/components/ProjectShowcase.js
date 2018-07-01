@@ -197,12 +197,12 @@ class ProjectShowcase extends React.Component {
           </a>
           <a href="https://github.com/alexieyizhe" target="_blank">
             <SVGDrawIcon ignoreHover animate={this.state.hovered}>
-              <Icon name="github" size="3vmin" color="#B29CE7" />
+              <Icon name="javascript" size="3vmin" color="#B29CE7" />
             </SVGDrawIcon>
           </a>
           <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank">
             <SVGDrawIcon ignoreHover animate={this.state.hovered}>
-              <Icon name="linkedin" size="3vmin" color="#4092DE"/>
+              <Icon name="javascript" size="3vmin" color="#4092DE"/>
             </SVGDrawIcon>
           </a>
         </ProjectTechUsed>
