@@ -11,43 +11,43 @@ const GlitchBox = styled.div`
 
   @keyframes glitch-anim-1 {
     0% {
-      clip: rect(${Math.floor(Math.random() * 500)}px, 500px, ${Math.floor(Math.random() * 500)}px, 0);
+      clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
     }
     20% {
-      clip: rect(${Math.floor(Math.random() * 500)}px, 500px, ${Math.floor(Math.random() * 500)}px, 0);
+      clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
     }
     40% {
-      clip: rect(${Math.floor(Math.random() * 500)}px, 500px, ${Math.floor(Math.random() * 500)}px, 0);
+      clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
     }
     60% {
-      clip: rect(${Math.floor(Math.random() * 500)}px, 500px, ${Math.floor(Math.random() * 500)}px, 0);
+      clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
     }
     80% {
-      clip: rect(${Math.floor(Math.random() * 500)}px, 500px, ${Math.floor(Math.random() * 500)}px, 0);
+      clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
     }
     100% {
-      clip: rect(${Math.floor(Math.random() * 500)}px, 500px, ${Math.floor(Math.random() * 500)}px, 0);
+      clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
     }
   }
 
   @keyframes glitch-anim-2 {
     0% {
-      clip: rect(${Math.floor(Math.random() * 500)}px, 500px, ${Math.floor(Math.random() * 500)}px, 0);
+      clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
     }
     20% {
-      clip: rect(${Math.floor(Math.random() * 500)}px, 500px, ${Math.floor(Math.random() * 500)}px, 0);
+      clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
     }
     40% {
-      clip: rect(${Math.floor(Math.random() * 500)}px, 500px, ${Math.floor(Math.random() * 500)}px, 0);
+      clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
     }
     60% {
-      clip: rect(${Math.floor(Math.random() * 500)}px, 500px, ${Math.floor(Math.random() * 500)}px, 0);
+      clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
     }
     80% {
-      clip: rect(${Math.floor(Math.random() * 500)}px, 500px, ${Math.floor(Math.random() * 500)}px, 0);
+      clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
     }
     100% {
-      clip: rect(${Math.floor(Math.random() * 500)}px, 500px, ${Math.floor(Math.random() * 500)}px, 0);
+      clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
     }
   }
 

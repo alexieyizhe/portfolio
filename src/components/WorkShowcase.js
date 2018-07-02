@@ -1,10 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import posed from "react-pose";
-
+import VisibilitySensor from "react-visibility-sensor";
+import { css } from 'styled-components';
+import { isMobile } from 'react-device-detect';
 import { mediaSize } from "../data/configOptions.js";
+
 import easyPic from "../../flipp_logo.png";
 import bg from "../../flipp_bg.jpg";
+
+
+/* when to show shadow and logo:
+    non-mobile & hover
+    mobile & visible on screen
+
+    &:before {
+      opacity: 1;
+      border-radius: 8px;
+    }
+*/
 
 const Container = styled.div`
   position: relative;
@@ -29,9 +43,8 @@ const Container = styled.div`
   background-position: center;
   transition: all 0.3s ease-in;
 
-  /* TODO: add props to showing or hiding the shadow so that touch-only devices can have it always show by default */
+  /* Pseudo-element for shadow on container during focus */
   &:before {
-    /* Position the pseudo-element. */
     content: ' ';
     position: absolute;
     top: 0;
@@ -39,27 +52,32 @@ const Container = styled.div`
     bottom: 0;
     left: 0;
 
-    /* Create the box shadow at expanded size. */
     box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.5);
 
-    /* Hidden by default. */
+
     opacity: 0;
     transition: opacity 500ms;
   }
 
   &:hover {
     filter: none;
-
     :before {
       opacity: 1;
     }
   }
 
+  ${props => props.focused ? css`
+    filter: none;
+    :before {
+      opacity: 1;
+    }
+    ` : null}
+
   ${mediaSize.tablet`
     width: 80%;
+
     border-radius: 8px;
     &:before {
-      opacity: 1;
       border-radius: 8px;
     }
   `}
@@ -69,18 +87,17 @@ const Container = styled.div`
     height: 50vh;
     padding: 0 10% 0 10%;
     margin-bottom: 12vh;
+
     border-radius: 8px;
+    &:before {
+      border-radius: 8px;
+    }
 
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto auto;
     grid-template-areas: "title title"
                          "role role"
                          "pic pic";
-
-    &:before {
-      opacity: 1;
-      border-radius: 8px;
-    }
   `}
 
 `;
@@ -114,22 +131,13 @@ const WorkLogo = styled.img`
   max-width: 30vw;
   max-height: 20vh;
 
-
   filter: grayscale(100%);
   opacity: 0;
   transition: all 0.3s ease-in;
 
-  &.hovered {
-    filter: none;
-    opacity: 1;
-  }
-
-  ${mediaSize.tablet`
-    filter: none;
-  `}
+  ${props => props.focused ? css`filter: none; opacity: 1;` : null}
 
   ${mediaSize.phone`
-    filter: none;
     top: 25%;
     right: -30%;
     max-width: 30vh;
@@ -139,8 +147,8 @@ const WorkLogo = styled.img`
 `
 
 const WorkRole = styled.div`
-  font-family: "Raleway";
   grid-area: role;
+  font-family: "Raleway";
   font-size: 2vw;
 
   ${mediaSize.tablet`
@@ -156,24 +164,28 @@ class WorkShowcase extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hovered: false,
+      focused: false,
     };
   }
 
+  handleFocus(focused) {
+    this.setState({focused: focused});
+  }
+
   render() {
-    const isMobile = "ontouchstart" in document.documentElement;
     return (
-      <Container
-        onMouseEnter={() => this.setState({hovered: true})}
-        onMouseLeave={() => this.setState({hovered: false})} >
-        <WorkTitle>{this.props.work.name}</WorkTitle>
-        <WorkRole>{this.props.work.role}</WorkRole>
-        <WorkLogo
-          src={easyPic}
-          className={this.state.hovered ? "hovered" : ""}
-        />
-        {/* TODO: make these cards parallax scrolling! */}
-      </Container>
+      <VisibilitySensor onChange={(isVisible) => this.handleFocus(isMobile && isVisible)}>
+        <Container
+          focused={this.state.focused}
+          onMouseEnter={() => this.handleFocus(true)}
+          onMouseLeave={() => this.handleFocus(false)} >
+
+          <WorkTitle>{this.props.work.name}</WorkTitle>
+          <WorkRole>{this.props.work.role}</WorkRole>
+          <WorkLogo src={easyPic} focused={this.state.focused} />
+
+        </Container>
+      </VisibilitySensor>
     );
   }
 }

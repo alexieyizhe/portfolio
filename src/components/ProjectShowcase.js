@@ -1,19 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 import posed from "react-pose";
-
+import VisibilitySensor from "react-visibility-sensor";
+import { css } from 'styled-components';
+import { isMobile } from 'react-device-detect';
 import { mediaSize } from "../data/configOptions.js";
-import easyPic from "../../easy.png";
+
 import SVGDrawIcon from "./SVGDrawIcon.js";
 import Icon from "./Icon.js";
-import { css } from 'styled-components';
+
+import easyPic from "../../easy.png";
 
 
 const ContainerConfig = {
+  enter: {
+    opacity: 0
+  },
   normal: {
+    opacity: 1,
     zoom: 0.9
   },
   hovered: {
+    opacity: 1,
     zoom: 1
   }
 }
@@ -35,8 +43,6 @@ const Container = styled(posed.div(ContainerConfig))`
   grid-template-rows: 2fr 1fr 1.5fr;
   grid-column-gap: 2vmax;
   grid-template-areas: ${props => props.picright ? '"title pic" "desc pic" "stack pic"' : '"pic title" "pic desc"  "pic stack"'};
-
-
 
   ${mediaSize.tablet`
     width: 80%;
@@ -172,11 +178,12 @@ class ProjectShowcase extends React.Component {
     };
   }
 
+
+
   render() {
-    const isMobile = "ontouchstart" in document.documentElement;
     return (
       <Container
-        initialPose="normal" pose={this.state.hovered ? 'hovered' : 'normal'}
+        initialPose='enter' pose={this.state.hovered ? 'hovered' : 'normal'}
         onMouseEnter={() => this.setState({hovered: true})}
         onMouseLeave={() => this.setState({hovered: false})}
         picright={this.props.layout === 'right'} >
@@ -197,7 +204,7 @@ class ProjectShowcase extends React.Component {
           </a>
           <a href="https://github.com/alexieyizhe" target="_blank">
             <SVGDrawIcon ignoreHover animate={this.state.hovered}>
-              <Icon name="javascript" size="3vmin" color="#B29CE7" />
+              <Icon name="github" size="3vmin" color="#B29CE7" />
             </SVGDrawIcon>
           </a>
           <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank">

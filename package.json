@@ -11,6 +11,7 @@
     "gatsby": "^1.9.273",
     "gatsby-link": "^1.6.45",
     "gatsby-plugin-react-next": "^1.0.11",
+    "react-device-detect": "^1.5.7",
     "react-feather": "^1.1.0",
     "react-helmet": "^5.2.0",
     "react-icons": "^2.2.7",
@@ -19,6 +20,7 @@
     "react-pdf": "^3.0.5",
     "react-pose": "^2.1.2",
     "react-scroll": "^1.7.9",
+    "react-visibility-sensor": "^3.11.0",
     "styled-components": "^3.3.3"
   }
 }

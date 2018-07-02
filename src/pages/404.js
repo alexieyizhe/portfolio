@@ -11,7 +11,7 @@ const ErrorContainer = styled.div`
   margin-right: auto;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 21vh 38vh 36vh;
+  grid-template-rows: 21vh 40vh 36vh;
   grid-row-gap: 2vh;
   text-align: center;
   grid-template-areas: "message"
@@ -24,6 +24,7 @@ const ErrorMessage = styled.div`
   align-self: end;
   justify-self: center;
   font-size: 3vmax;
+  color: #555555;
 `;
 
 const ErrorCode = styled.div`
@@ -37,14 +38,17 @@ const ErrorRedirect = styled.div`
   align-self: begin;
   justify-self: center;
   font-size: 3vmax;
+  color: #555555;
   position: relative;
   top: 2vmax;
+
   & a {
     color: black;
-    text-decoration: none;
+    text-decoration: overline;
+
 
     &:hover {
-      text-decoration: line-through;
+      text-decoration: none;
     }
   }
 
@@ -54,7 +58,7 @@ const InvalidURLPage = (props) => (
   <TemplateWrapper title="o no woops">
     <ErrorContainer>
       <ErrorMessage>
-        This page doesn't exist.
+        Yikes! That page doesn't exist.
       </ErrorMessage>
       <ErrorCode>
         <Glitch text="404" color="black" font="bolder 20vmax Raleway" />

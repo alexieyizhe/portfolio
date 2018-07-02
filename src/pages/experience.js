@@ -7,8 +7,7 @@ import PageHeader from "../components/PageHeader.js";
 import WorkShowcase from "../components/WorkShowcase.js";
 import { experienceList } from "../data/experienceData.js";
 
-
-class ProjectsPage extends React.Component {
+class ExperiencePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -17,15 +16,14 @@ class ProjectsPage extends React.Component {
   render() {
     return (
       <TemplateWrapper header="experience." menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Experience">
-        <div id="centerDiv">
-          {experienceList.map((work, i) => {
-            return <WorkShowcase key={i} work={work} />
-          })}
-        </div>
+        {experienceList.map((work, i) => {
+          return (<WorkShowcase key={i} work={work} />
+          );
+        })}
       </TemplateWrapper>
     );
   }
 }
 
 
-export default ProjectsPage;
+export default ExperiencePage;
