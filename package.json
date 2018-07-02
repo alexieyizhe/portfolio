@@ -8,10 +8,13 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "devicon-react": "^1.1.1",
     "gatsby": "^1.9.273",
     "gatsby-link": "^1.6.45",
     "gatsby-plugin-react-next": "^1.0.11",
+    "gatsby-source-medium": "^1.0.14",
     "react-device-detect": "^1.5.7",
+    "react-devicon": "^0.1.9",
     "react-feather": "^1.1.0",
     "react-helmet": "^5.2.0",
     "react-icons": "^2.2.7",

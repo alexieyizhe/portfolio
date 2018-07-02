@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import posed from "react-pose";
+import { mediaSize } from "../data/configOptions.js";
 
 import TemplateWrapper from "../components/TemplateWrapper.js";
 import PageHeader from "../components/PageHeader.js";
+
 import AboutMe1 from "../../about_1.png";
 import AboutMe0 from "../../about_0.png";
 import AboutMe2 from "../../about_2.png";
-import { mediaSize } from "../data/configOptions.js";
 
 const ParagraphPic = styled.figure`
   padding: 0;
@@ -33,15 +35,25 @@ const ParagraphPic = styled.figure`
     margin: 0 auto;
     max-width: ${props => props.dims && props.dims.width};
     max-height: ${props => props.dims && props.dims.height};
+    
     ${mediaSize.phone`
       max-width: 100%;
     `}
-
   }
-
 `
 
-const Intro = styled.div`
+const IntroConfig = {
+  enter: {
+    opacity: 0,
+    y: -75
+  },
+  normal: {
+    opacity: 1,
+    y: 0
+  }
+}
+
+const Intro = styled(posed.div(IntroConfig))`
   font-size: 2.5vh;
   font-family: "PT Serif";
 
@@ -67,7 +79,7 @@ class AboutPage extends React.Component {
   render() {
     return (
       <TemplateWrapper header="alex who?" menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="About">
-        <Intro>
+        <Intro initialPose="enter" pose="normal">
           <ParagraphPic imgAlign="right" captionAlign="center" dims={{width: "30vw", height: "20vh"}}>
             <img src={AboutMe0}/>
           </ParagraphPic>

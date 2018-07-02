@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+
+.jackhammer{
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width:400px;
+    text-align: center;
+
+}
+
+#jackhammerSVG{
+	height:275px;
+	width:100%;
+	opacity: 0;
+}
+
+#jackhammer_title{
+	font-size: 1.75em;
+	font-weight: normal;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	line-height: 125%;
+}
+
+.jhtime{
+	fill:#ffffff;
+	 text-anchor:middle;
+}
+
+.jackhammer_clear{
+	clear:both;
+}

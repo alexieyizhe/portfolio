@@ -7,7 +7,6 @@ import { particleConfig } from "../data/configOptions.js";
 import Particles from 'react-particles-js';
 import TemplateWrapper from "../components/TemplateWrapper.js";
 import Resume from "../../alex_xie_resume_2A.pdf";
-import PageHeader from "../components/PageHeader.js";
 
 const ParticlesStyle = {
   position: "fixed",
@@ -63,7 +62,7 @@ class ResumePage extends React.Component {
     return (
       <div id="particleBgContainer">
         <Particles params={particleConfig} style={ParticlesStyle} />
-        <TemplateWrapper header="resume." menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Resume">
+        <TemplateWrapper menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Resume" header="resume.">
           <ResumeBox>
             <a href={Resume} download="Alex Xie - Resume (2A)">
               <Document

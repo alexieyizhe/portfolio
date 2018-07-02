@@ -9,216 +9,186 @@ import { mediaSize } from "../data/configOptions.js";
 import SVGDrawIcon from "./SVGDrawIcon.js";
 import Icon from "./Icon.js";
 
-import easyPic from "../../easy.png";
-
+import '../data/devicons.min.css';
 
 const ContainerConfig = {
   enter: {
     opacity: 0
   },
   normal: {
-    opacity: 1,
-    zoom: 0.9
+    opacity: 1
   },
   hovered: {
-    opacity: 1,
-    zoom: 1
+    opacity: 1
   }
 }
 
 const Container = styled(posed.div(ContainerConfig))`
   position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  width: 75%;
-  height: 30vh;
-  padding: 0 5% 0 5%;
-  margin-bottom: 10vh;
-  cursor: pointer;
-  border: 3px dotted rgba(0, 0, 0, 0.1);
-  transform: translateZ(0);
-
+  height: 25em;
+  padding: 10%;
   display: grid;
-  grid-template-columns: ${props => props.picright ? '6fr 5fr' : '5fr 6fr'};
-  grid-template-rows: 2fr 1fr 1.5fr;
-  grid-column-gap: 2vmax;
-  grid-template-areas: ${props => props.picright ? '"title pic" "desc pic" "stack pic"' : '"pic title" "pic desc"  "pic stack"'};
+  grid-template-columns: 250px;
+  grid-template-rows: 10em 3em 5em 4em 2em;
+  grid-template-areas: "pic" "title" "desc" "stack" "links";
 
-  ${mediaSize.tablet`
-    width: 80%;
-    grid-template-columns: 5% 95%;
-    grid-column-gap: 0;
-    grid-row-gap: 2vh;
-    grid-template-rows: 5fr 2fr 2fr;
-    grid-template-areas: "title pic"
-                         "desc desc"
-                         "stack stack";
-    padding: 3vh 5% 0 5%;
-  `}
 
-  ${mediaSize.phone`
-    width: 87%;
-    height: 50vh;
-    grid-template-columns: 90%;
-    grid-template-rows: 30vh 5vh 10vh 5vh;
-    grid-row-gap: 0;
-    grid-template-areas: "pic"
-                         "title"
-                         "desc"
-                         "stack";
-    padding: 0 5% 0 5%;
-    border: none;
-  `}
-
-`;
-
-const ProjectTitle = styled.span`
-  font-family: "PT Serif";
-  font-size: 4vw;
-  grid-area: title;
-  align-self: center;
-  margin-bottom: 0.25em;
-
-  ${mediaSize.tablet`
-    align-self: left;
-    font-size: 4vh;
-    white-space: nowrap;
-  `}
-
-  ${mediaSize.phone`
-    font-size: 4.5vh;
-    white-space: default;
-  `}
-`;
-
-const Highlight = styled.span`
-  position: relative;
-  z-index: 1;
-
-  &:before { /* background of title on hover */
-    background-color: ${props => props.colour};
-    opacity: 0.3;
+  /* Pseudo-element for shadow on container during focus */
+  &:before {
     content: ' ';
     position: absolute;
-    top: 0.45em;
-    left: 0.25em;
-    height: 0.9em;
+    top: 0;
     right: 0;
     bottom: 0;
-    width: 0;
-    z-index: -1;
+    left: 0;
 
-    transition: 250ms ease width;
+    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.5);
 
-    ${props => props.hovered ? css`width: 95%;` : null}
+    opacity: 0;
+    transition: opacity 500ms;
   }
-`
+
+  ${props => props.focused ? css`
+    &:before {
+      opacity: 1;
+    }
+    ` : null
+  }
+
+  ${mediaSize.tablet`
+  `}
+
+  ${mediaSize.phone`
+  `}
+`;
 
 const ProjectPic = styled.img`
+  /* Positioning */
   grid-area: pic;
   justify-self: center;
   align-self: center;
 
-  width: 100%;
-  max-height: 100%;
+  /* Sizing */
+  max-width: 95%;
+  max-height: 95%;
 
-  filter: grayscale(100%);
+  /* Design */
   transition: 1s filter;
-
-  &.hovered {
-    filter: none;
-  }
+  ${props => props.focused ? css`filter: none;` : css`filter: grayscale(90%);`}
 
   ${mediaSize.tablet`
-    justify-self: end;
-
-    width: auto;
-    max-width: 100%;
   `}
 
   ${mediaSize.phone`
-    align-self: end;
-    margin-bottom: 1em;
-    width: auto;
-    max-width: 100%;
   `}
 `
 
-const ProjectDesc = styled.span`
-  grid-area: desc;
-  font-family: "Raleway";
+const ProjectTitle = styled.span`
+  /* Positioning */
+  grid-area: title;
+  justify-self: start;
+  align-self: center;
 
-  font-size: 2.2vmin;
-  padding: 0;
-  margin: 0;
+  /* Design */
+  font-family: "PT Sans";
+  font-weight: bold;
+  font-size: 2em;
 
   ${mediaSize.tablet`
-    justify-self: center;
-    align-self: center;
-    font-size: 2vmax;
   `}
 
   ${mediaSize.phone`
   `}
 `;
 
-const ProjectTechUsed = styled.div`
-  grid-area: stack;
+
+const ProjectDesc = styled.div`
+  grid-area: desc;
+  justify-self: start;
   align-self: center;
+
+  ${mediaSize.tablet`
+  `}
+
+  ${mediaSize.phone`
+  `}
+`;
+
+const ProjectStack = styled.div`
+  grid-area: stack;
+  justify-self: start;
+  align-self: center;
+
+  ${mediaSize.tablet`
+  `}
+
+  ${mediaSize.phone`
+  `}
+`;
+const ProjectLinks = styled.div`
+  grid-area: links;
+  justify-self: center;
+  align-self: center;
+
+  text-align: center;
+
   & a {
-    margin-right: 1vh;
+    padding: 2%;
   }
+
+  ${mediaSize.tablet`
+  `}
+
+  ${mediaSize.phone`
+  `}
 `;
 
 class ProjectShowcase extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hovered: false,
+      focused: false,
     };
   }
 
-
+  handleFocus(focused) {
+    this.setState({focused: focused});
+  }
 
   render() {
     return (
-      <Container
-        initialPose='enter' pose={this.state.hovered ? 'hovered' : 'normal'}
-        onMouseEnter={() => this.setState({hovered: true})}
-        onMouseLeave={() => this.setState({hovered: false})}
-        picright={this.props.layout === 'right'} >
-        <ProjectTitle>
-          <Highlight colour={this.props.project.color} hovered={this.state.hovered}>{this.props.project.name}</Highlight>
-        </ProjectTitle>
-        <ProjectDesc>{this.props.project.desc}</ProjectDesc>
-        <ProjectTechUsed>
-          <a href="mailto:alex@alexieyizhe.me" target="_blank">
-            <SVGDrawIcon ignoreHover animate={this.state.hovered}>
-              <Icon name="paper_plane" size="3vmin" color="#80D07F" />
-            </SVGDrawIcon>
-          </a>
-          <a href="/resume" style={{gridArea: 'resumeIcon'}}>
-            <SVGDrawIcon ignoreHover animate={this.state.hovered}>
-              <Icon name="file" size="3vmin" color="#DE7947" />
-            </SVGDrawIcon>
-          </a>
-          <a href="https://github.com/alexieyizhe" target="_blank">
-            <SVGDrawIcon ignoreHover animate={this.state.hovered}>
-              <Icon name="github" size="3vmin" color="#B29CE7" />
-            </SVGDrawIcon>
-          </a>
-          <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank">
-            <SVGDrawIcon ignoreHover animate={this.state.hovered}>
-              <Icon name="javascript" size="3vmin" color="#4092DE"/>
-            </SVGDrawIcon>
-          </a>
-        </ProjectTechUsed>
-        <ProjectPic
-          src={easyPic}
-          className={this.state.hovered ? "hovered" : ""}
-        />
-        {/* TODO: make these cards parallax scrolling! */}
-      </Container>
+      <VisibilitySensor onChange={(isVisible) => this.handleFocus(isMobile && isVisible)}>
+        <Container
+          focused={this.state.focused}
+          initialPose='enter' pose={this.state.focused ? 'hovered' : 'normal'}
+          onMouseEnter={() => this.handleFocus(true)}
+          onMouseLeave={() => this.handleFocus(false)}
+          color={this.props.color}
+        >
+
+          <ProjectPic src={this.props.project.imgSource} focused={this.state.focused} />
+          <ProjectTitle>{this.props.project.name}</ProjectTitle>
+          <ProjectDesc>{this.props.project.desc}</ProjectDesc>
+          <ProjectStack>
+            {this.props.project.techStack.map((tech, i) => {
+              return (
+                <a href={`http://www.google.com/search?q=${tech}`} key={i} target="_blank">
+                  <span class="devicons devicons-bing_small" />
+                </a>
+              );
+            })}
+          </ProjectStack>
+          <ProjectLinks>
+            <a href={`http://www.google.com`} target="_blank">
+              View
+            </a>
+            <a href={`http://www.github.com`} target="_blank">
+              Github
+            </a>
+          </ProjectLinks>
+
+        </Container>
+      </VisibilitySensor>
     );
   }
 }

@@ -6,26 +6,13 @@ import { css } from 'styled-components';
 import { isMobile } from 'react-device-detect';
 import { mediaSize } from "../data/configOptions.js";
 
-import easyPic from "../../flipp_logo.png";
-import bg from "../../flipp_bg.jpg";
-
-
-/* when to show shadow and logo:
-    non-mobile & hover
-    mobile & visible on screen
-
-    &:before {
-      opacity: 1;
-      border-radius: 8px;
-    }
-*/
 
 const Container = styled.div`
   position: relative;
   margin-left: auto;
   margin-right: auto;
   width: 75%;
-  height: 30vh;
+  height: 32vh;
   margin-bottom: 10vh;
   cursor: pointer;
   color: white;
@@ -37,10 +24,8 @@ const Container = styled.div`
   grid-template-areas: "title pic"
                        "role role";
 
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(${bg});
+  background: url(${props => props.bg}) center/cover;
   filter: grayscale(50%);
-  background-size: cover;
-  background-position: center;
   transition: all 0.3s ease-in;
 
   /* Pseudo-element for shadow on container during focus */
@@ -54,30 +39,42 @@ const Container = styled.div`
 
     box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.5);
 
-
     opacity: 0;
     transition: opacity 500ms;
   }
 
-  &:hover {
-    filter: none;
-    :before {
-      opacity: 1;
-    }
+  &:after {
+    content: ' ';
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    transition: opacity 500ms;
   }
 
   ${props => props.focused ? css`
     filter: none;
-    :before {
+    background: url(${props => props.bg}) center/cover;
+
+    &:before {
       opacity: 1;
     }
-    ` : null}
+
+    &:after {
+      opacity: 0.5;
+    }
+    ` : null
+  }
 
   ${mediaSize.tablet`
     width: 80%;
 
     border-radius: 8px;
-    &:before {
+    &:before, &:after {
       border-radius: 8px;
     }
   `}
@@ -89,7 +86,7 @@ const Container = styled.div`
     margin-bottom: 12vh;
 
     border-radius: 8px;
-    &:before {
+    &:before, &:after {
       border-radius: 8px;
     }
 
@@ -107,6 +104,7 @@ const WorkTitle = styled.span`
   font-size: 4vw;
   font-weight: bolder;
   position: absolute;
+  z-index: 6;
   bottom: 0;
   grid-area: title;
 
@@ -124,10 +122,11 @@ const WorkTitle = styled.span`
 
 const WorkLogo = styled.img`
   grid-area: pic;
-  justify-self: right;
+  justify-self: center;
   position: relative;
+  z-index: 6;
   top: -10%;
-  right: -20%;
+  right: -18%;
   max-width: 30vw;
   max-height: 20vh;
 
@@ -138,16 +137,18 @@ const WorkLogo = styled.img`
   ${props => props.focused ? css`filter: none; opacity: 1;` : null}
 
   ${mediaSize.phone`
-    top: 25%;
+    top: 18%;
     right: -30%;
-    max-width: 30vh;
-    max-height: 25vh;
+    max-width: 25vh;
+    max-height: 20vh;
   `}
 
 `
 
 const WorkRole = styled.div`
   grid-area: role;
+  position: relative;
+  z-index: 6;
   font-family: "Raleway";
   font-size: 2vw;
 
@@ -177,12 +178,13 @@ class WorkShowcase extends React.Component {
       <VisibilitySensor onChange={(isVisible) => this.handleFocus(isMobile && isVisible)}>
         <Container
           focused={this.state.focused}
+          bg={this.props.work.bgImgSource}
           onMouseEnter={() => this.handleFocus(true)}
           onMouseLeave={() => this.handleFocus(false)} >
 
           <WorkTitle>{this.props.work.name}</WorkTitle>
           <WorkRole>{this.props.work.role}</WorkRole>
-          <WorkLogo src={easyPic} focused={this.state.focused} />
+          <WorkLogo src={this.props.work.logoImgSource} focused={this.state.focused} />
 
         </Container>
       </VisibilitySensor>
