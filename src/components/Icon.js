@@ -1,22 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import IconJavascript from 'react-devicon/javascript/plain';
-import IconTypescript from 'react-devicon/typescript/plain';
-import IconIonic from 'react-devicon/ionic/original';
-import IconAngularjs from 'react-devicon/angularjs/original';
-import IconMeteor from 'react-devicon/meteor/original';
-import IconMongodb from 'react-devicon/mongodb/original';
-import IconRuby from 'react-devicon/ruby/plain';
-import IconRails from 'react-devicon/rails/plain';
-import IconReact from 'react-devicon/react/original';
-import IconBootstrap from 'react-devicon/bootstrap/plain';
-import IconHtml5 from 'react-devicon/html5/plain';
-import IconCss3 from 'react-devicon/css3/plain';
-import IconHeroku from 'react-devicon/heroku/plain';
-import IconMysql from 'react-devicon/mysql/plain';
-import IconPython from 'react-devicon/python/original';
-
 const IconWrapper = styled.span`
   & svg {
     width: ${props => props.size};
@@ -43,21 +27,34 @@ const icons = {
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
               <path d="M2,4a2,2 0 1,0 4,0a2,2 0 1,0 -4,0"/>
             </svg>,
-  javascript: <IconJavascript width={100} height={100} />,
-  typescript: <IconTypescript />,
-  react: <IconReact  width={100} height={100}/>,
-  ionic: <IconIonic />,
-  angular: <IconAngularjs />,
-  meteor: <IconMeteor />,
-  mongodb: <IconMeteor />,
-  ruby: <IconRuby />,
-  rails: <IconRails />,
-  bootstrap: <IconBootstrap />,
-  html5: <IconHtml5 />,
-  css3: <IconCss3 />,
-  heroku: <IconHeroku />,
-  mysql: <IconMysql />,
-  python: <IconPython />,
+  monitor: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+             <path d="M2 3 L23 3 L23 17 L2 17 L2 3"/>
+             <path d="M8 21h8M12 17v4"/>
+           </svg>,
+  tablet: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 2 L21 2 L21 22 L3 22 L3 2"/>
+            <path d="M11,17a1,1 0 1,0 2,0a1,1 0 1,0 -2,0"/>
+          </svg>,
+  smartphone: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 2 L19 2 L19 22 L5 22 L5 2"/>
+                <path d="M11,17a1,1 0 1,0 2,0a1,1 0 1,0 -2,0"/>
+              </svg>,
+  code: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
+        </svg>,
+  terminal: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 17l6-6-6-6M12 19h8"/>
+            </svg>,
+  play_circle: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2,12a10,10 0 1,0 20,0a10,10 0 1,0 -20,0"/>
+                <path d="M10 8l6 4-6 4V8z"/>
+              </svg>,
+  shopping_bag: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/>
+                </svg>,
+  message_square: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>,
 }
 
 const Icon = (props) => (

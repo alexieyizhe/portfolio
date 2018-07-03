@@ -5,10 +5,10 @@ import VisibilitySensor from "react-visibility-sensor";
 import { css } from 'styled-components';
 import { isMobile } from 'react-device-detect';
 import { mediaSize } from "../data/configOptions.js";
+import ReactTooltip from 'react-tooltip';
 
 import SVGDrawIcon from "./SVGDrawIcon.js";
 import Icon from "./Icon.js";
-
 import '../data/devicons.min.css';
 
 const ContainerConfig = {
@@ -25,11 +25,11 @@ const ContainerConfig = {
 
 const Container = styled(posed.div(ContainerConfig))`
   position: relative;
-  height: 25em;
-  padding: 10%;
+  height: 24em;
+  padding: 10% 8%;
   display: grid;
   grid-template-columns: 250px;
-  grid-template-rows: 10em 3em 5em 4em 2em;
+  grid-template-rows: 10em 3em 5em 4em 1em;
   grid-template-areas: "pic" "title" "desc" "stack" "links";
 
 
@@ -74,7 +74,7 @@ const ProjectPic = styled.img`
 
   /* Design */
   transition: 1s filter;
-  ${props => props.focused ? css`filter: none;` : css`filter: grayscale(90%);`}
+  ${props => props.focused ? css`filter: none;` : css`filter: grayscale(100%);`}
 
   ${mediaSize.tablet`
   `}
@@ -125,22 +125,38 @@ const ProjectStack = styled.div`
   ${mediaSize.phone`
   `}
 `;
-const ProjectLinks = styled.div`
+
+const ProjectStackLink = styled.a`
+  text-decoration: none;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  color: ${props => props.focused ? props.color : '#7E7E7E'};
+`
+
+const ProjectLinkContainer = styled.div`
   grid-area: links;
   justify-self: center;
-  align-self: center;
+  align-self: end;
+  width: 100%;
+  position: relative;
+  top: 1.5em;
 
-  text-align: center;
-
-  & a {
-    padding: 2%;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+  grid-gap: 5px;
+  justify-items: center;
+  align-items: center;
 
   ${mediaSize.tablet`
   `}
 
   ${mediaSize.phone`
   `}
+`;
+
+const ProjectLink = styled.div`
+  display:  inline;
 `;
 
 class ProjectShowcase extends React.Component {
@@ -172,20 +188,33 @@ class ProjectShowcase extends React.Component {
           <ProjectStack>
             {this.props.project.techStack.map((tech, i) => {
               return (
-                <a href={`http://www.google.com/search?q=${tech}`} key={i} target="_blank">
-                  <span class="devicons devicons-bing_small" />
-                </a>
+                <ProjectStackLink
+                  key={i}
+                  focused={this.state.focused}
+                  color={tech.color}
+                  href={`http://www.google.com/search?q=${tech.name}`}
+                  target="_blank"
+                  data-tip={tech.name} data-for={`techStackTip${i}`}>
+                  <span className={tech.icon} style={{fontSize: "1.5em"}} />
+                  <ReactTooltip id={`techStackTip${i}`} effect='solid' />
+                </ProjectStackLink>
               );
             })}
           </ProjectStack>
-          <ProjectLinks>
-            <a href={`http://www.google.com`} target="_blank">
-              View
-            </a>
-            <a href={`http://www.github.com`} target="_blank">
-              Github
-            </a>
-          </ProjectLinks>
+          <ProjectLinkContainer>
+            {this.props.project.actionLinks.map((link, i) => {
+              return (
+                <ProjectLink key={i} data-tip={link.name} data-for={`actionLinkTip${i}`}>
+                  <a href={link.url} target="_blank">
+                    <SVGDrawIcon animate={this.state.focused && isMobile}>
+                      <Icon name={link.icon}  size="1.5em" color="#595959" />
+                    </SVGDrawIcon>
+                  </a>
+                  <ReactTooltip id={`actionLinkTip${i}`} effect='solid' />
+                </ProjectLink>
+              );
+            })}
+          </ProjectLinkContainer>
 
         </Container>
       </VisibilitySensor>

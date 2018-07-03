@@ -142,7 +142,7 @@ class NavMenu extends React.Component {
                            pose={((this.state.menuLink === option.text || isMobile) && this.state.menuOpen) ? 'hovered' : 'closed'}
                            colour={option.colour}
                            length={option.text.length} />
-                         <div style={{ position: 'relative', paddingRight: '5px' }}>{option.text}</div>
+                         <div style={{ position: 'relative', paddingRight: '5px', opacity: '1'}}>{option.text}</div>
                        </Link>
                      </NavLink>;
            })}

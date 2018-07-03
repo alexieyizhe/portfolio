@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { mediaSize } from "../data/configOptions.js";
 
 import TemplateWrapper from "../components/TemplateWrapper.js";
 
@@ -18,6 +19,14 @@ const PageLink = styled.a`
   display: block;
   color: inherit;
   line-height: 2;
+
+  ${mediaSize.tablet`
+    font-size: 2em;
+  `}
+
+  ${mediaSize.phone`
+    font-size: 1em;
+  `}
 `
 
 class ArchivePage extends React.Component {
