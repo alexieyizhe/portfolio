@@ -6,6 +6,7 @@ import PageFooter from "./PageFooter.js";
 import PageHeader from "./PageHeader.js";
 import NavMenu from "./NavMenu.js";
 import Favicon from "../../logo_favicon.png";
+import Transition from "./transition.js";
 
 // Global styles go here!
 const TemplateContainer = styled.div`
@@ -54,12 +55,14 @@ class TemplateWrapper extends React.Component {
           <meta name="keywords" content="Alex, Yizhe, Xie, alexieyizhe, website, portfolio, university, waterloo, projects, work, experience, resume, contact, gatsbyjs, react, developer" />
           <link rel="icon" href={Favicon} sizes="16x16" type="image/png" />
         </Helmet>
-        <div>
-          {this.state.showHeader ? <PageHeader className="navMenu" title={this.state.showHeader} /> : null}
-          {this.state.showMenu || this.state.showDefaultMenu ? <NavMenu showDefault={this.state.showDefaultMenu} /> : null}
-        </div>
-        {this.props.children}
-        {this.state.showFooter ? <PageFooter className="pageFooter" /> : null}
+        <Transition>
+          <div>
+            {this.state.showHeader ? <PageHeader className="navMenu" title={this.state.showHeader} /> : null}
+            {this.state.showMenu || this.state.showDefaultMenu ? <NavMenu showDefault={this.state.showDefaultMenu} /> : null}
+          </div>
+          {this.props.children}
+          {this.state.showFooter ? <PageFooter className="pageFooter" /> : null}
+        </Transition>
       </TemplateContainer>
     )
   }

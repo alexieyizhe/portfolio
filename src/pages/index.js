@@ -9,6 +9,7 @@ import Particles from 'react-particles-js';
 import ScrambleText from '../components/ScrambleText.js';
 import { mediaSize, greetingOptions, particleConfig } from "../data/configOptions.js";
 import Icon from "../components/Icon.js";
+import Link from "gatsby-link";
 
 import IntroPic from "../../mainPagePic.png";
 import LogoPic from "../../logo.png";
@@ -148,7 +149,7 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <div id="particleBgContainer">
+      <div id="particleBgContainer" style={this.props.transition && this.props.transition.style}>
         <Particles params={particleConfig} style={ParticlesStyle} />
         <TemplateWrapper defaultMenu outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Alex Xie">
 
@@ -176,11 +177,11 @@ class HomePage extends React.Component {
                 <Icon name="paper_plane" size="4vh" color="#80D07F" />
               </SVGDrawIcon>
             </a>
-            <a href="/resume">
+            <Link to="/resume">
               <SVGDrawIcon>
                 <Icon name="file" size="4vh" color="#DE7947" />
               </SVGDrawIcon>
-            </a>
+            </Link>
             <a href="https://github.com/alexieyizhe" target="_blank">
               <SVGDrawIcon>
                 <Icon name="github" size="4vh" color="#B29CE7" />

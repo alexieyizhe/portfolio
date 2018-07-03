@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { mediaSize } from "../data/configOptions.js";
+import Link from "gatsby-link";
 
 import TemplateWrapper from "../components/TemplateWrapper.js";
 
@@ -39,9 +40,11 @@ class ArchivePage extends React.Component {
     return (
       <TemplateWrapper title="Archive" menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
         <Header className="navMenu">archive.</Header>
-        {archiveSiteList.map((snapshot, i) => {
-          return <PageLink key={i} href={snapshot.url}>{snapshot.name}</PageLink>
-        })}
+        <div style={this.props.transition && this.props.transition.style}>
+          {archiveSiteList.map((snapshot, i) => {
+            return <PageLink key={i} href={snapshot.url}>{snapshot.name}</PageLink>
+          })}
+        </div>
       </TemplateWrapper>
     );
   }

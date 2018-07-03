@@ -63,7 +63,7 @@ class ResumePage extends React.Component {
       <div id="particleBgContainer">
         <Particles params={particleConfig} style={ParticlesStyle} />
         <TemplateWrapper menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Resume" header="resume.">
-          <ResumeBox>
+          <ResumeBox style={this.props.transition && this.props.transition.style}>
             <a href={Resume} download="Alex Xie - Resume (2A)">
               <Document
                 file={Resume}>

@@ -4,6 +4,7 @@ import { animateScroll } from "react-scroll";
 import SVGDrawIcon from "./SVGDrawIcon.js";
 import Icon from "./Icon.js";
 import { mediaSize } from "../data/configOptions.js";
+import Link from "gatsby-link";
 
 const FooterContainer = styled.span`
   margin: 10% 5vw;
@@ -35,11 +36,11 @@ const PageFooter = () => (
         <Icon name="paper_plane" size="2vh" color="#80D07F" />
       </SVGDrawIcon>
     </a>
-    <a href="/resume" style={{gridArea: 'resumeIcon'}}>
+    <Link to="/resume" style={{gridArea: 'resumeIcon'}}>
       <SVGDrawIcon>
         <Icon name="file" size="2vh" color="#DE7947" />
       </SVGDrawIcon>
-    </a>
+    </Link>
     <span style={{gridArea: 'topIcon'}} onClick={() => animateScroll.scrollToTop()}>
       <SVGDrawIcon>
         <Icon name="up_arrow" size="4vh" color="#000" />

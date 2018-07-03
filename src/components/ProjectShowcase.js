@@ -25,11 +25,11 @@ const ContainerConfig = {
 
 const Container = styled(posed.div(ContainerConfig))`
   position: relative;
-  height: 24em;
+  height: auto;
   padding: 10% 8%;
   display: grid;
   grid-template-columns: 250px;
-  grid-template-rows: 10em 3em 5em 4em 1em;
+  grid-template-rows: 10em 3em 5em 4em 1.5em;
   grid-template-areas: "pic" "title" "desc" "stack" "links";
 
 
@@ -56,9 +56,17 @@ const Container = styled(posed.div(ContainerConfig))`
   }
 
   ${mediaSize.tablet`
+    padding: 10% 6%;
+    grid-template-columns: auto;
+
+    border-radius: 8px;
+    &:before {
+      border-radius: 8px;
+    }
   `}
 
   ${mediaSize.phone`
+    padding: 10% 6%;
   `}
 `;
 
@@ -140,7 +148,7 @@ const ProjectLinkContainer = styled.div`
   align-self: end;
   width: 100%;
   position: relative;
-  top: 1.5em;
+  top: 1em;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
@@ -152,6 +160,7 @@ const ProjectLinkContainer = styled.div`
   `}
 
   ${mediaSize.phone`
+    top: 0.5em;
   `}
 `;
 

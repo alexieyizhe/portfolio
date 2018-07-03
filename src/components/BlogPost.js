@@ -9,8 +9,6 @@ import { mediaSize } from "../data/configOptions.js";
 import SVGDrawIcon from "./SVGDrawIcon.js";
 import Icon from "./Icon.js";
 
-import IconJavascript from "react-devicon/javascript/plain";
-
 
 const ContainerConfig = {
   enter: {
@@ -27,28 +25,28 @@ const ContainerConfig = {
 }
 
 const Container = styled(posed.div(ContainerConfig))`
-  position: relative;
-  width: 90%;
-  height: 30vh;
-  padding: 2% 0 7% 0;
+  width: 100%;
+  height: auto;
+  padding-bottom: 7%;
   cursor: pointer;
 
   display: grid;
-  grid-template-columns: 5fr 6fr;
-  grid-template-rows: 2fr 1fr 1.5fr;
+  grid-template-columns: 4fr 6fr;
+  grid-template-rows: auto 1fr 1.5fr;
   grid-column-gap: 2vmax;
+
   grid-template-areas: "pic title"
                        "pic desc"
                        "pic date";
 
   ${mediaSize.tablet`
     width: 85%;
-    height: 50vh;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10%;
     grid-template-columns: 90%;
-    grid-template-rows: 25vh 5vh 10vh 5vh;
-    grid-row-gap: 0;
+    grid-template-rows: 25vh auto 10vh 5vh;
     grid-template-areas: "pic"
                          "title"
                          "desc"
@@ -60,21 +58,20 @@ const Container = styled(posed.div(ContainerConfig))`
 
 const PostTitle = styled.span`
   font-family: "PT Serif";
-  font-size: 4vw;
+  font-size: 6vmin;
   grid-area: title;
   align-self: center;
   margin-bottom: 0.25em;
-  margin-top: 0.5em;
+  line-height: 1;
 
   ${mediaSize.tablet`
     align-self: left;
     font-size: 4vh;
-    white-space: nowrap;
+    margin-top: 0.5em;
   `}
 
   ${mediaSize.phone`
     font-size: 4.5vh;
-    white-space: default;
   `}
 `;
 
@@ -178,8 +175,7 @@ class BlogPost extends React.Component {
           <Container
             initialPose='enter' pose={this.state.focused ? 'hovered' : 'normal'}
             onMouseEnter={() => this.handleFocus(true)}
-            onMouseLeave={() => this.handleFocus(false)}
-            layout={this.props.layout} >
+            onMouseLeave={() => this.handleFocus(false)}>
             <PostTitle>
               <Highlight color={this.props.color} hovered={this.state.focused}>
                 {this.props.title}

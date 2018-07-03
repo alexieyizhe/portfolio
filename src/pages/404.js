@@ -56,7 +56,7 @@ const ErrorRedirect = styled.div`
 
 const InvalidURLPage = (props) => (
   <TemplateWrapper title="o no woops">
-    <ErrorContainer>
+    <ErrorContainer style={this.props.transition && this.props.transition.style}>
       <ErrorMessage>
         Yikes! That page doesn't exist.
       </ErrorMessage>

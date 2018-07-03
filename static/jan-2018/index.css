@@ -5,7 +5,7 @@ body{
 p, a, div {
 	font-family: Consolas, monaco, monospace;
 	color: white;
-	
+
 }
 
 /*p:before, a:before {
@@ -68,6 +68,26 @@ div#table{
 
 .comment + p {
 	margin: 0;
+}
+
+#returnToNewSite {
+  position: fixed;
+  right: auto;
+  bottom: 7%;
+  left: 7%;
+  z-index: 100;
+  font-size: 3vmax;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#returnToNewSite:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+#returnToNewSite a {
+  text-decoration: none;
+  font-family: "PT Sans";
+  color: inherit;
 }
 
 
