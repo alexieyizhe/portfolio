@@ -1,10 +1,9 @@
-# gatsby-starter-hello-world
-Starter with the bare essentials needed for a [Gatsby](https://www.gatsbyjs.org/) site
+# alexieyizhe.github.io
+Personal website/portfolio of Alex Yizhe Xie. 
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
-```
-gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world
-```
+Built using React, GatsbyJS, and numerous npm packages.
+
+Live at http://alexieyizhe.me
 
 ## Running in development
 `gatsby develop`
