@@ -138,7 +138,7 @@ const WorkLogo = styled.img`
 
   ${mediaSize.phone`
     top: 18%;
-    right: -30%;
+    right: -35%;
     max-width: 25vh;
     max-height: 20vh;
   `}
