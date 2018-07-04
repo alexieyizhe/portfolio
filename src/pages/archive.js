@@ -12,11 +12,11 @@ const Header = styled.div`
   margin-bottom: 5vmax;
   font-size: 6vh;
   font-weight: bold;
-  font-family: "PT Serif";
+  font-family: "PT Serif", serif;;
 `;
 
 const PageLink = styled.a`
-  font-family: "PT Serif";
+  font-family: "PT Serif", serif;;
   display: block;
   color: inherit;
   line-height: 2;

@@ -10,7 +10,7 @@ import Transition from "./Transition.js";
 
 // Global styles go here!
 const TemplateContainer = styled.div`
-  font-family: "SF UI Display";
+  font-family: "SF UI Display", sans-serif;
   color: #464646;
   position: absolute;
   top: ${props => props.outerBounds && props.outerBounds.top || 0};

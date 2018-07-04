@@ -4,7 +4,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-medium`,
+      resolve: 'gatsby-source-medium',
       options: {
         username: `@alexieyizhe`,
       },
@@ -15,6 +15,20 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-styled-components',
     },
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [
+          `alegreya`,
+          `alegreya sans`,
+          `pt sans`,
+          `pt serif`,
+          `copse`,
+          `raleway`,
+        ]
+      }
+    },
+    /* KEEP GH-PAGES PLUGIN LAST IN PLUGIN LIST */
     {
       resolve: 'gatsby-plugin-github-pages',
       options: {

@@ -98,7 +98,7 @@ const ProjectTitle = styled.span`
   align-self: center;
 
   /* Design */
-  font-family: "PT Sans";
+  font-family: "PT Sans", sans-serif;;
   font-weight: bold;
   font-size: 2em;
 

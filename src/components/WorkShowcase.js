@@ -100,7 +100,7 @@ const Container = styled.div`
 `;
 
 const WorkTitle = styled.span`
-  font-family: "Raleway";
+  font-family: "Raleway", serif;;
   font-size: 4vw;
   font-weight: bolder;
   position: absolute;
@@ -149,7 +149,7 @@ const WorkRole = styled.div`
   grid-area: role;
   position: relative;
   z-index: 6;
-  font-family: "Raleway";
+  font-family: "Raleway", serif;;
   font-size: 2vw;
 
   ${mediaSize.tablet`

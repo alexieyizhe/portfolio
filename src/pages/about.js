@@ -41,7 +41,7 @@ const ParagraphPic = styled.figure`
 
 const Intro = styled.div`
   font-size: 2.5vh;
-  font-family: "PT Serif";
+  font-family: "PT Serif", serif;;
 
   & > div {
     margin-bottom: 1em;

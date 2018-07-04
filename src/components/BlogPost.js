@@ -57,7 +57,7 @@ const Container = styled(posed.div(ContainerConfig))`
 `;
 
 const PostTitle = styled.span`
-  font-family: "PT Serif";
+  font-family: "PT Serif", serif;;
   font-size: 6vmin;
   grid-area: title;
   align-self: center;
@@ -127,7 +127,7 @@ const PostImg = styled.img`
 
 const PostDesc = styled.span`
   grid-area: desc;
-  font-family: "Raleway";
+  font-family: "Raleway", serif;
 
   font-size: 2.2vmin;
   padding-right: 1vmin;
