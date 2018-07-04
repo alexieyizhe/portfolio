@@ -5,7 +5,7 @@ import Helmet from "react-helmet";
 import PageFooter from "./PageFooter.js";
 import PageHeader from "./PageHeader.js";
 import NavMenu from "./NavMenu.js";
-import Favicon from "../../logo_favicon.png";
+import Favicon from "../img/misc/logo_square.png";
 import Transition from "./transition.js";
 
 // Global styles go here!
@@ -51,9 +51,9 @@ class TemplateWrapper extends React.Component {
       <TemplateContainer outerBounds={this.props.outerBounds}>
         <Helmet>
           <title>{this.state.title}</title>
-          <meta name="description" content="The personal website/portfolio of Alex Xie, a computer science student at the University of Waterloo." />
-          <meta name="keywords" content="Alex, Yizhe, Xie, alexieyizhe, website, portfolio, university, waterloo, projects, work, experience, resume, contact, gatsbyjs, react, developer" />
-          <link rel="icon" href={Favicon} sizes="16x16" type="image/png" />
+          <meta name="description" content="Personal website/portfolio of Alex Xie, a computer science student at the University of Waterloo." />
+          <meta name="keywords" content="Alex, Yizhe, Xie, alexieyizhe, website, portfolio, university, waterloo, projects, work, experience, resume, contact, gatsby, react, developer" />
+          <link rel="icon" href={Favicon} sizes={["16x16","32x32","64x64"]} type="image/png" />
         </Helmet>
         <Transition>
           <div>

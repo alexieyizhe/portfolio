@@ -1,0 +1,175 @@
+body{
+	background-color: #262424;
+}
+
+p, a, div {
+	font-family: Consolas, monaco, monospace;
+	color: white;
+
+}
+
+/*p:before, a:before {
+	content: counter(line);
+}*/
+
+a {
+	color: #ffee34;
+	text-decoration-line: none;
+}
+
+a:hover, .var_init_link:hover, #return_top:hover {
+    color: grey;
+    cursor: pointer;
+}
+
+div#line_ct{
+	width: 5%;
+	float: left;
+	background-color: #262424;
+      border-radius: 5px;
+	text-align: right;
+	padding-top: 1em;
+}
+
+div#main {
+	width: 93%;
+	float: right;
+	background-color: #2b2929;
+	margin: 0;
+	padding-top: 1em;
+      padding-left: 1em;
+}
+
+div#table{
+	width:100%;
+}
+
+#in {
+	width: 30%;
+	float: left;
+      display: inline;
+}
+
+#in2 {
+	width: 70%;
+      height: 20%;
+	float: right;
+      display: inline;
+
+}
+.ph {
+  color: #2b2929;
+}
+
+.comment {
+	color: #b1b4bc;
+	display: inline;
+}
+
+.comment + p {
+	margin: 0;
+}
+
+#returnToNewSite {
+  position: fixed;
+  right: auto;
+  bottom: 7%;
+  left: 7%;
+  z-index: 100;
+  font-size: 3vmax;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#returnToNewSite:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+#returnToNewSite a {
+  text-decoration: none;
+  font-family: "PT Sans";
+  color: inherit;
+}
+
+
+.testing {
+	color: white;
+}
+
+.var {
+	color: #74e83e;
+}
+
+.fn {
+	color: cyan;
+}
+
+.var_init, .var_init_link {
+    color: #ff2020;
+}
+
+#att {
+	color: #d514fc;
+}
+
+#return_top {
+    color: #ffad21;
+    cursor: pointer;
+}
+
+/* Credit to Artem Gordinsky on CodePen for the blinking cursor CSS code.
+source: https://codepen.io/ArtemGordinsky/pen/GnLBq */
+.blinking_cursor {
+  font-weight: 100;
+  /*font-size: 20px;*/
+  color: #ffad21;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #ffad21;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #ffad21;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #ffad21;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #ffad21;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: #ffad21;
+  }
+}

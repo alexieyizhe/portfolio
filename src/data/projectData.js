@@ -1,7 +1,7 @@
-import easyPic from "../../easy.png";
-import busPic from "../../WATBus.png";
-import eqrscannerPic from "../../eqrscanner.png";
-import websitePic from "../../alexieyizhewebsite.png";
+import easyPic from "../img/projects/easy.png";
+import busPic from "../img/projects/WATBus.png";
+import eqrscannerPic from "../img/projects/eqrscanner.png";
+import websitePic from "../img/projects/alexieyizhewebsite.png";
 
 export const projectsList = [
   {
@@ -51,7 +51,7 @@ export const projectsList = [
       {name: 'HTML', icon: 'devicons devicons-html5', color: '#EE8407' },
       {name: 'CSS', icon: 'devicons devicons-css3', color: '#4173D5' },
       {name: 'Bootstrap', icon: 'devicons devicons-bootstrap', color: '#6122A8' },
-      {name: 'API', icon:  'devicons devicons-codepen', color: '#323232' },
+      {name: 'Edamam API', icon:  'devicons devicons-codepen', color: '#323232' },
       {name: 'MySQL', icon:  'devicons devicons-mysql', color: '#86A1A3' },
       {name: 'Heroku', icon:  'devicons devicons-heroku', color: '#9943A7' },
     ],
@@ -68,7 +68,7 @@ export const projectsList = [
     techStack: [
       {name: 'Python', icon: 'devicons devicons-python', color: '#EDDD00' },
       {name: 'Flask Microframework', icon: 'devicons devicons-mootools_badge', color: '#4D5788' },
-      {name: 'API', icon: 'devicons devicons-codepen', color: '#323232' },
+      {name: 'Grand River Transit API', icon: 'devicons devicons-codepen', color: '#323232' },
       {name: 'Heroku', icon: 'devicons devicons-heroku', color: '#9943A7' },
     ],
     actionLinks: [

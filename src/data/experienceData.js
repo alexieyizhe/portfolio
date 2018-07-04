@@ -1,15 +1,15 @@
 // TODO: Look into methods of compressing all these images before loading
-import FlippBgPic from '../../flipp_bg.jpg';
-import FlippLogoPic from '../../flipp_logo.png';
+import FlippBgPic from '../img/experience/flipp_bg.jpg';
+import FlippLogoPic from '../img/experience/flipp_logo.png';
 
-import TedxBgPic from '../../tedx_bg.jpg';
-import TedxLogoPic from '../../tedx_logo.png';
+import TedxBgPic from '../img/experience/tedx_bg.jpg';
+import TedxLogoPic from '../img/experience/tedx_logo.png';
 
-import WloopBgPic from '../../wloop_bg.png';
-import WloopLogoPic from '../../wloop_logo.png';
+import WloopBgPic from '../img/experience/wloop_bg.png';
+import WloopLogoPic from '../img/experience/wloop_logo.png';
 
-import EquithonBgPic from '../../equithon_bg.jpg';
-import EquithonLogoPic from '../../equithon_logo.png';
+import EquithonBgPic from '../img/experience/equithon_bg.jpg';
+import EquithonLogoPic from '../img/experience/equithon_logo.png';
 
 export const experienceList = [
   {
@@ -22,7 +22,7 @@ export const experienceList = [
   {
     name: 'Equithon',
     role: 'Junior Co-Chair & Development Lead',
-    color: '#D43F35',
+    color: '#4D55C3',
     bgImgSource: EquithonBgPic,
     logoImgSource: EquithonLogoPic,
   },
@@ -43,7 +43,7 @@ export const experienceList = [
   {
     name: 'Equithon',
     role: 'Developer & Operations Coordinator',
-    color: '#D43F35',
+    color: '#4D55C3',
     bgImgSource: EquithonBgPic,
     logoImgSource: EquithonLogoPic,
   },

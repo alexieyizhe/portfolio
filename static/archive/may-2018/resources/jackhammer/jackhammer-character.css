@@ -1,0 +1,124 @@
+@CHARSET "UTF-8";
+
+.skinColor{
+	fill:#FDD1A2;
+}
+
+.vestColor{
+	fill:#BCC935;
+}
+
+.vestStipeColor{
+	fill:#ffffff;
+}
+
+.armHairColor{
+	stroke:#D6A070;
+}
+
+.chestColor{
+	fill:#E8B276;
+}
+
+.chestHairColor{
+	stroke:#C99669;
+}
+
+.jackhammerShaftColor{
+	fill:#C1C1C0;
+}
+
+.jackhammerTipColor{
+	fill:#999999;
+}
+
+.jackhammerMainColor{
+	fill:#FAA31C;
+}
+
+.jackhammerHandleColorLt{
+	fill:#333333;
+}
+
+.jackhammerHandleColorDk{
+	fill:#262626;
+}
+
+.hatColorLt{
+	fill:#FABB48;
+}
+
+.hatColorDk{
+	fill:#FAA31C;
+}
+
+.pantsColor{
+	fill:#566275;
+}
+
+.feetColor{
+	fill:#333333;
+}
+
+.shadowColor{
+	fill:#364545;
+	opacity:0;
+}
+
+.maskColor{
+	fill:#FFFFFF;
+}
+
+.maskVentColor{
+	fill:#D8D8D8;
+}
+
+
+#jackhammer_cube1 {
+	opacity:0;
+}
+
+#jackhammer_cube2 {
+	opacity:0;
+}
+
+#jackhammer_cube3 {
+	opacity:0;
+}
+
+#jackhammer_cube4 {
+	opacity:0;
+}
+
+#jackhammer_cube1 .boxSide{
+	fill: #c3802a;
+}
+
+#jackhammer_cube1 .boxTop{
+	fill: #F9A31C;
+}
+
+
+#jackhammer_cube2 .boxSide{
+	fill: #b98b33;
+}
+
+#jackhammer_cube2 .boxTop{
+	fill: #fabb48;
+}
+
+#jackhammer_cube3 .boxSide{
+	fill: #97a339;
+}
+
+#jackhammer_cube3 .boxTop{
+	fill: #bcc935;
+}
+
+#jackhammer_cube4 .boxSide{
+	fill: #475261;
+}
+
+#jackhammer_cube4 .boxTop{
+	fill: #556276;
+}

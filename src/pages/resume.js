@@ -6,7 +6,7 @@ import { particleConfig } from "../data/configOptions.js";
 
 import Particles from 'react-particles-js';
 import TemplateWrapper from "../components/TemplateWrapper.js";
-import Resume from "../../alex_xie_resume_2A.pdf";
+import Resume from "../data/alex_xie_resume_2A.pdf";
 
 const ParticlesStyle = {
   position: "fixed",

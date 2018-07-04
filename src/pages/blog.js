@@ -5,7 +5,7 @@ import BlogPost from "../components/BlogPost.js";
 import TemplateWrapper from "../components/TemplateWrapper.js";
 
 
-const mediumCDNUrl = `https://cdn-images-1.medium.com/max/1500/`;
+const mediumCDNUrl = `https://cdn-images-1.medium.com/max/750/`;
 const mediumAuthorUrl = `https://medium.com/@alexieyizhe`;
 
 const BlogPage = ({ data, transition }) => {

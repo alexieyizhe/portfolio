@@ -11,12 +11,8 @@ import { mediaSize, greetingOptions, particleConfig } from "../data/configOption
 import Icon from "../components/Icon.js";
 import Link from "gatsby-link";
 
-import IntroPic from "../../mainPagePic.png";
-import LogoPic from "../../logo.png";
-import ContactIcon from 'react-feather/dist/icons/send';
-import ResumeIcon from 'react-feather/dist/icons/file-text';
-import GithubIcon from 'react-feather/dist/icons/github';
-import LinkedinIcon from 'react-feather/dist/icons/linkedin';
+import IntroPic from "../img/misc/mainPagePic.png";
+import LogoPic from "../img/misc/logo.png";
 
 const fadeEnter = {
   enter: {
@@ -110,7 +106,7 @@ const ImportantInfo = styled(posed.div(fadeEnter))`
     margin-right: 2vh;
   }
 
-  & span:first-child {
+  & a:first-child {
     margin-left: 0;
   }
 
@@ -152,14 +148,11 @@ class HomePage extends React.Component {
       <div id="particleBgContainer" style={this.props.transition && this.props.transition.style}>
         <Particles params={particleConfig} style={ParticlesStyle} />
         <TemplateWrapper defaultMenu outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Alex Xie">
-
           <Logo src={LogoPic} initialPose={'enter'} pose={'normal'} />
           {/* NOTE: script font in logo is BarleyScript */}
-
           <Greeting initialPose={'enter'} pose={'normal'}>
             {this.state.greeting + " I'm"}
           </Greeting>
-
           <MainInfoText initialPose={'enter'} pose={'normal'}>
             <ScrambleText text="Alex Xie." options={{ duration: 250, speed: 15 }}/>
           </MainInfoText>
@@ -170,7 +163,6 @@ class HomePage extends React.Component {
             <div>soccer fanatic.</div>
             <div>lover of bad puns.</div>
           </BriefBioText>
-
           <ImportantInfo initialPose={'enter'} pose={'normal'} >
             <a href="mailto:alex@alexieyizhe.me" target="_blank">
               <SVGDrawIcon>
@@ -193,9 +185,7 @@ class HomePage extends React.Component {
               </SVGDrawIcon>
             </a>
           </ImportantInfo>
-
           <MainPagePic src={IntroPic} initialPose={'enter'} pose={'normal'} />
-
         </TemplateWrapper>
       </div>
 

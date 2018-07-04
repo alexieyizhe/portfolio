@@ -6,23 +6,14 @@ import { mediaSize } from "../data/configOptions.js";
 import TemplateWrapper from "../components/TemplateWrapper.js";
 import PageHeader from "../components/PageHeader.js";
 
-import AboutMe1 from "../../about_1.png";
-import AboutMe0 from "../../about_0.png";
-import AboutMe2 from "../../about_2.png";
+import AboutMe1 from "../img/about/about_1.png";
+import AboutMe0 from "../img/about/about_0.png";
+import AboutMe2 from "../img/about/about_2.png";
 
 const ParagraphPic = styled.figure`
   padding: 0;
   margin: 2vmin;
-
-
   float: ${props => props.imgAlign || 'none'};
-  ${mediaSize.phone`
-    float: none;
-    padding-top: 0.5em;
-    padding-bottom: 1em;
-
-
-  `}
 
   & figcaption {
     padding-top: 5px;
@@ -35,13 +26,18 @@ const ParagraphPic = styled.figure`
     margin: 0 auto;
     max-width: ${props => props.dims && props.dims.width};
     max-height: ${props => props.dims && props.dims.height};
-
-    ${mediaSize.phone`
-      max-width: 100%;
-    `}
   }
-`
 
+  ${mediaSize.phone`
+    float: none;
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+
+    & img {
+      max-width: 100%;
+    }
+  `}
+`;
 
 const Intro = styled.div`
   font-size: 2.5vh;
@@ -54,11 +50,8 @@ const Intro = styled.div`
   & > div:last-child {
     margin-bottom: 0;
   }
-
-  & a {
-
-  }
 `
+
 
 class AboutPage extends React.Component {
   constructor(props) {
