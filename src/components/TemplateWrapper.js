@@ -6,7 +6,7 @@ import PageFooter from "./PageFooter.js";
 import PageHeader from "./PageHeader.js";
 import NavMenu from "./NavMenu.js";
 import Favicon from "../img/misc/logo_square.png";
-import Transition from "./transition.js";
+import Transition from "./Transition.js";
 
 // Global styles go here!
 const TemplateContainer = styled.div`
@@ -30,21 +30,6 @@ class TemplateWrapper extends React.Component {
       title: props.title,
     }
   }
-  /* this code changes the title of the tab when it's not in focus
-  componentDidMount() {
-    window.addEventListener("focus", () => this.changeFocus(true));
-    window.addEventListener("blur", () => this.changeFocus(false));
-  }
-
-  componentWilUnmount() {
-      window.removeEventListener("focus", () => this.changeFocus(true));
-      window.removeEventListener("blur", () => this.changeFocus(false));
-  }
-
-  changeFocus(focused) {
-      this.setState({title: focused ? "Alex Xie" : "Hey! What's up?"});
-      document.title = "Hey! What's up?"
-  } */
 
   render() {
     return (

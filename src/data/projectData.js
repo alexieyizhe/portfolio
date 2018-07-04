@@ -1,5 +1,5 @@
 import easyPic from "../img/projects/easy.png";
-import busPic from "../img/projects/WATBus.png";
+import busPic from "../img/projects/watbus.png";
 import eqrscannerPic from "../img/projects/eqrscanner.png";
 import websitePic from "../img/projects/alexieyizhewebsite.png";
 

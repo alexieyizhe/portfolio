@@ -15,11 +15,11 @@ class Transition extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener(historyExitingEventType, this.listenerHandler)
+    typeof window !== 'undefined' && window.addEventListener(historyExitingEventType, this.listenerHandler)
   }
 
   componentWillUnmount() {
-    window.removeEventListener(historyExitingEventType, this.listenerHandler)
+    typeof window !== 'undefined' && window.removeEventListener(historyExitingEventType, this.listenerHandler)
   }
 
   static getDerivedStateFromProps({ exiting }) {

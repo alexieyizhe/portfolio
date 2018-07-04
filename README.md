@@ -1,5 +1,5 @@
 # alexieyizhe.github.io
-Personal website/portfolio of Alex Yizhe Xie. 
+Personal website/portfolio of Alex Yizhe Xie.
 
 Built using React, GatsbyJS, and numerous npm packages.
 

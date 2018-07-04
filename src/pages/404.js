@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+import Link from "gatsby-link";
 import TemplateWrapper from "../components/TemplateWrapper.js";
 import Glitch from "../components/Glitch.js";
+
 
 const ErrorContainer = styled.div`
   width: 80%;
@@ -11,7 +13,7 @@ const ErrorContainer = styled.div`
   margin-right: auto;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 21vh 40vh 36vh;
+  grid-template-rows: 21vh 42vh 36vh;
   grid-row-gap: 2vh;
   text-align: center;
   grid-template-areas: "message"
@@ -46,29 +48,37 @@ const ErrorRedirect = styled.div`
     color: black;
     text-decoration: overline;
 
-
     &:hover {
       text-decoration: none;
     }
   }
-
 `;
 
-const InvalidURLPage = (props) => (
-  <TemplateWrapper title="o no woops">
-    <ErrorContainer style={this.props.transition && this.props.transition.style}>
-      <ErrorMessage>
-        Yikes! That page doesn't exist.
-      </ErrorMessage>
-      <ErrorCode>
-        <Glitch text="404" color="black" font="bolder 20vmax Raleway" />
-      </ErrorCode>
-      <ErrorRedirect>
-        You can <a href="mailto:alexieyizhe@gmail.com">yell at the guy who made this mistake</a> or <a href="/">go home</a>.
-      </ErrorRedirect>
-    </ErrorContainer>
-  </TemplateWrapper>
-);
+class InvalidURLPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    const pathname = this.props.location.pathname
+    return (
+      <TemplateWrapper title="Error 404">
+        <ErrorContainer style={this.props.transition && this.props.transition.style}>
+          <ErrorMessage>
+            Yikes! There isn't a page yet at <code>{pathname}</code>.
+          </ErrorMessage>
+          <ErrorCode>
+            <Glitch text="404" color="black" font="bolder 20vmax Raleway" />
+          </ErrorCode>
+          <ErrorRedirect>
+            You can <a href="mailto:alexieyizhe@gmail.com">yell at the guy who made this mistake</a> or <Link to="/">go home</Link>.
+          </ErrorRedirect>
+        </ErrorContainer>
+      </TemplateWrapper>
+    );
+  }
+}
 
 
 

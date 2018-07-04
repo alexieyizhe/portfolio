@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Link from "gatsby-link";
 import posed from "react-pose";
+import { isMobile } from 'react-device-detect';
 
 import { menuPageOptions, contactOptions, mediaSize } from "../data/configOptions.js";
 
@@ -123,7 +124,6 @@ class NavMenu extends React.Component {
   }
 
   render() {
-    const isMobile = "ontouchstart" in document.documentElement;
     return (
       <Menu
         pose={this.state.menuOpen ? 'open' : 'closed'}

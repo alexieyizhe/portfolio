@@ -1,23 +1,24 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "description": "Gatsby hello world starter",
+  "name": "portfolio-site-alex-xie",
+  "description": "Personal website/portfolio of Alex Yizhe Xie.",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
-    "serve": "gatsby serve",
-    "deploy": "gatsby build && gh-pages -b master -d public"
+    "serve": "gatsby serve"
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^1.5.1",
     "gatsby": "^1.9.273",
     "gatsby-link": "^1.6.45",
+    "gatsby-plugin-github-pages": "^1.0.1",
     "gatsby-plugin-react-next": "^1.0.11",
+    "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-source-medium": "^1.0.14",
-    "react-device-detect": "^1.5.7",
+    "react-device-detect": "^1.5.8",
     "react-helmet": "^5.2.0",
     "react-mt-svg-lines": "^0.8.4",
     "react-particles-js": "^2.2.0",
-    "react-pdf": "^3.0.5",
     "react-pose": "^2.1.2",
     "react-scroll": "^1.7.9",
     "react-tooltip": "^3.6.1",

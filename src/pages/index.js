@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import posed from "react-pose";
 
-
 import TemplateWrapper from "../components/TemplateWrapper.js";
 import SVGDrawIcon from "../components/SVGDrawIcon.js"
 import Particles from 'react-particles-js';
@@ -13,6 +12,7 @@ import Link from "gatsby-link";
 
 import IntroPic from "../img/misc/mainPagePic.png";
 import LogoPic from "../img/misc/logo.png";
+
 
 const fadeEnter = {
   enter: {
