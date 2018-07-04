@@ -1,4 +1,9 @@
 # alexieyizhe.github.io
+Personal website/portfolio of Alex Yizhe Xie. 
 
-Personal Website/Portfolio of Alex Yizhe Xie, a computer science student at the University of Waterloo.
-*Created Dec 2017.*
+Built using React, GatsbyJS, and numerous npm packages.
+
+Live at http://alexieyizhe.me
+
+## Running in development
+`gatsby develop`
