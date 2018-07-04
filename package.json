@@ -1,26 +1,27 @@
 {
-  "name": "alexieyizhe.github.io",
-  "version": "1.0.0",
-  "description": "Personal website/portfolio of Alex Xie",
-  "main": "index.js",
+  "name": "gatsby-starter-hello-world",
+  "description": "Gatsby hello world starter",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alexieyizhe/alexieyizhe.github.io.git"
-  },
-  "author": "Alex Yizhe Xie",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alexieyizhe/alexieyizhe.github.io/issues"
-  },
-  "homepage": "https://github.com/alexieyizhe/alexieyizhe.github.io#readme",
-  "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.8.2"
+  "dependencies": {
+    "gatsby": "^1.9.273",
+    "gatsby-link": "^1.6.45",
+    "gatsby-plugin-react-next": "^1.0.11",
+    "gatsby-source-medium": "^1.0.14",
+    "react-device-detect": "^1.5.7",
+    "react-helmet": "^5.2.0",
+    "react-mt-svg-lines": "^0.8.4",
+    "react-particles-js": "^2.2.0",
+    "react-pdf": "^3.0.5",
+    "react-pose": "^2.1.2",
+    "react-scroll": "^1.7.9",
+    "react-tooltip": "^3.6.1",
+    "react-transition-group": "^2.4.0",
+    "react-visibility-sensor": "^3.11.0",
+    "styled-components": "^3.3.3"
   }
 }
