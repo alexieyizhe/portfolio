@@ -1,9 +1,10 @@
 # alexieyizhe.github.io
 Personal website/portfolio of Alex Yizhe Xie.
 
-Built using React, GatsbyJS, and numerous npm packages.
+Powered by React and GatsbyJS.
 
-Live at http://alexieyizhe.me
+Check it out [here](http://www.alexieyizhe.me)!
 
 ## Running in development
-`gatsby develop`
+- Clone or download this repository.
+- Run `gatsby develop` to make changes (hot reloading enabled)

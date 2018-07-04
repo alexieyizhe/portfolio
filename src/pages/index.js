@@ -9,6 +9,7 @@ import ScrambleText from '../components/ScrambleText.js';
 import { mediaSize, greetingOptions, particleConfig } from "../data/configOptions.js";
 import Icon from "../components/Icon.js";
 import Link from "gatsby-link";
+import { isMobile } from 'react-device-detect';
 
 import IntroPic from "../img/misc/mainPagePic.png";
 import LogoPic from "../img/misc/logo.png";
@@ -102,8 +103,8 @@ const ImportantInfo = styled(posed.div(fadeEnter))`
   & a {
     color: inherit;
     margin-bottom: 2vh;
-    margin-left: 2vh;
-    margin-right: 2vh;
+    margin-left: 1.5vh;
+    margin-right: 1.5vh;
   }
 
   & a:first-child {
@@ -137,10 +138,18 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hoverInfo: null,
+      iconAnimate: false,
       curInfo: 'name',
       greeting: greetingOptions[Math.floor(Math.random() * greetingOptions.length)]
     };
+  }
+
+  componentDidMount() {
+    if(isMobile) {
+      setTimeout(() => {
+        this.setState({iconAnimate: true})
+      }, 3000);
+    }
   }
 
   render() {
@@ -165,22 +174,22 @@ class HomePage extends React.Component {
           </BriefBioText>
           <ImportantInfo initialPose={'enter'} pose={'normal'} >
             <a href="mailto:alex@alexieyizhe.me" target="_blank">
-              <SVGDrawIcon>
+              <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
                 <Icon name="paper_plane" size="4vh" color="#80D07F" />
               </SVGDrawIcon>
             </a>
             <Link to="/resume">
-              <SVGDrawIcon>
+              <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
                 <Icon name="file" size="4vh" color="#DE7947" />
               </SVGDrawIcon>
             </Link>
             <a href="https://github.com/alexieyizhe" target="_blank">
-              <SVGDrawIcon>
+              <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
                 <Icon name="github" size="4vh" color="#B29CE7" />
               </SVGDrawIcon>
             </a>
             <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank">
-              <SVGDrawIcon>
+              <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
                 <Icon name="linkedin" size="4vh" color="#4092DE" />
               </SVGDrawIcon>
             </a>
