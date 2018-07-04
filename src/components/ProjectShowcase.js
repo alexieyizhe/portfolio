@@ -9,7 +9,7 @@ import ReactTooltip from 'react-tooltip';
 
 import SVGDrawIcon from "./SVGDrawIcon.js";
 import Icon from "./Icon.js";
-import '../data/devicons.min.css';
+import '../data/font-devicons/devicons.min.css';
 
 const ContainerConfig = {
   enter: {
