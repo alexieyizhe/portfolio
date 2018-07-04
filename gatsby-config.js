@@ -10,17 +10,22 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-react-next`,
+      resolve: 'gatsby-plugin-react-next',
     },
     {
-      resolve: `gatsby-plugin-styled-components`,
+      resolve: 'gatsby-plugin-styled-components',
     },
     {
       resolve: 'gatsby-plugin-github-pages',
       options: {
         customDomain: 'http://alexieyizhe.me/',
         publishOptions: {
-          branch: 'master'
+          branch: 'master',
+          user: {
+            name: 'Alex\'s Deploy Bot',
+            email: 'alex_bot@alexieyizhe.me'
+          },
+          message: '[AUTO DEPLOY] Website Update'
         }
       }
     }

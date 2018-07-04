@@ -5,7 +5,7 @@ import { particleConfig } from "../data/configOptions.js";
 import Particles from 'react-particles-js';
 import TemplateWrapper from "../components/TemplateWrapper.js";
 import Resume from "../data/alex_xie_resume_2A.pdf";
-import ResumeSvg from "../data/alex_xie_resume_2A.png";
+import ResumePreview from "../data/alex_xie_resume_2A.png";
 import { mediaSize } from "../data/configOptions.js";
 import { css } from 'styled-components';
 import { isMobile } from 'react-device-detect';
@@ -91,7 +91,7 @@ class ResumePage extends React.Component {
                 focused={this.state.focused}
                 onMouseEnter={() => this.handleFocus(true)}
                 onMouseLeave={() => this.handleFocus(false)} >
-                <img src={ResumeSvg} />
+                <img src={ResumePreview} />
               </ResumeBox>
             </ResumeContainer>
           </TemplateWrapper>
