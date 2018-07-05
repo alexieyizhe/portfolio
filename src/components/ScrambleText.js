@@ -6,7 +6,7 @@ import posed from "react-pose";
 class ScrambleText extends React.Component {
   constructor(props) {
     super(props);
-    this.chars = '!<>-_\\/[]{}—=+*^?#_abiwxevpi🅱️' // Scrambled characters
+    this.chars = '!<>-_\\/[]{}—=+*^?#_abiwxevpi'; // Scrambled characters
     this.state = {
       running: 0, // Amount of time animation has been running
       curText: ' ',
