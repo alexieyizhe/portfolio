@@ -25,6 +25,8 @@ module.exports = {
           `pt serif`,
           `copse`,
           `raleway`,
+          `lato`,
+          `average`
         ]
       }
     },

@@ -53,8 +53,8 @@ const MainInfoContainer = styled.div`
 `;
 
 const MainInfoText = styled(posed.div(fadeEnter))`
-  font-family: "Alegreya Sans";
-  font-weight: bold;
+  font-family: "Lato";
+  font-weight: 600;
   display: grid;
   grid-area: mainInfoText;
   line-height: 0.8em;
@@ -80,9 +80,9 @@ const MainInfoIcon = styled.div`
 
 const BriefBioText = styled(posed.div(fadeEnter))`
   font-size: 3vh;
-  font-family: "Alegreya", serif;
+  font-family: "Average", serif;
   color: #4B4B4B;
-  margin-top: 1vh;
+  margin-top: 2vh;
 `;
 
 const ImportantInfo = styled(posed.div(fadeEnter))`

@@ -75,6 +75,8 @@ const Menu = styled(MenuButton)`
 `
 
 const NavLink = styled(MenuLink)`
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
   text-decoration: none;
   text-align: justify;
   direction: rtl;
