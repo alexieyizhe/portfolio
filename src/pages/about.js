@@ -28,6 +28,10 @@ const ParagraphPic = styled.figure`
     max-height: ${props => props.dims && props.dims.height};
   }
 
+  & a {
+    color: black;
+  }
+
   ${mediaSize.phone`
     float: none;
     padding-top: 0.5em;
@@ -41,7 +45,7 @@ const ParagraphPic = styled.figure`
 
 const Intro = styled.div`
   font-size: 2.5vh;
-  font-family: "PT Serif", serif;;
+  font-family: "PT Serif", Palatino, Times, serif;;
 
   & > div {
     margin-bottom: 1em;

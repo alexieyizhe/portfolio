@@ -32,6 +32,9 @@ const Container = styled(posed.div(ContainerConfig))`
   grid-template-rows: 10em 3em 5em 4em 1.5em;
   grid-template-areas: "pic" "title" "desc" "stack" "links";
 
+  & .__react_component_tooltip {
+    display: inline;
+  }
 
   /* Pseudo-element for shadow on container during focus */
   &:before {
@@ -96,6 +99,7 @@ const ProjectTitle = styled.span`
   grid-area: title;
   justify-self: start;
   align-self: center;
+  padding-top: 0.5em;
 
   /* Design */
   font-family: "PT Sans", sans-serif;;
@@ -213,17 +217,13 @@ class ProjectShowcase extends React.Component {
           <ProjectLinkContainer>
             {this.props.project.actionLinks.map((link, i) => {
               return (
-                <ProjectLink key={i} data-tip data-for={`actionLinkTip${i}`}>
+                <ProjectLink key={i} data-tip={link.name} data-for={`actionLinkTip${i}`}>
                   <a href={link.url} target="_blank">
                     <SVGDrawIcon animate={this.state.focused && isMobile}>
                       <Icon name={link.icon}  size="1.5em" color="#595959" />
                     </SVGDrawIcon>
                   </a>
-                  <ReactTooltip id={`actionLinkTip${i}`} effect='solid'>
-                    <span>
-                      {link.name}
-                    </span>
-                  </ReactTooltip>
+                  <ReactTooltip id={`actionLinkTip${i}`} effect='solid' />
                 </ProjectLink>
               );
             })}

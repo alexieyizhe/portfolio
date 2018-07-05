@@ -125,13 +125,30 @@ class NavMenu extends React.Component {
     };
   }
 
+  handleFocus(action) {
+    if(action === 'hover' && !isMobile) {
+      this.setState({menuOpen: true});
+    } else if(action === 'hoverAway' && !isMobile) {
+      this.setState({menuOpen: false});
+    } else if(action === 'click' && isMobile) {
+      this.setState((prevState) => {
+        return { menuOpen: !prevState.menuOpen };
+      });
+    } else if(action === 'clickAway' && isMobile) {
+      this.setState({menuOpen: false});
+    }
+  }
+
   render() {
     return (
       <Menu
         pose={this.state.menuOpen ? 'open' : 'closed'}
-        onMouseEnter={() => this.setState({ menuOpen: true })}
-        onMouseLeave={() => this.setState({ menuOpen: false })}
-        default={this.props.showDefault} >
+        onMouseEnter={() => this.handleFocus('hover')}
+        onMouseLeave={() => this.handleFocus('hoverAway')}
+        onClick={() => this.handleFocus('click')}
+        onBlur={() => this.handleFocus('clickAway')}
+        default={this.props.showDefault}
+        tabIndex="0" >
           { menuPageOptions.map((option, i) => {
               return <NavLink key={i} pose={this.state.menuOpen ? 'open' : 'closed'} default={this.props.showDefault} mobileoffset={i} >
                        <Link
