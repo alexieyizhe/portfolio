@@ -143,6 +143,7 @@ const ProjectStackLink = styled.a`
   position: relative;
   z-index: 10;
   cursor: pointer;
+  display: inline;
   color: ${props => props.focused ? props.color : '#7E7E7E'};
 `
 
@@ -169,7 +170,7 @@ const ProjectLinkContainer = styled.div`
 `;
 
 const ProjectLink = styled.div`
-  display:  inline;
+  display: inline;
 `;
 
 class ProjectShowcase extends React.Component {
