@@ -213,13 +213,17 @@ class ProjectShowcase extends React.Component {
           <ProjectLinkContainer>
             {this.props.project.actionLinks.map((link, i) => {
               return (
-                <ProjectLink key={i} data-tip={link.name} data-for={`actionLinkTip${i}`}>
+                <ProjectLink key={i} data-tip data-for={`actionLinkTip${i}`}>
                   <a href={link.url} target="_blank">
                     <SVGDrawIcon animate={this.state.focused && isMobile}>
                       <Icon name={link.icon}  size="1.5em" color="#595959" />
                     </SVGDrawIcon>
                   </a>
-                  <ReactTooltip id={`actionLinkTip${i}`} effect='solid' />
+                  <ReactTooltip id={`actionLinkTip${i}`} effect='solid'>
+                    <span>
+                      {link.name}
+                    </span>
+                  </ReactTooltip>
                 </ProjectLink>
               );
             })}
