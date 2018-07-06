@@ -10,7 +10,6 @@ import { mediaSize, greetingOptions, particleConfig } from "../data/configOption
 import Icon from "../components/Icon.js";
 import Link from "gatsby-link";
 import { isMobile } from 'react-device-detect';
-
 import IntroPic from "../img/misc/mainPagePic.png";
 import LogoPic from "../img/misc/logo.png";
 
@@ -177,22 +176,22 @@ class HomePage extends React.Component {
           <ImportantInfo initialPose={'enter'} pose={'normal'} >
             <a href="mailto:alex@alexieyizhe.me" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="paper_plane" size={isMobile ? "2.5vh" : "4vh"} color="#80D07F" />
+                <Icon name="paper_plane" size={isMobile ? "2vh" : "4vh"} color="#80D07F" />
               </SVGDrawIcon>
             </a>
             <Link to="/resume">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="file" size={isMobile ? "2.5vh" : "4vh"} color="#DE7947" />
+                <Icon name="file" size={isMobile ? "2vh" : "4vh"} color="#DE7947" />
               </SVGDrawIcon>
             </Link>
             <a href="https://github.com/alexieyizhe" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="github" size={isMobile ? "2.5vh" : "4vh"} color="#B29CE7" />
+                <Icon name="github" size={isMobile ? "2vh" : "4vh"} color="#B29CE7" />
               </SVGDrawIcon>
             </a>
             <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="linkedin" size={isMobile ? "2.5vh" : "4vh"} color="#4092DE" />
+                <Icon name="linkedin" size={isMobile ? "2vh" : "4vh"} color="#4092DE" />
               </SVGDrawIcon>
             </a>
           </ImportantInfo>

@@ -18,7 +18,7 @@ export const projectsList = [
       {name: 'CSS Grid', icon: 'devicons devicons-css3', color: '#4173D5' },
     ],
     actionLinks: [
-      {name: "Web Demo", icon: "monitor", url: "http://alexieyizhe.me"},
+      {name: "Web Demo", icon: "monitor", url: "https://alexieyizhe.me"},
       {name: "View on Github", icon: "github", url: "https://github.com/alexieyizhe/alexieyizhe.github.io"},
     ]
   },

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import posed from "react-pose";
+import Img from "gatsby-image";
 import VisibilitySensor from "react-visibility-sensor";
 import { css } from 'styled-components';
 import { isMobile } from 'react-device-detect';
@@ -98,7 +99,7 @@ const Highlight = styled.span`
   }
 `
 
-const PostImg = styled.img`
+const PostImg = styled(Img)`
   grid-area: pic;
   justify-self: center;
   align-self: center;

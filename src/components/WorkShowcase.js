@@ -119,7 +119,6 @@ const WorkTitle = styled.span`
     position: relative;
     margin-bottom: 1vh;
     top: 0.5em;
-    font-size: 7vh;
   `}
 `;
 
@@ -129,7 +128,7 @@ const WorkLogo = styled.img`
   position: relative;
   z-index: 6;
   top: -10%;
-  right: -18%;
+  right: -16%;
   max-width: 30vw;
   max-height: 20vh;
 
@@ -183,11 +182,9 @@ class WorkShowcase extends React.Component {
           bg={this.props.work.bgImgSource}
           onMouseEnter={() => this.handleFocus(true)}
           onMouseLeave={() => this.handleFocus(false)} >
-
           <WorkTitle>{this.props.work.name}</WorkTitle>
           <WorkRole>{this.props.work.role}</WorkRole>
           <WorkLogo src={this.props.work.logoImgSource} focused={this.state.focused} />
-
         </Container>
       </VisibilitySensor>
     );

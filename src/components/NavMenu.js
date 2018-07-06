@@ -4,7 +4,8 @@ import Link from "gatsby-link";
 import posed from "react-pose";
 import { isMobile } from 'react-device-detect';
 import { css } from "styled-components";
-
+import Hamburger from 'react-hamburgers';
+import hamburger from "../data/hamburgers/hamburgers.scss";
 import { menuPageOptions, contactOptions, mediaSize } from "../data/configOptions.js";
 
 
@@ -48,10 +49,6 @@ const Menu = styled(posed.div(MenuConfig))`
   display: inline-block;
   z-index: 100; // Allow menu to always be on top for navigation
 
-  outline: 2px solid #fff;
-  outline-offset: -0.7em;
-
-
   grid-area: menu;
 
   &:hover {
@@ -72,8 +69,8 @@ const MenuLink = styled(posed.div(MenuLinkConfig))`
   padding-top: 0.5em;
   float: right;
 
-  &:first-child {
-    margin-top: 2.5em;
+  &:nth-child(2) {
+    margin-top: 0.3em;
   }
 
   & a {
@@ -91,8 +88,8 @@ const MenuLink = styled(posed.div(MenuLinkConfig))`
     position: relative;
     top: ${props => props.mobileoffset * -50}px;
 
-    &:first-child {
-      margin-top: -2.5em;
+    &:nth-child(2) {
+      margin-top: -4.5em;
     }
   `}
 `;
@@ -180,6 +177,11 @@ class NavMenu extends React.Component {
         onBlur={() => this.handleFocus('clickAway')}
         default={this.props.showDefault}
         tabIndex="0" >
+        <Hamburger
+          active={this.state.menuOpen}
+          type="elastic"
+          style={{height: "1em", width: "1em"}}
+        />
         { menuPageOptions.map((option, i) => {
             return (
               <MenuLink

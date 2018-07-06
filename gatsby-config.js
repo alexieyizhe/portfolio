@@ -18,6 +18,15 @@ module.exports = {
       resolve: 'gatsby-plugin-styled-components',
     },
     {
+      resolve: 'gatsby-transformer-sharp',
+    },
+    {
+      resolve: 'gatsby-plugin-sharp',
+    },
+    {
+      resolve: 'gatsby-plugin-sass',
+    },
+    {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: [
@@ -33,9 +42,16 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        trackingId: "UA-114911192-3",
+        name: `img`,
+        path: `${__dirname}/src/img/`
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: `UA-114911192-3`,
         // Puts tracking script in the head instead of the body
         head: false,
       },
