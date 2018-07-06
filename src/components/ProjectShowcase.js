@@ -29,8 +29,9 @@ const Container = styled(posed.div(ContainerConfig))`
   padding: 10% 8%;
   display: grid;
   grid-template-columns: 250px;
-  grid-template-rows: 10em 3em 5em 4em 1.5em;
+  grid-template-rows: 10em auto 5em 4em 1.5em;
   grid-template-areas: "pic" "title" "desc" "stack" "links";
+  margin-bottom: 2em;
 
   & .__react_component_tooltip {
     display: inline;
@@ -102,8 +103,7 @@ const ProjectTitle = styled.span`
   padding-top: 0.5em;
 
   /* Design */
-  font-family: "PT Sans", sans-serif;;
-  font-weight: bold;
+  font-family: "PT Serif", serif;
   font-size: 2em;
 
   ${mediaSize.tablet`

@@ -5,7 +5,7 @@ import websitePic from "../img/projects/alexieyizhewebsite.png";
 
 export const projectsList = [
   {
-    name: 'alexieyizhe.me',
+    name: 'Personal Website',
     desc: 'Error: Maximum recursion depth exceeded. (memory_address: 0xObebebebe)',
     color: '#9CCDA1',
     imgSource: websitePic,

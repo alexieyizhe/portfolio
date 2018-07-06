@@ -10,3 +10,7 @@ yarn-error.log
 
 # Design mockups of new website, old ideas
 /unneeded
+
+# Prevent iCloud Drive from syncing folder
+.nosync
+

@@ -100,29 +100,32 @@ const Container = styled.div`
 `;
 
 const WorkTitle = styled.span`
-  font-family: "Raleway", serif;;
+  font-family: "Raleway", Arial, serif;
   font-size: 4vw;
   font-weight: bolder;
   position: absolute;
   z-index: 6;
   bottom: 0;
   grid-area: title;
+  white-space: nowrap;
 
   ${mediaSize.tablet`
-    font-size: 5vh;
+    font-size: 6vh;
+    font-family: "Lato", "PT Sans", Arial, serif;
+    font-weight: 700;
   `}
 
   ${mediaSize.phone`
     position: relative;
-    bottom: auto;
+    margin-bottom: 1vh;
     top: 0.5em;
-    font-size: 5vh;
+    font-size: 7vh;
   `}
 `;
 
 const WorkLogo = styled.img`
   grid-area: pic;
-  justify-self: center;
+  justify-self: end;
   position: relative;
   z-index: 6;
   top: -10%;
@@ -138,11 +141,10 @@ const WorkLogo = styled.img`
 
   ${mediaSize.phone`
     top: 18%;
-    right: -35%;
+    right: -30%;
     max-width: 25vh;
     max-height: 20vh;
   `}
-
 `
 
 const WorkRole = styled.div`

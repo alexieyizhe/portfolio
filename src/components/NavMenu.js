@@ -3,11 +3,12 @@ import styled from "styled-components";
 import Link from "gatsby-link";
 import posed from "react-pose";
 import { isMobile } from 'react-device-detect';
+import { css } from "styled-components";
 
 import { menuPageOptions, contactOptions, mediaSize } from "../data/configOptions.js";
 
 
-const MenuButton = posed.div({
+const MenuConfig = {
   closed: {
     scale: 1,
     rotate: 45,
@@ -19,9 +20,9 @@ const MenuButton = posed.div({
     delayChildren: 50,
     staggerChildren: 100,
   }
-});
+};
 
-const MenuLink = posed.div({
+const MenuLinkConfig = {
   closed: {
     opacity: 0,
     scale: 0,
@@ -35,22 +36,13 @@ const MenuLink = posed.div({
     scale: 1,
     x: 0
   },
-});
+};
 
-const MenuLinkBg = posed.div({
-  closed: {
-    width: 0,
-  },
-  hovered: {
-    width: ({length}) => length * 8
-  },
-});
-
-const Menu = styled(MenuButton)`
+const Menu = styled(posed.div(MenuConfig))`
   width: 2.5em;
   height: 2.5em;
   background-color: #56C6DF;
-  opacity: 0.8;
+  opacity: 1;
   position: fixed;
   right: 11%;
   display: inline-block;
@@ -74,10 +66,7 @@ const Menu = styled(MenuButton)`
   `}
 `
 
-const NavLink = styled(MenuLink)`
-  font-family: "Raleway", sans-serif;
-  font-weight: bold;
-  text-decoration: none;
+const MenuLink = styled(posed.div(MenuLinkConfig))`
   text-align: justify;
   direction: rtl;
   padding-top: 0.5em;
@@ -87,12 +76,15 @@ const NavLink = styled(MenuLink)`
     margin-top: 2.5em;
   }
 
-  .navLinkText {
+  & a {
     text-decoration: none;
-    color: #545454;
   }
 
-  ${props => props.default ? null :
+  ${props => props.default ?
+    mediaSize.phone`
+      padding-top: 0.25em;
+    `
+    :
     mediaSize.phone`
     direction: ltr;
     float: none;
@@ -105,15 +97,54 @@ const NavLink = styled(MenuLink)`
   `}
 `;
 
-const NavLinkBg = styled(MenuLinkBg)`
-  background-color: ${props => props.colour};
-  opacity: 0.6;
-  position: absolute;
-  float: right;
-  margin-top: 0.45em;
-  height: 0.9em;
-`;
+const MenuLinkText = styled.div`
+  padding-right: 5px;
+  opacity: 1;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  color: #545454;
 
+  ${mediaSize.phone`
+    font-family: "PT Sans", Arial, sans-serif;
+    font-weight: 450;
+  `}
+`
+
+const Highlight = styled.span`
+  position: relative;
+  z-index: 110;
+
+  &:before { /* background of title on hover */
+    background-color: ${props => props.color};
+    opacity: 0.6;
+    content: '';
+    position: absolute;
+    top: 0.25em;
+    left: 0.25em;
+    right: -5px;
+    height: 1em;
+    width: 0;
+    z-index: -1;
+
+    transition: 250ms ease width;
+
+    ${props => props.hovered ? css`
+      width: 95%;
+      ${mediaSize.phone`
+        width: 118%;
+      `}
+    ` : null}
+
+    ${mediaSize.phone`
+      top: 0.2em;
+      float: none;
+      top: 0;
+      height: 1.1em;
+      left: -3px;
+      opacity: 0.75;
+    `}
+  }
+`;
 
 
 class NavMenu extends React.Component {
@@ -149,22 +180,30 @@ class NavMenu extends React.Component {
         onBlur={() => this.handleFocus('clickAway')}
         default={this.props.showDefault}
         tabIndex="0" >
-          { menuPageOptions.map((option, i) => {
-              return <NavLink key={i} pose={this.state.menuOpen ? 'open' : 'closed'} default={this.props.showDefault} mobileoffset={i} >
-                       <Link
-                         to={option.route}
-                         className="navLinkText"
-                         onMouseEnter={() => this.setState({ menuLink: option.text })}
-                         onMouseLeave={() => this.setState({ menuLink: null })} >
-                         <NavLinkBg
-                           initialPose = 'closed'
-                           pose={((this.state.menuLink === option.text || isMobile) && this.state.menuOpen) ? 'hovered' : 'closed'}
-                           colour={option.colour}
-                           length={option.text.length} />
-                         <div style={{ position: 'relative', paddingRight: '5px', opacity: '1'}}>{option.text}</div>
-                       </Link>
-                     </NavLink>;
-           })}
+        { menuPageOptions.map((option, i) => {
+            return (
+              <MenuLink
+                key={i}
+                pose={this.state.menuOpen ? 'open' : 'closed'}
+                default={this.props.showDefault}
+                mobileoffset={i}
+              >
+                <Link
+                  to={option.route}
+                  onMouseEnter={() => this.setState({ menuLink: option.text })}
+                  onMouseLeave={() => this.setState({ menuLink: null })}
+                >
+                  <MenuLinkText>
+                    <Highlight
+                      color={option.colour}
+                      hovered={((this.state.menuLink === option.text || isMobile) && this.state.menuOpen)}
+                    >
+                      {option.text}
+                    </Highlight>
+                  </MenuLinkText>
+                </Link>
+             </MenuLink>
+            );})}
       </Menu>
     );
   }
