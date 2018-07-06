@@ -19,6 +19,12 @@ const TemplateContainer = styled.div`
   bottom: ${props => props.outerBounds && props.outerBounds.bottom || 0};
 `;
 
+const NonNavElements = styled.div`
+  opacity: ${props => props.shouldFade ? 0.4 : 1};
+  transition: 0.5s opacity;
+`;
+
+
 class TemplateWrapper extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +34,14 @@ class TemplateWrapper extends React.Component {
       showHeader: props.header,
       showFooter: props.footer,
       title: props.title,
+      menuFocused: false,
     }
+  }
+
+  handleFocus(menuFocused) {
+    this.setState({
+      menuFocused: menuFocused
+    })
   }
 
   render() {
@@ -41,12 +54,22 @@ class TemplateWrapper extends React.Component {
           <link rel="icon" href={Favicon} sizes={["16x16","32x32","64x64"]} type="image/png" />
         </Helmet>
         <Transition>
-          <div>
-            {this.state.showHeader ? <PageHeader className="navMenu" title={this.state.showHeader} /> : null}
-            {this.state.showMenu || this.state.showDefaultMenu ? <NavMenu showDefault={this.state.showDefaultMenu} /> : null}
-          </div>
-          {this.props.children}
-          {this.state.showFooter ? <PageFooter className="pageFooter" /> : null}
+          {this.state.showMenu || this.state.showDefaultMenu ?
+            <NavMenu className="navMenu" showDefault={this.state.showDefaultMenu} wrapperHandleFocus={(focused) => this.handleFocus(focused)} /> :
+            null
+          }
+          <NonNavElements shouldFade={this.state.menuFocused} id="nonNavElements">
+            {this.state.showHeader ?
+              <PageHeader className="pageHeader" title={this.state.showHeader} /> :
+              null
+            }
+            {this.props.children}
+            {this.state.showFooter ?
+              <PageFooter className="pageFooter" /> :
+              null
+            }
+          </NonNavElements>
+
         </Transition>
       </TemplateContainer>
     )

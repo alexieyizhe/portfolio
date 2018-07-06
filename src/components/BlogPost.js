@@ -41,7 +41,7 @@ const Container = styled(posed.div(ContainerConfig))`
                        "pic date";
 
   ${mediaSize.tablet`
-    width: 85%;
+    width: 100%;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -52,7 +52,7 @@ const Container = styled(posed.div(ContainerConfig))`
                          "title"
                          "desc"
                          "date";
-    padding: 0 5% 0 5%;
+    padding: 0 3%;
   `}
 
 `;
@@ -99,7 +99,7 @@ const Highlight = styled.span`
   }
 `
 
-const PostImg = styled(Img)`
+const PostImg = styled.img`
   grid-area: pic;
   justify-self: center;
   align-self: center;

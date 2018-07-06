@@ -128,15 +128,14 @@ const Highlight = styled.span`
     ${props => props.hovered ? css`
       width: 95%;
       ${mediaSize.phone`
-        width: 118%;
+        width: 100%;
       `}
     ` : null}
 
     ${mediaSize.phone`
-      top: 0.2em;
+      top: 0.4em;
       float: none;
-      top: 0;
-      height: 1.1em;
+      height: 0.9em;
       left: -3px;
       opacity: 0.75;
     `}
@@ -156,14 +155,18 @@ class NavMenu extends React.Component {
   handleFocus(action) {
     if(action === 'hover' && !isMobile) {
       this.setState({menuOpen: true});
+      this.props.wrapperHandleFocus(true);
     } else if(action === 'hoverAway' && !isMobile) {
       this.setState({menuOpen: false});
+      this.props.wrapperHandleFocus(false);
     } else if(action === 'click' && isMobile) {
       this.setState((prevState) => {
+        this.props.wrapperHandleFocus(!prevState.menuOpen);
         return { menuOpen: !prevState.menuOpen };
       });
     } else if(action === 'clickAway' && isMobile) {
       this.setState({menuOpen: false});
+      this.props.wrapperHandleFocus(false);
     }
   }
 
