@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Alex Xie`,
+    siteUrl: `https://www.alexieyizhe.me`,
+    description: `Personal website of Alex Xie.`,
   },
   plugins: [
     {
@@ -39,25 +41,10 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-remove-trailing-slashes`
+    },
+    {
       resolve: `gatsby-plugin-sitemap`
-    },
-    {
-      resolve: `gatsby-plugin-offline`
-    },
-    /* KEEP GH-PAGES PLUGIN LAST IN PLUGIN LIST */
-    {
-      resolve: 'gatsby-plugin-github-pages',
-      options: {
-        customDomain: 'http://alexieyizhe.me/',
-        publishOptions: {
-          branch: 'master',
-          user: {
-            name: 'Alex\'s Deploy Bot',
-            email: 'alex_bot@alexieyizhe.me'
-          },
-          message: '[AUTO DEPLOY] Website Update'
-        }
-      }
     }
   ],
 }
