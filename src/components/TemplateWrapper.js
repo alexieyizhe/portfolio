@@ -55,7 +55,12 @@ class TemplateWrapper extends React.Component {
         </Helmet>
         <Transition>
           {this.state.showMenu || this.state.showDefaultMenu ?
-            <NavMenu className="navMenu" showDefault={this.state.showDefaultMenu} wrapperHandleFocus={(focused) => this.handleFocus(focused)} /> :
+            <NavMenu
+              className="navMenu"
+              showDefault={this.state.showDefaultMenu}
+              wrapperHandleFocus={(focused) => this.handleFocus(focused)}
+              curPage={this.props.curPage}
+            /> :
             null
           }
           <NonNavElements shouldFade={this.state.menuFocused} id="nonNavElements">
@@ -69,7 +74,6 @@ class TemplateWrapper extends React.Component {
               null
             }
           </NonNavElements>
-
         </Transition>
       </TemplateContainer>
     )

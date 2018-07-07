@@ -157,7 +157,7 @@ class HomePage extends React.Component {
     return (
       <div id="particleBgContainer" style={this.props.transition && this.props.transition.style}>
         <Particles params={particleConfig} style={ParticlesStyle} />
-        <TemplateWrapper defaultMenu outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Alex Xie">
+        <TemplateWrapper defaultMenu curPage="Home" outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Alex Xie">
           <Logo src={LogoPic} initialPose={'enter'} pose={'normal'} />
           {/* NOTE: script font in logo is BarleyScript */}
           <Greeting initialPose={'enter'} pose={'normal'}>

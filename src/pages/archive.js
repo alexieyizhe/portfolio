@@ -38,7 +38,7 @@ class ArchivePage extends React.Component {
 
   render() {
     return (
-      <TemplateWrapper title="Archive" menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
+      <TemplateWrapper title="Archive" menu footer curPage="Archive" outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
         <Header className="navMenu">archive.</Header>
         <div style={this.props.transition && this.props.transition.style}>
           {archiveSiteList.map((snapshot, i) => {

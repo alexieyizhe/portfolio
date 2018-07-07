@@ -65,7 +65,7 @@ class AboutPage extends React.Component {
 
   render() {
     return (
-      <TemplateWrapper header="alex who?" menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="About">
+      <TemplateWrapper header="alex who?" menu footer curPage="About" outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="About">
         <div style={this.props.transition && this.props.transition.style}>
           <Intro>
             <ParagraphPic imgAlign="right" captionAlign="center" dims={{width: "30vw", height: "20vh"}}>

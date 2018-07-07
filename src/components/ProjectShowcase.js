@@ -189,7 +189,7 @@ class ProjectShowcase extends React.Component {
     return (
       <VisibilitySensor onChange={(isVisible) => this.handleFocus(isMobile && isVisible)}>
         <Container
-          focused={this.state.focused}
+          focused={this.state.focused ? 1 : 0}
           initialPose='enter' pose={this.state.focused ? 'hovered' : 'normal'}
           onMouseEnter={() => this.handleFocus(true)}
           onMouseLeave={() => this.handleFocus(false)}

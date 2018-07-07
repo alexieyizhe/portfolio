@@ -17,7 +17,7 @@ class BlogPage extends React.Component {
   render() {
     const posts = this.props.data.allMediumPost.edges;
     return (
-      <TemplateWrapper menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Blog" header="my ramblings.">
+      <TemplateWrapper menu footer curPage="Blog" outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Blog" header="my ramblings.">
         <div style={this.props.transition && this.props.transition.style}>
           {posts.map(post => (
             <BlogPost

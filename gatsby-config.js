@@ -32,8 +32,8 @@ module.exports = {
         fonts: [
           `alegreya`,
           `alegreya sans`,
-          `pt sans`,
-          `pt serif`,
+          `PT Sans`,
+          `PT Serif`,
           `copse`,
           `raleway`,
           `lato`,

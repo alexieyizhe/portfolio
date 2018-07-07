@@ -102,7 +102,6 @@ const MenuLinkText = styled.div`
   color: #545454;
 
   ${mediaSize.phone`
-    font-family: "PT Sans", Arial, sans-serif;
     font-weight: 450;
   `}
 `
@@ -201,7 +200,7 @@ class NavMenu extends React.Component {
                   <MenuLinkText>
                     <Highlight
                       color={option.colour}
-                      hovered={((this.state.menuLink === option.text || isMobile) && this.state.menuOpen)}
+                      hovered={((this.state.menuLink === option.text || this.props.curPage === option.text) && this.state.menuOpen)}
                     >
                       {option.text}
                     </Highlight>
