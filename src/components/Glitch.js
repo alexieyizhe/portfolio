@@ -30,6 +30,11 @@ const GlitchBox = styled.div`
     }
   }
 
+  @-webkit-keyframes force-move {
+    from {top: 0px;}
+    to {top: 0.01px;}
+  }
+
   @keyframes glitch-anim-2 {
     0% {
       clip: rect(${Math.floor(Math.random() * 500)}px, 5000px, ${Math.floor(Math.random() * 500)}px, 0);
@@ -63,6 +68,7 @@ const GlitchBox = styled.div`
     /* important: opaque background masks the original */
     background: white;
     animation: glitch-anim-1 1s infinite linear alternate-reverse;
+    -webkit-animation: force-move 0.1s infinite;
   }
 
   &:after {

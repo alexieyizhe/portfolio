@@ -60,7 +60,7 @@ const Container = styled(posed.div(ContainerConfig))`
   }
 
   ${mediaSize.tablet`
-    padding: 10% 6%;
+    padding: 10% 8%;
     grid-template-columns: auto;
 
     border-radius: 8px;
@@ -70,7 +70,7 @@ const Container = styled(posed.div(ContainerConfig))`
   `}
 
   ${mediaSize.phone`
-    padding: 10% 6%;
+    padding: 10% 8%;
   `}
 `;
 

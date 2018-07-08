@@ -66,13 +66,13 @@ class InvalidURLPage extends React.Component {
       <TemplateWrapper title="Error 404">
         <ErrorContainer style={this.props.transition && this.props.transition.style}>
           <ErrorMessage>
-            Yikes! There isn't a page yet at <code>{pathname}</code>.
+            Yikes! There isn't a page here.
           </ErrorMessage>
           <ErrorCode>
-            <Glitch text="404" color="black" font="bolder 20vmax Raleway" />
+            <Glitch text="404" color="black" font="bolder 20vmax Lato" />
           </ErrorCode>
           <ErrorRedirect>
-            You can <a href="mailto:alexieyizhe@gmail.com">yell at the guy who made this mistake</a> or <Link to="/">go home</Link>.
+            You can <a href="mailto:alexieyizhe@gmail.com">complain to Alex</a> or <Link to="/">go home</Link>.
           </ErrorRedirect>
         </ErrorContainer>
       </TemplateWrapper>

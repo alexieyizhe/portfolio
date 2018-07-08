@@ -6,6 +6,7 @@ const Header = styled.div`
   margin-bottom: 5vmax;
   font-size: 6vh;
   font-weight: bold;
+  font-family: "Ubuntu", sans-serif;
 `;
 
 const PageHeader = (props) => (

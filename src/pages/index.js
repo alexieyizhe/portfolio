@@ -9,7 +9,7 @@ import ScrambleText from '../components/ScrambleText.js';
 import { mediaSize, greetingOptions, particleConfig } from "../data/configOptions.js";
 import Icon from "../components/Icon.js";
 import Link from "gatsby-link";
-import { isMobile } from 'react-device-detect';
+import { isMobile, isMobileOnly } from 'react-device-detect';
 import IntroPic from "../img/misc/mainPagePic.png";
 import LogoPic from "../img/misc/logo.png";
 
@@ -36,32 +36,14 @@ const ParticlesStyle = {
   zIndex: "-2"
 }
 
-const MainInfoContainer = styled.div`
-  position: relative;
-  left: -3vmax;
-  margin-bottom: 1em;
-
-  display: grid;
-  grid-template-columns: 2vmax auto;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 1vmax;
-  grid-template-areas: "contactIcon mainInfoText"
-                       "resumeIcon mainInfoText"
-                       "githubIcon mainInfoText"
-                       "linkedinIcon mainInfoText";
-`;
-
 const MainInfoText = styled(posed.div(fadeEnter))`
   font-family: "Lato";
   font-weight: 600;
-  display: grid;
-  grid-area: mainInfoText;
-  line-height: 0.8em;
+  line-height: 1em;
   font-size: 12vh;
 `
 
 const MainInfoIcon = styled.div`
-  display: grid;
   grid-area: ${props => props.gridid};
   justify-content: center;
   align-items: center;
@@ -140,16 +122,21 @@ class HomePage extends React.Component {
     super(props);
     this.state = {
       iconAnimate: false,
-      curInfo: 'name',
       greeting: greetingOptions[Math.floor(Math.random() * greetingOptions.length)]
     };
   }
 
   componentDidMount() {
     if(isMobile) {
-      setTimeout(() => {
+      this.iconAnimateID = setTimeout(() => {
         this.setState({iconAnimate: true})
       }, 3000);
+    }
+  }
+
+  componentWillUnmount() {
+    if(this.iconAnimateID) {
+      clearTimeout(this.iconAnimateID);
     }
   }
 
@@ -174,24 +161,24 @@ class HomePage extends React.Component {
             <div>lover of bad puns.</div>
           </BriefBioText>
           <ImportantInfo initialPose={'enter'} pose={'normal'} >
-            <a href="mailto:alex@alexieyizhe.me" target="_blank">
+            <a href="mailto:alexieyizhe@gmail.com" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="paper_plane" size={isMobile ? "2vh" : "4vh"} color="#80D07F" />
+                <Icon name="paper_plane" size={isMobileOnly ? "3vh" : "4vh"} color="#61C260" />
               </SVGDrawIcon>
             </a>
             <Link to="/resume">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="file" size={isMobile ? "2vh" : "4vh"} color="#DE7947" />
+                <Icon name="file" size={isMobileOnly ? "3vh" : "4vh"} color="#D26129" />
               </SVGDrawIcon>
             </Link>
             <a href="https://github.com/alexieyizhe" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="github" size={isMobile ? "2vh" : "4vh"} color="#B29CE7" />
+                <Icon name="github" size={isMobileOnly ? "3vh" : "4vh"} color="#6952A1" />
               </SVGDrawIcon>
             </a>
             <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="linkedin" size={isMobile ? "2vh" : "4vh"} color="#4092DE" />
+                <Icon name="linkedin" size={isMobileOnly ? "3vh" : "4vh"} color="#2381D9" />
               </SVGDrawIcon>
             </a>
           </ImportantInfo>

@@ -30,14 +30,12 @@ module.exports = {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: [
-          `alegreya`,
-          `alegreya sans`,
           `PT Sans`,
           `PT Serif`,
-          `copse`,
           `raleway`,
           `lato`,
-          `average`
+          `average`,
+          `ubuntu`
         ]
       }
     },

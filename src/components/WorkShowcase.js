@@ -110,8 +110,8 @@ const WorkTitle = styled.span`
   white-space: nowrap;
 
   ${mediaSize.tablet`
-    font-size: 6vh;
-    font-family: "Lato", "PT Sans", Arial, serif;
+    font-size: 5.5vh;
+    font-family: "Ubuntu", "PT Sans", Arial, serif;
     font-weight: 700;
   `}
 

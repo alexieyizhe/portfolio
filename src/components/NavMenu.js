@@ -10,6 +10,10 @@ import { menuPageOptions, contactOptions, mediaSize } from "../data/configOption
 
 
 const MenuConfig = {
+  enter: {
+    scale: 0,
+    rotate: 0
+  },
   closed: {
     scale: 1,
     rotate: 45,
@@ -172,6 +176,7 @@ class NavMenu extends React.Component {
   render() {
     return (
       <Menu
+        initialPose='enter'
         pose={this.state.menuOpen ? 'open' : 'closed'}
         onMouseEnter={() => this.handleFocus('hover')}
         onMouseLeave={() => this.handleFocus('hoverAway')}
@@ -200,7 +205,7 @@ class NavMenu extends React.Component {
                   <MenuLinkText>
                     <Highlight
                       color={option.colour}
-                      hovered={((this.state.menuLink === option.text || this.props.curPage === option.text) && this.state.menuOpen)}
+                      hovered={((this.state.menuLink === option.text && !isMobile) || this.props.curPage === option.text) && this.state.menuOpen}
                     >
                       {option.text}
                     </Highlight>
