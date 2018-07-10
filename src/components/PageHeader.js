@@ -10,7 +10,7 @@ const Header = styled.div`
   font-family: "Ubuntu", sans-serif;
 
   ${mediaSize.phone`
-    letter-spacing: -0.2em;
+    letter-spacing: -0.1em;
   `}
 `;
 

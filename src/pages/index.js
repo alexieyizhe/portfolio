@@ -43,7 +43,7 @@ const MainInfoText = styled(posed.div(fadeEnter))`
   font-size: 12vh;
 
   ${mediaSize.phone`
-    letter-spacing: -0.2em;
+    letter-spacing: -0.1em;
   `}
 `
 

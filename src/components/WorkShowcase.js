@@ -119,7 +119,7 @@ const WorkTitle = styled.span`
     position: relative;
     margin-bottom: 1vh;
     top: 0.5em;
-    letter-spacing: -0.2em;
+    letter-spacing: -0.1em;
   `}
 `;
 
