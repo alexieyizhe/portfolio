@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { mediaSize } from "../data/configOptions.js";
 
 const Header = styled.div`
   display: inline-block;
@@ -7,7 +8,10 @@ const Header = styled.div`
   font-size: 6vh;
   font-weight: bold;
   font-family: "Ubuntu", sans-serif;
-  letter-spacing: 0;
+
+  ${mediaSize.phone`
+    letter-spacing: -0.2em;
+  `}
 `;
 
 const PageHeader = (props) => (

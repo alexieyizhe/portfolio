@@ -41,6 +41,10 @@ const MainInfoText = styled(posed.div(fadeEnter))`
   font-weight: 600;
   line-height: 0.8em;
   font-size: 12vh;
+
+  ${mediaSize.phone`
+    letter-spacing: -0.2em;
+  `}
 `
 
 const BriefBioText = styled(posed.div(fadeEnter))`
