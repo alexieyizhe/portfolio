@@ -7,6 +7,7 @@ const Header = styled.div`
   font-size: 6vh;
   font-weight: bold;
   font-family: "Ubuntu", sans-serif;
+  letter-spacing: 0;
 `;
 
 const PageHeader = (props) => (

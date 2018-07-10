@@ -13,6 +13,12 @@ import { isMobile, isMobileOnly } from 'react-device-detect';
 import IntroPic from "../img/misc/mainPagePic.png";
 import LogoPic from "../img/misc/logo.png";
 
+const ParticlesStyle = {
+  position: "fixed",
+  width: "100%",
+  height: "100%",
+  zIndex: "-2"
+}
 
 const fadeEnter = {
   enter: {
@@ -29,34 +35,12 @@ const Greeting = styled(posed.div(fadeEnter))`
   margin-top: 16%;
 `;
 
-const ParticlesStyle = {
-  position: "fixed",
-  width: "100%",
-  height: "100%",
-  zIndex: "-2"
-}
-
 const MainInfoText = styled(posed.div(fadeEnter))`
-  font-family: "Lato";
+  font-family: "PT Sans";
+  letter-spacing: 0;
   font-weight: 600;
-  line-height: 1em;
+  line-height: 0.8em;
   font-size: 12vh;
-`
-
-const MainInfoIcon = styled.div`
-  grid-area: ${props => props.gridid};
-  justify-content: center;
-  align-items: center;
-
-  transform: rotate(-90deg);
-  opacity: 0.4;
-  transition: transform 0.5s, opacity 0.5s;
-
-  &:hover {
-    opacity: 1;
-    transform: rotate(0deg);
-    cursor: pointer;
-  }
 `
 
 const BriefBioText = styled(posed.div(fadeEnter))`
@@ -102,7 +86,7 @@ const MainPagePic = styled(posed.img(fadeEnter))`
   right: -10%;
   max-height: 80%;
   max-width: 95%;
-  z-index: -1
+  z-index: -1;
 `;
 
 const Logo = posed.img({

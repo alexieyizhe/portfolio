@@ -119,6 +119,7 @@ const WorkTitle = styled.span`
     position: relative;
     margin-bottom: 1vh;
     top: 0.5em;
+    letter-spacing: 0;
   `}
 `;
 
@@ -140,7 +141,8 @@ const WorkLogo = styled.img`
 
   ${mediaSize.phone`
     top: 18%;
-    right: -30%;
+    right: -50%;
+    justify-self: end;
     max-width: 25vh;
     max-height: 20vh;
   `}

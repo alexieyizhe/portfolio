@@ -138,7 +138,7 @@ const ProjectStack = styled.div`
   `}
 `;
 
-const ProjectStackLink = styled.a`
+const ProjectStackLink = styled.span`
   text-decoration: none;
   position: relative;
   z-index: 10;
@@ -206,8 +206,6 @@ class ProjectShowcase extends React.Component {
                   key={i}
                   focused={this.state.focused}
                   color={tech.color}
-                  href={`http://www.google.com/search?q=${tech.name}`}
-                  target="_blank"
                   data-tip={tech.name} data-for={`techStackTip${i}`}>
                   <span className={tech.icon} style={{fontSize: "1.5em"}} />
                   <ReactTooltip id={`techStackTip${i}`} effect='solid' />
