@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+
 const GlitchBox = styled.div`
   position: relative;
   color: ${props => props.color};
@@ -68,7 +69,7 @@ const GlitchBox = styled.div`
     /* important: opaque background masks the original */
     background: white;
     animation: glitch-anim-1 1s infinite linear alternate-reverse;
-    -webkit-animation: force-move 0.1s infinite;
+    -webkit-animation: force-move 0.1s infinite; // Some browsers don't re-render for clip-rect, so we force it
   }
 
   &:after {

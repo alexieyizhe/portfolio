@@ -1,14 +1,9 @@
-import easyPic from "../img/projects/easy.png";
-import busPic from "../img/projects/watbus.png";
-import eqrscannerPic from "../img/projects/eqrscanner.png";
-import websitePic from "../img/projects/alexieyizhewebsite.png";
-
 export const projectsList = [
   {
     name: 'Personal Site',
     desc: 'Error: Maximum recursion depth exceeded. (memory_address: 0xObebebebe)',
     color: '#9CCDA1',
-    imgSource: websitePic,
+    imgSource: '/img/projects/alexieyizhewebsite.png',
     techStack: [
       {name: 'React', icon: 'devicons devicons-atom', color: '#3DAEFF' },
       {name: 'JavaScript', icon: 'devicons devicons-javascript', color: '#0062A8' },
@@ -26,7 +21,7 @@ export const projectsList = [
     name: 'EQRScanner',
     desc: 'Heads up to all Equithon 2018 volunteers: your job just got a whole lot simpler!',
     color: '#8185DD',
-    imgSource: eqrscannerPic,
+    imgSource: '/img/projects/eqrscanner.png',
     techStack: [
       {name: 'TypeScript', icon: 'devicons devicons-javascript', color: '#0062A8' },
       {name: 'Angular', icon: 'devicons devicons-angular', color: '#8E2704' },
@@ -44,7 +39,7 @@ export const projectsList = [
     name: 'Easy Recipeasy',
     desc: 'The one stop shop for all your "I need something for dinner" needs.',
     color: '#E85A3B',
-    imgSource: easyPic,
+    imgSource: '/img/projects/easy.png',
     techStack: [
       {name: 'Ruby', icon: 'devicons devicons-ruby', color: '#A82B00' },
       {name: 'Rails', icon: 'devicons devicons-ruby_on_rails', color: '#A82B00' },
@@ -64,7 +59,7 @@ export const projectsList = [
     name: 'WATBus',
     desc: 'Out of data and wondering when the next GRT bus is? Wonder no longer.',
     color: '#436ABB',
-    imgSource: busPic,
+    imgSource: '/img/projects/watbus.png',
     techStack: [
       {name: 'Python', icon: 'devicons devicons-python', color: '#EDDD00' },
       {name: 'Flask Microframework', icon: 'devicons devicons-mootools_badge', color: '#4D5788' },

@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-import posed from "react-pose";
 
 
 class ScrambleText extends React.Component {

@@ -7,6 +7,7 @@ import { css } from "styled-components";
 import Hamburger from 'react-hamburgers';
 import hamburger from "../data/hamburgers/hamburgers.scss";
 import { menuPageOptions, contactOptions, mediaSize } from "../data/configOptions.js";
+import onClickOutside from "react-onclickoutside";
 
 
 const MenuConfig = {
@@ -155,6 +156,10 @@ class NavMenu extends React.Component {
     };
   }
 
+  handleClickOutside = evt => {
+    this.handleFocus('clickAway')
+  };
+
   handleFocus(action) {
     if(action === 'hover' && !isMobile) {
       this.setState({menuOpen: true});
@@ -181,9 +186,7 @@ class NavMenu extends React.Component {
         onMouseEnter={() => this.handleFocus('hover')}
         onMouseLeave={() => this.handleFocus('hoverAway')}
         onClick={() => this.handleFocus('click')}
-        onBlur={() => this.handleFocus('clickAway')}
-        default={this.props.showDefault}
-        tabIndex="0" >
+        default={this.props.showDefault}>
         <Hamburger
           active={this.state.menuOpen}
           type="elastic"
@@ -218,4 +221,4 @@ class NavMenu extends React.Component {
   }
 }
 
-export default NavMenu;
+export default onClickOutside(NavMenu);

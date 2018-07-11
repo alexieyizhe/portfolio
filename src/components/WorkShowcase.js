@@ -81,7 +81,7 @@ const Container = styled.div`
 
   ${mediaSize.phone`
     width: 80%;
-    height: 50vh;
+    height: auto;
     padding: 0 10% 0 10%;
     margin-bottom: 12vh;
 
@@ -101,7 +101,7 @@ const Container = styled.div`
 
 const WorkTitle = styled.span`
   font-family: "Raleway", Arial, serif;
-  font-size: 4vw;
+  font-size: 5vw;
   font-weight: bolder;
   position: absolute;
   z-index: 6;
@@ -110,16 +110,17 @@ const WorkTitle = styled.span`
   white-space: nowrap;
 
   ${mediaSize.tablet`
-    font-size: 5.5vh;
+    font-size: 4.5em;
     font-family: "Ubuntu", "PT Sans", Arial, serif;
     font-weight: 700;
   `}
 
   ${mediaSize.phone`
+    font-size: 2.5em;
     position: relative;
-    margin-bottom: 1vh;
+    margin-bottom: 0.5em;
     top: 0.5em;
-    letter-spacing: -0.1em;
+    letter-spacing: -0.07em;
   `}
 `;
 
@@ -139,12 +140,18 @@ const WorkLogo = styled.img`
 
   ${props => props.focused ? css`filter: none; opacity: 1;` : null}
 
+  ${mediaSize.tablet`
+    max-width: 25vw;
+    max-height: 30vw;
+  `}
+
   ${mediaSize.phone`
-    top: 18%;
+    bottom: -2em;
     right: -50%;
     justify-self: end;
-    max-width: 25vh;
-    max-height: 20vh;
+    align-self: end;
+    max-width: 45vw;
+    max-height: 45vw;
   `}
 `
 
@@ -157,6 +164,7 @@ const WorkRole = styled.div`
 
   ${mediaSize.tablet`
     font-size: 3vh;
+    padding-bottom: 1em;
   `}
 
   ${mediaSize.phone`
