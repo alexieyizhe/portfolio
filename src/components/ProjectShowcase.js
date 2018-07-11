@@ -195,7 +195,6 @@ class ProjectShowcase extends React.Component {
           onMouseLeave={() => this.handleFocus(false)}
           color={this.props.color}
         >
-
           <ProjectPic src={this.props.project.imgSource} focused={this.state.focused} />
           <ProjectTitle>{this.props.project.name}</ProjectTitle>
           <ProjectDesc>{this.props.project.desc}</ProjectDesc>
@@ -227,7 +226,6 @@ class ProjectShowcase extends React.Component {
               );
             })}
           </ProjectLinkContainer>
-
         </Container>
       </VisibilitySensor>
     );

@@ -24,6 +24,9 @@ module.exports = {
       resolve: 'gatsby-plugin-sharp',
     },
     {
+      resolve: 'gatsby-transformer-remark',
+    },
+    {
       resolve: 'gatsby-plugin-sass',
     },
     {
@@ -42,8 +45,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: `img`,
-        path: `${__dirname}/src/img/`
+        name: `images`,
+        path: `${__dirname}/static/img/`
       }
     },
     {

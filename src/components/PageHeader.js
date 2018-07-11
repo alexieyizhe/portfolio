@@ -5,12 +5,17 @@ import { mediaSize } from "../data/configOptions.js";
 const Header = styled.div`
   display: inline-block;
   margin-bottom: 5vmax;
-  font-size: 6vh;
+  font-size: 5em;
   font-weight: bold;
   font-family: "Ubuntu", sans-serif;
 
+  ${mediaSize.tablet`
+    font-size: 4em;
+    letter-spacing: -0.07em;
+  `}
+
   ${mediaSize.phone`
-    letter-spacing: -0.1em;
+    font-size: 3em;
   `}
 `;
 
