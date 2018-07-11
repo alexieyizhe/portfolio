@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Alex Xie`,
+    title: `Alex Xie - Portfolio Website`,
     siteUrl: `https://www.alexieyizhe.me`,
-    description: `Personal website of Alex Xie.`,
+    description: `Personal website/portfolio of Alex Xie, a computer science student at the University of Waterloo.`,
   },
   plugins: [
     {
@@ -61,7 +61,27 @@ module.exports = {
       resolve: `gatsby-plugin-remove-trailing-slashes`
     },
     {
-      resolve: `gatsby-plugin-sitemap`
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                siteUrl
+                description
+              }
+            }
+
+            allSitePage {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+        }`
+      }
     }
   ],
 }

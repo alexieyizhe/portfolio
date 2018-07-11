@@ -11,6 +11,7 @@ import SVGDrawIcon from "./SVGDrawIcon.js";
 import Icon from "./Icon.js";
 import '../data/font-devicons/devicons.min.css';
 
+
 const ContainerConfig = {
   enter: {
     opacity: 0
@@ -217,7 +218,7 @@ class ProjectShowcase extends React.Component {
               return (
                 <ProjectLink key={i} data-tip={link.name} data-for={`actionLinkTip${i}`}>
                   <a href={link.url} target="_blank">
-                    <SVGDrawIcon animate={this.state.focused && isMobile}>
+                    <SVGDrawIcon animate={this.state.focused && isMobile} duration={750}>
                       <Icon name={link.icon}  size="1.5em" color="#595959" />
                     </SVGDrawIcon>
                   </a>

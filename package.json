@@ -30,6 +30,7 @@
     "react-hamburgers": "^1.0.0",
     "react-helmet": "^5.2.0",
     "react-mt-svg-lines": "^0.8.4",
+    "react-onclickoutside": "^6.7.1",
     "react-particles-js": "^2.2.0",
     "react-pose": "^2.1.2",
     "react-scroll": "^1.7.9",

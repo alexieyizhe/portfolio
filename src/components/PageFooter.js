@@ -6,6 +6,7 @@ import Icon from "./Icon.js";
 import { mediaSize } from "../data/configOptions.js";
 import Link from "gatsby-link";
 
+
 const FooterContainer = styled.span`
   margin: 10% 5vw;
   width: 30%;
