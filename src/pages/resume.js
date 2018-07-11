@@ -84,7 +84,7 @@ class ResumePage extends React.Component {
           <TemplateWrapper menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Resume" header="resume.">
             <ResumeContainer style={this.props.transition && this.props.transition.style}>
               <ResumeBox
-                href='{Resume}'
+                href='/docs/alex_xie_resume_2A.pdf'
                 download="Alex Xie - Resume (2A)"
                 focused={this.state.focused}
                 onMouseEnter={() => this.handleFocus(true)}

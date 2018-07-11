@@ -6,12 +6,11 @@ import { mediaSize } from "../data/configOptions.js";
 const Header = styled.div`
   display: inline-block;
   margin-bottom: 5vmax;
-  font-size: 5em;
+  font-size: 4em;
   font-weight: bold;
   font-family: "Ubuntu", sans-serif;
 
   ${mediaSize.tablet`
-    font-size: 4em;
     letter-spacing: -0.07em;
   `}
 
