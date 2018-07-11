@@ -3,7 +3,7 @@ import styled from "styled-components";
 import posed from "react-pose";
 import VisibilitySensor from "react-visibility-sensor";
 import { css } from 'styled-components';
-import { isMobile } from 'react-device-detect';
+import { isMobile, isIOS } from 'react-device-detect';
 import { mediaSize } from "../data/configOptions.js";
 
 
@@ -120,13 +120,13 @@ const WorkTitle = styled.span`
     position: relative;
     margin-bottom: 0.5em;
     top: 0.5em;
-    letter-spacing: -0.07em;
+    letter-spacing: ${isIOS ? '-0.07em' : 0};
   `}
 `;
 
 const WorkLogo = styled.img`
   grid-area: pic;
-  justify-self: end;
+  justify-self: center;
   position: relative;
   z-index: 6;
   top: -10%;
@@ -142,12 +142,12 @@ const WorkLogo = styled.img`
 
   ${mediaSize.tablet`
     max-width: 25vw;
-    max-height: 30vw;
+    max-height: 20vh;
   `}
 
   ${mediaSize.phone`
     bottom: -2em;
-    right: -50%;
+    right: ${isIOS ? '-7em' : '-4em'};
     justify-self: end;
     align-self: end;
     max-width: 45vw;

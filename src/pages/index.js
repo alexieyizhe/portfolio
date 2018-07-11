@@ -3,7 +3,7 @@ import styled from "styled-components";
 import posed from "react-pose";
 import Img from "gatsby-image";
 import Link from "gatsby-link";
-import { isMobile, isMobileOnly } from 'react-device-detect';
+import { isMobile, isMobileOnly, isIOS } from 'react-device-detect';
 
 import { mediaSize, greetingOptions, particleConfig } from "../data/configOptions.js";
 import TemplateWrapper from "../components/TemplateWrapper.js";
@@ -43,7 +43,7 @@ const MainInfoText = styled(posed.div(fadeEnter))`
   font-size: 12vh;
 
   ${mediaSize.phone`
-    letter-spacing: -0.07em;
+    letter-spacing: ${isIOS ? '-0.07em' : 0};
   `}
 `
 

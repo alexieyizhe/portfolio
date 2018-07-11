@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { mediaSize } from "../data/configOptions.js";
+import { isIOS } from 'react-device-detect';
 
 
 const Header = styled.div`
@@ -10,8 +11,8 @@ const Header = styled.div`
   font-weight: bold;
   font-family: "Ubuntu", sans-serif;
 
-  ${mediaSize.tablet`
-    letter-spacing: -0.07em;
+  ${mediaSize.phone`
+    letter-spacing: ${isIOS ? '-0.07em' : 0};
   `}
 
   ${mediaSize.phone`
