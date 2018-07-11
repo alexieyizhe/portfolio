@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+
 const IconWrapper = styled.span`
   & svg {
     width: ${props => props.size};

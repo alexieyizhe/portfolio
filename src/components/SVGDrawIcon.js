@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import posed from "react-pose";
 import MtSvgLines from 'react-mt-svg-lines';
-import { mediaSize } from "../data/configOptions.js";
+
 
 const Shadow = styled.span`
   position: absolute;

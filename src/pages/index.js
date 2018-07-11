@@ -1,17 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import posed from "react-pose";
+import Img from "gatsby-image";
+import Link from "gatsby-link";
+import { isMobile, isMobileOnly } from 'react-device-detect';
 
+import { mediaSize, greetingOptions, particleConfig } from "../data/configOptions.js";
 import TemplateWrapper from "../components/TemplateWrapper.js";
 import SVGDrawIcon from "../components/SVGDrawIcon.js"
 import Particles from 'react-particles-js';
 import ScrambleText from '../components/ScrambleText.js';
-import { mediaSize, greetingOptions, particleConfig } from "../data/configOptions.js";
 import Icon from "../components/Icon.js";
-import Link from "gatsby-link";
-import { isMobile, isMobileOnly } from 'react-device-detect';
-import IntroPic from "../img/misc/mainPagePic.png";
-import LogoPic from "../img/misc/logo.png";
+
 
 const ParticlesStyle = {
   position: "fixed",
@@ -43,7 +43,7 @@ const MainInfoText = styled(posed.div(fadeEnter))`
   font-size: 12vh;
 
   ${mediaSize.phone`
-    letter-spacing: -0.1em;
+    letter-spacing: -0.07em;
   `}
 `
 
@@ -84,13 +84,16 @@ const ImportantInfo = styled(posed.div(fadeEnter))`
 
 `;
 
-const MainPagePic = styled(posed.img(fadeEnter))`
+const MainPagePic = styled(posed.div(fadeEnter))`
   position: absolute;
   bottom: 0;
   right: -10%;
-  max-height: 80%;
-  max-width: 95%;
+  width: 70%;
   z-index: -1;
+
+  ${mediaSize.phone`
+    width: 105%;
+  `}
 `;
 
 const Logo = posed.img({
@@ -133,7 +136,7 @@ class HomePage extends React.Component {
       <div id="particleBgContainer" style={this.props.transition && this.props.transition.style}>
         <Particles params={particleConfig} style={ParticlesStyle} />
         <TemplateWrapper defaultMenu curPage="Home" outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Alex Xie">
-          <Logo src={LogoPic} initialPose={'enter'} pose={'normal'} />
+          <Logo src='/img/misc/logo.png' initialPose={'enter'} pose={'normal'} />
           {/* NOTE: script font in logo is BarleyScript */}
           <Greeting initialPose={'enter'} pose={'normal'}>
             {this.state.greeting + " I'm"}
@@ -170,7 +173,9 @@ class HomePage extends React.Component {
               </SVGDrawIcon>
             </a>
           </ImportantInfo>
-          <MainPagePic src={IntroPic} initialPose={'enter'} pose={'normal'} />
+          <MainPagePic initialPose={'enter'} pose={'normal'}>
+            <Img sizes={this.props.data.mainImage.sizes} />
+          </MainPagePic>
         </TemplateWrapper>
       </div>
 
@@ -180,3 +185,13 @@ class HomePage extends React.Component {
 
 
 export default HomePage;
+
+export const pageQuery = graphql`
+  query HomeQuery {
+    mainImage: imageSharp(id: { regex: "/index_main.png/" }) {
+      sizes(maxWidth: 1500) {
+        ...GatsbyImageSharpSizes_tracedSVG
+      }
+    }
+  }
+`

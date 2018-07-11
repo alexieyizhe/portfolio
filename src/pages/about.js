@@ -1,45 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 import posed from "react-pose";
-import { mediaSize } from "../data/configOptions.js";
+import Img from "gatsby-image";
 
+import { mediaSize } from "../data/configOptions.js";
 import TemplateWrapper from "../components/TemplateWrapper.js";
 import PageHeader from "../components/PageHeader.js";
 
-import AboutMe1 from "../img/about/about_1.png";
-import AboutMe0 from "../img/about/about_0.png";
-import AboutMe2 from "../img/about/about_2.png";
-
-const ParagraphPic = styled.figure`
+const ParagraphPic = styled.div`
   padding: 0;
   margin: 2vmin;
   float: ${props => props.imgAlign || 'none'};
-
-  & figcaption {
-    padding-top: 5px;
-    text-align: ${props => props.captionAlign};
-    font-size: 0.7em;
-  }
-
-  & img {
-    display: block;
-    margin: 0 auto;
-    max-width: ${props => props.dims && props.dims.width};
-    max-height: ${props => props.dims && props.dims.height};
-  }
+  width: ${props => props.maxWidth};
 
   & a {
     color: black;
   }
 
   ${mediaSize.phone`
-    float: none;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
     padding-top: 0.5em;
     padding-bottom: 1em;
-
-    & img {
-      max-width: 100%;
-    }
   `}
 `;
 
@@ -68,8 +51,9 @@ class AboutPage extends React.Component {
       <TemplateWrapper header="alex who?" menu footer curPage="About" outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="About">
         <div style={this.props.transition && this.props.transition.style}>
           <Intro>
-            <ParagraphPic imgAlign="right" captionAlign="center" dims={{width: "30vw", height: "20vh"}}>
-              <img src={AboutMe0}/>
+
+            <ParagraphPic imgAlign="right" maxWidth="15vw">
+              <Img sizes={this.props.data.profileImage.sizes} />
             </ParagraphPic>
             <div>
               Yes, I know, it's hard to pronounce my last name. You don't have to tell me.
@@ -87,8 +71,8 @@ class AboutPage extends React.Component {
 
             <div>
               I'm a diehard soccer fan, whether it's watching FC Barcelona - my favourite team - or getting on the field myself. Apart from soccer and coding, my other interests are <s>nonexistent</s> fitness, cooking, my husky-malamute Storm, and travelling.
-              <ParagraphPic imgAlign="left" captionAlign="left" dims={{width: "40vw", height: "30vh"}}>
-                <img src={AboutMe1}/>
+              <ParagraphPic imgAlign="left" maxWidth="20vw">
+                <Img sizes={this.props.data.travelImage.sizes} />
               </ParagraphPic> I've done a couple of solo trips that you can read about on my blog!
 
             </div>
@@ -99,8 +83,8 @@ class AboutPage extends React.Component {
 
             <div>
               My friends always tell me that I'm addicted to coding, but I like to think of it less as an addiction to coding and more as a passion for solving problems. I find myself engrossed in creating solutions to tough problems and pushing myself to always improve my skills and abilities; before you know it, I've been programming for hours upon hours. This is also one aspect of my skills that I hope to improve upon, so I'm also interested in more sustainable and long-term coding practices like Agile development and working in a professional environment.
-              <ParagraphPic imgAlign="right" captionAlign="right" dims={{width: "40vw", height: "30vh"}}>
-                <img src={AboutMe2}/>
+              <ParagraphPic imgAlign="right" maxWidth="30vw">
+                <Img sizes={this.props.data.equithonImage.sizes} />
               </ParagraphPic>
             </div>
 
@@ -116,5 +100,24 @@ class AboutPage extends React.Component {
   }
 }
 
-
 export default AboutPage;
+
+export const pageQuery = graphql`
+  query AboutPageQuery {
+    profileImage: imageSharp(id: { regex: "/about_me.png/" }) {
+      sizes(maxWidth: 300) {
+        ...GatsbyImageSharpSizes_tracedSVG
+      }
+    }
+    travelImage: imageSharp(id: { regex: "/about_travel.png/" }) {
+      sizes(maxWidth: 400) {
+        ...GatsbyImageSharpSizes_tracedSVG
+      }
+    }
+    equithonImage: imageSharp(id: { regex: "/about_equithon.png/" }) {
+      sizes(maxWidth: 500) {
+        ...GatsbyImageSharpSizes_tracedSVG
+      }
+    }
+  }
+`
