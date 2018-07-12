@@ -14,10 +14,6 @@ const ParagraphPic = styled.div`
   float: ${props => props.imgAlign || 'none'};
   width: ${props => isMobileOnly ? '100%' : props.maxWidth};
 
-  & a {
-    color: black;
-  }
-
   ${mediaSize.phone`
     width: 80%;
     margin-left: 10%;
@@ -29,14 +25,24 @@ const ParagraphPic = styled.div`
 
 const Intro = styled.div`
   font-size: 2.5vh;
-  font-family: "PT Serif", Palatino, Times, serif;;
+  font-family: "PT Serif", Palatino, Times, serif;
+  line-height: 1.7;
 
   & > div {
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
   }
 
   & > div:last-child {
     margin-bottom: 0;
+  }
+
+  & a {
+    color: black;
+    text-decoration: overline;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 `
 
@@ -70,10 +76,10 @@ class AboutPage extends React.Component {
             </div>
 
             <div>
-              I'm a diehard soccer fan, whether it's watching FC Barcelona - my favourite team - or getting on the field myself. Apart from soccer and coding, my other interests are <s>nonexistent</s> fitness, cooking, my husky-malamute Storm, and travelling.
-              <ParagraphPic imgAlign="left" maxWidth="20vw">
+              I'm a diehard soccer fan, whether it's watching FC Barcelona - my favourite team - or getting on the field myself. Apart from soccer and coding, my other interests are <s>nonexistent</s> fitness, <ParagraphPic imgAlign="left" maxWidth="20vw">
                 <Img sizes={this.props.data.travelImage.sizes} />
-              </ParagraphPic> I've done a couple of solo trips that you can read about on my blog!
+              </ParagraphPic> cooking, my husky-malamute Storm, and travelling.
+              I've done a couple of solo trips that you can read about on my blog!
 
             </div>
 
