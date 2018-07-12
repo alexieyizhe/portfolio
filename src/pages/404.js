@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Link from "gatsby-link";
 import TemplateWrapper from "../components/TemplateWrapper.js";
-import Glitch from "../components/Glitch.js";
+import GlitchText from "../components/GlitchText.js";
 
 
 const ErrorContainer = styled.div`
@@ -69,7 +69,7 @@ class InvalidURLPage extends React.Component {
             Yikes! There isn't a page here.
           </ErrorMessage>
           <ErrorCode>
-            <Glitch text="404" color="black" font="bolder 20vmax Lato" />
+            <GlitchText text="404" color="black" font="bolder 20vmax Lato" />
           </ErrorCode>
           <ErrorRedirect>
             You can <a href="mailto:alexieyizhe@gmail.com">complain to Alex</a> or <Link to="/">go home</Link>.

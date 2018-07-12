@@ -3,7 +3,7 @@ import styled from "styled-components";
 import posed from "react-pose";
 import VisibilitySensor from "react-visibility-sensor";
 import { css } from 'styled-components';
-import { isMobile } from 'react-device-detect';
+import { isMobile, isIOS } from 'react-device-detect';
 import { mediaSize } from "../data/configOptions.js";
 
 
@@ -102,7 +102,7 @@ const Container = styled.div`
 const WorkTitle = styled.span`
   font-family: "Raleway", Arial, serif;
   font-size: 5vw;
-  font-weight: bolder;
+  font-weight: bold;
   position: absolute;
   z-index: 6;
   bottom: 0;
@@ -111,8 +111,8 @@ const WorkTitle = styled.span`
 
   ${mediaSize.tablet`
     font-size: 4.5em;
-    font-family: "Ubuntu", "PT Sans", Arial, serif;
-    font-weight: 700;
+    font-family: "Cabin", "Ubuntu", Arial, serif;
+    letter-spacing: ${isIOS ? '-0.05em' : 0};
   `}
 
   ${mediaSize.phone`
@@ -120,7 +120,6 @@ const WorkTitle = styled.span`
     position: relative;
     margin-bottom: 0.5em;
     top: 0.5em;
-    letter-spacing: -0.07em;
   `}
 `;
 

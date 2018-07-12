@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-import { particleConfig } from "../data/configOptions.js";
+import { particleConfig, resumeOptions } from "../data/configOptions.js";
 import Particles from 'react-particles-js';
 import TemplateWrapper from "../components/TemplateWrapper.js";
-import Resume from "../data/alex_xie_resume_2A.pdf";
-import ResumePreview from "../data/alex_xie_resume_2A.png";
 import { mediaSize } from "../data/configOptions.js";
 import { css } from 'styled-components';
 import { isMobile } from 'react-device-detect';
 import VisibilitySensor from "react-visibility-sensor";
 
+import HighlightText from "../components/HighlightText.js";
+import Icon from "../components/Icon.js";
 
 const ParticlesStyle = {
   position: "fixed",
@@ -23,15 +23,12 @@ const ResumeContainer = styled.div`
   width: 100%;
   text-align: center;
   margin-bottom: 5em;
-
-  & * {
-    display: inline-block;
-  }
 `;
 
 const ResumeBox = styled.a`
   position: relative;
   width: 50%;
+  display: inline-block;
 
   ${mediaSize.tablet`
     width: 90%;
@@ -63,19 +60,42 @@ const ResumeBox = styled.a`
   & img {
     max-width: 100%;
   }
-`
+`;
+
+const ResumeSelector = styled.div`
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+
+  & > span {
+    cursor: pointer;
+    margin-left: 0.5em;
+  }
+
+  & > span:first-child {
+    margin-right: 0;
+  }
+`;
+
 
 
 class ResumePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      focused: false
+      focused: false,
+      selectFocused: resumeOptions[resumeOptions.length - 1].name,
+      curResume: resumeOptions[resumeOptions.length - 1]
     };
   }
 
-  handleFocus(focused) {
-    this.setState({focused: focused});
+  handleFocus(type, focused) {
+    if(type === 'resume') {
+      this.setState({focused: focused});
+    } else if(type === 'selection') {
+      this.setState({selectFocused: focused});
+    }
   }
 
   render() {
@@ -86,13 +106,33 @@ class ResumePage extends React.Component {
           <TemplateWrapper menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Resume" header="resume.">
             <ResumeContainer style={this.props.transition && this.props.transition.style}>
               <ResumeBox
-                href={Resume}
-                download="Alex Xie - Resume (2A)"
-                focused={this.state.focused}
-                onMouseEnter={() => this.handleFocus(true)}
-                onMouseLeave={() => this.handleFocus(false)} >
-                <img src={ResumePreview} />
+                href={this.state.curResume.downloadSource}
+                download={this.state.curResume.downloadName}
+                focused={this.state.focused || isMobile}
+                onMouseEnter={() => this.handleFocus('resume', true)}
+                onMouseLeave={() => this.handleFocus('resume', false)} >
+                <img src={this.state.curResume.previewSource} />
               </ResumeBox>
+              <ResumeSelector>
+                {resumeOptions.map((resume, i) => {
+                  const isLatest = i === resumeOptions.length - 1;
+                  return (
+                    <span
+                      onMouseEnter={() => this.handleFocus('selection', resume.name)}
+                      onMouseLeave={() => this.handleFocus('selection', null)}
+                      onClick={() => this.setState({curResume: resume})}
+                    >
+                      <HighlightText
+                        color={resume.color}
+                        hovered={(this.state.selectFocused === resume.name && !isMobile) || this.state.curResume.name === resume.name}
+                      >
+                        {resume.name} {isLatest ? <Icon name="star" size="0.6em" color="#000" /> : null}
+                      </HighlightText>
+                    </span>
+
+                  );
+                })}
+              </ResumeSelector>
             </ResumeContainer>
           </TemplateWrapper>
         </div>
