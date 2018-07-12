@@ -154,22 +154,22 @@ class HomePage extends React.Component {
           <ImportantInfo initialPose={'enter'} pose={'normal'} >
             <a href="mailto:alexieyizhe@gmail.com" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="paper_plane" size={isMobileOnly ? "2.5vh" : "4vh"} color="#61C260" />
+                <Icon name="paper_plane" size="5vmin" color="#61C260" />
               </SVGDrawIcon>
             </a>
             <Link to="/resume">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="file" size={isMobileOnly ? "2.5vh" : "4vh"} color="#D26129" />
+                <Icon name="file" size="5vmin" color="#D26129" />
               </SVGDrawIcon>
             </Link>
             <a href="https://github.com/alexieyizhe" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="github" size={isMobileOnly ? "2.5vh" : "4vh"} color="#6952A1" />
+                <Icon name="github" size="5vmin" color="#6952A1" />
               </SVGDrawIcon>
             </a>
             <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="linkedin" size={isMobileOnly ? "2.5vh" : "4vh"} color="#2381D9" />
+                <Icon name="linkedin" size="5vmin" color="#2381D9" />
               </SVGDrawIcon>
             </a>
           </ImportantInfo>
