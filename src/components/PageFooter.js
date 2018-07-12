@@ -21,6 +21,10 @@ const FooterContainer = styled.span`
                        "copyright copyright copyright copyright copyright";
 
 
+  #copyright {
+    font-family: 'Cabin', 'PT Sans', sans-serif;
+  }
+
  ${mediaSize.tablet`
    width: 60%;
  `}
@@ -57,7 +61,7 @@ const PageFooter = () => (
         <Icon name="linkedin"  size="2vh" color="#4092DE"/>
       </SVGDrawIcon>
     </a>
-    <p style={{gridArea: 'copyright'}}>
+    <p style={{gridArea: 'copyright'}} id='copyright'>
       © alex xie, mmxviii.
     </p>
   </FooterContainer>

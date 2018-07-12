@@ -7,7 +7,7 @@ import { isIOS } from 'react-device-detect';
 const Header = styled.div`
   display: inline-block;
   margin-bottom: 5vmax;
-  font-size: 5em;
+  font-size: 8vh;
   font-weight: bold;
   font-family: "Ubuntu", sans-serif;
 

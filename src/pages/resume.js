@@ -117,7 +117,7 @@ class ResumePage extends React.Component {
                 {resumeOptions.map((resume, i) => {
                   const isLatest = i === resumeOptions.length - 1;
                   return (
-                    <span
+                    <span key={i}
                       onMouseEnter={() => this.handleFocus('selection', resume.name)}
                       onMouseLeave={() => this.handleFocus('selection', null)}
                       onClick={() => this.setState({curResume: resume})}
