@@ -125,7 +125,7 @@ const WorkTitle = styled.span`
 
 const WorkLogo = styled.img`
   grid-area: pic;
-  justify-self: end;
+  justify-self: center;
   position: relative;
   z-index: 6;
   top: -10%;
@@ -141,12 +141,12 @@ const WorkLogo = styled.img`
 
   ${mediaSize.tablet`
     max-width: 25vw;
-    max-height: 30vw;
+    max-height: 20vh;
   `}
 
   ${mediaSize.phone`
     bottom: -2em;
-    right: -50%;
+    right: ${isIOS ? '-7em' : '-4em'};
     justify-self: end;
     align-self: end;
     max-width: 45vw;
