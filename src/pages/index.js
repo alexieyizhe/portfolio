@@ -36,14 +36,14 @@ const Greeting = styled(posed.div(fadeEnter))`
 `;
 
 const MainInfoText = styled(posed.div(fadeEnter))`
-  font-family: "PT Sans";
+  font-family: "Cabin";
   letter-spacing: 0;
-  font-weight: 600;
+  font-weight: bold;
   line-height: 0.8em;
-  font-size: 12vh;
+  font-size: 13vh;
 
   ${mediaSize.phone`
-    letter-spacing: ${isIOS ? '-0.07em' : 0};
+    letter-spacing: ${isIOS ? '-0.05em' : 0};
   `}
 `
 

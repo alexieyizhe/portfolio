@@ -18,7 +18,6 @@ export const mediaSize = Object.keys(displaySizes).reduce((acc, label) => {
 
 
 
-
 export const menuPageOptions = [
   {
     text: 'Home',
@@ -33,7 +32,7 @@ export const menuPageOptions = [
   {
     text: 'Experience',
     route: '/experience',
-    colour: '#E4A871'
+    colour: '#F4B276'
   },
   {
     text: 'Projects',
@@ -65,6 +64,30 @@ export const contactOptions = [
   {
     text: 'linkedin'
   }
+];
+
+export const resumeOptions = [
+  {
+    name: 'Nov 2017',
+    previewSource: '/img/resume/alex_xie_resume_1A.png',
+    downloadName: 'Alex Xie - Resume (Nov 2017)',
+    downloadSource: '/docs/alex_xie_resume_1A.pdf',
+    color: '#F4B276'
+  },
+  {
+    name: 'Mar 2018',
+    previewSource: '/img/resume/alex_xie_resume_1B.png',
+    downloadName: 'Alex Xie - Resume (Mar 2018)',
+    downloadSource: '/docs/alex_xie_resume_1B.pdf',
+    color: '#8EE8A7'
+  },
+  {
+    name: 'Aug 2018',
+    previewSource: '/img/resume/alex_xie_resume_2A.png',
+    downloadName: 'Alex Xie - Resume (Aug 2018)',
+    downloadSource: '/docs/alex_xie_resume_2A.pdf',
+    color: '#EE9AB8'
+  },
 ];
 
 export const greetingOptions = ['Hi!', 'Hey!', 'Sup?', 'Howdy!', 'Heya!', 'Yo!', '你好!', '👋 !']

@@ -9,6 +9,8 @@ import hamburger from "../data/hamburgers/hamburgers.scss";
 import { menuPageOptions, contactOptions, mediaSize } from "../data/configOptions.js";
 import onClickOutside from "react-onclickoutside";
 
+import HighlightText from "./HighlightText.js";
+
 
 const MenuConfig = {
   enter: {
@@ -111,41 +113,6 @@ const MenuLinkText = styled.div`
   `}
 `
 
-const Highlight = styled.span`
-  position: relative;
-  z-index: 110;
-
-  &:before { /* background of title on hover */
-    background-color: ${props => props.color};
-    opacity: 0.6;
-    content: '';
-    position: absolute;
-    top: 0.25em;
-    left: 0.25em;
-    right: -5px;
-    height: 1em;
-    width: 0;
-    z-index: -1;
-
-    transition: 250ms ease width;
-
-    ${props => props.hovered ? css`
-      width: 95%;
-      ${mediaSize.phone`
-        width: 100%;
-      `}
-    ` : null}
-
-    ${mediaSize.phone`
-      top: 0.4em;
-      float: none;
-      height: 0.9em;
-      left: -3px;
-      opacity: 0.75;
-    `}
-  }
-`;
-
 
 class NavMenu extends React.Component {
   constructor(props) {
@@ -206,12 +173,12 @@ class NavMenu extends React.Component {
                   onMouseLeave={() => this.setState({ menuLink: null })}
                 >
                   <MenuLinkText>
-                    <Highlight
+                    <HighlightText
                       color={option.colour}
                       hovered={((this.state.menuLink === option.text && !isMobile) || this.props.curPage === option.text) && this.state.menuOpen}
                     >
                       {option.text}
-                    </Highlight>
+                    </HighlightText>
                   </MenuLinkText>
                 </Link>
              </MenuLink>

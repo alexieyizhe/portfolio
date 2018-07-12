@@ -38,6 +38,8 @@ module.exports = {
           `raleway`,
           `lato`,
           `average`,
+          `signika`,
+          `cabin`,
           `ubuntu`
         ]
       }
