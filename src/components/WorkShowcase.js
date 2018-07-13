@@ -69,8 +69,14 @@ const Container = styled.div`
     }
 
     &:after {
-      opacity: 0.7;
+      opacity: 0.75;
     }
+
+    ${mediaSize.phone`
+      &:after {
+        opacity: 0.85;
+      }
+    `}
     ` : null
   }
 
@@ -173,8 +179,8 @@ const WorkDesc = styled.div`
   line-height: 1.5;
   font-size: 2.5vmin;
   z-index: 6;
-  font-family: 'PT Serif', 'Times', serif;
-  max-width: 90%;
+  font-family: 'Average', 'PT Serif', serif;
+  max-width: 100%;
   max-height: ${props => props.expanded ? '10em' : 0};
   opacity: ${props => props.expanded ? 1 : 0};
   transition: max-height 0.5s, opacity 0.4s, padding 0.5s;
@@ -182,6 +188,7 @@ const WorkDesc = styled.div`
   ${mediaSize.phone`
     font-size: 1em;
     max-height: ${props => props.expanded ? '50em' : 0};
+    padding-bottom: ${props => props.expanded ? '7vw' : 0};
     transition: max-height 1s, opacity 0.7s, padding 1s;
   `}
 `
