@@ -5,28 +5,30 @@ import VisibilitySensor from "react-visibility-sensor";
 import { css } from 'styled-components';
 import { isMobile, isIOS } from 'react-device-detect';
 import { mediaSize } from "../data/configOptions.js";
+import onClickOutside from "react-onclickoutside";
 
 
 const Container = styled.div`
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  width: 75%;
-  height: 32vh;
+  width: ${props => props.expanded ? '90%' : '75%'};
+  height: auto;
   margin-bottom: 10vh;
   cursor: pointer;
-  color: white;
+  color: #D7D6D6;
 
   display: grid;
   padding: 0 5% 0 5%;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 4fr 2fr;
-  grid-template-areas: "title pic"
-                       "role role";
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "title"
+                       "role"
+                       "desc";
 
   background: url(${props => props.bg}) center/cover;
   filter: grayscale(50%);
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
+  transition: width 0.75s ease, height 0.75s ease;
 
   /* Pseudo-element for shadow on container during focus */
   &:before {
@@ -37,7 +39,7 @@ const Container = styled.div`
     bottom: 0;
     left: 0;
 
-    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.6);
 
     opacity: 0;
     transition: opacity 500ms;
@@ -51,12 +53,12 @@ const Container = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.75);
     opacity: 1;
     transition: opacity 500ms;
   }
 
-  ${props => props.focused ? css`
+  ${props => props.focused || props.expanded ? css`
     filter: none;
     background: url(${props => props.bg}) center/cover;
 
@@ -65,14 +67,13 @@ const Container = styled.div`
     }
 
     &:after {
-      opacity: 0.5;
+      opacity: 0.9;
     }
     ` : null
   }
 
   ${mediaSize.tablet`
-    width: 80%;
-
+    width: 85%;
     border-radius: 8px;
     &:before, &:after {
       border-radius: 8px;
@@ -80,21 +81,15 @@ const Container = styled.div`
   `}
 
   ${mediaSize.phone`
-    width: 80%;
     height: auto;
+    width: 70%;
     padding: 0 10% 0 10%;
     margin-bottom: 12vh;
 
-    border-radius: 8px;
-    &:before, &:after {
-      border-radius: 8px;
-    }
-
-    grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto auto;
-    grid-template-areas: "title title"
-                         "role role"
-                         "pic pic";
+    grid-template-areas: "title"
+                         "role"
+                         "desc";
   `}
 
 `;
@@ -103,13 +98,16 @@ const WorkTitle = styled.span`
   font-family: "Raleway", Arial, serif;
   font-size: 5vw;
   font-weight: bold;
-  position: absolute;
+  position: relative;
   z-index: 6;
   bottom: 0;
   grid-area: title;
   white-space: nowrap;
+  padding-top: 1em;
+  padding-bottom: 2px;
 
   ${mediaSize.tablet`
+    padding-top: 15vmin;
     font-size: 4.5em;
     font-family: "Cabin", "Ubuntu", Arial, serif;
     letter-spacing: ${isIOS ? '-0.05em' : 0};
@@ -118,39 +116,33 @@ const WorkTitle = styled.span`
   ${mediaSize.phone`
     font-size: 2.5em;
     position: relative;
-    margin-bottom: 0.5em;
-    top: 0.5em;
+    padding-top: 40vw;
   `}
 `;
 
 const WorkLogo = styled.img`
-  grid-area: pic;
-  justify-self: center;
-  position: relative;
+  position: absolute;
   z-index: 6;
-  top: -10%;
-  right: -16%;
-  max-width: 30vw;
+  top: -5vh;
+  right: -7vw;
+  max-width: 35vw;
   max-height: 20vh;
 
-  filter: grayscale(100%);
   opacity: 0;
   transition: all 0.3s ease-in;
 
-  ${props => props.focused ? css`filter: none; opacity: 1;` : null}
+  ${props => props.focused || props.expanded ? css`opacity: 1;` : null}
 
   ${mediaSize.tablet`
-    max-width: 25vw;
-    max-height: 20vh;
+    top: -5vw;
+    max-width: 30vmin;
+    max-height: 25vmin;
   `}
 
   ${mediaSize.phone`
-    bottom: -2em;
-    right: ${isIOS ? '-7em' : '-4em'};
-    justify-self: end;
-    align-self: end;
-    max-width: 45vw;
-    max-height: 45vw;
+    top: -5vw;
+    max-width: 40vw;
+    max-height: 50vw;
   `}
 `
 
@@ -160,24 +152,50 @@ const WorkRole = styled.div`
   z-index: 6;
   font-family: "Raleway", serif;;
   font-size: 2vw;
+  padding-bottom: 1em;
 
   ${mediaSize.tablet`
-    font-size: 3vh;
-    padding-bottom: 1em;
+    font-size: 2em;
+    padding-bottom: 0.5em;
   `}
 
   ${mediaSize.phone`
-    font-size: 7vmin;
+    font-size: 5vw;
   `}
 `;
+
+const WorkDesc = styled.div`
+  grid-area: desc;
+  align-self: start;
+  padding-bottom: ${props => props.expanded ? '2vw' : 0};
+  line-height: 1.5;
+  font-size: 2.5vmin;
+  z-index: 6;
+  font-family: 'PT Serif', 'Times', serif;
+  max-width: 90%;
+  max-height: ${props => props.expanded ? '10em' : 0};
+  opacity: ${props => props.expanded ? 1 : 0};
+  transition: max-height 0.5s, opacity 0.4s, padding 0.5s;
+
+  ${mediaSize.phone`
+    font-size: 1em;
+    max-height: ${props => props.expanded ? '50em' : 0};
+    transition: max-height 1s, opacity 0.7s, padding 1s;
+  `}
+`
 
 class WorkShowcase extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       focused: false,
+      expanded: false,
     };
   }
+
+  handleClickOutside = evt => {
+    this.setState({expanded: false});
+  };
 
   handleFocus(focused) {
     this.setState({focused: focused});
@@ -188,12 +206,17 @@ class WorkShowcase extends React.Component {
       <VisibilitySensor onChange={(isVisible) => this.handleFocus(isMobile && isVisible)}>
         <Container
           focused={this.state.focused}
+          expanded={this.state.expanded}
           bg={this.props.work.bgImgSource}
           onMouseEnter={() => this.handleFocus(true)}
-          onMouseLeave={() => this.handleFocus(false)} >
+          onMouseLeave={() => this.handleFocus(false)}
+          onClick={() => this.setState((prevState) => {return {expanded: !prevState.expanded}})}>>
           <WorkTitle>{this.props.work.name}</WorkTitle>
           <WorkRole>{this.props.work.role}</WorkRole>
-          <WorkLogo src={this.props.work.logoImgSource} focused={this.state.focused} />
+          <WorkLogo src={this.props.work.logoImgSource} focused={this.state.focused} expanded={this.state.expanded} />
+          <WorkDesc expanded={this.state.expanded} >
+            {this.props.work.desc}
+          </WorkDesc>
         </Container>
       </VisibilitySensor>
     );
@@ -201,4 +224,4 @@ class WorkShowcase extends React.Component {
 }
 
 
-export default WorkShowcase;
+export default onClickOutside(WorkShowcase);

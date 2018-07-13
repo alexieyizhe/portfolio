@@ -124,7 +124,7 @@ class NavMenu extends React.Component {
   }
 
   handleClickOutside = evt => {
-    this.handleFocus('clickAway')
+    this.handleFocus('clickAway');
   };
 
   handleFocus(action) {
