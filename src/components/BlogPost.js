@@ -27,6 +27,7 @@ const ContainerConfig = {
 const Container = styled(posed.div(ContainerConfig))`
   width: 100%;
   height: auto;
+  padding-top: 7%;
   padding-bottom: 7%;
   cursor: pointer;
 
@@ -44,9 +45,9 @@ const Container = styled(posed.div(ContainerConfig))`
     height: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10%;
+    margin-bottom: 13%;
     grid-template-columns: 90%;
-    grid-template-rows: 25vh auto 10vh 5vh;
+    grid-template-rows: auto auto 10vh 5vh;
     grid-template-areas: "pic"
                          "title"
                          "desc"

@@ -90,6 +90,56 @@ export const resumeOptions = [
   },
 ];
 
+export const aboutStats = [
+  {
+    name: 'Lines of Code Written',
+    amount: 120000,
+    
+    previewSource: '/img/resume/alex_xie_resume_1A.png',
+    downloadName: 'Alex Xie - Resume (Nov 2017)',
+    downloadSource: '/docs/alex_xie_resume_1A.pdf',
+    color: '#F4B276'
+  },
+  {
+    name: 'Mar 2018',
+    previewSource: '/img/resume/alex_xie_resume_1B.png',
+    downloadName: 'Alex Xie - Resume (Mar 2018)',
+    downloadSource: '/docs/alex_xie_resume_1B.pdf',
+    color: '#8EE8A7'
+  },
+  {
+    name: 'Aug 2018',
+    previewSource: '/img/resume/alex_xie_resume_2A.png',
+    downloadName: 'Alex Xie - Resume (Aug 2018)',
+    downloadSource: '/docs/alex_xie_resume_2A.pdf',
+    color: '#EE9AB8'
+  },
+];
+
+export const aboutSkills = [
+  {
+    name: 'Nov 2017',
+    previewSource: '/img/resume/alex_xie_resume_1A.png',
+    downloadName: 'Alex Xie - Resume (Nov 2017)',
+    downloadSource: '/docs/alex_xie_resume_1A.pdf',
+    color: '#F4B276'
+  },
+  {
+    name: 'Mar 2018',
+    previewSource: '/img/resume/alex_xie_resume_1B.png',
+    downloadName: 'Alex Xie - Resume (Mar 2018)',
+    downloadSource: '/docs/alex_xie_resume_1B.pdf',
+    color: '#8EE8A7'
+  },
+  {
+    name: 'Aug 2018',
+    previewSource: '/img/resume/alex_xie_resume_2A.png',
+    downloadName: 'Alex Xie - Resume (Aug 2018)',
+    downloadSource: '/docs/alex_xie_resume_2A.pdf',
+    color: '#EE9AB8'
+  },
+];
+
 export const greetingOptions = ['Hi!', 'Hey!', 'Sup?', 'Howdy!', 'Heya!', 'Yo!', '你好!', '👋 !']
 
 export const particleConfig = {

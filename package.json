@@ -26,6 +26,7 @@
     "gatsby-transformer-remark": "^1.7.44",
     "gatsby-transformer-sharp": "^1.6.27",
     "hamburgers": "^0.9.3",
+    "react-countup": "^3.0.3",
     "react-device-detect": "^1.5.8",
     "react-hamburgers": "^1.0.0",
     "react-helmet": "^5.2.0",

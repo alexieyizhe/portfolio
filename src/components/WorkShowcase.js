@@ -5,7 +5,6 @@ import VisibilitySensor from "react-visibility-sensor";
 import { css } from 'styled-components';
 import { isMobile, isIOS } from 'react-device-detect';
 import { mediaSize } from "../data/configOptions.js";
-import onClickOutside from "react-onclickoutside";
 
 
 const Container = styled.div`
@@ -16,7 +15,8 @@ const Container = styled.div`
   height: auto;
   margin-bottom: 10vh;
   cursor: pointer;
-  color: #D7D6D6;
+  color: #F6F6F6;
+  border-radius: 5px;
 
   display: grid;
   padding: 0 5% 0 5%;
@@ -40,6 +40,7 @@ const Container = styled.div`
     left: 0;
 
     box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
 
     opacity: 0;
     transition: opacity 500ms;
@@ -53,7 +54,8 @@ const Container = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
     opacity: 1;
     transition: opacity 500ms;
   }
@@ -67,7 +69,7 @@ const Container = styled.div`
     }
 
     &:after {
-      opacity: 0.9;
+      opacity: 0.7;
     }
     ` : null
   }
@@ -124,7 +126,7 @@ const WorkLogo = styled.img`
   position: absolute;
   z-index: 6;
   top: -5vh;
-  right: -7vw;
+  right: -5vw;
   max-width: 35vw;
   max-height: 20vh;
 
@@ -152,11 +154,11 @@ const WorkRole = styled.div`
   z-index: 6;
   font-family: "Raleway", serif;;
   font-size: 2vw;
-  padding-bottom: 1em;
+  padding-bottom: 1.5em;
 
   ${mediaSize.tablet`
     font-size: 2em;
-    padding-bottom: 0.5em;
+    padding-bottom: 1.5em;
   `}
 
   ${mediaSize.phone`
@@ -193,10 +195,6 @@ class WorkShowcase extends React.Component {
     };
   }
 
-  handleClickOutside = evt => {
-    this.setState({expanded: false});
-  };
-
   handleFocus(focused) {
     this.setState({focused: focused});
   }
@@ -210,7 +208,7 @@ class WorkShowcase extends React.Component {
           bg={this.props.work.bgImgSource}
           onMouseEnter={() => this.handleFocus(true)}
           onMouseLeave={() => this.handleFocus(false)}
-          onClick={() => this.setState((prevState) => {return {expanded: !prevState.expanded}})}>>
+          onClick={() => this.setState((prevState) => {return {expanded: !prevState.expanded}})}>
           <WorkTitle>{this.props.work.name}</WorkTitle>
           <WorkRole>{this.props.work.role}</WorkRole>
           <WorkLogo src={this.props.work.logoImgSource} focused={this.state.focused} expanded={this.state.expanded} />
@@ -224,4 +222,4 @@ class WorkShowcase extends React.Component {
 }
 
 
-export default onClickOutside(WorkShowcase);
+export default WorkShowcase;

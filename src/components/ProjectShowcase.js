@@ -33,6 +33,7 @@ const Container = styled(posed.div(ContainerConfig))`
   grid-template-rows: 10em auto 5em 4em 1.5em;
   grid-template-areas: "pic" "title" "desc" "stack" "links";
   margin-bottom: 2em;
+  box-shadow: 0px 7px 40px rgba(0, 0, 0, 0.05);
 
   & .__react_component_tooltip {
     display: inline;
@@ -47,7 +48,7 @@ const Container = styled(posed.div(ContainerConfig))`
     bottom: 0;
     left: 0;
 
-    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.3);
 
     opacity: 0;
     transition: opacity 500ms;

@@ -1,6 +1,5 @@
 import React from "react";
 
-
 class ScrambleText extends React.Component {
   constructor(props) {
     super(props);

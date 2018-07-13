@@ -6,7 +6,7 @@ import { isIOS } from 'react-device-detect';
 
 const Header = styled.div`
   display: inline-block;
-  margin-bottom: 5vmax;
+  margin-bottom: 0.5em;
   font-size: 8vh;
   font-weight: bold;
   font-family: "Ubuntu", sans-serif;
@@ -14,6 +14,7 @@ const Header = styled.div`
   ${mediaSize.tablet`
     font-size: 4em;
     letter-spacing: ${isIOS ? '-0.05em' : 0};
+    margin-bottom: 1em;
   `}
 
   ${mediaSize.phone`
