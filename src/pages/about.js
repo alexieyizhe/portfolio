@@ -16,7 +16,7 @@ import Icon from "../components/Icon.js";
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 22vw auto auto;
+  grid-template-columns: 21vw auto auto;
   grid-template-rows: auto auto auto;
   grid-template-areas: "pic stats stats"
                        "pic skills skills"
@@ -72,7 +72,19 @@ const AboutSkills = styled.div`
     & > div {
       font-family: 'PT Serif', 'Times', serif;
       margin-top: 1em;
+      margin-bottom: 5px;
     }
+  }
+
+  & > span:last-child {
+    & > span, > a {
+      margin-right: 10px;
+    }
+
+  }
+
+  & .__react_component_tooltip {
+    display: inline;
   }
 
   ${mediaSize.phone`
@@ -131,7 +143,7 @@ const DetailedIntro = styled.div`
   transition: max-height 6s ease-in-out, opacity 1s ease;
 `
 
-const STATS_COUNTER_DURATION = 3;
+const STATS_COUNTER_DURATION = 4;
 
 
 class AboutPage extends React.Component {
@@ -151,9 +163,11 @@ class AboutPage extends React.Component {
       <TemplateWrapper header="alex who?" menu footer curPage="About" outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="About">
         <div style={this.props.transition && this.props.transition.style}>
           <Container>
+
             <AboutPic maxWidth="15vw">
               <Img sizes={this.props.data.profileImage.sizes} />
             </AboutPic>
+
             <AboutStats>
               <StatCounter countStart={0} countEnd={18} countDuration={STATS_COUNTER_DURATION}>
                 Trips Around The Sun
@@ -167,8 +181,8 @@ class AboutPage extends React.Component {
               <StatCounter countStart={0} countEnd={894} countDuration={STATS_COUNTER_DURATION}>
                 Soccer Balls Kicked
               </StatCounter>
-
             </AboutStats>
+
             <AboutSkills>
 
               <span style={{gridArea: 'languages'}}>
@@ -186,6 +200,7 @@ class AboutPage extends React.Component {
                   <span className="devicons devicons-python" style={{fontSize: "1.5em"}} />
                 </span>
               </span>
+
               <span style={{gridArea: 'frameworks'}}>
                 <span data-tip="React" data-for={`techStackTip4`}>
                   <ReactTooltip id={`techStackTip4`} effect='solid' />
@@ -216,6 +231,7 @@ class AboutPage extends React.Component {
                   <span className="devicons devicons-meteor" style={{fontSize: "1.5em"}} />
                 </span>
               </span>
+
               <span style={{gridArea: 'tools'}}>
                 <span data-tip="SQL DBs" data-for={`techStackTip11`}>
                   <ReactTooltip id={`techStackTip11`} effect='solid' />
@@ -238,6 +254,7 @@ class AboutPage extends React.Component {
                   <span className="devicons devicons-stackoverflow" style={{fontSize: "1.5em"}} />
                 </span>
               </span>
+
               <span style={{gridArea: 'interests'}}>
                 <div>Interests</div>
                 <span data-tip="Travel" data-for={`techStackTip16`}>
@@ -264,8 +281,10 @@ class AboutPage extends React.Component {
                   <ReactTooltip id={`techStackTip21`} effect='solid' />
                   <Icon name="crosshair" size="1em" color="#000000" />
                 </span>
+
               </span>
             </AboutSkills>
+
             <AboutIntro>
               I'm Alex Yizhe Xie, and I'm currently two-fifths of my way into a Bachelor of Computer Science at the University of Waterloo. I'm Chinese, but my hometown is the city-state of Singapore, Singapore (trippy, I know). These days, I'm proudly Canadian and working as a back-end software engineer at <a href="https://flipp.com/home" target="_blank">Flipp Corp</a>. <RevealButton onClick={() => this.revealDetailedIntro()} revealed={this.state.revealed}>tell me more!</RevealButton>
               <DetailedIntro revealed={this.state.revealed}>
@@ -283,6 +302,7 @@ class AboutPage extends React.Component {
                 </p>
               </DetailedIntro>
             </AboutIntro>
+
           </Container>
         </div>
 

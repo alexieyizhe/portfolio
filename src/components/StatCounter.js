@@ -30,7 +30,7 @@ const CounterContainer = styled.span`
 `
 
 const Counter = styled.span`
-  font-size: 3em;
+  font-size: 4em;
   grid-area: counter;
 
   ${mediaSize.tablet`
@@ -45,6 +45,7 @@ const Counter = styled.span`
 
 const Desc = styled.span`
   grid-area: desc;
+  font-size: 1.2em;
   ${mediaSize.tablet`
     font-size: 1.5em;
   `}

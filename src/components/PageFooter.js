@@ -53,12 +53,12 @@ const PageFooter = () => (
     </span>
     <a href="https://github.com/alexieyizhe" target="_blank" style={{gridArea: 'githubIcon'}}>
       <SVGDrawIcon>
-        <Icon name="github" size="2vh" color="#B29CE7" />
+        <Icon name="github" size="2vh" color="#5534AC" />
       </SVGDrawIcon>
     </a>
     <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank" style={{gridArea: 'linkedinIcon'}}>
       <SVGDrawIcon>
-        <Icon name="linkedin"  size="2vh" color="#4092DE"/>
+        <Icon name="linkedin"  size="2vh" color="#2381D9"/>
       </SVGDrawIcon>
     </a>
     <p style={{gridArea: 'copyright'}} id='copyright'>
