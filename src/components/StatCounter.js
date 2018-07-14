@@ -6,13 +6,12 @@ import CountUp from 'react-countup';
 
 const CounterContainer = styled.span`
   display: inline-grid;
-  grid-template-columns: 100%;
   grid-template-rows: auto auto;
   grid-template-areas: "counter"
                        "desc";
   align-items: center;
   font-family: 'PT Serif', 'Times', serif;
-  max-width: 11em;
+  max-width: 15%;
 
   ${mediaSize.tablet`
     max-width: 30%;
@@ -30,7 +29,7 @@ const CounterContainer = styled.span`
 `
 
 const Counter = styled.span`
-  font-size: 4em;
+  font-size: 3em;
   grid-area: counter;
 
   ${mediaSize.tablet`
@@ -39,7 +38,6 @@ const Counter = styled.span`
 
   ${mediaSize.phone`
     font-size: 2em;
-
   `}
 `
 

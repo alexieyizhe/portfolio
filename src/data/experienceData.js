@@ -5,7 +5,7 @@ export const experienceList = [
     color: '#46CEF9',
     bgImgSource: '/img/experience/flipp_bg.jpg',
     logoImgSource: '../img/experience/flipp_logo.png',
-    desc: 'I migrated key systems from a monolith to a Ruby & Scala microservice architecture, as well as assisting in improving legacy services by adding more logging, error detection, and validation. I was also in charge of developing a new microservice to monitor the increased effectiveness of the new architecture.'
+    desc: 'I migrated key systems from a monolith structure to a Ruby & Scala microservice architecture, as well as assisting in improving legacy services by adding error fixes, error detection, and validation. I\'m also owning the development of a brand new microservice to monitor, compare, and analyze the effectiveness of both legacy and microservice architectures.'
   },
   {
     name: 'Equithon',
@@ -13,7 +13,7 @@ export const experienceList = [
     color: '#4D55C3',
     bgImgSource: '/img/experience/equithon_bg.jpg',
     logoImgSource: '/img/experience/equithon_logo.png',
-    desc: 'I\'m working closely with all team leads to organize the details of improving upon last year\'s Equithon. As well, I\'m leading the team of developers that are handling all development aspects of the event in 2019.'
+    desc: 'I\'m responsible for executive decisions as a co-chair, and I\'m working closely with all team leads to improve upon last year\'s Equithon. As well, I\'m directing the team of developers that are handling all technical aspects of the event in 2019, along with contributing significant code working as part of said team.'
   },
   {
     name: 'TEDxUW',
@@ -21,7 +21,7 @@ export const experienceList = [
     color: '#D43F35',
     bgImgSource: '/img/experience/tedx_bg.jpg',
     logoImgSource: '/img/experience/tedx_logo.png',
-    desc: 'I\'m part of the executive team that\'s coordinating the logistics of the 2019 event, with ambitions to push the event to over 700 attendees. I\'m also the sole developer on the volunteer and event app for the event.'
+    desc: 'I\'m part of the executive team coordinating the logistics of the 2019 event, with ambitions to push the event to over 700 attendees. As part of my position, I work closely with other teams to flesh out an event breakdown and smoothly integrate the results of their work into a cohesive event. As well, I\'m also the sole developer on the volunteer and event app for the event.'
   },
   {
     name: 'Waterloop',
@@ -37,6 +37,6 @@ export const experienceList = [
     color: '#4D55C3',
     bgImgSource: '/img/experience/equithon_bg.jpg',
     logoImgSource: '/img/experience/equithon_logo.png',
-    desc: 'I was in charge of logistics for the 2018 event, and had the task of scaling up the event to accommodate quadruple the number of attendees while working closely with other operations coordinators. In addition, I developed the official volunteer app for the event.'
+    desc: 'I was in charge of logistics for the 2018 event, and had the task of scaling up the event to accommodate a 400% increase in the number of attendees while working closely with other members of the team. In addition, I developed the official volunteer app for the event, which was used by all volunteers to keep track of the details of each attendee and interact with the database to track statistics and accurate up-to-date event information.'
   },
 ]

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import posed from "react-pose";
 import Img from "gatsby-image";
-import { isMobileOnly } from 'react-device-detect';
 import { mediaSize } from "../data/configOptions.js";
 import '../data/font-devicons/devicons.min.css';
 import Link from "gatsby-link";
@@ -13,14 +12,14 @@ import PageHeader from "../components/PageHeader.js";
 import StatCounter from "../components/StatCounter.js";
 import Icon from "../components/Icon.js";
 
-
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 21vw auto auto;
-  grid-template-rows: auto auto auto;
-  grid-template-areas: "pic stats stats"
-                       "pic skills skills"
-                       "intro intro intro";
+  grid-template-columns: 30% 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas: "pic stats"
+                       "pic skills"
+                       "intro intro";
+  grid-column-gap: 5vw;
   font-family: 'PT Serif', 'Times', serif;
 
   ${mediaSize.tablet`
@@ -35,9 +34,9 @@ const Container = styled.div`
 
 const AboutPic = styled.div`
   grid-area: pic;
-  padding: 0;
-  margin: 2vmin;
-  width: ${props => props.maxWidth};
+  width: 100%;
+  justify-self: center;
+  align-self: center;
 
   ${mediaSize.tablet`
     width: 90%;
@@ -50,7 +49,7 @@ const AboutPic = styled.div`
 const AboutStats = styled.div`
   grid-area: stats;
   & > * {
-    margin-right: 4vw;
+    margin-right: 3vw;
   }
 
   ${mediaSize.tablet`
@@ -59,20 +58,22 @@ const AboutStats = styled.div`
     & > * {
       margin-right: 0;
     }
+    margin-bottom: 1em;
   `}
 `;
 
 const AboutSkills = styled.div`
   grid-area: skills;
-  font-size: 2em;
+  font-size: 1.5em;
   font-family: 'Cabin', arial, sans-serif;
 
   & > span {
-    margin-right: 1.5em;
+    margin-right: 1em;
     & > div {
       font-family: 'PT Serif', 'Times', serif;
-      margin-top: 1em;
+      font-size: 1em;
       margin-bottom: 5px;
+      margin-top: 1em;
     }
   }
 
@@ -87,19 +88,35 @@ const AboutSkills = styled.div`
     display: inline;
   }
 
+  ${mediaSize.tablet`
+    font-size: 2em;
+
+    & > span {
+      & > div {
+        font-size: 1.25em;
+        margin-bottom: 0;
+      }
+      & > div:first-child {
+        margin-top: 0.5em;
+      }
+    }
+  `}
+
   ${mediaSize.phone`
     font-size: 1.5em;
     display: grid;
     grid-template-rows: auto auto auto auto;
     grid-template-areas: "languages" "frameworks" "tools" "interests";
-    justify-items: center;
     align-items: center;
-    text-align: center;
 
     & > span {
       margin-right: 0;
       & > div {
-        margin-bottom: 0.5em;
+        font-size: 1.25em;
+        margin-bottom: 0;
+      }
+      & > div:first-child {
+        margin-top: 0.5em;
       }
     }
   `}
@@ -125,15 +142,11 @@ const AboutIntro = styled.div`
 `;
 
 const RevealButton = styled.span`
-  display: ${props => props.revealed ? 'none' : 'inline'};
+  opacity: ${props => props.revealed ? 0 : 1};
+  transition: opacity 0.75s ease;
   text-decoration: underline;
-  cursor: pointer;
+  cursor: ${props => props.revealed ? 'default' : 'pointer'};;
 
-  ${mediaSize.phone`
-    display: ${props => props.revealed ? 'none' : 'block'};
-    margin-top: 1em;
-    text-align: center;
-  `}
 `
 
 const DetailedIntro = styled.div`
@@ -143,8 +156,7 @@ const DetailedIntro = styled.div`
   transition: max-height 6s ease-in-out, opacity 1s ease;
 `
 
-const STATS_COUNTER_DURATION = 4;
-
+const STATS_COUNTER_DURATION = 3;
 
 class AboutPage extends React.Component {
   constructor(props) {
@@ -164,7 +176,7 @@ class AboutPage extends React.Component {
         <div style={this.props.transition && this.props.transition.style}>
           <Container>
 
-            <AboutPic maxWidth="15vw">
+            <AboutPic>
               <Img sizes={this.props.data.profileImage.sizes} />
             </AboutPic>
 
@@ -172,14 +184,14 @@ class AboutPage extends React.Component {
               <StatCounter countStart={0} countEnd={18} countDuration={STATS_COUNTER_DURATION}>
                 Trips Around The Sun
               </StatCounter>
-              <StatCounter countStart={0} countEnd={358231} countDuration={STATS_COUNTER_DURATION}>
-                Lines of Code Written
-              </StatCounter>
-              <StatCounter countStart={0} countEnd={1328} countDuration={STATS_COUNTER_DURATION}>
-                Mispronounciations Of My Last Name
+              <StatCounter countStart={0} countEnd={328} countDuration={STATS_COUNTER_DURATION}>
+                Weeks Spent Coding
               </StatCounter>
               <StatCounter countStart={0} countEnd={894} countDuration={STATS_COUNTER_DURATION}>
                 Soccer Balls Kicked
+              </StatCounter>
+              <StatCounter countStart={0} countEnd={1328} countDuration={STATS_COUNTER_DURATION}>
+                Last Name Misspellings
               </StatCounter>
             </AboutStats>
 
@@ -189,69 +201,69 @@ class AboutPage extends React.Component {
                 <div>Skills</div>
                 <span data-tip="JavaScript" data-for={`techStackTip1`}>
                   <ReactTooltip id={`techStackTip1`} effect='solid' />
-                  <span className="devicons devicons-javascript" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-javascript" style={{fontSize: "1.25em"}} />
                 </span>
                 <span data-tip="Ruby" data-for={`techStackTip2`}>
                   <ReactTooltip id={`techStackTip2`} effect='solid' />
-                  <span className="devicons devicons-ruby" style={{fontSize: "1.35em"}} />
+                  <span className="devicons devicons-ruby" style={{fontSize: "1.25em"}} />
                 </span>
                 <span data-tip="Python" data-for={`techStackTip3`}>
                   <ReactTooltip id={`techStackTip3`} effect='solid' />
-                  <span className="devicons devicons-python" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-python" style={{fontSize: "1.25em"}} />
                 </span>
               </span>
 
               <span style={{gridArea: 'frameworks'}}>
                 <span data-tip="React" data-for={`techStackTip4`}>
                   <ReactTooltip id={`techStackTip4`} effect='solid' />
-                  <span className="devicons devicons-atom" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-atom" style={{fontSize: "1.25em"}} />
                 </span>
                 <span data-tip="Ruby on Rails" data-for={`techStackTip5`}>
                   <ReactTooltip id={`techStackTip5`} effect='solid' />
-                  <span className="devicons devicons-ruby_on_rails" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-ruby_on_rails" style={{fontSize: "1.25em"}} />
                 </span>
                 <span data-tip="HTML" data-for={`techStackTip6`}>
                   <ReactTooltip id={`techStackTip6`} effect='solid' />
-                  <span className="devicons devicons-html5" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-html5" style={{fontSize: "1.25em"}} />
                 </span>
                 <span data-tip="CSS" data-for={`techStackTip7`}>
                   <ReactTooltip id={`techStackTip7`} effect='solid' />
-                  <span className="devicons devicons-css3" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-css3" style={{fontSize: "1.25em"}} />
                 </span>
                 <span data-tip="Ionic 3" data-for={`techStackTip8`}>
                   <ReactTooltip id={`techStackTip8`} effect='solid' />
-                  <span className="devicons devicons-ionic" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-ionic" style={{fontSize: "1.25em"}} />
                 </span>
                 <span data-tip="Angular 4" data-for={`techStackTip9`}>
                   <ReactTooltip id={`techStackTip9`} effect='solid' />
-                  <span className="devicons devicons-angular" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-angular" style={{fontSize: "1.25em"}} />
                 </span>
                 <span data-tip="MeteorJS" data-for={`techStackTip10`}>
                   <ReactTooltip id={`techStackTip10`} effect='solid' />
-                  <span className="devicons devicons-meteor" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-meteor" style={{fontSize: "1.25em"}} />
                 </span>
               </span>
 
               <span style={{gridArea: 'tools'}}>
                 <span data-tip="SQL DBs" data-for={`techStackTip11`}>
                   <ReactTooltip id={`techStackTip11`} effect='solid' />
-                  <span className="devicons devicons-database" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-database" style={{fontSize: "1.25em"}} />
                 </span>
                 <span data-tip="Shell/Terminal" data-for={`techStackTip12`}>
                   <ReactTooltip id={`techStackTip12`} effect='solid' />
-                  <span className="devicons devicons-terminal" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-terminal" style={{fontSize: "1.25em"}} />
                 </span>
                 <span data-tip="MongoDB" data-for={`techStackTip13`}>
                   <ReactTooltip id={`techStackTip13`} effect='solid' />
-                  <span className="devicons devicons-mongodb" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-mongodb" style={{fontSize: "1.25em"}} />
                 </span>
                 <span data-tip="Git" data-for={`techStackTip14`}>
                   <ReactTooltip id={`techStackTip14`} effect='solid' />
-                  <span className="devicons devicons-git_branch" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-git_branch" style={{fontSize: "1.25em"}} />
                 </span>
-                <span data-tip="Finding Answers" data-for={`techStackTip15`}>
+                <span data-tip="Problem Solving" data-for={`techStackTip15`}>
                   <ReactTooltip id={`techStackTip15`} effect='solid' />
-                  <span className="devicons devicons-stackoverflow" style={{fontSize: "1.5em"}} />
+                  <span className="devicons devicons-stackoverflow" style={{fontSize: "1.25em"}} />
                 </span>
               </span>
 
