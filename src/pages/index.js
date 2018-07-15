@@ -41,6 +41,7 @@ const MainInfoText = styled(posed.div(fadeEnter))`
   font-weight: bold;
   line-height: 0.8em;
   font-size: 13vh;
+  text-shadow: 0 0 0;
 
   ${mediaSize.phone`
     letter-spacing: ${isIOS ? '-0.05em' : 0};
@@ -119,6 +120,8 @@ class HomePage extends React.Component {
 
   componentDidMount() {
     if(isMobile) {
+      /* Automatically animates the SVG icons after a set time
+         on devices with no hover capability (mobiles)            */
       this.iconAnimateID = setTimeout(() => {
         this.setState({iconAnimate: true})
       }, 3000);
@@ -135,7 +138,11 @@ class HomePage extends React.Component {
     return (
       <div id="particleBgContainer" style={this.props.transition && this.props.transition.style}>
         <Particles params={particleConfig} style={ParticlesStyle} />
-        <TemplateWrapper menu={{default: true, prompt: true}} curPage="Home" outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Alex Xie">
+        <TemplateWrapper
+          menu={{default: true, prompt: true}}
+          curPage="Home"
+          outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}
+          title="Alex Xie">
           <Logo src='/img/misc/logo.png' initialPose={'enter'} pose={'normal'} />
           {/* NOTE: script font in logo is BarleyScript */}
           <Greeting initialPose={'enter'} pose={'normal'}>
@@ -182,7 +189,6 @@ class HomePage extends React.Component {
     );
   }
 }
-
 
 export default HomePage;
 

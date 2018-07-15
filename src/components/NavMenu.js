@@ -165,7 +165,7 @@ class NavMenu extends React.Component {
   render() {
     return (
       <MenuContainer default={this.props.options && this.props.options.default}>
-        <FloatText from={-4} to={0}>
+        <FloatText from={-5} to={-1}>
           <Prompt show={this.state.displayPrompt}>
             There's more! >
           </Prompt>
