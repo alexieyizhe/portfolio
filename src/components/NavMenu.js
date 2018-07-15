@@ -92,7 +92,8 @@ const Menu = styled(posed.div(MenuConfig))`
 
   & .hamburger {
     position: relative;
-    top: 0.1em;
+    top: 0.2em;
+    left: 0.1em;
   }
 `;
 
