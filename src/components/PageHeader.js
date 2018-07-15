@@ -9,7 +9,7 @@ const Header = styled.div`
   margin-bottom: 0.5em;
   font-size: 8vh;
   font-weight: bold;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Lato", sans-serif;
 
   ${mediaSize.tablet`
     font-size: 4em;

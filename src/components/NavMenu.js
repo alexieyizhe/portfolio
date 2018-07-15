@@ -66,10 +66,10 @@ const Prompt = styled.div`
   right: 2em;
   width: 20em;
   text-align: right;
+  color: #AAAAAA;
 
   opacity: ${props => props.show ? 1 : 0};
   transition: opacity 0.5s ease;
-  text-shadow: 1px 1px 1px rgba(150, 150, 150, 0.8);
 
   & > span {
     position: relative;
@@ -146,6 +146,14 @@ class NavMenu extends React.Component {
     };
   }
 
+  componentDidMount() {
+    if(this.props.options && this.props.options.prompt) {
+      setTimeout(() => {
+        this.setState({displayPrompt: false})
+      }, 5000)
+    }
+  }
+
   handleClickOutside = evt => {
     this.handleFocus('clickAway');
   };
@@ -173,7 +181,7 @@ class NavMenu extends React.Component {
       <MenuContainer default={this.props.options && this.props.options.default}>
         <FloatText from={-5} to={-1}>
           <Prompt show={this.state.displayPrompt}>
-            There's more! <Icon name="arrowRightUp" size="1.5em" color="#3E3E3E" />
+            There's more! <Icon name="arrowRightUp" size="1.5em" color="#AAAAAA" />
           </Prompt>
         </FloatText>
         <Menu

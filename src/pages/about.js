@@ -24,6 +24,16 @@ const Container = styled.div`
   font-family: 'PT Serif', 'Times', serif;
 
   ${mediaSize.tablet`
+    grid-template-columns: 60% 30%;
+    grid-template-rows: auto;
+    grid-column-gap: 10%;
+    grid-template-areas: "pic stats"
+                         "skills stats"
+                         "interests stats"
+                         "intro intro";
+  `}
+
+  ${mediaSize.phone`
     grid-template-columns: 100%;
     grid-template-rows: auto;
     grid-template-areas: "pic"
@@ -50,17 +60,27 @@ const AboutPic = styled.div`
 
 const AboutStats = styled.div`
   grid-area: stats;
-  & > * {
-    margin-right: 3vw;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+  grid-column-gap: 2em;
+  align-items: start;
 
   ${mediaSize.tablet`
-    justify-self: center;
-    text-align: center;
+    align-items: end;
+    text-align: left;
+    grid-column-gap: 10em;
     & > * {
       margin-right: 0;
     }
     margin-bottom: 1em;
+  `}
+
+  ${mediaSize.phone`
+    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+    align-items: start;
+    justify-items: center;
+    text-align: center;
+    grid-column-gap: 2em;
   `}
 `;
 
@@ -69,6 +89,7 @@ const AboutSkills = styled.div`
   font-size: 1.5em;
   font-family: 'Cabin', arial, sans-serif;
   position: relative;
+
 
   & > span {
     margin-right: 1em;
@@ -81,7 +102,7 @@ const AboutSkills = styled.div`
       display: inline-block;
 
       &:before { /* background of title on hover */
-        background-color: #6FC647;
+        background-color: rgba(155, 219, 125, 0.6);
         opacity: 0.4;
         content: '';
         position: absolute;
@@ -111,7 +132,7 @@ const AboutSkills = styled.div`
 
   ${mediaSize.tablet`
     font-size: 2em;
-
+    margin-top: 1em;
     & > span {
       & > div {
         font-size: 1.25em;
@@ -125,7 +146,7 @@ const AboutSkills = styled.div`
 
   ${mediaSize.phone`
     font-size: 1.5em;
-
+    margin-top: 0em;
     & > span {
       display: block;
       & > div {
@@ -149,7 +170,7 @@ const AboutInterests = styled.div`
     display: inline-block;
 
     &:before { /* background of title on hover */
-      background-color: #9D98D7;
+      background-color: rgba(187, 182, 241, 0.6);
       opacity: 0.6;
       content: '';
       position: absolute;
@@ -169,10 +190,10 @@ const AboutInterests = styled.div`
         opacity: 0.75;
       `}
     }
-
   }
-  & > span, > a {
-    margin-right: 10px;
+
+  & span, & a {
+    margin-right: 5px;
   }
 
   & .__react_component_tooltip {
