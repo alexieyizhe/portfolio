@@ -45,6 +45,7 @@ const MainInfoText = styled(posed.div(fadeEnter))`
 
   ${mediaSize.phone`
     letter-spacing: ${isIOS ? '-0.05em' : 0};
+    font-weight: normal;
   `}
 `
 

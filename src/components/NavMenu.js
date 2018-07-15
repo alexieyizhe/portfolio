@@ -4,13 +4,13 @@ import Link from "gatsby-link";
 import posed from "react-pose";
 import { isMobile } from 'react-device-detect';
 import { css } from "styled-components";
-import Hamburger from 'react-hamburgers';
 import hamburger from "../data/hamburgers/hamburgers.scss";
 import { menuPageOptions, contactOptions, mediaSize } from "../data/configOptions.js";
 import onClickOutside from "react-onclickoutside";
 
 import HighlightText from "./HighlightText.js";
 import FloatText from "./FloatText.js";
+import Icon from "./Icon.js";
 
 const MenuConfig = {
   enter: {
@@ -62,14 +62,20 @@ const MenuContainer = styled.div`
 
 const Prompt = styled.div`
   position: absolute;
-  top: 0.75em;
-  right: 3.5em;
+  top: 2.2em;
+  right: 2em;
   width: 20em;
   text-align: right;
 
   opacity: ${props => props.show ? 1 : 0};
   transition: opacity 0.5s ease;
   text-shadow: 1px 1px 1px rgba(150, 150, 150, 0.8);
+
+  & > span {
+    position: relative;
+    top: 4px;
+    right: 4px;
+  }
 `
 
 const Menu = styled(posed.div(MenuConfig))`
@@ -84,7 +90,13 @@ const Menu = styled(posed.div(MenuConfig))`
     cursor: pointer;
   }
 
-`
+  & .hamburger {
+    transform: ${props => props.open ? 'none' : 'rotate(-45deg)'};
+    position: relative;
+    left: ${props => props.open ? '0.25em' : '0.3em'};
+    top: ${props => props.open ? '0.5em' : '0.35em'}
+  }
+`;
 
 const MenuLink = styled(posed.div(MenuLinkConfig))`
   text-align: justify;
@@ -167,20 +179,21 @@ class NavMenu extends React.Component {
       <MenuContainer default={this.props.options && this.props.options.default}>
         <FloatText from={-5} to={-1}>
           <Prompt show={this.state.displayPrompt}>
-            There's more! >
+            There's more! <Icon name="arrowRightUp" size="1.5em" color="#3E3E3E" />
           </Prompt>
         </FloatText>
         <Menu
           initialPose='enter'
+          open={this.state.menuOpen}
           pose={this.state.menuOpen ? 'open' : 'closed'}
           onMouseEnter={() => this.handleFocus('hover')}
           onMouseLeave={() => this.handleFocus('hoverAway')}
           onClick={() => this.handleFocus('click')}>
-          <Hamburger
-            active={this.state.menuOpen}
-            type="elastic"
-            style={{height: "1em", width: "1em"}}
-          />
+          <div id="test" className={this.state.menuOpen ? "hamburger hamburger--elastic is-active" : "hamburger hamburger--elastic"}>
+            <div className="hamburger-box">
+              <div className="hamburger-inner"></div>
+            </div>
+          </div>
           { menuPageOptions.map((option, i) => {
               return (
                 <MenuLink

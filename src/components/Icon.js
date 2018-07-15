@@ -79,6 +79,22 @@ const icons = {
   code: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
         </svg>,
+  cornerRightUp: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M10 9l5-5 5 5"/>
+                    <path d="M4 20h7a4 4 0 0 0 4-4V4"/>
+                  </svg>,
+  arrowRight: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>,
+  chevronRight: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>,
+  doubleChevronRight: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M13 17l5-5-5-5M6 17l5-5-5-5"/>
+                      </svg>,
+  arrowRightUp: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 17L17 7M7 7h10v10"/>
+                </svg>,
   plane: <svg viewBox="0 0 512 512">
           <path d="M501.905 10.593c-12.162-12.163-33.184-13.359-60.806-3.46-18.995 6.81-38.919 18.222-48.451 27.754l-76.55 76.55L64.116 71.859 0 135.975l209.501 82.059-67.266 67.266-95.472 5.591L.984 336.67l103.609 49.994-29.026 29.026 21.24 21.24 28.987-28.987 50.043 103.56 45.768-45.769 5.592-95.472 68.395-68.395 82.043 209.459 64.115-64.116-39.57-251.933 75.43-75.431c9.532-9.531 20.945-29.455 27.755-48.451 9.899-27.614 8.703-48.641-3.46-60.802zM53.706 124.751l20.846-20.846 215.268 33.811-57.136 57.136-178.978-70.101zm355.999 312.025l-20.845 20.846-70.087-178.935 57.128-57.128 33.804 215.217zm67.383-375.514c-5.739 16.012-15.224 31.853-20.718 37.347L197.88 357.101l-5.592 95.472-7.797 7.797-36.202-74.918 26.113-26.113-21.24-21.24-26.07 26.068L52.137 328l7.788-7.788 95.472-5.591L413.888 56.128c5.495-5.495 21.336-14.977 37.348-20.718 18.176-6.516 27.82-5.186 29.429-3.577 1.607 1.608 2.939 11.25-3.577 29.429z"/>
         </svg>,
