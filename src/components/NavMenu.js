@@ -62,8 +62,8 @@ const MenuContainer = styled.div`
 
 const Prompt = styled.div`
   position: absolute;
-  top: 2.2em;
-  right: 2em;
+  top: 0.6em;
+  right: 1.3em;
   width: 20em;
   text-align: right;
   color: #AAAAAA;
@@ -147,11 +147,14 @@ class NavMenu extends React.Component {
   }
 
   componentDidMount() {
-    if(this.props.options && this.props.options.prompt) {
-      setTimeout(() => {
-        this.setState({displayPrompt: false})
-      }, 5000)
-    }
+    // Dismiss prompt to open menu after 8 seconds
+    this.promptTimer = setTimeout(() => {
+      this.setState({displayPrompt: false})
+    }, 8000)
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.promptTimer);
   }
 
   handleClickOutside = evt => {
@@ -181,7 +184,8 @@ class NavMenu extends React.Component {
       <MenuContainer default={this.props.options && this.props.options.default}>
         <FloatText from={-5} to={-1}>
           <Prompt show={this.state.displayPrompt}>
-            There's more! <Icon name="arrowRightUp" size="1.5em" color="#AAAAAA" />
+            There's more! <span style={{position: 'relative', top: '1.2em', right: '0.7em'}}><Icon name="cornerSlantedRightUp" size="2.5em" color="#AAAAAA" fillColor="#AAAAAA" /></span>
+
           </Prompt>
         </FloatText>
         <Menu

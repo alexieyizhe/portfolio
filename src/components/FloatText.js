@@ -4,13 +4,13 @@ import styled, {keyframes, css} from "styled-components";
 const floating = (props) => (
   keyframes`
     from {
-      transform: translate(0, ${css`${props.from}px`});
+      transform: translate(0, ${css`${props.from || -2}px`});
     }
     40% {
-      transform:translate(0, ${css`${props.to}px`});
+      transform:translate(0, ${css`${props.to || 2}px`});
     }
     to {
-      transform: translate(0, ${css`${props.from}px`});
+      transform: translate(0, ${css`${props.from || -2}px`});
     }
   `
 );
@@ -18,12 +18,12 @@ const floating = (props) => (
 
 const FloatContainer = styled.div`
   animation-name: ${floating};
-  animation-duration: 3s;
+  animation-duration: ${props => props.duration || 3}s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 `
 const FloatText = (props) => (
-  <FloatContainer from={props.from} to={props.to}>{props.children}</FloatContainer>
+  <FloatContainer from={props.from} to={props.to} duration={props.duration}>{props.children}</FloatContainer>
 )
 
 export default FloatText;

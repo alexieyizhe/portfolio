@@ -7,6 +7,7 @@ const IconWrapper = styled.span`
     width: ${props => props.size};
     height: ${props => props.size};
     stroke: ${props => props.color};
+    fill : ${props => props.fillColor};
   }
 `;
 
@@ -81,14 +82,23 @@ const icons = {
         </svg>,
   cornerRightUp: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M10 9l5-5 5 5"/>
-                    <path d="M4 20h7a4 4 0 0 0 4-4V4"/>
+                    <path d="M4 20a4 4 0 0 0 11-10"/>
                   </svg>,
+  cornerSlantedRightUp: <svg viewBox="0 0 100 125" fill="#A7A7A7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M24.4 56.1c15.3-2.1 30.5-5.4 45.2-9.9-.2.2-.4.3-.6.5-2.6 2.1-5.5 3.9-8.6 5.2-.2.1 0 2.4 0 2.7 0 .2.2 2.6 0 2.7 4-1.7 7.7-4.2 10.9-7.2 1.4-1.3 3.4-3.1 4.1-4.9.4-1 .3-2.5.2-3.9.1-1.1.2-2-.1-2.1-5.5-2.2-11-4.1-16.7-5.8.4.1-.5 5.2 0 5.3 3 .9 5.9 1.8 8.8 2.8-14.2 4.2-28.6 7.3-43.3 9.3-.2 0 .2 5.3.1 5.3zm50.9-11.6s0 .1-.1.1c0 0 .1 0 .1-.1z"/>
+                        </svg>,
   arrowRight: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>,
   chevronRight: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M9 18l6-6-6-6"/>
                 </svg>,
+  chevronUp: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+               <path d="M18 15l-6-6-6 6"/>
+             </svg>,
+  chevronDown: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                 <path d="M6 9l6 6 6-6"/>
+               </svg>,
   doubleChevronRight: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M13 17l5-5-5-5M6 17l5-5-5-5"/>
                       </svg>,

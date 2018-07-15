@@ -72,7 +72,6 @@ const AboutStats = styled.div`
     & > * {
       margin-right: 0;
     }
-    margin-bottom: 1em;
   `}
 
   ${mediaSize.phone`
@@ -86,7 +85,7 @@ const AboutStats = styled.div`
 
 const AboutSkills = styled.div`
   grid-area: skills;
-  font-size: 1.5em;
+  font-size: 1.5vw;
   font-family: 'Cabin', arial, sans-serif;
   position: relative;
 
@@ -136,7 +135,6 @@ const AboutSkills = styled.div`
     & > span {
       & > div {
         font-size: 1.25em;
-        margin-bottom: 0;
       }
       & > div:first-child {
         margin-top: 0em;
@@ -146,7 +144,7 @@ const AboutSkills = styled.div`
 
   ${mediaSize.phone`
     font-size: 1.5em;
-    margin-top: 0em;
+    margin-top: 1em;
     & > span {
       display: block;
       & > div {
@@ -159,7 +157,7 @@ const AboutSkills = styled.div`
 
 const AboutInterests = styled.div`
   grid-area: interests;
-  font-size: 1.5em;
+  font-size: 1.5vw;
   font-family: 'Cabin', arial, sans-serif;
 
   & > div {
@@ -190,6 +188,10 @@ const AboutInterests = styled.div`
         opacity: 0.75;
       `}
     }
+
+    ${mediaSize.phone`
+      margin-bottom: 0.3em;
+    `}
   }
 
   & span, & a {
@@ -202,18 +204,15 @@ const AboutInterests = styled.div`
 
   ${mediaSize.tablet`
     font-size: 2em;
-
     & > div {
       font-size: 1.25em;
-      margin-bottom: 0.3em;
     }
   `}
 
   ${mediaSize.phone`
     font-size: 1.5em;
-
+    margin-top: 1em;
     & > span {
-      margin-right: 0;
       & > div {
         font-size: 1.25em;
         margin-bottom: 0;
@@ -228,8 +227,8 @@ const AboutInterests = styled.div`
 const AboutIntro = styled.div`
   grid-area: intro;
   line-height: 1.7;
-  font-size: 1.5em;
-  margin-top: 1em;
+  font-size: 1.5vw;
+  margin-top: 2em;
   & a {
     color: black;
     text-decoration: overline;
@@ -238,6 +237,10 @@ const AboutIntro = styled.div`
       text-decoration: none;
     }
   }
+
+  ${mediaSize.tablet`
+    font-size: 1.5em;
+  `}
 
   ${mediaSize.phone`
     font-size: 1em;
@@ -287,14 +290,14 @@ class AboutPage extends React.Component {
               <StatCounter countStart={0} countEnd={18} countDuration={STATS_COUNTER_DURATION}>
                 Trips Around The Sun
               </StatCounter>
-              <StatCounter countStart={0} countEnd={32} countDuration={STATS_COUNTER_DURATION}>
-                Weeks Spent Coding
+              <StatCounter countStart={0} countEnd={2899} countDuration={STATS_COUNTER_DURATION}>
+                Hours Spent Coding
               </StatCounter>
-              <StatCounter countStart={0} countEnd={894} countDuration={STATS_COUNTER_DURATION}>
+              <StatCounter countStart={0} countEnd={8257} countDuration={STATS_COUNTER_DURATION}>
                 Soccer Balls Kicked
               </StatCounter>
-              <StatCounter countStart={0} countEnd={1328} countDuration={STATS_COUNTER_DURATION}>
-                Last Name Screwups
+              <StatCounter countStart={0} countEnd={1} countDuration={STATS_COUNTER_DURATION}>
+                Unpronouncable Last Name
               </StatCounter>
             </AboutStats>
 
@@ -400,7 +403,7 @@ class AboutPage extends React.Component {
             </AboutInterests>
 
             <AboutIntro>
-              I'm Alex Yizhe Xie, and I'm currently two-fifths of my way into a Bachelor of Computer Science at the University of Waterloo. I'm Chinese, but my hometown is the city-state of Singapore, Singapore (trippy, I know). These days, I'm proudly Canadian and working as a back-end software engineer at <a href="https://flipp.com/home" target="_blank">Flipp Corp</a>. <RevealButton onClick={() => this.revealDetailedIntro()} revealed={this.state.revealed}>Tell me more!</RevealButton>
+              I'm Alex Yizhe Xie, and I'm currently two-fifths of my way to a Bachelor of Computer Science at the University of Waterloo. I'm Chinese, but my hometown is the city-state of Singapore, Singapore (trippy, I know). These days, I'm proudly Canadian and working as a back-end software engineer at <a href="https://flipp.com/home" target="_blank">Flipp Corp</a>. <RevealButton onClick={() => this.revealDetailedIntro()} revealed={this.state.revealed}>Tell me more!</RevealButton>
               <DetailedIntro revealed={this.state.revealed}>
                 <p>
                   I'm a diehard soccer fan, whether it's watching FC Barcelona - my favourite team - or getting on the field myself. Apart from soccer and coding, my other interests are <s>nonexistent</s> fitness, cooking, my husky-malamute Storm, and travelling. I've done a couple of solo trips that you can read about on <Link to="/blog">my blog</Link>!
@@ -409,10 +412,13 @@ class AboutPage extends React.Component {
                   As a member of the Item Data Platform team at Flipp, I'm working with some other awesome peeps on the system responsible for indexing retailer products to power the results on Flipp's flyers and search results. Even though almost all of the work I'm doing at Flipp is on the back-end, I'm extremely interested in the workings of the entire web stack. Stemming from the fact that I'm a very visual learner, I have a deep fascination with user interfaces and UX design. I absolutely love trawling the web for interesting articles and demos/case studies of said topic - stuff like human-computer interactions and subtle effects on user experience are my bread and butter. It's a major contributing factor to why I'm learning JavaScript, React, responsive design, and how to use tools like Figma and Adobe XD.
                 </p>
                 <p>
-                  My friends always tell me that I'm addicted to coding, but I like to think of it less as an addiction to coding and more as a passion for solving problems. I find myself engrossed in creating solutions to tough problems and pushing myself to always improve my skills and abilities; before you know it, I've been programming for hours upon hours. This is also one aspect of my skills that I hope to improve upon, so I'm also interested in more sustainable and long-term coding practices like Agile development and working in a professional environment.
+                  My friends always tell me that I'm addicted to coding, but I like to think of it less as an addiction to coding and more as a passion for solving problems. I find myself engrossed in creating solutions to tough problems and pushing myself to always improve my skills and abilities; before you know it, I've been programming for hours upon hours. This is also one aspect of my skills that I'm constantly improving, so I'm also interested in more sustainable and long-term coding practices like Agile development and working in a professional environment.
                 </p>
                 <p>
                   However, I also believe that creating solutions to problems and learning new ideas aren't limited to the scope of studying and coding. I'm currently working with a huge amount of passionate individuals on organizing a <a href="https://www.tedxuw.com/" target="_blank">700+ attendee TEDx event</a>, powering one of the <a href="https://teamwaterloop.ca/" target="_blank">world's top 25 hyperloop teams</a>, and leading the next iteration of <a href="https://equithon.org/" target="_blank">Waterloo's largest social innovation hackathon</a>. These have been incredibly rewarding learning experiences that I cherish greatly, and I'm hoping to continue contributing and getting involved with various communities now and into the future.
+                </p>
+                <p>
+                  If you've made it this far, props to you 🥂 I'm always looking for new initiatives. If you have any questions or wanna chat, shoot me an email or find me on social media!
                 </p>
               </DetailedIntro>
             </AboutIntro>

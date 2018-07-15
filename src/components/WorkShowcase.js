@@ -6,6 +6,9 @@ import { css } from 'styled-components';
 import { isMobile, isIOS } from 'react-device-detect';
 import { mediaSize } from "../data/configOptions.js";
 
+import Icon from "./Icon.js";
+import FloatText from "./FloatText.js";
+
 
 const Container = styled.div`
   position: relative;
@@ -20,10 +23,11 @@ const Container = styled.div`
 
   display: grid;
   padding: 0 5% 0 5%;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto;
   grid-template-areas: "title"
                        "role"
-                       "desc";
+                       "desc"
+                       "indicator";
 
   background: url(${props => props.bg}) center/cover;
   filter: grayscale(50%);
@@ -97,7 +101,8 @@ const Container = styled.div`
     grid-template-rows: auto auto auto;
     grid-template-areas: "title"
                          "role"
-                         "desc";
+                         "desc"
+                         "indicator";
   `}
 
 `;
@@ -182,17 +187,29 @@ const WorkDesc = styled.div`
   z-index: 6;
   font-family: 'Average', 'PT Serif', serif;
   max-width: 100%;
-  max-height: ${props => props.expanded ? '100em' : 0};
+  max-height: ${props => props.expanded ? '7em' : 0};
   opacity: ${props => props.expanded ? 1 : 0};
-  transition: max-height 0.5s, opacity 0.4s, padding 0.5s;
+  transition: max-height 1s, opacity 0.7s, padding 1s;
+
+  ${mediaSize.tablet`
+    max-height: ${props => props.expanded ? '20em' : 0};
+    padding-bottom: ${props => props.expanded ? '3vw' : 0};
+  `}
 
   ${mediaSize.phone`
     font-size: 1em;
-    max-height: ${props => props.expanded ? '100em' : 0};
+    max-height: ${props => props.expanded ? '30em' : 0};
     padding-bottom: ${props => props.expanded ? '7vw' : 0};
-    transition: max-height 1s, opacity 0.7s, padding 1s;
   `}
 `
+
+const DropdownArrow = styled.span`
+  grid-area: indicator;
+  z-index: 6;
+  align-self: center;
+  justify-self: center;
+  margin-bottom: 1vw;
+`;
 
 class WorkShowcase extends React.Component {
   constructor(props) {
@@ -223,6 +240,11 @@ class WorkShowcase extends React.Component {
           <WorkDesc expanded={this.state.expanded} >
             {this.props.work.desc}
           </WorkDesc>
+          <DropdownArrow>
+            <FloatText from={-3} to={0}>
+              <Icon name={this.state.expanded ? "chevronUp" : "chevronDown"} size="3vh" color="#FFFFFF"/>
+            </FloatText>
+          </DropdownArrow>
         </Container>
       </VisibilitySensor>
     );
