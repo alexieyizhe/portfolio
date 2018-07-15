@@ -10,7 +10,7 @@ import { menuPageOptions, contactOptions, mediaSize } from "../data/configOption
 import onClickOutside from "react-onclickoutside";
 
 import HighlightText from "./HighlightText.js";
-
+import FloatText from "./FloatText.js";
 
 const MenuConfig = {
   enter: {
@@ -46,21 +46,11 @@ const MenuLinkConfig = {
   },
 };
 
-const Menu = styled(posed.div(MenuConfig))`
-  width: 2.5em;
-  height: 2.5em;
-  background-color: #56C6DF;
-  opacity: 1;
+const MenuContainer = styled.div`
   position: fixed;
   right: 11%;
   display: inline-block;
   z-index: 100; // Allow menu to always be on top for navigation
-
-  grid-area: menu;
-
-  &:hover {
-    cursor: pointer;
-  }
 
   ${props => props.default ? null :
     mediaSize.phone`
@@ -68,6 +58,32 @@ const Menu = styled(posed.div(MenuConfig))`
     bottom: 7%;
     left: 11%;
   `}
+`;
+
+const Prompt = styled.div`
+  position: absolute;
+  top: 0.75em;
+  right: 3.5em;
+  width: 20em;
+  text-align: right;
+
+  opacity: ${props => props.show ? 1 : 0};
+  transition: opacity 0.5s ease;
+  text-shadow: 1px 1px 1px rgba(150, 150, 150, 0.8);
+`
+
+const Menu = styled(posed.div(MenuConfig))`
+  width: 2.5em;
+  height: 2.5em;
+  background-color: #56C6DF;
+  opacity: 1;
+
+  grid-area: menu;
+
+  &:hover {
+    cursor: pointer;
+  }
+
 `
 
 const MenuLink = styled(posed.div(MenuLinkConfig))`
@@ -119,7 +135,8 @@ class NavMenu extends React.Component {
     super(props);
     this.state = {
       menuOpen: false,
-      menuLink: null
+      menuLink: null,
+      displayPrompt: this.props.options && this.props.options.prompt,
     };
   }
 
@@ -129,7 +146,7 @@ class NavMenu extends React.Component {
 
   handleFocus(action) {
     if(action === 'hover' && !isMobile) {
-      this.setState({menuOpen: true});
+      this.setState({menuOpen: true, displayPrompt: false});
       this.props.wrapperHandleFocus(true);
     } else if(action === 'hoverAway' && !isMobile) {
       this.setState({menuOpen: false});
@@ -137,7 +154,7 @@ class NavMenu extends React.Component {
     } else if(action === 'click' && isMobile) {
       this.setState((prevState) => {
         this.props.wrapperHandleFocus(!prevState.menuOpen);
-        return { menuOpen: !prevState.menuOpen };
+        return { menuOpen: !prevState.menuOpen, displayPrompt: false };
       });
     } else if(action === 'clickAway' && isMobile) {
       this.setState({menuOpen: false});
@@ -147,43 +164,50 @@ class NavMenu extends React.Component {
 
   render() {
     return (
-      <Menu
-        initialPose='enter'
-        pose={this.state.menuOpen ? 'open' : 'closed'}
-        onMouseEnter={() => this.handleFocus('hover')}
-        onMouseLeave={() => this.handleFocus('hoverAway')}
-        onClick={() => this.handleFocus('click')}
-        default={this.props.showDefault}>
-        <Hamburger
-          active={this.state.menuOpen}
-          type="elastic"
-          style={{height: "1em", width: "1em"}}
-        />
-        { menuPageOptions.map((option, i) => {
-            return (
-              <MenuLink
-                key={i}
-                pose={this.state.menuOpen ? 'open' : 'closed'}
-                default={this.props.showDefault}
-                mobileoffset={i}
-              >
-                <Link
-                  to={option.route}
-                  onMouseEnter={() => this.setState({ menuLink: option.text })}
-                  onMouseLeave={() => this.setState({ menuLink: null })}
+      <MenuContainer default={this.props.options && this.props.options.default}>
+        <FloatText from={-4} to={0}>
+          <Prompt show={this.state.displayPrompt}>
+            There's more! >
+          </Prompt>
+        </FloatText>
+        <Menu
+          initialPose='enter'
+          pose={this.state.menuOpen ? 'open' : 'closed'}
+          onMouseEnter={() => this.handleFocus('hover')}
+          onMouseLeave={() => this.handleFocus('hoverAway')}
+          onClick={() => this.handleFocus('click')}>
+          <Hamburger
+            active={this.state.menuOpen}
+            type="elastic"
+            style={{height: "1em", width: "1em"}}
+          />
+          { menuPageOptions.map((option, i) => {
+              return (
+                <MenuLink
+                  key={i}
+                  pose={this.state.menuOpen ? 'open' : 'closed'}
+                  default={this.props.options && this.props.options.default}
+                  mobileoffset={i}
                 >
-                  <MenuLinkText>
-                    <HighlightText
-                      color={option.colour}
-                      hovered={((this.state.menuLink === option.text && !isMobile) || this.props.curPage === option.text) && this.state.menuOpen}
-                    >
-                      {option.text}
-                    </HighlightText>
-                  </MenuLinkText>
-                </Link>
-             </MenuLink>
-            );})}
-      </Menu>
+                  <Link
+                    to={option.route}
+                    onMouseEnter={() => this.setState({ menuLink: option.text })}
+                    onMouseLeave={() => this.setState({ menuLink: null })}
+                  >
+                    <MenuLinkText>
+                      <HighlightText
+                        color={option.colour}
+                        hovered={((this.state.menuLink === option.text && !isMobile) || this.props.curPage === option.text) && this.state.menuOpen}
+                      >
+                        {option.text}
+                      </HighlightText>
+                    </MenuLinkText>
+                  </Link>
+               </MenuLink>
+           );})}
+        </Menu>
+      </MenuContainer>
+
     );
   }
 }

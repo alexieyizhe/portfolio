@@ -11,7 +11,7 @@ const CounterContainer = styled.span`
                        "desc";
   align-items: center;
   font-family: 'PT Serif', 'Times', serif;
-  max-width: 15%;
+  max-width: 18%;
 
   ${mediaSize.tablet`
     max-width: 30%;

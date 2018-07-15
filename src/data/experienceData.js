@@ -5,7 +5,7 @@ export const experienceList = [
     color: '#46CEF9',
     bgImgSource: '/img/experience/flipp_bg.jpg',
     logoImgSource: '../img/experience/flipp_logo.png',
-    desc: 'I migrated key systems from a monolith structure to a Ruby & Scala microservice architecture, as well as assisting in improving legacy services by adding error fixes, error detection, and validation. I\'m also owning the development of a brand new microservice to monitor, compare, and analyze the effectiveness of both legacy and microservice architectures.'
+    desc: 'I migrated key systems from a monolith structure to a Ruby & Scala microservice architecture, as well as assisted in improving existing services by adding bug fixes, error detection, and schema validation. I\'m also owning the development of a brand new microservice used in production to monitor, compare, and analyze the effectiveness of both legacy and microservice architectures.'
   },
   {
     name: 'Equithon',

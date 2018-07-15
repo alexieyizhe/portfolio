@@ -133,8 +133,8 @@ const WorkLogo = styled.img`
   z-index: 6;
   top: -5vh;
   right: -5vw;
-  max-width: 35vw;
-  max-height: 20vh;
+  max-width: 40vw;
+  max-height: 25vh;
 
   opacity: 0;
   transition: all 0.3s ease-in;
@@ -149,8 +149,9 @@ const WorkLogo = styled.img`
 
   ${mediaSize.phone`
     top: -5vw;
-    max-width: 40vw;
-    max-height: 50vw;
+    right: -8vw;
+    max-width: 43vw;
+    max-height: 60vw;
   `}
 `
 
@@ -175,19 +176,19 @@ const WorkRole = styled.div`
 const WorkDesc = styled.div`
   grid-area: desc;
   align-self: start;
-  padding-bottom: ${props => props.expanded ? '2vw' : 0};
+  padding-bottom: ${props => props.expanded ? '2em' : 0};
   line-height: 1.5;
   font-size: 2.5vmin;
   z-index: 6;
   font-family: 'Average', 'PT Serif', serif;
   max-width: 100%;
-  max-height: ${props => props.expanded ? '10em' : 0};
+  max-height: ${props => props.expanded ? '100em' : 0};
   opacity: ${props => props.expanded ? 1 : 0};
   transition: max-height 0.5s, opacity 0.4s, padding 0.5s;
 
   ${mediaSize.phone`
     font-size: 1em;
-    max-height: ${props => props.expanded ? '50em' : 0};
+    max-height: ${props => props.expanded ? '100em' : 0};
     padding-bottom: ${props => props.expanded ? '7vw' : 0};
     transition: max-height 1s, opacity 0.7s, padding 1s;
   `}

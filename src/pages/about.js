@@ -15,19 +15,21 @@ import Icon from "../components/Icon.js";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto;
   grid-template-areas: "pic stats"
                        "pic skills"
+                       "pic interests"
                        "intro intro";
   grid-column-gap: 5vw;
   font-family: 'PT Serif', 'Times', serif;
 
   ${mediaSize.tablet`
     grid-template-columns: 100%;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto;
     grid-template-areas: "pic"
                          "stats"
                          "skills"
+                         "interests"
                          "intro";
   `}
 `
@@ -66,22 +68,41 @@ const AboutSkills = styled.div`
   grid-area: skills;
   font-size: 1.5em;
   font-family: 'Cabin', arial, sans-serif;
+  position: relative;
 
   & > span {
     margin-right: 1em;
     & > div {
       font-family: 'PT Serif', 'Times', serif;
-      font-size: 1em;
-      margin-bottom: 5px;
       margin-top: 1em;
-    }
-  }
+      font-size: 1.5em;
+      margin-bottom: 5px;
+      position: relative;
+      display: inline-block;
 
-  & > span:last-child {
-    & > span, > a {
-      margin-right: 10px;
-    }
+      &:before { /* background of title on hover */
+        background-color: #6FC647;
+        opacity: 0.4;
+        content: '';
+        position: absolute;
+        top: 0.45em;
+        left: 0.25em;
+        right: -5px;
+        height: 0.8em;
+        z-index: -1;
 
+        width: 95%;
+
+        ${mediaSize.phone`
+          top: 0.4em;
+          float: none;
+          height: 0.9em;
+          left: -3px;
+          opacity: 0.75;
+        `}
+      }
+
+    }
   }
 
   & .__react_component_tooltip {
@@ -97,17 +118,78 @@ const AboutSkills = styled.div`
         margin-bottom: 0;
       }
       & > div:first-child {
-        margin-top: 0.5em;
+        margin-top: 0em;
       }
     }
   `}
 
   ${mediaSize.phone`
     font-size: 1.5em;
-    display: grid;
-    grid-template-rows: auto auto auto auto;
-    grid-template-areas: "languages" "frameworks" "tools" "interests";
-    align-items: center;
+
+    & > span {
+      display: block;
+      & > div {
+        font-size: 1.25em;
+        margin-bottom: 0.3em;
+      }
+    }
+  `}
+`
+
+const AboutInterests = styled.div`
+  grid-area: interests;
+  font-size: 1.5em;
+  font-family: 'Cabin', arial, sans-serif;
+
+  & > div {
+    font-family: 'PT Serif', 'Times', serif;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    position: relative;
+    display: inline-block;
+
+    &:before { /* background of title on hover */
+      background-color: #9D98D7;
+      opacity: 0.6;
+      content: '';
+      position: absolute;
+      top: 0.45em;
+      left: 0.25em;
+      right: -5px;
+      height: 0.8em;
+      z-index: -1;
+
+      width: 95%;
+
+      ${mediaSize.phone`
+        top: 0.4em;
+        float: none;
+        height: 0.9em;
+        left: -3px;
+        opacity: 0.75;
+      `}
+    }
+
+  }
+  & > span, > a {
+    margin-right: 10px;
+  }
+
+  & .__react_component_tooltip {
+    display: inline;
+  }
+
+  ${mediaSize.tablet`
+    font-size: 2em;
+
+    & > div {
+      font-size: 1.25em;
+      margin-bottom: 0.3em;
+    }
+  `}
+
+  ${mediaSize.phone`
+    font-size: 1.5em;
 
     & > span {
       margin-right: 0;
@@ -126,7 +208,7 @@ const AboutIntro = styled.div`
   grid-area: intro;
   line-height: 1.7;
   font-size: 1.5em;
-  margin-top: 2.5em;
+  margin-top: 1em;
   & a {
     color: black;
     text-decoration: overline;
@@ -184,28 +266,28 @@ class AboutPage extends React.Component {
               <StatCounter countStart={0} countEnd={18} countDuration={STATS_COUNTER_DURATION}>
                 Trips Around The Sun
               </StatCounter>
-              <StatCounter countStart={0} countEnd={328} countDuration={STATS_COUNTER_DURATION}>
+              <StatCounter countStart={0} countEnd={32} countDuration={STATS_COUNTER_DURATION}>
                 Weeks Spent Coding
               </StatCounter>
               <StatCounter countStart={0} countEnd={894} countDuration={STATS_COUNTER_DURATION}>
                 Soccer Balls Kicked
               </StatCounter>
               <StatCounter countStart={0} countEnd={1328} countDuration={STATS_COUNTER_DURATION}>
-                Last Name Misspellings
+                Last Name Screwups
               </StatCounter>
             </AboutStats>
 
             <AboutSkills>
 
               <span style={{gridArea: 'languages'}}>
-                <div>Skills</div>
+                <div>Skills</div> <br/>
                 <span data-tip="JavaScript" data-for={`techStackTip1`}>
                   <ReactTooltip id={`techStackTip1`} effect='solid' />
                   <span className="devicons devicons-javascript" style={{fontSize: "1.25em"}} />
                 </span>
                 <span data-tip="Ruby" data-for={`techStackTip2`}>
                   <ReactTooltip id={`techStackTip2`} effect='solid' />
-                  <span className="devicons devicons-ruby" style={{fontSize: "1.25em"}} />
+                  <span className="devicons devicons-ruby" style={{fontSize: "1em", position: "relative", top: "-0.1em"}} />
                 </span>
                 <span data-tip="Python" data-for={`techStackTip3`}>
                   <ReactTooltip id={`techStackTip3`} effect='solid' />
@@ -266,39 +348,38 @@ class AboutPage extends React.Component {
                   <span className="devicons devicons-stackoverflow" style={{fontSize: "1.25em"}} />
                 </span>
               </span>
-
-              <span style={{gridArea: 'interests'}}>
-                <div>Interests</div>
-                <span data-tip="Travel" data-for={`techStackTip16`}>
-                  <ReactTooltip id={`techStackTip16`} effect='solid' />
-                  <Icon name="briefcase" size="1em" color="#000000" />
-                </span>&nbsp;
-                <span data-tip="Fitness" data-for={`techStackTip17`}>
-                  <ReactTooltip id={`techStackTip17`} effect='solid' />
-                  <Icon name="activity" size="1em" color="#000000" />
-                </span>&nbsp;
-                <span data-tip="Volunteering" data-for={`techStackTip18`}>
-                  <ReactTooltip id={`techStackTip18`} effect='solid' />
-                  <Icon name="heart" size="1em" color="#000000" />
-                </span>&nbsp;
-                <a data-tip="Music" data-for={`techStackTip19`} href="https://open.spotify.com/user/alexieyizhe" target="_blank">
-                  <ReactTooltip id={`techStackTip19`} effect='solid' />
-                  <Icon name="headphones" size="1em" color="#000000" />
-                </a>&nbsp;
-                <span data-tip="Coding" data-for={`techStackTip20`} >
-                  <ReactTooltip id={`techStackTip20`} effect='solid' />
-                  <Icon name="code" size="1em" color="#000000" />
-                </span>&nbsp;
-                <span data-tip="Games" data-for={`techStackTip21`} >
-                  <ReactTooltip id={`techStackTip21`} effect='solid' />
-                  <Icon name="crosshair" size="1em" color="#000000" />
-                </span>
-
-              </span>
             </AboutSkills>
 
+            <AboutInterests>
+              <div>Interests</div> <br/>
+              <span data-tip="Travel" data-for={`techStackTip16`}>
+                <ReactTooltip id={`techStackTip16`} effect='solid' />
+                <Icon name="briefcase" size="1em" color="#000000" />
+              </span>
+              <span data-tip="Fitness" data-for={`techStackTip17`}>
+                <ReactTooltip id={`techStackTip17`} effect='solid' />
+                <Icon name="activity" size="1em" color="#000000" />
+              </span>
+              <span data-tip="Volunteering" data-for={`techStackTip18`}>
+                <ReactTooltip id={`techStackTip18`} effect='solid' />
+                <Icon name="heart" size="1em" color="#000000" />
+              </span>
+              <a data-tip="Music" data-for={`techStackTip19`} href="https://open.spotify.com/user/alexieyizhe" target="_blank">
+                <ReactTooltip id={`techStackTip19`} effect='solid' />
+                <Icon name="headphones" size="1em" color="#000000" />
+              </a>
+              <span data-tip="Coding" data-for={`techStackTip20`} >
+                <ReactTooltip id={`techStackTip20`} effect='solid' />
+                <Icon name="code" size="1em" color="#000000" />
+              </span>
+              <span data-tip="Games" data-for={`techStackTip21`} >
+                <ReactTooltip id={`techStackTip21`} effect='solid' />
+                <Icon name="crosshair" size="1em" color="#000000" />
+              </span>
+            </AboutInterests>
+
             <AboutIntro>
-              I'm Alex Yizhe Xie, and I'm currently two-fifths of my way into a Bachelor of Computer Science at the University of Waterloo. I'm Chinese, but my hometown is the city-state of Singapore, Singapore (trippy, I know). These days, I'm proudly Canadian and working as a back-end software engineer at <a href="https://flipp.com/home" target="_blank">Flipp Corp</a>. <RevealButton onClick={() => this.revealDetailedIntro()} revealed={this.state.revealed}>tell me more!</RevealButton>
+              I'm Alex Yizhe Xie, and I'm currently two-fifths of my way into a Bachelor of Computer Science at the University of Waterloo. I'm Chinese, but my hometown is the city-state of Singapore, Singapore (trippy, I know). These days, I'm proudly Canadian and working as a back-end software engineer at <a href="https://flipp.com/home" target="_blank">Flipp Corp</a>. <RevealButton onClick={() => this.revealDetailedIntro()} revealed={this.state.revealed}>Tell me more!</RevealButton>
               <DetailedIntro revealed={this.state.revealed}>
                 <p>
                   I'm a diehard soccer fan, whether it's watching FC Barcelona - my favourite team - or getting on the field myself. Apart from soccer and coding, my other interests are <s>nonexistent</s> fitness, cooking, my husky-malamute Storm, and travelling. I've done a couple of solo trips that you can read about on <Link to="/blog">my blog</Link>!
@@ -310,7 +391,7 @@ class AboutPage extends React.Component {
                   My friends always tell me that I'm addicted to coding, but I like to think of it less as an addiction to coding and more as a passion for solving problems. I find myself engrossed in creating solutions to tough problems and pushing myself to always improve my skills and abilities; before you know it, I've been programming for hours upon hours. This is also one aspect of my skills that I hope to improve upon, so I'm also interested in more sustainable and long-term coding practices like Agile development and working in a professional environment.
                 </p>
                 <p>
-                  However, I also believe that creating solutions to problems and learning new ideas aren't limited to the scope of studying and coding.I'm currently working with a huge amount of passionate individuals on organizing a <a href="https://www.tedxuw.com/" target="_blank">700+ attendee TEDx event</a>, powering one of the <a href="https://teamwaterloop.ca/" target="_blank">world's top 25 hyperloop teams</a>, and leading the next iteration of <a href="https://equithon.org/" target="_blank">Waterloo's largest social innovation hackathon</a>. These have been incredibly rewarding learning experiences that I cherish greatly, and I'm hoping to continue contributing and getting involved with various communities now and into the future.
+                  However, I also believe that creating solutions to problems and learning new ideas aren't limited to the scope of studying and coding. I'm currently working with a huge amount of passionate individuals on organizing a <a href="https://www.tedxuw.com/" target="_blank">700+ attendee TEDx event</a>, powering one of the <a href="https://teamwaterloop.ca/" target="_blank">world's top 25 hyperloop teams</a>, and leading the next iteration of <a href="https://equithon.org/" target="_blank">Waterloo's largest social innovation hackathon</a>. These have been incredibly rewarding learning experiences that I cherish greatly, and I'm hoping to continue contributing and getting involved with various communities now and into the future.
                 </p>
               </DetailedIntro>
             </AboutIntro>

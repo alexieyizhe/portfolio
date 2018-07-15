@@ -29,8 +29,7 @@ class TemplateWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMenu: props.menu,
-      showDefaultMenu: props.defaultMenu,
+      menu: props.menu,
       showHeader: props.header,
       showFooter: props.footer,
       title: props.title,
@@ -54,10 +53,10 @@ class TemplateWrapper extends React.Component {
           <link rel="icon" href='/img/misc/logo_square.png' sizes={["16x16","32x32","64x64"]} type="image/png" />
         </Helmet>
         <Transition>
-          {this.state.showMenu || this.state.showDefaultMenu ?
+          {this.state.menu ?
             <NavMenu
               className="navMenu"
-              showDefault={this.state.showDefaultMenu}
+              options={this.state.menu}
               wrapperHandleFocus={(focused) => this.handleFocus(focused)}
               curPage={this.props.curPage}
             /> :
