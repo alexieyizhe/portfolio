@@ -4,8 +4,10 @@ import { mediaSize } from "../data/configOptions.js";
 import Link from "gatsby-link";
 
 import TemplateWrapper from "../components/TemplateWrapper.js";
+import Icon from "../components/Icon.js";
 
 import { archiveSiteList } from "../data/archiveData.js";
+
 
 const Header = styled.div`
   display: inline-block;
@@ -20,15 +22,36 @@ const PageLink = styled.a`
   display: block;
   color: inherit;
   line-height: 2;
+  font-size: 2em;
 
   ${mediaSize.tablet`
     font-size: 2em;
   `}
 
   ${mediaSize.phone`
-    font-size: 1em;
+    font-size: 5vw;
   `}
 `
+
+const Disclaimer = styled.div`
+  margin-top: 5em;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border: 2px dashed #E8A40D;
+  padding: 2%;
+
+  ${mediaSize.phone`
+    padding: 5%;
+  `}
+
+  & h3 {
+    margin: 0;
+    padding: 0 0 5px 0;
+  }
+`;
+
 
 class ArchivePage extends React.Component {
   constructor(props) {
@@ -45,6 +68,13 @@ class ArchivePage extends React.Component {
             return <PageLink key={i} href={snapshot.url}>{snapshot.name}</PageLink>
           })}
         </div>
+        <Disclaimer>
+          <Icon name="alertTriangle" size="2em" color="#E8A40D" /> <br/>
+          <h3><b>Disclaimer</b></h3> Projects and links in the archive may be horribly broken, non-functional, or just plain bad code.
+          Alex assumes no responsibility for any emotional or physical trauma that may result from visiting these links.
+          Proceed at your own risk. <br/>
+          ¯\_(ツ)_/¯
+        </Disclaimer>
       </TemplateWrapper>
     );
   }

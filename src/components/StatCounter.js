@@ -11,17 +11,12 @@ const CounterContainer = styled.span`
                        "desc";
   align-items: center;
   font-family: 'PT Serif', 'Times', serif;
-  max-width: 18%;
 
   ${mediaSize.tablet`
-    max-width: 30%;
-    padding: 5%;
-    justify-items: center;
-    text-align: center;
+    max-width: 100%;
   `}
 
   ${mediaSize.phone`
-    max-width: 40%;
     padding: 5%;
     justify-items: center;
     text-align: center;
@@ -29,7 +24,7 @@ const CounterContainer = styled.span`
 `
 
 const Counter = styled.span`
-  font-size: 3em;
+  font-size: 3.5vw;
   grid-area: counter;
 
   ${mediaSize.tablet`
@@ -43,7 +38,7 @@ const Counter = styled.span`
 
 const Desc = styled.span`
   grid-area: desc;
-  font-size: 1.2em;
+  font-size: 2.5vh;
   ${mediaSize.tablet`
     font-size: 1.5em;
   `}

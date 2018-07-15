@@ -146,7 +146,9 @@ const ProjectStackLink = styled.span`
   z-index: 10;
   cursor: pointer;
   display: inline;
-  color: ${props => props.focused ? props.color : '#7E7E7E'};
+  color: ${props => props.color};
+  filter: ${props => props.focused ? 'none' : 'grayscale(100%)'};
+  transition: 0.5s filter ease;
 `
 
 const ProjectLinkContainer = styled.div`

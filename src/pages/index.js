@@ -45,6 +45,7 @@ const MainInfoText = styled(posed.div(fadeEnter))`
 
   ${mediaSize.phone`
     letter-spacing: ${isIOS ? '-0.05em' : 0};
+    font-weight: normal;
   `}
 `
 
@@ -161,22 +162,22 @@ class HomePage extends React.Component {
           <ImportantInfo initialPose={'enter'} pose={'normal'} >
             <a href="mailto:alexieyizhe@gmail.com" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="paper_plane" size="5vmin" color="#80D07F" />
+                <Icon name="paper_plane" size="3vmax" color="#80D07F" />
               </SVGDrawIcon>
             </a>
             <Link to="/resume">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="file" size="5vmin" color="#DE7947" />
+                <Icon name="file" size="3vmax" color="#DE7947" />
               </SVGDrawIcon>
             </Link>
             <a href="https://github.com/alexieyizhe" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="github" size="5vmin" color="#5534AC" />
+                <Icon name="github" size="3vmax" color="#5534AC" />
               </SVGDrawIcon>
             </a>
             <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="linkedin" size="5vmin" color="#2381D9" />
+                <Icon name="linkedin" size="3vmax" color="#2381D9" />
               </SVGDrawIcon>
             </a>
           </ImportantInfo>

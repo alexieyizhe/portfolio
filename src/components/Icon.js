@@ -7,6 +7,7 @@ const IconWrapper = styled.span`
     width: ${props => props.size};
     height: ${props => props.size};
     stroke: ${props => props.color};
+    fill : ${props => props.fillColor};
   }
 `;
 
@@ -79,6 +80,35 @@ const icons = {
   code: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
         </svg>,
+  cornerRightUp: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M10 9l5-5 5 5"/>
+                    <path d="M4 20a4 4 0 0 0 11-10"/>
+                  </svg>,
+  cornerSlantedRightUp: <svg viewBox="0 0 100 125" fill="#A7A7A7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M24.4 56.1c15.3-2.1 30.5-5.4 45.2-9.9-.2.2-.4.3-.6.5-2.6 2.1-5.5 3.9-8.6 5.2-.2.1 0 2.4 0 2.7 0 .2.2 2.6 0 2.7 4-1.7 7.7-4.2 10.9-7.2 1.4-1.3 3.4-3.1 4.1-4.9.4-1 .3-2.5.2-3.9.1-1.1.2-2-.1-2.1-5.5-2.2-11-4.1-16.7-5.8.4.1-.5 5.2 0 5.3 3 .9 5.9 1.8 8.8 2.8-14.2 4.2-28.6 7.3-43.3 9.3-.2 0 .2 5.3.1 5.3zm50.9-11.6s0 .1-.1.1c0 0 .1 0 .1-.1z"/>
+                        </svg>,
+  arrowRight: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>,
+  chevronRight: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>,
+  chevronUp: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+               <path d="M18 15l-6-6-6 6"/>
+             </svg>,
+  chevronDown: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                 <path d="M6 9l6 6 6-6"/>
+               </svg>,
+  doubleChevronRight: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M13 17l5-5-5-5M6 17l5-5-5-5"/>
+                      </svg>,
+  arrowRightUp: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 17L17 7M7 7h10v10"/>
+                </svg>,
+  alertTriangle: <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                   <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17"/>
+                   <path d="M11.9,17a0.1,0.1 0 1,0 0.2,0a0.1,0.1 0 1,0 -0.2,0"/>
+                 </svg>,
   plane: <svg viewBox="0 0 512 512">
           <path d="M501.905 10.593c-12.162-12.163-33.184-13.359-60.806-3.46-18.995 6.81-38.919 18.222-48.451 27.754l-76.55 76.55L64.116 71.859 0 135.975l209.501 82.059-67.266 67.266-95.472 5.591L.984 336.67l103.609 49.994-29.026 29.026 21.24 21.24 28.987-28.987 50.043 103.56 45.768-45.769 5.592-95.472 68.395-68.395 82.043 209.459 64.115-64.116-39.57-251.933 75.43-75.431c9.532-9.531 20.945-29.455 27.755-48.451 9.899-27.614 8.703-48.641-3.46-60.802zM53.706 124.751l20.846-20.846 215.268 33.811-57.136 57.136-178.978-70.101zm355.999 312.025l-20.845 20.846-70.087-178.935 57.128-57.128 33.804 215.217zm67.383-375.514c-5.739 16.012-15.224 31.853-20.718 37.347L197.88 357.101l-5.592 95.472-7.797 7.797-36.202-74.918 26.113-26.113-21.24-21.24-26.07 26.068L52.137 328l7.788-7.788 95.472-5.591L413.888 56.128c5.495-5.495 21.336-14.977 37.348-20.718 18.176-6.516 27.82-5.186 29.429-3.577 1.607 1.608 2.939 11.25-3.577 29.429z"/>
         </svg>,
