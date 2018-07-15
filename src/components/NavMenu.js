@@ -91,10 +91,8 @@ const Menu = styled(posed.div(MenuConfig))`
   }
 
   & .hamburger {
-    transform: ${props => props.open ? 'none' : 'rotate(-45deg)'};
     position: relative;
-    left: ${props => props.open ? '0.25em' : '0.3em'};
-    top: ${props => props.open ? '0.5em' : '0.35em'}
+    top: 0.1em;
   }
 `;
 
@@ -103,10 +101,6 @@ const MenuLink = styled(posed.div(MenuLinkConfig))`
   direction: rtl;
   padding-top: 0.5em;
   float: right;
-
-  &:nth-child(2) {
-    margin-top: 0.3em;
-  }
 
   & a {
     text-decoration: none;
@@ -189,7 +183,7 @@ class NavMenu extends React.Component {
           onMouseEnter={() => this.handleFocus('hover')}
           onMouseLeave={() => this.handleFocus('hoverAway')}
           onClick={() => this.handleFocus('click')}>
-          <div id="test" className={this.state.menuOpen ? "hamburger hamburger--elastic is-active" : "hamburger hamburger--elastic"}>
+          <div className={this.state.menuOpen ? "hamburger hamburger--elastic is-active" : "hamburger hamburger--elastic"}>
             <div className="hamburger-box">
               <div className="hamburger-inner"></div>
             </div>

@@ -177,7 +177,7 @@ class HomePage extends React.Component {
             </a>
             <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="linkedin" size="5vmin" color="#2381D9" />
+                <Icon name="linkedin" size={isMobile ? "10vmin" : "2vmin"} color="#2381D9" />
               </SVGDrawIcon>
             </a>
           </ImportantInfo>
