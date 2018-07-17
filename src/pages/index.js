@@ -161,7 +161,7 @@ class HomePage extends React.Component {
           <ImportantInfo initialPose={'enter'} pose={'normal'} >
             <a href="mailto:alexieyizhe@gmail.com" target="_blank">
               <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
-                <Icon name="paper_plane" size="3vmax" color="#80D07F" />
+                <Icon name="paperPlane" size="3vmax" color="#80D07F" />
               </SVGDrawIcon>
             </a>
             <Link to="/resume">

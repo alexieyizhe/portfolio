@@ -38,7 +38,7 @@ const PageFooter = () => (
   <FooterContainer>
     <a href="mailto:alex@alexieyizhe.me" target="_blank" style={{gridArea: 'contactIcon'}}>
       <SVGDrawIcon>
-        <Icon name="paper_plane" size="2vh" color="#80D07F" />
+        <Icon name="paperPlane" size="2vh" color="#80D07F" />
       </SVGDrawIcon>
     </a>
     <Link to="/resume" style={{gridArea: 'resumeIcon'}}>
@@ -48,7 +48,7 @@ const PageFooter = () => (
     </Link>
     <span style={{gridArea: 'topIcon'}} onClick={() => animateScroll.scrollToTop()}>
       <SVGDrawIcon>
-        <Icon name="up_arrow" size="4vh" color="#000" />
+        <Icon name="upArrow" size="4vh" color="#000" />
       </SVGDrawIcon>
     </span>
     <a href="https://github.com/alexieyizhe" target="_blank" style={{gridArea: 'githubIcon'}}>

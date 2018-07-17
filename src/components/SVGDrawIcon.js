@@ -33,9 +33,7 @@ class SVGDrawIcon extends React.Component {
   }
 
   handleHover(hovering) {
-    if(this.props.ignoreHover) {
-
-    } else {
+    if(!this.props.ignoreHover) {
       this.setState({animate: hovering});
     }
   }
