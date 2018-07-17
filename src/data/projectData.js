@@ -30,8 +30,8 @@ export const projectsList = [
       {name: 'Meteor', icon: 'devicons devicons-meteor', color: '#DF6034' },
     ],
     actionLinks: [
-      {name: "App Store", icon: "shopping_bag", url: "https://itunes.apple.com/US/app/id1380247687"},
-      {name: "Play Store", icon: "play_circle", url: "https://play.google.com/store/apps/details?id=ionic.eqrscanner"},
+      {name: "App Store", icon: "shoppingBag", url: "https://itunes.apple.com/US/app/id1380247687"},
+      {name: "Play Store", icon: "playCircle", url: "https://play.google.com/store/apps/details?id=ionic.eqrscanner"},
       {name: "View on Github", icon: "github", url: "https://github.com/alexieyizhe/eqrscanner"},
     ]
   },
@@ -67,7 +67,7 @@ export const projectsList = [
       {name: 'Heroku', icon: 'devicons devicons-heroku', color: '#9943A7' },
     ],
     actionLinks: [
-      {name: "FB Messenger Demo", icon: "message_square", url: "https://m.me/553923414986147"},
+      {name: "FB Messenger Demo", icon: "messageSquare", url: "https://m.me/553923414986147"},
       {name: "View on Github", icon: "github", url: "https://github.com/alexieyizhe/wat-bus"},
     ]
   },
