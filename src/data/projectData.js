@@ -37,7 +37,7 @@ export const projectsList = [
   },
   {
     name: 'Easy Recipeasy',
-    desc: 'The one stop shop for all your "what the hell should I make for dinner" needs.',
+    desc: 'The one stop shop for all your "what the heck should I make for dinner?" needs.',
     color: '#E85A3B',
     imgSource: '/img/projects/easy.png',
     techStack: [
