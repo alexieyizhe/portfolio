@@ -196,11 +196,11 @@ class NavMenu extends React.Component {
           onMouseEnter={() => this.handleFocus('hover')}
           onMouseLeave={() => this.handleFocus('hoverAway')}
           onClick={() => this.handleFocus('click')}>
-          <div className={this.state.menuOpen ? "hamburger hamburger--elastic is-active" : "hamburger hamburger--elastic"}>
-            <div className="hamburger-box">
-              <div className="hamburger-inner"></div>
-            </div>
-          </div>
+          <button className={this.state.menuOpen ? "hamburger hamburger--elastic is-active" : "hamburger hamburger--elastic"} type="button">
+            <span className="hamburger-box">
+              <span className="hamburger-inner"></span>
+            </span>
+          </button>
           { menuPageOptions.map((option, i) => {
               return (
                 <MenuLink
