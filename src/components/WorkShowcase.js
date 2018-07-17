@@ -94,7 +94,7 @@ const Container = styled.div`
 
   ${mediaSize.phone`
     height: auto;
-    width: 70%;
+    width: 80%;
     padding: 0 10% 0 10%;
     margin-bottom: 12vh;
 

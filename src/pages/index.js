@@ -152,7 +152,6 @@ class HomePage extends React.Component {
           <MainInfoText initialPose={'enter'} pose={'normal'}>
             <ScrambleText text="Alex Xie." options={{ duration: 250, speed: 15 }}/>
           </MainInfoText>
-          {/* TODO: add floating animation for text??? */}
           <BriefBioText initialPose={'enter'} pose={'normal'}>
             <div>web developer.</div>
             <div>opportunity pursuer.</div>

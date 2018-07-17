@@ -107,7 +107,7 @@ class ResumePage extends React.Component {
             <ResumeContainer style={this.props.transition && this.props.transition.style}>
               <ResumeBox
                 href={this.state.curResume.downloadSource}
-                download={this.state.curResume.downloadName}
+                target="_blank"
                 focused={this.state.focused || isMobile}
                 onMouseEnter={() => this.handleFocus('resume', true)}
                 onMouseLeave={() => this.handleFocus('resume', false)} >
