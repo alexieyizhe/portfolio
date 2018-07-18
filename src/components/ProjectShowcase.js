@@ -140,7 +140,7 @@ const ProjectStack = styled.div`
   `}
 `;
 
-const ProjectStackLink = styled.span`
+const ProjectStackItem = styled.span`
   text-decoration: none;
   position: relative;
   z-index: 10;
@@ -205,14 +205,14 @@ class ProjectShowcase extends React.Component {
           <ProjectStack>
             {this.props.project.techStack.map((tech, i) => {
               return (
-                <ProjectStackLink
+                <ProjectStackItem
                   key={i}
                   focused={this.state.focused}
                   color={tech.color}
                   data-tip={tech.name} data-for={`techStackTip${i}`}>
                   <span className={tech.icon} style={{fontSize: "1.5em"}} />
                   <ReactTooltip id={`techStackTip${i}`} effect='solid' />
-                </ProjectStackLink>
+                </ProjectStackItem>
               );
             })}
           </ProjectStack>
