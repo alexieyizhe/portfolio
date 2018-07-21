@@ -1,12 +1,10 @@
 import React from "react";
-import styled from "styled-components";
-
 import BlogPost from "../components/BlogPost.js";
 import TemplateWrapper from "../components/TemplateWrapper.js";
 
 
-const mediumCDNUrl = `https://cdn-images-1.medium.com/max/750/`;
-const mediumAuthorUrl = `https://medium.com/@alexieyizhe`;
+const mediumCDNUrl = "https://cdn-images-1.medium.com/max/750/";
+const mediumAuthorUrl = "https://medium.com/@alexieyizhe";
 
 
 class BlogPage extends React.Component {
@@ -17,9 +15,9 @@ class BlogPage extends React.Component {
   render() {
     const posts = this.props.data.allMediumPost.edges;
     return (
-      <TemplateWrapper menu footer curPage="Blog" outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Blog" header="my ramblings.">
+      <TemplateWrapper menu footer curPage="Blog" outerBounds={{ top: "7%", left: "15%", right: "15%", bottom: "0" }} title="Blog" header="my ramblings.">
         <div style={this.props.transition && this.props.transition.style}>
-          {posts.map(post => (
+          {posts.map((post) => (
             <BlogPost
               key={post.node.id}
               title={post.node.title}
@@ -29,8 +27,8 @@ class BlogPage extends React.Component {
               articleSrc={`${mediumAuthorUrl}/${post.node.uniqueSlug}`}
               imgSrc={`${mediumCDNUrl}/${post.node.virtuals.previewImage.imageId}`}
               imgAlt={post.node.title}
-              color={'hsl(' + Math.floor(Math.random() * 360) + ', 100%, 87.5%)'}
-              imgSize={{width: '100%', height: '100%'}}
+              color={`hsl(${Math.floor(Math.random() * 360)},100%, 87.5%)`}
+              imgSize={{width: "100%", height: "100%"}}
             />
           ))}
         </div>
@@ -65,4 +63,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

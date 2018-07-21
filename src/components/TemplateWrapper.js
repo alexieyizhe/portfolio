@@ -1,6 +1,12 @@
+/*
+  TEMPLATE_WRAPPER.JS
+    A wrapper container designed to fit individual web pages.
+    Allows consistent positioning and styling of components like
+    the header, footer, and smooth transition between pages.
+*/
+
 import React from "react";
 import styled from "styled-components";
-import Link from "gatsby-link";
 import Helmet from "react-helmet";
 import PageFooter from "./PageFooter.js";
 import PageHeader from "./PageHeader.js";
@@ -13,14 +19,14 @@ const TemplateContainer = styled.div`
   font-family: "PT Sans", sans-serif;
   color: #464646;
   position: absolute;
-  top: ${props => props.outerBounds && props.outerBounds.top || 0};
-  left: ${props => props.outerBounds && props.outerBounds.left || 0};
-  right: ${props => props.outerBounds && props.outerBounds.right || 0};
-  bottom: ${props => props.outerBounds && props.outerBounds.bottom || 0};
+  top: ${(props) => props.outerBounds && props.outerBounds.top || 0};
+  left: ${(props) => props.outerBounds && props.outerBounds.left || 0};
+  right: ${(props) => props.outerBounds && props.outerBounds.right || 0};
+  bottom: ${(props) => props.outerBounds && props.outerBounds.bottom || 0};
 `;
 
 const NonNavElements = styled.div`
-  opacity: ${props => props.shouldFade ? 0.4 : 1};
+  opacity: ${(props) => props.shouldFade ? 0.4 : 1};
   transition: 0.5s opacity;
 `;
 
@@ -34,13 +40,13 @@ class TemplateWrapper extends React.Component {
       showFooter: props.footer,
       title: props.title,
       menuFocused: false,
-    }
+    };
   }
 
   handleFocus(menuFocused) {
     this.setState({
       menuFocused: menuFocused
-    })
+    });
   }
 
   render() {
@@ -75,7 +81,7 @@ class TemplateWrapper extends React.Component {
           </NonNavElements>
         </Transition>
       </TemplateContainer>
-    )
+    );
   }
 }
 

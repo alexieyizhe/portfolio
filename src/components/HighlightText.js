@@ -1,14 +1,23 @@
+/*
+  HIGHLIGHT_TEXT.JS
+    Wrapper around text that draws an offset highlight on focus/hover 
+    or a custom trigger. Color can be configured. The toggle for drawing 
+    the highlight relies on its parent component to pass it the flag.
+*/
+
+
 import React from "react";
 import styled from "styled-components";
 import { mediaSize } from "../data/configOptions.js";
 import { css } from "styled-components";
+
 
 const Highlight = styled.span`
   position: relative;
   z-index: 110;
 
   &:before { /* background of title on hover */
-    background-color: ${props => props.color};
+    background-color: ${(props) =>props.color};
     opacity: 0.6;
     content: '';
     position: absolute;
@@ -21,7 +30,7 @@ const Highlight = styled.span`
 
     transition: 250ms ease width;
 
-    ${props => props.hovered ? css`
+    ${(props) =>props.hovered ? css`
       width: 95%;
       ${mediaSize.phone`
         width: 100%;

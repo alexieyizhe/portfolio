@@ -3,7 +3,8 @@
 
 Personal website/portfolio of Alex Yizhe Xie.
 
-Powered by React, GatsbyJS, and some awesome plugins. Continuous integration is enabled through Netlify, and code style review through Codacy.
+Powered by React, GatsbyJS, and some awesome plugins. 
+Continuous integration is enabled through Netlify, and code style review through Codacy.
 
 Check it out [here](http://www.alexieyizhe.me)!
 

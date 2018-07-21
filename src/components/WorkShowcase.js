@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import posed from "react-pose";
 import VisibilitySensor from "react-visibility-sensor";
-import { css } from 'styled-components';
-import { isMobile, isIOS } from 'react-device-detect';
+import { css } from "styled-components";
+import { isMobile, isIOS } from "react-device-detect";
 import { mediaSize } from "../data/configOptions.js";
 
 import Icon from "./Icon.js";
@@ -14,7 +13,7 @@ const Container = styled.div`
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  width: ${props => props.expanded ? '90%' : '75%'};
+  width: ${(props) => props.expanded ? "90%" : "75%"};
   height: auto;
   margin-bottom: 10vh;
   cursor: pointer;
@@ -29,7 +28,7 @@ const Container = styled.div`
                        "desc"
                        "indicator";
 
-  background: url(${props => props.bg}) center/cover;
+  background: url(${(props) => props.bg}) center/cover;
   filter: grayscale(50%);
   transition: all 0.2s ease-in;
   transition: width 0.75s ease, height 0.75s ease;
@@ -64,7 +63,7 @@ const Container = styled.div`
     transition: opacity 500ms;
   }
 
-  ${props => props.focused || props.expanded ? css`
+  ${(props) => props.focused || props.expanded ? css`
     filter: none;
     background: url(${props => props.bg}) center/cover;
 
@@ -96,7 +95,7 @@ const Container = styled.div`
     height: auto;
     width: 80%;
     padding: 0 10% 0 10%;
-    margin-bottom: 12vh;
+    margin-bottom: 4em;
 
     grid-template-rows: auto auto auto;
     grid-template-areas: "title"
@@ -144,7 +143,7 @@ const WorkLogo = styled.img`
   opacity: 0;
   transition: all 0.3s ease-in;
 
-  ${props => props.focused || props.expanded ? css`opacity: 1;` : null}
+  ${(props) => props.focused || props.expanded ? css`opacity: 1;` : null}
 
   ${mediaSize.tablet`
     top: -5vw;
@@ -158,7 +157,7 @@ const WorkLogo = styled.img`
     max-width: 43vw;
     max-height: 60vw;
   `}
-`
+`;
 
 const WorkRole = styled.div`
   grid-area: role;
@@ -181,25 +180,25 @@ const WorkRole = styled.div`
 const WorkDesc = styled.div`
   grid-area: desc;
   align-self: start;
-  padding-bottom: ${props => props.expanded ? '2em' : 0};
+  padding-bottom: ${(props) => props.expanded ? "2em" : 0};
   line-height: 1.5;
   font-size: 2.5vmin;
   z-index: 6;
   font-family: 'Average', 'PT Serif', serif;
   max-width: 100%;
-  max-height: ${props => props.expanded ? '7em' : 0};
-  opacity: ${props => props.expanded ? 1 : 0};
+  max-height: ${(props) => props.expanded ? "7em" : 0};
+  opacity: ${(props) => props.expanded ? 1 : 0};
   transition: max-height 1s, opacity 0.7s, padding 1s;
 
   ${mediaSize.tablet`
-    max-height: ${props => props.expanded ? '20em' : 0};
-    padding-bottom: ${props => props.expanded ? '3vw' : 0};
+    max-height: ${(props) => props.expanded ? "20em" : 0};
+    padding-bottom: ${(props) => props.expanded ? "3vw" : 0};
   `}
 
   ${mediaSize.phone`
     font-size: 1em;
-    max-height: ${props => props.expanded ? '30em' : 0};
-    padding-bottom: ${props => props.expanded ? '7vw' : 0};
+    max-height: ${(props) => props.expanded ? "30em" : 0};
+    padding-bottom: ${(props) => props.expanded ? "7vw" : 0};
   `}
 `
 
@@ -233,7 +232,7 @@ class WorkShowcase extends React.Component {
           bg={this.props.work.bgImgSource}
           onMouseEnter={() => this.handleFocus(true)}
           onMouseLeave={() => this.handleFocus(false)}
-          onClick={() => this.setState((prevState) => {return {expanded: !prevState.expanded}})}>
+          onClick={() => this.setState((prevState) => {return {expanded: !prevState.expanded};})}>
           <WorkTitle>{this.props.work.name}</WorkTitle>
           <WorkRole>{this.props.work.role}</WorkRole>
           <WorkLogo src={this.props.work.logoImgSource} focused={this.state.focused} expanded={this.state.expanded} />

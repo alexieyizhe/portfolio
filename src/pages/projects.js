@@ -27,16 +27,17 @@ const ProjectGrid = styled.div`
 class ProjectsPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   render() {
     return (
-      <TemplateWrapper header="featured work." menu footer curPage="Projects" outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Projects">
+      <TemplateWrapper 
+        header="featured work." menu footer 
+        curPage="Projects" 
+        outerBounds={{ top: "7%", left: "15%", right: "15%", bottom: "0" }} 
+        title="Projects">
         <ProjectGrid style={this.props.transition && this.props.transition.style}>
-          {projectsList.map((project, i) => {
-            return <ProjectShowcase key={i} project={project} />
-          })}
+          {projectsList.map((project, i) => <ProjectShowcase key={i} project={project} />)}
         </ProjectGrid>
       </TemplateWrapper>
     );

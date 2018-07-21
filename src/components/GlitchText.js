@@ -1,11 +1,17 @@
+/*
+  GLITCH_TEXT.JS
+    Wrapper around text that creates a 'glitch' effect that warps 
+    the text. Color and font of the text is set by parent component.
+*/
+
 import React from "react";
 import styled from "styled-components";
 
 
 const GlitchBox = styled.div`
   position: relative;
-  color: ${props => props.color};
-  font: ${props => props.font};
+  color: ${(props) => props.color};
+  font: ${(props) => props.font};
   background: white;
   text-shadow: 0 1px #0DFF0F;
 
@@ -31,7 +37,7 @@ const GlitchBox = styled.div`
     }
   }
 
-  @-webkit-keyframes force-move {
+  @keyframes force-move {
     from {top: 0px;}
     to {top: 0.01px;}
   }
@@ -58,10 +64,10 @@ const GlitchBox = styled.div`
   }
 
   &:before {
-    content: '${props => props.text}';
+    content: '${(props) => props.text}';
     position: absolute;
     top: -5px;
-    color: ${props => props.color};;
+    color: ${(props) => props.color};;
     left: 0;
     width: 100%;
     height: 100%;
@@ -73,10 +79,10 @@ const GlitchBox = styled.div`
   }
 
   &:after {
-    content: '${props => props.text}';
+    content: '${(props) => props.text}';
     position: absolute;
     top: 5px;
-    color: ${props => props.color};;
+    color: ${(props) => props.color};;
     left: 0;
     width: 100%;
     height: 100%;

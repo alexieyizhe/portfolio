@@ -1,14 +1,11 @@
 import React from "react";
-import styled from "styled-components";
-
+import styled, { css } from "styled-components";
 import { particleConfig, resumeOptions } from "../data/configOptions.js";
-import Particles from 'react-particles-js';
+import Particles from "react-particles-js";
 import TemplateWrapper from "../components/TemplateWrapper.js";
 import { mediaSize } from "../data/configOptions.js";
-import { css } from 'styled-components';
-import { isMobile } from 'react-device-detect';
+import { isMobile } from "react-device-detect";
 import VisibilitySensor from "react-visibility-sensor";
-
 import HighlightText from "../components/HighlightText.js";
 import Icon from "../components/Icon.js";
 
@@ -17,7 +14,7 @@ const ParticlesStyle = {
   width: "100%",
   height: "100%",
   zIndex: "-5"
-}
+};
 
 const ResumeContainer = styled.div`
   width: 100%;
@@ -51,7 +48,7 @@ const ResumeBox = styled.a`
     transition: opacity 500ms;
   }
 
-  ${props => props.focused ? css`
+  ${(props) => props.focused ? css`
     &:before {
       opacity: 1;
     }
@@ -91,9 +88,9 @@ class ResumePage extends React.Component {
   }
 
   handleFocus(type, focused) {
-    if(type === 'resume') {
+    if(type === "resume") {
       this.setState({focused: focused});
-    } else if(type === 'selection') {
+    } else if(type === "selection") {
       this.setState({selectFocused: focused});
     }
   }
@@ -103,14 +100,14 @@ class ResumePage extends React.Component {
       <VisibilitySensor onChange={(isVisible) => this.handleFocus(isMobile && isVisible)}>
         <div id="particleBgContainer">
           <Particles params={particleConfig} style={ParticlesStyle} />
-          <TemplateWrapper menu footer outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="Resume" header="resume.">
+          <TemplateWrapper menu footer outerBounds={{ top: "7%", left: "15%", right: "15%", bottom: "0" }} title="Resume" header="resume.">
             <ResumeContainer style={this.props.transition && this.props.transition.style}>
               <ResumeBox
                 href={this.state.curResume.downloadSource}
                 target="_blank"
                 focused={this.state.focused || isMobile}
-                onMouseEnter={() => this.handleFocus('resume', true)}
-                onMouseLeave={() => this.handleFocus('resume', false)} >
+                onMouseEnter={() => this.handleFocus("resume", true)}
+                onMouseLeave={() => this.handleFocus("resume", false)} >
                 <img src={this.state.curResume.previewSource} />
               </ResumeBox>
               <ResumeSelector>
@@ -118,8 +115,8 @@ class ResumePage extends React.Component {
                   const isLatest = i === resumeOptions.length - 1;
                   return (
                     <span key={i}
-                      onMouseEnter={() => this.handleFocus('selection', resume.name)}
-                      onMouseLeave={() => this.handleFocus('selection', null)}
+                      onMouseEnter={() => this.handleFocus("selection", resume.name)}
+                      onMouseLeave={() => this.handleFocus("selection", null)}
                       onClick={() => this.setState({curResume: resume})}
                     >
                       <HighlightText

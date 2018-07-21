@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Link from "gatsby-link";
 import posed from "react-pose";
-import { isMobile } from 'react-device-detect';
-import { css } from "styled-components";
-import hamburger from "../data/hamburgers/hamburgers.scss";
+import { isMobile } from "react-device-detect";
+import "../data/hamburgers/hamburgers.scss";
 import { menuPageOptions, contactOptions, mediaSize } from "../data/configOptions.js";
 import onClickOutside from "react-onclickoutside";
 
@@ -52,7 +51,7 @@ const MenuContainer = styled.div`
   display: inline-block;
   z-index: 100; // Allow menu to always be on top for navigation
 
-  ${props => props.default ? null :
+  ${(props) => props.default ? null :
     mediaSize.phone`
     right: auto;
     bottom: 7%;
@@ -68,7 +67,7 @@ const Prompt = styled.div`
   text-align: right;
   color: #AAAAAA;
 
-  opacity: ${props => props.show ? 1 : 0};
+  opacity: ${(props) => props.show ? 1 : 0};
   transition: opacity 0.5s ease;
 
   & > span {
@@ -76,7 +75,7 @@ const Prompt = styled.div`
     top: 4px;
     right: 4px;
   }
-`
+`;
 
 const Menu = styled(posed.div(MenuConfig))`
   width: 2.5em;
@@ -107,7 +106,7 @@ const MenuLink = styled(posed.div(MenuLinkConfig))`
     text-decoration: none;
   }
 
-  ${props => props.default ?
+  ${(props) => props.default ?
     mediaSize.phone`
       padding-top: 0.25em;
     `
@@ -116,7 +115,7 @@ const MenuLink = styled(posed.div(MenuLinkConfig))`
     direction: ltr;
     float: none;
     position: relative;
-    top: ${props => props.mobileoffset * -50}px;
+    top: ${(props) => props.mobileoffset * -50}px;
 
     &:nth-child(2) {
       margin-top: -4.5em;
@@ -150,33 +149,39 @@ class NavMenu extends React.Component {
   componentDidMount() {
     // Dismiss prompt to open menu after 8 seconds
     this.promptTimer = setTimeout(() => {
-      this.setState({displayPrompt: false})
-    }, 8000)
+      this.setState({displayPrompt: false});
+    }, 8000);
   }
 
   componentWillUnmount() {
     clearTimeout(this.promptTimer);
   }
 
-  handleClickOutside = evt => {
-    this.handleFocus('clickAway');
+  handleClickOutside = (evt) => {
+    this.handleFocus("clickAway");
   };
 
   handleFocus(action) {
-    if(action === 'hover' && !isMobile) {
-      this.setState({menuOpen: true, displayPrompt: false});
+    if(action === "hover" && !isMobile) {
+      this.setState({
+        menuOpen: true, 
+        displayPrompt: false
+      });
       this.props.wrapperHandleFocus(true);
-    } else if(action === 'hoverAway' && !isMobile) {
+
+    } else if(action === "hoverAway" && !isMobile ||
+              action === "clickAway" && isMobile) {
       this.setState({menuOpen: false});
       this.props.wrapperHandleFocus(false);
-    } else if(action === 'click' && isMobile) {
+
+    } else if(action === "click" && isMobile) {
       this.setState((prevState) => {
         this.props.wrapperHandleFocus(!prevState.menuOpen);
-        return { menuOpen: !prevState.menuOpen, displayPrompt: false };
+        return { 
+          menuOpen: !prevState.menuOpen, 
+          displayPrompt: false 
+        };
       });
-    } else if(action === 'clickAway' && isMobile) {
-      this.setState({menuOpen: false});
-      this.props.wrapperHandleFocus(false);
     }
   }
 
@@ -185,17 +190,19 @@ class NavMenu extends React.Component {
       <MenuContainer default={this.props.options && this.props.options.default}>
         <FloatText from={-5} to={-1}>
           <Prompt show={this.state.displayPrompt}>
-            There's more! <span style={{position: 'relative', top: '1.2em', right: '0.7em'}}><Icon name="cornerSlantedRightUp" size="2.5em" color="#AAAAAA" fillColor="#AAAAAA" /></span>
-
+            There's more! 
+            <span style={{position: "relative", top: "1.2em", right: "0.7em"}}>
+              <Icon name="cornerSlantedRightUp" size="2.5em" color="#AAAAAA" fillColor="#AAAAAA" />
+            </span>
           </Prompt>
         </FloatText>
         <Menu
-          initialPose='enter'
+          initialPose="enter"
           open={this.state.menuOpen}
-          pose={this.state.menuOpen ? 'open' : 'closed'}
-          onMouseEnter={() => this.handleFocus('hover')}
-          onMouseLeave={() => this.handleFocus('hoverAway')}
-          onClick={() => this.handleFocus('click')}>
+          pose={this.state.menuOpen ? "open" : "closed"}
+          onMouseEnter={() => this.handleFocus("hover")}
+          onMouseLeave={() => this.handleFocus("hoverAway")}
+          onClick={() => this.handleFocus("click")}>
           <div className={this.state.menuOpen ? "hamburger hamburger--elastic is-active" : "hamburger hamburger--elastic"}>
             <div className="hamburger-box">
               <div className="hamburger-inner"></div>
@@ -205,7 +212,7 @@ class NavMenu extends React.Component {
               return (
                 <MenuLink
                   key={i}
-                  pose={this.state.menuOpen ? 'open' : 'closed'}
+                  pose={this.state.menuOpen ? "open" : "closed"}
                   default={this.props.options && this.props.options.default}
                   mobileoffset={i}
                 >

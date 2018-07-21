@@ -1,15 +1,13 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import posed from "react-pose";
 import VisibilitySensor from "react-visibility-sensor";
-import { css } from 'styled-components';
-import { isMobile } from 'react-device-detect';
+import { isMobile } from "react-device-detect";
 import { mediaSize } from "../data/configOptions.js";
-import ReactTooltip from 'react-tooltip';
-
+import ReactTooltip from "react-tooltip";
 import SVGDrawIcon from "./SVGDrawIcon.js";
 import Icon from "./Icon.js";
-import '../data/font-devicons/devicons.min.css';
+import "../data/font-devicons/devicons.min.css";
 
 
 const ContainerConfig = {
@@ -22,7 +20,7 @@ const ContainerConfig = {
   hovered: {
     opacity: 1
   }
-}
+};
 
 const Container = styled(posed.div(ContainerConfig))`
   position: relative;
@@ -54,7 +52,7 @@ const Container = styled(posed.div(ContainerConfig))`
     transition: opacity 500ms;
   }
 
-  ${props => props.focused ? css`
+  ${(props) => props.focused ? css`
     &:before {
       opacity: 1;
     }
@@ -88,14 +86,14 @@ const ProjectPic = styled.img`
 
   /* Design */
   transition: 1s filter;
-  ${props => props.focused ? css`filter: none;` : css`filter: grayscale(100%);`}
+  ${(props) => props.focused ? css`filter: none;` : css`filter: grayscale(100%);`}
 
   ${mediaSize.tablet`
   `}
 
   ${mediaSize.phone`
   `}
-`
+`;
 
 const ProjectTitle = styled.span`
   /* Positioning */
@@ -107,12 +105,6 @@ const ProjectTitle = styled.span`
   /* Design */
   font-family: "PT Serif", serif;
   font-size: 2em;
-
-  ${mediaSize.tablet`
-  `}
-
-  ${mediaSize.phone`
-  `}
 `;
 
 
@@ -120,24 +112,12 @@ const ProjectDesc = styled.div`
   grid-area: desc;
   justify-self: start;
   align-self: center;
-
-  ${mediaSize.tablet`
-  `}
-
-  ${mediaSize.phone`
-  `}
 `;
 
 const ProjectStack = styled.div`
   grid-area: stack;
   justify-self: start;
   align-self: center;
-
-  ${mediaSize.tablet`
-  `}
-
-  ${mediaSize.phone`
-  `}
 `;
 
 const ProjectStackItem = styled.span`
@@ -146,8 +126,8 @@ const ProjectStackItem = styled.span`
   z-index: 10;
   cursor: pointer;
   display: inline;
-  color: ${props => props.color};
-  filter: ${props => props.focused ? 'none' : 'grayscale(100%)'};
+  color: ${(props) => props.color};
+  filter: ${(props) => props.focused ? "none" : "grayscale(100%)"};
   transition: 0.5s filter ease;
 `
 
@@ -194,7 +174,8 @@ class ProjectShowcase extends React.Component {
       <VisibilitySensor onChange={(isVisible) => this.handleFocus(isMobile && isVisible)}>
         <Container
           focused={this.state.focused ? 1 : 0}
-          initialPose='enter' pose={this.state.focused ? 'hovered' : 'normal'}
+          initialPose="enter" 
+          pose={this.state.focused ? "hovered" : "hovered"}
           onMouseEnter={() => this.handleFocus(true)}
           onMouseLeave={() => this.handleFocus(false)}
           color={this.props.color}
@@ -211,7 +192,7 @@ class ProjectShowcase extends React.Component {
                   color={tech.color}
                   data-tip={tech.name} data-for={`techStackTip${i}`}>
                   <span className={tech.icon} style={{fontSize: "1.5em"}} />
-                  <ReactTooltip id={`techStackTip${i}`} effect='solid' />
+                  <ReactTooltip id={`techStackTip${i}`} effect="solid" />
                 </ProjectStackItem>
               );
             })}
@@ -225,7 +206,7 @@ class ProjectShowcase extends React.Component {
                       <Icon name={link.icon}  size="1.5em" color="#595959" />
                     </SVGDrawIcon>
                   </a>
-                  <ReactTooltip id={`actionLinkTip${i}`} effect='solid' />
+                  <ReactTooltip id={`actionLinkTip${i}`} effect="solid" />
                 </ProjectLink>
               );
             })}

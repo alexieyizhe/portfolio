@@ -1,11 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { mediaSize } from "../data/configOptions.js";
-import Link from "gatsby-link";
-
 import TemplateWrapper from "../components/TemplateWrapper.js";
 import Icon from "../components/Icon.js";
-
 import { archiveSiteList } from "../data/archiveData.js";
 
 
@@ -31,7 +28,7 @@ const PageLink = styled.a`
   ${mediaSize.phone`
     font-size: 5vw;
   `}
-`
+`;
 
 const Disclaimer = styled.div`
   margin-top: 5em;
@@ -61,12 +58,10 @@ class ArchivePage extends React.Component {
 
   render() {
     return (
-      <TemplateWrapper title="Archive" menu footer curPage="Archive" outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}>
+      <TemplateWrapper title="Archive" menu footer curPage="Archive" outerBounds={{ top: "7%", left: "15%", right: "15%", bottom: "0" }}>
         <Header className="navMenu">archive.</Header>
         <div style={this.props.transition && this.props.transition.style}>
-          {archiveSiteList.map((snapshot, i) => {
-            return <PageLink key={i} href={snapshot.url}>{snapshot.name}</PageLink>
-          })}
+          {archiveSiteList.map((snapshot, i) => <PageLink key={i} href={snapshot.url}>{snapshot.name}</PageLink>)}
         </div>
         <Disclaimer>
           <Icon name="alertTriangle" size="2em" color="#E8A40D" /> <br/>

@@ -1,13 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import posed from "react-pose";
 import VisibilitySensor from "react-visibility-sensor";
-import { css } from 'styled-components';
-import { isMobile } from 'react-device-detect';
+import { isMobile } from "react-device-detect";
 import { mediaSize } from "../data/configOptions.js";
-
-import SVGDrawIcon from "./SVGDrawIcon.js";
-import Icon from "./Icon.js";
 
 
 const ContainerConfig = {
@@ -22,7 +18,7 @@ const ContainerConfig = {
     opacity: 1,
     scale: 1.05
   }
-}
+};
 
 const Container = styled(posed.div(ContainerConfig))`
   width: 100%;
@@ -81,7 +77,7 @@ const Highlight = styled.span`
   z-index: 1;
 
   &:before { /* background of title on hover */
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.color};
     opacity: 0.6;
     content: ' ';
     position: absolute;
@@ -95,22 +91,22 @@ const Highlight = styled.span`
 
     transition: 250ms ease width;
 
-    ${props => props.hovered ? css`width: 95%;` : null}
+    ${(props) => props.hovered ? css`width: 95%;` : null}
   }
-`
+`;
 
 const PostImg = styled.img`
   grid-area: pic;
   justify-self: center;
   align-self: center;
 
-  max-width: ${props => props.size.width};
-  max-height: ${props => props.size.height};
+  max-width: ${(props) => props.size.width};
+  max-height: ${(props) => props.size.height};
 
   filter: grayscale(100%);
   transition: 1s filter;
 
-  ${props => props.focused ? css`filter: none;` : null}
+  ${(props) => props.focused ? css`filter: none;` : null}
 
   ${mediaSize.tablet`
     justify-self: start;
@@ -138,8 +134,6 @@ const PostDesc = styled.span`
     align-self: center;
     font-size: 2vmax;
   `}
-
-
 `;
 
 const PostDate = styled.div`
@@ -150,7 +144,7 @@ const PostDate = styled.div`
   ${mediaSize.tablet`
     font-size: 3vmin;
   `}
-`
+`;
 
 const PostLink = styled.a`
   text-decoration: inherit;
@@ -174,7 +168,7 @@ class BlogPost extends React.Component {
       <VisibilitySensor onChange={(isVisible) => this.handleFocus(isMobile && isVisible)}>
         <PostLink href={this.props.articleSrc} target="_blank">
           <Container
-            initialPose='enter' pose={this.state.focused ? 'hovered' : 'normal'}
+            initialPose="enter" pose={this.state.focused ? "hovered" : "normal" }
             onMouseEnter={() => this.handleFocus(true)}
             onMouseLeave={() => this.handleFocus(false)}>
             <PostTitle>

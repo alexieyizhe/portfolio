@@ -1,6 +1,13 @@
+/*
+  SVG_DRAW_ICON.JS
+    Wrapper around an SVG element that handles the animation
+    (drawing) of lines in the element, either through a trigger 
+    or on focus/hover.
+*/
+
 import React from "react";
 import styled from "styled-components";
-import MtSvgLines from 'react-mt-svg-lines';
+import MtSvgLines from "react-mt-svg-lines";
 
 
 const Shadow = styled.span`
@@ -10,7 +17,7 @@ const Shadow = styled.span`
   & path {
     stroke: #C4C4C4;
   }
-`
+`;
 
 const Outline = styled.span`
   position: relative;
@@ -21,7 +28,7 @@ const Outline = styled.span`
 const Icon = styled.span`
   display: inline;
   position: relative;
-`
+`;
 
 
 class SVGDrawIcon extends React.Component {

@@ -5,28 +5,30 @@ import { historyExitingEventType, timeout } from "../../gatsby-browser.js";
 
 class Transition extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = { exiting: false }
-    this.listenerHandler = this.listenerHandler.bind(this)
+    super(props);
+    this.state = { 
+      exiting: false 
+    };
+    this.listenerHandler = this.listenerHandler.bind(this);
   }
 
   listenerHandler(event) {
-    this.setState({ exiting: true })
+    this.setState({ exiting: true });
   }
 
   componentDidMount() {
-    typeof window !== 'undefined' && window.addEventListener(historyExitingEventType, this.listenerHandler)
+    typeof window !== "undefined" && window.addEventListener(historyExitingEventType, this.listenerHandler);
   }
 
   componentWillUnmount() {
-    typeof window !== 'undefined' && window.removeEventListener(historyExitingEventType, this.listenerHandler)
+    typeof window !== "undefined" && window.removeEventListener(historyExitingEventType, this.listenerHandler);
   }
 
   static getDerivedStateFromProps({ exiting }) {
     if (exiting) {
-      return { exiting: false }
+      return { exiting: false };
     }
-    return null
+    return null;
   }
 
   render() {
@@ -37,11 +39,11 @@ class Transition extends React.Component {
       },
       appear: true,
       in: !this.state.exiting,
-    }
+    };
 
     return (
       <ReactTransition {...transitionProps}>
-        {status => (
+        {(status) => (
           <div
             style={{
               ...getTransitionStyle({ status, timeout }),
@@ -53,6 +55,6 @@ class Transition extends React.Component {
       </ReactTransition>
     )
   }
-}
+};
 
 export default Transition;

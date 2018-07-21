@@ -1,13 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import posed from "react-pose";
 import Img from "gatsby-image";
 import { mediaSize } from "../data/configOptions.js";
-import '../data/font-devicons/devicons.min.css';
-import ReactTooltip from 'react-tooltip';
-
+import "../data/font-devicons/devicons.min.css";
+import ReactTooltip from "react-tooltip";
 import TemplateWrapper from "../components/TemplateWrapper.js";
-import PageHeader from "../components/PageHeader.js";
 import StatCounter from "../components/StatCounter.js";
 import Icon from "../components/Icon.js";
 
@@ -23,7 +20,7 @@ const Container = styled.div`
                        "pic interests"
                        "intro intro";
   grid-column-gap: 5vw;
-  font-family: 'PT Serif', 'Times', serif;
+  font-family: "PT Serif", "Times", serif;
 
   ${mediaSize.tablet`
     grid-template-columns: 60% 30%;
@@ -44,7 +41,7 @@ const Container = styled.div`
                          "interests"
                          "intro";
   `}
-`
+`;
 
 const AboutPic = styled.div`
   grid-area: pic;
@@ -88,7 +85,7 @@ const AboutStats = styled.div`
 const AboutSkills = styled.div`
   grid-area: skills;
   font-size: 1.5vw;
-  font-family: 'Cabin', arial, sans-serif;
+  font-family: "Cabin", arial, sans-serif;
   position: relative;
 
 
@@ -97,7 +94,7 @@ const AboutSkills = styled.div`
   }
 
   & > div {
-    font-family: 'PT Serif', 'Times', serif;
+    font-family: "PT Serif", "Times", serif;
     font-size: 1.5em;
     margin-bottom: 5px;
     position: relative;
@@ -106,7 +103,7 @@ const AboutSkills = styled.div`
     &:before { /* background of title on hover */
       background-color: rgba(155, 219, 125, 0.6);
       opacity: 0.4;
-      content: '';
+      content: "";
       position: absolute;
       top: 0.45em;
       left: 0.25em;
@@ -156,10 +153,10 @@ const AboutSkills = styled.div`
 const AboutInterests = styled.div`
   grid-area: interests;
   font-size: 1.5vw;
-  font-family: 'Cabin', arial, sans-serif;
+  font-family: "Cabin", arial, sans-serif;
 
   & > div {
-    font-family: 'PT Serif', 'Times', serif;
+    font-family: "PT Serif", "Times", serif;
     font-size: 1.5em;
     margin-bottom: 5px;
     position: relative;
@@ -168,7 +165,7 @@ const AboutInterests = styled.div`
     &:before { /* background of title on hover */
       background-color: rgba(187, 182, 241, 0.6);
       opacity: 0.6;
-      content: '';
+      content: "";
       position: absolute;
       top: 0.45em;
       left: 0.25em;
@@ -238,14 +235,14 @@ const RevealButton = styled.span`
   opacity: ${props => props.revealed ? 0 : 1};
   transition: opacity 0.75s ease;
   text-decoration: underline;
-  cursor: ${props => props.revealed ? 'default' : 'pointer'};;
+  cursor: ${(props) => props.revealed ? "default" : "pointer"};;
 
 `
 
 const DetailedIntro = styled.div`
   overflow-y: hidden;
-  opacity: ${props => props.revealed ? 1 : 0};
-  max-height: ${props => props.revealed ? '500em' : 0};
+  opacity: ${(props) => props.revealed ? 1 : 0};
+  max-height: ${(props) => props.revealed ? "500em" : 0};
   transition: max-height 6s ease-in-out, opacity 1s ease;
 `
 
@@ -264,7 +261,12 @@ class AboutPage extends React.Component {
 
   render() {
     return (
-      <TemplateWrapper header="alex who?" menu footer curPage="About" outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }} title="About">
+      <TemplateWrapper 
+        header="alex who?" 
+        menu footer 
+        curPage="About" 
+        outerBounds={{ top: "7%", left: "15%", right: "15%", bottom: "0" }} 
+        title="About">
         <div style={this.props.transition && this.props.transition.style}>
           <Container>
 
@@ -295,8 +297,8 @@ class AboutPage extends React.Component {
                   <span key={i} style={{gridArea: category.type}}>
                     {category.children.map((skill, j) => {
                       return (
-                        <span key={j} data-tip={skill.name} data-for={`techStackTip${j}`} style={{position: 'relative'}}>
-                          <ReactTooltip id={`techStackTip${j}`} effect='solid' />
+                        <span key={j} data-tip={skill.name} data-for={`techStackTip${j}`} style={{position: "relative"}}>
+                          <ReactTooltip id={`techStackTip${j}`} effect="solid" />
                           <span className={`devicons devicons-${skill.icon}`} style={{fontSize: "1.25em"}} />
                         </span>
                       );
@@ -312,19 +314,22 @@ class AboutPage extends React.Component {
               {INTERESTS_LIST.map((interest, i) => {
                 return (
                   <span key={i} data-tip={interest.name} data-for={`interestTip${i}`}>
-                    <ReactTooltip id={`interestTip${i}`} effect='solid' />
+                    <ReactTooltip id={`interestTip${i}`} effect="solid" />
                     <Icon name={interest.icon} size="1em" color="#000000" />
                   </span>
                 );
               })}
-              <a data-tip="Music" data-for={`techStackTip19`} href="https://open.spotify.com/user/alexieyizhe" target="_blank">
-                <ReactTooltip id={`techStackTip19`} effect='solid' />
+              <a data-tip="Music" data-for={"interestTipMusic"} href="https://open.spotify.com/user/alexieyizhe" target="_blank">
+                <ReactTooltip id={"interestTipMusic"} effect="solid" />
                 <Icon name="headphones" size="1em" color="#000000" />
               </a>
             </AboutInterests>
 
             <AboutIntro>
-              I'm Alex Yizhe Xie, and I'm currently two-fifths of my way to a Bachelor of Computer Science at the University of Waterloo. I'm Chinese, but my hometown is the city-state of Singapore, Singapore (trippy, I know). These days, I'm proudly Canadian and working as a back-end software engineer at <a href="https://flipp.com/home" target="_blank">Flipp Corp</a>. <RevealButton onClick={() => this.revealDetailedIntro()} revealed={this.state.revealed}>Tell me more!</RevealButton>
+              I'm Alex Yizhe Xie, and I'm currently two-fifths of my way to a Bachelor of Computer Science at the University of Waterloo. 
+              I'm Chinese, but my hometown is the city-state of Singapore, Singapore (trippy, I know). These days, I'm proudly Canadian and 
+              working as a back-end software engineer at <a href="https://flipp.com/home" target="_blank">Flipp Corp</a>. 
+              <RevealButton onClick={() => this.revealDetailedIntro()} revealed={this.state.revealed}>Tell me more!</RevealButton>
               <DetailedIntro revealed={this.state.revealed}>
                 {DESC_PARAGRAPHS.map((para, i) => {
                   return <p key={i}>{para}</p>;

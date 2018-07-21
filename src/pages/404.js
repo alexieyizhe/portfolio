@@ -19,7 +19,7 @@ const ErrorContainer = styled.div`
   grid-template-areas: "message"
                        "code"
                        "redirect";
-`
+`;
 
 const ErrorMessage = styled.div`
   grid-area: message;
@@ -61,7 +61,6 @@ class InvalidURLPage extends React.Component {
   }
 
   render() {
-    const pathname = this.props.location.pathname
     return (
       <TemplateWrapper title="Error 404">
         <ErrorContainer style={this.props.transition && this.props.transition.style}>
