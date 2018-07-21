@@ -65,7 +65,7 @@ const Container = styled.div`
 
   ${(props) => props.focused || props.expanded ? css`
     filter: none;
-    background: url(${props => props.bg}) center/cover;
+    background: url(${(props) => props.bg}) center/cover;
 
     &:before {
       opacity: 1;
@@ -122,7 +122,7 @@ const WorkTitle = styled.span`
     padding-top: 15vmin;
     font-size: 4.5em;
     font-family: "Cabin", "Ubuntu", Arial, serif;
-    letter-spacing: ${isIOS ? '-0.05em' : 0};
+    letter-spacing: ${isIOS ? "-0.05em" : 0};
   `}
 
   ${mediaSize.phone`
@@ -200,7 +200,7 @@ const WorkDesc = styled.div`
     max-height: ${(props) => props.expanded ? "30em" : 0};
     padding-bottom: ${(props) => props.expanded ? "7vw" : 0};
   `}
-`
+`;
 
 const DropdownArrow = styled.span`
   grid-area: indicator;
@@ -220,7 +220,7 @@ class WorkShowcase extends React.Component {
   }
 
   handleFocus(focused) {
-    this.setState({focused: focused});
+    this.setState({focused});
   }
 
   render() {

@@ -160,7 +160,7 @@ class BlogPost extends React.Component {
   }
 
   handleFocus(focused) {
-    this.setState({focused: focused});
+    this.setState({focused});
   }
 
   render() {

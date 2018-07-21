@@ -55,6 +55,6 @@ class Transition extends React.Component {
       </ReactTransition>
     )
   }
-};
+}
 
 export default Transition;

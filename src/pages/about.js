@@ -148,7 +148,7 @@ const AboutSkills = styled.div`
       display: block;
     }
   `}
-`
+`;
 
 const AboutInterests = styled.div`
   grid-area: interests;
@@ -232,7 +232,7 @@ const AboutIntro = styled.div`
 `;
 
 const RevealButton = styled.span`
-  opacity: ${props => props.revealed ? 0 : 1};
+  opacity: ${(props) => props.revealed ? 0 : 1};
   transition: opacity 0.75s ease;
   text-decoration: underline;
   cursor: ${(props) => props.revealed ? "default" : "pointer"};;

@@ -17,7 +17,7 @@ const Highlight = styled.span`
   z-index: 110;
 
   &:before { /* background of title on hover */
-    background-color: ${(props) =>props.color};
+    background-color: ${(props) => props.color};
     opacity: 0.6;
     content: '';
     position: absolute;
@@ -30,7 +30,7 @@ const Highlight = styled.span`
 
     transition: 250ms ease width;
 
-    ${(props) =>props.hovered ? css`
+    ${(props) => props.hovered ? css`
       width: 95%;
       ${mediaSize.phone`
         width: 100%;

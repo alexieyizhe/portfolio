@@ -129,7 +129,7 @@ const ProjectStackItem = styled.span`
   color: ${(props) => props.color};
   filter: ${(props) => props.focused ? "none" : "grayscale(100%)"};
   transition: 0.5s filter ease;
-`
+`;
 
 const ProjectLinkContainer = styled.div`
   grid-area: links;
@@ -166,7 +166,7 @@ class ProjectShowcase extends React.Component {
   }
 
   handleFocus(focused) {
-    this.setState({focused: focused});
+    this.setState({focused});
   }
 
   render() {
