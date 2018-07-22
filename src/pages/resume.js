@@ -89,7 +89,7 @@ class ResumePage extends React.Component {
 
   handleFocus(type, focused) {
     if(type === "resume") {
-      this.setState({focused: focused});
+      this.setState({focused});
     } else if(type === "selection") {
       this.setState({selectFocused: focused});
     }

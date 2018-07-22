@@ -53,7 +53,7 @@ class Transition extends React.Component {
           </div>
         )}
       </ReactTransition>
-    )
+    );
   }
 }
 

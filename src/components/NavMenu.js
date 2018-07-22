@@ -133,7 +133,7 @@ const MenuLinkText = styled.div`
   ${mediaSize.phone`
     font-weight: 450;
   `}
-`
+`;
 
 
 class NavMenu extends React.Component {

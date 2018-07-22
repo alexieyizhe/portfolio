@@ -44,9 +44,7 @@ class TemplateWrapper extends React.Component {
   }
 
   handleFocus(menuFocused) {
-    this.setState({
-      menuFocused: menuFocused
-    });
+    this.setState({menuFocused});
   }
 
   render() {

@@ -120,7 +120,7 @@ const PostImg = styled.img`
     width: auto;
     max-width: 100%;
   `}
-`
+`;
 
 const PostDesc = styled.span`
   grid-area: desc;

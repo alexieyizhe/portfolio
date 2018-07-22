@@ -33,7 +33,7 @@ const ErrorCode = styled.div`
   grid-area: code;
   align-self: center;
   justify-self: center;
-`
+`;
 
 const ErrorRedirect = styled.div`
   grid-area: redirect;

@@ -41,7 +41,7 @@ class ScrambleText extends React.Component {
       this.timerID = setTimeout(
         () => this.updateText(),
         this.state.speed
-      )
+      );
     }
   }
 
