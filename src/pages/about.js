@@ -261,11 +261,11 @@ class AboutPage extends React.Component {
 
   render() {
     return (
-      <TemplateWrapper 
-        header="alex who?" 
-        menu footer 
-        curPage="About" 
-        outerBounds={{ top: "7%", left: "15%", right: "15%", bottom: "0" }} 
+      <TemplateWrapper
+        header="alex who?"
+        menu footer
+        curPage="About"
+        outerBounds={{ top: "7%", left: "15%", right: "15%", bottom: "0" }}
         title="About">
         <div style={this.props.transition && this.props.transition.style}>
           <Container>
@@ -326,9 +326,9 @@ class AboutPage extends React.Component {
             </AboutInterests>
 
             <AboutIntro>
-              I'm Alex Yizhe Xie, and I'm currently two-fifths of my way to a Bachelor of Computer Science at the University of Waterloo. 
+              I'm Alex Yizhe Xie, and I'm currently two-fifths of my way to a Bachelor of Computer Science at the University of Waterloo.
               I'm Chinese, but my hometown is the city-state of Singapore, Singapore (trippy, I know). These days, I'm proudly Canadian and 
-              working as a back-end software engineer at <a href="https://flipp.com/home" target="_blank">Flipp Corp</a>. 
+              working as a back-end software engineer at <a href="https://flipp.com/home" target="_blank">Flipp Corp</a>.&nbsp;
               <RevealButton onClick={() => this.revealDetailedIntro()} revealed={this.state.revealed}>Tell me more!</RevealButton>
               <DetailedIntro revealed={this.state.revealed}>
                 {DESC_PARAGRAPHS.map((para, i) => {
