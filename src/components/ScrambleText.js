@@ -6,6 +6,17 @@
 */
 
 import React from "react";
+import styled from "styled-components";
+
+const ScrambleContainer = styled.span`
+  @keyframes pop {
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  animation: ${(props) => props.done ? "pop 0.3s ease-in-out 1" : "none"};
+  display: inline-block; // Allows scale animation on inline element
+`
 
 
 class ScrambleText extends React.Component {
@@ -15,7 +26,8 @@ class ScrambleText extends React.Component {
     this.state = {
       running: 0, // Amount of time animation has been running
       curText: " ",
-      speed: this.props.options.speed
+      speed: this.props.options.speed,
+      done: false
     };
   }
 
@@ -34,9 +46,10 @@ class ScrambleText extends React.Component {
         speed: prevState.speed + 5
       };
     });
-    
-    if(this.state.running >= this.props.options.duration && this.state.curText === this.props.text) {
+
+    if(this.state.curText === this.props.text) {
       clearTimeout(this.timerID);
+      this.setState({ done: true })
     } else {
       this.timerID = setTimeout(
         () => this.updateText(),
@@ -55,8 +68,9 @@ class ScrambleText extends React.Component {
         newText += this.props.text[i];
         continue;
       }
-      // Probability that the current letter will unscramble
-      let correctLetterProbability = Math.random() + (this.state.running / this.props.options.duration / 100); // Higher chance of hitting right letter closer to duration
+      // Probability that the current letter will unscramble, higher
+      //  chance of choosing right letter as time goes on
+      let correctLetterProbability = Math.random() + (this.state.running / this.props.options.duration / 100); 
       // New letter to display at current index in text
       let newLetter = correctLetterProbability > 0.95 ? this.props.text[i] : this.chars[Math.floor(Math.random() * this.chars.length)];
       newText += newLetter;
@@ -70,9 +84,9 @@ class ScrambleText extends React.Component {
 
   render() {
     return (
-      <span>
+      <ScrambleContainer done={this.state.done}>
         {this.state.curText}
-      </span>
+      </ScrambleContainer>
     );
   }
 }

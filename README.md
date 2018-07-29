@@ -20,4 +20,4 @@ Check it out **[here](http://www.alexieyizhe.me)**!
  - Run `gatsby serve` for a local production version of the site.
  - Host on your favourite static site CMS or hosting provider!
 
-###### Questions? [Shoot Alex an email.](mailto:alexieyizhe@gmail.com).
+###### Questions? [Shoot Alex an email.](mailto:alexieyizhe@gmail.com)
