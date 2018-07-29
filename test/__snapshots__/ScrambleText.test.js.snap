@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ScrambleText component should render the scrambled text 1`] = `
+.c0 {
+  -webkit-animation: none;
+  animation: none;
+  display: inline-block;
+}
+
 <ScrambleText
   options={
     Object {
@@ -15,7 +21,7 @@ exports[`ScrambleText component should render the scrambled text 1`] = `
     done={false}
   >
     <span
-      className="sc-bdVaJa XVjSL"
+      className="c0"
     >
        
     </span>

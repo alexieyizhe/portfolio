@@ -1,15 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Floating Text should render the floating text 1`] = `
+.c1 svg {
+  width: 2.5em;
+  height: 2.5em;
+  stroke: #AAAAAA;
+}
+
+.c0 {
+  position: absolute;
+  top: 0.6em;
+  right: 1.3em;
+  width: 20em;
+  text-align: right;
+  color: #AAAAAA;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.c0 > span {
+  position: relative;
+  top: 4px;
+  right: 4px;
+}
+
 <div
-  class="sc-htpNat fiFfWw"
+  class="c0"
 >
   There's more!
   <span
     style="position:relative;top:1.2em;right:0.7em;"
   >
     <span
-      class="sc-bdVaJa jDJmUt"
+      class="c1"
       color="#AAAAAA"
     >
       <svg

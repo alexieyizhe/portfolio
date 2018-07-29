@@ -1,7 +1,91 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Page Footer should render the footer 1`] = `
-<styled.span>
+.c2 {
+  position: absolute;
+  z-index: 1;
+}
+
+.c2 path {
+  stroke: #C4C4C4;
+}
+
+.c4 {
+  position: relative;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.c1 {
+  display: inline;
+  position: relative;
+}
+
+.c3 svg {
+  width: 2vh;
+  height: 2vh;
+  stroke: #80D07F;
+}
+
+.c5 svg {
+  width: 2vh;
+  height: 2vh;
+  stroke: #DE7947;
+}
+
+.c6 svg {
+  width: 4vh;
+  height: 4vh;
+  stroke: #000;
+}
+
+.c7 svg {
+  width: 2vh;
+  height: 2vh;
+  stroke: #5534AC;
+}
+
+.c8 svg {
+  width: 2vh;
+  height: 2vh;
+  stroke: #2381D9;
+}
+
+.c0 {
+  margin: 10% 5vw;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr 1fr 1fr;
+  grid-template-rows: 2fr auto;
+  justify-items: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  grid-template-areas: "contactIcon resumeIcon topIcon githubIcon linkedinIcon" "copyright copyright copyright copyright copyright";
+}
+
+.c0 #copyright {
+  font-family: 'Cabin','PT Sans',sans-serif;
+}
+
+@media (max-width:64em) {
+  .c0 {
+    width: 60%;
+  }
+}
+
+@media (max-width:26.5625em) {
+  .c0 {
+    width: 90%;
+  }
+}
+
+<span
+  className="c0"
+>
   <a
     href="mailto:alex@alexieyizhe.me"
     style={
@@ -11,31 +95,145 @@ exports[`Page Footer should render the footer 1`] = `
     }
     target="_blank"
   >
-    <SVGDrawIcon>
-      <Icon
-        color="#80D07F"
-        name="paperPlane"
-        size="2vh"
-      />
-    </SVGDrawIcon>
+    <span
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          className="c3"
+          color="#80D07F"
+          size="2vh"
+        >
+          <svg
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        className="c4"
+      >
+        <span
+          className="mt-svg mt-53dj"
+          style={
+            Object {
+              "opacity": 0.01,
+            }
+          }
+        >
+          <style>
+            
+          </style>
+          <span
+            className="c3"
+            color="#80D07F"
+            size="2vh"
+          >
+            <svg
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"
+              />
+            </svg>
+          </span>
+        </span>
+      </span>
+    </span>
   </a>
-  <GatsbyLink
+  <a
+    href="/resume"
+    onClick={[Function]}
     style={
       Object {
         "gridArea": "resumeIcon",
       }
     }
-    to="/resume"
   >
-    <SVGDrawIcon>
-      <Icon
-        color="#DE7947"
-        name="file"
-        size="2vh"
-      />
-    </SVGDrawIcon>
-  </GatsbyLink>
+    <span
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          className="c5"
+          color="#DE7947"
+          size="2vh"
+        >
+          <svg
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+            />
+            <path
+              d="M14 2v6h6M16 13H8M16 17H8M10 9H8"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        className="c4"
+      >
+        <span
+          className="mt-svg mt-pryf"
+          style={
+            Object {
+              "opacity": 0.01,
+            }
+          }
+        >
+          <style>
+            
+          </style>
+          <span
+            className="c5"
+            color="#DE7947"
+            size="2vh"
+          >
+            <svg
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              />
+              <path
+                d="M14 2v6h6M16 13H8M16 17H8M10 9H8"
+              />
+            </svg>
+          </span>
+        </span>
+      </span>
+    </span>
+  </a>
   <span
+    id="scrollToTopTrigger"
     onClick={[Function]}
     style={
       Object {
@@ -43,13 +241,66 @@ exports[`Page Footer should render the footer 1`] = `
       }
     }
   >
-    <SVGDrawIcon>
-      <Icon
-        color="#000"
-        name="upArrow"
-        size="4vh"
-      />
-    </SVGDrawIcon>
+    <span
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          className="c6"
+          color="#000"
+          size="4vh"
+        >
+          <svg
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M17 11l-5-5-5 5M17 18l-5-5-5 5"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        className="c4"
+      >
+        <span
+          className="mt-svg mt-t0gs"
+          style={
+            Object {
+              "opacity": 0.01,
+            }
+          }
+        >
+          <style>
+            
+          </style>
+          <span
+            className="c6"
+            color="#000"
+            size="4vh"
+          >
+            <svg
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M17 11l-5-5-5 5M17 18l-5-5-5 5"
+              />
+            </svg>
+          </span>
+        </span>
+      </span>
+    </span>
   </span>
   <a
     href="https://github.com/alexieyizhe"
@@ -60,13 +311,66 @@ exports[`Page Footer should render the footer 1`] = `
     }
     target="_blank"
   >
-    <SVGDrawIcon>
-      <Icon
-        color="#5534AC"
-        name="github"
-        size="2vh"
-      />
-    </SVGDrawIcon>
+    <span
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          className="c7"
+          color="#5534AC"
+          size="2vh"
+        >
+          <svg
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        className="c4"
+      >
+        <span
+          className="mt-svg mt-gaxj"
+          style={
+            Object {
+              "opacity": 0.01,
+            }
+          }
+        >
+          <style>
+            
+          </style>
+          <span
+            className="c7"
+            color="#5534AC"
+            size="2vh"
+          >
+            <svg
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+              />
+            </svg>
+          </span>
+        </span>
+      </span>
+    </span>
   </a>
   <a
     href="https://www.linkedin.com/in/alexieyizhe/"
@@ -77,13 +381,72 @@ exports[`Page Footer should render the footer 1`] = `
     }
     target="_blank"
   >
-    <SVGDrawIcon>
-      <Icon
-        color="#2381D9"
-        name="linkedin"
-        size="2vh"
-      />
-    </SVGDrawIcon>
+    <span
+      className="c1"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <span
+        className="c2"
+      >
+        <span
+          className="c8"
+          color="#2381D9"
+          size="2vh"
+        >
+          <svg
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"
+            />
+            <path
+              d="M2,4a2,2 0 1,0 4,0a2,2 0 1,0 -4,0"
+            />
+          </svg>
+        </span>
+      </span>
+      <span
+        className="c4"
+      >
+        <span
+          className="mt-svg mt-oomg"
+          style={
+            Object {
+              "opacity": 0.01,
+            }
+          }
+        >
+          <style>
+            
+          </style>
+          <span
+            className="c8"
+            color="#2381D9"
+            size="2vh"
+          >
+            <svg
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"
+              />
+              <path
+                d="M2,4a2,2 0 1,0 4,0a2,2 0 1,0 -4,0"
+              />
+            </svg>
+          </span>
+        </span>
+      </span>
+    </span>
   </a>
   <p
     id="copyright"
@@ -95,5 +458,5 @@ exports[`Page Footer should render the footer 1`] = `
   >
     © alex xie, mmxviii.
   </p>
-</styled.span>
+</span>
 `;

@@ -46,7 +46,7 @@ const PageFooter = () => (
         <Icon name="file" size="2vh" color="#DE7947" />
       </SVGDrawIcon>
     </Link>
-    <span style={{gridArea: "topIcon"}} onClick={() => animateScroll.scrollToTop()}>
+    <span id="scrollToTopTrigger" style={{gridArea: "topIcon"}} onClick={() => animateScroll.scrollToTop()}>
       <SVGDrawIcon>
         <Icon name="upArrow" size="4vh" color="#000" />
       </SVGDrawIcon>

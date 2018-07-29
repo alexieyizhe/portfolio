@@ -1,6 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StatCounter component should render the stat counter 1`] = `
+.c0 {
+  display: inline-grid;
+  grid-template-rows: auto auto;
+  grid-template-areas: "counter" "desc";
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-family: "PT Serif","Times",serif;
+}
+
+.c1 {
+  font-size: 3.5vw;
+  grid-area: counter;
+}
+
+.c2 {
+  grid-area: desc;
+  font-size: 2.5vh;
+}
+
+@media (max-width:64em) {
+  .c0 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width:26.5625em) {
+  .c0 {
+    padding: 5%;
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width:64em) {
+  .c1 {
+    font-size: 4em;
+  }
+}
+
+@media (max-width:26.5625em) {
+  .c1 {
+    font-size: 2em;
+  }
+}
+
+@media (max-width:64em) {
+  .c2 {
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width:26.5625em) {
+  .c2 {
+    font-size: 1em;
+  }
+}
+
 <StatCounter
   countDuration={5}
   countEnd={1000}
@@ -9,11 +68,11 @@ exports[`StatCounter component should render the stat counter 1`] = `
 >
   <styled.span>
     <span
-      className="sc-bdVaJa kuMZiL"
+      className="c0"
     >
       <styled.span>
         <span
-          className="sc-bwzfXH jOXUIJ"
+          className="c1"
         >
           <CountUp
             decimal="."
@@ -37,7 +96,7 @@ exports[`StatCounter component should render the stat counter 1`] = `
       </styled.span>
       <styled.span>
         <span
-          className="sc-htpNat clBDdn"
+          className="c2"
         >
           "Tests Created"
         </span>

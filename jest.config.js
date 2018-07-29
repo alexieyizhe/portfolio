@@ -5,16 +5,17 @@ module.exports = {
       "**/?(*.)+(spec|test).js?(x)"
     ],
     setupFiles: [
-      "./jest_setup.js"
+      "./.jest/env-setup.js"
     ],
+    setupTestFrameworkScriptFile: "./.jest/test-setup.js",
     snapshotSerializers: [
       "enzyme-to-json/serializer"
     ],
     coverageDirectory: "./test/coverage/",
     coveragePathIgnorePatterns: [
-      "/node_modules/",
-      "/test/",
-      "/static/",
-      "jest_setup.js"
+      "./node_modules/",
+      "./test/",
+      "./static/",
+      "./.jest/"
     ]
 }

@@ -1,38 +1,256 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`WorkShowcase component should render the work showcase 1`] = `
+.c7 svg {
+  width: 3vh;
+  height: 3vh;
+  stroke: #FFFFFF;
+}
+
+.c6 {
+  -webkit-animation-name: dTtlGn;
+  animation-name: dTtlGn;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+
+.c0 {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  height: auto;
+  margin-bottom: 10vh;
+  cursor: pointer;
+  color: #F6F6F6;
+  border-radius: 5px;
+  display: grid;
+  padding: 0 5% 0 5%;
+  grid-template-rows: auto;
+  grid-template-areas: "title" "role" "desc" "indicator";
+  background: url(/img/experience/flipp_bg.jpg) center/cover;
+  -webkit-filter: grayscale(50%);
+  filter: grayscale(50%);
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  -webkit-transition: width 0.75s ease,height 0.75s ease;
+  transition: width 0.75s ease,height 0.75s ease;
+}
+
+.c0:before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 10px 50px 0 rgba(0,0,0,0.6);
+  border-radius: 5px;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+.c0:after {
+  content: ' ';
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 5px;
+  background-color: rgba(0,0,0,0.6);
+  opacity: 1;
+  -webkit-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+.c1 {
+  font-family: "Raleway",Arial,serif;
+  font-size: 5vw;
+  font-weight: bold;
+  position: relative;
+  z-index: 6;
+  bottom: 0;
+  grid-area: title;
+  white-space: nowrap;
+  padding-top: 1em;
+  padding-bottom: 2px;
+}
+
+.c3 {
+  position: absolute;
+  z-index: 6;
+  top: -5vh;
+  right: -5vw;
+  max-width: 40vw;
+  max-height: 25vh;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.c2 {
+  grid-area: role;
+  position: relative;
+  z-index: 6;
+  font-family: "Raleway",serif;
+  font-size: 2vw;
+  padding-bottom: 1.5em;
+}
+
+.c4 {
+  grid-area: desc;
+  -webkit-align-self: start;
+  -ms-flex-item-align: start;
+  align-self: start;
+  padding-bottom: 0;
+  line-height: 1.5;
+  font-size: 2.5vmin;
+  z-index: 6;
+  font-family: 'Average','PT Serif',serif;
+  max-width: 100%;
+  max-height: 0;
+  opacity: 0;
+  -webkit-transition: max-height 1s,opacity 0.7s,padding 1s;
+  transition: max-height 1s,opacity 0.7s,padding 1s;
+}
+
+.c5 {
+  grid-area: indicator;
+  z-index: 6;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  justify-self: center;
+  margin-bottom: 1vw;
+}
+
+@media (max-width:64em) {
+  .c0 {
+    width: 85%;
+    border-radius: 8px;
+  }
+
+  .c0:before,
+  .c0:after {
+    border-radius: 8px;
+  }
+}
+
+@media (max-width:26.5625em) {
+  .c0 {
+    height: auto;
+    width: 80%;
+    padding: 0 10% 0 10%;
+    margin-bottom: 4em;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "title" "role" "desc" "indicator";
+  }
+}
+
+@media (max-width:64em) {
+  .c1 {
+    padding-top: 15vmin;
+    font-size: 4.5em;
+    font-family: "Cabin","Ubuntu",Arial,serif;
+    -webkit-letter-spacing: 0;
+    -moz-letter-spacing: 0;
+    -ms-letter-spacing: 0;
+    letter-spacing: 0;
+  }
+}
+
+@media (max-width:26.5625em) {
+  .c1 {
+    font-size: 2.5em;
+    position: relative;
+    padding-top: 40vw;
+  }
+}
+
+@media (max-width:64em) {
+  .c3 {
+    top: -5vw;
+    max-width: 30vmin;
+    max-height: 25vmin;
+  }
+}
+
+@media (max-width:26.5625em) {
+  .c3 {
+    top: -5vw;
+    right: -8vw;
+    max-width: 43vw;
+    max-height: 60vw;
+  }
+}
+
+@media (max-width:64em) {
+  .c2 {
+    font-size: 2em;
+    padding-bottom: 1.5em;
+  }
+}
+
+@media (max-width:26.5625em) {
+  .c2 {
+    font-size: 5vw;
+  }
+}
+
+@media (max-width:64em) {
+  .c4 {
+    max-height: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width:26.5625em) {
+  .c4 {
+    font-size: 1em;
+    max-height: 0;
+    padding-bottom: 0;
+  }
+}
+
 <div
-  class="sc-htpNat jXVdqK"
+  class="c0"
 >
   <span
-    class="sc-bxivhb hKuGuS"
+    class="c1"
   >
     Flipp Corp.
   </span>
   <div
-    class="sc-EHOje mCpQa"
+    class="c2"
   >
     Software Engineer - Item Data Platform
   </div>
   <img
-    class="sc-ifAKCX ciKIgZ"
+    class="c3"
     src="../img/experience/flipp_logo.png"
   />
   <div
-    class="sc-bZQynM kJYAFY"
+    class="c4"
   >
     I migrated key systems from a monolith structure to a Ruby & Scala microservice architecture, as well as assisted in improving existing services by adding bug fixes, error detection, and schema validation. I'm also owning the development of a brand new microservice used in production to monitor, compare, and analyze the effectiveness of both legacy and microservice architectures.
   </div>
   <span
-    class="sc-gzVnrw dcYTKX"
+    class="c5"
   >
     <div
-      class="sc-bwzfXH dwUJkr"
+      class="c6"
       from="-3"
       to="0"
     >
       <span
-        class="sc-bdVaJa GPbfW"
+        class="c7"
         color="#FFFFFF"
       >
         <svg
