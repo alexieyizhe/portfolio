@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Glitch Text should render the glitch text 1`] = `
+<styled.div
+  color="black"
+  font="bolder 20vmax Lato"
+  text="404"
+>
+  404
+</styled.div>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page Header should render the header 1`] = `
+<div
+  className="sc-bdVaJa jUbhmH"
+>
+  Test Header
+</div>
+`;

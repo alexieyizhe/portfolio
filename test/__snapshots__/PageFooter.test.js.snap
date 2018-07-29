@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page Footer should render the footer 1`] = `
+<styled.span>
+  <a
+    href="mailto:alex@alexieyizhe.me"
+    style={
+      Object {
+        "gridArea": "contactIcon",
+      }
+    }
+    target="_blank"
+  >
+    <SVGDrawIcon>
+      <Icon
+        color="#80D07F"
+        name="paperPlane"
+        size="2vh"
+      />
+    </SVGDrawIcon>
+  </a>
+  <GatsbyLink
+    style={
+      Object {
+        "gridArea": "resumeIcon",
+      }
+    }
+    to="/resume"
+  >
+    <SVGDrawIcon>
+      <Icon
+        color="#DE7947"
+        name="file"
+        size="2vh"
+      />
+    </SVGDrawIcon>
+  </GatsbyLink>
+  <span
+    onClick={[Function]}
+    style={
+      Object {
+        "gridArea": "topIcon",
+      }
+    }
+  >
+    <SVGDrawIcon>
+      <Icon
+        color="#000"
+        name="upArrow"
+        size="4vh"
+      />
+    </SVGDrawIcon>
+  </span>
+  <a
+    href="https://github.com/alexieyizhe"
+    style={
+      Object {
+        "gridArea": "githubIcon",
+      }
+    }
+    target="_blank"
+  >
+    <SVGDrawIcon>
+      <Icon
+        color="#5534AC"
+        name="github"
+        size="2vh"
+      />
+    </SVGDrawIcon>
+  </a>
+  <a
+    href="https://www.linkedin.com/in/alexieyizhe/"
+    style={
+      Object {
+        "gridArea": "linkedinIcon",
+      }
+    }
+    target="_blank"
+  >
+    <SVGDrawIcon>
+      <Icon
+        color="#2381D9"
+        name="linkedin"
+        size="2vh"
+      />
+    </SVGDrawIcon>
+  </a>
+  <p
+    id="copyright"
+    style={
+      Object {
+        "gridArea": "copyright",
+      }
+    }
+  >
+    © alex xie, mmxviii.
+  </p>
+</styled.span>
+`;

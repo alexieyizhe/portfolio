@@ -16,7 +16,7 @@ const ScrambleContainer = styled.span`
   }
   animation: ${(props) => props.done ? "pop 0.3s ease-in-out 1" : "none"};
   display: inline-block; // Allows scale animation on inline element
-`
+`;
 
 
 class ScrambleText extends React.Component {
@@ -49,7 +49,7 @@ class ScrambleText extends React.Component {
 
     if(this.state.curText === this.props.text) {
       clearTimeout(this.timerID);
-      this.setState({ done: true })
+      this.setState({ done: true });
     } else {
       this.timerID = setTimeout(
         () => this.updateText(),
@@ -70,7 +70,7 @@ class ScrambleText extends React.Component {
       }
       // Probability that the current letter will unscramble, higher
       //  chance of choosing right letter as time goes on
-      let correctLetterProbability = Math.random() + (this.state.running / this.props.options.duration / 100); 
+      let correctLetterProbability = Math.random() + (this.state.running / this.props.options.duration / 100);
       // New letter to display at current index in text
       let newLetter = correctLetterProbability > 0.95 ? this.props.text[i] : this.chars[Math.floor(Math.random() * this.chars.length)];
       newText += newLetter;
