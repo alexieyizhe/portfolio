@@ -4,7 +4,6 @@ module.exports = {
     testMatch: [
       "**/?(*.)+(spec|test).js?(x)"
     ],
-    collectCoverage: true,
     setupFiles: [
       "./jest_setup.js"
     ],

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WorkShowcase component should render the work showcase 1`] = `
+<div
+  class="sc-htpNat jXVdqK"
+>
+  <span
+    class="sc-bxivhb hKuGuS"
+  >
+    Flipp Corp.
+  </span>
+  <div
+    class="sc-EHOje mCpQa"
+  >
+    Software Engineer - Item Data Platform
+  </div>
+  <img
+    class="sc-ifAKCX ciKIgZ"
+    src="../img/experience/flipp_logo.png"
+  />
+  <div
+    class="sc-bZQynM kJYAFY"
+  >
+    I migrated key systems from a monolith structure to a Ruby & Scala microservice architecture, as well as assisted in improving existing services by adding bug fixes, error detection, and schema validation. I'm also owning the development of a brand new microservice used in production to monitor, compare, and analyze the effectiveness of both legacy and microservice architectures.
+  </div>
+  <span
+    class="sc-gzVnrw dcYTKX"
+  >
+    <div
+      class="sc-bwzfXH dwUJkr"
+      from="-3"
+      to="0"
+    >
+      <span
+        class="sc-bdVaJa GPbfW"
+        color="#FFFFFF"
+      >
+        <svg
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M6 9l6 6 6-6"
+          />
+        </svg>
+      </span>
+    </div>
+  </span>
+</div>
+`;

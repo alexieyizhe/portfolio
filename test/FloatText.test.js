@@ -29,7 +29,7 @@ describe('Floating Text', () => {
   };
 
   beforeEach(() => {
-    text = mount(
+    text = render(
       <FloatText from={-5} to={-1}>
         <Prompt show={true}>
           There's more!
@@ -47,20 +47,8 @@ describe('Floating Text', () => {
     });
   });
 
-  test('should render the floating text', () => {
-    const component = renderer.create(
-      <FloatText from={-5} to={-1}>
-        <Prompt show={true}>
-          There's more!
-          <span style={{position: "relative", top: "1.2em", right: "0.7em"}}>
-            <Icon name="cornerSlantedRightUp" size="2.5em" color="#AAAAAA" fillColor="#AAAAAA" />
-          </span>
-        </Prompt>
-      </FloatText>
-    );
-
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+  it('should render the floating text', () => {
+    expect(text).toMatchSnapshot();
   });
 
 });

@@ -8,3 +8,6 @@ global.shallow = shallow;
 global.render = render;
 global.mount = mount;
 global.renderer = renderer;
+global.___loader = {
+  enqueue: jest.fn()
+};

@@ -2,7 +2,7 @@
 
 exports[`Page Header should render the header 1`] = `
 <div
-  className="sc-bdVaJa jUbhmH"
+  class="sc-bdVaJa jUbhmH"
 >
   Test Header
 </div>

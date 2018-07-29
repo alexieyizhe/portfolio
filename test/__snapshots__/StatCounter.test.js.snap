@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatCounter component should render the stat counter 1`] = `
+<StatCounter
+  countDuration={5}
+  countEnd={1000}
+  countStart={0}
+  useEasing={true}
+>
+  <styled.span>
+    <span
+      className="sc-bdVaJa kuMZiL"
+    >
+      <styled.span>
+        <span
+          className="sc-bwzfXH jOXUIJ"
+        >
+          <CountUp
+            decimal="."
+            decimals={0}
+            duration={5}
+            easingFn={null}
+            end={1000}
+            formattingFn={null}
+            prefix=""
+            redraw={false}
+            separator=""
+            start={0}
+            suffix=""
+            useEasing={true}
+          >
+            <span>
+              0
+            </span>
+          </CountUp>
+        </span>
+      </styled.span>
+      <styled.span>
+        <span
+          className="sc-htpNat clBDdn"
+        >
+          "Tests Created"
+        </span>
+      </styled.span>
+    </span>
+  </styled.span>
+</StatCounter>
+`;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrambleText component should render the scrambled text 1`] = `
+<ScrambleText
+  options={
+    Object {
+      "duration": 100,
+      "speed": 25,
+    }
+  }
+  scramble="!<>-_\\\\\\\\/[]{}—=+*^?#_abiwxevpi"
+  text="This is a test"
+>
+  <styled.span
+    done={false}
+  >
+    <span
+      className="sc-bdVaJa XVjSL"
+    >
+       
+    </span>
+  </styled.span>
+</ScrambleText>
+`;
