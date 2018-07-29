@@ -1,13 +1,13 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { particleConfig, resumeOptions } from "../data/configOptions.js";
 import Particles from "react-particles-js";
-import TemplateWrapper from "../components/TemplateWrapper.js";
-import { mediaSize } from "../data/configOptions.js";
 import { isMobile } from "react-device-detect";
 import VisibilitySensor from "react-visibility-sensor";
-import HighlightText from "../components/HighlightText.js";
-import Icon from "../components/Icon.js";
+import TemplateWrapper from "../components/TemplateWrapper";
+import HighlightText from "../components/HighlightText";
+import Icon from "../components/Icon";
+import { particleConfig, resumeOptions, mediaSize } from "../data/configOptions";
+
 
 const ParticlesStyle = {
   position: "fixed",

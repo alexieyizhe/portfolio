@@ -1,8 +1,8 @@
 /*
   INDEX.JS
-    The main page of the website. 
+    The main page of the website.
     It exists at the root of the site and serves
-    as the landing page for users. 
+    as the landing page for users.
 */
 
 import React from "react";
@@ -11,12 +11,12 @@ import posed from "react-pose";
 import Img from "gatsby-image";
 import Link from "gatsby-link";
 import { isMobile, isIOS } from "react-device-detect";
-import { mediaSize, greetingOptions, particleConfig } from "../data/configOptions.js";
-import TemplateWrapper from "../components/TemplateWrapper.js";
-import SVGDrawIcon from "../components/SVGDrawIcon.js";
+import { mediaSize, greetingOptions, particleConfig } from "../data/configOptions";
+import TemplateWrapper from "../components/TemplateWrapper";
+import SVGDrawIcon from "../components/SVGDrawIcon";
 import Particles from "react-particles-js";
-import ScrambleText from "../components/ScrambleText.js";
-import Icon from "../components/Icon.js";
+import ScrambleText from "../components/ScrambleText";
+import Icon from "../components/Icon";
 
 
 // Style of the particles.js background container

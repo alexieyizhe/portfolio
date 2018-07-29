@@ -8,10 +8,10 @@
 import React from "react";
 import styled from "styled-components";
 import Helmet from "react-helmet";
-import PageFooter from "./PageFooter.js";
-import PageHeader from "./PageHeader.js";
-import NavMenu from "./NavMenu.js";
-import Transition from "./Transition.js";
+import PageFooter from "./PageFooter";
+import PageHeader from "./PageHeader";
+import NavMenu from "./NavMenu";
+import Transition from "./Transition";
 
 
 // Global styles go here!

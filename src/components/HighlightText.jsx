@@ -1,15 +1,14 @@
 /*
   HIGHLIGHT_TEXT.JS
-    Wrapper around text that draws an offset highlight on focus/hover 
-    or a custom trigger. Color can be configured. The toggle for drawing 
+    Wrapper around text that draws an offset highlight on focus/hover
+    or a custom trigger. Color can be configured. The toggle for drawing
     the highlight relies on its parent component to pass it the flag.
 */
 
 
 import React from "react";
-import styled from "styled-components";
-import { mediaSize } from "../data/configOptions.js";
-import { css } from "styled-components";
+import styled, { css } from "styled-components";
+import { mediaSize } from "../data/configOptions";
 
 
 const Highlight = styled.span`

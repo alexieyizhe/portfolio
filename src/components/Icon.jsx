@@ -12,7 +12,7 @@ import styled from "styled-components";
 
 const IconWrapper = styled.span`
   & svg {
-    width: ${(props) => props.size};
+    width: ${props => props.size};
     height: ${(props) => props.size};
     stroke: ${(props) => props.color};
     fill : ${(props) => props.fillColor};

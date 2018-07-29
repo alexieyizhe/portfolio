@@ -7,7 +7,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import { mediaSize } from "../data/configOptions.js";
+import { mediaSize } from "../data/configOptions";
 import CountUp from "react-countup";
 
 const CounterContainer = styled.span`

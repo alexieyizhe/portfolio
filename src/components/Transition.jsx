@@ -1,13 +1,13 @@
 import React from "react";
 import { Transition as ReactTransition } from "react-transition-group";
-import getTransitionStyle from "../data/getTransitionStyle.js";
-import { historyExitingEventType, timeout } from "../../gatsby-browser.js";
+import getTransitionStyle from "../data/getTransitionStyle";
+import { historyExitingEventType, timeout } from "../../gatsby-browser";
 
 class Transition extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      exiting: false 
+    this.state = {
+      exiting: false
     };
     this.listenerHandler = this.listenerHandler.bind(this);
   }

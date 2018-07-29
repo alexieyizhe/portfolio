@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import Img from "gatsby-image";
-import { mediaSize } from "../data/configOptions.js";
-import "../data/font-devicons/devicons.min.css";
 import ReactTooltip from "react-tooltip";
-import TemplateWrapper from "../components/TemplateWrapper.js";
-import StatCounter from "../components/StatCounter.js";
-import Icon from "../components/Icon.js";
-
-import { DESC_PARAGRAPHS, INTERESTS_LIST, SKILLS_LIST, STATS_COUNTER_DURATION, STATS_LIST } from "../data/aboutData.js";
+import { mediaSize } from "../data/configOptions";
+import "../data/font-devicons/devicons.min.css";
+import TemplateWrapper from "../components/TemplateWrapper";
+import StatCounter from "../components/StatCounter";
+import Icon from "../components/Icon";
+import { DESC_PARAGRAPHS, INTERESTS_LIST, SKILLS_LIST, STATS_COUNTER_DURATION, STATS_LIST } from "../data/aboutData";
 
 
 const Container = styled.div`
@@ -327,8 +326,8 @@ class AboutPage extends React.Component {
 
             <AboutIntro>
               I'm Alex Yizhe Xie, and I'm currently two-fifths of my way to a Bachelor of Computer Science at the University of Waterloo.
-              I'm Chinese, but my hometown is the city-state of Singapore, Singapore (trippy, I know). These days, I'm proudly Canadian and 
-              working as a back-end software engineer at <a href="https://flipp.com/home" target="_blank">Flipp Corp</a>.&nbsp;
+              I'm Chinese, but my hometown is the city-state of Singapore, Singapore (trippy, I know). These days, I'm proudly Canadian and
+              working as a back-end software engineer at <a href="https://flipp.com/home" target="_blank">Flipp Corp</a>. <br/>
               <RevealButton onClick={() => this.revealDetailedIntro()} revealed={this.state.revealed}>Tell me more!</RevealButton>
               <DetailedIntro revealed={this.state.revealed}>
                 {DESC_PARAGRAPHS.map((para, i) => {

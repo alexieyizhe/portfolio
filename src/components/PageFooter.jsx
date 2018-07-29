@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { animateScroll } from "react-scroll";
-import SVGDrawIcon from "./SVGDrawIcon.js";
-import Icon from "./Icon.js";
-import { mediaSize } from "../data/configOptions.js";
+import SVGDrawIcon from "./SVGDrawIcon";
+import Icon from "./Icon";
+import { mediaSize } from "../data/configOptions";
 import Link from "gatsby-link";
 
 

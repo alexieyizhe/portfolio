@@ -1,6 +1,6 @@
 import React from 'react';
 import WorkShowcase from '../src/components/WorkShowcase';
-import { experienceList } from "../src/data/experienceData.js";
+import { experienceList } from "../src/data/experienceData";
 
 describe('WorkShowcase component', () => {
 

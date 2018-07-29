@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import Icon from "../src/components/Icon.js";
+import Icon from "../src/components/Icon";
 import FloatText from '../src/components/FloatText';
 
 const Prompt = styled.div`

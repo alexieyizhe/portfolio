@@ -1,0 +1,14 @@
+language: node_js
+
+cache:
+  directories:
+    - 'node_modules'
+sudo: false
+
+script:
+    - 'npm test'
+    - 'prettier --single-quote --list-different "src/**/*.jsx"'
+
+after_success:
+  - chmod +x ./scripts/publish_on_netlify.sh
+  - ./publish_on_netlify.sh

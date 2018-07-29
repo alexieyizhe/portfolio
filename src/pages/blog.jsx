@@ -1,6 +1,6 @@
 import React from "react";
-import BlogPost from "../components/BlogPost.js";
-import TemplateWrapper from "../components/TemplateWrapper.js";
+import BlogPost from "../components/BlogPost";
+import TemplateWrapper from "../components/TemplateWrapper";
 
 
 const mediumCDNUrl = "https://cdn-images-1.medium.com/max/750/";

@@ -7,9 +7,9 @@ import "../data/hamburgers/hamburgers.scss";
 import { menuPageOptions, contactOptions, mediaSize } from "../data/configOptions.js";
 import onClickOutside from "react-onclickoutside";
 
-import HighlightText from "./HighlightText.js";
-import FloatText from "./FloatText.js";
-import Icon from "./Icon.js";
+import HighlightText from "./HighlightText";
+import FloatText from "./FloatText";
+import Icon from "./Icon";
 
 const MenuConfig = {
   enter: {
@@ -164,7 +164,7 @@ class NavMenu extends React.Component {
   handleFocus(action) {
     if(action === "hover" && !isMobile) {
       this.setState({
-        menuOpen: true, 
+        menuOpen: true,
         displayPrompt: false
       });
       this.props.wrapperHandleFocus(true);
@@ -177,9 +177,9 @@ class NavMenu extends React.Component {
     } else if(action === "click" && isMobile) {
       this.setState((prevState) => {
         this.props.wrapperHandleFocus(!prevState.menuOpen);
-        return { 
-          menuOpen: !prevState.menuOpen, 
-          displayPrompt: false 
+        return {
+          menuOpen: !prevState.menuOpen,
+          displayPrompt: false
         };
       });
     }
@@ -190,7 +190,7 @@ class NavMenu extends React.Component {
       <MenuContainer default={this.props.options && this.props.options.default}>
         <FloatText from={-5} to={-1}>
           <Prompt show={this.state.displayPrompt}>
-            There's more! 
+            There's more!
             <span style={{position: "relative", top: "1.2em", right: "0.7em"}}>
               <Icon name="cornerSlantedRightUp" size="2.5em" color="#AAAAAA" fillColor="#AAAAAA" />
             </span>

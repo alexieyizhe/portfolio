@@ -1,12 +1,11 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import VisibilitySensor from "react-visibility-sensor";
-import { css } from "styled-components";
 import { isMobile, isIOS } from "react-device-detect";
-import { mediaSize } from "../data/configOptions.js";
+import { mediaSize } from "../data/configOptions";
 
-import Icon from "./Icon.js";
-import FloatText from "./FloatText.js";
+import Icon from "./Icon";
+import FloatText from "./FloatText";
 
 
 const Container = styled.div`

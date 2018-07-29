@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { mediaSize } from "../data/configOptions.js";
-import TemplateWrapper from "../components/TemplateWrapper.js";
-import Icon from "../components/Icon.js";
-import { archiveSiteList } from "../data/archiveData.js";
+import { mediaSize } from "../data/configOptions";
+import TemplateWrapper from "../components/TemplateWrapper";
+import Icon from "../components/Icon";
+import { archiveSiteList } from "../data/archiveData";
 
 
 const Header = styled.div`

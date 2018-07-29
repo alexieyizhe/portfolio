@@ -3,10 +3,10 @@ import styled, { css } from "styled-components";
 import posed from "react-pose";
 import VisibilitySensor from "react-visibility-sensor";
 import { isMobile } from "react-device-detect";
-import { mediaSize } from "../data/configOptions.js";
+import { mediaSize } from "../data/configOptions";
 import ReactTooltip from "react-tooltip";
-import SVGDrawIcon from "./SVGDrawIcon.js";
-import Icon from "./Icon.js";
+import SVGDrawIcon from "./SVGDrawIcon";
+import Icon from "./Icon";
 import "../data/font-devicons/devicons.min.css";
 
 
@@ -174,7 +174,7 @@ class ProjectShowcase extends React.Component {
       <VisibilitySensor onChange={(isVisible) => this.handleFocus(isMobile && isVisible)}>
         <Container
           focused={this.state.focused ? 1 : 0}
-          initialPose="enter" 
+          initialPose="enter"
           pose={this.state.focused ? "hovered" : "hovered"}
           onMouseEnter={() => this.handleFocus(true)}
           onMouseLeave={() => this.handleFocus(false)}

@@ -1,11 +1,14 @@
 # alexieyizhe.me
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/06042577aa204b92ba175fb61df44472)](https://app.codacy.com/app/alexieyizhe/alexieyizhe.github.io?utm_source=github.com&utm_medium=referral&utm_content=alexieyizhe/alexieyizhe.github.io&utm_campaign=badger) [![Deploys with Netlify](https://img.shields.io/badge/Netlify-deployed-brightgreen.svg)](https://www.netlify.com/) [![GitHub license](https://img.shields.io/github/license/alexieyizhe/alexieyizhe.github.io.svg)](https://github.com/alexieyizhe/alexieyizhe.github.io/blob/master/LICENSE)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![Deploys with Netlify](https://img.shields.io/badge/Netlify-deployed-brightgreen.svg)](https://www.netlify.com/)
+[![GitHub license](https://img.shields.io/github/license/alexieyizhe/alexieyizhe.github.io.svg)](https://github.com/alexieyizhe/alexieyizhe.github.io/blob/master/LICENSE)
 
 Personal website/portfolio of Alex Yizhe Xie.
 
 Constructed from scratch.  
 Powered by React and GatsbyJS.  
-Continuous integration through Netlify.  
+Continuous integration through TravisCI.  
+Deploys from Netlify.  
 Code style review through Codacy.
 
 Check it out **[here](http://www.alexieyizhe.me)**!

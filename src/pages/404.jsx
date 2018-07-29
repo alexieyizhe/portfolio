@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-
 import Link from "gatsby-link";
-import TemplateWrapper from "../components/TemplateWrapper.js";
-import GlitchText from "../components/GlitchText.js";
+import TemplateWrapper from "../components/TemplateWrapper";
+import GlitchText from "../components/GlitchText";
 
 
 const ErrorContainer = styled.div`

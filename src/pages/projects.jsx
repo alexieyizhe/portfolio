@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import posed from "react-pose";
-import { mediaSize } from "../data/configOptions.js";
-
-import TemplateWrapper from "../components/TemplateWrapper.js";
-import ProjectShowcase from "../components/ProjectShowcase.js";
-import { projectsList } from "../data/projectData.js";
+import { mediaSize } from "../data/configOptions";
+import TemplateWrapper from "../components/TemplateWrapper";
+import ProjectShowcase from "../components/ProjectShowcase";
+import { projectsList } from "../data/projectData";
 
 
 const ProjectGrid = styled.div`
@@ -31,10 +30,10 @@ class ProjectsPage extends React.Component {
 
   render() {
     return (
-      <TemplateWrapper 
-        header="featured work." menu footer 
-        curPage="Projects" 
-        outerBounds={{ top: "7%", left: "15%", right: "15%", bottom: "0" }} 
+      <TemplateWrapper
+        header="featured work." menu footer
+        curPage="Projects"
+        outerBounds={{ top: "7%", left: "15%", right: "15%", bottom: "0" }}
         title="Projects">
         <ProjectGrid style={this.props.transition && this.props.transition.style}>
           {projectsList.map((project, i) => <ProjectShowcase key={i} project={project} />)}

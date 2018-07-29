@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import posed from "react-pose";
 import VisibilitySensor from "react-visibility-sensor";
 import { isMobile } from "react-device-detect";
-import { mediaSize } from "../data/configOptions.js";
+import { mediaSize } from "../data/configOptions";
 
 
 const ContainerConfig = {
