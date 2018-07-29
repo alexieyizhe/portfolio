@@ -11,4 +11,4 @@ script:
 
 after_success:
   - chmod +x ./scripts/publish_on_netlify.sh
-  - ./publish_on_netlify.sh
+  - ./scripts/publish_on_netlify.sh

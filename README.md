@@ -1,7 +1,9 @@
 # alexieyizhe.me
+![Travis (.org)](https://img.shields.io/travis/alexieyizhe/alexieyizhe.github.io/master.svg?style=flat-square)
+![Coveralls github branch](https://img.shields.io/coveralls/github/alexieyizhe/alexieyizhe.github.io/master.svg?style=flat-square)
+[![Deploys with Netlify](https://img.shields.io/badge/Netlify-deployed-brightgreen.svg?style=flat-square)](https://www.netlify.com/)
+[![GitHub license](https://img.shields.io/github/license/alexieyizhe/alexieyizhe.github.io.svg?style=flat-square)](https://github.com/alexieyizhe/alexieyizhe.github.io/blob/master/LICENSE)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![Deploys with Netlify](https://img.shields.io/badge/Netlify-deployed-brightgreen.svg)](https://www.netlify.com/)
-[![GitHub license](https://img.shields.io/github/license/alexieyizhe/alexieyizhe.github.io.svg)](https://github.com/alexieyizhe/alexieyizhe.github.io/blob/master/LICENSE)
 
 Personal website/portfolio of Alex Yizhe Xie.
 
