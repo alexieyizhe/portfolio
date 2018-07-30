@@ -3,7 +3,10 @@
   "description": "Personal website/portfolio of Alex Yizhe Xie.",
   "license": "MIT",
   "babel": {
-    "presets": ["es2015", "react"]
+    "presets": [
+      "es2015",
+      "react"
+    ]
   },
   "scripts": {
     "develop": "gatsby develop",
