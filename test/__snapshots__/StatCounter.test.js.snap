@@ -4,12 +4,12 @@ exports[`StatCounter component should render the stat counter 1`] = `
 .c0 {
   display: inline-grid;
   grid-template-rows: auto auto;
-  grid-template-areas: "counter" "desc";
+  grid-template-areas: 'counter' 'desc';
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  font-family: "PT Serif","Times",serif;
+  font-family: 'PT Serif','Times',serif;
 }
 
 .c1 {

@@ -19,7 +19,8 @@ describe('Highlight Text', () => {
         .create(
           <HighlightText color="#F8BJH3" hovered={false}>
             "Test text"
-          </HighlightText>)
+          </HighlightText>
+        )
         .toJSON();
       expect(tree).toHaveStyleRule('width', '0', {
         modifier: ':before'
@@ -34,7 +35,8 @@ describe('Highlight Text', () => {
         .create(
           <HighlightText color="#F8BJH3" hovered={true}>
             "Test text"
-          </HighlightText>)
+          </HighlightText>
+        )
         .toJSON();
       expect(tree).toHaveStyleRule('width', '95%', {
         modifier: ':before'
@@ -42,7 +44,4 @@ describe('Highlight Text', () => {
       expect(tree).toMatchSnapshot();
     });
   });
-
-
-
 });

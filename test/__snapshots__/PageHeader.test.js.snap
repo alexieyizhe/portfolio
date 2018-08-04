@@ -6,7 +6,7 @@ exports[`Page Header should have narrower letter spacing on iOS 1`] = `
   margin-bottom: 0.5em;
   font-size: 8vh;
   font-weight: bold;
-  font-family: "Lato","Cabin","Ubuntu",sans-serif;
+  font-family: 'Lato','Cabin','Ubuntu',sans-serif;
 }
 
 @media (max-width:64em) {
@@ -39,7 +39,7 @@ exports[`Page Header should render the header 1`] = `
   margin-bottom: 0.5em;
   font-size: 8vh;
   font-weight: bold;
-  font-family: "Lato","Cabin","Ubuntu",sans-serif;
+  font-family: 'Lato','Cabin','Ubuntu',sans-serif;
 }
 
 @media (max-width:64em) {

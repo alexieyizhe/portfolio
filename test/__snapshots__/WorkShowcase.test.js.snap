@@ -8,8 +8,8 @@ exports[`WorkShowcase component should render the work showcase 1`] = `
 }
 
 .c6 {
-  -webkit-animation-name: dTtlGn;
-  animation-name: dTtlGn;
+  -webkit-animation-name: cBziYB;
+  animation-name: cBziYB;
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
   -webkit-animation-iteration-count: infinite;
@@ -71,7 +71,7 @@ exports[`WorkShowcase component should render the work showcase 1`] = `
 }
 
 .c1 {
-  font-family: "Raleway",Arial,serif;
+  font-family: 'Raleway',Arial,serif;
   font-size: 5vw;
   font-weight: bold;
   position: relative;
@@ -99,7 +99,7 @@ exports[`WorkShowcase component should render the work showcase 1`] = `
   grid-area: role;
   position: relative;
   z-index: 6;
-  font-family: "Raleway",serif;
+  font-family: 'Raleway',serif;
   font-size: 2vw;
   padding-bottom: 1.5em;
 }

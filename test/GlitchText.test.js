@@ -1,7 +1,6 @@
 import React from 'react';
 import GlitchText from '../src/components/GlitchText';
 
-
 describe('Glitch Text', () => {
   let text;
 
@@ -27,5 +26,4 @@ describe('Glitch Text', () => {
     );
     expect(component).toMatchSnapshot();
   });
-
 });

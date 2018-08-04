@@ -2,7 +2,6 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import PageFooter from '../src/components/PageFooter';
 
-
 describe('Page Footer', () => {
   let footer;
 
@@ -43,6 +42,5 @@ describe('Page Footer', () => {
       </MemoryRouter>
     ).children();
     footer.find('span#scrollToTopTrigger').simulate('click');
-  })
-
+  });
 });

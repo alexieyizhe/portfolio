@@ -2,10 +2,9 @@ import React from 'react';
 import PageHeader from '../src/components/PageHeader';
 
 describe('Page Header', () => {
-
-  jest.mock('react-device-detect', ()=>({
+  jest.mock('react-device-detect', () => ({
     isIOS: true
-  }))
+  }));
 
   it('should render the header', () => {
     const header = render(
@@ -21,5 +20,5 @@ describe('Page Header', () => {
     );
 
     expect(header).toMatchSnapshot();
-  })
+  });
 });

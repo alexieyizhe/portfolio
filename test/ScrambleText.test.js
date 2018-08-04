@@ -2,9 +2,8 @@ import React from 'react';
 import ScrambleText from '../src/components/ScrambleText';
 
 describe('ScrambleText component', () => {
-
   jest.useFakeTimers();
-  const fakeText = "This is a test";
+  const fakeText = 'This is a test';
 
   it('should render the scrambled text', () => {
     const text = mount(
@@ -32,7 +31,7 @@ describe('ScrambleText component', () => {
     expect(text.state().curText).not.toBe(curText);
     curText = text.state().curText;
 
-    jest.advanceTimersByTime(600);
+    jest.advanceTimersByTime(300);
     expect(text.state().curText).not.toBe(curText);
     curText = text.state().curText;
 
@@ -41,7 +40,7 @@ describe('ScrambleText component', () => {
     expect(text.state().curText).toEqual(fakeText);
 
     jest.runOnlyPendingTimers();
-  })
+  });
 
   it('should clear timer on unmount', () => {
     const text = mount(
@@ -53,5 +52,5 @@ describe('ScrambleText component', () => {
     );
     text.unmount();
     expect(clearTimeout).toHaveBeenCalledTimes(3);
-  })
+  });
 });
