@@ -35,7 +35,7 @@ describe('ScrambleText component', () => {
     expect(text.state().curText).not.toBe(curText);
     curText = text.state().curText;
 
-    jest.advanceTimersByTime(2000);
+    jest.advanceTimersByTime(5000);
     expect(text.state().curText).not.toBe(curText);
     expect(text.state().curText).toEqual(fakeText);
 
