@@ -1,6 +1,6 @@
 # alexieyizhe.me
-![Travis (.org)](https://img.shields.io/travis/alexieyizhe/alexieyizhe.github.io/master.svg?style=flat-square)
-![Coveralls github branch](https://img.shields.io/coveralls/github/alexieyizhe/alexieyizhe.github.io/master.svg?style=flat-square)
+[![Travis (.com)](https://img.shields.io/travis/com/alexieyizhe/alexieyizhe.github.io.svg?style=flat-square)](https://travis-ci.com/alexieyizhe/alexieyizhe.github.io)
+[![Coverage Status](https://coveralls.io/repos/github/alexieyizhe/alexieyizhe.github.io/badge.svg?branch=master)](https://coveralls.io/github/alexieyizhe/alexieyizhe.github.io?branch=master)
 [![Deploys with Netlify](https://img.shields.io/badge/Netlify-deployed-brightgreen.svg?style=flat-square)](https://www.netlify.com/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![GitHub license](https://img.shields.io/github/license/alexieyizhe/alexieyizhe.github.io.svg?style=flat-square)](https://github.com/alexieyizhe/alexieyizhe.github.io/blob/master/LICENSE)
@@ -20,10 +20,10 @@ Deploys from [Netlify](https://www.netlify.com/).
 - `git clone` or download this repository.
 - Execute:
  - `gatsby develop` to view site in development mode with hot reloading enabled.
- - `npm run test` to run tests.
+ - `npm run test` to run tests and generate code coverage results.
  - `npm run test:update` to run tests and update snapshots if necessary.
- - `npm run test:coverage` to run tests and generate code coverage results.
  - `npm run lint` to run ESLint and check for improper code.
+ - `npm run prettier` to see if Prettier style is being enforced.
 
 ### Building for production
  - `git clone` or download this repository.

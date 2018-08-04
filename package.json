@@ -13,10 +13,9 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "lint": "eslint .",
-    "test": "jest",
+    "test": "jest --coverage && cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test:update": "jest --updateSnapshot",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
     "prettier": "prettier --single-quote --list-different \"src/**/*.jsx\" \"test/*.test.js\" \"test/*.test.jsx\""
   },
   "dependencies": {
@@ -57,6 +56,7 @@
   },
   "devDependencies": {
     "babel-jest": "^23.4.2",
+    "coveralls": "^3.0.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-15": "^1.0.6",
     "eslint": "^4.19.1",

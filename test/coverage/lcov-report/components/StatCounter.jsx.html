@@ -111,7 +111,8 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,6 +142,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -153,23 +164,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -183,28 +185,27 @@
     used to track stats on the About page.
 */
 &nbsp;
-import React from "react";
-import styled from "styled-components";
-import { mediaSize } from "../data/configOptions";
-import CountUp from "react-countup";
+import React from 'react';
+import styled from 'styled-components';
+import { mediaSize } from '../data/configOptions';
+import CountUp from 'react-countup';
 &nbsp;
 const CounterContainer = styled.span`
   display: inline-grid;
   grid-template-rows: auto auto;
-  grid-template-areas: "counter"
-                       "desc";
+  grid-template-areas:
+    'counter'
+    'desc';
   align-items: center;
-  font-family: "PT Serif", "Times", serif;
+  font-family: 'PT Serif', 'Times', serif;
 &nbsp;
   ${mediaSize.tablet`
     max-width: 100%;
-  `}
-&nbsp;
-  ${mediaSize.phone`
+  `} ${mediaSize.phone`
     padding: 5%;
     justify-items: center;
     text-align: center;
-  `}
+  `};
 `;
 &nbsp;
 const Counter = styled.span`
@@ -213,11 +214,9 @@ const Counter = styled.span`
 &nbsp;
   ${mediaSize.tablet`
     font-size: 4em;
-  `}
-&nbsp;
-  ${mediaSize.phone`
+  `} ${mediaSize.phone`
     font-size: 2em;
-  `}
+  `};
 `;
 &nbsp;
 const Desc = styled.span`
@@ -225,17 +224,21 @@ const Desc = styled.span`
   font-size: 2.5vh;
   ${mediaSize.tablet`
     font-size: 1.5em;
-  `}
-  ${mediaSize.phone`
+  `} ${mediaSize.phone`
     font-size: 1em;
 &nbsp;
-  `}
+  `};
 `;
 &nbsp;
-&nbsp;
-const StatCounter = (props) =&gt; (
+const StatCounter = props =&gt; (
   &lt;CounterContainer&gt;
-    &lt;Counter&gt;&lt;CountUp start={props.countStart || 0} end={props.countEnd || <span class="branch-1 cbranch-no" title="branch not covered" >100}</span> duration={props.countDuration || <span class="branch-1 cbranch-no" title="branch not covered" >250}</span> /&gt;&lt;/Counter&gt;
+    &lt;Counter&gt;
+      &lt;CountUp
+        start={props.countStart || 0}
+        end={props.countEnd || <span class="branch-1 cbranch-no" title="branch not covered" >100}</span>
+        duration={props.countDuration || <span class="branch-1 cbranch-no" title="branch not covered" >250}</span>
+      /&gt;
+    &lt;/Counter&gt;
     &lt;Desc&gt;{props.children}&lt;/Desc&gt;
   &lt;/CounterContainer&gt;
 );
@@ -247,7 +250,7 @@ export default StatCounter;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jul 29 2018 18:11:05 GMT-0400 (EDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Aug 04 2018 18:45:47 GMT-0400 (EDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
