@@ -10,8 +10,8 @@ before_install:
   - npm -g install npm@latest
 
 script:
-    - npm test
-    - npm prettier
+    - npm run test
+    - npm run prettier
 
 after_script:
   - chmod +x ./scripts/publish_on_netlify.sh
