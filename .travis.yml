@@ -13,9 +13,7 @@ script:
     - npm test
     - npm prettier
 
-after_success:
+after_script:
   - chmod +x ./scripts/publish_on_netlify.sh
-  - ./scripts/publish_on_netlify.sh
-  branches:
-    only:
-      - master
+  - if [ "$TRAVIS_BRANCH" = "master" &&  "$TRAVIS_TEST_RESULT" = 0]; then ./scripts/publish_on_netlify.sh; fi
+  - if [ "$TRAVIS_BRANCH" != "master" ]; then ./scripts/publish_on_netlify.sh; fi
