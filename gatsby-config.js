@@ -57,7 +57,13 @@ module.exports = {
         trackingId: `UA-114911192-3`,
         // Puts tracking script in the head instead of the body
         head: false,
-      },
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-sentry',
+      options: {
+        dsn: 'https://306524562ee347dfaa73bbebd7ae2ba3@sentry.io/1251887',
+      }
     },
     {
       resolve: `gatsby-plugin-remove-trailing-slashes`

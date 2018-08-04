@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/Icon.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Icon.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>8/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>5/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>8/8</span>
+      </div>
+    </div>
+    <p class="quiet">
+      Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+    </p>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+  ICON.JS
+    Icons from the Feather theme pack adapted to use only SVG paths. This is done
+    so that the SVGDrawIcon component can wrap Icon components and draw the entire icon
+    instead of having some rects/circles/other shapes not animate when used with SVGDrawIcon.
+    Also adapted to allow for color, size, and fill to be defined in props for reusability.
+*/
+&nbsp;
+import React from "react";
+import styled from "styled-components";
+&nbsp;
+&nbsp;
+const IconWrapper = styled.span`
+  &amp; svg {
+    width: ${(props) =&gt; props.size};
+    height: ${(props) =&gt; props.size};
+    stroke: ${(props) =&gt; props.color};
+    fill : ${(props) =&gt; props.fillColor};
+  }
+`;
+&nbsp;
+const icons = {
+  paperPlane: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                &lt;path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/&gt;
+              &lt;/svg&gt;,
+  file: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+          &lt;path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/&gt;
+          &lt;path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/&gt;
+        &lt;/svg&gt;,
+  upArrow: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+              &lt;path d="M17 11l-5-5-5 5M17 18l-5-5-5 5"/&gt;
+            &lt;/svg&gt;,
+  github: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+            &lt;path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /&gt;
+          &lt;/svg&gt;,
+  linkedin: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+              &lt;path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/&gt;
+              &lt;path d="M2,4a2,2 0 1,0 4,0a2,2 0 1,0 -4,0"/&gt;
+            &lt;/svg&gt;,
+  monitor: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+             &lt;path d="M2 3 L23 3 L23 17 L2 17 L2 3"/&gt;
+             &lt;path d="M8 21h8M12 17v4"/&gt;
+           &lt;/svg&gt;,
+  tablet: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+            &lt;path d="M3 2 L21 2 L21 22 L3 22 L3 2"/&gt;
+            &lt;path d="M11,17a1,1 0 1,0 2,0a1,1 0 1,0 -2,0"/&gt;
+          &lt;/svg&gt;,
+  smartphone: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                &lt;path d="M5 2 L19 2 L19 22 L5 22 L5 2"/&gt;
+                &lt;path d="M11,17a1,1 0 1,0 2,0a1,1 0 1,0 -2,0"/&gt;
+              &lt;/svg&gt;,
+  terminal: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+              &lt;path d="M4 17l6-6-6-6M12 19h8"/&gt;
+            &lt;/svg&gt;,
+  playCircle: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                &lt;path d="M2,12a10,10 0 1,0 20,0a10,10 0 1,0 -20,0"/&gt;
+                &lt;path d="M10 8l6 4-6 4V8z"/&gt;
+              &lt;/svg&gt;,
+  shoppingBag: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                  &lt;path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/&gt;
+                &lt;/svg&gt;,
+  messageSquare: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                    &lt;path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/&gt;
+                  &lt;/svg&gt;,
+  star: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+          &lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/&gt;
+        &lt;/svg&gt;,
+  briefcase: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+               &lt;path d="M2 7 L22 7 L22 21 L2 21 L2 7"/&gt;
+               &lt;path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/&gt;
+             &lt;/svg&gt;,
+  activity: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+              &lt;path d="M22 12h-4l-3 9L9 3l-3 9H2"/&gt;
+            &lt;/svg&gt;,
+  heart: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+           &lt;path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/&gt;
+         &lt;/svg&gt;,
+  headphones: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                &lt;path d="M3 18v-6a9 9 0 0 1 18 0v6"/&gt;&lt;path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/&gt;
+              &lt;/svg&gt;,
+  crosshair: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+               &lt;path d="M2,12a10,10 0 1,0 20,0a10,10 0 1,0 -20,0"/&gt;
+               &lt;path d="M22 12h-4M6 12H2M12 6V2M12 22v-4"/&gt;
+             &lt;/svg&gt;,
+  code: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+          &lt;path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/&gt;
+        &lt;/svg&gt;,
+  cornerRightUp: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                    &lt;path d="M10 9l5-5 5 5"/&gt;
+                    &lt;path d="M4 20a4 4 0 0 0 11-10"/&gt;
+                  &lt;/svg&gt;,
+  cornerSlantedRightUp: &lt;svg viewBox="0 0 100 125" fill="#A7A7A7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                          &lt;path d="M24.4 56.1c15.3-2.1 30.5-5.4 45.2-9.9-.2.2-.4.3-.6.5-2.6 2.1-5.5 3.9-8.6 5.2-.2.1 0 2.4 0 2.7 0 .2.2 2.6 0 2.7 4-1.7 7.7-4.2 10.9-7.2 1.4-1.3 3.4-3.1 4.1-4.9.4-1 .3-2.5.2-3.9.1-1.1.2-2-.1-2.1-5.5-2.2-11-4.1-16.7-5.8.4.1-.5 5.2 0 5.3 3 .9 5.9 1.8 8.8 2.8-14.2 4.2-28.6 7.3-43.3 9.3-.2 0 .2 5.3.1 5.3zm50.9-11.6s0 .1-.1.1c0 0 .1 0 .1-.1z"/&gt;
+                        &lt;/svg&gt;,
+  arrowRight: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                &lt;path d="M5 12h14M12 5l7 7-7 7"/&gt;
+              &lt;/svg&gt;,
+  chevronRight: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                  &lt;path d="M9 18l6-6-6-6"/&gt;
+                &lt;/svg&gt;,
+  chevronUp: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+               &lt;path d="M18 15l-6-6-6 6"/&gt;
+             &lt;/svg&gt;,
+  chevronDown: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                 &lt;path d="M6 9l6 6 6-6"/&gt;
+               &lt;/svg&gt;,
+  doubleChevronRight: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                        &lt;path d="M13 17l5-5-5-5M6 17l5-5-5-5"/&gt;
+                      &lt;/svg&gt;,
+  arrowRightUp: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                  &lt;path d="M7 17L17 7M7 7h10v10"/&gt;
+                &lt;/svg&gt;,
+  alertTriangle: &lt;svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;
+                   &lt;path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17"/&gt;
+                   &lt;path d="M11.9,17a0.1,0.1 0 1,0 0.2,0a0.1,0.1 0 1,0 -0.2,0"/&gt;
+                 &lt;/svg&gt;,
+  plane: &lt;svg viewBox="0 0 512 512"&gt;
+          &lt;path d="M501.905 10.593c-12.162-12.163-33.184-13.359-60.806-3.46-18.995 6.81-38.919 18.222-48.451 27.754l-76.55 76.55L64.116 71.859 0 135.975l209.501 82.059-67.266 67.266-95.472 5.591L.984 336.67l103.609 49.994-29.026 29.026 21.24 21.24 28.987-28.987 50.043 103.56 45.768-45.769 5.592-95.472 68.395-68.395 82.043 209.459 64.115-64.116-39.57-251.933 75.43-75.431c9.532-9.531 20.945-29.455 27.755-48.451 9.899-27.614 8.703-48.641-3.46-60.802zM53.706 124.751l20.846-20.846 215.268 33.811-57.136 57.136-178.978-70.101zm355.999 312.025l-20.845 20.846-70.087-178.935 57.128-57.128 33.804 215.217zm67.383-375.514c-5.739 16.012-15.224 31.853-20.718 37.347L197.88 357.101l-5.592 95.472-7.797 7.797-36.202-74.918 26.113-26.113-21.24-21.24-26.07 26.068L52.137 328l7.788-7.788 95.472-5.591L413.888 56.128c5.495-5.495 21.336-14.977 37.348-20.718 18.176-6.516 27.82-5.186 29.429-3.577 1.607 1.608 2.939 11.25-3.577 29.429z"/&gt;
+        &lt;/svg&gt;,
+  dumbbell: &lt;svg viewBox="20 20 450 400"&gt;
+              &lt;path d="M472 144h-24v-12c0-15.464-12.536-28-28-28-4.16.023-8.261.983-12 2.808V96c0-17.673-14.327-32-32-32-17.673 0-32 14.327-32 32v48h-32v-8c.058-13.197-10.593-23.943-23.79-24.002A23.89 23.89 0 0 0 272 118.24c-9.044-8.32-22.956-8.32-32 0-9.044-8.32-22.956-8.32-32 0-9.75-8.894-24.864-8.2-33.758 1.55A23.9 23.9 0 0 0 168 136v8h-32V96c0-17.673-14.327-32-32-32-17.673 0-32 14.327-32 32v10.808A27.706 27.706 0 0 0 60 104c-15.464 0-28 12.536-28 28v12H8a8 8 0 0 0-8 8v48a8 8 0 0 0 8 8h24v12c0 15.464 12.536 28 28 28a27.706 27.706 0 0 0 12-2.808V256c0 17.673 14.327 32 32 32 17.673 0 32-14.327 32-32v-48h16v26.744a39.745 39.745 0 0 0 11.72 28.28L184 283.312V416h16V280a8 8 0 0 0-2.344-5.656l-22.624-22.632A24.133 24.133 0 0 1 168 234.744V184h46.856a9.6 9.6 0 0 1 7.744 3.752c.056.08.12.16.176.248.343.546.612 1.135.8 1.752.151.493.253.999.304 1.512.056.502.056 1.01 0 1.512a6.507 6.507 0 0 1-.104.8 8.37 8.37 0 0 1-.92 2.4A7.903 7.903 0 0 1 216 200h-24a8 8 0 0 0-8 8v16a8 8 0 0 0 5.472 7.592l17.6 5.88C221.36 242.216 232 263.84 232 280h16c0-22.008-13.696-50.336-35.832-57.712L200 218.232V216h16a23.864 23.864 0 0 0 17.6-8H304v29.336a24.138 24.138 0 0 1-4.8 14.4L281.6 275.2a7.998 7.998 0 0 0-1.6 4.8v136h16V282.664l16-21.328a40.226 40.226 0 0 0 8-24V208h24v48c0 17.673 14.327 32 32 32 17.673 0 32-14.327 32-32v-10.808A27.706 27.706 0 0 0 420 248c15.464 0 28-12.536 28-28v-12h24a8 8 0 0 0 8-8v-48a8 8 0 0 0-8-8zM32 192H16v-32h16v32zm40 28c0 6.627-5.373 12-12 12s-12-5.373-12-12v-88c0-6.627 5.373-12 12-12s12 5.373 12 12v88zm48 36c0 8.837-7.163 16-16 16s-16-7.163-16-16V96c0-8.837 7.163-16 16-16s16 7.163 16 16v160zm40-88a8 8 0 0 0-8 8v16h-16v-32h32c.009 1.512.161 3.021.456 4.504.088.472.24.904.352 1.36.184.712.32 1.448.56 2.136H160zm40-8a8 8 0 0 1-16 0v-24a8 8 0 0 1 16 0v24zm32 0a8 8 0 0 1-16 0v-24a8 8 0 0 1 16 0v24zm48-24a8 8 0 0 1 16 0v24a8 8 0 0 1-16 0v-24zm-32 0a8 8 0 0 1 16 0v24a8 8 0 0 1-16 0v-24zm96 56H240v-.224a23.85 23.85 0 0 0-.496-4.736c-.048-.216-.152-.416-.2-.64-.144-.584-.352-1.128-.536-1.696a23.215 23.215 0 0 0-1.224-2.992c-.232-.48-.344-1.024-.608-1.488.091-.062.179-.129.264-.2.368-.24.688-.528 1.04-.8.6-.448 1.232-.864 1.792-1.368.464.416 1 .744 1.496 1.12.496.376.984.8 1.52 1.136.755.466 1.535.891 2.336 1.272.544.264 1.056.576 1.6.8.934.358 1.891.655 2.864.888.504.136.976.328 1.496.432 3.077.629 6.25.629 9.328 0 .52-.104.992-.296 1.496-.432.973-.233 1.93-.53 2.864-.888.568-.232 1.08-.544 1.6-.8a24.548 24.548 0 0 0 2.344-1.272c.528-.352 1.008-.752 1.512-1.136.504-.384 1.032-.704 1.496-1.12.464.416 1 .744 1.496 1.12.496.376.984.8 1.52 1.136.755.466 1.535.891 2.336 1.272.544.264 1.056.576 1.6.8.934.358 1.891.655 2.864.888.504.136.976.328 1.496.432 12.955 2.633 25.591-5.734 28.224-18.688.322-1.585.483-3.198.48-4.816h32v32zm48 64c0 8.837-7.163 16-16 16s-16-7.163-16-16V96c0-8.837 7.163-16 16-16s16 7.163 16 16v160zm40-36c0 6.627-5.373 12-12 12s-12-5.373-12-12v-88c0-6.627 5.373-12 12-12s12 5.373 12 12v88zm32-28h-16v-32h16v32z"/&gt;
+            &lt;/svg&gt;,
+};
+&nbsp;
+const Icon = (props) =&gt; (
+  &lt;IconWrapper size={props.size} color={props.color} &gt;
+    {icons[props.name]}
+  &lt;/IconWrapper&gt;
+);
+&nbsp;
+export default Icon;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jul 29 2018 12:24:49 GMT-0400 (EDT)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+<script src="../../block-navigation.js"></script>
+</body>
+</html>

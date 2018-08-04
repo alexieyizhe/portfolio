@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+ - "node"
+
+cache:
+  directories:
+    - 'node_modules'
+
+before_install:
+  - npm -g install npm@latest
+
+script:
+    - npm run test
+    - npm run prettier
+
+after_script:
+  - chmod +x ./scripts/publish_on_netlify.sh
+  - if [ "$TRAVIS_BRANCH" = "master" &&  "$TRAVIS_TEST_RESULT" = 0]; then ./scripts/publish_on_netlify.sh; fi
+  - if [ "$TRAVIS_BRANCH" != "master" ]; then ./scripts/publish_on_netlify.sh; fi

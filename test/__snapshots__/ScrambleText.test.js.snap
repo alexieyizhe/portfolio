@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrambleText component should render the scrambled text 1`] = `
+.c0 {
+  display: inline-block;
+  -webkit-animation: none;
+  animation: none;
+  cursor: default;
+}
+
+.c0.boop {
+  -webkit-animation: pop 0.3s ease-in-out 1;
+  animation: pop 0.3s ease-in-out 1;
+}
+
+<ScrambleText
+  options={
+    Object {
+      "duration": 100,
+      "speed": 25,
+    }
+  }
+  scramble="!<>-_\\\\\\\\/[]{}—=+*^?#_abiwxevpi"
+  text="This is a test"
+>
+  <styled.span
+    className={null}
+    onAnimationEnd={[Function]}
+    onClick={[Function]}
+  >
+    <span
+      className="c0"
+      onAnimationEnd={[Function]}
+      onClick={[Function]}
+    >
+       
+    </span>
+  </styled.span>
+</ScrambleText>
+`;

@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Highlight Text default state should render correctly 1`] = `
+.c0 {
+  position: relative;
+  z-index: 110;
+}
+
+.c0:before {
+  background-color: #F8BJH3;
+  opacity: 0.6;
+  content: '';
+  position: absolute;
+  top: 0.25em;
+  left: 0.25em;
+  right: -5px;
+  height: 1em;
+  width: 0;
+  z-index: -1;
+  -webkit-transition: 250ms ease width;
+  transition: 250ms ease width;
+}
+
+@media (max-width:26.5625em) {
+  .c0:before {
+    top: 0.4em;
+    float: none;
+    height: 0.9em;
+    left: -3px;
+    opacity: 0.75;
+  }
+}
+
+<span
+  className="c0"
+  color="#F8BJH3"
+>
+  "Test text"
+</span>
+`;
+
+exports[`Highlight Text hovered state should expand bg on hover 1`] = `
+.c0 {
+  position: relative;
+  z-index: 110;
+}
+
+.c0:before {
+  background-color: #F8BJH3;
+  opacity: 0.6;
+  content: '';
+  position: absolute;
+  top: 0.25em;
+  left: 0.25em;
+  right: -5px;
+  height: 1em;
+  width: 0;
+  z-index: -1;
+  -webkit-transition: 250ms ease width;
+  transition: 250ms ease width;
+  width: 95%;
+}
+
+@media (max-width:26.5625em) {
+  .c0:before {
+    width: 100%;
+  }
+}
+
+@media (max-width:26.5625em) {
+  .c0:before {
+    top: 0.4em;
+    float: none;
+    height: 0.9em;
+    left: -3px;
+    opacity: 0.75;
+  }
+}
+
+<span
+  className="c0"
+  color="#F8BJH3"
+>
+  "Test text"
+</span>
+`;

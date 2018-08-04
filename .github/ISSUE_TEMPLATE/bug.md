@@ -1,5 +1,5 @@
 ---
-name: BUG
+name: Report a bug
 about: Something's broken!
 
 ---
