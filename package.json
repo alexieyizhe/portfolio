@@ -17,7 +17,7 @@
     "test:update": "jest --updateSnapshot",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "prettier": "prettier --single-quote --list-different \"src/**/*.jsx\" \"test/*.js\""
+    "prettier": "prettier --single-quote --list-different \"src/**/*.jsx\" \"test/*.test.js\""
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.5.1",
