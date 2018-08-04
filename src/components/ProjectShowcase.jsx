@@ -1,14 +1,13 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import posed from "react-pose";
-import VisibilitySensor from "react-visibility-sensor";
-import { isMobile } from "react-device-detect";
-import { mediaSize } from "../data/configOptions";
-import ReactTooltip from "react-tooltip";
-import SVGDrawIcon from "./SVGDrawIcon";
-import Icon from "./Icon";
-import "../data/font-devicons/devicons.min.css";
-
+import React from 'react';
+import styled, { css } from 'styled-components';
+import posed from 'react-pose';
+import VisibilitySensor from 'react-visibility-sensor';
+import { isMobile } from 'react-device-detect';
+import { mediaSize } from '../data/configOptions';
+import ReactTooltip from 'react-tooltip';
+import SVGDrawIcon from './SVGDrawIcon';
+import Icon from './Icon';
+import '../data/font-devicons/devicons.min.css';
 
 const ContainerConfig = {
   enter: {
@@ -52,12 +51,14 @@ const Container = styled(posed.div(ContainerConfig))`
     transition: opacity 500ms;
   }
 
-  ${(props) => props.focused ? css`
-    &:before {
-      opacity: 1;
-    }
-    ` : null
-  }
+  ${props =>
+    props.focused
+      ? css`
+          &:before {
+            opacity: 1;
+          }
+        `
+      : null}
 
   ${mediaSize.tablet`
     padding: 10% 8%;
@@ -86,7 +87,14 @@ const ProjectPic = styled.img`
 
   /* Design */
   transition: 1s filter;
-  ${(props) => props.focused ? css`filter: none;` : css`filter: grayscale(100%);`}
+  ${props =>
+    props.focused
+      ? css`
+          filter: none;
+        `
+      : css`
+          filter: grayscale(100%);
+        `}
 
   ${mediaSize.tablet`
   `}
@@ -103,10 +111,9 @@ const ProjectTitle = styled.span`
   padding-top: 0.5em;
 
   /* Design */
-  font-family: "PT Serif", serif;
+  font-family: 'PT Serif', serif;
   font-size: 2em;
 `;
-
 
 const ProjectDesc = styled.div`
   grid-area: desc;
@@ -126,8 +133,8 @@ const ProjectStackItem = styled.span`
   z-index: 10;
   cursor: pointer;
   display: inline;
-  color: ${(props) => props.color};
-  filter: ${(props) => props.focused ? "none" : "grayscale(100%)"};
+  color: ${props => props.color};
+  filter: ${props => (props.focused ? 'none' : 'grayscale(100%)')};
   transition: 0.5s filter ease;
 `;
 
@@ -146,11 +153,9 @@ const ProjectLinkContainer = styled.div`
   align-items: center;
 
   ${mediaSize.tablet`
-  `}
-
-  ${mediaSize.phone`
+  `} ${mediaSize.phone`
     top: 0.5em;
-  `}
+  `};
 `;
 
 const ProjectLink = styled.div`
@@ -161,26 +166,31 @@ class ProjectShowcase extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      focused: false,
+      focused: false
     };
   }
 
   handleFocus(focused) {
-    this.setState({focused});
+    this.setState({ focused });
   }
 
   render() {
     return (
-      <VisibilitySensor onChange={(isVisible) => this.handleFocus(isMobile && isVisible)}>
+      <VisibilitySensor
+        onChange={isVisible => this.handleFocus(isMobile && isVisible)}
+      >
         <Container
           focused={this.state.focused ? 1 : 0}
           initialPose="enter"
-          pose={this.state.focused ? "hovered" : "hovered"}
+          pose={this.state.focused ? 'hovered' : 'hovered'}
           onMouseEnter={() => this.handleFocus(true)}
           onMouseLeave={() => this.handleFocus(false)}
           color={this.props.color}
         >
-          <ProjectPic src={this.props.project.imgSource} focused={this.state.focused} />
+          <ProjectPic
+            src={this.props.project.imgSource}
+            focused={this.state.focused}
+          />
           <ProjectTitle>{this.props.project.name}</ProjectTitle>
           <ProjectDesc>{this.props.project.desc}</ProjectDesc>
           <ProjectStack>
@@ -190,8 +200,10 @@ class ProjectShowcase extends React.Component {
                   key={i}
                   focused={this.state.focused}
                   color={tech.color}
-                  data-tip={tech.name} data-for={`techStackTip${i}`}>
-                  <span className={tech.icon} style={{fontSize: "1.5em"}} />
+                  data-tip={tech.name}
+                  data-for={`techStackTip${i}`}
+                >
+                  <span className={tech.icon} style={{ fontSize: '1.5em' }} />
                   <ReactTooltip id={`techStackTip${i}`} effect="solid" />
                 </ProjectStackItem>
               );
@@ -200,10 +212,17 @@ class ProjectShowcase extends React.Component {
           <ProjectLinkContainer>
             {this.props.project.actionLinks.map((link, i) => {
               return (
-                <ProjectLink key={i} data-tip={link.name} data-for={`actionLinkTip${i}`}>
+                <ProjectLink
+                  key={i}
+                  data-tip={link.name}
+                  data-for={`actionLinkTip${i}`}
+                >
                   <a href={link.url} target="_blank">
-                    <SVGDrawIcon animate={this.state.focused && isMobile} duration={750}>
-                      <Icon name={link.icon}  size="1.5em" color="#595959" />
+                    <SVGDrawIcon
+                      animate={this.state.focused && isMobile}
+                      duration={750}
+                    >
+                      <Icon name={link.icon} size="1.5em" color="#595959" />
                     </SVGDrawIcon>
                   </a>
                   <ReactTooltip id={`actionLinkTip${i}`} effect="solid" />
@@ -216,6 +235,5 @@ class ProjectShowcase extends React.Component {
     );
   }
 }
-
 
 export default ProjectShowcase;

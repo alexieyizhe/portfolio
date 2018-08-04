@@ -5,18 +5,17 @@
     the highlight relies on its parent component to pass it the flag.
 */
 
-
-import React from "react";
-import styled, { css } from "styled-components";
-import { mediaSize } from "../data/configOptions";
-
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { mediaSize } from '../data/configOptions';
 
 const Highlight = styled.span`
   position: relative;
   z-index: 110;
 
-  &:before { /* background of title on hover */
-    background-color: ${(props) => props.color};
+  &:before {
+    /* background of title on hover */
+    background-color: ${props => props.color};
     opacity: 0.6;
     content: '';
     position: absolute;
@@ -29,26 +28,28 @@ const Highlight = styled.span`
 
     transition: 250ms ease width;
 
-    ${(props) => props.hovered ? css`
-      width: 95%;
-      ${mediaSize.phone`
+    ${props =>
+      props.hovered
+        ? css`
+            width: 95%;
+            ${mediaSize.phone`
         width: 100%;
-      `}
-    ` : null}
-
-    ${mediaSize.phone`
+      `};
+          `
+        : null} ${mediaSize.phone`
       top: 0.4em;
       float: none;
       height: 0.9em;
       left: -3px;
       opacity: 0.75;
-    `}
+    `};
   }
 `;
 
-
-const HighlightText = (props) => (
-  <Highlight color={props.color} hovered={props.hovered}>{props.children}</Highlight>
+const HighlightText = props => (
+  <Highlight color={props.color} hovered={props.hovered}>
+    {props.children}
+  </Highlight>
 );
 
 export default HighlightText;

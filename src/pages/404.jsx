@@ -1,13 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import Link from "gatsby-link";
-import TemplateWrapper from "../components/TemplateWrapper";
-import GlitchText from "../components/GlitchText";
-
+import React from 'react';
+import styled from 'styled-components';
+import Link from 'gatsby-link';
+import TemplateWrapper from '../components/TemplateWrapper';
+import GlitchText from '../components/GlitchText';
 
 const ErrorContainer = styled.div`
   width: 80%;
-  font-family: "PT Sans", sans-serif;;
+  font-family: 'PT Sans', sans-serif;
   margin-left: auto;
   margin-right: auto;
   display: grid;
@@ -15,9 +14,10 @@ const ErrorContainer = styled.div`
   grid-template-rows: 21vh 42vh 36vh;
   grid-row-gap: 2vh;
   text-align: center;
-  grid-template-areas: "message"
-                       "code"
-                       "redirect";
+  grid-template-areas:
+    'message'
+    'code'
+    'redirect';
 `;
 
 const ErrorMessage = styled.div`
@@ -62,22 +62,21 @@ class InvalidURLPage extends React.Component {
   render() {
     return (
       <TemplateWrapper title="Error 404">
-        <ErrorContainer style={this.props.transition && this.props.transition.style}>
-          <ErrorMessage>
-            Yikes! There isn't a page here.
-          </ErrorMessage>
+        <ErrorContainer
+          style={this.props.transition && this.props.transition.style}
+        >
+          <ErrorMessage>Yikes! There isn't a page here.</ErrorMessage>
           <ErrorCode>
             <GlitchText text="404" color="black" font="bolder 20vmax Lato" />
           </ErrorCode>
           <ErrorRedirect>
-            You can <a href="mailto:alexieyizhe@gmail.com">complain to Alex</a> or <Link to="/">go home</Link>.
+            You can <a href="mailto:alexieyizhe@gmail.com">complain to Alex</a>{' '}
+            or <Link to="/">go home</Link>.
           </ErrorRedirect>
         </ErrorContainer>
       </TemplateWrapper>
     );
   }
 }
-
-
 
 export default InvalidURLPage;

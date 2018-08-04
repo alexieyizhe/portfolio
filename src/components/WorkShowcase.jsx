@@ -1,18 +1,17 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import VisibilitySensor from "react-visibility-sensor";
-import { isMobile, isIOS } from "react-device-detect";
-import { mediaSize } from "../data/configOptions";
+import React from 'react';
+import styled, { css } from 'styled-components';
+import VisibilitySensor from 'react-visibility-sensor';
+import { isMobile, isIOS } from 'react-device-detect';
+import { mediaSize } from '../data/configOptions';
 
-import Icon from "./Icon";
-import FloatText from "./FloatText";
-
+import Icon from './Icon';
+import FloatText from './FloatText';
 
 const Container = styled.div`
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  width: ${(props) => props.expanded ? "90%" : "75%"};
+  width: ${props => (props.expanded ? '90%' : '75%')};
   height: auto;
   margin-bottom: 10vh;
   cursor: pointer;
@@ -27,7 +26,7 @@ const Container = styled.div`
                        "desc"
                        "indicator";
 
-  background: url(${(props) => props.bg}) center/cover;
+  background: url(${props => props.bg}) center/cover;
   filter: grayscale(50%);
   transition: all 0.2s ease-in;
   transition: width 0.75s ease, height 0.75s ease;
@@ -62,25 +61,27 @@ const Container = styled.div`
     transition: opacity 500ms;
   }
 
-  ${(props) => props.focused || props.expanded ? css`
-    filter: none;
-    background: url(${(props) => props.bg}) center/cover;
+  ${props =>
+    props.focused || props.expanded
+      ? css`
+          filter: none;
+          background: url(${props => props.bg}) center/cover;
 
-    &:before {
-      opacity: 1;
-    }
+          &:before {
+            opacity: 1;
+          }
 
-    &:after {
-      opacity: 0.75;
-    }
+          &:after {
+            opacity: 0.75;
+          }
 
-    ${mediaSize.phone`
+          ${mediaSize.phone`
       &:after {
         opacity: 0.85;
       }
-    `}
-    ` : null
-  }
+    `};
+        `
+      : null}
 
   ${mediaSize.tablet`
     width: 85%;
@@ -106,7 +107,7 @@ const Container = styled.div`
 `;
 
 const WorkTitle = styled.span`
-  font-family: "Raleway", Arial, serif;
+  font-family: 'Raleway', Arial, serif;
   font-size: 5vw;
   font-weight: bold;
   position: relative;
@@ -121,14 +122,12 @@ const WorkTitle = styled.span`
     padding-top: 15vmin;
     font-size: 4.5em;
     font-family: "Cabin", "Ubuntu", Arial, serif;
-    letter-spacing: ${isIOS ? "-0.05em" : 0};
-  `}
-
-  ${mediaSize.phone`
+    letter-spacing: ${isIOS ? '-0.05em' : 0};
+  `} ${mediaSize.phone`
     font-size: 2.5em;
     position: relative;
     padding-top: 40vw;
-  `}
+  `};
 `;
 
 const WorkLogo = styled.img`
@@ -142,7 +141,12 @@ const WorkLogo = styled.img`
   opacity: 0;
   transition: all 0.3s ease-in;
 
-  ${(props) => props.focused || props.expanded ? css`opacity: 1;` : null}
+  ${props =>
+    props.focused || props.expanded
+      ? css`
+          opacity: 1;
+        `
+      : null}
 
   ${mediaSize.tablet`
     top: -5vw;
@@ -162,43 +166,39 @@ const WorkRole = styled.div`
   grid-area: role;
   position: relative;
   z-index: 6;
-  font-family: "Raleway", serif;;
+  font-family: 'Raleway', serif;
   font-size: 2vw;
   padding-bottom: 1.5em;
 
   ${mediaSize.tablet`
     font-size: 2em;
     padding-bottom: 1.5em;
-  `}
-
-  ${mediaSize.phone`
+  `} ${mediaSize.phone`
     font-size: 5vw;
-  `}
+  `};
 `;
 
 const WorkDesc = styled.div`
   grid-area: desc;
   align-self: start;
-  padding-bottom: ${(props) => props.expanded ? "2em" : 0};
+  padding-bottom: ${props => (props.expanded ? '2em' : 0)};
   line-height: 1.5;
   font-size: 2.5vmin;
   z-index: 6;
   font-family: 'Average', 'PT Serif', serif;
   max-width: 100%;
-  max-height: ${(props) => props.expanded ? "7em" : 0};
-  opacity: ${(props) => props.expanded ? 1 : 0};
+  max-height: ${props => (props.expanded ? '7em' : 0)};
+  opacity: ${props => (props.expanded ? 1 : 0)};
   transition: max-height 1s, opacity 0.7s, padding 1s;
 
   ${mediaSize.tablet`
-    max-height: ${(props) => props.expanded ? "20em" : 0};
-    padding-bottom: ${(props) => props.expanded ? "3vw" : 0};
-  `}
-
-  ${mediaSize.phone`
+    max-height: ${props => (props.expanded ? '20em' : 0)};
+    padding-bottom: ${props => (props.expanded ? '3vw' : 0)};
+  `} ${mediaSize.phone`
     font-size: 1em;
-    max-height: ${(props) => props.expanded ? "30em" : 0};
-    padding-bottom: ${(props) => props.expanded ? "7vw" : 0};
-  `}
+    max-height: ${props => (props.expanded ? '30em' : 0)};
+    padding-bottom: ${props => (props.expanded ? '7vw' : 0)};
+  `};
 `;
 
 const DropdownArrow = styled.span`
@@ -214,33 +214,48 @@ class WorkShowcase extends React.Component {
     super(props);
     this.state = {
       focused: false,
-      expanded: false,
+      expanded: false
     };
   }
 
   handleFocus(focused) {
-    this.setState({focused});
+    this.setState({ focused });
   }
 
   render() {
     return (
-      <VisibilitySensor onChange={(isVisible) => this.handleFocus(isMobile && isVisible)}>
+      <VisibilitySensor
+        onChange={isVisible => this.handleFocus(isMobile && isVisible)}
+      >
         <Container
           focused={this.state.focused}
           expanded={this.state.expanded}
           bg={this.props.work.bgImgSource}
           onMouseEnter={() => this.handleFocus(true)}
           onMouseLeave={() => this.handleFocus(false)}
-          onClick={() => this.setState((prevState) => {return {expanded: !prevState.expanded};})}>
+          onClick={() =>
+            this.setState(prevState => {
+              return { expanded: !prevState.expanded };
+            })
+          }
+        >
           <WorkTitle>{this.props.work.name}</WorkTitle>
           <WorkRole>{this.props.work.role}</WorkRole>
-          <WorkLogo src={this.props.work.logoImgSource} focused={this.state.focused} expanded={this.state.expanded} />
-          <WorkDesc expanded={this.state.expanded} >
+          <WorkLogo
+            src={this.props.work.logoImgSource}
+            focused={this.state.focused}
+            expanded={this.state.expanded}
+          />
+          <WorkDesc expanded={this.state.expanded}>
             {this.props.work.desc}
           </WorkDesc>
           <DropdownArrow>
             <FloatText from={-3} to={0}>
-              <Icon name={this.state.expanded ? "chevronUp" : "chevronDown"} size="3vh" color="#FFFFFF"/>
+              <Icon
+                name={this.state.expanded ? 'chevronUp' : 'chevronDown'}
+                size="3vh"
+                color="#FFFFFF"
+              />
             </FloatText>
           </DropdownArrow>
         </Container>
@@ -248,6 +263,5 @@ class WorkShowcase extends React.Component {
     );
   }
 }
-
 
 export default WorkShowcase;

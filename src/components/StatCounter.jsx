@@ -5,28 +5,27 @@
     used to track stats on the About page.
 */
 
-import React from "react";
-import styled from "styled-components";
-import { mediaSize } from "../data/configOptions";
-import CountUp from "react-countup";
+import React from 'react';
+import styled from 'styled-components';
+import { mediaSize } from '../data/configOptions';
+import CountUp from 'react-countup';
 
 const CounterContainer = styled.span`
   display: inline-grid;
   grid-template-rows: auto auto;
-  grid-template-areas: "counter"
-                       "desc";
+  grid-template-areas:
+    'counter'
+    'desc';
   align-items: center;
-  font-family: "PT Serif", "Times", serif;
+  font-family: 'PT Serif', 'Times', serif;
 
   ${mediaSize.tablet`
     max-width: 100%;
-  `}
-
-  ${mediaSize.phone`
+  `} ${mediaSize.phone`
     padding: 5%;
     justify-items: center;
     text-align: center;
-  `}
+  `};
 `;
 
 const Counter = styled.span`
@@ -35,11 +34,9 @@ const Counter = styled.span`
 
   ${mediaSize.tablet`
     font-size: 4em;
-  `}
-
-  ${mediaSize.phone`
+  `} ${mediaSize.phone`
     font-size: 2em;
-  `}
+  `};
 `;
 
 const Desc = styled.span`
@@ -47,17 +44,21 @@ const Desc = styled.span`
   font-size: 2.5vh;
   ${mediaSize.tablet`
     font-size: 1.5em;
-  `}
-  ${mediaSize.phone`
+  `} ${mediaSize.phone`
     font-size: 1em;
 
-  `}
+  `};
 `;
 
-
-const StatCounter = (props) => (
+const StatCounter = props => (
   <CounterContainer>
-    <Counter><CountUp start={props.countStart || 0} end={props.countEnd || 100} duration={props.countDuration || 250} /></Counter>
+    <Counter>
+      <CountUp
+        start={props.countStart || 0}
+        end={props.countEnd || 100}
+        duration={props.countDuration || 250}
+      />
+    </Counter>
     <Desc>{props.children}</Desc>
   </CounterContainer>
 );

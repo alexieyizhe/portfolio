@@ -1,7 +1,7 @@
-import React from "react";
-import { Transition as ReactTransition } from "react-transition-group";
-import getTransitionStyle from "../data/getTransitionStyle";
-import { historyExitingEventType, timeout } from "../../gatsby-browser";
+import React from 'react';
+import { Transition as ReactTransition } from 'react-transition-group';
+import getTransitionStyle from '../data/getTransitionStyle';
+import { historyExitingEventType, timeout } from '../../gatsby-browser';
 
 class Transition extends React.Component {
   constructor(props) {
@@ -17,11 +17,13 @@ class Transition extends React.Component {
   }
 
   componentDidMount() {
-    typeof window !== "undefined" && window.addEventListener(historyExitingEventType, this.listenerHandler);
+    typeof window !== 'undefined' &&
+      window.addEventListener(historyExitingEventType, this.listenerHandler);
   }
 
   componentWillUnmount() {
-    typeof window !== "undefined" && window.removeEventListener(historyExitingEventType, this.listenerHandler);
+    typeof window !== 'undefined' &&
+      window.removeEventListener(historyExitingEventType, this.listenerHandler);
   }
 
   static getDerivedStateFromProps({ exiting }) {
@@ -35,18 +37,18 @@ class Transition extends React.Component {
     const transitionProps = {
       timeout: {
         enter: 0,
-        exit: timeout,
+        exit: timeout
       },
       appear: true,
-      in: !this.state.exiting,
+      in: !this.state.exiting
     };
 
     return (
       <ReactTransition {...transitionProps}>
-        {(status) => (
+        {status => (
           <div
             style={{
-              ...getTransitionStyle({ status, timeout }),
+              ...getTransitionStyle({ status, timeout })
             }}
           >
             {this.props.children}

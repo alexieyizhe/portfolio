@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import posed from "react-pose";
+import React from 'react';
+import styled from 'styled-components';
+import posed from 'react-pose';
 
-import TemplateWrapper from "../components/TemplateWrapper";
-import PageHeader from "../components/PageHeader";
-import WorkShowcase from "../components/WorkShowcase";
-import { experienceList } from "../data/experienceData";
+import TemplateWrapper from '../components/TemplateWrapper';
+import PageHeader from '../components/PageHeader';
+import WorkShowcase from '../components/WorkShowcase';
+import { experienceList } from '../data/experienceData';
 
 class ExperiencePage extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class ExperiencePage extends React.Component {
         menu
         footer
         curPage="Experience"
-        outerBounds={{ top: "7%", left: "15%", right: "15%", bottom: "0" }}
+        outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}
         title="Experience"
       >
         <div style={this.props.transition && this.props.transition.style}>

@@ -5,31 +5,29 @@
     the header, footer, and smooth transition between pages.
 */
 
-import React from "react";
-import styled from "styled-components";
-import Helmet from "react-helmet";
-import PageFooter from "./PageFooter";
-import PageHeader from "./PageHeader";
-import NavMenu from "./NavMenu";
-import Transition from "./Transition";
-
+import React from 'react';
+import styled from 'styled-components';
+import Helmet from 'react-helmet';
+import PageFooter from './PageFooter';
+import PageHeader from './PageHeader';
+import NavMenu from './NavMenu';
+import Transition from './Transition';
 
 // Global styles go here!
 const TemplateContainer = styled.div`
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   color: #464646;
   position: absolute;
-  top: ${(props) => props.outerBounds && props.outerBounds.top || 0};
-  left: ${(props) => props.outerBounds && props.outerBounds.left || 0};
-  right: ${(props) => props.outerBounds && props.outerBounds.right || 0};
-  bottom: ${(props) => props.outerBounds && props.outerBounds.bottom || 0};
+  top: ${props => (props.outerBounds && props.outerBounds.top) || 0};
+  left: ${props => (props.outerBounds && props.outerBounds.left) || 0};
+  right: ${props => (props.outerBounds && props.outerBounds.right) || 0};
+  bottom: ${props => (props.outerBounds && props.outerBounds.bottom) || 0};
 `;
 
 const NonNavElements = styled.div`
-  opacity: ${(props) => props.shouldFade ? 0.4 : 1};
+  opacity: ${props => (props.shouldFade ? 0.4 : 1)};
   transition: 0.5s opacity;
 `;
-
 
 class TemplateWrapper extends React.Component {
   constructor(props) {
@@ -39,12 +37,12 @@ class TemplateWrapper extends React.Component {
       showHeader: props.header,
       showFooter: props.footer,
       title: props.title,
-      menuFocused: false,
+      menuFocused: false
     };
   }
 
   handleFocus(menuFocused) {
-    this.setState({menuFocused});
+    this.setState({ menuFocused });
   }
 
   render() {
@@ -52,30 +50,44 @@ class TemplateWrapper extends React.Component {
       <TemplateContainer outerBounds={this.props.outerBounds}>
         <Helmet>
           <title>{this.state.title}</title>
-          <meta name="description" content="Personal website/portfolio of Alex Xie, a computer science student at the University of Waterloo." />
-          <meta name="keywords" content="Alex, Yizhe, Xie, alexieyizhe, website, portfolio, university, waterloo, projects, work, experience, resume, contact, gatsby, react, developer" />
-          <link rel="icon" href='/img/misc/logo_square.png' sizes={["16x16","32x32","64x64"]} type="image/png" />
+          <meta
+            name="description"
+            content="Personal website/portfolio of Alex Xie, a computer science student at the University of Waterloo."
+          />
+          <meta
+            name="keywords"
+            content="Alex, Yizhe, Xie, alexieyizhe, website, portfolio, university, waterloo, projects, work, experience, resume, contact, gatsby, react, developer"
+          />
+          <link
+            rel="icon"
+            href="/img/misc/logo_square.png"
+            sizes={['16x16', '32x32', '64x64']}
+            type="image/png"
+          />
         </Helmet>
         <Transition>
-          {this.state.menu ?
+          {this.state.menu ? (
             <NavMenu
               className="navMenu"
               options={this.state.menu}
-              wrapperHandleFocus={(focused) => this.handleFocus(focused)}
+              wrapperHandleFocus={focused => this.handleFocus(focused)}
               curPage={this.props.curPage}
-            /> :
-            null
-          }
-          <NonNavElements shouldFade={this.state.menuFocused} id="nonNavElements">
-            {this.state.showHeader ?
-              <PageHeader className="pageHeader" title={this.state.showHeader} /> :
-              null
-            }
+            />
+          ) : null}
+          <NonNavElements
+            shouldFade={this.state.menuFocused}
+            id="nonNavElements"
+          >
+            {this.state.showHeader ? (
+              <PageHeader
+                className="pageHeader"
+                title={this.state.showHeader}
+              />
+            ) : null}
             {this.props.children}
-            {this.state.showFooter ?
-              <PageFooter className="pageFooter" /> :
-              null
-            }
+            {this.state.showFooter ? (
+              <PageFooter className="pageFooter" />
+            ) : null}
           </NonNavElements>
         </Transition>
       </TemplateContainer>

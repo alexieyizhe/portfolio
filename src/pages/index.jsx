@@ -5,26 +5,29 @@
     as the landing page for users.
 */
 
-import React from "react";
-import styled from "styled-components";
-import posed from "react-pose";
-import Img from "gatsby-image";
-import Link from "gatsby-link";
-import { isMobile, isIOS } from "react-device-detect";
-import { mediaSize, greetingOptions, particleConfig } from "../data/configOptions";
-import TemplateWrapper from "../components/TemplateWrapper";
-import SVGDrawIcon from "../components/SVGDrawIcon";
-import Particles from "react-particles-js";
-import ScrambleText from "../components/ScrambleText";
-import Icon from "../components/Icon";
-
+import React from 'react';
+import styled from 'styled-components';
+import posed from 'react-pose';
+import Img from 'gatsby-image';
+import Link from 'gatsby-link';
+import { isMobile, isIOS } from 'react-device-detect';
+import {
+  mediaSize,
+  greetingOptions,
+  particleConfig
+} from '../data/configOptions';
+import TemplateWrapper from '../components/TemplateWrapper';
+import SVGDrawIcon from '../components/SVGDrawIcon';
+import Particles from 'react-particles-js';
+import ScrambleText from '../components/ScrambleText';
+import Icon from '../components/Icon';
 
 // Style of the particles.js background container
 const ParticlesStyle = {
-  position: "fixed",
-  width: "100%",
-  height: "100%",
-  zIndex: "-2"
+  position: 'fixed',
+  width: '100%',
+  height: '100%',
+  zIndex: '-2'
 };
 
 // React-pose configuration that provides a fade on enter transition
@@ -44,7 +47,7 @@ const Greeting = styled(posed.div(fadeEnterConfig))`
 `;
 
 const MainInfoText = styled(posed.div(fadeEnterConfig))`
-  font-family: "Cabin";
+  font-family: 'Cabin';
   letter-spacing: 0;
   font-weight: bold;
   line-height: 0.8em;
@@ -52,15 +55,15 @@ const MainInfoText = styled(posed.div(fadeEnterConfig))`
   text-shadow: 0 0 0;
 
   ${mediaSize.phone`
-    letter-spacing: ${isIOS ? "-0.05em" : 0};
+    letter-spacing: ${isIOS ? '-0.05em' : 0};
     font-weight: normal;
-  `}
+  `};
 `;
 
 const BriefBioText = styled(posed.div(fadeEnterConfig))`
   font-size: 3vh;
-  font-family: "Average", serif;
-  color: #4B4B4B;
+  font-family: 'Average', serif;
+  color: #4b4b4b;
   margin-top: 2vh;
 `;
 
@@ -73,9 +76,7 @@ const ImportantInfo = styled(posed.div(fadeEnterConfig))`
     position: relative;
     bottom: 0;
     margin-top: 2vh;
-  `}
-
-  ${mediaSize.phone`
+  `} ${mediaSize.phone`
     position: relative;
     bottom: 0;
     margin-top: 2vh;
@@ -91,7 +92,6 @@ const ImportantInfo = styled(posed.div(fadeEnterConfig))`
   & a:first-child {
     margin-left: 0;
   }
-
 `;
 
 const MainPagePic = styled(posed.div(fadeEnterConfig))`
@@ -103,13 +103,13 @@ const MainPagePic = styled(posed.div(fadeEnterConfig))`
 
   ${mediaSize.phone`
     width: 105%;
-  `}
+  `};
 `;
 
 const Logo = posed.img({
   enter: {
     x: -200,
-    opacity: 0,
+    opacity: 0
   },
   normal: {
     x: 0,
@@ -118,90 +118,112 @@ const Logo = posed.img({
   }
 });
 
-
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       iconAnimate: false,
-      greeting: greetingOptions[Math.floor(Math.random() * greetingOptions.length)]
-                              // Load a new random greeting on every page load
+      greeting:
+        greetingOptions[Math.floor(Math.random() * greetingOptions.length)]
+      // Load a new random greeting on every page load
     };
   }
 
   componentDidMount() {
-    if(isMobile) {
+    if (isMobile) {
       // Automatically animates the SVG icons after a set time
       // on devices with no hover capability (mobile devices)
       this.iconAnimateID = setTimeout(() => {
-        this.setState({iconAnimate: true});
+        this.setState({ iconAnimate: true });
       }, 3000);
     }
   }
 
   componentWillUnmount() {
-    if(this.iconAnimateID) {
+    if (this.iconAnimateID) {
       clearTimeout(this.iconAnimateID);
     }
   }
 
   render() {
     return (
-      <div id="particleBgContainer" style={this.props.transition && this.props.transition.style}>
+      <div
+        id="particleBgContainer"
+        style={this.props.transition && this.props.transition.style}
+      >
         <Particles params={particleConfig} style={ParticlesStyle} />
         <TemplateWrapper
-          menu={{default: true, prompt: true}}
+          menu={{ default: true, prompt: true }}
           curPage="Home"
-          outerBounds={{ top: "7%", left: "15%", right: "15%", bottom: "0" }}
-          title="Alex Xie">
-          <Logo src="/img/misc/logo.png" initialPose={"enter"} pose={"normal"} />
+          outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}
+          title="Alex Xie"
+        >
+          <Logo
+            src="/img/misc/logo.png"
+            initialPose={'enter'}
+            pose={'normal'}
+          />
           {/* NOTE: script font in logo is BarleyScript */}
-          <Greeting initialPose={"enter"} pose={"normal"}>
+          <Greeting initialPose={'enter'} pose={'normal'}>
             {this.state.greeting + " I'm"}
           </Greeting>
-          <MainInfoText initialPose={"enter"} pose={"normal"}>
-            <ScrambleText text="Alex Xie." scramble="!<>-_\\/[]{}—=+*^?#_abiwxevpi" options={{ duration: 250, speed: 15 }}/>
+          <MainInfoText initialPose={'enter'} pose={'normal'}>
+            <ScrambleText
+              text="Alex Xie."
+              scramble="!<>-_\\/[]{}—=+*^?#_abiwxevpi"
+              options={{ duration: 250, speed: 15 }}
+            />
           </MainInfoText>
-          <BriefBioText initialPose={"enter"} pose={"normal"}>
+          <BriefBioText initialPose={'enter'} pose={'normal'}>
             <div>web developer.</div>
             <div>opportunity pursuer.</div>
             <div>soccer fanatic.</div>
             <div>lover of bad puns.</div>
           </BriefBioText>
-          <ImportantInfo initialPose={"enter"} pose={"normal"} >
+          <ImportantInfo initialPose={'enter'} pose={'normal'}>
             <a href="mailto:alexieyizhe@gmail.com" target="_blank">
-              <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
+              <SVGDrawIcon
+                animate={this.state.iconAnimate}
+                ignoreHover={isMobile}
+              >
                 <Icon name="paperPlane" size="3vmax" color="#80D07F" />
               </SVGDrawIcon>
             </a>
             <Link to="/resume">
-              <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
+              <SVGDrawIcon
+                animate={this.state.iconAnimate}
+                ignoreHover={isMobile}
+              >
                 <Icon name="file" size="3vmax" color="#DE7947" />
               </SVGDrawIcon>
             </Link>
             <a href="https://github.com/alexieyizhe" target="_blank">
-              <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
+              <SVGDrawIcon
+                animate={this.state.iconAnimate}
+                ignoreHover={isMobile}
+              >
                 <Icon name="github" size="3vmax" color="#5534AC" />
               </SVGDrawIcon>
             </a>
             <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank">
-              <SVGDrawIcon animate={this.state.iconAnimate} ignoreHover={isMobile}>
+              <SVGDrawIcon
+                animate={this.state.iconAnimate}
+                ignoreHover={isMobile}
+              >
                 <Icon name="linkedin" size="3vmax" color="#2381D9" />
               </SVGDrawIcon>
             </a>
           </ImportantInfo>
-          <MainPagePic initialPose={"enter"} pose={"normal"}>
+          <MainPagePic initialPose={'enter'} pose={'normal'}>
             <Img sizes={this.props.data.mainImage.sizes} />
           </MainPagePic>
         </TemplateWrapper>
       </div>
-
     );
   }
 }
 
 export default HomePage;
-
 
 // Loads main image on page
 export const pageQuery = graphql`

@@ -1,29 +1,24 @@
-import React from "react";
-import styled from "styled-components";
-import { mediaSize } from "../data/configOptions";
-import { isIOS } from "react-device-detect";
-
+import React from 'react';
+import styled from 'styled-components';
+import { mediaSize } from '../data/configOptions';
+import { isIOS } from 'react-device-detect';
 
 const Header = styled.div`
   display: inline-block;
   margin-bottom: 0.5em;
   font-size: 8vh;
   font-weight: bold;
-  font-family: "Lato", "Cabin", "Ubuntu", sans-serif;
+  font-family: 'Lato', 'Cabin', 'Ubuntu', sans-serif;
 
   ${mediaSize.tablet`
     font-size: 4em;
-    letter-spacing: ${isIOS ? "-0.05em" : 0};
+    letter-spacing: ${isIOS ? '-0.05em' : 0};
     margin-bottom: 1em;
-  `}
-
-  ${mediaSize.phone`
+  `} ${mediaSize.phone`
     font-size: 3em;
-  `}
+  `};
 `;
 
-const PageHeader = (props) => (
-  <Header>{props.title}</Header>
-);
+const PageHeader = props => <Header>{props.title}</Header>;
 
 export default PageHeader;

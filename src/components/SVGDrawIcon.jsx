@@ -5,17 +5,16 @@
     or on focus/hover.
 */
 
-import React from "react";
-import styled from "styled-components";
-import MtSvgLines from "react-mt-svg-lines";
-
+import React from 'react';
+import styled from 'styled-components';
+import MtSvgLines from 'react-mt-svg-lines';
 
 const Shadow = styled.span`
   position: absolute;
   z-index: 1;
 
   & path {
-    stroke: #C4C4C4;
+    stroke: #c4c4c4;
   }
 `;
 
@@ -30,38 +29,39 @@ const Icon = styled.span`
   position: relative;
 `;
 
-
 class SVGDrawIcon extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      animate: false,
+      animate: false
     };
   }
 
   handleHover(hovering) {
-    if(!this.props.ignoreHover) {
-      this.setState({animate: hovering});
+    if (!this.props.ignoreHover) {
+      this.setState({ animate: hovering });
     }
   }
 
   render() {
-    let shouldAnimate = "hide";
-    if(this.props && this.props.animate) {
+    let shouldAnimate = 'hide';
+    if (this.props && this.props.animate) {
       shouldAnimate = true;
     } else {
-      shouldAnimate = this.state.animate || "hide";
+      shouldAnimate = this.state.animate || 'hide';
     }
 
     return (
       <Icon
         onMouseEnter={() => this.handleHover(true)}
-        onMouseLeave={() => this.handleHover(false)}>
-        <Shadow>
-          {this.props.children}
-        </Shadow>
+        onMouseLeave={() => this.handleHover(false)}
+      >
+        <Shadow>{this.props.children}</Shadow>
         <Outline>
-          <MtSvgLines animate={ shouldAnimate } duration={ this.props.duration || 500 }>
+          <MtSvgLines
+            animate={shouldAnimate}
+            duration={this.props.duration || 500}
+          >
             {this.props.children}
           </MtSvgLines>
         </Outline>
