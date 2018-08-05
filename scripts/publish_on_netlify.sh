@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# die on error
+# Exit on error
 set -e
 
 # https://gist.github.com/cjus/1047794

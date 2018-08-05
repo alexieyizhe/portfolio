@@ -164,24 +164,28 @@ class HomePage extends React.Component {
             pose={'normal'}
           />
           {/* NOTE: script font in logo is BarleyScript */}
-          <Greeting initialPose='enter' pose='normal'>
+          <Greeting initialPose="enter" pose="normal">
             {`${this.state.greeting} I'm`}
           </Greeting>
-          <MainInfoText initialPose='enter' pose='normal'>
+          <MainInfoText initialPose="enter" pose="normal">
             <ScrambleText
               text="Alex Xie."
               scramble="!<>-_\\/[]{}—=+*^?#_abiwxevpi"
               options={{ duration: 250, speed: 15 }}
             />
           </MainInfoText>
-          <BriefBioText initialPose='enter' pose='normal'>
+          <BriefBioText initialPose="enter" pose="normal">
             <div>web developer.</div>
             <div>opportunity pursuer.</div>
             <div>soccer fanatic.</div>
             <div>lover of bad puns.</div>
           </BriefBioText>
-          <ImportantInfo initialPose='enter' pose='normal'>
-            <a href="mailto:alexieyizhe@gmail.com" target="_blank" rel='noreferrer noopener'>
+          <ImportantInfo initialPose="enter" pose="normal">
+            <a
+              href="mailto:alexieyizhe@gmail.com"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
               <SVGDrawIcon
                 animate={this.state.iconAnimate}
                 ignoreHover={isMobile}
@@ -197,7 +201,11 @@ class HomePage extends React.Component {
                 <Icon name="file" size="3.5vh" color="#DE7947" />
               </SVGDrawIcon>
             </Link>
-            <a href="https://github.com/alexieyizhe" target="_blank" rel='noreferrer noopener'>
+            <a
+              href="https://github.com/alexieyizhe"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
               <SVGDrawIcon
                 animate={this.state.iconAnimate}
                 ignoreHover={isMobile}
@@ -205,7 +213,11 @@ class HomePage extends React.Component {
                 <Icon name="github" size="3.5vh" color="#5534AC" />
               </SVGDrawIcon>
             </a>
-            <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank" rel='noreferrer noopener'>
+            <a
+              href="https://www.linkedin.com/in/alexieyizhe/"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
               <SVGDrawIcon
                 animate={this.state.iconAnimate}
                 ignoreHover={isMobile}
@@ -214,7 +226,7 @@ class HomePage extends React.Component {
               </SVGDrawIcon>
             </a>
           </ImportantInfo>
-          <MainPagePic initialPose='enter' pose='normal'>
+          <MainPagePic initialPose="enter" pose="normal">
             <Img sizes={this.props.data.mainImage.sizes} />
           </MainPagePic>
         </TemplateWrapper>
