@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1533425790706" clover="3.2.0">
-  <project timestamp="1533425790706" name="All files">
+<coverage generated="1533481486394" clover="3.2.0">
+  <project timestamp="1533481486394" name="All files">
     <metrics statements="117" coveredstatements="100" conditionals="68" coveredconditionals="55" methods="60" coveredmethods="49" elements="245" coveredelements="204" complexity="0" loc="117" ncloc="117" packages="2" files="12" classes="12">
       <package name="components">
         <metrics statements="107" coveredstatements="90" conditionals="68" coveredconditionals="55" methods="58" coveredmethods="47"/>
@@ -80,26 +80,26 @@
           <line num="29" count="3" type="stmt"/>
           <line num="30" count="3" type="stmt"/>
           <line num="39" count="3" type="stmt"/>
-          <line num="43" count="50" type="stmt"/>
-          <line num="44" count="50" type="stmt"/>
-          <line num="51" count="50" type="cond" truecount="2" falsecount="0"/>
+          <line num="43" count="52" type="stmt"/>
+          <line num="44" count="52" type="stmt"/>
+          <line num="51" count="52" type="cond" truecount="2" falsecount="0"/>
           <line num="52" count="2" type="stmt"/>
           <line num="53" count="2" type="stmt"/>
-          <line num="55" count="48" type="stmt"/>
-          <line num="60" count="50" type="stmt"/>
-          <line num="61" count="50" type="stmt"/>
-          <line num="62" count="700" type="cond" truecount="2" falsecount="0"/>
-          <line num="63" count="465" type="stmt"/>
-          <line num="64" count="465" type="stmt"/>
-          <line num="65" count="235" type="cond" truecount="2" falsecount="0"/>
+          <line num="55" count="50" type="stmt"/>
+          <line num="60" count="52" type="stmt"/>
+          <line num="61" count="52" type="stmt"/>
+          <line num="62" count="728" type="cond" truecount="2" falsecount="0"/>
+          <line num="63" count="514" type="stmt"/>
+          <line num="64" count="514" type="stmt"/>
+          <line num="65" count="214" type="cond" truecount="2" falsecount="0"/>
           <line num="66" count="6" type="stmt"/>
           <line num="67" count="6" type="stmt"/>
-          <line num="72" count="229" type="stmt"/>
-          <line num="75" count="229" type="cond" truecount="2" falsecount="0"/>
-          <line num="78" count="229" type="stmt"/>
-          <line num="80" count="50" type="stmt"/>
+          <line num="72" count="208" type="stmt"/>
+          <line num="75" count="208" type="cond" truecount="2" falsecount="0"/>
+          <line num="78" count="208" type="stmt"/>
+          <line num="80" count="52" type="stmt"/>
           <line num="84" count="1" type="stmt"/>
-          <line num="88" count="55" type="stmt"/>
+          <line num="88" count="57" type="stmt"/>
           <line num="91" count="0" type="stmt"/>
           <line num="92" count="0" type="stmt"/>
         </file>
