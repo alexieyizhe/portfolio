@@ -43,7 +43,7 @@ describe('Floating Text', () => {
           </span>
         </Prompt>
       </FloatText>
-    ).children();
+    );
   });
 
   describe('default state', () => {
@@ -53,6 +53,25 @@ describe('Floating Text', () => {
   });
 
   it('should render the floating text', () => {
+    expect(text).toMatchSnapshot();
+  });
+
+  it('should render with default values', () => {
+    text = render(
+      <FloatText>
+        <Prompt show={true}>
+          There's more!
+          <span style={{ position: 'relative', top: '1.2em', right: '0.7em' }}>
+            <Icon
+              name="cornerSlantedRightUp"
+              size="2.5em"
+              color="#AAAAAA"
+              fillColor="#AAAAAA"
+            />
+          </span>
+        </Prompt>
+      </FloatText>
+    );
     expect(text).toMatchSnapshot();
   });
 });

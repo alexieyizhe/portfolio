@@ -8,4 +8,13 @@ describe('WorkShowcase component', () => {
 
     expect(experience).toMatchSnapshot();
   });
+
+  it('should show description on click', () => {
+    const experience = mount(<WorkShowcase work={experienceList[0]} />);
+
+    expect(experience).toHaveStyleRule('width', '75%');
+    experience.find('div').at(0).simulate('click');
+    expect(experience).toHaveStyleRule('width', '90%');
+    expect(experience).toMatchSnapshot();
+  });
 });

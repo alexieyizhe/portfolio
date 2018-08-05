@@ -3,7 +3,7 @@ import PageHeader from '../src/components/PageHeader';
 
 describe('Page Header', () => {
   jest.mock('react-device-detect', () => ({
-    isIOS: true
+    isIOS: false
   }));
 
   it('should render the header', () => {

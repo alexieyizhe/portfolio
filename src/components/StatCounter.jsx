@@ -7,8 +7,8 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { mediaSize } from '../data/configOptions';
 import CountUp from 'react-countup';
+import { mediaSize } from '../data/configOptions';
 
 const CounterContainer = styled.span`
   display: inline-grid;

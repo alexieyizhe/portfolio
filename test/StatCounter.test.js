@@ -6,8 +6,6 @@ describe('StatCounter component', () => {
     const counter = mount(
       <StatCounter
         countStart={0}
-        countEnd={1000}
-        countDuration={5}
         useEasing={true}
       >
         "Tests Created"
