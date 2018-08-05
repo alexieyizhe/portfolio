@@ -332,11 +332,12 @@ class AboutPage extends React.Component {
               })}
               <a
                 data-tip="Music"
-                data-for={'interestTipMusic'}
+                data-for="interestTipMusic"
                 href="https://open.spotify.com/user/alexieyizhe"
                 target="_blank"
+                rel="noreferrer noopener"
               >
-                <ReactTooltip id={'interestTipMusic'} effect="solid" />
+                <ReactTooltip id="interestTipMusic" effect="solid" />
                 <Icon name="headphones" size="1em" color="#000000" />
               </a>
             </AboutInterests>
@@ -347,7 +348,11 @@ class AboutPage extends React.Component {
               Chinese, but my hometown is the city-state of Singapore, Singapore
               (trippy, I know). These days, I'm proudly Canadian and working as
               a back-end software engineer at{' '}
-              <a href="https://flipp.com/home" target="_blank">
+              <a
+                href="https://flipp.com/home"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 Flipp Corp
               </a>
               . <br />

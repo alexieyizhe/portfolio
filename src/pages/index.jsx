@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import posed from 'react-pose';
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
+import Particles from 'react-particles-js';
 import { isMobile, isIOS } from 'react-device-detect';
 import {
   mediaSize,
@@ -18,7 +19,6 @@ import {
 } from '../data/configOptions';
 import TemplateWrapper from '../components/TemplateWrapper';
 import SVGDrawIcon from '../components/SVGDrawIcon';
-import Particles from 'react-particles-js';
 import ScrambleText from '../components/ScrambleText';
 import Icon from '../components/Icon';
 
@@ -85,8 +85,8 @@ const ImportantInfo = styled(posed.div(fadeEnterConfig))`
   & a {
     color: inherit;
     margin-bottom: 2vh;
-    margin-left: 1.5vh;
-    margin-right: 1.5vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
   }
 
   & a:first-child {
@@ -164,29 +164,33 @@ class HomePage extends React.Component {
             pose={'normal'}
           />
           {/* NOTE: script font in logo is BarleyScript */}
-          <Greeting initialPose={'enter'} pose={'normal'}>
-            {this.state.greeting + " I'm"}
+          <Greeting initialPose="enter" pose="normal">
+            {`${this.state.greeting} I'm`}
           </Greeting>
-          <MainInfoText initialPose={'enter'} pose={'normal'}>
+          <MainInfoText initialPose="enter" pose="normal">
             <ScrambleText
               text="Alex Xie."
               scramble="!<>-_\\/[]{}—=+*^?#_abiwxevpi"
               options={{ duration: 250, speed: 15 }}
             />
           </MainInfoText>
-          <BriefBioText initialPose={'enter'} pose={'normal'}>
+          <BriefBioText initialPose="enter" pose="normal">
             <div>web developer.</div>
             <div>opportunity pursuer.</div>
             <div>soccer fanatic.</div>
             <div>lover of bad puns.</div>
           </BriefBioText>
-          <ImportantInfo initialPose={'enter'} pose={'normal'}>
-            <a href="mailto:alexieyizhe@gmail.com" target="_blank">
+          <ImportantInfo initialPose="enter" pose="normal">
+            <a
+              href="mailto:alexieyizhe@gmail.com"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
               <SVGDrawIcon
                 animate={this.state.iconAnimate}
                 ignoreHover={isMobile}
               >
-                <Icon name="paperPlane" size="3vmax" color="#80D07F" />
+                <Icon name="paperPlane" size="3.5vh" color="#80D07F" />
               </SVGDrawIcon>
             </a>
             <Link to="/resume">
@@ -194,27 +198,35 @@ class HomePage extends React.Component {
                 animate={this.state.iconAnimate}
                 ignoreHover={isMobile}
               >
-                <Icon name="file" size="3vmax" color="#DE7947" />
+                <Icon name="file" size="3.5vh" color="#DE7947" />
               </SVGDrawIcon>
             </Link>
-            <a href="https://github.com/alexieyizhe" target="_blank">
+            <a
+              href="https://github.com/alexieyizhe"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
               <SVGDrawIcon
                 animate={this.state.iconAnimate}
                 ignoreHover={isMobile}
               >
-                <Icon name="github" size="3vmax" color="#5534AC" />
+                <Icon name="github" size="3.5vh" color="#5534AC" />
               </SVGDrawIcon>
             </a>
-            <a href="https://www.linkedin.com/in/alexieyizhe/" target="_blank">
+            <a
+              href="https://www.linkedin.com/in/alexieyizhe/"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
               <SVGDrawIcon
                 animate={this.state.iconAnimate}
                 ignoreHover={isMobile}
               >
-                <Icon name="linkedin" size="3vmax" color="#2381D9" />
+                <Icon name="linkedin" size="3.5vh" color="#2381D9" />
               </SVGDrawIcon>
             </a>
           </ImportantInfo>
-          <MainPagePic initialPose={'enter'} pose={'normal'}>
+          <MainPagePic initialPose="enter" pose="normal">
             <Img sizes={this.props.data.mainImage.sizes} />
           </MainPagePic>
         </TemplateWrapper>
