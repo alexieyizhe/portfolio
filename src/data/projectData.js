@@ -13,7 +13,7 @@ export const projectsList = [
       {name: 'CSS Grid', icon: 'devicons devicons-css3', color: '#4173D5' },
     ],
     actionLinks: [
-      {name: "Web Demo", icon: "monitor", url: "https://alexieyizhe.me"},
+      {name: "View on Web", icon: "monitor", url: "https://alexieyizhe.me"},
       {name: "View on Github", icon: "github", url: "https://github.com/alexieyizhe/alexieyizhe.github.io"},
     ]
   },
@@ -67,8 +67,21 @@ export const projectsList = [
       {name: 'Heroku', icon: 'devicons devicons-heroku', color: '#9943A7' },
     ],
     actionLinks: [
-      {name: "FB Messenger Demo", icon: "messageSquare", url: "https://m.me/553923414986147"},
+      {name: "View on Facebook Messenger", icon: "messageSquare", url: "https://m.me/553923414986147"},
       {name: "View on Github", icon: "github", url: "https://github.com/alexieyizhe/wat-bus"},
     ]
   },
+  {
+    name: 'Kanye Quest',
+    desc: 'Kanye West goes on a Kanye Quest to be the Kanye Best and clean up this Kanye Mess.',
+    color: '#E4BB0D',
+    imgSource: '/img/projects/kanyequest.png',
+    techStack: [
+      {name: 'Java', icon: 'devicons devicons-java', color: '#E09C03' },
+      {name: 'Graphics2d Library', icon: 'devicons devicons-codepen', color: '#323232' },
+    ],
+    actionLinks: [
+      {name: "View on Github", icon: "github", url: "https://github.com/alexieyizhe/HS_PROJECTS/tree/master/kanye-quest"},
+    ]
+  }
 ]

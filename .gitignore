@@ -9,8 +9,7 @@ yarn-error.log
 .DS_Store
 
 # Design mockups of new website, old ideas
-/unneeded
+/mocks
 
 # Prevent iCloud Drive from syncing folder
 .nosync
-

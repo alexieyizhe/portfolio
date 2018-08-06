@@ -14,7 +14,7 @@ before_install:
 
 script:
     - npm run test
-    - npm run prettier
+    - npm run prettier:check
 
 after_success:
   - chmod +x ./scripts/publish_on_netlify.sh

@@ -39,7 +39,7 @@ class ProjectsPage extends React.Component {
           style={this.props.transition && this.props.transition.style}
         >
           {projectsList.map((project, i) => (
-            <ProjectShowcase key={i} project={project} />
+            <ProjectShowcase key={i} id={i} project={project} />
           ))}
         </ProjectGrid>
       </TemplateWrapper>

@@ -201,10 +201,13 @@ class ProjectShowcase extends React.Component {
                   focused={this.state.focused}
                   color={tech.color}
                   data-tip={tech.name}
-                  data-for={`techStackTip${i}`}
+                  data-for={`techStackTip${this.props.id}${i}`}
                 >
                   <span className={tech.icon} style={{ fontSize: '1.5em' }} />
-                  <ReactTooltip id={`techStackTip${i}`} effect="solid" />
+                  <ReactTooltip
+                    id={`techStackTip${this.props.id}${i}`}
+                    effect="solid"
+                  />
                 </ProjectStackItem>
               );
             })}
@@ -215,7 +218,7 @@ class ProjectShowcase extends React.Component {
                 <ProjectLink
                   key={i}
                   data-tip={link.name}
-                  data-for={`actionLinkTip${i}`}
+                  data-for={`actionLinkTip${this.props.id}${i}`}
                 >
                   <a href={link.url} target="_blank">
                     <SVGDrawIcon
@@ -225,7 +228,10 @@ class ProjectShowcase extends React.Component {
                       <Icon name={link.icon} size="1.5em" color="#595959" />
                     </SVGDrawIcon>
                   </a>
-                  <ReactTooltip id={`actionLinkTip${i}`} effect="solid" />
+                  <ReactTooltip
+                    id={`actionLinkTip${this.props.id}${i}`}
+                    effect="solid"
+                  />
                 </ProjectLink>
               );
             })}
