@@ -8,22 +8,17 @@
 import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
 
+// prettier-ignore
 const floating = props =>
   keyframes`
     from {
-      transform: translate(0, ${css`
-        ${props.from || -2}px;
-      `});
+      transform: translate(0, ${css`${props.from || -2}px`});
     }
     40% {
-      transform:translate(0, ${css`
-        ${props.to || 2}px;
-      `});
+      transform:translate(0, ${css`${props.to || 2}px`});
     }
     to {
-      transform: translate(0, ${css`
-        ${props.from || -2}px;
-      `});
+      transform: translate(0, ${css`${props.from || -2}px`});
     }
   `;
 

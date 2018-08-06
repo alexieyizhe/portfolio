@@ -8,8 +8,8 @@ exports[`WorkShowcase component should render the work showcase 1`] = `
 }
 
 .c6 {
-  -webkit-animation-name: cBziYB;
-  animation-name: cBziYB;
+  -webkit-animation-name: dTtlGn;
+  animation-name: dTtlGn;
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
   -webkit-animation-iteration-count: infinite;
@@ -278,8 +278,8 @@ exports[`WorkShowcase component should show description on click 1`] = `
 }
 
 .c6 {
-  -webkit-animation-name: cBziYB;
-  animation-name: cBziYB;
+  -webkit-animation-name: dTtlGn;
+  animation-name: dTtlGn;
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
   -webkit-animation-iteration-count: infinite;

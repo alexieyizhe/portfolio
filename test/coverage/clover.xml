@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <coverage generated="1533424066421" clover="3.2.0">
   <project timestamp="1533424066421" name="All files">
+=======
+<coverage generated="1533521564358" clover="3.2.0">
+  <project timestamp="1533521564358" name="All files">
+>>>>>>> 33de3360... Fix floating text not floating D:
     <metrics statements="117" coveredstatements="100" conditionals="68" coveredconditionals="55" methods="60" coveredmethods="49" elements="245" coveredelements="204" complexity="0" loc="117" ncloc="117" packages="2" files="12" classes="12">
       <package name="components">
         <metrics statements="107" coveredstatements="90" conditionals="68" coveredconditionals="55" methods="58" coveredmethods="47"/>
         <file name="FloatText.jsx" path="/Users/alexxie/Documents/Projects/alexieyizhe.me/src/components/FloatText.jsx">
           <metrics statements="6" coveredstatements="6" conditionals="8" coveredconditionals="8" methods="3" coveredmethods="3"/>
-          <line num="11" count="2" type="stmt"/>
-          <line num="12" count="8" type="stmt"/>
-          <line num="30" count="2" type="stmt"/>
-          <line num="32" count="8" type="cond" truecount="2" falsecount="0"/>
-          <line num="37" count="2" type="stmt"/>
-          <line num="38" count="8" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="13" count="8" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+          <line num="27" count="8" type="cond" truecount="2" falsecount="0"/>
+          <line num="32" count="2" type="stmt"/>
+          <line num="33" count="8" type="stmt"/>
         </file>
         <file name="GlitchText.jsx" path="/Users/alexxie/Documents/Projects/alexieyizhe.me/src/components/GlitchText.jsx">
           <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
@@ -80,6 +85,7 @@
           <line num="29" count="3" type="stmt"/>
           <line num="30" count="3" type="stmt"/>
           <line num="39" count="3" type="stmt"/>
+<<<<<<< HEAD
           <line num="43" count="43" type="stmt"/>
           <line num="44" count="43" type="stmt"/>
           <line num="51" count="43" type="cond" truecount="2" falsecount="0"/>
@@ -100,6 +106,28 @@
           <line num="80" count="43" type="stmt"/>
           <line num="84" count="1" type="stmt"/>
           <line num="88" count="48" type="stmt"/>
+=======
+          <line num="43" count="53" type="stmt"/>
+          <line num="44" count="53" type="stmt"/>
+          <line num="51" count="53" type="cond" truecount="2" falsecount="0"/>
+          <line num="52" count="2" type="stmt"/>
+          <line num="53" count="2" type="stmt"/>
+          <line num="55" count="51" type="stmt"/>
+          <line num="60" count="53" type="stmt"/>
+          <line num="61" count="53" type="stmt"/>
+          <line num="62" count="742" type="cond" truecount="2" falsecount="0"/>
+          <line num="63" count="479" type="stmt"/>
+          <line num="64" count="479" type="stmt"/>
+          <line num="65" count="263" type="cond" truecount="2" falsecount="0"/>
+          <line num="66" count="6" type="stmt"/>
+          <line num="67" count="6" type="stmt"/>
+          <line num="72" count="257" type="stmt"/>
+          <line num="75" count="257" type="cond" truecount="2" falsecount="0"/>
+          <line num="78" count="257" type="stmt"/>
+          <line num="80" count="53" type="stmt"/>
+          <line num="84" count="1" type="stmt"/>
+          <line num="88" count="58" type="stmt"/>
+>>>>>>> 33de3360... Fix floating text not floating D:
           <line num="91" count="0" type="stmt"/>
           <line num="92" count="0" type="stmt"/>
         </file>

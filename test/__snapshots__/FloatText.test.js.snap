@@ -8,8 +8,8 @@ exports[`Floating Text should render the floating text 1`] = `
 }
 
 .c0 {
-  -webkit-animation-name: jDtFea;
-  animation-name: jDtFea;
+  -webkit-animation-name: iiAeVx;
+  animation-name: iiAeVx;
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
   -webkit-animation-iteration-count: infinite;
@@ -77,8 +77,8 @@ exports[`Floating Text should render with default values 1`] = `
 }
 
 .c0 {
-  -webkit-animation-name: eKxvQk;
-  animation-name: eKxvQk;
+  -webkit-animation-name: htUwKc;
+  animation-name: htUwKc;
   -webkit-animation-duration: 3s;
   animation-duration: 3s;
   -webkit-animation-iteration-count: infinite;
