@@ -53,4 +53,16 @@ describe('ScrambleText component', () => {
     text.unmount();
     expect(clearTimeout).toHaveBeenCalledTimes(3);
   });
+
+  it('should boop on click', () => {
+    const text = mount(
+      <ScrambleText
+        text={fakeText}
+        scramble="!<>-_\\/[]{}—=+*^?#_abiwxevpi"
+        options={{ duration: 100, speed: 25 }}
+      />
+    );
+    text.simulate('click');
+    jest.advanceTimersByTime(1000);
+  });
 });
