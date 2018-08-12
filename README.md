@@ -23,7 +23,8 @@ Deploys from [Netlify](https://www.netlify.com/).
  - `npm run test` to run tests and generate code coverage results.
  - `npm run test:update` to run tests and update snapshots if necessary.
  - `npm run lint` to run ESLint and check for improper code.
- - `npm run prettier` to see if Prettier style is being enforced.
+ - `npm run prettier` to format files in accordance with Prettier.
+ - `npm run prettier:check` to see if Prettier style is being enforced.
 
 ### Building for production
  - Run `git clone` or download this repository.
