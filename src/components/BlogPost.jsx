@@ -146,11 +146,14 @@ const PostDesc = styled.span`
 
 const PostDate = styled.div`
   grid-area: date;
-  align-self: center;
+  align-self: end;
   font-size: 2vmin;
+  margin-bottom: 5px;
 
   ${mediaSize.tablet`
     font-size: 3vmin;
+    align-self: center;
+    margin-bottom: 0;
   `};
 `;
 
@@ -188,7 +191,7 @@ class BlogPost extends React.Component {
                 {this.props.title}
               </Highlight>
             </PostTitle>
-            <PostDesc>{this.props.subtitle} ...</PostDesc>
+            <PostDesc>{this.props.subtitle}</PostDesc>
             <PostDate>
               {new Date(this.props.createdAt)
                 .toDateString()

@@ -6,10 +6,8 @@ yarn-error.log
 # Build directory
 /public
 
+# MacOS specific extraneous files
 .DS_Store
 
 # Design mockups of new website, old ideas
 /mocks
-
-# Prevent iCloud Drive from syncing folder
-.nosync
