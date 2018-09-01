@@ -1,19 +1,19 @@
 export const experienceList = [
   {
-    name: 'Flipp Corp.',
-    role: 'Software Engineer - Item Data Platform',
-    color: '#46CEF9',
-    bgImgSource: '/img/experience/flipp_bg.jpg',
-    logoImgSource: '../img/experience/flipp_logo.png',
-    desc: 'I migrated key systems from a monolith structure to a Ruby & Scala microservice architecture, as well as assisted in improving existing services by adding bug fixes, error detection, and schema validation. I\'m also owning the development of a brand new microservice used in production to monitor, compare, and analyze the effectiveness of both legacy and microservice architectures.'
-  },
-  {
     name: 'Equithon',
     role: 'Junior Co-Chair & Development Lead',
     color: '#4D55C3',
     bgImgSource: '/img/experience/equithon_bg.jpg',
     logoImgSource: '/img/experience/equithon_logo.png',
     desc: 'I\'m responsible for executive decisions as a co-chair, and I\'m working closely with all team leads to improve upon last year\'s Equithon. As well, I\'m directing the team of developers that are handling all technical aspects of the event in 2019, along with contributing significant code working as part of said team.'
+  },
+  {
+    name: 'Flipp Corp.',
+    role: 'Software Engineer - Item Data Platform',
+    color: '#46CEF9',
+    bgImgSource: '/img/experience/flipp_bg.jpg',
+    logoImgSource: '../img/experience/flipp_logo.png',
+    desc: 'I migrated key systems from a monolith structure to a Ruby & Scala microservice architecture, as well as assisted in improving existing services by adding bug fixes, error detection, and schema validation. I also owned the development of a brand new microservice used in production to monitor, compare, and analyze the effectiveness of both legacy and microservice architectures.'
   },
   {
     name: 'TEDxUW',

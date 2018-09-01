@@ -88,6 +88,7 @@ const AboutSkills = styled.div`
   font-size: 1.5vw;
   font-family: 'Cabin', arial, sans-serif;
   position: relative;
+  align-self: end;
 
   & > span {
     margin-right: 1em;
@@ -153,6 +154,7 @@ const AboutInterests = styled.div`
   grid-area: interests;
   font-size: 1.5vw;
   font-family: 'Cabin', arial, sans-serif;
+  align-self: end;
 
   & > div {
     font-family: 'PT Serif', 'Times', serif;
@@ -346,16 +348,8 @@ class AboutPage extends React.Component {
               I'm Alex Yizhe Xie, and I'm currently two-fifths of my way to a
               Bachelor of Computer Science at the University of Waterloo. I'm
               Chinese, but my hometown is the city-state of Singapore, Singapore
-              (trippy, I know). These days, I'm proudly Canadian and working as
-              a back-end software engineer at{' '}
-              <a
-                href="https://flipp.com/home"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Flipp Corp
-              </a>
-              . <br />
+              (trippy, I know). These days, I'm proudly Canadian; I'm excited for
+              the future of technology and where I'll go next.<br />
               <RevealButton
                 onClick={() => this.revealDetailedIntro()}
                 revealed={this.state.revealed}
@@ -379,8 +373,8 @@ export default AboutPage;
 
 export const pageQuery = graphql`
   query AboutPageQuery {
-    profileImage: imageSharp(id: { regex: "/about_me.png/" }) {
-      sizes(maxWidth: 300) {
+    profileImage: imageSharp(id: { regex: "/me.png/" }) {
+      sizes(maxWidth: 400) {
         ...GatsbyImageSharpSizes_tracedSVG
       }
     }

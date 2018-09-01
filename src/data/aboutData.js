@@ -34,16 +34,6 @@ export const DESC_PARAGRAPHS = [
     on <Link to="/blog">my blog</Link>!
   </span>,
   <span>
-    As a member of the Item Data Platform team at Flipp, I'm working with some other awesome peeps on the system
-    responsible for indexing retailer products to power the results on Flipp's flyers and search results.
-    Even though almost all of the work I'm doing at Flipp is on the back-end, I'm extremely interested
-    in the workings of the entire web stack. Stemming from the fact that I'm a very visual learner, I
-    have a deep fascination with user interfaces and UX design. I absolutely love trawling the web for interesting
-    articles and demos/case studies of said topic - stuff like human-computer interactions and subtle effects on
-    user experience are my bread and butter. It's a major contributing factor to why I'm learning JavaScript,
-    React, responsive design, and how to use tools like Figma and Adobe XD.
-  </span>,
-  <span>
     My friends always tell me that I'm addicted to coding, but I like to think of it less as an addiction to coding
     and more as a passion for solving problems. I find myself engrossed in creating solutions to tough problems
     and pushing myself to always improve my skills and abilities; before you know it, I've been programming for
@@ -58,6 +48,16 @@ export const DESC_PARAGRAPHS = [
     of <a href="https://equithon.org/" target="_blank">Waterloo's largest social innovation hackathon</a>. These have been
     incredibly rewarding learning experiences that I cherish greatly, and I'm hoping to continue contributing and getting
     involved with various communities now and into the future.
+  </span>,
+  <span>
+    At my previous co-op at Flipp, I worked with some other awesome peeps on the system
+    responsible for indexing retailer products to power the results on Flipp's flyers and search results.
+    Even though almost everything I worked on at Flipp is on the back-end, I'm extremely interested
+    in the workings of the entire web stack. Stemming from the fact that I'm a very visual learner, I
+    have a deep fascination with user interfaces and UX design. I absolutely love trawling the web for interesting
+    articles and demos/case studies of said topic - stuff like human-computer interactions and subtle effects on
+    user experience are my bread and butter. It's a major contributing factor to why I'm learning JavaScript,
+    React, responsive design, and how to use tools like Figma and Adobe XD.
   </span>,
   <span>
     If you've made it this far, props (no React pun intended) to you 🥂 I'm always looking for new initiatives.
