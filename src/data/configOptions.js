@@ -90,7 +90,7 @@ export const resumeOptions = [
   },
 ];
 
-export const greetingOptions = ['Hi!', 'Hey!', 'Sup?', 'Howdy!', 'Heya!', 'Yo!', '你好!', '👋 !']
+export const greetingOptions = ['Hi!', 'Hey!', 'Sup?', 'Howdy!', 'Heya!', 'Yo!', '你好!', 'Bonjour!', '👋 !']
 
 export const particleConfig = {
   "particles": {

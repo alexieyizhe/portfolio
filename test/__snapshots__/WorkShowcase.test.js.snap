@@ -32,7 +32,7 @@ exports[`WorkShowcase component should render the work showcase 1`] = `
   padding: 0 5% 0 5%;
   grid-template-rows: auto;
   grid-template-areas: "title" "role" "desc" "indicator";
-  background: url(/img/experience/flipp_bg.jpg) center/cover;
+  background: url(/img/experience/equithon_bg.jpg) center/cover;
   -webkit-filter: grayscale(50%);
   filter: grayscale(50%);
   -webkit-transition: all 0.2s ease-in;
@@ -225,21 +225,21 @@ exports[`WorkShowcase component should render the work showcase 1`] = `
   <span
     class="c1"
   >
-    Flipp Corp.
+    Equithon
   </span>
   <div
     class="c2"
   >
-    Software Engineer - Item Data Platform
+    Junior Co-Chair & Development Lead
   </div>
   <img
     class="c3"
-    src="../img/experience/flipp_logo.png"
+    src="/img/experience/equithon_logo.png"
   />
   <div
     class="c4"
   >
-    I migrated key systems from a monolith structure to a Ruby & Scala microservice architecture, as well as assisted in improving existing services by adding bug fixes, error detection, and schema validation. I'm also owning the development of a brand new microservice used in production to monitor, compare, and analyze the effectiveness of both legacy and microservice architectures.
+    I'm responsible for executive decisions as a co-chair, and I'm working closely with all team leads to improve upon last year's Equithon. As well, I'm directing the team of developers that are handling all technical aspects of the event in 2019, along with contributing significant code working as part of said team.
   </div>
   <span
     class="c5"
@@ -302,7 +302,7 @@ exports[`WorkShowcase component should show description on click 1`] = `
   padding: 0 5% 0 5%;
   grid-template-rows: auto;
   grid-template-areas: "title" "role" "desc" "indicator";
-  background: url(/img/experience/flipp_bg.jpg) center/cover;
+  background: url(/img/experience/equithon_bg.jpg) center/cover;
   -webkit-filter: grayscale(50%);
   filter: grayscale(50%);
   -webkit-transition: all 0.2s ease-in;
@@ -311,7 +311,7 @@ exports[`WorkShowcase component should show description on click 1`] = `
   transition: width 0.75s ease,height 0.75s ease;
   -webkit-filter: none;
   filter: none;
-  background: url(/img/experience/flipp_bg.jpg) center/cover;
+  background: url(/img/experience/equithon_bg.jpg) center/cover;
 }
 
 .c0:before {
@@ -510,12 +510,12 @@ exports[`WorkShowcase component should show description on click 1`] = `
 <WorkShowcase
   work={
     Object {
-      "bgImgSource": "/img/experience/flipp_bg.jpg",
-      "color": "#46CEF9",
-      "desc": "I migrated key systems from a monolith structure to a Ruby & Scala microservice architecture, as well as assisted in improving existing services by adding bug fixes, error detection, and schema validation. I'm also owning the development of a brand new microservice used in production to monitor, compare, and analyze the effectiveness of both legacy and microservice architectures.",
-      "logoImgSource": "../img/experience/flipp_logo.png",
-      "name": "Flipp Corp.",
-      "role": "Software Engineer - Item Data Platform",
+      "bgImgSource": "/img/experience/equithon_bg.jpg",
+      "color": "#4D55C3",
+      "desc": "I'm responsible for executive decisions as a co-chair, and I'm working closely with all team leads to improve upon last year's Equithon. As well, I'm directing the team of developers that are handling all technical aspects of the event in 2019, along with contributing significant code working as part of said team.",
+      "logoImgSource": "/img/experience/equithon_logo.png",
+      "name": "Equithon",
+      "role": "Junior Co-Chair & Development Lead",
     }
   }
 >
@@ -537,7 +537,7 @@ exports[`WorkShowcase component should show description on click 1`] = `
     scrollThrottle={-1}
   >
     <styled.div
-      bg="/img/experience/flipp_bg.jpg"
+      bg="/img/experience/equithon_bg.jpg"
       expanded={true}
       focused={false}
       onClick={[Function]}
@@ -554,24 +554,24 @@ exports[`WorkShowcase component should show description on click 1`] = `
           <span
             className="c1"
           >
-            Flipp Corp.
+            Equithon
           </span>
         </styled.span>
         <styled.div>
           <div
             className="c2"
           >
-            Software Engineer - Item Data Platform
+            Junior Co-Chair & Development Lead
           </div>
         </styled.div>
         <styled.img
           expanded={true}
           focused={false}
-          src="../img/experience/flipp_logo.png"
+          src="/img/experience/equithon_logo.png"
         >
           <img
             className="c3"
-            src="../img/experience/flipp_logo.png"
+            src="/img/experience/equithon_logo.png"
           />
         </styled.img>
         <styled.div
@@ -580,7 +580,7 @@ exports[`WorkShowcase component should show description on click 1`] = `
           <div
             className="c4"
           >
-            I migrated key systems from a monolith structure to a Ruby & Scala microservice architecture, as well as assisted in improving existing services by adding bug fixes, error detection, and schema validation. I'm also owning the development of a brand new microservice used in production to monitor, compare, and analyze the effectiveness of both legacy and microservice architectures.
+            I'm responsible for executive decisions as a co-chair, and I'm working closely with all team leads to improve upon last year's Equithon. As well, I'm directing the team of developers that are handling all technical aspects of the event in 2019, along with contributing significant code working as part of said team.
           </div>
         </styled.div>
         <styled.span>
