@@ -68,25 +68,32 @@ export const contactOptions = [
 
 export const resumeOptions = [
   {
-    name: 'Nov 2017',
-    previewSource: '/img/resume/alex_xie_resume_1A.png',
-    downloadName: 'Alex Xie - Resume (Nov 2017)',
-    downloadSource: '/docs/alex_xie_resume_1A.pdf',
+    name: 'Oct 2017',
+    previewSource: '/img/resume/2017-10-resume.png',
+    downloadName: 'Alex Xie - Resume (Oct 2017)',
+    downloadSource: '/docs/2017-10-resume.pdf',
     color: '#F4B276'
   },
   {
-    name: 'Mar 2018',
-    previewSource: '/img/resume/alex_xie_resume_1B.png',
-    downloadName: 'Alex Xie - Resume (Mar 2018)',
-    downloadSource: '/docs/alex_xie_resume_1B.pdf',
+    name: 'Feb 2018',
+    previewSource: '/img/resume/2018-02-resume.png',
+    downloadName: 'Alex Xie - Resume (Feb 2018)',
+    downloadSource: '/docs/2018-02-resume.pdf',
     color: '#8EE8A7'
   },
   {
-    name: 'Current',
-    previewSource: '/img/resume/alex_xie_resume_2A.png',
+    name: 'July 2018',
+    previewSource: '/img/resume/2018-07-resume.png',
     downloadName: 'Alex Xie - Resume (Aug 2018)',
-    downloadSource: '/docs/alex_xie_resume_2A.pdf',
+    downloadSource: '/docs/2018-07-resume.pdf',
     color: '#EE9AB8'
+  },
+  {
+    name: 'Current',
+    previewSource: '/img/resume/2018-10-resume.png',
+    downloadName: 'Alex Xie - Resume',
+    downloadSource: '/docs/2018-10-resume.pdf',
+    color: '#88dbe3'
   },
 ];
 
