@@ -374,7 +374,7 @@ export default AboutPage;
 
 export const pageQuery = graphql`
   query AboutPageQuery {
-    profileImage: imageSharp(id: { regex: "/me.png/" }) {
+    profileImage: imageSharp(id: { regex: "/about_me.png/" }) {
       sizes(maxWidth: 400) {
         ...GatsbyImageSharpSizes_tracedSVG
       }

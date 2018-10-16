@@ -7,7 +7,7 @@ export const STATS_LIST = [
   {
     name: 'Trips Around The Sun',
     start: 0,
-    end: 18,
+    end: 19,
   },
   {
     name: 'Hours Spent Coding',
