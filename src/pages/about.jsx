@@ -346,11 +346,10 @@ class AboutPage extends React.Component {
 
             <AboutIntro>
               I'm Alex Yizhe Xie, and I'm currently two-fifths of my way to a
-              Bachelor of Computer Science at the University of Waterloo. I'm
-              Chinese, but my hometown is the city-state of Singapore, Singapore
-              (trippy, I know). These days, I'm proudly Canadian and extremely
-              excited for both the future of technology and the next journey I'm
-              going to embark on! <br />
+              Bachelor of Computer Science at the University of Waterloo. My
+              hometown is the city-state of Singapore, Singapore, but these days,
+              I'm proudly Canadian and extremely excited for both the future of
+              technology and the next journey I'm going to embark on! <br />
               <RevealButton
                 onClick={() => this.revealDetailedIntro()}
                 revealed={this.state.revealed}

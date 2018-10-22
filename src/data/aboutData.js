@@ -67,9 +67,9 @@ export const DESC_PARAGRAPHS = [
 
 
 export const INTERESTS_LIST = [
+  { name: "Soccer", icon: "aperture" },
   { name: "Travel", icon: "briefcase" },
-  { name: "Fitness", icon: "activity" },
-  { name: "Games", icon: "crosshair" },
+  { name: "Bouldering", icon: "triangle" },
   { name: "Coding", icon: "code" },
   { name: "Volunteering", icon: "heart" }
 ]
