@@ -347,7 +347,7 @@ class AboutPage extends React.Component {
             <AboutIntro>
               I'm Alex Yizhe Xie, and I'm currently two-fifths of my way to a
               Bachelor of Computer Science at the University of Waterloo. My
-              hometown is the city-state of Singapore, Singapore, but these days,
+              hometown is Singapore, Singapore (trippy, I know), but these days,
               I'm proudly Canadian and extremely excited for both the future of
               technology and the next journey I'm going to embark on! <br />
               <RevealButton
