@@ -68,6 +68,13 @@ export const contactOptions = [
 
 export const resumeOptions = [
   {
+    name: 'Long Ago',
+    previewSource: '/img/resume/2013-resume.jpg',
+    downloadName: 'Alex Xie - Resume (I was 13 when I made this ok)',
+    downloadSource: '/docs/2013-resume.pdf',
+    color: '#cdc66b'
+  },
+  {
     name: 'Oct 2017',
     previewSource: '/img/resume/2017-10-resume.png',
     downloadName: 'Alex Xie - Resume (Oct 2017)',
