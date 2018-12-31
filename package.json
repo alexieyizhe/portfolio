@@ -22,6 +22,7 @@
     "prettier:check": "prettier --single-quote --list-different 'src/**/*.jsx' 'test/*.test.js' 'test/*.test.jsx'"
   },
   "dependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-plugin-styled-components": "^1.5.1",
     "enzyme-to-json": "^3.3.4",
     "gatsby": "^1.9.277",
@@ -73,7 +74,7 @@
     "gatsby-plugin-remove-trailing-slashes": "^1.0.9",
     "gh-pages": "^1.2.0",
     "jest": "^23.4.2",
-    "jest-cli": "^23.4.2",
+    "jest-cli": "^23.6.0",
     "jest-styled-components": "^5.0.1",
     "prettier": "^1.14.0",
     "react-test-renderer": "^15.6.2"
