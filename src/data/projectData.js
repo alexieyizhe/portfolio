@@ -51,7 +51,7 @@ export const projectsList = [
       {name: 'Heroku', icon:  'devicons devicons-heroku', color: '#9943A7' },
     ],
     actionLinks: [
-      {name: "View on Web", icon: "monitor", url: "https://easy-recipeasy.herokuapp.com"},
+      {name: "View on Web", icon: "monitor", url: "http://easyrecipeasy.ml/"},
       {name: "View on Github", icon: "github", url: "https://github.com/alexieyizhe/easy-recipeasy"},
     ]
   },
