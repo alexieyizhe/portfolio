@@ -62,7 +62,7 @@ const AboutPic = styled.div`
     left: 4vw;
     width: 18vw;
     height: 18vw;
-    background-color: #A6CAF5;
+    background-color: #a6caf5;
     opacity: 0.65;
 
     ${mediaSize.tablet`
@@ -70,16 +70,13 @@ const AboutPic = styled.div`
       left: 5vw;
       width: 28vw;
       height: 28vw;
-    `}
-
-    ${mediaSize.phone`
+    `} ${mediaSize.phone`
       top: 13vw;
       left: 8vw;
       width: 55vw;
       height: 55vw;
     `};
   }
-
 
   ${mediaSize.tablet`
     width: 90%;
