@@ -8,7 +8,6 @@ import { mediaSize } from '../data/configOptions';
 import SVGDrawIcon from './SVGDrawIcon';
 import Icon from './Icon';
 
-
 // Styles
 const FooterContainer = styled.span`
   margin: 10% 5vw;

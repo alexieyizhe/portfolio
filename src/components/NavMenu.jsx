@@ -6,10 +6,7 @@ import { isMobile } from 'react-device-detect';
 import onClickOutside from 'react-onclickoutside';
 
 import '../data/hamburgers/hamburgers.scss';
-import {
-  menuPageOptions,
-  mediaSize
-} from '../data/configOptions';
+import { menuPageOptions, mediaSize } from '../data/configOptions';
 
 import HighlightText from './HighlightText';
 import FloatText from './FloatText';
