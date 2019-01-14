@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { isIOS } from 'react-device-detect';
+
 import { mediaSize } from '../data/configOptions';
 
 const Header = styled.div`
