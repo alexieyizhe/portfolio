@@ -28,9 +28,9 @@ const Container = styled.div`
   font-family: 'PT Serif', 'Times', serif;
 
   ${mediaSize.tablet`
-    grid-template-columns: 60% 30%;
+    grid-template-columns: 50% 35%;
     grid-template-rows: auto;
-    grid-column-gap: 10%;
+    grid-column-gap: 15%;
     grid-template-areas: "pic stats"
                          "skills stats"
                          "interests stats"
@@ -51,13 +51,52 @@ const AboutPic = styled.div`
   width: 100%;
   justify-self: center;
   align-self: center;
+  position: relative;
+  overflow: visible;
+  padding-bottom: 2vw;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 4vw;
+    left: 4vw;
+    width: 18vw;
+    height: 18vw;
+    background-color: #A6CAF5;
+    opacity: 0.65;
+
+    ${mediaSize.tablet`
+      top: 7vw;
+      left: 5vw;
+      width: 28vw;
+      height: 28vw;
+    `}
+
+    ${mediaSize.phone`
+      top: 13vw;
+      left: 8vw;
+      width: 55vw;
+      height: 55vw;
+    `};
+  }
+
 
   ${mediaSize.tablet`
     width: 90%;
     padding-top: 0.5em;
     padding-bottom: 1em;
     justify-self: center;
+    left: -5vw;
   `};
+
+  ${mediaSize.phone`
+    left: -5vw;
+  `};
+`;
+
+const AboutImg = styled(Img)`
+  max-width: 100%;
+  max-height: 100%;
 `;
 
 const AboutStats = styled.div`
@@ -269,7 +308,7 @@ class AboutPage extends React.Component {
         <div style={this.props.transition && this.props.transition.style}>
           <Container>
             <AboutPic>
-              <Img sizes={this.props.data.profileImage.sizes} />
+              <AboutImg sizes={this.props.data.profileImage.sizes} />
             </AboutPic>
 
             <AboutStats>
