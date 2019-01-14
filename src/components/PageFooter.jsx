@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { animateScroll } from 'react-scroll';
-import SVGDrawIcon from './SVGDrawIcon';
-import Icon from './Icon';
-import { mediaSize } from '../data/configOptions';
 import Link from 'gatsby-link';
 
+import { mediaSize } from '../data/configOptions';
+
+import SVGDrawIcon from './SVGDrawIcon';
+import Icon from './Icon';
+
+// Styles
 const FooterContainer = styled.span`
   margin: 10% 5vw;
   width: 30%;

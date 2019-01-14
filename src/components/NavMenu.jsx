@@ -3,13 +3,10 @@ import styled from 'styled-components';
 import Link from 'gatsby-link';
 import posed from 'react-pose';
 import { isMobile } from 'react-device-detect';
-import '../data/hamburgers/hamburgers.scss';
-import {
-  menuPageOptions,
-  contactOptions,
-  mediaSize
-} from '../data/configOptions.js';
 import onClickOutside from 'react-onclickoutside';
+
+import '../data/hamburgers/hamburgers.scss';
+import { menuPageOptions, mediaSize } from '../data/configOptions';
 
 import HighlightText from './HighlightText';
 import FloatText from './FloatText';
