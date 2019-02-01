@@ -12,16 +12,16 @@ export const STATS_LIST = [
   {
     name: 'Hours Spent Coding',
     start: 0,
-    end: 2984,
+    end: 4102,
   },
   {
     name: 'Soccer Balls Kicked',
     start: 0,
-    end: 973,
+    end: 988,
   },
   {
     name: 'Unpronounceable Last Name',
-    start: 0,
+    start: 100,
     end: 1,
   }
 ];

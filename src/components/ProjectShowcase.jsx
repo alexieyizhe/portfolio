@@ -3,8 +3,9 @@ import styled, { css } from 'styled-components';
 import posed from 'react-pose';
 import VisibilitySensor from 'react-visibility-sensor';
 import { isMobile } from 'react-device-detect';
-import { mediaSize } from '../data/configOptions';
 import ReactTooltip from 'react-tooltip';
+
+import { mediaSize } from '../data/configOptions';
 import SVGDrawIcon from './SVGDrawIcon';
 import Icon from './Icon';
 import '../data/font-devicons/devicons.min.css';
@@ -31,7 +32,7 @@ const Container = styled(posed.div(ContainerConfig))`
   grid-template-areas: "pic" "title" "desc" "stack" "links";
   margin-bottom: 2em;
   box-shadow: 0px 7px 40px rgba(0, 0, 0, 0.05);
-
+  border-radius: 5px;
   & .__react_component_tooltip {
     display: inline;
   }
@@ -44,6 +45,7 @@ const Container = styled(posed.div(ContainerConfig))`
     right: 0;
     bottom: 0;
     left: 0;
+    border-radius: 5px;
 
     box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.3);
 
@@ -95,12 +97,6 @@ const ProjectPic = styled.img`
       : css`
           filter: grayscale(100%);
         `}
-
-  ${mediaSize.tablet`
-  `}
-
-  ${mediaSize.phone`
-  `}
 `;
 
 const ProjectTitle = styled.span`
