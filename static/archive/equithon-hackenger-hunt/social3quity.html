@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Hackenger Hunt Clue 5</title>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	
+</head>
+
+<body  onresize="addLineNum()"> <!--recalculates line numbers after resize of window-->
+    <script>
+
+            function countLines(target) {
+                var style = window.getComputedStyle(target, null);
+                var height = parseInt(style.getPropertyValue("height"));
+                var font_size = parseInt(style.getPropertyValue("font-size"));
+                var line_spacing = 5;
+                var line_height = (isNaN(parseInt(style.getPropertyValue("line-height"))) ? font_size : parseInt(style.getPropertyValue("line-height"))) + line_spacing;
+                var box_sizing = style.getPropertyValue("box-sizing");
+    
+                if(box_sizing=='border-box'){
+                    var padding_top = parseInt(style.getPropertyValue("padding-top"));
+                    var padding_bottom = parseInt(style.getPropertyValue("padding-bottom"));
+                    var border_top = parseInt(style.getPropertyValue("border-top-width"));
+                    var border_bottom = parseInt(style.getPropertyValue("border-bottom-width"));
+                    height = height - padding_top - padding_bottom - border_top - border_bottom;
+                } 
+    
+                var lines = Math.ceil(height / line_height);
+                console.log("height: " + height + "\nline height: " + line_height + "\nlines: " + lines);
+    
+                return lines;
+            }
+    
+            function addLineNum(){
+                var total_lines = countLines(document.getElementById("main"));
+                var line_ct_elem = document.getElementById("line_ct");
+                line_ct_elem.innerHTML = "";
+                for(i = 1; i < total_lines; i++){
+                    var new_line = (i + '<br>');
+                    line_ct_elem.innerHTML += new_line;
+                }
+                line_ct_elem.innerHTML += '<i class="fas fa-arrow-circle-up"></i><br>'; // last line of site always loads with return to top icon in place of line num
+            }
+        </script>
+    <style>
+    
+    body{
+        background-color: #262424;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    p, a, div {
+        font-family: Consolas, monaco, monospace;
+        color: white;
+        
+    }
+
+    .var_init {
+        color: #ffee34;
+        text-decoration-line: none;
+    }
+
+    a:hover, .var_init_link:hover, #return_top:hover {
+        color: grey;
+        cursor: pointer;
+    }
+
+
+    div#nav_bar {
+        position: fixed;
+        width: 100%;
+        max-height: 50px;
+        border: 2px solid white;
+        border-top-left-radius:10px;
+        border-top-right-radius:10px;
+        background-color: white;
+        padding-top: 0px;
+        margin-top: 0px;
+        -moz-box-sizing: border-box; 
+        -webkit-box-sizing: border-box; 
+        box-sizing: border-box;
+        -webkit-box-shadow: 0px 4px 2px 0px rgba(194,194,194,1);
+        -moz-box-shadow: 0px 4px 2px 0px rgba(194,194,194,1);
+        box-shadow: 0px 4px 2px 0px rgba(194,194,194,1);
+    }
+
+
+    /* first font awesome icon */
+    div#nav_bar svg:first-of-type { 
+        margin-left: 5px;
+    }
+    /* font awesome icons */
+    div#nav_bar svg { 
+        margin: 6px 0 4px 0;
+        opacity: 0.8;
+    }
+
+    div#nav_bar svg:hover { 
+        opacity: 1;
+    }
+
+    ul {
+        columns: 2; 
+        -webkit-columns: 2; 
+        -moz-columns: 2; 
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+    }
+
+
+    .left_col {
+        float: left;
+        width: 35%;
+    }
+
+    .right_col {
+        float: right;
+        margin-right:10%;
+        width: 55%;
+    }
+
+    div#line_ct{
+        width: 5%;
+        float: left;
+        background-color:#262424;
+        border-radius: 5px;
+        text-align: right;
+        padding-top: 45px;
+    }
+
+    div#main {
+        width: 93%;
+        float: right;
+        background-color: #2b2929;
+        margin: 0;
+        padding-top: 45px;
+        padding-left: 1em;
+    }
+
+    div#table{
+        width:100%;
+    }
+
+    #in {
+        width: 30%;
+        float: left;
+        display: inline;
+    }
+
+    #in2 {
+        width: 70%;
+        height: 20%;
+        float: right;
+        display: inline;
+
+    }
+    .ph {
+        color: #2b2929;
+    }
+
+    .comment {
+        color: #b1b4bc;
+        display: inline;
+    }
+
+    .comment + p {
+        margin: 0;
+    }
+
+
+    .testing {
+        color: white;
+    }
+
+    .var {
+        color: #74e83e;
+    }
+
+    .fn {
+        color: cyan;
+    }
+
+    #att {
+        color: #d514fc;
+    }
+
+    #return_top {
+        color: #ffad21;
+        cursor: pointer;
+    }
+
+
+    :-webkit-full-screen {
+        background-color: #262424;
+    }
+
+
+    /* Credit to Artem Gordinsky on CodePen for the blinking cursor CSS code.
+    source: https://codepen.io/ArtemGordinsky/pen/GnLBq */
+    .blinking_cursor {
+        font-weight: 100;
+        /*font-size: 20px;*/
+        color: #ffad21;
+        -webkit-animation: 1s blink step-end infinite;
+        -moz-animation: 1s blink step-end infinite;
+        -ms-animation: 1s blink step-end infinite;
+        -o-animation: 1s blink step-end infinite;
+        animation: 1s blink step-end infinite;
+    }
+
+    @keyframes "blink" {
+        from, to {
+            color: transparent;
+        }
+        50% {
+            color: #ffad21;
+        }
+    }
+
+    .varb {
+        color: #ff2020;
+    }
+
+
+    @-moz-keyframes blink {
+        from, to {
+            color: transparent;
+        }
+        50% {
+            color: #ffad21;
+        }
+    }
+
+    @-webkit-keyframes "blink" {
+        from, to {
+            color: transparent;
+        }
+        50% {
+            color: #ffad21;
+        }
+    }
+
+    @-ms-keyframes "blink" {
+        from, to {
+            color: transparent;
+        }
+        50% {
+            color: #ffad21;
+        }
+    }
+
+    @-o-keyframes "blink" {
+        from, to {
+            color: transparent;
+        }
+        50% {
+            color: #ffad21;
+        }
+    }
+    </style>
+	<div id="nav_bar">
+		<span id="left">
+			<i class="fas fa-times-circle" style="color:#ff6961"></i>
+			<i class="fas fa-minus-circle" style="color:#f4e842"></i>
+			<i class="fas fa-chevron-circle-up" style="color:#24cc24" onclick='toggleFullScreen()' ></i>
+		</span>
+		<span id="right">
+		</span>
+	</div> 
+
+	<div id="line_ct"></div>
+
+	<div id="main">
+            <span>Wow! Congratulations on getting this far. You should just stop while you're ahead.</span> <br>
+            <span>No, seriously. They told me I could keep the prizes if nobody solved the hunt. So stop. Please. </span> <br> <br>
+
+            <span>Fine. This clue is a real tree-cky one to search for, but the answer is binary: you're either right or <del>wrong</del> left. </span> <br> <br>
+            
+            <span><span class="var">a</span> = <span class="var_init">int</span>('the answer to life, the universe, and everything'); </span> <br>
+            <span><span class="var">b</span> = <span class="var_init">int</span>('number of zeroes in one of our sponsors')  </span> <br>
+            <span><span class="var">c</span> = <span class="var_init">int</span>('they always want to be first: three digit numbers are the most narcissistic of all the numbers')  </span> <br>
+            <span><span class="var">d</span> = <span class="var_init">int</span>('0x1F + MXLIX') </span> <br>
+            <span><span class="var">e</span> = <span class="var_init">int</span>('bacon from Katniss to the first African American First Lady'); </span> <br><br>
+            
+            <span><span class="var">t</span>.<span class="varb">insert</span>(<span class="var">a</span>);</span> <br>
+            <span><span class="var">t</span>.<span class="varb">insert</span>(<span class="var">e</span>);</span> <br>
+            <span><span class="var">t</span>.<span class="varb">insert</span>(<span class="var">c</span>);</span> <br>
+            <span><span class="var">t</span>.<span class="varb">insert</span>(<span class="var">b</span>);</span> <br>
+            <span><span class="var">t</span>.<span class="varb">insert</span>(<span class="var">d</span>);</span> <br><br>
+            
+            <span><span class="var">clue_num</span> = (num_of_leaves + <span class="var">t</span>.<span class="varb">get_root</span>() - <span class="var">t</span>.<span class="varb">height</span>) * (a / e); </span> <br>
+            <span><span class="var">your_next_clue_is</span> = <span class="var">clue_num</span> + 'the name of this data structure' </span> <br> <br><br>
+            
+            <span>Hint: there's a data structure you want to work with that closely resembles nature.</span><span class="blinking_cursor">|</span> <br>
+            
+	</div>
+
+    <script> addLineNum(); </script>
+    
+    
+
+</body>
+</html>
+
+
