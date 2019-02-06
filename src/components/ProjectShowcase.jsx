@@ -96,7 +96,7 @@ const ProjectPic = styled.img`
         `
       : css`
           filter: grayscale(100%);
-        `}
+        `};
 `;
 
 const ProjectTitle = styled.span`

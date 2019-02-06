@@ -7,7 +7,6 @@ import TemplateWrapper from '../components/TemplateWrapper';
 import Icon from '../components/Icon';
 import { archiveSiteList, archiveHeader } from '../data/archiveData';
 
-
 const Header = styled.div`
   display: inline-block;
   margin-bottom: 0.5em;

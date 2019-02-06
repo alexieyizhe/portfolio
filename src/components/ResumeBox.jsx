@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { mediaSize } from '../data/configOptions';
 
-
 const ResumeContainer = styled.a`
   position: relative;
   width: 50%;
@@ -29,7 +28,6 @@ const ResumeContainer = styled.a`
 
     /* Create the box shadow at expanded size. */
     box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.2);
-
   }
 
   & img {
@@ -37,13 +35,9 @@ const ResumeContainer = styled.a`
   }
 `;
 
-
 const ResumeBox = props => (
-  <ResumeContainer
-    href={props.downloadSource}
-    target="_blank"
-  >
-    <img src={props.previewSource} alt="Alex's resume"/>
+  <ResumeContainer href={props.downloadSource} target="_blank">
+    <img src={props.previewSource} alt="Alex's resume" />
   </ResumeContainer>
 );
 

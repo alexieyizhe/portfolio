@@ -8,10 +8,7 @@ import HighlightText from '../components/HighlightText';
 import ResumeBox from '../components/ResumeBox';
 
 import Icon from '../components/Icon';
-import {
-  particleConfig,
-  resumeOptions,
-} from '../data/configOptions';
+import { particleConfig, resumeOptions } from '../data/configOptions';
 
 const ParticlesStyle = {
   position: 'fixed',
@@ -25,7 +22,6 @@ const ResumeContainer = styled.div`
   text-align: center;
   margin-bottom: 5em;
 `;
-
 
 const ResumeSelector = styled.div`
   width: auto;
@@ -64,7 +60,6 @@ class ResumePage extends React.Component {
 
   render() {
     return (
-
       <VisibilitySensor
         onChange={isVisible => this.handleFocus(isMobile && isVisible)}
       >
@@ -102,7 +97,7 @@ class ResumePage extends React.Component {
                         color={resume.color}
                         hovered={
                           (this.state.selectFocused === resume.name &&
-                          !isMobile) ||
+                            !isMobile) ||
                           this.state.curResume.name === resume.name
                         }
                       >

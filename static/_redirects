@@ -1,6 +1,0 @@
-# Redirect default Netlify subdomain to primary domain
-https://alexieyizhe.netlify.com/* https://alexieyizhe.me/:splat 301!:
-
-# Redirect domain aliases to primary domain
-https://alexxie.me/* https://alexieyizhe.me/:splat 301!
-https://www.alexxie.me/* https://alexieyizhe.me/:splat 301!
