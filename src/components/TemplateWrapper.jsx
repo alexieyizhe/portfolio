@@ -15,7 +15,7 @@ import Transition from './Transition';
 
 // Global styles go here!
 const TemplateContainer = styled.div`
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Cabin', sans-serif;
   color: #464646;
   position: absolute;
   top: ${props => (props.outerBounds && props.outerBounds.top) || 0};

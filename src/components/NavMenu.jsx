@@ -129,13 +129,7 @@ const MenuLink = styled(posed.div(MenuLinkConfig))`
 const MenuLinkText = styled.div`
   padding-right: 5px;
   opacity: 1;
-  font-family: 'Raleway', sans-serif;
-  font-weight: bold;
   color: #545454;
-
-  ${mediaSize.phone`
-    font-weight: 450;
-  `};
 `;
 
 class NavMenu extends React.Component {

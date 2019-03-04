@@ -6,7 +6,6 @@ import GlitchText from '../components/GlitchText';
 
 const ErrorContainer = styled.div`
   width: 80%;
-  font-family: 'PT Sans', sans-serif;
   margin-left: auto;
   margin-right: auto;
   display: grid;

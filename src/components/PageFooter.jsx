@@ -23,10 +23,6 @@ const FooterContainer = styled.span`
     'contactIcon resumeIcon topIcon githubIcon linkedinIcon'
     'copyright copyright copyright copyright copyright';
 
-  #copyright {
-    font-family: 'Cabin', 'PT Sans', sans-serif;
-  }
-
   ${mediaSize.tablet`
    width: 60%;
  `} ${mediaSize.phone`

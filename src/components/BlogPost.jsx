@@ -132,7 +132,6 @@ const PostImg = styled.img`
 
 const PostDesc = styled.span`
   grid-area: desc;
-  font-family: 'Raleway', serif;
 
   font-size: 2.2vmin;
   padding-right: 1vmin;
