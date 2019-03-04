@@ -1,16 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
+import { isIOS } from 'react-device-detect';
+
 import { mediaSize } from '../data/configOptions';
 import TemplateWrapper from '../components/TemplateWrapper';
 import Icon from '../components/Icon';
-import { archiveSiteList } from '../data/archiveData';
+import { archiveSiteList, archiveHeader } from '../data/archiveData';
 
 const Header = styled.div`
   display: inline-block;
-  margin-bottom: 5vmax;
-  font-size: 6vh;
+  margin-bottom: 0.5em;
+  font-size: 8vh;
   font-weight: bold;
-  font-family: 'PT Serif', serif;
+  font-family: 'Lato', 'Cabin', 'Ubuntu', sans-serif;
+
+  ${mediaSize.tablet`
+    font-size: 4em;
+    letter-spacing: ${isIOS ? '-0.05em' : 0};
+    margin-bottom: 1em;
+  `} ${mediaSize.phone`
+    font-size: 3em;
+  `};
 `;
 
 const PageLink = styled.a`
@@ -59,7 +69,7 @@ class ArchivePage extends React.Component {
         curPage="Archive"
         outerBounds={{ top: '7%', left: '15%', right: '15%', bottom: '0' }}
       >
-        <Header className="navMenu">archive.</Header>
+        <Header className="navMenu">{archiveHeader}</Header>
         <div style={this.props.transition && this.props.transition.style}>
           {archiveSiteList.map((snapshot, i) => (
             <PageLink key={i} href={snapshot.url}>

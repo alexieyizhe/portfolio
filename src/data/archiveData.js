@@ -1,4 +1,11 @@
+export const archiveHeader = 'archive.';
+
 export const archiveSiteList = [
+  {
+    name: 'Toronto Waste Lookup [Jan 2018]',
+    url: 'http://torontowastelookup.ml',
+    desc: 'A tool to help citizens of Toronto look up waste items.',
+  },
   {
     name: 'Website Snapshot [May 2018]',
     url: '/archive/may-2018/',

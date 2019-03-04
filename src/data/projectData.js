@@ -1,4 +1,41 @@
-export const projectsList = [
+
+export const projectsList = [ // eslint-disable-line
+  {
+    name: 'Equithon Main Site',
+    desc: 'Main site of the third iteration of Equithon.',
+    color: '#9CCDA1',
+    imgSource: '/img/projects/equithon-main.png',
+    techStack: [
+      {name: 'React', icon: 'devicons devicons-atom', color: '#3DAEFF' },
+      {name: 'JavaScript', icon: 'devicons devicons-javascript', color: '#0062A8' },
+      {name: 'Gatsby', icon: 'devicons devicons-opensource', color: '#7C2ACF' },
+      {name: 'Webpack', icon: 'devicons devicons-webplatform', color: '#424242' },
+      {name: 'HTML', icon: 'devicons devicons-html5', color: '#EE8407' },
+      {name: 'CSS Grid', icon: 'devicons devicons-css3', color: '#4173D5' },
+    ],
+    actionLinks: [
+      {name: "View on Web", icon: "monitor", url: "https://equithon.org"},
+      {name: "View on Github", icon: "github", url: "https://github.com/equithon/site-main"},
+    ]
+  },
+  {
+    name: 'Equithon Landing Page',
+    desc: 'A landing/splash page for directing visitors before the main site was completed.',
+    color: '#9CCDA1',
+    imgSource: '/img/projects/equithon-landing.png',
+    techStack: [
+      {name: 'React', icon: 'devicons devicons-atom', color: '#3DAEFF' },
+      {name: 'JavaScript', icon: 'devicons devicons-javascript', color: '#0062A8' },
+      {name: 'Gatsby', icon: 'devicons devicons-opensource', color: '#7C2ACF' },
+      {name: 'Webpack', icon: 'devicons devicons-webplatform', color: '#424242' },
+      {name: 'HTML', icon: 'devicons devicons-html5', color: '#EE8407' },
+      {name: 'CSS Grid', icon: 'devicons devicons-css3', color: '#4173D5' },
+    ],
+    actionLinks: [
+      {name: "View on Web", icon: "monitor", url: "https://old.equithon.org"},
+      {name: "View on Github", icon: "github", url: "https://github.com/equithon/site-landing"},
+    ]
+  },
   {
     name: 'Personal Site',
     desc: 'Error: Maximum recursion depth exceeded. (memory_address: 0xObebebebe)',

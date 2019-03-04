@@ -17,11 +17,11 @@ export const STATS_LIST = [
   {
     name: 'Soccer Balls Kicked',
     start: 0,
-    end: 973,
+    end: 988,
   },
   {
     name: 'Unpronounceable Last Name',
-    start: 0,
+    start: 100,
     end: 1,
   }
 ];
@@ -30,8 +30,8 @@ export const DESC_PARAGRAPHS = [
   <span>
     I'm a diehard soccer fan, whether it's watching FC Barcelona - my favourite team - or getting
     on the field myself. Apart from soccer and coding, my other interests are <s>nonexistent</s> fitness,
-    cooking, my husky-malamute Storm, and travelling. I've done a couple of solo trips that you can read about
-    on <Link to="/blog">my blog</Link>!
+    cooking, my husky-malamute Storm, and travelling (I've solo tripped around Europe at 17!). I also do a
+    bit of writing that you can read on <Link to="/blog">my blog</Link>!
   </span>,
   <span>
     My friends always tell me that I'm addicted to coding, but I like to think of it less as an addiction to coding
@@ -42,10 +42,11 @@ export const DESC_PARAGRAPHS = [
   </span>,
   <span>
     However, I also believe that creating solutions to problems and learning new ideas aren't limited to the
-    scope of studying and coding. I'm currently working with a huge amount of passionate individuals on organizing
-    a <a href="https://www.tedxuw.com/" target="_blank">700+ attendee TEDx event</a>, powering one of
-    the <a href="https://teamwaterloop.ca/" target="_blank">world's top 25 hyperloop teams</a>, and leading the next iteration
-    of <a href="https://equithon.org/" target="_blank">Waterloo's largest social innovation hackathon</a>. These have been
+    scope of studying and coding. I'm currently leading the next iteration
+    of <a href="https://equithon.org/" target="_blank">Waterloo's largest social innovation hackathon</a> and in the past,
+    I've worked with a huge amount of passionate individuals on organizing
+    a <a href="https://www.tedxuw.com/" target="_blank">700+ attendee TEDx event</a> as well as powering one of
+    the <a href="https://teamwaterloop.ca/" target="_blank">world's top 25 hyperloop teams</a>. These have been
     incredibly rewarding learning experiences that I cherish greatly, and I'm hoping to continue contributing and getting
     involved with various communities now and into the future.
   </span>,
