@@ -107,7 +107,6 @@ const ProjectTitle = styled.span`
   padding-top: 0.5em;
 
   /* Design */
-  font-family: 'PT Serif', serif;
   font-size: 2em;
 `;
 

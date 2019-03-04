@@ -1,5 +1,13 @@
 export const experienceList = [
   {
+    name: 'Hack the North',
+    role: 'Frontend Developer',
+    color: '#7bbec1',
+    bgImgSource: '/img/experience/htn.jpg',
+    logoImgSource: '/img/experience/htn_logo.png',
+    desc: 'I\'m working as a developer to create engaging user experiences and interfaces for Canada\'s largest hackathon with over 1000 attendees and thousands more applicants and users.'
+  },
+  {
     name: 'Equithon',
     role: 'Junior Co-Chair & Development Lead',
     color: '#4D55C3',

@@ -107,7 +107,6 @@ const Container = styled.div`
 `;
 
 const WorkTitle = styled.span`
-  font-family: 'Raleway', Arial, serif;
   font-size: 5vw;
   font-weight: bold;
   position: relative;
@@ -121,7 +120,6 @@ const WorkTitle = styled.span`
   ${mediaSize.tablet`
     padding-top: 15vmin;
     font-size: 4.5em;
-    font-family: "Cabin", "Ubuntu", Arial, serif;
     letter-spacing: ${isIOS ? '-0.05em' : 0};
   `} ${mediaSize.phone`
     font-size: 2.5em;
@@ -166,7 +164,6 @@ const WorkRole = styled.div`
   grid-area: role;
   position: relative;
   z-index: 6;
-  font-family: 'Raleway', serif;
   font-size: 2vw;
   padding-bottom: 1.5em;
 
@@ -185,7 +182,6 @@ const WorkDesc = styled.div`
   line-height: 1.5;
   font-size: 2.5vmin;
   z-index: 6;
-  font-family: 'Average', 'PT Serif', serif;
   max-width: 100%;
   max-height: ${props => (props.expanded ? '7em' : 0)};
   opacity: ${props => (props.expanded ? 1 : 0)};

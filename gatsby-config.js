@@ -35,12 +35,9 @@ module.exports = {
         fonts: [
           `PT Sans`,
           `PT Serif`,
-          `raleway`,
           `lato`,
-          `average`,
-          `signika`,
+          'expletus sans',
           `cabin`,
-          `ubuntu`
         ]
       }
     },

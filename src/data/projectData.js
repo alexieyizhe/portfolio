@@ -1,9 +1,42 @@
 
 export const projectsList = [ // eslint-disable-line
   {
-    name: 'Equithon Main Site',
-    desc: 'Main site of the third iteration of Equithon.',
+    name: 'Equithon Dashboard',
+    desc: 'Dashboard for all Equithon 2019 attendees.',
     color: '#9CCDA1',
+    imgSource: '/img/projects/equithon-dash.png',
+    techStack: [
+      {name: 'React', icon: 'devicons devicons-atom', color: '#3DAEFF' },
+      {name: 'JavaScript', icon: 'devicons devicons-javascript', color: '#0062A8' },
+      {name: 'Gatsby', icon: 'devicons devicons-opensource', color: '#7C2ACF' },
+      {name: 'Redux', icon: 'devicons devicons-react', color: '#424242' },
+      {name: 'Firebase', icon: 'devicons devicons-codeigniter', color: '#EE8407' },
+    ],
+    actionLinks: [
+      {name: "View on Web", icon: "monitor", url: "https://my.equithon.org"},
+      {name: "View on Github", icon: "github", url: "https://github.com/equithon/site-main"},
+    ]
+  },
+  {
+    name: 'Hack the North Mock Dashboard',
+    desc: 'A mockup of a Hack the North attendee dashboard.',
+    color: '#c873bb',
+    imgSource: '/img/projects/htn-dash.png',
+    techStack: [
+      {name: 'React', icon: 'devicons devicons-atom', color: '#3DAEFF' },
+      {name: 'JavaScript', icon: 'devicons devicons-javascript', color: '#0062A8' },
+      {name: 'Gatsby', icon: 'devicons devicons-opensource', color: '#7C2ACF' },
+      {name: 'Webpack', icon: 'devicons devicons-webplatform', color: '#424242' },
+    ],
+    actionLinks: [
+      {name: "View on Web", icon: "monitor", url: "https://htn-application.ml"},
+      {name: "View on Github", icon: "github", url: "https://github.com/alexieyizhe/htn-dashboard"},
+    ]
+  },
+  {
+    name: 'Equithon Landing',
+    desc: 'Landing site of the third iteration of Equithon.',
+    color: '#6e82b0',
     imgSource: '/img/projects/equithon-main.png',
     techStack: [
       {name: 'React', icon: 'devicons devicons-atom', color: '#3DAEFF' },
@@ -11,17 +44,32 @@ export const projectsList = [ // eslint-disable-line
       {name: 'Gatsby', icon: 'devicons devicons-opensource', color: '#7C2ACF' },
       {name: 'Webpack', icon: 'devicons devicons-webplatform', color: '#424242' },
       {name: 'HTML', icon: 'devicons devicons-html5', color: '#EE8407' },
-      {name: 'CSS Grid', icon: 'devicons devicons-css3', color: '#4173D5' },
     ],
     actionLinks: [
       {name: "View on Web", icon: "monitor", url: "https://equithon.org"},
-      {name: "View on Github", icon: "github", url: "https://github.com/equithon/site-main"},
+      {name: "View on Github", icon: "github", url: "https://github.com/equithon/site-landing"},
     ]
   },
   {
-    name: 'Equithon Landing Page',
+    name: 'Toronto Waste Lookup Tool',
+    desc: 'Helping the citizens of Toronto search up waste items!',
+    color: '#7b7ed4',
+    imgSource: '/img/projects/wastelookup.png',
+    techStack: [
+      {name: 'React', icon: 'devicons devicons-atom', color: '#3DAEFF' },
+      {name: 'JavaScript', icon: 'devicons devicons-javascript', color: '#0062A8' },
+      {name: 'Gatsby', icon: 'devicons devicons-opensource', color: '#7C2ACF' },
+      {name: 'Webpack', icon: 'devicons devicons-webplatform', color: '#424242' },
+    ],
+    actionLinks: [
+      {name: "View on Web", icon: "monitor", url: "https://torontowastelookup.ml"},
+      {name: "View on Github", icon: "github", url: "https://github.com/alexieyizhe/shopify-toronto-waste-lookup"},
+    ]
+  },
+  {
+    name: 'Equithon Preview',
     desc: 'A landing/splash page for directing visitors before the main site was completed.',
-    color: '#9CCDA1',
+    color: '#b186c4',
     imgSource: '/img/projects/equithon-landing.png',
     techStack: [
       {name: 'React', icon: 'devicons devicons-atom', color: '#3DAEFF' },
@@ -33,7 +81,7 @@ export const projectsList = [ // eslint-disable-line
     ],
     actionLinks: [
       {name: "View on Web", icon: "monitor", url: "https://old.equithon.org"},
-      {name: "View on Github", icon: "github", url: "https://github.com/equithon/site-landing"},
+      {name: "View on Github", icon: "github", url: "https://github.com/equithon/site-preview"},
     ]
   },
   {

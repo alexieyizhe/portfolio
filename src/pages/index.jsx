@@ -47,24 +47,29 @@ const Greeting = styled(posed.div(fadeEnterConfig))`
 `;
 
 const MainInfoText = styled(posed.div(fadeEnterConfig))`
-  font-family: 'Cabin';
   letter-spacing: 0;
+  font-family: 'Expletus Sans', sans-serif;
   font-weight: bold;
-  line-height: 0.8em;
   font-size: 13vh;
   text-shadow: 0 0 0;
 
-  ${mediaSize.phone`
+  ${mediaSize.tablet`
     letter-spacing: ${isIOS ? '-0.05em' : 0};
-    font-weight: normal;
+    font-weight: 500;
+    line-height: 1.1em;
+    margin-top: 1vh;
   `};
 `;
 
 const BriefBioText = styled(posed.div(fadeEnterConfig))`
   font-size: 3vh;
-  font-family: 'Average', serif;
-  color: #4b4b4b;
-  margin-top: 2vh;
+  font-weight: 300;
+  color: #656565;
+  margin-top: -1em;
+
+  ${mediaSize.phone`
+    margin-top: 0;
+  `};
 `;
 
 const ImportantInfo = styled(posed.div(fadeEnterConfig))`

@@ -25,7 +25,6 @@ const Container = styled.div`
     'pic interests'
     'intro intro';
   grid-column-gap: 5vw;
-  font-family: 'PT Serif', 'Times', serif;
 
   ${mediaSize.tablet`
     grid-template-columns: 50% 35%;
@@ -122,7 +121,6 @@ const AboutStats = styled.div`
 const AboutSkills = styled.div`
   grid-area: skills;
   font-size: 1.5vw;
-  font-family: 'Cabin', arial, sans-serif;
   position: relative;
   align-self: end;
 
@@ -131,7 +129,6 @@ const AboutSkills = styled.div`
   }
 
   & > div {
-    font-family: 'PT Serif', 'Times', serif;
     font-size: 1.5em;
     margin-bottom: 5px;
     position: relative;
@@ -189,11 +186,9 @@ const AboutSkills = styled.div`
 const AboutInterests = styled.div`
   grid-area: interests;
   font-size: 1.5vw;
-  font-family: 'Cabin', arial, sans-serif;
   align-self: end;
 
   & > div {
-    font-family: 'PT Serif', 'Times', serif;
     font-size: 1.5em;
     margin-bottom: 5px;
     position: relative;
