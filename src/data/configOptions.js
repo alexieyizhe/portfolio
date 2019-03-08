@@ -97,9 +97,9 @@ export const resumeOptions = [
   },
   {
     name: 'Current',
-    previewSource: '/img/resume/2019-01-resume.png',
+    previewSource: '/img/resume/current-resume.png',
     downloadName: 'Alex Xie - Resume',
-    downloadSource: '/docs/2019-01-resume.pdf',
+    downloadSource: '/docs/current-resume.pdf',
     color: '#88dbe3'
   },
 ];

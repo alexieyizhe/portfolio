@@ -15,9 +15,7 @@ const ResumeContainer = styled.a`
     transform: translateY(-5px);
   }
 
-  ${mediaSize.tablet`
-    width: 90%;
-  `} &:before {
+  &:before {
     /* Position the pseudo-element. */
     content: ' ';
     position: absolute;
@@ -25,6 +23,7 @@ const ResumeContainer = styled.a`
     right: 0;
     bottom: 0;
     left: 0;
+    border-radius: 5px;
 
     /* Create the box shadow at expanded size. */
     box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.2);
@@ -33,6 +32,10 @@ const ResumeContainer = styled.a`
   & img {
     max-width: 100%;
   }
+
+  ${mediaSize.tablet`
+    width: 90%;
+  `}
 `;
 
 const ResumeBox = props => (
