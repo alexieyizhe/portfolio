@@ -35,7 +35,7 @@ const ResumeContainer = styled.a`
 
   ${mediaSize.tablet`
     width: 90%;
-  `}
+  `};
 `;
 
 const ResumeBox = props => (
