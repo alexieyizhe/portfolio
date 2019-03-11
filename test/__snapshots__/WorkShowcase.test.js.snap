@@ -32,7 +32,7 @@ exports[`WorkShowcase component should render the work showcase 1`] = `
   padding: 0 5% 0 5%;
   grid-template-rows: auto;
   grid-template-areas: "title" "role" "desc" "indicator";
-  background: url(/img/experience/equithon_bg.jpg) center/cover;
+  background: url(/img/experience/htn.jpg) center/cover;
   -webkit-filter: grayscale(50%);
   filter: grayscale(50%);
   -webkit-transition: all 0.2s ease-in;
@@ -71,7 +71,6 @@ exports[`WorkShowcase component should render the work showcase 1`] = `
 }
 
 .c1 {
-  font-family: 'Raleway',Arial,serif;
   font-size: 5vw;
   font-weight: bold;
   position: relative;
@@ -99,7 +98,6 @@ exports[`WorkShowcase component should render the work showcase 1`] = `
   grid-area: role;
   position: relative;
   z-index: 6;
-  font-family: 'Raleway',serif;
   font-size: 2vw;
   padding-bottom: 1.5em;
 }
@@ -113,7 +111,6 @@ exports[`WorkShowcase component should render the work showcase 1`] = `
   line-height: 1.5;
   font-size: 2.5vmin;
   z-index: 6;
-  font-family: 'Average','PT Serif',serif;
   max-width: 100%;
   max-height: 0;
   opacity: 0;
@@ -158,7 +155,6 @@ exports[`WorkShowcase component should render the work showcase 1`] = `
   .c1 {
     padding-top: 15vmin;
     font-size: 4.5em;
-    font-family: "Cabin","Ubuntu",Arial,serif;
     -webkit-letter-spacing: 0;
     -moz-letter-spacing: 0;
     -ms-letter-spacing: 0;
@@ -225,21 +221,21 @@ exports[`WorkShowcase component should render the work showcase 1`] = `
   <span
     class="c1"
   >
-    Equithon
+    Hack the North
   </span>
   <div
     class="c2"
   >
-    Junior Co-Chair & Development Lead
+    Frontend Developer
   </div>
   <img
     class="c3"
-    src="/img/experience/equithon_logo.png"
+    src="/img/experience/htn_logo.png"
   />
   <div
     class="c4"
   >
-    I'm responsible for executive decisions as a co-chair, and I'm working closely with all team leads to improve upon last year's Equithon. As well, I'm directing the team of developers that are handling all technical aspects of the event in 2019, along with contributing significant code working as part of said team.
+    I'm working as a developer to create engaging user experiences and interfaces for Canada's largest hackathon with over 1000 attendees and thousands more applicants and users.
   </div>
   <span
     class="c5"
@@ -302,7 +298,7 @@ exports[`WorkShowcase component should show description on click 1`] = `
   padding: 0 5% 0 5%;
   grid-template-rows: auto;
   grid-template-areas: "title" "role" "desc" "indicator";
-  background: url(/img/experience/equithon_bg.jpg) center/cover;
+  background: url(/img/experience/htn.jpg) center/cover;
   -webkit-filter: grayscale(50%);
   filter: grayscale(50%);
   -webkit-transition: all 0.2s ease-in;
@@ -311,7 +307,7 @@ exports[`WorkShowcase component should show description on click 1`] = `
   transition: width 0.75s ease,height 0.75s ease;
   -webkit-filter: none;
   filter: none;
-  background: url(/img/experience/equithon_bg.jpg) center/cover;
+  background: url(/img/experience/htn.jpg) center/cover;
 }
 
 .c0:before {
@@ -352,7 +348,6 @@ exports[`WorkShowcase component should show description on click 1`] = `
 }
 
 .c1 {
-  font-family: 'Raleway',Arial,serif;
   font-size: 5vw;
   font-weight: bold;
   position: relative;
@@ -381,7 +376,6 @@ exports[`WorkShowcase component should show description on click 1`] = `
   grid-area: role;
   position: relative;
   z-index: 6;
-  font-family: 'Raleway',serif;
   font-size: 2vw;
   padding-bottom: 1.5em;
 }
@@ -395,7 +389,6 @@ exports[`WorkShowcase component should show description on click 1`] = `
   line-height: 1.5;
   font-size: 2.5vmin;
   z-index: 6;
-  font-family: 'Average','PT Serif',serif;
   max-width: 100%;
   max-height: 7em;
   opacity: 1;
@@ -446,7 +439,6 @@ exports[`WorkShowcase component should show description on click 1`] = `
   .c1 {
     padding-top: 15vmin;
     font-size: 4.5em;
-    font-family: "Cabin","Ubuntu",Arial,serif;
     -webkit-letter-spacing: 0;
     -moz-letter-spacing: 0;
     -ms-letter-spacing: 0;
@@ -510,12 +502,12 @@ exports[`WorkShowcase component should show description on click 1`] = `
 <WorkShowcase
   work={
     Object {
-      "bgImgSource": "/img/experience/equithon_bg.jpg",
-      "color": "#4D55C3",
-      "desc": "I'm responsible for executive decisions as a co-chair, and I'm working closely with all team leads to improve upon last year's Equithon. As well, I'm directing the team of developers that are handling all technical aspects of the event in 2019, along with contributing significant code working as part of said team.",
-      "logoImgSource": "/img/experience/equithon_logo.png",
-      "name": "Equithon",
-      "role": "Junior Co-Chair & Development Lead",
+      "bgImgSource": "/img/experience/htn.jpg",
+      "color": "#7bbec1",
+      "desc": "I'm working as a developer to create engaging user experiences and interfaces for Canada's largest hackathon with over 1000 attendees and thousands more applicants and users.",
+      "logoImgSource": "/img/experience/htn_logo.png",
+      "name": "Hack the North",
+      "role": "Frontend Developer",
     }
   }
 >
@@ -537,7 +529,7 @@ exports[`WorkShowcase component should show description on click 1`] = `
     scrollThrottle={-1}
   >
     <styled.div
-      bg="/img/experience/equithon_bg.jpg"
+      bg="/img/experience/htn.jpg"
       expanded={true}
       focused={false}
       onClick={[Function]}
@@ -554,24 +546,24 @@ exports[`WorkShowcase component should show description on click 1`] = `
           <span
             className="c1"
           >
-            Equithon
+            Hack the North
           </span>
         </styled.span>
         <styled.div>
           <div
             className="c2"
           >
-            Junior Co-Chair & Development Lead
+            Frontend Developer
           </div>
         </styled.div>
         <styled.img
           expanded={true}
           focused={false}
-          src="/img/experience/equithon_logo.png"
+          src="/img/experience/htn_logo.png"
         >
           <img
             className="c3"
-            src="/img/experience/equithon_logo.png"
+            src="/img/experience/htn_logo.png"
           />
         </styled.img>
         <styled.div
@@ -580,7 +572,7 @@ exports[`WorkShowcase component should show description on click 1`] = `
           <div
             className="c4"
           >
-            I'm responsible for executive decisions as a co-chair, and I'm working closely with all team leads to improve upon last year's Equithon. As well, I'm directing the team of developers that are handling all technical aspects of the event in 2019, along with contributing significant code working as part of said team.
+            I'm working as a developer to create engaging user experiences and interfaces for Canada's largest hackathon with over 1000 attendees and thousands more applicants and users.
           </div>
         </styled.div>
         <styled.span>

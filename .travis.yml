@@ -3,7 +3,7 @@ notifications:
 
 language: node_js
 node_js:
- - "node"
+  - "11.10.1"
 
 cache:
   directories:
