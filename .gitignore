@@ -1,13 +1,8 @@
 # Project dependencies
-.cache
 node_modules
-yarn-error.log
 
 # Build directory
 /public
 
 # MacOS specific extraneous files
 .DS_Store
-
-# Design mockups of new website, old ideas
-/mocks
