@@ -33,6 +33,7 @@ module.exports = {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: [
+          `Didact Gothic`,
           `PT Sans`,
           `PT Serif`,
           `lato`,

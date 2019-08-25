@@ -49,17 +49,19 @@ const Desc = styled.span`
   `};
 `;
 
-const StatCounter = props => (
-  <CounterContainer>
-    <Counter>
-      <CountUp
-        start={props.countStart || 0}
-        end={props.countEnd || 100}
-        duration={props.countDuration || 250}
-      />
-    </Counter>
-    <Desc>{props.children}</Desc>
-  </CounterContainer>
-);
+const StatCounter = props => {
+  return (
+    <CounterContainer>
+      <Counter>
+        <CountUp
+          start={props.countStart || 0}
+          end={props.countEnd || 100}
+          duration={props.countDuration || 250}
+        />
+      </Counter>
+      <Desc>{props.children}</Desc>
+    </CounterContainer>
+  )
+};
 
 export default StatCounter;
