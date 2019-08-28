@@ -1,12 +1,11 @@
 # alexieyizhe.me
 
-[![Travis (.com)](https://img.shields.io/travis/com/alexieyizhe/alexieyizhe.github.io.svg?style=flat-square)](https://travis-ci.com/alexieyizhe/alexieyizhe.github.io)
 [![Coveralls github branch](https://img.shields.io/coveralls/github/alexieyizhe/alexieyizhe.github.io/master.svg?style=flat-square)](https://coveralls.io/github/alexieyizhe/alexieyizhe.github.io)
 [![Deploys with Netlify](https://img.shields.io/badge/Netlify-deployed-brightgreen.svg?style=flat-square)](https://www.netlify.com/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![GitHub license](https://img.shields.io/github/license/alexieyizhe/alexieyizhe.github.io.svg?style=flat-square)](https://github.com/alexieyizhe/alexieyizhe.github.io/blob/master/LICENSE)
 
-**Note: a redesign of my website is under active development. If interested, check out the `site-redesign-master` branch for the latest changes.**
+**Note: a redesign of my website is under active development. If interested, check out the `dev` branch for the latest changes.**
 
 Personal website/portfolio of Alex Yizhe Xie.
 

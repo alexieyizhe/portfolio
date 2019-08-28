@@ -61,7 +61,7 @@ const StatCounter = props => {
       </Counter>
       <Desc>{props.children}</Desc>
     </CounterContainer>
-  )
+  );
 };
 
 export default StatCounter;

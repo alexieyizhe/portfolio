@@ -16,7 +16,7 @@ const Header = styled.div`
     letter-spacing: ${isIOS ? '-0.05em' : 0};
     margin-bottom: 1em;
   `};
-  
+
   ${mediaSize.phone`
     font-size: 3em;
   `};
