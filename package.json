@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "alexxie.ca",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "Portfolio and personal website of Alex Yizhe Xie.",
+  "version": "3.0.0",
+  "author": "Alex Xie <alexieyizhe@gmail.com>",
   "dependencies": {
     "gatsby": "^2.13.73",
     "gatsby-plugin-alias-imports": "^1.0.5",
@@ -30,7 +30,12 @@
     "typescript": "^3.5.3"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "portfolio",
+    "website",
+    "react",
+    "alex",
+    "xie"
   ],
   "license": "MIT",
   "scripts": {

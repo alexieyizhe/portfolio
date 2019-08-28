@@ -1,4 +1,4 @@
-# alexieyizhe.me
+# alexxie.ca
 
 **Note: this is a work in progress.**
 
