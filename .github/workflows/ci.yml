@@ -4,8 +4,6 @@ on: [push]
 
 jobs:
   setup:
-    name: Setup
     steps:
       - name: npm ci
-        uses: docker://node:10-alpine
         run: npm ci
