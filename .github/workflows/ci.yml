@@ -20,14 +20,14 @@ jobs:
 
   typecheck:
     runs-on: ubuntu-latest
-    needs: setup, lint
+    needs: [setup, lint]
     steps:
       - name: Check types
         run: npm run type-check
 
   build:
     runs-on: ubuntu-latest
-    needs: setup, lint, typecheck
+    needs: [setup, lint, typecheck]
     steps:
       - name: Build with Gatsby
         run: npm run build
