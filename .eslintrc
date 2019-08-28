@@ -1,7 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
   "extends": [
-    "airbnb",
+    "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
@@ -21,11 +21,32 @@
     "arrow-body-style": ["error", "as-needed"],
     "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ]
   },
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["~src/*", "src/*"],
+          ["~assets/*", "src/assets/*"],
+          ["~components/*", "src/components/*"],
+          ["~layouts/*", "src/layouts/*"],
+          ["~pages/*", "src/pages/*"],
+          ["~sections/*", "src/sections/*"],
+          ["~utils/*", "src/utils/*"]
+        ],
+        "extensions": [".ts", ".tsx", ".json"]
+      }
     }
   }
 }
