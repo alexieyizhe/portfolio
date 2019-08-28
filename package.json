@@ -1,0 +1,50 @@
+{
+  "name": "gatsby-starter-default",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "dependencies": {
+    "gatsby": "^2.13.73",
+    "gatsby-plugin-react-helmet": "^3.1.4",
+    "gatsby-plugin-typescript": "^2.1.5",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-helmet": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "prettier": "^1.18.2",
+    "typescript": "^3.5.3"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run develop",
+    "start:prod": "npm run build; npm run serve",
+    "develop": "gatsby develop",
+    "lint": "eslint --fix src --ext ts,tsx,js,jsx",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "type-check": "tsc --noEmit",
+    "build": "gatsby build",
+    "serve": "gatsby serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexieyizhe/alexieyizhe.github.io"
+  },
+  "bugs": {
+    "url": "https://github.com/alexieyizhe/alexieyizhe.github.io/issues"
+  }
+}
