@@ -50,10 +50,10 @@ const TEXT_VARIANTS: VariantList = {
 const BaseText = styled.p<TextProps>`
   font-family: ${({ theme, heading }) =>
     theme.fontFamily[heading ? "heading" : "text"]};
-  font-size: ${({ theme, size = Size.REGULAR }) => theme.fontSize[size]}px;
+  font-size: ${({ theme, size = Size.MEDIUM }) => theme.fontSize[size]}px;
 
   color: ${({ theme, color = "" }) => theme.color[color] || color || "inherit"};
-  line-height: ${({ theme, size = Size.REGULAR, lineHeight }) =>
+  line-height: ${({ theme, size = Size.MEDIUM, lineHeight }) =>
     theme.lineHeight[lineHeight || size]};
   text-align: ${({ align = "left" }) => align};
 
@@ -62,7 +62,7 @@ const BaseText = styled.p<TextProps>`
   ${({ italic }) => italic && `font-style: italic;`}
 `;
 
-export const Text: React.FC<TextProps> = ({
+const Text: React.FC<TextProps> = ({
   id,
   className,
   as = "p",
@@ -92,3 +92,5 @@ export const Text: React.FC<TextProps> = ({
     </BaseText>
   );
 };
+
+export default Text;
