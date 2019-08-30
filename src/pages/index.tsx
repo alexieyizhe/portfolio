@@ -1,6 +1,6 @@
 import React from "react";
 
-import NotFoundPage from "~pages/404";
+import { withPageWrapper } from "~components/PageWrapper";
 
 const IndexPage = () => (
   <div>
@@ -8,8 +8,7 @@ const IndexPage = () => (
       hello dis the active dev build of me new site! check back later for more
       details
     </h1>
-    <NotFoundPage />
   </div>
 );
 
-export default IndexPage;
+export default withPageWrapper(IndexPage);
