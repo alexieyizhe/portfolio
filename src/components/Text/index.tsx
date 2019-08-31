@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 
-import { Size } from "~theme";
+import { Size } from "~theme/index";
 
 interface TextProps {
   id?: string;
@@ -42,9 +42,17 @@ interface VariantList {
  * parts of the site using the same style (i.e. different pages using Body text).
  */
 const TEXT_VARIANTS: VariantList = {
-  heading: {},
-  subheading: {},
-  body: {},
+  heading: {
+    size: Size.XLARGE,
+    bold: true,
+  },
+  subheading: {
+    size: Size.LARGE,
+    bold: true,
+  },
+  body: {
+    size: Size.SMALL,
+  },
 };
 
 const BaseText = styled.p<TextProps>`
@@ -60,6 +68,9 @@ const BaseText = styled.p<TextProps>`
   ${({ underline }) => underline && `text-decoration: underline;`}
   ${({ bold }) => bold && `font-weight: bold;`}
   ${({ italic }) => italic && `font-style: italic;`}
+
+  margin: 0;
+  padding: 0;
 `;
 
 const Text: React.FC<TextProps> = ({

@@ -13,7 +13,7 @@ module.exports = {
       options: {
         alias: {
           "~src": "src",
-          "~assets": "src/static",
+          "~assets": "src/assets",
           "~components": "src/components",
           "~layouts": "src/layouts",
           "~pages": "src/pages",

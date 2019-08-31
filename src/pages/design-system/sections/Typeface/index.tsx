@@ -1,0 +1,19 @@
+import React from "react";
+
+import copy from "~assets/copy.json";
+
+import Text from "~components/Text";
+import ElementGroup from "../../components/ElementGroup";
+
+const TypefaceSection = () => (
+  <ElementGroup
+    title={copy.designSystemSection.sections.typeface.title}
+    desc={copy.designSystemSection.sections.typeface.desc}
+  >
+    <Text variant="heading">Typeface</Text>
+    <Text variant="body">ABCDEFGHIJKLMNOPQRSTUVWXYZ !?#()[]</Text>
+    <Text variant="body">abcdefghijklmnopqrstuvwxyz 1234567890</Text>
+  </ElementGroup>
+);
+
+export default TypefaceSection;

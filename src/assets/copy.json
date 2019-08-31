@@ -27,20 +27,20 @@
           "Apart from grey and black, I chose to use playful pastel colors to contrast with the monotone white and blacks of text. These allow the particles to feel...."
         ]
       },
-      "linksbuttons": {
+      "linkandbutton": {
         "title": "Links & Buttons",
         "desc": [
           "Links and buttons serve almost the same purpose in an app like this website. They either link to external URLs or to a different page on this site.",
           "Text links essentially function as naked buttons, allowing icon buttons to be consistently rounded. Icon buttons can dynamically change their icon based on a passed prop."
         ]
       },
-      "cards": {
+      "card": {
         "title": "Cards",
         "desc": [
           "As cards are used for dozens of types of contents and layouts, they have to be versatile and flexible...."
         ]
       },
-      "particles": {
+      "particle": {
         "title": "Particles",
         "desc": [
           "Although purely for decoration, it’s good to stay consistent with the particle shapes used on the site as well for reusability.",
