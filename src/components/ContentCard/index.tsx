@@ -3,11 +3,14 @@ import styled from "styled-components";
 
 import Card, { CardProps } from "~components/Card";
 import Text from "~components/Text";
+import Link from "~components/Link";
 
 interface ContentCardProps extends CardProps {
   title?: string;
   imgSrc?: string;
-  link?: string;
+  imgAlt?: string;
+  linkText?: string;
+  linkHref?: string;
   particles?: boolean;
 }
 
@@ -54,12 +57,14 @@ const ContentCard: React.FC<ContentCardProps> = ({
   className,
   title,
   imgSrc,
-  link,
+  imgAlt,
+  linkText,
+  linkHref,
   particles, // TODO: add particles in
   children,
 }) => (
   <CardContainer id={id} className={className}>
-    {imgSrc && <CardImage className="image" src={imgSrc} />}
+    {imgSrc && <CardImage className="image" src={imgSrc} alt={imgAlt} />}
 
     {title && (
       <Text className="title" variant="subheading">
@@ -71,10 +76,10 @@ const ContentCard: React.FC<ContentCardProps> = ({
       <div className="body">{children}</div>
     ) : null}
 
-    {link && (
-      <Text className="link" variant="body" bold>
-        {link}
-      </Text>
+    {linkText && (
+      <Link className="link" variant="body" bold href={linkHref || ""}>
+        {linkText}
+      </Link>
     )}
   </CardContainer>
 );

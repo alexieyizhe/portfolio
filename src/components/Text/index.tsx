@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Size } from "~theme/index";
 
-interface TextProps {
+export interface TextProps {
   id?: string;
   className?: string;
 

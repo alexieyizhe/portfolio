@@ -16,18 +16,25 @@ const CardSection = () => (
       <Card />
     </div>
     <div>
-      <ContentCard title="This is a card" link="Here's a link" imgSrc={TESTIMG}>
+      <ContentCard
+        title="This is a card"
+        linkText="Here's a link"
+        linkHref="/"
+        imgSrc={TESTIMG}
+      >
         This is some body text.
       </ContentCard>
     </div>
     <div>
-      <ContentCard title="No body card" link="Here's a link" />
+      <ContentCard title="No body card" linkText="Here's a link" linkHref="/" />
     </div>
     <div>
       <ContentCard title="No link card">This is some body text.</ContentCard>
     </div>
     <div>
-      <ContentCard link="Here's a link">This card has no title.</ContentCard>
+      <ContentCard linkText="Here's a link" linkHref="/">
+        This card has no title.
+      </ContentCard>
     </div>
   </ElementGroup>
 );
