@@ -29,10 +29,6 @@ const CardContainer = styled(Card)`
   width: 100%;
   height: auto;
 
-  & * {
-    text-decoration: none;
-  }
-
   transition: transform 150ms ease-in;
   cursor: pointer;
   &:hover,

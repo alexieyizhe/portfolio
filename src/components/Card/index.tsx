@@ -14,7 +14,7 @@ const Container = styled.div`
   padding: ${CARD_VERT_PADDING}px ${CARD_HORIZ_PADDING}px;
 
   border-radius: ${({ theme }) => theme.borderRadius.card}px;
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 8%);
+  box-shadow: ${({ theme }) => theme.boxShadow.main};
 `;
 
 const Card: React.FC<CardProps> = ({ id, className, onClick, children }) => (

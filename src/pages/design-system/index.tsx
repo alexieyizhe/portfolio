@@ -8,6 +8,7 @@ import IntroSection from "./sections/Intro";
 import PaletteSection from "./sections/Palette";
 import TypefaceSection from "./sections/Typeface";
 import TextSection from "./sections/Text";
+import LinkAndButtonSection from "./sections/LinkAndButton";
 import CardSection from "./sections/Card";
 
 const DesignSystemPage = () => (
@@ -19,6 +20,7 @@ const DesignSystemPage = () => (
     <PaletteSection />
     <TypefaceSection />
     <TextSection />
+    <LinkAndButtonSection />
     <CardSection />
   </PageWrapper>
 );
