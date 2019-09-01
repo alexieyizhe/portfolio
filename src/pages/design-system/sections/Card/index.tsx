@@ -1,21 +1,29 @@
 import React from "react";
+import styled from "styled-components";
 
 import copy from "~assets/copy.json";
 import Card from "~components/Card";
 import ContentCard from "~components/ContentCard";
+import ShowcaseCard from "~components/ShowcaseCard";
 import ElementGroup from "../../components/ElementGroup";
 
 import TESTIMG from "~assets/images/spookyscary.jpg";
+import TESTIMG_SHOWCASE from "~assets/images/test.png";
+
+const CardDisplay = styled.div`
+  margin-bottom: 30px;
+`;
 
 const CardSection = () => (
   <ElementGroup
     title={copy.designSystemSection.sections.card.title}
     desc={copy.designSystemSection.sections.card.desc}
   >
-    <div>
+    <CardDisplay>
       <Card />
-    </div>
-    <div>
+    </CardDisplay>
+
+    <CardDisplay>
       <ContentCard
         title="This is a card"
         linkText="Here's a link"
@@ -24,18 +32,32 @@ const CardSection = () => (
       >
         This is some body text.
       </ContentCard>
-    </div>
-    <div>
+    </CardDisplay>
+
+    <CardDisplay>
       <ContentCard title="No body card" linkText="Here's a link" linkHref="/" />
-    </div>
-    <div>
+    </CardDisplay>
+
+    <CardDisplay>
       <ContentCard title="No link card">This is some body text.</ContentCard>
-    </div>
-    <div>
+    </CardDisplay>
+
+    <CardDisplay>
       <ContentCard linkText="Here's a link" linkHref="/">
         This card has no title.
       </ContentCard>
-    </div>
+    </CardDisplay>
+
+    <CardDisplay style={{ position: "relative", width: "180%" }}>
+      <ShowcaseCard
+        title="Building Canada's largest hackathon."
+        subtitle="Hack de nort"
+        linkText="Read more"
+        linkHref=""
+        imgSrc={TESTIMG_SHOWCASE}
+        imgAlt="Some pic"
+      />
+    </CardDisplay>
   </ElementGroup>
 );
 

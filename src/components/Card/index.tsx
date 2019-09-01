@@ -5,17 +5,20 @@ import { BaseElementProps } from "~utils/typings/BaseElementProps";
 
 export interface CardProps extends BaseElementProps {}
 
+export const CARD_HORIZ_PADDING = 30;
+export const CARD_VERT_PADDING = 20;
+
 const Container = styled.div`
   width: 200px;
   height: 120px;
-  padding: 20px 30px;
+  padding: ${CARD_VERT_PADDING}px ${CARD_HORIZ_PADDING}px;
 
   border-radius: ${({ theme }) => theme.borderRadius.card}px;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 8%);
 `;
 
-const Card: React.FC<CardProps> = ({ id, className, children }) => (
-  <Container id={id} className={className}>
+const Card: React.FC<CardProps> = ({ id, className, onClick, children }) => (
+  <Container id={id} className={className} onClick={onClick}>
     {children}
   </Container>
 );

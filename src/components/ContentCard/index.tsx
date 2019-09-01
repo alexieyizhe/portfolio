@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-import Card, { CardProps } from "~components/Card";
+import Card, {
+  CardProps,
+  CARD_HORIZ_PADDING,
+  CARD_VERT_PADDING,
+} from "~components/Card";
 import Text from "~components/Text";
 import Link from "~components/Link";
 
@@ -48,8 +52,8 @@ const CardContainer = styled(Card)`
 
 const CardImage = styled.img`
   position: relative;
-  width: calc(100% + 60px);
-  top: -20px;
+  width: calc(100% + ${CARD_HORIZ_PADDING * 2}px);
+  top: -${CARD_VERT_PADDING}px;
 `;
 
 const ContentCard: React.FC<ContentCardProps> = ({

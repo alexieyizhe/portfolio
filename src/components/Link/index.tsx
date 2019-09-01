@@ -8,12 +8,19 @@ export interface LinkProps extends TextProps {
   href: string;
 }
 
+export const UnstyledLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+`;
+
 const BaseStyleLink = styled.a`
   text-decoration: none;
   color: inherit;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: underline;
   }
 `;
