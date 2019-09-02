@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { BaseElementProps } from "~src/utils/types/BaseElementProps";
+import { BaseElementProps } from "~utils/types/BaseElementProps";
 
 export interface CardProps extends BaseElementProps {}
 

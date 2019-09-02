@@ -1,8 +1,8 @@
 import React from "react";
 
-import copy from "~assets/copy.json";
+import copy from "~assets/copy";
 
-import ElementGroup from "../../components/ElementGroup";
+import ElementGroup from "~sections/design-system/components/ElementGroup";
 import Particle from "~components/Particle";
 import { Size } from "~src/theme";
 

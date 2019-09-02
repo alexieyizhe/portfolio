@@ -1,10 +1,10 @@
 import React from "react";
 
-import copy from "~assets/copy.json";
+import copy from "~assets/copy";
 
 import Text from "~components/Text";
 import Link from "~components/Link";
-import ElementGroup from "../../components/ElementGroup";
+import ElementGroup from "~sections/design-system/components/ElementGroup";
 import { Size } from "~src/theme";
 
 const TextSection = () => (

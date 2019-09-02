@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import styled, { css } from "styled-components";
 
-import { BaseElementProps } from "~src/utils/types/BaseElementProps";
-import { floatAnim } from "~src/utils/animations";
+import { BaseElementProps } from "~utils/types/BaseElementProps";
+import { floatAnim } from "~utils/animations";
 
 import { Size } from "~src/theme";
 import {

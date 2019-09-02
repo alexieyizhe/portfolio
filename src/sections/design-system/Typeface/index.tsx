@@ -1,9 +1,9 @@
 import React from "react";
 
-import copy from "~assets/copy.json";
+import copy from "~assets/copy";
 
 import Text from "~components/Text";
-import ElementGroup from "../../components/ElementGroup";
+import ElementGroup from "~sections/design-system/components/ElementGroup";
 
 const TypefaceSection = () => (
   <ElementGroup

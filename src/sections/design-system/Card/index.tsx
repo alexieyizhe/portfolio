@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-import copy from "~assets/copy.json";
+import copy from "~assets/copy";
 import Card from "~components/Card";
 import ContentCard from "~components/ContentCard";
 import ShowcaseCard from "~components/ShowcaseCard";
-import ElementGroup from "../../components/ElementGroup";
+import ElementGroup from "~sections/design-system/components/ElementGroup";
 
 import TESTIMG from "~assets/images/spookyscary.jpg";
 import TESTIMG_SHOWCASE from "~assets/images/test.png";
