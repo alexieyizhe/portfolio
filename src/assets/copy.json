@@ -27,6 +27,12 @@
           "Apart from grey and black, I chose to use playful pastel colors to contrast with the monotone white and blacks of text. These allow the particles to feel...."
         ]
       },
+      "icon": {
+        "title": "Icon",
+        "desc": [
+          "Icons are a visual text-free tool to quickly identify the function or type of a component...."
+        ]
+      },
       "linkandbutton": {
         "title": "Links & Buttons",
         "desc": [

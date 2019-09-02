@@ -2,15 +2,13 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 
 import { Size } from "~theme/index";
+import { BaseElementProps } from "~utils/typings/BaseElementProps";
 
-export interface TextProps {
-  id?: string;
-  className?: string;
-
+export interface TextProps extends BaseElementProps {
   /**
    * **Props that affect/augment styling of the Text component.**
    */
-  size?: Size;
+  size?: Size | number;
   color?: string;
   lineHeight?: Size;
   align?: "left" | "right" | "center" | "justify";
@@ -29,8 +27,6 @@ export interface TextProps {
    * styles as props.
    */
   variant?: string;
-
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 interface VariantList {
@@ -58,7 +54,8 @@ const TEXT_VARIANTS: VariantList = {
 const BaseText = styled.p<TextProps>`
   font-family: ${({ theme, heading }) =>
     theme.fontFamily[heading ? "heading" : "text"]};
-  font-size: ${({ theme, size = Size.MEDIUM }) => theme.fontSize[size]}px;
+  font-size: ${({ theme, size = Size.MEDIUM }) =>
+    theme.fontSize[size] || size}px;
 
   color: ${({ theme, color = "" }) => theme.color[color] || color || "inherit"};
   line-height: ${({ theme, size = Size.MEDIUM, lineHeight }) =>

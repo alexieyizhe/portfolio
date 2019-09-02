@@ -17,7 +17,7 @@ export interface ShowcaseCardProps extends CardProps {
 
 const CardContainer = styled(Card)`
   display: grid;
-  grid-template-rows: 50px 200px 50px;
+  grid-template-rows: 50px 230px 50px;
   grid-template-columns: 40% 40%;
   grid-column-gap: 20%;
   grid-template-areas:
@@ -27,6 +27,7 @@ const CardContainer = styled(Card)`
 
   position: relative;
   width: 100%;
+  max-width: 1300px;
   height: auto;
 
   transition: transform 150ms ease-in;

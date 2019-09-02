@@ -15,7 +15,7 @@ const LinkAndButtonSection = () => (
       Here&apos;s a link
     </Link>
     <UnstyledLink href="/">An unstyled link</UnstyledLink>
-    <Button />
+    <Button name="download" />
   </ElementGroup>
 );
 

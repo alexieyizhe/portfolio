@@ -6,6 +6,7 @@ import Text, { TextProps } from "~components/Text";
 export interface LinkProps extends TextProps {
   newTab?: boolean;
   href: string;
+  iconPos?: "left" | "right";
 }
 
 export const UnstyledLink = styled.a`

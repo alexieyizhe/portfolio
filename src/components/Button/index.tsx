@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-import { BaseElementProps } from "~src/utils/typings/BaseElementProps";
+import Icon, { IconProps } from "~components/Icon";
+import { Size } from "~src/theme";
 
-export interface ButtonProps extends BaseElementProps {}
+export interface ButtonProps extends IconProps {}
 
 const Container = styled.button`
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 
   padding: 5px;
   border: none;
@@ -24,8 +25,10 @@ const Container = styled.button`
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({ onClick }) => (
-  <Container onClick={onClick}>hi</Container>
+const Button: React.FC<ButtonProps> = ({ name, color, onClick, ...rest }) => (
+  <Container onClick={onClick} {...rest}>
+    <Icon name={name} color={color} size={Size.MEDIUM} />
+  </Container>
 );
 
 export default Button;
