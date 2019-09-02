@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import PageWrapper from "~components/PageWrapper";
 import copy from "~assets/copy.json";
@@ -10,6 +9,7 @@ import TypefaceSection from "./sections/Typeface";
 import TextSection from "./sections/Text";
 import IconSection from "./sections/Icon";
 import LinkAndButtonSection from "./sections/LinkAndButton";
+import ParticleSection from "./sections/Particle";
 import CardSection from "./sections/Card";
 
 const DesignSystemPage = () => (
@@ -23,6 +23,7 @@ const DesignSystemPage = () => (
     <TextSection />
     <IconSection />
     <LinkAndButtonSection />
+    <ParticleSection />
     <CardSection />
   </PageWrapper>
 );

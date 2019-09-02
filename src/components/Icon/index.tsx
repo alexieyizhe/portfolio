@@ -25,15 +25,11 @@ const ICON_DICTIONARY: { [name: string]: FeatherIconType } = {
 const DEFAULT_ICON_SIZE = Size.MEDIUM;
 
 const NoIconFound = styled.span<IconProps>`
-  display: inline-flex;
+  display: inline-block;
   width: ${({ size }) => size}px;
   height: ${({ size }) => size}px;
   background-color: ${({ color }) => color};
   border-radius: ${({ theme }) => theme.borderRadius.card}px;
-
-  & > div {
-    margin: auto;
-  }
 `;
 
 const Icon: React.FC<IconProps> = ({
