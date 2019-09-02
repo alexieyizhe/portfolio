@@ -8,7 +8,7 @@ import {
 } from "react-feather";
 
 import { Size } from "~theme/index";
-import { BaseElementProps } from "~utils/typings/BaseElementProps";
+import { BaseElementProps } from "~src/utils/types/BaseElementProps";
 
 export interface IconProps extends BaseElementProps {
   name: string;

@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 
 import { Size } from "~theme/index";
-import { BaseElementProps } from "~utils/typings/BaseElementProps";
+import { BaseElementProps } from "~src/utils/types/BaseElementProps";
 
 export interface TextProps extends BaseElementProps {
   /**
