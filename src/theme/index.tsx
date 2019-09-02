@@ -1,3 +1,5 @@
+import { createMediaQueryTemplate } from "./mediaQueries";
+
 export enum Size {
   XSMALL = "xsmall",
   SMALL = "small",
@@ -19,18 +21,42 @@ const themeConstants = {
     blue: "#15D1DD",
     red: "#ED6F6F",
   },
-  size: {
+  fontSize: {
     [Size.XSMALL]: 16,
     [Size.SMALL]: 18,
     [Size.MEDIUM]: 26,
-    [Size.LARGE]: 32,
-    [Size.XLARGE]: 48,
+    [Size.LARGE]: 30,
+    [Size.XLARGE]: 42,
+  },
+  lineHeight: {
+    [Size.XSMALL]: 1.1,
+    [Size.SMALL]: 1.1,
+    [Size.MEDIUM]: 1.2,
+    [Size.LARGE]: 1.3,
+    [Size.XLARGE]: 1.3,
   },
   borderRadius: {
-    card: 10,
+    card: 6,
   },
+  fontFamily: {
+    heading: "sans-serif",
+    body: "sans-serif",
+  },
+  boxShadow: {
+    main: "0 2px 10px 0 rgba(0, 0, 0, 8%)",
+  },
+};
+
+const deviceBreakpoints = {
+  large: 1440,
+  medium: 1024,
+  tablet: 768,
+  largeMobile: 425,
+  mobile: 375,
+  smallMobile: 320,
 };
 
 export default {
   ...themeConstants,
+  mediaQueries: createMediaQueryTemplate(deviceBreakpoints),
 };

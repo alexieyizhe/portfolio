@@ -13,7 +13,7 @@ module.exports = {
       options: {
         alias: {
           "~src": "src",
-          "~assets": "src/static",
+          "~assets": "src/assets",
           "~components": "src/components",
           "~layouts": "src/layouts",
           "~pages": "src/pages",
@@ -22,6 +22,14 @@ module.exports = {
           "~utils": "src/utils",
         },
         extensions: ["ts", "tsx", "json"],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\.inline\.svg$/,
+        },
       },
     },
   ],
