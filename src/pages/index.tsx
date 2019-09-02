@@ -2,13 +2,12 @@ import React from "react";
 
 import { withPageWrapper } from "~components/PageWrapper";
 
+import LandingSection from "~sections/landing";
+
 const IndexPage = () => (
-  <div>
-    <h1>
-      hello dis the active dev build of me new site! check back later for more
-      details
-    </h1>
-  </div>
+  <>
+    <LandingSection />
+  </>
 );
 
 export default withPageWrapper(IndexPage);
