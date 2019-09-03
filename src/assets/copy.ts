@@ -1,4 +1,28 @@
 export default {
+  mainLandingSection: {
+    greetings: [
+      "Hi!",
+      "Hey!",
+      "Sup?",
+      "Howdy!",
+      "Heya!",
+      "Yo!",
+      "你好!",
+      "Bonjour!",
+      "👋 !",
+    ],
+    name: "Alex Xie.",
+    taglinePrefix: "I'm a ",
+    taglines: [
+      `code enthusiast.`,
+      "happy wallflower.",
+      "struggling rock climber.",
+      "lover of bad puns.",
+      "computer science student.",
+      "budding developer.",
+      "soccer fanatic.",
+    ],
+  },
   designSystemSection: {
     title: "Maintaining consistency, even in the small details.",
     subtitle: "Design System",

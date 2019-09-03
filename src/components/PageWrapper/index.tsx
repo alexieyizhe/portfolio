@@ -10,7 +10,10 @@ interface PageWrapperProps {
 
 export const PageContainer = styled.div`
   position: relative;
-  margin: 100px 160px;
+  width: 100%;
+  max-width: 2000px;
+  margin: auto;
+  padding: 130px 160px;
 
   & > .PageWrapper--Heading {
     margin-bottom: 1em;
