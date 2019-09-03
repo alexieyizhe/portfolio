@@ -10,6 +10,9 @@ export * from "./ContentCard";
 export { default as Icon } from "./Icon";
 export * from "./Icon";
 
+export { default as IconLink } from "./IconLink";
+export * from "./IconLink";
+
 export { default as Link } from "./Link";
 export * from "./Link";
 

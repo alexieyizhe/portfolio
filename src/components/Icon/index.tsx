@@ -4,6 +4,8 @@ import {
   ArrowLeft,
   Download,
   GitHub,
+  FileText,
+  Send,
   Icon as FeatherIconType,
 } from "react-feather";
 
@@ -20,6 +22,8 @@ const ICON_DICTIONARY: { [name: string]: FeatherIconType } = {
   "arrow-left": ArrowLeft,
   download: Download,
   github: GitHub,
+  "file-text": FileText,
+  send: Send,
 };
 
 const DEFAULT_ICON_SIZE = Size.MEDIUM;

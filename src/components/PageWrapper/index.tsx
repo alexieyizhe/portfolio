@@ -13,7 +13,7 @@ export const PageContainer = styled.div`
   width: 100%;
   max-width: 2000px;
   margin: auto;
-  padding: 130px 160px;
+  padding: 15vh 130px;
 
   & > .PageWrapper--Heading {
     margin-bottom: 1em;
@@ -30,12 +30,16 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   children,
 }) => (
   <PageContainer>
-    <NarrowHeading className="PageWrapper-Subheading" variant="subheading">
-      {subtitle}
-    </NarrowHeading>
-    <NarrowHeading className="PageWrapper--Heading" variant="heading">
-      {title}
-    </NarrowHeading>
+    {subtitle && (
+      <NarrowHeading className="PageWrapper-Subheading" variant="subheading">
+        {subtitle}
+      </NarrowHeading>
+    )}
+    {title && (
+      <NarrowHeading className="PageWrapper--Heading" variant="heading">
+        {title}
+      </NarrowHeading>
+    )}
     {children}
   </PageContainer>
 );
