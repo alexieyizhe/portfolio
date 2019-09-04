@@ -3,4 +3,10 @@ export { default as SquareParticle } from "./particles/square.inline.svg";
 export { default as TriangleParticle } from "./particles/triangle.inline.svg";
 export { default as ZigzagParticle } from "./particles/zigzag.inline.svg";
 
-export { default as HeroMe } from "./hero_main_alt.png";
+export { default as HeroMe } from "./hero_main.png";
+
+export { default as FlippHero } from "./featured/flipp-hero.jpg";
+
+export { default as TestShowcaseImage } from "./showcase/test.png";
+
+export { default as AboutAvatar } from "./about/avatar.jpg";

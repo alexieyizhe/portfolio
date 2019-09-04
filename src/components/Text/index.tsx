@@ -43,7 +43,7 @@ const TEXT_VARIANTS: VariantList = {
     bold: true,
   },
   subheading: {
-    size: Size.LARGE,
+    size: Size.MEDIUM,
     bold: true,
   },
   body: {
@@ -58,6 +58,8 @@ const BaseText = styled.p<TextProps>`
     theme.fontSize[size] || size}px;
 
   color: ${({ theme, color = "" }) => theme.color[color] || color || "inherit"};
+  text-decoration-color: ${({ theme, color = "" }) =>
+    theme.color[color] || color || "inherit"};
   line-height: ${({ theme, size = Size.MEDIUM, lineHeight }) =>
     theme.lineHeight[lineHeight || size]};
   text-align: ${({ align = "left" }) => align};

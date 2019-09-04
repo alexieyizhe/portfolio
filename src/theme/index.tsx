@@ -24,8 +24,8 @@ const themeConstants = {
   fontSize: {
     [Size.XSMALL]: 16,
     [Size.SMALL]: 18,
-    [Size.MEDIUM]: 26,
-    [Size.LARGE]: 30,
+    [Size.MEDIUM]: 22,
+    [Size.LARGE]: 26,
     [Size.XLARGE]: 42,
   },
   lineHeight: {

@@ -5,14 +5,18 @@ import Icon, { IconProps } from "~components/Icon";
 import Link, { LinkProps } from "~components/Link";
 import { Size } from "~src/theme";
 
-interface IconLinkProps extends IconProps, LinkProps {}
+interface IconLinkProps
+  extends Pick<IconProps, Exclude<keyof IconProps, "name">>, // rename `name` to `iconName`
+    LinkProps {
+  iconName: string;
+}
 
 const Container = styled.span`
   display: inline-flex;
   align-items: center;
 
   & > .IconLink--Icon {
-    opacity: 0.6;
+    opacity: 0.3;
   }
 
   & > .IconLink--Link {
@@ -22,7 +26,7 @@ const Container = styled.span`
 `;
 
 const IconLink: React.FC<IconLinkProps> = ({
-  name,
+  iconName,
   children,
   color,
   size: iconSize,
@@ -33,7 +37,7 @@ const IconLink: React.FC<IconLinkProps> = ({
     () =>
       (typeof iconSize === "number"
         ? iconSize
-        : fontSize[iconSize || Size.MEDIUM]) - 10,
+        : fontSize[iconSize || Size.MEDIUM]) - 15,
     [fontSize, iconSize]
   );
 
@@ -41,7 +45,7 @@ const IconLink: React.FC<IconLinkProps> = ({
     <Container>
       <Icon
         className="IconLink--Icon"
-        name={name}
+        name={iconName}
         color={color}
         size={iconSize}
       />

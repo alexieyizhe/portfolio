@@ -9,6 +9,7 @@ import TypefaceSection from "~sections/design-system/Typeface";
 import TextSection from "~sections/design-system/Text";
 import IconSection from "~sections/design-system/Icon";
 import LinkAndButtonSection from "~sections/design-system/LinkAndButton";
+import GallerySection from "~sections/design-system/Gallery";
 import ParticleSection from "~sections/design-system/Particle";
 import CardSection from "~sections/design-system/Card";
 
@@ -23,6 +24,7 @@ const DesignSystemPage = () => (
     <TextSection />
     <IconSection />
     <LinkAndButtonSection />
+    <GallerySection />
     <ParticleSection />
     <CardSection />
   </PageWrapper>

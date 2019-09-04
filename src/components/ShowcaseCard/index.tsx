@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Card, { CardProps, CARD_VERT_PADDING } from "~components/Card";
+import Icon from "~components/Icon";
 import Text from "~components/Text";
 import { UnstyledLink } from "~components/Link";
 
@@ -17,7 +18,7 @@ export interface ShowcaseCardProps extends CardProps {
 
 const CardContainer = styled(Card)`
   display: grid;
-  grid-template-rows: 50px 260px 50px;
+  grid-template-rows: 50px 180px 50px;
   grid-template-columns: 40% 30%;
   grid-column-gap: 30%;
   grid-template-areas:
@@ -29,6 +30,7 @@ const CardContainer = styled(Card)`
   width: 100%;
   max-width: 2000px;
   height: auto;
+  margin: 100px 0;
 
   transition: transform 150ms ease-in;
   cursor: pointer;
@@ -37,29 +39,43 @@ const CardContainer = styled(Card)`
   &:focus-within {
     transform: translateY(-5px);
   }
+
+  & > .title {
+    grid-area: title;
+  }
+
+  & > .subheading {
+    grid-area: subheading;
+  }
+
+  & > .link {
+    grid-area: link;
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    align-self: end;
+
+    position: relative;
+    bottom: -${CARD_VERT_PADDING * 1.5}px;
+  }
+
+  & > .image {
+    grid-area: image;
+  }
 `; // TODO: refine this hover animation
 
 const Subheading = styled(Text)`
-  grid-area: subheading;
-
   position: relative;
-  top: -${CARD_VERT_PADDING * 2}px;
+  top: -${CARD_VERT_PADDING * 1.5}px;
 `;
 
 const Title = styled(Text)`
-  grid-area: title;
-
   position: relative;
-  top: -${CARD_VERT_PADDING * 2}px;
+  top: -${CARD_VERT_PADDING * 1.5}px;
 `;
 
 const DetailsLink = styled(Text)`
-  grid-area: link;
-  justify-self: end;
-  align-self: end;
-
   position: relative;
-  bottom: -${CARD_VERT_PADDING * 2}px;
 
   &:hover,
   &:focus {
@@ -68,7 +84,6 @@ const DetailsLink = styled(Text)`
 `;
 
 const ShowcaseImage = styled.img`
-  grid-area: image;
   max-width: 100%;
 
   position: relative;
@@ -86,12 +101,20 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
 }) => (
   <UnstyledLink href={linkHref}>
     <CardContainer>
-      <Subheading variant="subheading">{subtitle}</Subheading>
-      <Title variant="heading">{title}</Title>
-      <ShowcaseImage src={imgSrc} alt={imgAlt} />
-      <DetailsLink variant="subheading" className="link">
-        {linkText}
-      </DetailsLink>
+      <Subheading variant="subheading" className="subheading">
+        {subtitle}
+      </Subheading>
+
+      <Title variant="heading" className="title">
+        {title}
+      </Title>
+
+      <ShowcaseImage src={imgSrc} alt={imgAlt} className="image" />
+
+      <div className="link">
+        <DetailsLink variant="subheading">{linkText}</DetailsLink>
+        <Icon name="arrow-right" />
+      </div>
     </CardContainer>
   </UnstyledLink>
 );
