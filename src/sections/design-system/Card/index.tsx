@@ -56,6 +56,7 @@ const CardSection = () => (
         linkHref=""
         imgSrc={TESTIMG_SHOWCASE}
         imgAlt="Some pic"
+        particles
       />
     </CardDisplay>
   </ElementGroup>

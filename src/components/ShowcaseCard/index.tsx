@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-import Card, { CardProps, CARD_VERT_PADDING } from "~components/Card";
+import Card, {
+  CardProps,
+  CARD_VERT_PADDING,
+  ParticleInfo,
+} from "~components/Card";
 import Icon from "~components/Icon";
 import Text from "~components/Text";
 import { UnstyledLink } from "~components/Link";
@@ -15,6 +19,14 @@ export interface ShowcaseCardProps extends CardProps {
   linkHref?: string;
   particles?: boolean;
 }
+
+const particlesInfo: ParticleInfo[] = [
+  { x: 60, y: 94, s: 0.9, color: "red" },
+  { x: 23, y: 96, s: 0.5, color: "blue" },
+  { x: -2, y: 28, s: 0.7, color: "purple" },
+  { x: 98, y: 60, s: 0.7, color: "green" },
+  { x: 45, y: -2, s: 1, color: "red" },
+];
 
 const CardContainer = styled(Card)`
   display: grid;
@@ -100,7 +112,10 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
   particles, // TODO: integrate particles
 }) => (
   <UnstyledLink href={linkHref}>
-    <CardContainer>
+    <CardContainer
+      particles={particles}
+      particlesInfo={particles ? particlesInfo : undefined}
+    >
       <Subheading variant="subheading" className="subheading">
         {subtitle}
       </Subheading>
