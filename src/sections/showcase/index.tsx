@@ -8,7 +8,7 @@ const sectionCopy = copy.showcaseSection;
 
 const Container = styled.div`
   position: relative;
-  margin-top: 50px;
+  margin-top: 250px;
 `;
 
 const HeaderText = styled(Text)`

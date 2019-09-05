@@ -66,23 +66,27 @@ const Gallery: React.FC<GalleryProps> = ({ images, defaultIndex = 0 }) => {
 
   return (
     <Container>
-      <Button
-        name="chevron-left"
-        className="left-button"
-        onClick={goPrevImg}
-        disabled={curImgIndex === 0}
-      />
+      {images.length > 1 && (
+        <Button
+          name="chevron-left"
+          className="left-button"
+          onClick={goPrevImg}
+          disabled={curImgIndex === 0}
+        />
+      )}
       <ImageContainer>
         {images.map((image, i) => (
           <GalleryImage key={image} src={image} shown={i === curImgIndex} />
         ))}
       </ImageContainer>
-      <Button
-        name="chevron-right"
-        className="right-button"
-        onClick={goNextImg}
-        disabled={curImgIndex === images.length - 1}
-      />
+      {images.length > 1 && (
+        <Button
+          name="chevron-right"
+          className="right-button"
+          onClick={goNextImg}
+          disabled={curImgIndex === images.length - 1}
+        />
+      )}
     </Container>
   );
 };

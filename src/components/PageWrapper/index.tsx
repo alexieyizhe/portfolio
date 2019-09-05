@@ -11,7 +11,7 @@ interface PageWrapperProps {
 export const PageContainer = styled.div`
   position: relative;
   width: 90%;
-  max-width: 2000px;
+  max-width: 1700px;
   margin: auto;
   padding: 15vh 130px;
 

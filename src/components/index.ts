@@ -7,6 +7,9 @@ export * from "./Card";
 export { default as ContentCard } from "./ContentCard";
 export * from "./ContentCard";
 
+export { default as Gallery } from "./Gallery";
+export * from "./Gallery";
+
 export { default as Icon } from "./Icon";
 export * from "./Icon";
 

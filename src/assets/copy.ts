@@ -1,4 +1,4 @@
-import { FlippHero, TestShowcaseImage } from "~assets/images";
+import { AboutAvatar, FlippHero, TestShowcaseImage } from "~assets/images";
 
 export default {
   mainLandingSection: {
@@ -56,6 +56,18 @@ export default {
         linkText: "Check it out",
         linkHref: "/design-system",
       },
+    },
+  },
+  aboutSection: {
+    title: "Look, it me!",
+    avatarImg: AboutAvatar,
+    desc: [
+      "I'm Alex Yizhe Xie, and I'm currently two-fifths of my way to a Bachelor of Computer Science at the University of Waterloo.",
+      "My hometown is Singapore, Singapore (trippy, I know), but these days, I'm proudly Canadian and extremely excited for both the future of technology and the next journey I'm going to embark on! ",
+    ],
+    readMore: {
+      linkText: "Find out more",
+      linkHref: "/about",
     },
   },
   showcaseSection: {

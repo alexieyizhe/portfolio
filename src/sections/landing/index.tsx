@@ -16,7 +16,7 @@ const HeroImg = styled.img`
   bottom: 0;
   right: 0;
 
-  max-height: 90%;
+  max-width: 70%;
 `;
 
 const Landing = () => (
