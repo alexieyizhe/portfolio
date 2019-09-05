@@ -17,6 +17,7 @@ export interface ParticleProps extends BaseElementProps {
   color?: string;
   size?: Size;
   float?: boolean;
+  rotation?: number;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -39,15 +40,16 @@ const PARTICLE_SCALE_FACTOR = {
 const Container = styled.span<ParticleProps>`
   display: inline-block;
 
-  transform: scale(${({ size = Size.MEDIUM }) => PARTICLE_SCALE_FACTOR[size]});
+  ${({ float }) =>
+    float &&
+    css`
+      animation: ${floatAnim} ${Math.random() * 6000 + 4000}ms ease-in-out
+        infinite;
+    `}
 
   & > svg {
-    ${({ float }) =>
-      float &&
-      css`
-        animation: ${floatAnim} ${Math.floor(Math.random() * 3 + 5)}s
-          ease-in-out infinite;
-      `}
+    transform: scale(${({ size = Size.MEDIUM }) => PARTICLE_SCALE_FACTOR[size]})
+      rotate(${({ rotation }) => rotation}deg);
 
     & circle {
       fill: ${({ theme, color = "black" }) => theme.color[color] || color};
@@ -61,16 +63,18 @@ const Container = styled.span<ParticleProps>`
   }
 `;
 
-const Particle: React.FC<ParticleProps> = ({ name, ...rest }) => {
+const Particle: React.FC<ParticleProps> = ({ name, rotation, ...rest }) => {
   const randomParticle = useMemo(
     () => PARTICLE_OPTIONS[Math.floor(Math.random() * PARTICLE_OPTIONS.length)],
     []
   );
 
+  const randomRotation = useMemo(() => Math.random() * 100, []);
+
   const ParticleComponent = PARTICLE_DICTIONARY[name || randomParticle];
 
   return (
-    <Container {...rest}>
+    <Container {...rest} rotation={rotation || randomRotation}>
       <ParticleComponent />
     </Container>
   );

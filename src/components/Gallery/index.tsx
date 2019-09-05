@@ -1,17 +1,20 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 
-import { Button } from "~src/components";
+import { Button, Particle } from "~src/components";
 import { BaseElementProps } from "~utils/types/BaseElementProps";
 
 export interface GalleryProps extends BaseElementProps {
   images: string[];
+  particles?: boolean;
   defaultIndex?: number;
 }
 
 const BUTTON_OFFSET = 20;
 
 const Container = styled.div`
+  position: relative;
+
   display: flex;
   align-items: center;
 
@@ -27,6 +30,7 @@ const Container = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  position: relative;
   border-radius: 50%;
   width: 300px;
   height: 300px;
@@ -51,7 +55,29 @@ const GalleryImage = styled.img<{ shown: boolean }>`
   opacity: ${({ shown }) => (shown ? 1 : 0)};
 `;
 
-const Gallery: React.FC<GalleryProps> = ({ images, defaultIndex = 0 }) => {
+const ParticleTop = styled(Particle)`
+  position: absolute;
+  top: 0;
+  left: 25%;
+`;
+
+const ParticleLeft = styled(Particle)`
+  position: absolute;
+  bottom: 10px;
+  left: 10%;
+`;
+
+const ParticleRight = styled(Particle)`
+  position: absolute;
+  bottom: -5px;
+  right: 15%;
+`;
+
+const Gallery: React.FC<GalleryProps> = ({
+  images,
+  particles,
+  defaultIndex = 0,
+}) => {
   const [curImgIndex, setCurImgIndex] = useState(defaultIndex);
 
   const goPrevImg = useCallback(
@@ -79,6 +105,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, defaultIndex = 0 }) => {
           <GalleryImage key={image} src={image} shown={i === curImgIndex} />
         ))}
       </ImageContainer>
+
       {images.length > 1 && (
         <Button
           name="chevron-right"
@@ -86,6 +113,14 @@ const Gallery: React.FC<GalleryProps> = ({ images, defaultIndex = 0 }) => {
           onClick={goNextImg}
           disabled={curImgIndex === images.length - 1}
         />
+      )}
+
+      {particles && (
+        <>
+          <ParticleTop float color="green" />
+          <ParticleLeft float color="red" />
+          <ParticleRight float color="blue" />
+        </>
       )}
     </Container>
   );

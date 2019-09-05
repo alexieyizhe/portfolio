@@ -39,7 +39,7 @@ const ReadMoreLink = styled.div`
 
 const About = () => (
   <Container>
-    <Gallery images={[sectionCopy.avatarImg]} />
+    <Gallery images={[sectionCopy.avatarImg]} particles />
     <TextContainer>
       <Text variant="heading" as="h3">
         {sectionCopy.title}
