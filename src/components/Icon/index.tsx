@@ -2,8 +2,13 @@ import React, { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 import {
   ArrowLeft,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   Download,
   GitHub,
+  FileText,
+  Send,
   Icon as FeatherIconType,
 } from "react-feather";
 
@@ -18,8 +23,13 @@ export interface IconProps extends BaseElementProps {
 
 const ICON_DICTIONARY: { [name: string]: FeatherIconType } = {
   "arrow-left": ArrowLeft,
+  "arrow-right": ArrowRight,
+  "chevron-left": ChevronLeft,
+  "chevron-right": ChevronRight,
   download: Download,
   github: GitHub,
+  "file-text": FileText,
+  send: Send,
 };
 
 const DEFAULT_ICON_SIZE = Size.MEDIUM;

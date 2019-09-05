@@ -8,6 +8,7 @@ import Card, {
 } from "~components/Card";
 import Text from "~components/Text";
 import Link from "~components/Link";
+import Icon from "~components/Icon";
 
 interface ContentCardProps extends CardProps {
   title?: string;
@@ -30,6 +31,7 @@ const CardContainer = styled(Card)`
   & > .title {
     justify-self: flex-start;
     align-self: flex-start;
+    margin-bottom: 10px;
   }
 
   & > .image {
@@ -45,6 +47,9 @@ const CardContainer = styled(Card)`
   & > .link {
     justify-self: flex-end;
     align-self: flex-start;
+
+    display: flex;
+    align-items: center;
 
     margin-top: 1em;
   }
@@ -81,9 +86,12 @@ const ContentCard: React.FC<ContentCardProps> = ({
     ) : null}
 
     {linkText && (
-      <Link className="link" variant="body" bold href={linkHref || ""}>
-        {linkText}
-      </Link>
+      <div className="link">
+        <Link variant="body" bold href={linkHref || ""} as="span">
+          {linkText}
+        </Link>
+        <Icon name="arrow-right" />
+      </div>
     )}
   </CardContainer>
 );

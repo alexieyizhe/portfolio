@@ -2,13 +2,18 @@ import React from "react";
 
 import { withPageWrapper } from "~components/PageWrapper";
 
+import LandingSection from "~sections/landing";
+import FeaturedSection from "~sections/featured";
+import AboutSection from "~sections/about";
+import ShowcaseSection from "~sections/showcase";
+
 const IndexPage = () => (
-  <div>
-    <h1>
-      hello dis the active dev build of me new site! check back later for more
-      details
-    </h1>
-  </div>
+  <>
+    <LandingSection />
+    <FeaturedSection />
+    <AboutSection />
+    <ShowcaseSection />
+  </>
 );
 
 export default withPageWrapper(IndexPage);

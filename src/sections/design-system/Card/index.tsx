@@ -8,7 +8,7 @@ import ShowcaseCard from "~components/ShowcaseCard";
 import ElementGroup from "~sections/design-system/components/ElementGroup";
 
 import TESTIMG from "~assets/images/spookyscary.jpg";
-import TESTIMG_SHOWCASE from "~assets/images/test.png";
+import { TestShowcaseImage as TESTIMG_SHOWCASE } from "~assets/images";
 
 const CardDisplay = styled.div`
   margin-bottom: 30px;

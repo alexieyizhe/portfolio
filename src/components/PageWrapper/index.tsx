@@ -8,9 +8,12 @@ interface PageWrapperProps {
   subtitle?: string; // Smaller text, displayed above the title and in line with the back button if there is one.
 }
 
-const StyledWrapper = styled.div`
+export const PageContainer = styled.div`
   position: relative;
-  margin: 100px 160px;
+  width: 90%;
+  max-width: 1700px;
+  margin: auto;
+  padding: 15vh 130px;
 
   & > .PageWrapper--Heading {
     margin-bottom: 1em;
@@ -26,15 +29,19 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   subtitle,
   children,
 }) => (
-  <StyledWrapper>
-    <NarrowHeading className="PageWrapper-Subheading" variant="subheading">
-      {subtitle}
-    </NarrowHeading>
-    <NarrowHeading className="PageWrapper--Heading" variant="heading">
-      {title}
-    </NarrowHeading>
+  <PageContainer>
+    {subtitle && (
+      <NarrowHeading className="PageWrapper-Subheading" variant="subheading">
+        {subtitle}
+      </NarrowHeading>
+    )}
+    {title && (
+      <NarrowHeading className="PageWrapper--Heading" variant="heading">
+        {title}
+      </NarrowHeading>
+    )}
     {children}
-  </StyledWrapper>
+  </PageContainer>
 );
 
 /**
