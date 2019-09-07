@@ -1,4 +1,9 @@
-import { AboutAvatar, FlippHero, TestShowcaseImage } from "~assets/images";
+import {
+  AboutAvatar,
+  FlippHero,
+  TestShowcaseImage,
+  GearIcon,
+} from "~assets/images";
 
 export default {
   mainLandingSection: {
@@ -80,9 +85,10 @@ export default {
         imgAlt: "A test image",
         linkText: "Read more",
         linkHref: "/",
+        customParticle: GearIcon,
       },
       {
-        title: "Building Canada's largest hackathon.",
+        title: "Building Canada's largest hackaefwthon.",
         subtitle: "Hack the North",
         imgSrc: TestShowcaseImage,
         imgAlt: "A test image",
@@ -90,7 +96,7 @@ export default {
         linkHref: "/",
       },
       {
-        title: "Building Canada's largest hackathon.",
+        title: "Building Canada's largewest hackathon.",
         subtitle: "Hack the North",
         imgSrc: TestShowcaseImage,
         imgAlt: "A test image",
@@ -158,5 +164,8 @@ export default {
         ],
       },
     },
+  },
+  footer: {
+    text: "made with a keyboard, a screen, and a whole lotta Googling.",
   },
 };

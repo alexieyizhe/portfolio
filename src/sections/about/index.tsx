@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Link, Icon, Text, Gallery } from "~src/components";
+import { Text, Gallery } from "~src/components";
 import copy from "~assets/copy";
 
 const sectionCopy = copy.aboutSection;
@@ -10,7 +10,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
 
-  margin-top: 250px;
+  margin-top: 200px;
 `;
 
 const TextContainer = styled.div`
@@ -30,16 +30,16 @@ const TextContainer = styled.div`
   }
 `;
 
-const ReadMoreLink = styled.div`
-  display: flex;
-  align-items: center;
+// const ReadMoreLink = styled.div`
+//   display: flex;
+//   align-items: center;
 
-  margin-top: 20px;
-`;
+//   margin-top: 20px;
+// `;
 
 const About = () => (
   <Container>
-    <Gallery images={[sectionCopy.avatarImg]} />
+    <Gallery images={[sectionCopy.avatarImg]} particles />
     <TextContainer>
       <Text variant="heading" as="h3">
         {sectionCopy.title}
@@ -51,7 +51,7 @@ const About = () => (
         ))}
       </div>
 
-      <ReadMoreLink>
+      {/* <ReadMoreLink>
         <Link
           variant="body"
           bold
@@ -62,7 +62,7 @@ const About = () => (
           {sectionCopy.readMore.linkText}
         </Link>
         <Icon name="arrow-right" color="greyMedium" />
-      </ReadMoreLink>
+      </ReadMoreLink> */}
     </TextContainer>
   </Container>
 );

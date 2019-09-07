@@ -7,7 +7,7 @@ import Gallery from "~components/Gallery";
 
 import { AboutAvatar, HeroMe } from "~assets/images";
 
-const IconSection = () => (
+const GallerySection = () => (
   <ElementGroup
     title={copy.designSystemSection.sections.gallery.title}
     desc={copy.designSystemSection.sections.gallery.desc}
@@ -16,4 +16,4 @@ const IconSection = () => (
   </ElementGroup>
 );
 
-export default IconSection;
+export default GallerySection;

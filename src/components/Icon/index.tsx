@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useMemo } from "react";
 import styled, { ThemeContext } from "styled-components";
+import SvgLines from "react-mt-svg-lines"; // ES6+
 import {
   ArrowLeft,
   ArrowRight,
   ChevronLeft,
   ChevronRight,
+  ChevronsUp,
   Download,
   GitHub,
+  Linkedin,
   FileText,
   Send,
   Icon as FeatherIconType,
@@ -17,6 +20,8 @@ import { BaseElementProps } from "~utils/types/BaseElementProps";
 
 export interface IconProps extends BaseElementProps {
   name: string;
+  animate?: boolean;
+  animateType?: number | true; // if not specified, will animate on hover
   color?: string;
   size?: Size | number;
 }
@@ -26,13 +31,24 @@ const ICON_DICTIONARY: { [name: string]: FeatherIconType } = {
   "arrow-right": ArrowRight,
   "chevron-left": ChevronLeft,
   "chevron-right": ChevronRight,
+  "chevrons-up": ChevronsUp,
   download: Download,
   github: GitHub,
+  linkedin: Linkedin,
   "file-text": FileText,
   send: Send,
 };
 
 const DEFAULT_ICON_SIZE = Size.MEDIUM;
+
+const Container = styled.span`
+  display: grid;
+
+  & > * {
+    grid-row: 1;
+    grid-column: 1;
+  }
+`;
 
 const NoIconFound = styled.span<IconProps>`
   display: inline-block;
@@ -47,29 +63,63 @@ const Icon: React.FC<IconProps> = ({
   name,
   size,
   color,
+  animate = true,
+  animateType,
   onClick,
 }) => {
+  const [isHovering, setHovering] = useState(false);
   const { fontSize, color: themeColors } = useContext(ThemeContext);
 
   const IconComponent = ICON_DICTIONARY[name];
   const iconSize = size ? fontSize[size] || size : fontSize[DEFAULT_ICON_SIZE];
   const iconColor = color ? themeColors[color] || color : themeColors.black;
 
-  return IconComponent ? (
-    <IconComponent
-      className={className}
-      size={iconSize}
-      color={iconColor}
-      onClick={onClick}
-    />
-  ) : (
-    <NoIconFound
-      name={name}
-      size={iconSize}
-      color={iconColor}
-      className={`unknown--icon--${name} ${className || ""}`}
-    />
+  const RenderedComponent = useMemo(
+    () =>
+      IconComponent ? (
+        <Container
+          onMouseEnter={() => setHovering(true)}
+          onMouseLeave={() => setHovering(false)}
+          onClick={onClick}
+        >
+          <IconComponent
+            className={className}
+            size={iconSize}
+            color={animate ? themeColors.greyLight : iconColor}
+          />
+          {animate && (
+            <SvgLines animate={animateType || isHovering || "hide"}>
+              <IconComponent
+                className={className}
+                size={iconSize}
+                color={iconColor}
+              />
+            </SvgLines>
+          )}
+        </Container>
+      ) : (
+        <NoIconFound
+          name={name}
+          size={iconSize}
+          color={iconColor}
+          className={`Icon--Unknown--${name} ${className || ""}`}
+        />
+      ),
+    [
+      IconComponent,
+      animate,
+      animateType,
+      className,
+      iconColor,
+      iconSize,
+      isHovering,
+      name,
+      onClick,
+      themeColors.greyLight,
+    ]
   );
+
+  return RenderedComponent;
 };
 
 export default Icon;

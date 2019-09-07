@@ -1,22 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 
-import Card, {
-  CardProps,
-  CARD_HORIZ_PADDING,
-  CARD_VERT_PADDING,
-} from "~components/Card";
+import Card, { CARD_HORIZ_PADDING, CARD_VERT_PADDING } from "~components/Card";
+import { ParticleInfo } from "~components/ShowcaseCard";
 import Text from "~components/Text";
 import Link from "~components/Link";
 import Icon from "~components/Icon";
+import { BaseElementProps } from "~utils/types/BaseElementProps";
 
-interface ContentCardProps extends CardProps {
+interface ContentCardProps extends BaseElementProps {
   title?: string;
   imgSrc?: string;
   imgAlt?: string;
   linkText?: string;
   linkHref?: string;
+
+  // TODO: add particles here
   particles?: boolean;
+  particlesInfo?: ParticleInfo[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  customParticle?: any;
 }
 
 const CardContainer = styled(Card)`
@@ -69,10 +72,10 @@ const ContentCard: React.FC<ContentCardProps> = ({
   imgAlt,
   linkText,
   linkHref,
-  particles, // TODO: add particles in
   children,
+  ...rest
 }) => (
-  <CardContainer id={id} className={className}>
+  <CardContainer id={id} className={className} {...rest}>
     {imgSrc && <CardImage className="image" src={imgSrc} alt={imgAlt} />}
 
     {title && (
