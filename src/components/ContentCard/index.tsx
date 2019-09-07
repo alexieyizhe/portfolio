@@ -2,24 +2,20 @@ import React from "react";
 import styled from "styled-components";
 
 import Card, { CARD_HORIZ_PADDING, CARD_VERT_PADDING } from "~components/Card";
-import { ParticleInfo } from "~components/ShowcaseCard";
+import { ParticleGroupProps } from "~components/ParticleGroup";
 import Text from "~components/Text";
 import Link from "~components/Link";
 import Icon from "~components/Icon";
-import { BaseElementProps } from "~utils/types/BaseElementProps";
 
-interface ContentCardProps extends BaseElementProps {
+interface ContentCardProps extends ParticleGroupProps {
   title?: string;
   imgSrc?: string;
   imgAlt?: string;
   linkText?: string;
   linkHref?: string;
 
-  // TODO: add particles here
+  // TODO: add particle positions
   particles?: boolean;
-  particlesInfo?: ParticleInfo[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customParticle?: any;
 }
 
 const CardContainer = styled(Card)`

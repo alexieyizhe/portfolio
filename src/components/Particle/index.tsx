@@ -12,6 +12,13 @@ import {
   TriangleParticle,
 } from "~assets/images";
 
+export interface ParticleInfo {
+  x: number;
+  y: number;
+  s: number;
+  color: string;
+}
+
 export interface ParticleProps extends BaseElementProps {
   name?: "zigzag" | "circle" | "triangle" | "square"; // random if not provided
   color?: string;

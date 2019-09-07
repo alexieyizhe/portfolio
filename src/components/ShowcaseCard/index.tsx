@@ -6,11 +6,11 @@ import Card, { CARD_VERT_PADDING } from "~components/Card";
 import Icon from "~components/Icon";
 import Text from "~components/Text";
 import { UnstyledLink } from "~components/Link";
-import { BaseElementProps } from "~utils/types/BaseElementProps";
 
-import Particle from "~components/Particle";
+import ParticleGroup, { ParticleGroupProps } from "~components/ParticleGroup";
+import { ParticleInfo } from "~components/Particle";
 
-export interface ShowcaseCardProps extends BaseElementProps {
+export interface ShowcaseCardProps extends ParticleGroupProps {
   title: string;
   subtitle?: string;
   imgSrc?: string;
@@ -18,19 +18,9 @@ export interface ShowcaseCardProps extends BaseElementProps {
   linkText?: string;
   linkHref?: string;
   particles?: boolean;
-  particlesInfo?: ParticleInfo[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customParticle?: any;
 }
 
-export interface ParticleInfo {
-  x: number;
-  y: number;
-  s: number;
-  color: string;
-}
-
-const particlesInfo: ParticleInfo[] = [
+const showcaseCardParticleInfo: ParticleInfo[] = [
   { x: 60, y: 94, s: 0.8, color: "red" },
   { x: 23, y: 96, s: 0.4, color: "blue" },
   { x: -2, y: 28, s: 0.5, color: "purple" },
@@ -118,22 +108,6 @@ const ShowcaseImage = styled.img`
   top: -${CARD_VERT_PADDING * 3}px;
 `;
 
-const ParticlesContainer = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-`;
-
-const ParticleContainer = styled.div<ParticleInfo>`
-  position: absolute;
-  display: inline-block;
-  left: ${({ x }) => x + (Math.random() * 4 - 2)}%;
-  top: ${({ y }) => y + (Math.random() * 4 - 2)}%;
-  transform: scale(${({ s }) => s + (Math.random() - 0.5) / 3});
-`;
-
 const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
   title,
   subtitle,
@@ -154,26 +128,6 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
     <UnstyledLink href={linkHref}>
       <Waypoint onEnter={onCardEnter} onLeave={onCardLeave}>
         <CardContainer show={cardVisible} {...rest}>
-          {particles && particlesInfo && (
-            <ParticlesContainer>
-              {particlesInfo.map(particlePos => (
-                <ParticleContainer
-                  key={`${particlePos.x}-${particlePos.y}`}
-                  x={particlePos.x}
-                  y={particlePos.y}
-                  s={particlePos.s}
-                  color={particlePos.color}
-                >
-                  <Particle
-                    float
-                    color={particlePos.color}
-                    customSVG={Math.random() < 0.7 ? customParticle : undefined}
-                  />
-                </ParticleContainer>
-              ))}
-            </ParticlesContainer>
-          )}
-
           <Subheading variant="subheading" className="subheading">
             {subtitle}
           </Subheading>
@@ -188,6 +142,13 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
             <DetailsLink variant="subheading">{linkText}</DetailsLink>
             <Icon name="arrow-right" />
           </div>
+
+          {particles && (
+            <ParticleGroup
+              particlesInfo={showcaseCardParticleInfo}
+              customParticle={customParticle}
+            />
+          )}
         </CardContainer>
       </Waypoint>
     </UnstyledLink>
