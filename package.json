@@ -16,6 +16,7 @@
     "react-dom": "^16.9.0",
     "react-feather": "^2.0.3",
     "react-helmet": "^5.2.1",
+    "react-mt-svg-lines": "^0.9.1",
     "react-text-loop": "^2.0.2",
     "styled-components": "^4.3.2"
   },
