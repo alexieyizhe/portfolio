@@ -165,4 +165,7 @@ export default {
       },
     },
   },
+  footer: {
+    text: "made with a keyboard, a screen, and a whole lotta Googling.",
+  },
 };

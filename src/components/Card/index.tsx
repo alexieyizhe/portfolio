@@ -83,7 +83,7 @@ const Card: React.FC<CardProps> = ({
             <Particle
               float
               color={particlePos.color}
-              customSVG={Math.random() < 0.4 ? customParticle : undefined}
+              customSVG={Math.random() < 0.7 ? customParticle : undefined}
             />
           </ParticleContainer>
         ))}
