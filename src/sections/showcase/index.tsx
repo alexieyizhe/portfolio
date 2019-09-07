@@ -15,19 +15,29 @@ const HeaderText = styled(Text)`
   margin: 30px 0;
 `;
 
+const CardContainer = styled.div`
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Showcase = () => (
   <Container>
     <HeaderText variant="heading">{sectionCopy.title}</HeaderText>
     {sectionCopy.cards.map(card => (
-      <ShowcaseCard
-        key={card.title}
-        title={card.title}
-        subtitle={card.subtitle}
-        imgSrc={card.imgSrc}
-        imgAlt={card.imgAlt}
-        linkHref={card.linkHref}
-        linkText={card.linkText}
-      />
+      <CardContainer key={card.title}>
+        <ShowcaseCard
+          title={card.title}
+          subtitle={card.subtitle}
+          imgSrc={card.imgSrc}
+          imgAlt={card.imgAlt}
+          linkHref={card.linkHref}
+          linkText={card.linkText}
+          particles
+          customParticle={card.customParticle}
+        />
+      </CardContainer>
     ))}
   </Container>
 );

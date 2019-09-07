@@ -1,4 +1,9 @@
-import { AboutAvatar, FlippHero, TestShowcaseImage } from "~assets/images";
+import {
+  AboutAvatar,
+  FlippHero,
+  TestShowcaseImage,
+  GearIcon,
+} from "~assets/images";
 
 export default {
   mainLandingSection: {
@@ -80,6 +85,7 @@ export default {
         imgAlt: "A test image",
         linkText: "Read more",
         linkHref: "/",
+        customParticle: GearIcon,
       },
       {
         title: "Building Canada's largest hackathon.",

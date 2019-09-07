@@ -20,38 +20,40 @@ interface ContentCardProps extends CardProps {
 }
 
 const CardContainer = styled(Card)`
-  display: inline-flex;
-  flex-direction: column;
+  & > .Card--ContentContainer {
+    display: inline-flex;
+    flex-direction: column;
 
-  position: relative;
-  width: auto;
-  height: auto;
-  overflow: hidden;
+    position: relative;
+    width: auto;
+    height: auto;
+    overflow: hidden;
 
-  & > .title {
-    justify-self: flex-start;
-    align-self: flex-start;
-    margin-bottom: 10px;
-  }
+    & > .title {
+      justify-self: flex-start;
+      align-self: flex-start;
+      margin-bottom: 10px;
+    }
 
-  & > .image {
-    justify-self: flex-start;
-    align-self: center;
-  }
+    & > .image {
+      justify-self: flex-start;
+      align-self: center;
+    }
 
-  & > .body {
-    justify-self: flex-start;
-    align-self: flex-start;
-  }
+    & > .body {
+      justify-self: flex-start;
+      align-self: flex-start;
+    }
 
-  & > .link {
-    justify-self: flex-end;
-    align-self: flex-start;
+    & > .link {
+      justify-self: flex-end;
+      align-self: flex-start;
 
-    display: flex;
-    align-items: center;
+      display: flex;
+      align-items: center;
 
-    margin-top: 1em;
+      margin-top: 1em;
+    }
   }
 `;
 
@@ -69,10 +71,10 @@ const ContentCard: React.FC<ContentCardProps> = ({
   imgAlt,
   linkText,
   linkHref,
-  particles, // TODO: add particles in
   children,
+  ...rest
 }) => (
-  <CardContainer id={id} className={className}>
+  <CardContainer id={id} className={className} {...rest}>
     {imgSrc && <CardImage className="image" src={imgSrc} alt={imgAlt} />}
 
     {title && (

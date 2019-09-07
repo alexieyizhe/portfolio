@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Button, Particle } from "~src/components";
 import { BaseElementProps } from "~utils/types/BaseElementProps";
+import { Size } from "~src/theme";
 
 export interface GalleryProps extends BaseElementProps {
   images: string[];
@@ -63,13 +64,13 @@ const ParticleTop = styled(Particle)`
 
 const ParticleLeft = styled(Particle)`
   position: absolute;
-  bottom: 10px;
-  left: 10%;
+  bottom: 40px;
+  left: 6%;
 `;
 
 const ParticleRight = styled(Particle)`
   position: absolute;
-  bottom: -5px;
+  bottom: 2px;
   right: 15%;
 `;
 
@@ -117,9 +118,9 @@ const Gallery: React.FC<GalleryProps> = ({
 
       {particles && (
         <>
-          <ParticleTop float color="green" />
-          <ParticleLeft float color="red" />
-          <ParticleRight float color="blue" />
+          <ParticleTop float color="green" size={Size.SMALL} />
+          <ParticleLeft float color="red" size={0.6} />
+          <ParticleRight float color="blue" size={0.75} />
         </>
       )}
     </Container>

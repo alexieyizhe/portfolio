@@ -8,6 +8,8 @@ import Particle from "~components/Particle";
 export interface CardProps extends BaseElementProps {
   particles?: boolean;
   particlesInfo?: ParticleInfo[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  customParticle?: any;
 }
 
 export interface ParticleInfo {
@@ -25,6 +27,11 @@ export const CARD_VERT_PADDING = 20;
  * spaced far enough from each other to not look awkward.
  */
 export const placeParticlesOnEdge = () => {};
+
+const OuterContainer = styled.div`
+  position: relative;
+  width: 100%;
+`;
 
 const Container = styled.div`
   position: relative;
@@ -48,18 +55,21 @@ const ParticlesContainer = styled.div`
 const ParticleContainer = styled.div<ParticleInfo>`
   position: absolute;
   display: inline-block;
-  left: ${({ x }) => x}%;
-  top: ${({ y }) => y}%;
-  transform: scale(${({ s }) => s});
+  left: ${({ x }) => x + (Math.random() * 4 - 2)}%;
+  top: ${({ y }) => y + (Math.random() * 4 - 2)}%;
+  transform: scale(${({ s }) => s + (Math.random() - 0.5) / 3});
 `;
 
 const Card: React.FC<CardProps> = ({
+  id,
+  className,
   particles,
   particlesInfo,
+  customParticle,
   children,
   ...rest
 }) => (
-  <div>
+  <OuterContainer id={id} className={className}>
     {particles && particlesInfo && (
       <ParticlesContainer>
         {particlesInfo.map(particlePos => (
@@ -70,13 +80,19 @@ const Card: React.FC<CardProps> = ({
             s={particlePos.s}
             color={particlePos.color}
           >
-            <Particle float color={particlePos.color} />
+            <Particle
+              float
+              color={particlePos.color}
+              customSVG={Math.random() < 0.4 ? customParticle : undefined}
+            />
           </ParticleContainer>
         ))}
       </ParticlesContainer>
     )}
-    <Container {...rest}>{children}</Container>
-  </div>
+    <Container {...rest} className="Card--ContentContainer">
+      {children}
+    </Container>
+  </OuterContainer>
 );
 
 export default Card;

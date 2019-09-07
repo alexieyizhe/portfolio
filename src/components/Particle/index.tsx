@@ -15,9 +15,11 @@ import {
 export interface ParticleProps extends BaseElementProps {
   name?: "zigzag" | "circle" | "triangle" | "square"; // random if not provided
   color?: string;
-  size?: Size;
+  size?: Size | number;
   float?: boolean;
   rotation?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  customSVG?: any; // a custom SVG img to use
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -48,7 +50,10 @@ const Container = styled.span<ParticleProps>`
     `}
 
   & > svg {
-    transform: scale(${({ size = Size.MEDIUM }) => PARTICLE_SCALE_FACTOR[size]})
+    transform: scale(
+        ${({ size = Size.MEDIUM }) =>
+          typeof size === "number" ? size : PARTICLE_SCALE_FACTOR[size]}
+      )
       rotate(${({ rotation }) => rotation}deg);
 
     & circle {
@@ -63,7 +68,12 @@ const Container = styled.span<ParticleProps>`
   }
 `;
 
-const Particle: React.FC<ParticleProps> = ({ name, rotation, ...rest }) => {
+const Particle: React.FC<ParticleProps> = ({
+  name,
+  rotation,
+  customSVG,
+  ...rest
+}) => {
   const randomParticle = useMemo(
     () => PARTICLE_OPTIONS[Math.floor(Math.random() * PARTICLE_OPTIONS.length)],
     []
@@ -71,7 +81,8 @@ const Particle: React.FC<ParticleProps> = ({ name, rotation, ...rest }) => {
 
   const randomRotation = useMemo(() => Math.random() * 100, []);
 
-  const ParticleComponent = PARTICLE_DICTIONARY[name || randomParticle];
+  const ParticleComponent =
+    customSVG || PARTICLE_DICTIONARY[name || randomParticle];
 
   return (
     <Container {...rest} rotation={rotation || randomRotation}>
