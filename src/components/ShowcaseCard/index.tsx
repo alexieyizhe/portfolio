@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
+import { Waypoint } from "react-waypoint";
 
-import Card, {
-  CardProps,
-  CARD_VERT_PADDING,
-  ParticleInfo,
-} from "~components/Card";
+import Card, { CARD_VERT_PADDING } from "~components/Card";
 import Icon from "~components/Icon";
 import Text from "~components/Text";
 import { UnstyledLink } from "~components/Link";
+import { BaseElementProps } from "~utils/types/BaseElementProps";
 
-export interface ShowcaseCardProps extends CardProps {
+import Particle from "~components/Particle";
+
+export interface ShowcaseCardProps extends BaseElementProps {
   title: string;
   subtitle?: string;
   imgSrc?: string;
@@ -18,6 +18,16 @@ export interface ShowcaseCardProps extends CardProps {
   linkText?: string;
   linkHref?: string;
   particles?: boolean;
+  particlesInfo?: ParticleInfo[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  customParticle?: any;
+}
+
+export interface ParticleInfo {
+  x: number;
+  y: number;
+  s: number;
+  color: string;
 }
 
 const particlesInfo: ParticleInfo[] = [
@@ -28,45 +38,49 @@ const particlesInfo: ParticleInfo[] = [
   { x: 45, y: -2, s: 0.75, color: "red" },
 ];
 
-const CardContainer = styled(Card)`
-  & .Card--ContentContainer {
-    display: grid;
-    grid-template-rows: 50px 180px 50px;
-    grid-template-columns: 40% 35%;
-    grid-column-gap: 25%;
-    grid-template-areas:
-      "subheading image"
-      "title ."
-      ". link";
+const CardContainer = styled(Card)<{ show?: boolean }>`
+  display: grid;
+  grid-template-rows: 50px 180px 50px;
+  grid-template-columns: 40% 35%;
+  grid-column-gap: 25%;
+  grid-template-areas:
+    "subheading image"
+    "title ."
+    ". link";
+
+  position: relative;
+  width: 100%;
+  max-width: 2000px;
+  height: auto;
+  margin: 100px 0;
+
+  & > * {
+    transition: opacity 250ms, transform 500ms;
+    opacity: ${({ show }) => (show ? 1 : 0)};
+    transform: translateY(${({ show }) => (show ? 0 : "150px")});
+  }
+
+  & > .title {
+    grid-area: title;
+  }
+
+  & > .subheading {
+    grid-area: subheading;
+  }
+
+  & > .link {
+    grid-area: link;
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    align-self: end;
 
     position: relative;
-    width: 100%;
-    max-width: 2000px;
-    height: auto;
-    margin: 100px 0;
+    bottom: -${CARD_VERT_PADDING * 1.5}px;
+  }
 
-    & > .title {
-      grid-area: title;
-    }
-
-    & > .subheading {
-      grid-area: subheading;
-    }
-
-    & > .link {
-      grid-area: link;
-      display: flex;
-      align-items: center;
-      justify-self: end;
-      align-self: end;
-
-      position: relative;
-      bottom: -${CARD_VERT_PADDING * 1.5}px;
-    }
-
-    & > .image {
-      grid-area: image;
-    }
+  & > .image {
+    grid-area: image;
   }
 
   transition: transform 150ms ease-in;
@@ -76,7 +90,7 @@ const CardContainer = styled(Card)`
   &:focus-within {
     transform: translateY(-5px);
   }
-`; // TODO: refine this hover animation
+`;
 
 const Subheading = styled(Text)`
   position: relative;
@@ -104,6 +118,22 @@ const ShowcaseImage = styled.img`
   top: -${CARD_VERT_PADDING * 3}px;
 `;
 
+const ParticlesContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+`;
+
+const ParticleContainer = styled.div<ParticleInfo>`
+  position: absolute;
+  display: inline-block;
+  left: ${({ x }) => x + (Math.random() * 4 - 2)}%;
+  top: ${({ y }) => y + (Math.random() * 4 - 2)}%;
+  transform: scale(${({ s }) => s + (Math.random() - 0.5) / 3});
+`;
+
 const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
   title,
   subtitle,
@@ -113,29 +143,55 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
   linkHref,
   particles,
   customParticle,
-}) => (
-  <UnstyledLink href={linkHref}>
-    <CardContainer
-      particles={particles}
-      particlesInfo={particles ? particlesInfo : undefined}
-      customParticle={customParticle}
-    >
-      <Subheading variant="subheading" className="subheading">
-        {subtitle}
-      </Subheading>
+  ...rest
+}) => {
+  const [cardVisible, setCardVisible] = useState(false);
 
-      <Title variant="heading" className="title">
-        {title}
-      </Title>
+  const onCardEnter = useCallback(() => setCardVisible(true), []);
+  const onCardLeave = useCallback(() => setCardVisible(false), []);
 
-      <ShowcaseImage src={imgSrc} alt={imgAlt} className="image" />
+  return (
+    <UnstyledLink href={linkHref}>
+      <Waypoint onEnter={onCardEnter} onLeave={onCardLeave}>
+        <CardContainer show={cardVisible} {...rest}>
+          {particles && particlesInfo && (
+            <ParticlesContainer>
+              {particlesInfo.map(particlePos => (
+                <ParticleContainer
+                  key={`${particlePos.x}-${particlePos.y}`}
+                  x={particlePos.x}
+                  y={particlePos.y}
+                  s={particlePos.s}
+                  color={particlePos.color}
+                >
+                  <Particle
+                    float
+                    color={particlePos.color}
+                    customSVG={Math.random() < 0.7 ? customParticle : undefined}
+                  />
+                </ParticleContainer>
+              ))}
+            </ParticlesContainer>
+          )}
 
-      <div className="link">
-        <DetailsLink variant="subheading">{linkText}</DetailsLink>
-        <Icon name="arrow-right" />
-      </div>
-    </CardContainer>
-  </UnstyledLink>
-);
+          <Subheading variant="subheading" className="subheading">
+            {subtitle}
+          </Subheading>
+
+          <Title variant="heading" className="title">
+            {title}
+          </Title>
+
+          <ShowcaseImage src={imgSrc} alt={imgAlt} className="image" />
+
+          <div className="link">
+            <DetailsLink variant="subheading">{linkText}</DetailsLink>
+            <Icon name="arrow-right" />
+          </div>
+        </CardContainer>
+      </Waypoint>
+    </UnstyledLink>
+  );
+};
 
 export default ShowcaseCard;

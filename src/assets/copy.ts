@@ -88,7 +88,7 @@ export default {
         customParticle: GearIcon,
       },
       {
-        title: "Building Canada's largest hackathon.",
+        title: "Building Canada's largest hackaefwthon.",
         subtitle: "Hack the North",
         imgSrc: TestShowcaseImage,
         imgAlt: "A test image",
@@ -96,7 +96,7 @@ export default {
         linkHref: "/",
       },
       {
-        title: "Building Canada's largest hackathon.",
+        title: "Building Canada's largewest hackathon.",
         subtitle: "Hack the North",
         imgSrc: TestShowcaseImage,
         imgAlt: "A test image",

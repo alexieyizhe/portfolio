@@ -1,59 +1,60 @@
 import React from "react";
 import styled from "styled-components";
 
-import Card, {
-  CardProps,
-  CARD_HORIZ_PADDING,
-  CARD_VERT_PADDING,
-} from "~components/Card";
+import Card, { CARD_HORIZ_PADDING, CARD_VERT_PADDING } from "~components/Card";
+import { ParticleInfo } from "~components/ShowcaseCard";
 import Text from "~components/Text";
 import Link from "~components/Link";
 import Icon from "~components/Icon";
+import { BaseElementProps } from "~utils/types/BaseElementProps";
 
-interface ContentCardProps extends CardProps {
+interface ContentCardProps extends BaseElementProps {
   title?: string;
   imgSrc?: string;
   imgAlt?: string;
   linkText?: string;
   linkHref?: string;
+
+  // TODO: add particles here
   particles?: boolean;
+  particlesInfo?: ParticleInfo[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  customParticle?: any;
 }
 
 const CardContainer = styled(Card)`
-  & > .Card--ContentContainer {
-    display: inline-flex;
-    flex-direction: column;
+  display: inline-flex;
+  flex-direction: column;
 
-    position: relative;
-    width: auto;
-    height: auto;
-    overflow: hidden;
+  position: relative;
+  width: auto;
+  height: auto;
+  overflow: hidden;
 
-    & > .title {
-      justify-self: flex-start;
-      align-self: flex-start;
-      margin-bottom: 10px;
-    }
+  & > .title {
+    justify-self: flex-start;
+    align-self: flex-start;
+    margin-bottom: 10px;
+  }
 
-    & > .image {
-      justify-self: flex-start;
-      align-self: center;
-    }
+  & > .image {
+    justify-self: flex-start;
+    align-self: center;
+  }
 
-    & > .body {
-      justify-self: flex-start;
-      align-self: flex-start;
-    }
+  & > .body {
+    justify-self: flex-start;
+    align-self: flex-start;
+  }
 
-    & > .link {
-      justify-self: flex-end;
-      align-self: flex-start;
+  & > .link {
+    justify-self: flex-end;
+    align-self: flex-start;
 
-      display: flex;
-      align-items: center;
+    display: flex;
+    align-items: center;
 
-      margin-top: 1em;
-    }
+    margin-top: 1em;
   }
 `;
 
