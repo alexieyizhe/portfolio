@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-import copy from "~assets/copy";
 import Card from "~components/Card";
-import ContentCard from "~components/ContentCard";
-import ShowcaseCard from "~components/ShowcaseCard";
+import ContentCard from "~sections/featured/components/ContentCard";
+import ShowcaseCard from "~sections/showcase/components/ShowcaseCard";
 import ElementGroup from "~sections/design-system/components/ElementGroup";
 
-import TESTIMG from "~assets/images/spookyscary.jpg";
+import copy from "~assets/copy";
 import { TestShowcaseImage as TESTIMG_SHOWCASE } from "~assets/images";
+import TESTIMG from "~assets/images/spookyscary.jpg";
 
 const CardDisplay = styled.div`
   margin-bottom: 30px;

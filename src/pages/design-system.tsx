@@ -3,14 +3,14 @@ import React from "react";
 import PageWrapper from "~components/PageWrapper";
 import copy from "~assets/copy";
 
-import IntroSection from "~sections/design-system/Intro";
-import PaletteSection from "~sections/design-system/Palette";
-import TypefaceSection from "~sections/design-system/Typeface";
-import TextSection from "~sections/design-system/Text";
-import IconSection from "~sections/design-system/Icon";
-import LinkAndButtonSection from "~sections/design-system/LinkAndButton";
-import GallerySection from "~sections/design-system/Gallery";
-import ParticleSection from "~sections/design-system/Particle";
+import IntroSection from "~sections/design-system/intro";
+import PaletteSection from "~sections/design-system/palette";
+import TypefaceSection from "~sections/design-system/typeface";
+import TextSection from "~sections/design-system/text";
+import IconSection from "~sections/design-system/icon";
+import LinkAndButtonSection from "~sections/design-system/link-button";
+import GallerySection from "~sections/design-system/gallery";
+import ParticleSection from "~sections/design-system/particle";
 import CardSection from "~sections/design-system/Card";
 
 const DesignSystemPage = () => (

@@ -36,7 +36,7 @@ export default {
       first: {
         title: "Catch ya on the Flipp side ✌️",
         desc: [
-          "Wrote a little bit about my experience as a Software Engineer Intern at Flipp Corp!",
+          "Learn about my experience as a Software Engineer Intern at Flipp Corp!",
         ],
         linkText: "Read the article",
         linkHref:
@@ -67,8 +67,8 @@ export default {
     title: "Look, it me!",
     avatarImg: AboutAvatar,
     desc: [
-      "I'm Alex Yizhe Xie, and I'm currently two-fifths of my way to a Bachelor of Computer Science at the University of Waterloo.",
-      "My hometown is Singapore, Singapore (trippy, I know), but these days, I'm proudly Canadian and extremely excited for both the future of technology and the next journey I'm going to embark on! ",
+      "I'm Alex Yizhe Xie, a computer science student in my junior year at the University of Waterloo.",
+      "My passions include rock climbing, coding for good, and human-computer interaction design.",
     ],
     readMore: {
       linkText: "Find out more",
@@ -79,19 +79,19 @@ export default {
     title: "Stuff I've Done",
     cards: [
       {
-        title: "Building Canada's largest hackathon.",
-        subtitle: "Hack the North",
+        title: "Bringing print flyers into the digital medium.",
+        subtitle: "Flipp",
         imgSrc: TestShowcaseImage,
-        imgAlt: "A test image",
+        imgAlt: "Flipp's main dashboard for digital publishing",
         linkText: "Read more",
         linkHref: "/",
         customParticle: GearIcon,
       },
       {
-        title: "Building Canada's largest hackaefwthon.",
+        title: "Building Canada's largest hackathon.",
         subtitle: "Hack the North",
         imgSrc: TestShowcaseImage,
-        imgAlt: "A test image",
+        imgAlt: "Home page of Hack the North",
         linkText: "Read more",
         linkHref: "/",
       },
@@ -166,6 +166,6 @@ export default {
     },
   },
   footer: {
-    text: "made with a keyboard, a screen, and a whole lotta Googling.",
+    text: "made with a keyboard, a screen, and a whole lotta googling.",
   },
 };

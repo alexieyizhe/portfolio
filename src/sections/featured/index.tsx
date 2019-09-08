@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Text, ContentCard } from "~components/index";
+import { Text } from "~components/index";
+import ContentCard from "./components/ContentCard";
+
 import copy from "~assets/copy";
 
 const sectionCopy = copy.featuredSection;
