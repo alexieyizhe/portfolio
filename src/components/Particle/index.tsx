@@ -1,16 +1,23 @@
 import React, { useMemo } from "react";
 import styled, { css } from "styled-components";
 
-import { BaseElementProps } from "~utils/types/BaseElementProps";
+import { BaseElementProps } from "~src/types/BaseElementProps";
 import { floatAnim } from "~utils/animations";
 
-import { Size } from "~src/theme";
+import { Size } from "~types/Size";
 import {
   ZigzagParticle,
   CircleParticle,
   SquareParticle,
   TriangleParticle,
 } from "~assets/images";
+
+export interface ParticleInfo {
+  x: number;
+  y: number;
+  s: number;
+  color: string;
+}
 
 export interface ParticleProps extends BaseElementProps {
   name?: "zigzag" | "circle" | "triangle" | "square"; // random if not provided

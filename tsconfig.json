@@ -18,6 +18,7 @@
       "~pages/*": ["src/pages/*"],
       "~sections/*": ["src/sections/*"],
       "~theme/*": ["src/theme/*"],
+      "~types/*": ["src/types/*"],
       "~utils/*": ["src/utils/*"]
     },
     // "declaration": true,                   /* Generates corresponding '.d.ts' file. */

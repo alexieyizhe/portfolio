@@ -15,8 +15,8 @@ import {
   Icon as FeatherIconType,
 } from "react-feather";
 
-import { Size } from "~theme/index";
-import { BaseElementProps } from "~utils/types/BaseElementProps";
+import { Size } from "~types/Size";
+import { BaseElementProps } from "~types/BaseElementProps";
 
 export interface IconProps extends BaseElementProps {
   name: string;
@@ -24,6 +24,8 @@ export interface IconProps extends BaseElementProps {
   animateType?: number | true; // if not specified, will animate on hover
   color?: string;
   size?: Size | number;
+
+  hover?: boolean; // used to override hover
 }
 
 const ICON_DICTIONARY: { [name: string]: FeatherIconType } = {
@@ -43,6 +45,8 @@ const DEFAULT_ICON_SIZE = Size.MEDIUM;
 
 const Container = styled.span`
   display: grid;
+  justify-content: center;
+  align-items: center;
 
   & > * {
     grid-row: 1;
@@ -64,6 +68,7 @@ const Icon: React.FC<IconProps> = ({
   size,
   color,
   animate = true,
+  hover = false,
   animateType,
   onClick,
 }) => {
@@ -88,7 +93,10 @@ const Icon: React.FC<IconProps> = ({
             color={animate ? themeColors.greyLight : iconColor}
           />
           {animate && (
-            <SvgLines animate={animateType || isHovering || "hide"}>
+            <SvgLines
+              animate={animateType || (isHovering || hover) || "hide"}
+              duration={200}
+            >
               <IconComponent
                 className={className}
                 size={iconSize}
@@ -110,6 +118,7 @@ const Icon: React.FC<IconProps> = ({
       animate,
       animateType,
       className,
+      hover,
       iconColor,
       iconSize,
       isHovering,

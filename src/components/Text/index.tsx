@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 
-import { Size } from "~theme/index";
-import { BaseElementProps } from "~utils/types/BaseElementProps";
+import { Size } from "~types/Size";
+import { BaseElementProps } from "~src/types/BaseElementProps";
 
 export interface TextProps extends BaseElementProps {
   /**
@@ -51,7 +51,7 @@ const TEXT_VARIANTS: VariantList = {
   },
 };
 
-const BaseText = styled.p<TextProps>`
+const BaseText = styled.span<TextProps>`
   font-family: ${({ theme, heading }) =>
     theme.fontFamily[heading ? "heading" : "text"]};
   font-size: ${({ theme, size = Size.MEDIUM }) =>

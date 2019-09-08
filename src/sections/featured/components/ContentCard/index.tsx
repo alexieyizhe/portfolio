@@ -2,27 +2,22 @@ import React from "react";
 import styled from "styled-components";
 
 import Card, { CARD_HORIZ_PADDING, CARD_VERT_PADDING } from "~components/Card";
-import { ParticleInfo } from "~components/ShowcaseCard";
+import { ParticleGroupProps } from "~components/ParticleGroup";
 import Text from "~components/Text";
 import Link from "~components/Link";
-import Icon from "~components/Icon";
-import { BaseElementProps } from "~utils/types/BaseElementProps";
 
-interface ContentCardProps extends BaseElementProps {
+interface ContentCardProps extends ParticleGroupProps {
   title?: string;
   imgSrc?: string;
   imgAlt?: string;
   linkText?: string;
   linkHref?: string;
 
-  // TODO: add particles here
+  // TODO: add particle positions
   particles?: boolean;
-  particlesInfo?: ParticleInfo[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customParticle?: any;
 }
 
-const CardContainer = styled(Card)`
+const CardContainer = styled(Card)<{ linkHref?: string }>`
   display: inline-flex;
   flex-direction: column;
 
@@ -56,6 +51,18 @@ const CardContainer = styled(Card)`
 
     margin-top: 1em;
   }
+
+  ${({ linkHref }) =>
+    linkHref &&
+    `
+      transition: transform 150ms ease-in; 
+      cursor: pointer;
+    `}
+  &:hover,
+  &:focus,
+  &:focus-within {
+    ${({ linkHref }) => linkHref && "transform: translateY(-5px);"}
+  }
 `;
 
 const CardImage = styled.img`
@@ -75,7 +82,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
   children,
   ...rest
 }) => (
-  <CardContainer id={id} className={className} {...rest}>
+  <CardContainer id={id} className={className} linkHref={linkHref} {...rest}>
     {imgSrc && <CardImage className="image" src={imgSrc} alt={imgAlt} />}
 
     {title && (
@@ -89,12 +96,16 @@ const ContentCard: React.FC<ContentCardProps> = ({
     ) : null}
 
     {linkText && (
-      <div className="link">
-        <Link variant="body" bold href={linkHref || ""} as="span">
-          {linkText}
-        </Link>
-        <Icon name="arrow-right" />
-      </div>
+      <Link
+        className="link"
+        variant="body"
+        bold
+        href={linkHref || ""}
+        as="span"
+        iconName="arrow-right"
+      >
+        {linkText}
+      </Link>
     )}
   </CardContainer>
 );

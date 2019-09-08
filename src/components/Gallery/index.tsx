@@ -2,8 +2,8 @@ import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 
 import { Button, Particle } from "~src/components";
-import { BaseElementProps } from "~utils/types/BaseElementProps";
-import { Size } from "~src/theme";
+import { BaseElementProps } from "~src/types/BaseElementProps";
+import { Size } from "~types/Size";
 
 export interface GalleryProps extends BaseElementProps {
   images: string[];

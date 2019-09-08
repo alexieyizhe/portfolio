@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Icon, { IconProps } from "~components/Icon";
-import { Size } from "~src/theme";
+import { Size } from "~types/Size";
 
 export interface ButtonProps extends IconProps {
   disabled?: boolean;

@@ -19,6 +19,7 @@ module.exports = {
           "~pages": "src/pages",
           "~sections": "src/sections",
           "~theme": "src/theme",
+          "~types": "src/types",
           "~utils": "src/utils",
         },
         extensions: ["ts", "tsx", "json"],
