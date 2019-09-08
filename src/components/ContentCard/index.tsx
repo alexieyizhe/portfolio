@@ -85,12 +85,16 @@ const ContentCard: React.FC<ContentCardProps> = ({
     ) : null}
 
     {linkText && (
-      <div className="link">
-        <Link variant="body" bold href={linkHref || ""} as="span">
-          {linkText}
-        </Link>
-        <Icon name="arrow-right" />
-      </div>
+      <Link
+        className="link"
+        variant="body"
+        bold
+        href={linkHref || ""}
+        as="span"
+        iconName="arrow-right"
+      >
+        {linkText}
+      </Link>
     )}
   </CardContainer>
 );

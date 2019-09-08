@@ -51,7 +51,7 @@ const TEXT_VARIANTS: VariantList = {
   },
 };
 
-const BaseText = styled.p<TextProps>`
+const BaseText = styled.span<TextProps>`
   font-family: ${({ theme, heading }) =>
     theme.fontFamily[heading ? "heading" : "text"]};
   font-size: ${({ theme, size = Size.MEDIUM }) =>

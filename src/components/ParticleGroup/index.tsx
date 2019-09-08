@@ -9,10 +9,14 @@ import Particle, { ParticleInfo } from "../Particle";
 import { BaseElementProps } from "~utils/types/BaseElementProps";
 
 export interface ParticleGroupProps extends BaseElementProps {
-  particlesInfo: ParticleInfo[];
+  particlesInfo?: ParticleInfo[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   customParticle?: any;
 }
+
+const defaultParticlesInfo: ParticleInfo[] = [
+  { x: 0, y: 0, s: 1, color: "black" },
+];
 
 const ParticlesContainer = styled.div`
   position: absolute;
@@ -31,7 +35,7 @@ const ParticleContainer = styled.div<ParticleInfo>`
 `;
 
 const ParticleGroup: React.FC<ParticleGroupProps> = ({
-  particlesInfo,
+  particlesInfo = defaultParticlesInfo,
   customParticle,
 }) => (
   <ParticlesContainer>

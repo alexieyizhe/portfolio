@@ -5,7 +5,7 @@ import { Waypoint } from "react-waypoint";
 import Card, { CARD_VERT_PADDING } from "~components/Card";
 import Icon from "~components/Icon";
 import Text from "~components/Text";
-import { UnstyledLink } from "~components/Link";
+import Link, { UnstyledLink } from "~components/Link";
 
 import ParticleGroup, { ParticleGroupProps } from "~components/ParticleGroup";
 import { ParticleInfo } from "~components/Particle";
@@ -31,8 +31,8 @@ const showcaseCardParticleInfo: ParticleInfo[] = [
 const CardContainer = styled(Card)<{ show?: boolean }>`
   display: grid;
   grid-template-rows: 50px 180px 50px;
-  grid-template-columns: 40% 35%;
-  grid-column-gap: 25%;
+  grid-template-columns: 35% 35%;
+  grid-column-gap: 30%;
   grid-template-areas:
     "subheading image"
     "title ."
@@ -60,8 +60,6 @@ const CardContainer = styled(Card)<{ show?: boolean }>`
 
   & > .link {
     grid-area: link;
-    display: flex;
-    align-items: center;
     justify-self: end;
     align-self: end;
 
@@ -90,15 +88,6 @@ const Subheading = styled(Text)`
 const Title = styled(Text)`
   position: relative;
   top: -${CARD_VERT_PADDING * 1.5}px;
-`;
-
-const DetailsLink = styled(Text)`
-  position: relative;
-
-  &:hover,
-  &:focus {
-    text-decoration: underline;
-  }
 `;
 
 const ShowcaseImage = styled.img`
@@ -138,10 +127,14 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
 
           <ShowcaseImage src={imgSrc} alt={imgAlt} className="image" />
 
-          <div className="link">
-            <DetailsLink variant="subheading">{linkText}</DetailsLink>
-            <Icon name="arrow-right" />
-          </div>
+          <Link
+            variant="subheading"
+            className="link"
+            iconName="arrow-right"
+            href=""
+          >
+            {linkText}
+          </Link>
 
           {particles && (
             <ParticleGroup
