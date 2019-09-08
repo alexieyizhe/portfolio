@@ -6,7 +6,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Particle, { ParticleInfo } from "../Particle";
-import { BaseElementProps } from "~utils/types/BaseElementProps";
+import { BaseElementProps } from "~src/types/BaseElementProps";
 
 export interface ParticleGroupProps extends BaseElementProps {
   particlesInfo?: ParticleInfo[];

@@ -3,7 +3,7 @@ import styled, { ThemeContext } from "styled-components";
 
 import Icon, { IconProps } from "~components/Icon";
 import Link, { LinkProps } from "~components/Link";
-import { Size } from "~src/theme";
+import { Size } from "~types/Size";
 
 interface IconLinkProps
   extends Pick<IconProps, Exclude<keyof IconProps, "name">>, // rename `name` to `iconName`

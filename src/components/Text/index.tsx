@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 
-import { Size } from "~theme/index";
-import { BaseElementProps } from "~utils/types/BaseElementProps";
+import { Size } from "~types/Size";
+import { BaseElementProps } from "~src/types/BaseElementProps";
 
 export interface TextProps extends BaseElementProps {
   /**

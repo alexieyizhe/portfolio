@@ -4,7 +4,7 @@ import copy from "~assets/copy";
 
 import ElementGroup from "~sections/design-system/components/ElementGroup";
 import Icon from "~components/Icon";
-import { Size } from "~src/theme";
+import { Size } from "~types/Size";
 
 const IconSection = () => (
   <ElementGroup

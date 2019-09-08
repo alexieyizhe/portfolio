@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import styled from "styled-components";
 
 import { Text, Icon } from "~src/components";
-import { Size } from "~src/theme";
+import { Size } from "~types/Size";
 import copy from "~assets/copy";
 
 const Container = styled.div`

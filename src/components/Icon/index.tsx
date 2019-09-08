@@ -15,8 +15,8 @@ import {
   Icon as FeatherIconType,
 } from "react-feather";
 
-import { Size } from "~theme/index";
-import { BaseElementProps } from "~utils/types/BaseElementProps";
+import { Size } from "~types/Size";
+import { BaseElementProps } from "~types/BaseElementProps";
 
 export interface IconProps extends BaseElementProps {
   name: string;

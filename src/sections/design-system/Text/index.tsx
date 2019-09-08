@@ -5,7 +5,7 @@ import copy from "~assets/copy";
 import Text from "~components/Text";
 import Link from "~components/Link";
 import ElementGroup from "~sections/design-system/components/ElementGroup";
-import { Size } from "~src/theme";
+import { Size } from "~types/Size";
 
 const TextSection = () => (
   <ElementGroup
