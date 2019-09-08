@@ -11,7 +11,7 @@ import IconSection from "~sections/design-system/icon";
 import LinkAndButtonSection from "~sections/design-system/link-button";
 import GallerySection from "~sections/design-system/gallery";
 import ParticleSection from "~sections/design-system/particle";
-import CardSection from "~sections/design-system/Card";
+import CardSection from "~sections/design-system/card";
 
 const DesignSystemPage = () => (
   <PageWrapper
