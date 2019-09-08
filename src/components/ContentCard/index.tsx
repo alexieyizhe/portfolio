@@ -5,7 +5,6 @@ import Card, { CARD_HORIZ_PADDING, CARD_VERT_PADDING } from "~components/Card";
 import { ParticleGroupProps } from "~components/ParticleGroup";
 import Text from "~components/Text";
 import Link from "~components/Link";
-import Icon from "~components/Icon";
 
 interface ContentCardProps extends ParticleGroupProps {
   title?: string;
@@ -18,7 +17,7 @@ interface ContentCardProps extends ParticleGroupProps {
   particles?: boolean;
 }
 
-const CardContainer = styled(Card)`
+const CardContainer = styled(Card)<{ linkHref?: string }>`
   display: inline-flex;
   flex-direction: column;
 
@@ -52,6 +51,18 @@ const CardContainer = styled(Card)`
 
     margin-top: 1em;
   }
+
+  ${({ linkHref }) =>
+    linkHref &&
+    `
+      transition: transform 150ms ease-in; 
+      cursor: pointer;
+    `}
+  &:hover,
+  &:focus,
+  &:focus-within {
+    ${({ linkHref }) => linkHref && "transform: translateY(-5px);"}
+  }
 `;
 
 const CardImage = styled.img`
@@ -71,7 +82,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
   children,
   ...rest
 }) => (
-  <CardContainer id={id} className={className} {...rest}>
+  <CardContainer id={id} className={className} linkHref={linkHref} {...rest}>
     {imgSrc && <CardImage className="image" src={imgSrc} alt={imgAlt} />}
 
     {title && (

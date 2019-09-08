@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Waypoint } from "react-waypoint";
 
 import Card, { CARD_VERT_PADDING } from "~components/Card";
-import Icon from "~components/Icon";
 import Text from "~components/Text";
 import Link, { UnstyledLink } from "~components/Link";
 

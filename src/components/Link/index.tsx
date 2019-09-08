@@ -28,6 +28,7 @@ const Container = styled(UnstyledLink)<{ iconPos: "left" | "right" }>`
     iconPos === "left" ? "row-reverse" : "row"};
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 
   & > *:nth-child(2) {
     margin-left: ${({ iconPos }) => (iconPos === "left" ? "0" : "4px")};
@@ -92,6 +93,7 @@ const Link: React.FC<LinkProps> = ({
     href={href}
     color={color}
     iconPos={iconPos}
+    as={as}
   >
     <TextContainer>
       <BottomLineText

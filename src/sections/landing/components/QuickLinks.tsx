@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { IconLink } from "~src/components";
+import IconLink from "./IconLink";
 
 const Container = styled.div`
   position: absolute;
