@@ -29,7 +29,7 @@ const showcaseCardParticleInfo: ParticleInfo[] = [
 
 const CardContainer = styled(Card)<{ show?: boolean }>`
   display: grid;
-  grid-template-rows: 50px 180px 50px;
+  grid-template-rows: 40px 180px 50px;
   grid-template-columns: 35% 35%;
   grid-column-gap: 30%;
   grid-template-areas:
