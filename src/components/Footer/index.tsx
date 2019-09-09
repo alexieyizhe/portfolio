@@ -1,7 +1,9 @@
 import React, { useCallback } from "react";
 import styled from "styled-components";
 
-import { Text, Icon, UnstyledLink } from "~src/components";
+import Text from "~components/Text";
+import Icon from "~components/Icon";
+import { UnstyledLink } from "~components/Link";
 import { Size } from "~types/Size";
 import copy from "~assets/copy";
 
