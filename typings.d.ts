@@ -7,6 +7,8 @@ declare module "*.gif";
 declare module "*.bmp";
 declare module "*.tiff";
 
+declare module "*.pdf";
+
 /* Font file types */
 declare module "*.ttf";
 declare module "*.otf";

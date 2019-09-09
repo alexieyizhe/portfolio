@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 import Text from "~components/Text";
+import { BaseElementProps } from "~types/BaseElementProps";
 
-interface PageWrapperProps {
+interface PageWrapperProps extends BaseElementProps {
   title?: string; // The largest and main title on the page
   subtitle?: string; // Smaller text, displayed above the title and in line with the back button if there is one.
 }
@@ -28,10 +29,12 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   title,
   subtitle,
   children,
+  className,
+  id,
 }) => (
-  <PageContainer>
+  <PageContainer className={className} id={id}>
     {subtitle && (
-      <NarrowHeading className="PageWrapper-Subheading" variant="subheading">
+      <NarrowHeading className="PageWrapper--Subheading" variant="subheading">
         {subtitle}
       </NarrowHeading>
     )}

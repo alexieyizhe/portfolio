@@ -168,4 +168,15 @@ export default {
   footer: {
     text: "made with a keyboard, a screen, and a whole lotta googling.",
   },
+  resumePage: {
+    title: "Resume",
+    resumes: [
+      {
+        name: "Fall 2019",
+        img: "",
+        file: "",
+        current: true,
+      },
+    ],
+  },
 };
