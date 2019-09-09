@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Document, Page } from "react-pdf";
 
 import PageWrapper from "~components/PageWrapper";
-import { Card } from "~src/components";
+import { Card, UnstyledLink, UnstyledButton } from "~src/components";
 
 import copy from "~assets/copy";
 import resumePDF from "~assets/docs/resume.pdf";
@@ -18,7 +18,7 @@ const DividedPageContainer = styled(PageWrapper)`
     "subheading   content"
     "heading      content"
     "side-content content";
-  grid-template-rows: 1em 1em auto;
+  grid-template-rows: 1.5em auto auto;
   grid-template-columns: auto ${RESUME_WIDTH}px;
 
   position: relative;
@@ -46,6 +46,13 @@ const ResumeCard = styled(Card)`
   width: 100%;
   height: ${RESUME_HEIGHT}px;
 
+  cursor: pointer;
+  transition: transform 150ms ease-in;
+  &:hover,
+  &:focus {
+    transform: translateY(-5px);
+  }
+
   & .react-pdf__Document,
   & .react-pdf__Page {
     height: 100%;
@@ -62,11 +69,17 @@ const ResumePage = () => {
     >
       <div className="side-content-container">hi</div>
 
-      <ResumeCard className="content-container">
-        <Document file={resumePDF}>
-          <Page pageNumber={1} width={RESUME_WIDTH} />
-        </Document>
-      </ResumeCard>
+      <UnstyledButton onClick={() => window.open(resumePDF)}>
+        <ResumeCard className="content-container" tabIndex={0}>
+          <Document file={resumePDF}>
+            <Page
+              pageNumber={1}
+              width={RESUME_WIDTH}
+              renderAnnotationLayer={false}
+            />
+          </Document>
+        </ResumeCard>
+      </UnstyledButton>
     </DividedPageContainer>
   );
 };

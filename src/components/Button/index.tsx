@@ -8,7 +8,16 @@ export interface ButtonProps extends IconProps {
   disabled?: boolean;
 }
 
-const Container = styled.button<{ disabled?: boolean }>`
+export const UnstyledButton = styled.button`
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+const Container = styled(UnstyledButton)<{ disabled?: boolean }>`
   border-radius: 50%;
   width: 60px;
   height: 60px;
