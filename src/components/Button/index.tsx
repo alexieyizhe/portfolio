@@ -17,10 +17,12 @@ export const UnstyledButton = styled.button`
   cursor: pointer;
 `;
 
+export const BUTTON_SIZE = 45;
+
 const Container = styled(UnstyledButton)<{ disabled?: boolean }>`
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: ${BUTTON_SIZE}px;
+  height: ${BUTTON_SIZE}px;
 
   padding: 5px;
   border: none;
@@ -45,6 +47,7 @@ const Button: React.FC<ButtonProps> = ({
   <Container onClick={onClick} disabled={disabled} {...rest}>
     <Icon
       name={name}
+      animate={false}
       color={disabled ? "greyMedium" : color}
       size={Size.MEDIUM}
     />

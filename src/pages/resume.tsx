@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
-import { Document, Page } from "react-pdf";
 
 import PageWrapper from "~components/PageWrapper";
-import { Card, Spinner, UnstyledButton } from "~src/components";
+import { Card, Button, UnstyledButton } from "~src/components";
 
 import copy from "~assets/copy";
-import resumePDF from "~assets/docs/resume.pdf";
 
-const LETTER_PAGE_WIDTH_TO_HEIGHT_RATIO = 1.2941;
-const RESUME_WIDTH = 400;
-const RESUME_HEIGHT = RESUME_WIDTH * LETTER_PAGE_WIDTH_TO_HEIGHT_RATIO;
+// const LETTER_PAGE_WIDTH_TO_HEIGHT_RATIO = 1.2941;
+// const RESUME_WIDTH = 400;
+// const RESUME_HEIGHT = RESUME_WIDTH * LETTER_PAGE_WIDTH_TO_HEIGHT_RATIO;
 
 const DividedPageContainer = styled(PageWrapper)`
   display: grid;
@@ -18,8 +16,9 @@ const DividedPageContainer = styled(PageWrapper)`
     "subheading   content"
     "heading      content"
     "side-content content";
-  grid-template-rows: 1.5em auto auto;
-  grid-template-columns: auto ${RESUME_WIDTH}px;
+  grid-template-rows: auto auto 1fr;
+  grid-template-columns: 50% 39%;
+  grid-column-gap: 15%;
 
   position: relative;
 
@@ -40,51 +39,85 @@ const DividedPageContainer = styled(PageWrapper)`
   }
 `;
 
+const ActionButtonContainer = styled.div`
+  justify-content: flex-start;
+
+  & > *:first-child {
+    margin-right: 10px;
+  }
+`;
+
 const ResumeCard = styled(Card)`
   position: relative;
   padding: 0;
   width: 100%;
-  height: ${RESUME_HEIGHT}px;
+  height: 100%;
 
+  overflow: hidden;
   cursor: pointer;
+
   transition: transform 150ms ease-in;
   &:hover,
-  &:focus {
+  &:focus,
+  &:focus-within {
     transform: translateY(-5px);
   }
 
-  & .react-pdf__Document,
-  & .react-pdf__Page,
-  & .react-pdf__message--loading {
-    height: 100%;
-  }
-
-  & .react-pdf__message--loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  & img {
+    max-width: 100%;
   }
 `;
 
 const ResumePage = () => {
-  const [displayedResume, setDisplayedResume] = useState(0);
+  const [displayedResume, setDisplayedResume] = useState(
+    copy.resumePage.resumes.findIndex(resumes => resumes.current)
+  );
+
+  const viewPrevResume = useCallback(
+    () => setDisplayedResume(Math.max(0, displayedResume - 1)),
+    [displayedResume]
+  );
+
+  const viewNextResume = useCallback(
+    () =>
+      setDisplayedResume(
+        Math.min(displayedResume + 1, copy.resumePage.resumes.length - 1)
+      ),
+    [displayedResume]
+  );
+
+  const viewResumePDF = useCallback(
+    () => window.open(copy.resumePage.resumes[displayedResume].file),
+    [displayedResume]
+  );
 
   return (
     <DividedPageContainer
       title={copy.resumePage.title} // TODO: figure out how to add a star icon for Current
       subtitle={copy.resumePage.resumes[displayedResume].name}
+      sideButton
+      iconName="arrow-left"
+      iconOnClick={() => {
+        window.location.href = "/";
+      }}
     >
-      <UnstyledButton onClick={() => window.open(resumePDF)}>
-        <ResumeCard className="content-container" tabIndex={0}>
-          <Document file={resumePDF} loading={<Spinner />}>
-            <Page
-              pageNumber={1}
-              width={RESUME_WIDTH}
-              renderAnnotationLayer={false}
-            />
-          </Document>
-        </ResumeCard>
-      </UnstyledButton>
+      <ActionButtonContainer className="side-content-container">
+        <Button
+          name="chevron-left"
+          onClick={viewPrevResume}
+          disabled={displayedResume === 0}
+        />
+        <Button
+          name="chevron-right"
+          onClick={viewNextResume}
+          disabled={displayedResume === copy.resumePage.resumes.length - 1}
+        />
+      </ActionButtonContainer>
+      <ResumeCard className="content-container">
+        <UnstyledButton onClick={viewResumePDF}>
+          <img src={copy.resumePage.resumes[displayedResume].img} />
+        </UnstyledButton>
+      </ResumeCard>
     </DividedPageContainer>
   );
 };

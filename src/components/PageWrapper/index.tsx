@@ -2,19 +2,22 @@ import React from "react";
 import styled from "styled-components";
 
 import Text from "~components/Text";
+import Button, { BUTTON_SIZE } from "~components/Button";
 import { BaseElementProps } from "~types/BaseElementProps";
 
 interface PageWrapperProps extends BaseElementProps {
   title?: string; // The largest and main title on the page
   subtitle?: string; // Smaller text, displayed above the title and in line with the back button if there is one.
+
+  sideButton?: boolean;
+  iconName?: string;
+  iconOnClick?: () => void;
 }
 
 export const PageContainer = styled.div`
   position: relative;
-  width: 90%;
   max-width: 1700px;
-  margin: auto;
-  padding: 15vh 130px;
+  margin: 15vh 10vw;
 
   & > .PageWrapper--Heading {
     margin-bottom: 0.5em;
@@ -25,11 +28,20 @@ const NarrowHeading = styled(Text)`
   max-width: 50%;
 `;
 
+const SideButton = styled(Button)`
+  position: absolute;
+  top: 0;
+  left: -${BUTTON_SIZE + 30}px;
+`;
+
 const PageWrapper: React.FC<PageWrapperProps> = ({
   title,
   subtitle,
   children,
   className,
+  sideButton = false,
+  iconName = "",
+  iconOnClick,
   id,
 }) => (
   <PageContainer className={className} id={id}>
@@ -43,6 +55,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
         {title}
       </NarrowHeading>
     )}
+    {sideButton && <SideButton name={iconName} onClick={iconOnClick} />}
     {children}
   </PageContainer>
 );
