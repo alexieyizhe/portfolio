@@ -29,6 +29,11 @@ export default {
       "budding developer.",
       "soccer fanatic.",
     ],
+    links: {
+      resume: "/resume",
+      github: "github.com/alexieyizhe",
+      mail: "mailto:hi@alexieyizhe.me",
+    },
   },
   featuredSection: {
     title: "Featured Highlights",

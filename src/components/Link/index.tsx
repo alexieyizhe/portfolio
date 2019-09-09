@@ -89,19 +89,18 @@ const Link: React.FC<LinkProps> = ({
     id={id}
     className={className}
     target={newTab ? "_blank" : undefined}
-    rel={newTab ? "noopener noreferrer" : undefined}
+    rel={newTab ? "noopener noreferrer" : ""}
     href={href}
     tabIndex={0}
     color={color}
     iconPos={iconPos}
-    as={as}
+    {...rest}
   >
     <TextContainer>
       <BottomLineText
         className={hover ? "hover" : ""}
         color={color}
         hover={hover}
-        {...rest}
       >
         {children}
       </BottomLineText>
