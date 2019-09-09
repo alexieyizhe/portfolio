@@ -104,7 +104,6 @@ export default {
         imgAlt: "Flipp's main dashboard for digital publishing",
         linkText: "Read more",
         linkHref: "/",
-        customParticle: GearIcon,
       },
       {
         title: "Building Canada's largest hackathon.",
@@ -113,6 +112,7 @@ export default {
         imgAlt: "Home page of Hack the North",
         linkText: "Read more",
         linkHref: "/",
+        customParticle: GearIcon,
       },
       {
         title: "Building Canada's largewest hackathon.",

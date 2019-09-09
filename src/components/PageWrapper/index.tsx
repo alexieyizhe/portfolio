@@ -17,7 +17,7 @@ interface PageWrapperProps extends BaseElementProps {
 export const PageContainer = styled.div`
   position: relative;
   max-width: 1700px;
-  margin: 15vh 10vw;
+  margin: 15vh 12vw;
 
   & > .PageWrapper--Heading {
     margin-bottom: 0.5em;
