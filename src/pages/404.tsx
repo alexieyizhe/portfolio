@@ -21,9 +21,7 @@ const NotFoundPage = () => (
   <div>
     <HeadingContainer>
       <Text variant="heading">Oh no!</Text>
-      <Text variant="heading">
-        There&apos;s no page at {window.location.pathname}
-      </Text>
+      <Text variant="heading">There&apos;s no page at this route.</Text>
     </HeadingContainer>
 
     <ScaredImg src={SpookyScaryImg} />
