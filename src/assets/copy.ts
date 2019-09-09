@@ -5,6 +5,19 @@ import {
   GearIcon,
 } from "~assets/images";
 
+import {
+  Resume2013PDF,
+  Resume2013Img,
+  Resume201710PDF,
+  Resume201710Img,
+  Resume201802PDF,
+  Resume201802Img,
+  Resume201807PDF,
+  Resume201807Img,
+  ResumeCurrentPDF,
+  ResumeCurrentImg,
+} from "~assets/resume";
+
 export default {
   mainLandingSection: {
     greetings: [
@@ -29,6 +42,12 @@ export default {
       "budding developer.",
       "soccer fanatic.",
     ],
+    links: {
+      resume: "/resume",
+      github: "https://github.com/alexieyizhe",
+      mail: "mailto:hi@alexieyizhe.me",
+      linkedin: "http://linkedin.com/in/alexieyizhe",
+    },
   },
   featuredSection: {
     title: "Featured Highlights",
@@ -167,5 +186,36 @@ export default {
   },
   footer: {
     text: "made with a keyboard, a screen, and a whole lotta googling.",
+  },
+  resumePage: {
+    title: "Resume",
+    resumes: [
+      {
+        name: "A very, very old",
+        img: Resume2013Img,
+        file: Resume2013PDF,
+      },
+      {
+        name: "Fall 2017",
+        img: Resume201710Img,
+        file: Resume201710PDF,
+      },
+      {
+        name: "Winter 2018",
+        img: Resume201802Img,
+        file: Resume201802PDF,
+      },
+      {
+        name: "Summer 2018",
+        img: Resume201807Img,
+        file: Resume201807PDF,
+      },
+      {
+        name: "Fall 2019 (Current)",
+        img: ResumeCurrentImg,
+        file: ResumeCurrentPDF,
+        current: true,
+      },
+    ],
   },
 };

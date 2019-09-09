@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import copy from "~assets/copy";
+
 import IconLink from "./IconLink";
 
 const Container = styled.div`
@@ -10,18 +12,28 @@ const Container = styled.div`
 
 const QuickLinks = () => (
   <Container>
-    <IconLink iconName="file-text" color="red" href="/resume" size={36}>
+    <IconLink
+      iconName="file-text"
+      color="red"
+      href={copy.mainLandingSection.links.resume}
+      size={36}
+    >
       resume
     </IconLink>
 
-    <IconLink iconName="github" color="blue" href="github.com" size={36}>
+    <IconLink
+      iconName="github"
+      color="blue"
+      href={copy.mainLandingSection.links.github}
+      size={36}
+    >
       github
     </IconLink>
 
     <IconLink
       iconName="send"
       color="green"
-      href="mailto:alexieyizhe@gmail.com"
+      href={copy.mainLandingSection.links.mail}
       size={36}
     >
       email

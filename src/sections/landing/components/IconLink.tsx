@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import styled, { ThemeContext } from "styled-components";
 
 import Icon, { IconProps } from "~components/Icon";
@@ -14,9 +14,10 @@ interface IconLinkProps
 const Container = styled.span`
   display: inline-flex;
   align-items: center;
+  cursor: pointer;
 
   & > .IconLink--Icon {
-    opacity: 0.3;
+    opacity: 0.4;
   }
 
   & > .IconLink--Link {
@@ -32,6 +33,7 @@ const IconLink: React.FC<IconLinkProps> = ({
   size: iconSize,
   ...rest
 }) => {
+  const [isHovering, setHovering] = useState(false);
   const { fontSize } = useContext(ThemeContext);
   const linkTextSize = useMemo(
     () =>
@@ -42,18 +44,23 @@ const IconLink: React.FC<IconLinkProps> = ({
   );
 
   return (
-    <Container>
+    <Container
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => setHovering(false)}
+    >
       <Icon
         className="IconLink--Icon"
         name={iconName}
         color={color}
         size={iconSize}
+        hover={isHovering}
       />
       <Link
         className="IconLink--Link"
         size={linkTextSize}
         color="greyMedium"
         as="span"
+        hover={isHovering}
         {...rest}
       >
         {children}

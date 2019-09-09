@@ -8,10 +8,21 @@ export interface ButtonProps extends IconProps {
   disabled?: boolean;
 }
 
-const Container = styled.button<{ disabled?: boolean }>`
+export const UnstyledButton = styled.button`
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+export const BUTTON_SIZE = 45;
+
+const Container = styled(UnstyledButton)<{ disabled?: boolean }>`
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: ${BUTTON_SIZE}px;
+  height: ${BUTTON_SIZE}px;
 
   padding: 5px;
   border: none;
@@ -36,6 +47,7 @@ const Button: React.FC<ButtonProps> = ({
   <Container onClick={onClick} disabled={disabled} {...rest}>
     <Icon
       name={name}
+      animate={false}
       color={disabled ? "greyMedium" : color}
       size={Size.MEDIUM}
     />

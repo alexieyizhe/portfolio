@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import styled from "styled-components";
 
-import { Text, Icon } from "~src/components";
+import { Text, Icon, UnstyledLink } from "~src/components";
 import { Size } from "~types/Size";
 import copy from "~assets/copy";
 
@@ -17,6 +17,10 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    & > * {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -29,17 +33,30 @@ const Footer = () => {
   return (
     <Container>
       <div className="icons">
-        <Icon name="github" color="greyMedium" />
-        <Icon name="file-text" color="greyMedium" />
+        <UnstyledLink href={copy.mainLandingSection.links.github}>
+          <Icon name="github" color="greyMedium" />
+        </UnstyledLink>
+
+        <UnstyledLink href={copy.mainLandingSection.links.resume}>
+          <Icon name="file-text" color="greyMedium" />
+        </UnstyledLink>
+
         <Icon
           name="chevrons-up"
           color="greyMedium"
           size={Size.XLARGE}
           onClick={scrollToTop}
         />
-        <Icon name="send" color="greyMedium" />
-        <Icon name="linkedin" color="greyMedium" />
+
+        <UnstyledLink href={copy.mainLandingSection.links.mail}>
+          <Icon name="send" color="greyMedium" />
+        </UnstyledLink>
+
+        <UnstyledLink href={copy.mainLandingSection.links.linkedin}>
+          <Icon name="linkedin" color="greyMedium" />
+        </UnstyledLink>
       </div>
+
       <Text size={Size.XSMALL} align="center" color="greyMedium">
         {copy.footer.text}
       </Text>
