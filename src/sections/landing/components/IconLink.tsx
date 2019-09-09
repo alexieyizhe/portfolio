@@ -14,6 +14,7 @@ interface IconLinkProps
 const Container = styled.span`
   display: inline-flex;
   align-items: center;
+  cursor: pointer;
 
   & > .IconLink--Icon {
     opacity: 0.4;
@@ -59,6 +60,7 @@ const IconLink: React.FC<IconLinkProps> = ({
         size={linkTextSize}
         color="greyMedium"
         as="span"
+        hover={isHovering}
         {...rest}
       >
         {children}

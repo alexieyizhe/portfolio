@@ -103,11 +103,7 @@ const Icon: React.FC<IconProps> = ({
               animate={animateType || (isHovering || hover) || "hide"}
               duration={200}
             >
-              <IconComponent
-                className={className}
-                size={iconSize}
-                color={iconColor}
-              />
+              <IconComponent size={iconSize} color={iconColor} />
             </SvgLines>
           )}
         </Container>
