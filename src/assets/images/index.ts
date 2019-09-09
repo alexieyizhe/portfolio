@@ -11,3 +11,5 @@ export { default as FlippHero } from "./featured/flipp-hero.jpg";
 export { default as TestShowcaseImage } from "./showcase/test.png";
 
 export { default as AboutAvatar } from "./about/avatar.jpg";
+
+export { default as SpookyScaryImg } from "./spookyscary.png";

@@ -1,9 +1,18 @@
 import React from "react";
+import styled from "styled-components";
 
+import { SpookyScaryImg } from "~assets/images";
+
+const ScaredImg = styled.img`
+  max-width: 250px;
+
+  position: absolute;
+  bottom: -40px;
+  right: 20%;
+`;
 const NotFoundPage = () => (
   <div>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <ScaredImg src={SpookyScaryImg} />
   </div>
 );
 
