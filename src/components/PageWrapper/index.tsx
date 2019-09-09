@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Text from "~components/Text";
+import Helmet from "~components/Helmet";
 import Button, { BUTTON_SIZE } from "~components/Button";
 import { BaseElementProps } from "~types/BaseElementProps";
 
@@ -17,7 +18,7 @@ interface PageWrapperProps extends BaseElementProps {
 export const PageContainer = styled.div`
   position: relative;
   max-width: 1700px;
-  margin: 15vh 10vw;
+  margin: 15vh 12vw;
 
   & > .PageWrapper--Heading {
     margin-bottom: 0.5em;
@@ -44,20 +45,23 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   iconOnClick,
   id,
 }) => (
-  <PageContainer className={className} id={id}>
-    {subtitle && (
-      <NarrowHeading className="PageWrapper--Subheading" variant="subheading">
-        {subtitle}
-      </NarrowHeading>
-    )}
-    {title && (
-      <NarrowHeading className="PageWrapper--Heading" variant="heading">
-        {title}
-      </NarrowHeading>
-    )}
-    {sideButton && <SideButton name={iconName} onClick={iconOnClick} />}
-    {children}
-  </PageContainer>
+  <>
+    <Helmet />
+    <PageContainer className={className} id={id}>
+      {subtitle && (
+        <NarrowHeading className="PageWrapper--Subheading" variant="subheading">
+          {subtitle}
+        </NarrowHeading>
+      )}
+      {title && (
+        <NarrowHeading className="PageWrapper--Heading" variant="heading">
+          {title}
+        </NarrowHeading>
+      )}
+      {sideButton && <SideButton name={iconName} onClick={iconOnClick} />}
+      {children}
+    </PageContainer>
+  </>
 );
 
 /**

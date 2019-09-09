@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 
-import { Button, Particle } from "~src/components";
+import Button from "~components/Button";
+import Particle from "~components/Particle";
 import { BaseElementProps } from "~src/types/BaseElementProps";
 import { Size } from "~types/Size";
 

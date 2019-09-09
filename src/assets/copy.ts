@@ -19,6 +19,11 @@ import {
 } from "~assets/resume";
 
 export default {
+  seo: {
+    title: "Alex Xie",
+    description:
+      "Personal website and portfolio of Alex Yizhe Xie, a computer science student at the University of Waterloo.",
+  },
   mainLandingSection: {
     greetings: [
       "Hi!",
@@ -104,7 +109,6 @@ export default {
         imgAlt: "Flipp's main dashboard for digital publishing",
         linkText: "Read more",
         linkHref: "/",
-        customParticle: GearIcon,
       },
       {
         title: "Building Canada's largest hackathon.",
@@ -113,6 +117,7 @@ export default {
         imgAlt: "Home page of Hack the North",
         linkText: "Read more",
         linkHref: "/",
+        customParticle: GearIcon,
       },
       {
         title: "Building Canada's largewest hackathon.",
