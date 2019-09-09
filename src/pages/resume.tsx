@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Document, Page } from "react-pdf";
 
 import PageWrapper from "~components/PageWrapper";
-import { Card, UnstyledLink, UnstyledButton } from "~src/components";
+import { Card, Spinner, UnstyledButton } from "~src/components";
 
 import copy from "~assets/copy";
 import resumePDF from "~assets/docs/resume.pdf";
@@ -54,8 +54,15 @@ const ResumeCard = styled(Card)`
   }
 
   & .react-pdf__Document,
-  & .react-pdf__Page {
+  & .react-pdf__Page,
+  & .react-pdf__message--loading {
     height: 100%;
+  }
+
+  & .react-pdf__message--loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -64,14 +71,12 @@ const ResumePage = () => {
 
   return (
     <DividedPageContainer
-      title={copy.resumePage.title}
+      title={copy.resumePage.title} // TODO: figure out how to add a star icon for Current
       subtitle={copy.resumePage.resumes[displayedResume].name}
     >
-      <div className="side-content-container">hi</div>
-
       <UnstyledButton onClick={() => window.open(resumePDF)}>
         <ResumeCard className="content-container" tabIndex={0}>
-          <Document file={resumePDF}>
+          <Document file={resumePDF} loading={<Spinner />}>
             <Page
               pageNumber={1}
               width={RESUME_WIDTH}

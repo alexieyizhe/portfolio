@@ -22,5 +22,8 @@ export * from "./Particle";
 export { default as ParticleGroup } from "./ParticleGroup";
 export * from "./ParticleGroup";
 
+export { default as Spinner } from "./Spinner";
+export * from "./Spinner";
+
 export { default as Text } from "./Text";
 export * from "./Text";

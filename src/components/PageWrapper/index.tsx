@@ -17,7 +17,7 @@ export const PageContainer = styled.div`
   padding: 15vh 130px;
 
   & > .PageWrapper--Heading {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
   }
 `;
 
