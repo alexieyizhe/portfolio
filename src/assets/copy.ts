@@ -44,8 +44,9 @@ export default {
     ],
     links: {
       resume: "/resume",
-      github: "github.com/alexieyizhe",
+      github: "https://github.com/alexieyizhe",
       mail: "mailto:hi@alexieyizhe.me",
+      linkedin: "http://linkedin.com/in/alexieyizhe",
     },
   },
   featuredSection: {

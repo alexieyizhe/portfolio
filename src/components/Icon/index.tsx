@@ -52,6 +52,12 @@ const Container = styled.span`
     grid-row: 1;
     grid-column: 1;
   }
+
+  & > .mt-svg {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const NoIconFound = styled.span<IconProps>`
@@ -86,11 +92,11 @@ const Icon: React.FC<IconProps> = ({
           onMouseEnter={() => setHovering(true)}
           onMouseLeave={() => setHovering(false)}
           onClick={onClick}
+          className={className}
         >
           <IconComponent
-            className={className}
             size={iconSize}
-            color={animate ? themeColors.greyLight : iconColor}
+            color={animate ? themeColors.greyMedium : iconColor}
           />
           {animate && (
             <SvgLines
@@ -124,7 +130,7 @@ const Icon: React.FC<IconProps> = ({
       isHovering,
       name,
       onClick,
-      themeColors.greyLight,
+      themeColors.greyMedium,
     ]
   );
 
