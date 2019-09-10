@@ -5,10 +5,12 @@ import { useSpring, animated, config } from "react-spring";
 
 import Card, { CARD_VERT_PADDING } from "~components/Card";
 import Text from "~components/Text";
-import Link, { UnstyledLink } from "~components/Link";
-
+import Icon from "~components/Icon";
+import { UnstyledLink } from "~components/Link";
 import ParticleGroup, { ParticleGroupProps } from "~components/ParticleGroup";
 import { ParticleInfo } from "~components/Particle";
+
+import { Size } from "~types/Size";
 
 export interface ShowcaseCardProps extends ParticleGroupProps {
   title: string;
@@ -70,6 +72,10 @@ const CardContainer = styled(animated(Card))`
     justify-self: end;
     align-self: end;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     position: relative;
     bottom: -${CARD_VERT_PADDING * 1.5}px;
   }
@@ -128,7 +134,11 @@ const ShowcaseImage = styled(animated.img)`
   `}
 `;
 
-const AnimatedLink = animated(Link);
+const LinkArrow = styled(animated.div)`
+  & > *:nth-child(2) {
+    margin-left: 5px;
+  }
+`;
 
 const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
   title,
@@ -187,16 +197,12 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
             style={animProps}
           />
 
-          <AnimatedLink
-            variant="subheading"
-            className="link"
-            iconName="arrow-right"
-            href=""
-            style={animProps}
-            noAnim
-          >
-            {linkText}
-          </AnimatedLink>
+          <LinkArrow className="link">
+            <Text variant="subheading" style={animProps}>
+              {linkText}
+            </Text>
+            <Icon name="arrow-right" size={Size.SMALL} animate={false} />
+          </LinkArrow>
 
           {particles && (
             <ParticleGroup

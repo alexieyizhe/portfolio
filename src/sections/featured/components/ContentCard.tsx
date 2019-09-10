@@ -4,7 +4,10 @@ import styled from "styled-components";
 import Card, { CARD_HORIZ_PADDING, CARD_VERT_PADDING } from "~components/Card";
 import { ParticleGroupProps } from "~components/ParticleGroup";
 import Text from "~components/Text";
-import Link, { UnstyledLink } from "~components/Link";
+import Icon from "~components/Icon";
+import { UnstyledLink } from "~components/Link";
+
+import { Size } from "~types/Size";
 
 interface ContentCardProps extends ParticleGroupProps {
   title?: string;
@@ -48,6 +51,7 @@ const CardContainer = styled(Card)<{ linkHref?: string }>`
 
     display: flex;
     align-items: center;
+    justify-content: center;
 
     margin-top: 1em;
   }
@@ -69,6 +73,12 @@ const CardImage = styled.img`
   position: relative;
   width: calc(100% + ${CARD_HORIZ_PADDING * 2}px);
   top: -${CARD_VERT_PADDING}px;
+`;
+
+const LinkArrow = styled.div`
+  & > *:nth-child(2) {
+    margin-left: 5px;
+  }
 `;
 
 const ContentCard: React.FC<ContentCardProps> = ({
@@ -97,17 +107,12 @@ const ContentCard: React.FC<ContentCardProps> = ({
       ) : null}
 
       {linkText && (
-        <Link
-          className="link"
-          variant="body"
-          bold
-          href=""
-          as="span"
-          iconName="arrow-right"
-          noAnim
-        >
-          {linkText}
-        </Link>
+        <LinkArrow className="link">
+          <Text variant="body" bold as="span">
+            {linkText}
+          </Text>
+          <Icon name="arrow-right" size={Size.SMALL} animate={false} />
+        </LinkArrow>
       )}
     </CardContainer>
   </UnstyledLink>
