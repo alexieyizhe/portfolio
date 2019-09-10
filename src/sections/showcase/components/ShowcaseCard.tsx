@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { Waypoint } from "react-waypoint";
+import { useSpring, animated, config } from "react-spring";
 
 import Card, { CARD_VERT_PADDING } from "~components/Card";
 import Text from "~components/Text";
@@ -19,6 +20,17 @@ export interface ShowcaseCardProps extends ParticleGroupProps {
   particles?: boolean;
 }
 
+type transFn = (params: number[]) => string;
+
+const calc = (x: number, y: number) => [
+  -(y - window.innerHeight / 1.5) / 60,
+  (x - window.innerWidth / 2) / 150,
+  1.05,
+];
+
+const trans = (x: number, y: number, s: number) =>
+  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+
 const showcaseCardParticleInfo: ParticleInfo[] = [
   { x: 60, y: 94, s: 0.8, color: "red" },
   { x: 23, y: 96, s: 0.4, color: "blue" },
@@ -27,7 +39,7 @@ const showcaseCardParticleInfo: ParticleInfo[] = [
   { x: 45, y: -2, s: 0.75, color: "red" },
 ];
 
-const CardContainer = styled(Card)<{ show?: boolean }>`
+const CardContainer = styled(animated(Card))`
   display: grid;
   grid-template-rows: 40px 180px 50px;
   grid-template-columns: 35% 35%;
@@ -43,12 +55,7 @@ const CardContainer = styled(Card)<{ show?: boolean }>`
   height: auto;
   margin: 100px 0;
 
-  & > * {
-    transition-delay: 2s;
-    transition: opacity 250ms, transform 500ms;
-    opacity: ${({ show }) => (show ? 1 : 0)};
-    transform: translateY(${({ show }) => (show ? 0 : "150px")});
-  }
+  cursor: pointer;
 
   & > .title {
     grid-area: title;
@@ -70,32 +77,26 @@ const CardContainer = styled(Card)<{ show?: boolean }>`
   & > .image {
     grid-area: image;
   }
-
-  transition: transform 150ms ease-in;
-  cursor: pointer;
-  &:hover,
-  &:focus,
-  &:focus-within {
-    transform: translateY(-5px);
-  }
 `;
 
-const Subheading = styled(Text)`
+const Subheading = styled(animated(Text))`
   position: relative;
   top: -${CARD_VERT_PADDING * 1.5}px;
 `;
 
-const Title = styled(Text)`
+const Title = styled(animated(Text))`
   position: relative;
   top: -${CARD_VERT_PADDING * 1.5}px;
 `;
 
-const ShowcaseImage = styled.img`
+const ShowcaseImage = styled(animated.img)`
   max-width: 100%;
 
   position: relative;
   top: -${CARD_VERT_PADDING * 3}px;
 `;
+
+const AnimatedLink = animated(Link);
 
 const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
   title,
@@ -113,28 +114,55 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
   const onCardEnter = useCallback(() => setCardVisible(true), []);
   const onCardLeave = useCallback(() => setCardVisible(false), []);
 
+  const animProps = useSpring({
+    opacity: cardVisible ? 1 : 0,
+    transform: cardVisible ? "translateY(0)" : "translateY(50px)",
+    config: config.stiff,
+  });
+  const [{ xys }, set] = useSpring(() => ({
+    xys: [0, 0, 1],
+    config: { mass: 2, tension: 500, friction: 100 },
+  }));
+
   return (
     <UnstyledLink href={linkHref}>
       <Waypoint onEnter={onCardEnter} onLeave={onCardLeave}>
-        <CardContainer show={cardVisible} {...rest}>
-          <Subheading variant="subheading" className="subheading">
+        <CardContainer
+          onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+          onMouseLeave={() => set({ xys: [0, 0, 1] })}
+          style={{
+            transform: xys.interpolate((trans as unknown) as transFn),
+          }}
+          {...rest}
+        >
+          <Subheading
+            variant="subheading"
+            className="subheading"
+            style={animProps}
+          >
             {subtitle}
           </Subheading>
 
-          <Title variant="heading" className="title">
+          <Title variant="heading" className="title" style={animProps}>
             {title}
           </Title>
 
-          <ShowcaseImage src={imgSrc} alt={imgAlt} className="image" />
+          <ShowcaseImage
+            src={imgSrc}
+            alt={imgAlt}
+            className="image"
+            style={animProps}
+          />
 
-          <Link
+          <AnimatedLink
             variant="subheading"
             className="link"
             iconName="arrow-right"
             href=""
+            style={animProps}
           >
             {linkText}
-          </Link>
+          </AnimatedLink>
 
           {particles && (
             <ParticleGroup
