@@ -92,6 +92,10 @@ const CardContainer = styled(animated(Card))`
       "image"
       "link";
 
+    & > .title {
+      margin-top: 10px;
+    }
+
     & > .particles-container {
       display: none;
     }

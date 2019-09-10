@@ -16,6 +16,12 @@ const Container = styled.div`
   ${({ theme }) => theme.mediaQueries.tablet`
     flex-direction: column;
   `}
+
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    min-height: 120vh;
+    
+    justify-content: center;
+  `}
 `;
 
 const TextContainer = styled.div`
