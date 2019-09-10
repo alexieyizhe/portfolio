@@ -70,6 +70,8 @@ const IconLink: React.FC<IconLinkProps> = ({
       className={isHovering ? "hover" : ""}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
+      onFocus={() => setHovering(true)}
+      onBlur={() => setHovering(false)}
     >
       <Icon
         className="IconLink--Icon"

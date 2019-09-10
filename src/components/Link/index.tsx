@@ -34,6 +34,11 @@ const Container = styled(UnstyledLink)<{ iconPos: "left" | "right" }>`
     margin-left: ${({ iconPos }) => (iconPos === "left" ? "0" : "4px")};
     margin-right: ${({ iconPos }) => (iconPos === "left" ? "4px" : "0")};
   }
+
+  &:focus,
+  &:hover {
+    outline: none;
+  }
 `;
 
 const TextContainer = styled.span`
@@ -59,14 +64,10 @@ const BottomLineText = styled(Text)`
     transition: all 150ms ease 0s;
   }
 
-  &:focus:not(.no-anim),
-  &:hover:not(.no-anim) {
-    outline: none;
-
-    &:before {
-      visibility: visible;
-      transform: scaleX(1);
-    }
+  &:focus:not(.no-anim):before,
+  &:hover:not(.no-anim):before {
+    visibility: visible;
+    transform: scaleX(1);
   }
 `;
 // TODO: add gatsby link to allow for better internal linking
