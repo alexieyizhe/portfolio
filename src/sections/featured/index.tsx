@@ -14,12 +14,27 @@ const Container = styled.div`
 
   display: flex;
   justify-content: space-between;
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    flex-direction: column;
+
+    & > .heading-column {
+      order: -1;
+    }
+  `}
 `;
 
 const Column = styled.div`
   position: relative;
   width: 400px;
   max-width: 28%;
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    width: 100%;
+    max-width: 100%;
+
+    margin-bottom: 50px;
+  `}
 `;
 
 const FeaturedCard = styled(ContentCard)`
@@ -59,7 +74,7 @@ const Featured = () => (
       </LeftCard>
     </Column>
 
-    <Column>
+    <Column className="heading-column">
       <HeaderText variant="heading">{sectionCopy.title}</HeaderText>
       <CenterCard
         title={sectionCopy.cards.second.title}
