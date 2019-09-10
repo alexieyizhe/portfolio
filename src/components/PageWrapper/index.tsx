@@ -16,6 +16,12 @@ interface PageWrapperProps extends BaseElementProps {
 }
 
 export const PageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const InnerContainer = styled.div`
   position: relative;
   max-width: 1700px;
   margin: 15vh 12vw;
@@ -48,18 +54,23 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   <>
     <Helmet />
     <PageContainer className={className} id={id}>
-      {subtitle && (
-        <NarrowHeading className="PageWrapper--Subheading" variant="subheading">
-          {subtitle}
-        </NarrowHeading>
-      )}
-      {title && (
-        <NarrowHeading className="PageWrapper--Heading" variant="heading">
-          {title}
-        </NarrowHeading>
-      )}
-      {sideButton && <SideButton name={iconName} onClick={iconOnClick} />}
-      {children}
+      <InnerContainer>
+        {subtitle && (
+          <NarrowHeading
+            className="PageWrapper--Subheading"
+            variant="subheading"
+          >
+            {subtitle}
+          </NarrowHeading>
+        )}
+        {title && (
+          <NarrowHeading className="PageWrapper--Heading" variant="heading">
+            {title}
+          </NarrowHeading>
+        )}
+        {sideButton && <SideButton name={iconName} onClick={iconOnClick} />}
+        {children}
+      </InnerContainer>
     </PageContainer>
   </>
 );

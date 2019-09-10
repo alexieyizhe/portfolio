@@ -13,7 +13,7 @@ export interface LinkProps
   iconPos?: "left" | "right"; // if specified, `iconName` must be specified
   iconName?: string;
 
-  hover?: boolean; // used to override hover
+  noAnim?: boolean;
 }
 
 const UnstyledLink = styled.a`
@@ -40,7 +40,7 @@ const TextContainer = styled.span`
   position: relative;
 `;
 
-const BottomLineText = styled(Text)<{ hover: boolean }>`
+const BottomLineText = styled(Text)`
   &:before {
     content: "";
     position: absolute;
@@ -59,9 +59,8 @@ const BottomLineText = styled(Text)<{ hover: boolean }>`
     transition: all 150ms ease 0s;
   }
 
-  &:focus,
-  &:hover,
-  &.hover {
+  &:focus:not(.no-anim),
+  &:hover:not(.no-anim) {
     outline: none;
 
     &:before {
@@ -79,10 +78,10 @@ const Link: React.FC<LinkProps> = ({
   href,
   iconPos = "right",
   iconName,
-  hover = false,
   children,
   color,
-  as,
+  noAnim,
+  as, // eslint-disable-line
   ...rest
 }) => (
   <Container
@@ -97,11 +96,7 @@ const Link: React.FC<LinkProps> = ({
     {...rest}
   >
     <TextContainer>
-      <BottomLineText
-        className={hover ? "hover" : ""}
-        color={color}
-        hover={hover}
-      >
+      <BottomLineText className={noAnim ? "no-anim" : ""} color={color}>
         {children}
       </BottomLineText>
     </TextContainer>

@@ -44,6 +44,7 @@ const CardContainer = styled(Card)<{ show?: boolean }>`
   margin: 100px 0;
 
   & > * {
+    transition-delay: 2s;
     transition: opacity 250ms, transform 500ms;
     opacity: ${({ show }) => (show ? 1 : 0)};
     transform: translateY(${({ show }) => (show ? 0 : "150px")});
