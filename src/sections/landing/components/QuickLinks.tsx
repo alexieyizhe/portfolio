@@ -8,6 +8,14 @@ import IconLink from "./IconLink";
 const Container = styled.div`
   position: absolute;
   bottom: 10vh;
+
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    position: relative;
+    bottom: unset;
+
+    transform-origin: center left;
+    transform: scale(0.7);
+  `}
 `;
 
 const QuickLinks = () => (

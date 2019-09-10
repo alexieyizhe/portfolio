@@ -13,7 +13,7 @@ interface IconLinkProps
 
 const Container = styled.span`
   position: relative;
-  margin: auto 10px;
+  margin-right: 10px;
 
   display: inline-grid;
   align-items: center;

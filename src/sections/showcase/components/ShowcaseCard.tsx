@@ -118,6 +118,7 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
     opacity: cardVisible ? 1 : 0,
     transform: cardVisible ? "translateY(0)" : "translateY(50px)",
     config: config.stiff,
+    delay: 200,
   });
   const [{ xys }, set] = useSpring(() => ({
     xys: [0, 0, 1],
@@ -160,6 +161,7 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
             iconName="arrow-right"
             href=""
             style={animProps}
+            noAnim
           >
             {linkText}
           </AnimatedLink>

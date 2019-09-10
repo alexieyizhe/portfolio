@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Card, { CARD_HORIZ_PADDING, CARD_VERT_PADDING } from "~components/Card";
 import { ParticleGroupProps } from "~components/ParticleGroup";
 import Text from "~components/Text";
-import Link from "~components/Link";
+import Link, { UnstyledLink } from "~components/Link";
 
 interface ContentCardProps extends ParticleGroupProps {
   title?: string;
@@ -82,32 +82,35 @@ const ContentCard: React.FC<ContentCardProps> = ({
   children,
   ...rest
 }) => (
-  <CardContainer id={id} className={className} linkHref={linkHref} {...rest}>
-    {imgSrc && <CardImage className="image" src={imgSrc} alt={imgAlt} />}
+  <UnstyledLink href={linkHref}>
+    <CardContainer id={id} className={className} linkHref={linkHref} {...rest}>
+      {imgSrc && <CardImage className="image" src={imgSrc} alt={imgAlt} />}
 
-    {title && (
-      <Text className="title" variant="subheading">
-        {title}
-      </Text>
-    )}
+      {title && (
+        <Text className="title" variant="subheading">
+          {title}
+        </Text>
+      )}
 
-    {React.Children.count(children) ? (
-      <div className="body">{children}</div>
-    ) : null}
+      {React.Children.count(children) ? (
+        <div className="body">{children}</div>
+      ) : null}
 
-    {linkText && (
-      <Link
-        className="link"
-        variant="body"
-        bold
-        href={linkHref || ""}
-        as="span"
-        iconName="arrow-right"
-      >
-        {linkText}
-      </Link>
-    )}
-  </CardContainer>
+      {linkText && (
+        <Link
+          className="link"
+          variant="body"
+          bold
+          href=""
+          as="span"
+          iconName="arrow-right"
+          noAnim
+        >
+          {linkText}
+        </Link>
+      )}
+    </CardContainer>
+  </UnstyledLink>
 );
 
 export default ContentCard;

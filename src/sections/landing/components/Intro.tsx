@@ -7,7 +7,12 @@ import { Text } from "~src/components";
 
 const greetings = copy.mainLandingSection.greetings;
 
-const Container = styled.div``;
+const Container = styled.div`
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    transform-origin: center left;
+    transform: scale(0.7);
+  `}
+`;
 
 const QuickLinks = () => {
   const displayedGreeting = useMemo(() => {
