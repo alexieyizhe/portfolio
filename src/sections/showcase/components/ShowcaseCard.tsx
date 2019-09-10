@@ -53,7 +53,7 @@ const CardContainer = styled(animated(Card))`
   width: 100%;
   max-width: 2000px;
   height: auto;
-  margin: 100px 0;
+  margin: 50px 0;
 
   cursor: pointer;
 
@@ -77,6 +77,25 @@ const CardContainer = styled(animated(Card))`
   & > .image {
     grid-area: image;
   }
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    grid-template-columns: 45% 50%;
+    grid-column-gap: 5%;
+  `}
+
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "subheading"
+      "title"
+      "image"
+      "link";
+
+    & > .particles-container {
+      display: none;
+    }
+  `}
 `;
 
 const Subheading = styled(animated(Text))`
@@ -94,6 +113,15 @@ const ShowcaseImage = styled(animated.img)`
 
   position: relative;
   top: -${CARD_VERT_PADDING * 3}px;
+
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    top: 0;
+
+    margin: 20px auto;
+    align-self: center;
+    max-width: 140%;
+    left: -20%;
+  `}
 `;
 
 const AnimatedLink = animated(Link);
@@ -168,6 +196,7 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
 
           {particles && (
             <ParticleGroup
+              className="particles-container"
               particlesInfo={showcaseCardParticleInfo}
               customParticle={customParticle}
             />

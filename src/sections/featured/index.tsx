@@ -10,7 +10,7 @@ const sectionCopy = copy.featuredSection;
 
 const Container = styled.div`
   position: relative;
-  margin-top: 50px;
+  margin-top: 100px;
 
   display: flex;
   justify-content: space-between;

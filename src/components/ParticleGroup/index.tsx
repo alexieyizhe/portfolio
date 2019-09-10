@@ -35,6 +35,8 @@ const ParticleContainer = styled.div<ParticleInfo>`
 `;
 
 const ParticleGroup: React.FC<ParticleGroupProps> = ({
+  className,
+  id,
   particlesInfo = defaultParticlesInfo,
   customParticle,
 }) => {
@@ -50,7 +52,7 @@ const ParticleGroup: React.FC<ParticleGroupProps> = ({
   );
 
   return (
-    <ParticlesContainer>
+    <ParticlesContainer className={className} id={id}>
       {randomizedParticlesInfo.map(info => (
         <ParticleContainer
           key={`${info.x}-${info.y}`}

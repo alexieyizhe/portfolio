@@ -12,7 +12,11 @@ const Container = styled.div`
   display: inline-flex;
   align-items: center;
 
-  margin-top: 200px;
+  margin-top: 100px;
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    flex-direction: column;
+  `}
 `;
 
 const TextContainer = styled.div`
@@ -28,11 +32,23 @@ const TextContainer = styled.div`
   }
 
   & p {
+    position: relative;
     margin-bottom: 10px;
   }
 
   ${({ theme }) => theme.mediaQueries.tablet`
     margin-left: 20px;
+  `}
+
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    margin-left: 0;
+    margin-top: 10px;
+
+    & h3, 
+    & p {
+      left: unset;
+      text-align: center;
+    }
   `}
 `;
 
