@@ -16,9 +16,20 @@ interface PageWrapperProps extends BaseElementProps {
 }
 
 export const PageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 15vh 15vw;
+`;
+
+const InnerContainer = styled.div`
   position: relative;
-  max-width: 1700px;
-  margin: 15vh 12vw;
+  max-width: 1500px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
 
   & > .PageWrapper--Heading {
     margin-bottom: 0.5em;
@@ -47,19 +58,24 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
 }) => (
   <>
     <Helmet />
-    <PageContainer className={className} id={id}>
-      {subtitle && (
-        <NarrowHeading className="PageWrapper--Subheading" variant="subheading">
-          {subtitle}
-        </NarrowHeading>
-      )}
-      {title && (
-        <NarrowHeading className="PageWrapper--Heading" variant="heading">
-          {title}
-        </NarrowHeading>
-      )}
-      {sideButton && <SideButton name={iconName} onClick={iconOnClick} />}
-      {children}
+    <PageContainer>
+      <InnerContainer className={className} id={id}>
+        {subtitle && (
+          <NarrowHeading
+            className="PageWrapper--Subheading"
+            variant="subheading"
+          >
+            {subtitle}
+          </NarrowHeading>
+        )}
+        {title && (
+          <NarrowHeading className="PageWrapper--Heading" variant="heading">
+            {title}
+          </NarrowHeading>
+        )}
+        {sideButton && <SideButton name={iconName} onClick={iconOnClick} />}
+        {children}
+      </InnerContainer>
     </PageContainer>
   </>
 );

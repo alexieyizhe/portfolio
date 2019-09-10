@@ -13,7 +13,7 @@ export interface LinkProps
   iconPos?: "left" | "right"; // if specified, `iconName` must be specified
   iconName?: string;
 
-  hover?: boolean; // used to override hover
+  noAnim?: boolean;
 }
 
 const UnstyledLink = styled.a`
@@ -34,13 +34,18 @@ const Container = styled(UnstyledLink)<{ iconPos: "left" | "right" }>`
     margin-left: ${({ iconPos }) => (iconPos === "left" ? "0" : "4px")};
     margin-right: ${({ iconPos }) => (iconPos === "left" ? "4px" : "0")};
   }
+
+  &:focus,
+  &:hover {
+    outline: none;
+  }
 `;
 
 const TextContainer = styled.span`
   position: relative;
 `;
 
-const BottomLineText = styled(Text)<{ hover: boolean }>`
+const BottomLineText = styled(Text)`
   &:before {
     content: "";
     position: absolute;
@@ -59,15 +64,10 @@ const BottomLineText = styled(Text)<{ hover: boolean }>`
     transition: all 150ms ease 0s;
   }
 
-  &:focus,
-  &:hover,
-  &.hover {
-    outline: none;
-
-    &:before {
-      visibility: visible;
-      transform: scaleX(1);
-    }
+  &:focus:not(.no-anim):before,
+  &:hover:not(.no-anim):before {
+    visibility: visible;
+    transform: scaleX(1);
   }
 `;
 // TODO: add gatsby link to allow for better internal linking
@@ -79,10 +79,10 @@ const Link: React.FC<LinkProps> = ({
   href,
   iconPos = "right",
   iconName,
-  hover = false,
   children,
   color,
-  as,
+  noAnim,
+  as, // eslint-disable-line
   ...rest
 }) => (
   <Container
@@ -97,11 +97,7 @@ const Link: React.FC<LinkProps> = ({
     {...rest}
   >
     <TextContainer>
-      <BottomLineText
-        className={hover ? "hover" : ""}
-        color={color}
-        hover={hover}
-      >
+      <BottomLineText className={noAnim ? "no-anim" : ""} color={color}>
         {children}
       </BottomLineText>
     </TextContainer>

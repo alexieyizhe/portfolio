@@ -12,17 +12,39 @@ interface IconLinkProps
 }
 
 const Container = styled.span`
-  display: inline-flex;
+  position: relative;
+  margin: auto 10px;
+
+  display: inline-grid;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
+
+  & > * {
+    grid-row: 1;
+    grid-column: 1;
+  }
 
   & > .IconLink--Icon {
     opacity: 0.4;
   }
 
-  & > .IconLink--Link {
-    position: relative;
-    left: -15px;
+  transition: all 200ms;
+  &.hover ~ * {
+    transform: translateX(50px);
+  }
+`;
+
+const PopoutLink = styled.span`
+  position: absolute;
+
+  transition: all 200ms;
+  opacity: 0;
+  transform-origin: center left;
+
+  &.hover {
+    opacity: 1;
+    transform: translateX(25px);
   }
 `;
 
@@ -45,8 +67,11 @@ const IconLink: React.FC<IconLinkProps> = ({
 
   return (
     <Container
+      className={isHovering ? "hover" : ""}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
+      onFocus={() => setHovering(true)}
+      onBlur={() => setHovering(false)}
     >
       <Icon
         className="IconLink--Icon"
@@ -55,16 +80,11 @@ const IconLink: React.FC<IconLinkProps> = ({
         size={iconSize}
         hover={isHovering}
       />
-      <Link
-        className="IconLink--Link"
-        size={linkTextSize}
-        color="greyMedium"
-        as="span"
-        hover={isHovering}
-        {...rest}
-      >
-        {children}
-      </Link>
+      <PopoutLink className={isHovering ? "hover" : ""}>
+        <Link size={linkTextSize} color="greyMedium" as="span" noAnim {...rest}>
+          {children}
+        </Link>
+      </PopoutLink>
     </Container>
   );
 };

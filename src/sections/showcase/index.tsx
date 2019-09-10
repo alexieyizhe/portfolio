@@ -18,10 +18,16 @@ const HeaderText = styled(Text)`
 `;
 
 const CardContainer = styled.div`
-  min-height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  margin-top: 10vh;
+  margin-bottom: 40vh;
+
+  &:last-child {
+    margin-bottom: 50px;
+  }
 `;
 
 const Showcase = () => (
