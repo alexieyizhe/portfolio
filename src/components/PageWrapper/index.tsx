@@ -19,12 +19,14 @@ export const PageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 15vh 15vw;
 `;
 
 const InnerContainer = styled.div`
   position: relative;
   max-width: 1500px;
-  margin: 15vh 12vw;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -56,8 +58,8 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
 }) => (
   <>
     <Helmet />
-    <PageContainer className={className} id={id}>
-      <InnerContainer>
+    <PageContainer>
+      <InnerContainer className={className} id={id}>
         {subtitle && (
           <NarrowHeading
             className="PageWrapper--Subheading"

@@ -41,7 +41,7 @@ const showcaseCardParticleInfo: ParticleInfo[] = [
 
 const CardContainer = styled(animated(Card))`
   display: grid;
-  grid-template-rows: 40px 250px 50px;
+  grid-template-rows: 40px 220px 50px;
   grid-template-columns: 35% 35%;
   grid-column-gap: 30%;
   grid-template-areas:
