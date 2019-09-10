@@ -2,7 +2,7 @@ export interface BaseElementProps {
   id?: string;
   className?: string;
 
-  style?: any;
+  style?: React.CSSProperties;
 
   onClick?: () => void;
 }

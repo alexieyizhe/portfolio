@@ -23,8 +23,11 @@ export const PageContainer = styled.div`
 
 const InnerContainer = styled.div`
   position: relative;
-  max-width: 1700px;
+  max-width: 1500px;
   margin: 15vh 12vw;
+
+  display: flex;
+  flex-direction: column;
 
   & > .PageWrapper--Heading {
     margin-bottom: 0.5em;

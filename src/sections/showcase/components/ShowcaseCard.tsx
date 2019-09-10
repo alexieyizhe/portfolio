@@ -23,7 +23,7 @@ export interface ShowcaseCardProps extends ParticleGroupProps {
 type transFn = (params: number[]) => string;
 
 const calc = (x: number, y: number) => [
-  -(y - window.innerHeight / 1.5) / 60,
+  -(y - window.innerHeight / 2) / 60,
   (x - window.innerWidth / 2) / 150,
   1.05,
 ];

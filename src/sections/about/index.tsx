@@ -7,7 +7,9 @@ import copy from "~assets/copy";
 const sectionCopy = copy.aboutSection;
 
 const Container = styled.div`
-  display: flex;
+  align-self: center;
+
+  display: inline-flex;
   align-items: center;
 
   margin-top: 200px;
