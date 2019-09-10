@@ -12,7 +12,8 @@ const Container = styled.div`
   ${({ theme }) => theme.mediaQueries.largeMobile`
     position: relative;
     bottom: unset;
-
+    margin-top: 10px;
+    
     transform-origin: center left;
     transform: scale(0.7);
   `}
