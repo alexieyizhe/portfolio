@@ -7,12 +7,11 @@ import copy from "~assets/copy";
 const sectionCopy = copy.aboutSection;
 
 const Container = styled.div`
+  min-height: 65vh;
   align-self: center;
 
   display: inline-flex;
   align-items: center;
-
-  margin-top: 100px;
 
   ${({ theme }) => theme.mediaQueries.tablet`
     flex-direction: column;

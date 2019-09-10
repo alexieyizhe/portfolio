@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 
-    font-family: serif;
+    font-family: Roboto, serif;
   }
   
   *, *:before, *:after {

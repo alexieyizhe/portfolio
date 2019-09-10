@@ -10,7 +10,7 @@ const sectionCopy = copy.showcaseSection;
 
 const Container = styled.div`
   position: relative;
-  margin-top: 250px;
+  min-height: 65vh;
 `;
 
 const HeaderText = styled(Text)`
@@ -22,8 +22,8 @@ const CardContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin-top: 10vh;
-  margin-bottom: 40vh;
+  margin-top: 40px;
+  margin-bottom: 175px;
 
   &:last-child {
     margin-bottom: 50px;

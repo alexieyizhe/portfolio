@@ -31,7 +31,7 @@ const Container = styled.span`
 
   transition: all 200ms;
   &.hover ~ * {
-    transform: translateX(50px);
+    transform: translateX(65px);
   }
 `;
 
