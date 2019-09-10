@@ -5,10 +5,12 @@ import { useSpring, animated, config } from "react-spring";
 
 import Card, { CARD_VERT_PADDING } from "~components/Card";
 import Text from "~components/Text";
-import Link, { UnstyledLink } from "~components/Link";
-
+import Icon from "~components/Icon";
+import { UnstyledLink } from "~components/Link";
 import ParticleGroup, { ParticleGroupProps } from "~components/ParticleGroup";
 import { ParticleInfo } from "~components/Particle";
+
+import { Size } from "~types/Size";
 
 export interface ShowcaseCardProps extends ParticleGroupProps {
   title: string;
@@ -41,7 +43,7 @@ const showcaseCardParticleInfo: ParticleInfo[] = [
 
 const CardContainer = styled(animated(Card))`
   display: grid;
-  grid-template-rows: 40px 220px 50px;
+  grid-template-rows: 40px 250px 50px;
   grid-template-columns: 35% 35%;
   grid-column-gap: 30%;
   grid-template-areas:
@@ -53,7 +55,7 @@ const CardContainer = styled(animated(Card))`
   width: 100%;
   max-width: 2000px;
   height: auto;
-  margin: 100px 0;
+  margin: 50px 0;
 
   cursor: pointer;
 
@@ -70,6 +72,10 @@ const CardContainer = styled(animated(Card))`
     justify-self: end;
     align-self: end;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     position: relative;
     bottom: -${CARD_VERT_PADDING * 1.5}px;
   }
@@ -77,6 +83,29 @@ const CardContainer = styled(animated(Card))`
   & > .image {
     grid-area: image;
   }
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    grid-template-columns: 45% 50%;
+    grid-column-gap: 5%;
+  `}
+
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "subheading"
+      "title"
+      "image"
+      "link";
+
+    & > .title {
+      margin-top: 10px;
+    }
+
+    & > .particles-container {
+      display: none;
+    }
+  `}
 `;
 
 const Subheading = styled(animated(Text))`
@@ -94,9 +123,22 @@ const ShowcaseImage = styled(animated.img)`
 
   position: relative;
   top: -${CARD_VERT_PADDING * 3}px;
+
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    top: 0;
+
+    margin: 20px auto;
+    align-self: center;
+    max-width: 140%;
+    left: -20%;
+  `}
 `;
 
-const AnimatedLink = animated(Link);
+const LinkArrow = styled(animated.div)`
+  & > *:nth-child(2) {
+    margin-left: 5px;
+  }
+`;
 
 const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
   title,
@@ -118,6 +160,7 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
     opacity: cardVisible ? 1 : 0,
     transform: cardVisible ? "translateY(0)" : "translateY(50px)",
     config: config.stiff,
+    delay: 200,
   });
   const [{ xys }, set] = useSpring(() => ({
     xys: [0, 0, 1],
@@ -154,18 +197,16 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
             style={animProps}
           />
 
-          <AnimatedLink
-            variant="subheading"
-            className="link"
-            iconName="arrow-right"
-            href=""
-            style={animProps}
-          >
-            {linkText}
-          </AnimatedLink>
+          <LinkArrow className="link">
+            <Text variant="subheading" style={animProps}>
+              {linkText}
+            </Text>
+            <Icon name="arrow-right" size={Size.SMALL} animate={false} />
+          </LinkArrow>
 
           {particles && (
             <ParticleGroup
+              className="particles-container"
               particlesInfo={showcaseCardParticleInfo}
               customParticle={customParticle}
             />

@@ -7,7 +7,25 @@ import { Text } from "~src/components";
 
 const greetings = copy.mainLandingSection.greetings;
 
-const Container = styled.div``;
+const Container = styled.div`
+  & > h1 {
+    font-size: 70px;
+  }
+
+  & span {
+    font-size: 30px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    & > h1 {
+      font-size: 50px;
+    }
+
+    & span {
+      font-size: 22px;
+    }
+  `}
+`;
 
 const QuickLinks = () => {
   const displayedGreeting = useMemo(() => {
@@ -18,16 +36,14 @@ const QuickLinks = () => {
 
   return (
     <Container>
-      <Text size={30}>{displayedGreeting}</Text>
-      <Text size={70} bold>
+      <Text as="span">{displayedGreeting}</Text>
+      <Text bold as="h1">
         {copy.mainLandingSection.name}
       </Text>
-      <Text size={30} as="span">
-        {copy.mainLandingSection.taglinePrefix}
-      </Text>
+      <Text as="span">{copy.mainLandingSection.taglinePrefix}</Text>
       <TextLoop>
         {copy.mainLandingSection.taglines.map(line => (
-          <Text size={30} key={line} as="span" bold>
+          <Text key={line} as="span" bold>
             {line}
           </Text>
         ))}

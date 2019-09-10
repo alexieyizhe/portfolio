@@ -2,7 +2,9 @@ import React, { useContext, useMemo, useState } from "react";
 import styled, { ThemeContext } from "styled-components";
 
 import Icon, { IconProps } from "~components/Icon";
-import Link, { LinkProps } from "~components/Link";
+import { LinkProps, UnstyledLink } from "~components/Link";
+import Text from "~components/Text";
+
 import { Size } from "~types/Size";
 
 interface IconLinkProps
@@ -11,9 +13,9 @@ interface IconLinkProps
   iconName: string;
 }
 
-const Container = styled.span`
+const Container = styled(UnstyledLink)`
   position: relative;
-  margin: auto 10px;
+  margin-right: 10px;
 
   display: inline-grid;
   align-items: center;
@@ -31,7 +33,7 @@ const Container = styled.span`
 
   transition: all 200ms;
   &.hover ~ * {
-    transform: translateX(50px);
+    transform: translateX(65px);
   }
 `;
 
@@ -72,6 +74,7 @@ const IconLink: React.FC<IconLinkProps> = ({
       onMouseLeave={() => setHovering(false)}
       onFocus={() => setHovering(true)}
       onBlur={() => setHovering(false)}
+      {...rest}
     >
       <Icon
         className="IconLink--Icon"
@@ -81,9 +84,9 @@ const IconLink: React.FC<IconLinkProps> = ({
         hover={isHovering}
       />
       <PopoutLink className={isHovering ? "hover" : ""}>
-        <Link size={linkTextSize} color="greyMedium" as="span" noAnim {...rest}>
+        <Text size={linkTextSize} color="greyMedium" as="span" {...rest}>
           {children}
-        </Link>
+        </Text>
       </PopoutLink>
     </Container>
   );

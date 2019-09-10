@@ -24,6 +24,10 @@ const Container = styled.div`
       cursor: pointer;
     }
   }
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    width: 90%;
+  `}
 `;
 
 const Footer = () => {

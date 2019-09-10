@@ -7,12 +7,21 @@ import copy from "~assets/copy";
 const sectionCopy = copy.aboutSection;
 
 const Container = styled.div`
+  min-height: 65vh;
   align-self: center;
 
   display: inline-flex;
   align-items: center;
 
-  margin-top: 200px;
+  ${({ theme }) => theme.mediaQueries.tablet`
+    flex-direction: column;
+  `}
+
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    min-height: 120vh;
+    
+    justify-content: center;
+  `}
 `;
 
 const TextContainer = styled.div`
@@ -28,8 +37,24 @@ const TextContainer = styled.div`
   }
 
   & p {
+    position: relative;
     margin-bottom: 10px;
   }
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    margin-left: 20px;
+  `}
+
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    margin-left: 0;
+    margin-top: 10px;
+
+    & h3, 
+    & p {
+      left: unset;
+      text-align: center;
+    }
+  `}
 `;
 
 // const ReadMoreLink = styled.div`

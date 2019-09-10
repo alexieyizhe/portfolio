@@ -21,6 +21,14 @@ export const PageContainer = styled.div`
   align-items: center;
 
   padding: 15vh 15vw;
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    padding: 10vh 10vw;
+  `}
+
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    padding: 10vh 10vw;
+  `}
 `;
 
 const InnerContainer = styled.div`

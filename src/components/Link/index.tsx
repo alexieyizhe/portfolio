@@ -83,6 +83,7 @@ const Link: React.FC<LinkProps> = ({
   color,
   noAnim,
   as, // eslint-disable-line
+  variant,
   ...rest
 }) => (
   <Container
@@ -97,7 +98,11 @@ const Link: React.FC<LinkProps> = ({
     {...rest}
   >
     <TextContainer>
-      <BottomLineText className={noAnim ? "no-anim" : ""} color={color}>
+      <BottomLineText
+        className={noAnim ? "no-anim" : ""}
+        color={color}
+        variant={variant}
+      >
         {children}
       </BottomLineText>
     </TextContainer>
