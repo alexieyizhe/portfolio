@@ -2,7 +2,7 @@
  * Provides a handy group of particles.
  */
 
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 
 import Particle, { ParticleInfo } from "../Particle";
@@ -29,32 +29,45 @@ const ParticlesContainer = styled.div`
 const ParticleContainer = styled.div<ParticleInfo>`
   position: absolute;
   display: inline-block;
-  left: ${({ x }) => x + (Math.random() * 4 - 2)}%;
-  top: ${({ y }) => y + (Math.random() * 4 - 2)}%;
-  transform: scale(${({ s }) => s + (Math.random() - 0.5) / 3});
+  left: ${({ x }) => x}%;
+  top: ${({ y }) => y}%;
+  transform: scale(${({ s }) => s});
 `;
 
 const ParticleGroup: React.FC<ParticleGroupProps> = ({
   particlesInfo = defaultParticlesInfo,
   customParticle,
-}) => (
-  <ParticlesContainer>
-    {particlesInfo.map(particlePos => (
-      <ParticleContainer
-        key={`${particlePos.x}-${particlePos.y}`}
-        x={particlePos.x}
-        y={particlePos.y}
-        s={particlePos.s}
-        color={particlePos.color}
-      >
-        <Particle
-          float
-          color={particlePos.color}
-          customSVG={Math.random() < 0.7 ? customParticle : undefined}
-        />
-      </ParticleContainer>
-    ))}
-  </ParticlesContainer>
-);
+}) => {
+  const randomizedParticlesInfo = useMemo(
+    () =>
+      particlesInfo.map(({ x, y, s, color }) => ({
+        x: x + (Math.random() * 4 - 2),
+        y: y + (Math.random() * 4 - 2),
+        s: s + (Math.random() - 0.5) / 3,
+        color,
+      })),
+    [particlesInfo]
+  );
+
+  return (
+    <ParticlesContainer>
+      {randomizedParticlesInfo.map(info => (
+        <ParticleContainer
+          key={`${info.x}-${info.y}`}
+          x={info.x}
+          y={info.y}
+          s={info.s}
+          color={info.color}
+        >
+          <Particle
+            float
+            color={info.color}
+            customSVG={Math.random() < 0.7 ? customParticle : undefined}
+          />
+        </ParticleContainer>
+      ))}
+    </ParticlesContainer>
+  );
+};
 
 export default ParticleGroup;

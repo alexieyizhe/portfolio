@@ -37,19 +37,13 @@ const Column = styled.div`
   `}
 `;
 
+const HeaderText = styled(Text)`
+  margin: 30px 0;
+`;
+
 const FeaturedCard = styled(ContentCard)`
   position: relative;
   width: 100%;
-`;
-
-const LeftCard = styled(FeaturedCard)``;
-
-const CenterCard = styled(FeaturedCard)``;
-
-const RightCard = styled(FeaturedCard)``;
-
-const HeaderText = styled(Text)`
-  margin: 30px 0;
 `;
 
 const BodyText = styled(Text)`
@@ -59,7 +53,7 @@ const BodyText = styled(Text)`
 const Featured = () => (
   <Container>
     <Column>
-      <LeftCard
+      <FeaturedCard
         title={sectionCopy.cards.first.title}
         linkHref={sectionCopy.cards.first.linkHref}
         linkText={sectionCopy.cards.first.linkText}
@@ -71,12 +65,12 @@ const Featured = () => (
             {paragraph}
           </BodyText>
         ))}
-      </LeftCard>
+      </FeaturedCard>
     </Column>
 
     <Column className="heading-column">
       <HeaderText variant="heading">{sectionCopy.title}</HeaderText>
-      <CenterCard
+      <FeaturedCard
         title={sectionCopy.cards.second.title}
         linkHref={sectionCopy.cards.second.linkHref}
         linkText={sectionCopy.cards.second.linkText}
@@ -86,11 +80,11 @@ const Featured = () => (
             {paragraph}
           </BodyText>
         ))}
-      </CenterCard>
+      </FeaturedCard>
     </Column>
 
     <Column>
-      <RightCard
+      <FeaturedCard
         title={sectionCopy.cards.third.title}
         linkHref={sectionCopy.cards.third.linkHref}
         linkText={sectionCopy.cards.third.linkText}
@@ -100,7 +94,7 @@ const Featured = () => (
             {paragraph}
           </BodyText>
         ))}
-      </RightCard>
+      </FeaturedCard>
     </Column>
   </Container>
 );

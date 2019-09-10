@@ -23,7 +23,7 @@ export const PageContainer = styled.div`
   padding: 15vh 15vw;
 
   ${({ theme }) => theme.mediaQueries.tablet`
-    padding: 12vh 12vw;
+    padding: 10vh 10vw;
   `}
 
   ${({ theme }) => theme.mediaQueries.largeMobile`

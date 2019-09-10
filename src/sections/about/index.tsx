@@ -30,6 +30,10 @@ const TextContainer = styled.div`
   & p {
     margin-bottom: 10px;
   }
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    margin-left: 20px;
+  `}
 `;
 
 // const ReadMoreLink = styled.div`
