@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 import Text from "~components/Text";
+import { BaseElementProps } from "~types/BaseElementProps";
 
-interface ElementGroupProps {
+interface ElementGroupProps extends BaseElementProps {
   title: string;
   desc: string[];
 }
@@ -36,11 +37,13 @@ const ElementGroupContainer = styled.div`
 `;
 
 const ElementGroup: React.FC<ElementGroupProps> = ({
+  className,
+  id,
   title,
   desc,
   children,
 }) => (
-  <ElementGroupContainer>
+  <ElementGroupContainer className={className} id={id}>
     <Text variant="body" bold color="purple" className="title">
       {title}
     </Text>

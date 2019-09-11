@@ -23,11 +23,13 @@ const Container = styled.div`
   & > .left-button {
     position: relative;
     right: -${BUTTON_OFFSET}px;
+    z-index: 2;
   }
 
   & > .right-button {
     position: relative;
     left: -${BUTTON_OFFSET}px;
+    z-index: 2;
   }
 `;
 

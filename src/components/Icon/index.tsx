@@ -44,7 +44,7 @@ const ICON_DICTIONARY: { [name: string]: FeatherIconType } = {
 const DEFAULT_ICON_SIZE = Size.MEDIUM;
 
 const Container = styled.span`
-  display: grid;
+  display: inline-grid;
   justify-content: center;
   align-items: center;
 
