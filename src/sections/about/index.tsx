@@ -32,8 +32,8 @@ const TextContainer = styled.div`
 
   & h3 {
     position: relative;
-    left: -90px;
-    margin-bottom: 20px;
+    left: -40px;
+    margin-bottom: 40px;
   }
 
   & p {
@@ -49,6 +49,12 @@ const TextContainer = styled.div`
     margin-left: 0;
     margin-top: 10px;
 
+
+    & h3 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    
     & h3, 
     & p {
       left: unset;

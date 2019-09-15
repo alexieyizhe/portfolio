@@ -52,8 +52,7 @@ const Container = styled.span<ParticleProps>`
   ${({ float }) =>
     float &&
     css`
-      animation: ${floatAnim} ${Math.random() * 6000 + 4000}ms ease-in-out
-        infinite;
+      animation: ${floatAnim} ${Math.random() * 5 + 3}s ease-in-out infinite;
     `}
 
   & > svg {

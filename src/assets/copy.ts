@@ -1,7 +1,9 @@
 import {
-  AboutAvatar,
+  AboutMainImg,
   FlippHero,
-  TestShowcaseImage,
+  FlippShowcaseImg,
+  HacktheNorthShowcaseImg,
+  EquithonShowcaseImg,
   GearIcon,
 } from "~assets/images";
 
@@ -89,7 +91,7 @@ export default {
   },
   aboutSection: {
     title: "Look, it me!",
-    avatarImg: AboutAvatar,
+    avatarImg: AboutMainImg,
     desc: [
       "I'm Alex Yizhe Xie, a computer science student in my junior year at the University of Waterloo.",
       "My passions include rock climbing, coding for good, and human-computer interaction design.",
@@ -105,7 +107,7 @@ export default {
       {
         title: "Bringing print flyers into the digital medium.",
         subtitle: "Flipp",
-        imgSrc: TestShowcaseImage,
+        imgSrc: FlippShowcaseImg,
         imgAlt: "Flipp's main dashboard for digital publishing",
         linkText: "Learn more",
         linkHref: "https://eng.flipp.com/",
@@ -113,20 +115,19 @@ export default {
       {
         title: "Building Canada's largest hackathon.",
         subtitle: "Hack the North",
-        imgSrc: TestShowcaseImage,
+        imgSrc: HacktheNorthShowcaseImg,
         imgAlt: "Home page of Hack the North",
         linkText: "Learn more",
         linkHref: "http://hackthenorth.com",
         customParticle: GearIcon,
       },
       {
-        title: "Building Canada's largewest hackathon.",
-        subtitle: "Hack the North",
-        imgSrc: TestShowcaseImage,
-        imgAlt: "A test image",
-        linkText: "Read blog post",
-        linkHref:
-          "https://medium.com/@alexieyizhe/catch-ya-on-the-flipp-side-ae3b41c1514f",
+        title: "Enabling social innovation through tech.",
+        subtitle: "Equithon",
+        imgSrc: EquithonShowcaseImg,
+        imgAlt: "Equithon's web platform after a rebuild",
+        linkText: "See my work",
+        linkHref: "https://github.com/equithon",
       },
     ],
   },
