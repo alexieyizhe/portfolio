@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { animated } from "react-spring";
 
 import copy from "~assets/copy";
 
 import IconLink from "./IconLink";
 
-const Container = styled.div`
+const Container = styled(animated.div)`
   position: absolute;
   bottom: 10vh;
 
@@ -19,11 +20,11 @@ const Container = styled.div`
   `}
 `;
 
-const QuickLinks = () => (
-  <Container>
+const QuickLinks: React.FC = props => (
+  <Container {...props}>
     <IconLink
       iconName="file-text"
-      color="red"
+      color="purple"
       href={copy.mainLandingSection.links.resume}
       size={36}
     >

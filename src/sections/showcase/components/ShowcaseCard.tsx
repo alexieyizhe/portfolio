@@ -197,10 +197,8 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
             style={animProps}
           />
 
-          <LinkArrow className="link">
-            <Text variant="subheading" style={animProps}>
-              {linkText}
-            </Text>
+          <LinkArrow className="link" style={animProps}>
+            <Text variant="subheading">{linkText}</Text>
             <Icon name="arrow-right" size={Size.SMALL} animate={false} />
           </LinkArrow>
 

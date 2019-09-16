@@ -1,5 +1,6 @@
 import React, { useContext, useMemo, useState } from "react";
 import styled, { ThemeContext } from "styled-components";
+import { animated } from "react-spring";
 
 import Icon, { IconProps } from "~components/Icon";
 import { LinkProps, UnstyledLink } from "~components/Link";
@@ -13,7 +14,7 @@ interface IconLinkProps
   iconName: string;
 }
 
-const Container = styled(UnstyledLink)`
+const Container = styled(animated(UnstyledLink))`
   position: relative;
   margin-right: 10px;
 
