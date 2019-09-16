@@ -56,6 +56,7 @@ const IconLink: React.FC<IconLinkProps> = ({
   children,
   color,
   size: iconSize,
+  mobileSize: iconMobileSize,
   ...rest
 }) => {
   const [isHovering, setHovering] = useState(false);
@@ -82,6 +83,7 @@ const IconLink: React.FC<IconLinkProps> = ({
         name={iconName}
         color={color}
         size={iconSize}
+        mobileSize={iconMobileSize}
         hover={isHovering}
       />
       <PopoutLink className={isHovering ? "hover" : ""}>

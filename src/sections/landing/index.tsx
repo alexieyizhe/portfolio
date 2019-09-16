@@ -52,9 +52,9 @@ const Landing = () => {
   return (
     <Waypoint onEnter={onLandingEnter}>
       <Container>
+        <HeroImg src={HeroMe} />
         <Intro style={entryAnimStyles} />
         <QuickLinks style={entryAnimStyles} />
-        <HeroImg src={HeroMe} />
       </Container>
     </Waypoint>
   );

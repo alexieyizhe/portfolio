@@ -17,6 +17,8 @@ import {
 
 import { Size } from "~types/Size";
 import { BaseElementProps } from "~types/BaseElementProps";
+import { useWindowWidth } from "~utils/hooks/useWindowWidth";
+import { deviceBreakpoints } from "~theme/breakpoints";
 
 export interface IconProps extends BaseElementProps {
   name: string;
@@ -24,6 +26,7 @@ export interface IconProps extends BaseElementProps {
   animateType?: number | true; // if not specified, will animate on hover
   color?: string;
   size?: Size | number;
+  mobileSize?: Size | number;
 
   hover?: boolean; // used to override hover
 }
@@ -72,17 +75,25 @@ const Icon: React.FC<IconProps> = ({
   className,
   name,
   size,
+  mobileSize,
   color,
   animate = true,
   hover = false,
   animateType,
   onClick,
 }) => {
+  const windowWidth = useWindowWidth();
+  const sizeForWidth =
+    windowWidth < deviceBreakpoints.largeMobile ? mobileSize : size;
+
   const [isHovering, setHovering] = useState(false);
   const { fontSize, color: themeColors } = useContext(ThemeContext);
 
   const IconComponent = ICON_DICTIONARY[name];
-  const iconSize = size ? fontSize[size] || size : fontSize[DEFAULT_ICON_SIZE];
+
+  const iconSize = sizeForWidth
+    ? fontSize[sizeForWidth] || sizeForWidth
+    : fontSize[DEFAULT_ICON_SIZE];
   const iconColor = color ? themeColors[color] || color : themeColors.black;
 
   const RenderedComponent = useMemo(

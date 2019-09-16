@@ -43,23 +43,22 @@ const TextContainer = styled.div`
 
   ${({ theme }) => theme.mediaQueries.tablet`
     margin-left: 20px;
-  `}
 
-  ${({ theme }) => theme.mediaQueries.largeMobile`
-    margin-left: 0;
-    margin-top: 10px;
-
-
-    & h3 {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    
     & h3, 
     & p {
       left: unset;
       text-align: center;
     }
+
+    & h3 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  `}
+
+  ${({ theme }) => theme.mediaQueries.largeMobile`
+    margin-left: 0;
+    margin-top: 10px;
   `}
 `;
 

@@ -14,9 +14,6 @@ const Container = styled(animated.div)`
     position: relative;
     bottom: unset;
     margin-top: 10px;
-    
-    transform-origin: center left;
-    transform: scale(0.7);
   `}
 `;
 
@@ -27,6 +24,7 @@ const QuickLinks: React.FC = props => (
       color="purple"
       href={copy.mainLandingSection.links.resume}
       size={36}
+      mobileSize={30}
     >
       resume
     </IconLink>
@@ -36,6 +34,7 @@ const QuickLinks: React.FC = props => (
       color="blue"
       href={copy.mainLandingSection.links.github}
       size={36}
+      mobileSize={30}
     >
       github
     </IconLink>
@@ -45,6 +44,7 @@ const QuickLinks: React.FC = props => (
       color="green"
       href={copy.mainLandingSection.links.mail}
       size={36}
+      mobileSize={30}
     >
       email
     </IconLink>
