@@ -13,7 +13,7 @@ const Container = styled(animated.div)`
   ${({ theme }) => theme.mediaQueries.largeMobile`
     position: relative;
     bottom: unset;
-    margin-top: 10px;
+    margin-top: 20px;
   `}
 `;
 

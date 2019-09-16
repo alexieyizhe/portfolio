@@ -84,7 +84,9 @@ const Icon: React.FC<IconProps> = ({
 }) => {
   const windowWidth = useWindowWidth();
   const sizeForWidth =
-    windowWidth < deviceBreakpoints.largeMobile ? mobileSize : size;
+    windowWidth < deviceBreakpoints.largeMobile && mobileSize
+      ? mobileSize
+      : size;
 
   const [isHovering, setHovering] = useState(false);
   const { fontSize, color: themeColors } = useContext(ThemeContext);

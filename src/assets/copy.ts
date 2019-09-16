@@ -1,6 +1,6 @@
 import {
   AboutMainImg,
-  FlippHero,
+  FlippCoverPhoto,
   FlippShowcaseImg,
   HacktheNorthShowcaseImg,
   EquithonShowcaseImg,
@@ -67,7 +67,7 @@ export default {
         linkText: "Read the article",
         linkHref:
           "https://medium.com/@alexieyizhe/catch-ya-on-the-flipp-side-ae3b41c1514f",
-        imgSrc: FlippHero,
+        imgSrc: FlippCoverPhoto,
         imgAlt: "A phone in a background displaying the Flipp app",
       },
       second: {
