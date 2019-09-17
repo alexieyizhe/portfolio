@@ -7,6 +7,7 @@ import { HeroMe } from "~assets/images";
 
 import Intro from "./components/Intro";
 import QuickLinks from "./components/QuickLinks";
+import BackgroundParticles from "./components/BackgroundParticles";
 
 const Container = styled(animated.div)`
   position: relative;
@@ -50,13 +51,16 @@ const Landing = () => {
   });
 
   return (
-    <Waypoint onEnter={onLandingEnter}>
-      <Container>
-        <HeroImg src={HeroMe} />
-        <Intro style={entryAnimStyles} />
-        <QuickLinks style={entryAnimStyles} />
-      </Container>
-    </Waypoint>
+    <>
+      <BackgroundParticles />
+      <Waypoint onEnter={onLandingEnter}>
+        <Container>
+          <HeroImg src={HeroMe} />
+          <Intro style={entryAnimStyles} />
+          <QuickLinks style={entryAnimStyles} />
+        </Container>
+      </Waypoint>
+    </>
   );
 };
 
