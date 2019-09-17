@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="43" height="42" viewBox="0 0 43 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M23.7463 7.49795C26.2681 5.73111 29.7569 7.35681 30.0261 10.4242L32.2219 35.4428C32.4911 38.5102 29.3388 40.7188 26.5477 39.4182L3.78314 28.8105C0.992077 27.5099 0.655571 23.6757 3.17742 21.9088L23.7463 7.49795Z" style=" stroke:none;fill-rule:nonzero;fill:rgb(92.941176%,43.529412%,43.529412%);fill-opacity:1;"/>
+<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path stroke="null" id="svg_1" fill-rule="nonzero" fill="rgb(92.941176%,43.529412%,43.529412%)" d="m27.180509,1.30696c2.98628,-2.114034 7.117668,-0.168875 7.436451,3.501275l2.600236,29.9349c0.318783,3.670162 -3.414127,6.312765 -6.719308,4.756589l-26.957473,-12.692175c-3.305134,-1.556175 -3.703625,-6.143818 -0.717285,-8.257924l24.357379,-17.242666z"/>
+ </g>
 </svg>
