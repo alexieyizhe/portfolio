@@ -82,6 +82,7 @@ const CardContainer = styled(animated(Card))`
 
   & > .image {
     grid-area: image;
+    max-height: 300px;
   }
 
   ${({ theme }) => theme.mediaQueries.tablet`
@@ -129,8 +130,7 @@ const ShowcaseImage = styled(animated.img)`
 
     margin: 20px auto;
     align-self: center;
-    max-width: 140%;
-    left: -20%;
+    max-height: 100%;
   `}
 `;
 
@@ -197,10 +197,8 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
             style={animProps}
           />
 
-          <LinkArrow className="link">
-            <Text variant="subheading" style={animProps}>
-              {linkText}
-            </Text>
+          <LinkArrow className="link" style={animProps}>
+            <Text variant="subheading">{linkText}</Text>
             <Icon name="arrow-right" size={Size.SMALL} animate={false} />
           </LinkArrow>
 

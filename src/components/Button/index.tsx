@@ -24,6 +24,7 @@ const Container = styled(UnstyledButton)<{ disabled?: boolean }>`
   width: ${BUTTON_SIZE}px;
   height: ${BUTTON_SIZE}px;
 
+  background-color: white;
   padding: 5px;
   border: none;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};

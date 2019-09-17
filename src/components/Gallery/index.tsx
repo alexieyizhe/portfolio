@@ -23,11 +23,13 @@ const Container = styled.div`
   & > .left-button {
     position: relative;
     right: -${BUTTON_OFFSET}px;
+    z-index: 2;
   }
 
   & > .right-button {
     position: relative;
     left: -${BUTTON_OFFSET}px;
+    z-index: 2;
   }
 `;
 
@@ -38,15 +40,26 @@ const ImageContainer = styled.div`
   height: 300px;
 
   overflow: hidden;
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   display: grid;
   justify-content: center;
   align-items: center;
 
-  & > img {
+  & > * {
     grid-row: 1;
     grid-column: 1;
+  }
+
+  &:after {
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+
+    border-radius: 50%;
   }
 `;
 

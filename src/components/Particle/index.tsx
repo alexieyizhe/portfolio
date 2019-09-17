@@ -52,8 +52,7 @@ const Container = styled.span<ParticleProps>`
   ${({ float }) =>
     float &&
     css`
-      animation: ${floatAnim} ${Math.random() * 6000 + 4000}ms ease-in-out
-        infinite;
+      animation: ${floatAnim} ${Math.random() * 5 + 3}s ease-in-out infinite;
     `}
 
   & > svg {
@@ -64,13 +63,16 @@ const Container = styled.span<ParticleProps>`
       rotate(${({ rotation }) => rotation}deg);
 
     & circle {
-      fill: ${({ theme, color = "black" }) => theme.color[color] || color};
+      fill: ${({ theme, color = "black" }) =>
+        theme.color[color] || color} !important;
     }
     & path {
-      fill: ${({ theme, color = "black" }) => theme.color[color] || color};
+      fill: ${({ theme, color = "black" }) =>
+        theme.color[color] || color} !important;
     }
     & line {
-      stroke: ${({ theme, color = "black" }) => theme.color[color] || color};
+      stroke: ${({ theme, color = "black" }) =>
+        theme.color[color] || color} !important;
     }
   }
 `;

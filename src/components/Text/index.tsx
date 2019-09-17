@@ -41,10 +41,12 @@ const TEXT_VARIANTS: VariantList = {
   heading: {
     size: Size.XLARGE,
     bold: true,
+    heading: true,
   },
   subheading: {
     size: Size.MEDIUM,
     bold: true,
+    heading: true,
   },
   body: {
     size: Size.SMALL,
@@ -53,7 +55,7 @@ const TEXT_VARIANTS: VariantList = {
 
 const BaseText = styled.span<TextProps>`
   font-family: ${({ theme, heading }) =>
-    theme.fontFamily[heading ? "heading" : "text"]};
+    theme.fontFamily[heading ? "heading" : "body"]};
   font-size: ${({ theme, size = Size.MEDIUM }) =>
     theme.fontSize[size] || size}px;
 

@@ -1,8 +1,12 @@
 import {
-  AboutAvatar,
-  FlippHero,
-  TestShowcaseImage,
+  AboutMainImg,
+  FlippCoverPhoto,
+  FlippShowcaseImg,
+  HacktheNorthShowcaseImg,
+  EquithonShowcaseImg,
   GearIcon,
+  LightbulbIcon,
+  ShoppingCartIcon,
 } from "~assets/images";
 
 import {
@@ -65,11 +69,11 @@ export default {
         linkText: "Read the article",
         linkHref:
           "https://medium.com/@alexieyizhe/catch-ya-on-the-flipp-side-ae3b41c1514f",
-        imgSrc: FlippHero,
+        imgSrc: FlippCoverPhoto,
         imgAlt: "A phone in a background displaying the Flipp app",
       },
       second: {
-        title: "Currently seeking Spring 2020 internship opportunities!",
+        title: "Seeking internship opportunities!",
         desc: [
           "Are you looking for an intern? What a coincidence! I'm looking for an internship. We're like a match made in heaven :0",
         ],
@@ -79,8 +83,8 @@ export default {
       third: {
         title: "Building a cohesive design system",
         desc: [
-          "Even for personal projects, my goal maintainability and consistency.",
-          "That’s why I built a component library system for use on this very portfolio site you’re looking at, and wrote about my process.",
+          "Even for personal projects, my goal is maintainability and consistency.",
+          "That’s why I built a component system for use on this very site you’re looking at.",
         ],
         linkText: "Check it out",
         linkHref: "/design-system",
@@ -89,7 +93,7 @@ export default {
   },
   aboutSection: {
     title: "Look, it me!",
-    avatarImg: AboutAvatar,
+    avatarImg: AboutMainImg,
     desc: [
       "I'm Alex Yizhe Xie, a computer science student in my junior year at the University of Waterloo.",
       "My passions include rock climbing, coding for good, and human-computer interaction design.",
@@ -105,27 +109,29 @@ export default {
       {
         title: "Bringing print flyers into the digital medium.",
         subtitle: "Flipp",
-        imgSrc: TestShowcaseImage,
+        imgSrc: FlippShowcaseImg,
         imgAlt: "Flipp's main dashboard for digital publishing",
-        linkText: "Read more",
-        linkHref: "/",
+        linkText: "Learn more",
+        linkHref: "https://eng.flipp.com/",
+        customParticle: ShoppingCartIcon,
       },
       {
         title: "Building Canada's largest hackathon.",
         subtitle: "Hack the North",
-        imgSrc: TestShowcaseImage,
+        imgSrc: HacktheNorthShowcaseImg,
         imgAlt: "Home page of Hack the North",
-        linkText: "Read more",
-        linkHref: "/",
+        linkText: "Learn more",
+        linkHref: "http://hackthenorth.com",
         customParticle: GearIcon,
       },
       {
-        title: "Building Canada's largewest hackathon.",
-        subtitle: "Hack the North",
-        imgSrc: TestShowcaseImage,
-        imgAlt: "A test image",
-        linkText: "Read more",
-        linkHref: "/",
+        title: "Enabling social innovation through tech.",
+        subtitle: "Equithon",
+        imgSrc: EquithonShowcaseImg,
+        imgAlt: "Equithon's web platform after a rebuild",
+        linkText: "See my work",
+        linkHref: "https://github.com/equithon",
+        customParticle: LightbulbIcon,
       },
     ],
   },
@@ -144,23 +150,25 @@ export default {
       palette: {
         title: "Palette",
         desc: [
-          "Apart from grey and black, I chose to use playful pastel colors to contrast with the monotone white and blacks of text. These allow the particles to feel....",
+          "Apart from grey and black, I chose to use playful pastel colors to contrast with the monotone white and blacks of text. These allow elements like the particle to bring a splash of color whenever needed.",
         ],
       },
       typeface: {
         title: "Typeface",
-        desc: ["I decided to go with this font for....."],
+        desc: ["It's a nice font"],
       },
       text: {
         title: "Text",
         desc: [
-          "Apart from grey and black, I chose to use playful pastel colors to contrast with the monotone white and blacks of text. These allow the particles to feel....",
+          "Every heading, subtitle, or block of text that you see on the site is styled through the Text component. This means it needs to be extremely versatile, but I didn't want to sacrifice consistency in order to accomplish this.",
+          "As a result, the Text component allows for preset variants like 'heading' or 'body' to be specified, which will apply preset properties to the wrapped text. However, for flexibility, you can also specify each individual attribute (size, color, font weight, etc.) individually.",
         ],
       },
       icon: {
         title: "Icon",
         desc: [
-          "Icons are a visual text-free tool to quickly identify the function or type of a component....",
+          "Icons are a visual text-free way of conveying information.",
+          "Just like text, you can specify every property of an icon individually for flexibility, and the icon drawing can be animated if desired.",
         ],
       },
       linkandbutton: {
@@ -172,12 +180,15 @@ export default {
       },
       gallery: {
         title: "Gallery",
-        desc: ["Iwegowjepgwegpewjgpoewjpgwejogonent...."],
+        desc: [
+          "Useful for displaying pictures, a Gallery dynamically adjusts available buttons based on number of pictures.",
+        ],
       },
       card: {
         title: "Cards",
         desc: [
-          "As cards are used for dozens of types of contents and layouts, they have to be versatile and flexible....",
+          "As cards are used for dozens of types of contents and layouts, they are essentially the Text component of the container world.",
+          "There are currently two variants of a simple card: a ShowcaseCard and ContentCard that allow for display of content in appealing ways.",
         ],
       },
       particle: {
@@ -190,7 +201,7 @@ export default {
     },
   },
   footer: {
-    text: "made with a keyboard, a screen, and a whole lotta googling.",
+    text: "made with a ⌨️ and a whole lotta googling.",
   },
   resumePage: {
     title: "Resume",

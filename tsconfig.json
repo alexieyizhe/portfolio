@@ -11,7 +11,6 @@
     "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
     "baseUrl": ".",
     "paths": {
-      "~src/*": ["src/*"],
       "~assets/*": ["src/assets/*"],
       "~components/*": ["src/components/*"],
       "~layouts/*": ["src/layouts/*"],
@@ -19,7 +18,8 @@
       "~sections/*": ["src/sections/*"],
       "~theme/*": ["src/theme/*"],
       "~types/*": ["src/types/*"],
-      "~utils/*": ["src/utils/*"]
+      "~utils/*": ["src/utils/*"],
+      "~src/*": ["src/*"]
     },
     // "declaration": true,                   /* Generates corresponding '.d.ts' file. */
     // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */

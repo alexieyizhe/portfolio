@@ -13,7 +13,6 @@ module.exports = {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
-          "~src": "src",
           "~assets": "src/assets",
           "~components": "src/components",
           "~layouts": "src/layouts",
@@ -22,6 +21,7 @@ module.exports = {
           "~theme": "src/theme",
           "~types": "src/types",
           "~utils": "src/utils",
+          "~src": "src",
         },
         extensions: ["ts", "tsx", "json"],
       },
@@ -35,9 +35,15 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        fonts: [`roboto`],
+        fonts: [
+          {
+            family: `Overpass`,
+            variants: [`400`, `600`, `700`],
+          },
+          { family: `Roboto` },
+        ],
       },
     },
   ],

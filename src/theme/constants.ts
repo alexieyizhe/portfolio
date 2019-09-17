@@ -31,8 +31,8 @@ export const themeConstants = {
     card: 6,
   },
   fontFamily: {
-    heading: "sans-serif",
-    body: "sans-serif",
+    heading: "Overpass, sans-serif",
+    body: "Roboto, sans-serif",
   },
   boxShadow: {
     main: "0 2px 10px 0 rgba(0, 0, 0, 8%)",

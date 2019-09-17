@@ -7,8 +7,7 @@ import ShowcaseCard from "~sections/showcase/components/ShowcaseCard";
 import ElementGroup from "~sections/design-system/components/ElementGroup";
 
 import copy from "~assets/copy";
-import { TestShowcaseImage as TESTIMG_SHOWCASE } from "~assets/images";
-import TESTIMG from "~assets/images/spookyscary.jpg";
+import { TestShowcaseImage, FlippCoverPhoto } from "~assets/images";
 
 const CardDisplay = styled.div`
   margin-bottom: 30px;
@@ -28,7 +27,7 @@ const CardSection = () => (
         title="This is a card"
         linkText="Here's a link"
         linkHref="/"
-        imgSrc={TESTIMG}
+        imgSrc={FlippCoverPhoto}
       >
         This is some body text.
       </ContentCard>
@@ -54,7 +53,7 @@ const CardSection = () => (
         subtitle="Hack de nort"
         linkText="Read more"
         linkHref=""
-        imgSrc={TESTIMG_SHOWCASE}
+        imgSrc={TestShowcaseImage}
         imgAlt="Some pic"
         particles
       />

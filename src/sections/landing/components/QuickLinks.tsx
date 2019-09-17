@@ -1,31 +1,31 @@
 import React from "react";
 import styled from "styled-components";
+import { animated } from "react-spring";
 
 import copy from "~assets/copy";
+import { BaseElementProps } from "~types/BaseElementProps";
 
 import IconLink from "./IconLink";
 
-const Container = styled.div`
+const Container = styled(animated.div)`
   position: absolute;
   bottom: 10vh;
 
   ${({ theme }) => theme.mediaQueries.largeMobile`
     position: relative;
     bottom: unset;
-    margin-top: 10px;
-    
-    transform-origin: center left;
-    transform: scale(0.7);
+    margin-top: 20px;
   `}
 `;
 
-const QuickLinks = () => (
-  <Container>
+const QuickLinks: React.FC<BaseElementProps> = props => (
+  <Container {...props}>
     <IconLink
       iconName="file-text"
-      color="red"
+      color="purple"
       href={copy.mainLandingSection.links.resume}
       size={36}
+      mobileSize={30}
     >
       resume
     </IconLink>
@@ -35,6 +35,7 @@ const QuickLinks = () => (
       color="blue"
       href={copy.mainLandingSection.links.github}
       size={36}
+      mobileSize={30}
     >
       github
     </IconLink>
@@ -44,6 +45,7 @@ const QuickLinks = () => (
       color="green"
       href={copy.mainLandingSection.links.mail}
       size={36}
+      mobileSize={30}
     >
       email
     </IconLink>

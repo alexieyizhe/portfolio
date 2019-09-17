@@ -29,11 +29,19 @@ const Column = styled.div`
   width: 400px;
   max-width: 28%;
 
+  &:nth-child(3) {
+    margin-top: 25px;
+  }
+
   ${({ theme }) => theme.mediaQueries.tablet`
     width: 100%;
     max-width: 100%;
 
     margin-bottom: 50px;
+
+    &:nth-child(3) {
+      margin-top: 0;
+    }
   `}
 `;
 

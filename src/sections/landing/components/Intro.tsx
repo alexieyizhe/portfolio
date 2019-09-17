@@ -1,13 +1,15 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import TextLoop from "react-text-loop";
+import { animated } from "react-spring";
 
 import copy from "~assets/copy";
+import { BaseElementProps } from "~types/BaseElementProps";
 import { Text } from "~src/components";
 
 const greetings = copy.mainLandingSection.greetings;
 
-const Container = styled.div`
+const Container = styled(animated.div)`
   & > h1 {
     font-size: 70px;
   }
@@ -27,7 +29,7 @@ const Container = styled.div`
   `}
 `;
 
-const QuickLinks = () => {
+const QuickLinks: React.FC<BaseElementProps> = props => {
   const displayedGreeting = useMemo(() => {
     const randomGreeting =
       greetings[Math.floor(Math.random() * greetings.length)];
@@ -35,15 +37,19 @@ const QuickLinks = () => {
   }, []);
 
   return (
-    <Container>
-      <Text as="span">{displayedGreeting}</Text>
-      <Text bold as="h1">
+    <Container {...props}>
+      <Text as="span" heading>
+        {displayedGreeting}
+      </Text>
+      <Text bold as="h1" heading>
         {copy.mainLandingSection.name}
       </Text>
-      <Text as="span">{copy.mainLandingSection.taglinePrefix}</Text>
+      <Text as="span" heading>
+        {copy.mainLandingSection.taglinePrefix}
+      </Text>
       <TextLoop>
         {copy.mainLandingSection.taglines.map(line => (
-          <Text key={line} as="span" bold>
+          <Text key={line} as="span" heading bold>
             {line}
           </Text>
         ))}

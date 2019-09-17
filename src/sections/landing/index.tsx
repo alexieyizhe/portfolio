@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
+import { Waypoint } from "react-waypoint";
+import { useSpring, animated, config } from "react-spring";
 
 import { HeroMe } from "~assets/images";
 
 import Intro from "./components/Intro";
 import QuickLinks from "./components/QuickLinks";
 
-const Container = styled.section`
+const Container = styled(animated.div)`
   position: relative;
   height: 85vh;
 
@@ -36,12 +38,26 @@ const HeroImg = styled.img`
   `}
 `;
 
-const Landing = () => (
-  <Container>
-    <Intro />
-    <QuickLinks />
-    <HeroImg src={HeroMe} />
-  </Container>
-);
+const Landing = () => {
+  const [landingVisible, setLandingVisible] = useState(false);
+
+  const onLandingEnter = useCallback(() => setLandingVisible(true), []);
+
+  const entryAnimStyles = useSpring({
+    opacity: landingVisible ? 1 : 0,
+    transform: landingVisible ? "translateY(0)" : "translateY(100px)",
+    config: config.stiff,
+  });
+
+  return (
+    <Waypoint onEnter={onLandingEnter}>
+      <Container>
+        <HeroImg src={HeroMe} />
+        <Intro style={entryAnimStyles} />
+        <QuickLinks style={entryAnimStyles} />
+      </Container>
+    </Waypoint>
+  );
+};
 
 export default Landing;
