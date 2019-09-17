@@ -2,7 +2,12 @@ import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 
 import PageWrapper from "~components/PageWrapper";
-import { Card, Button, UnstyledButton } from "~src/components";
+import {
+  Card,
+  HomeButtonMarkup,
+  Button,
+  UnstyledButton,
+} from "~src/components";
 
 import copy from "~assets/copy";
 
@@ -91,7 +96,7 @@ const ResumePage = () => {
     <DividedPageContainer
       heading={copy.resumePage.heading} // TODO: figure out how to add a star icon for Current
       subheading={copy.resumePage.resumes[displayedResume].name}
-      sideButton
+      sideButton={HomeButtonMarkup}
       iconName="arrow-left"
       iconOnClick={() => {
         window.location.href = "/"; // TODO: make icon an AniLink

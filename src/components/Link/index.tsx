@@ -38,7 +38,6 @@ export const BottomLineText = styled(Text)`
     transform: scaleX(1);
   }
 `;
-// TODO: add gatsby link to allow for better internal linking
 
 const Link: React.FC<LinkProps> = ({
   id,

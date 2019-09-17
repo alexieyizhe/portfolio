@@ -1,6 +1,6 @@
 import React from "react";
 
-import PageWrapper from "~components/PageWrapper";
+import { PageWrapper, HomeButtonMarkup } from "~src/components";
 import copy from "~assets/copy";
 
 import IntroSection from "~sections/design-system/intro";
@@ -17,6 +17,7 @@ const DesignSystemPage = () => (
   <PageWrapper
     heading={copy.designSystemSection.heading}
     subheading={copy.designSystemSection.subheading}
+    sideButton={HomeButtonMarkup}
   >
     <IntroSection />
     <PaletteSection />

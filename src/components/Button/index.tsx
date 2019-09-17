@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Icon, { IconProps } from "~components/Icon";
+import Card from "~components/Card";
 import { Size } from "~types/Size";
 
 export interface ButtonProps extends IconProps {
@@ -16,10 +17,11 @@ export const UnstyledButton = styled.button`
   font: inherit;
   color: inherit;
   background-color: transparent;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 
-const Container = styled(UnstyledButton)<{ disabled?: boolean }>`
+export const ButtonCard = styled(Card)<{ disabled?: boolean }>`
+  display: inline-block;
   border-radius: 50%;
   width: ${BUTTON_SIZE}px;
   height: ${BUTTON_SIZE}px;
@@ -27,14 +29,17 @@ const Container = styled(UnstyledButton)<{ disabled?: boolean }>`
   background-color: white;
   padding: 5px;
   border: none;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  box-shadow: ${({ theme }) => theme.boxShadow.main};
 
   transition: transform 150ms ease-in;
   &:hover,
   &:focus,
   &:focus-within {
     transform: translateY(${({ disabled }) => (disabled ? "0" : "-2px")});
+  }
+
+  & * {
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -45,14 +50,16 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   ...rest
 }) => (
-  <Container onClick={onClick} disabled={disabled} {...rest}>
-    <Icon
-      name={name}
-      animate={false}
-      color={disabled ? "greyMedium" : color}
-      size={Size.MEDIUM}
-    />
-  </Container>
+  <ButtonCard disabled={disabled} {...rest}>
+    <UnstyledButton onClick={onClick} disabled={disabled}>
+      <Icon
+        name={name}
+        animate={false}
+        color={disabled ? "greyMedium" : color}
+        size={Size.MEDIUM}
+      />
+    </UnstyledButton>
+  </ButtonCard>
 );
 
 export default Button;

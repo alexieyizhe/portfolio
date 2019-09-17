@@ -23,6 +23,8 @@ export interface LinkProps extends TextProps {
 }
 
 const unstyledLinkStyles = css`
+  display: inline-block;
+
   position: relative;
   text-decoration: none;
   color: inherit;
@@ -43,7 +45,6 @@ const UnstyledLink: React.FC<LinkProps> = ({
   ...rest
 }) => {
   const isInternalLink = useMemo(() => /^\/(?!\/)/.test(to), [to]);
-
   const randomColor = useMemo(() => getRandomColor(), []);
 
   if (isInternalLink) {

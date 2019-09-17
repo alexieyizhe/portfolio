@@ -86,7 +86,7 @@ export default {
           "Even for personal projects, my goal is maintainability and consistency.",
           "That’s why I built a component system for use on this very site you’re looking at.",
         ],
-        linkText: "Check it out",
+        linkText: "See the system",
         linkHref: "/design-system",
       },
     },
