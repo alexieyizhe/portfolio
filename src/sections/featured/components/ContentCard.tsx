@@ -89,7 +89,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
   children,
   ...rest
 }) => (
-  <UnstyledLink href={linkHref}>
+  <UnstyledLink to={linkHref}>
     <CardContainer id={id} className={className} linkHref={linkHref} {...rest}>
       {imgSrc && <CardImage className="image" src={imgSrc} alt={imgAlt} />}
 

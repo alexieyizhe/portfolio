@@ -94,7 +94,7 @@ const ResumePage = () => {
       sideButton
       iconName="arrow-left"
       iconOnClick={() => {
-        window.location.href = "/";
+        window.location.href = "/"; // TODO: make icon an AniLink
       }}
     >
       <ActionButtonContainer className="side-content-container">
