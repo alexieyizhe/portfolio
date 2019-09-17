@@ -14,10 +14,6 @@ export interface ParticleGroupProps extends BaseElementProps {
   customParticle?: any;
 }
 
-export interface ParticleContainerPRops extends ParticleInfo {
-  r: number;
-}
-
 const defaultParticlesInfo: ParticleInfo[] = [
   { x: 0, y: 0, s: 1, color: "black" },
 ];
@@ -30,12 +26,12 @@ const ParticlesContainer = styled.div`
   left: 0;
 `;
 
-const ParticleContainer = styled.div<ParticleContainerPRops>`
+const ParticleContainer = styled.div<ParticleInfo>`
   position: absolute;
   display: inline-block;
   left: ${({ x }) => x}%;
   top: ${({ y }) => y}%;
-  transform: scale(${({ s }) => s}) rotate(${({ r }) => r}deg);
+  transform: scale(${({ s }) => s});
 `;
 
 const ParticleGroup: React.FC<ParticleGroupProps> = ({
@@ -64,12 +60,12 @@ const ParticleGroup: React.FC<ParticleGroupProps> = ({
           x={info.x}
           y={info.y}
           s={info.s}
-          r={info.r}
           color={info.color}
         >
           <Particle
             float
             color={info.color}
+            rotation={info.r}
             customSVG={Math.random() < 0.7 ? customParticle : undefined}
           />
         </ParticleContainer>
