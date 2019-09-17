@@ -49,7 +49,7 @@ const ParticleGroup: React.FC<ParticleGroupProps> = ({
       particlesInfo.map(({ x, y, s, color }) => ({
         x: x + (Math.random() * 4 - 2),
         y: y + (Math.random() * 4 - 2),
-        s: s + (Math.random() - 0.5) / 3,
+        s: s + (Math.random() - 0.6) / 3,
         r: Math.floor(Math.random() * 360),
         color,
       })),

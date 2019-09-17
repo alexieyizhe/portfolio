@@ -45,7 +45,6 @@
     "import/resolver": {
       "alias": {
         "map": [
-          ["~src/*", "src/*"],
           ["~assets/*", "src/assets/*"],
           ["~components/*", "src/components/*"],
           ["~layouts/*", "src/layouts/*"],
@@ -53,7 +52,8 @@
           ["~sections/*", "src/sections/*"],
           ["~theme/*", "src/theme/*"],
           ["~types/*", "src/types/*"],
-          ["~utils/*", "src/utils/*"]
+          ["~utils/*", "src/utils/*"],
+          ["~src/*", "src/*"]
         ],
         "extensions": [".ts", ".tsx", ".json"]
       }

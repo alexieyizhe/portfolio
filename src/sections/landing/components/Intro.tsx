@@ -4,6 +4,7 @@ import TextLoop from "react-text-loop";
 import { animated } from "react-spring";
 
 import copy from "~assets/copy";
+import { BaseElementProps } from "~types/BaseElementProps";
 import { Text } from "~src/components";
 
 const greetings = copy.mainLandingSection.greetings;
@@ -28,7 +29,7 @@ const Container = styled(animated.div)`
   `}
 `;
 
-const QuickLinks: React.FC = props => {
+const QuickLinks: React.FC<BaseElementProps> = props => {
   const displayedGreeting = useMemo(() => {
     const randomGreeting =
       greetings[Math.floor(Math.random() * greetings.length)];

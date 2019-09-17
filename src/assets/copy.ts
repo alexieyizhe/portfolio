@@ -73,7 +73,7 @@ export default {
         imgAlt: "A phone in a background displaying the Flipp app",
       },
       second: {
-        title: "Currently seeking Spring 2020 internship opportunities!",
+        title: "Seeking internship opportunities!",
         desc: [
           "Are you looking for an intern? What a coincidence! I'm looking for an internship. We're like a match made in heaven :0",
         ],
@@ -83,8 +83,8 @@ export default {
       third: {
         title: "Building a cohesive design system",
         desc: [
-          "Even for personal projects, my goal maintainability and consistency.",
-          "That’s why I built a component library system for use on this very portfolio site you’re looking at. Take a look at the process.",
+          "Even for personal projects, my goal is maintainability and consistency.",
+          "That’s why I built a component system for use on this very site you’re looking at.",
         ],
         linkText: "Check it out",
         linkHref: "/design-system",
@@ -201,7 +201,7 @@ export default {
     },
   },
   footer: {
-    text: "made with a keyboard, a screen, and a whole lotta googling.",
+    text: "made with a ⌨️ and a whole lotta googling.",
   },
   resumePage: {
     title: "Resume",

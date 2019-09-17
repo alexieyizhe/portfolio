@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { animated } from "react-spring";
 
 import copy from "~assets/copy";
+import { BaseElementProps } from "~types/BaseElementProps";
 
 import IconLink from "./IconLink";
 
@@ -17,7 +18,7 @@ const Container = styled(animated.div)`
   `}
 `;
 
-const QuickLinks: React.FC = props => (
+const QuickLinks: React.FC<BaseElementProps> = props => (
   <Container {...props}>
     <IconLink
       iconName="file-text"
