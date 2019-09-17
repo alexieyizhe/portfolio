@@ -61,7 +61,7 @@ const Footer = () => (
       </UnstyledLink>
 
       <UnstyledLink href={landingSectionCopy.links.linkedin}>
-        <Icon name="linkedin" color="steelblue" animate />
+        <Icon name="linkedin" color="darkBlue" animate />
       </UnstyledLink>
     </div>
 
