@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 import Card, { CARD_HORIZ_PADDING, CARD_VERT_PADDING } from "~components/Card";
-import { ParticleGroupProps } from "~components/ParticleGroup";
 import Text from "~components/Text";
 import Icon from "~components/Icon";
 import { UnstyledLink } from "~components/Link";
 
 import { Size } from "~types/Size";
+import { BaseElementProps } from "~types/BaseElementProps";
 
-interface ContentCardProps extends ParticleGroupProps {
+interface ContentCardProps extends BaseElementProps {
   title?: string;
   imgSrc?: string;
   imgAlt?: string;

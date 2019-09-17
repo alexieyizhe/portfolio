@@ -5,7 +5,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 
-import Particle, { ParticleInfo } from "../Particle";
+import Particle, { ParticleInfo } from "~components/Particle";
 import { BaseElementProps } from "~src/types/BaseElementProps";
 
 export interface ParticleGroupProps extends BaseElementProps {

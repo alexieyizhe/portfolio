@@ -7,8 +7,8 @@ import Card, { CARD_VERT_PADDING } from "~components/Card";
 import Text from "~components/Text";
 import Icon from "~components/Icon";
 import { UnstyledLink } from "~components/Link";
-import ParticleGroup, { ParticleGroupProps } from "~components/ParticleGroup";
 import { ParticleInfo } from "~components/Particle";
+import ParticleGroup, { ParticleGroupProps } from "./ParticleGroup";
 
 import { Size } from "~types/Size";
 

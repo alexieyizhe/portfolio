@@ -19,9 +19,6 @@ export * from "./PageWrapper";
 export { default as Particle } from "./Particle";
 export * from "./Particle";
 
-export { default as ParticleGroup } from "./ParticleGroup";
-export * from "./ParticleGroup";
-
 export { default as Spinner } from "./Spinner";
 export * from "./Spinner";
 
