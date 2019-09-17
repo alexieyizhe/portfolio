@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://www.alexxie.ca">
-    <img alt="Me!" src="./readme-main.png" width="60" />
+    <img alt="Me!" src="./readme-main.png" width="120" />
   </a>
 </p>
 <h1 align="center">
