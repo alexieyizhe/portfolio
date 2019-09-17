@@ -77,7 +77,7 @@ const Featured = () => (
     </Column>
 
     <Column className="heading-column">
-      <HeaderText variant="heading">{sectionCopy.title}</HeaderText>
+      <HeaderText variant="heading">{sectionCopy.heading}</HeaderText>
       <FeaturedCard
         title={sectionCopy.cards.second.title}
         linkHref={sectionCopy.cards.second.linkHref}
