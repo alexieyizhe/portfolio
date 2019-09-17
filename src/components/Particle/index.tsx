@@ -25,8 +25,7 @@ export interface ParticleProps extends BaseElementProps {
   size?: Size | number;
   float?: boolean;
   rotation?: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customSVG?: any; // a custom SVG img to use
+  customSVG?: string; // a custom SVG img to use
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -79,7 +78,7 @@ const Container = styled.span<ParticleProps>`
 
 const Particle: React.FC<ParticleProps> = ({
   name,
-  rotation,
+  rotation = 0,
   customSVG,
   ...rest
 }) => {
@@ -88,13 +87,11 @@ const Particle: React.FC<ParticleProps> = ({
     []
   );
 
-  const randomRotation = useMemo(() => Math.random() * 300 - 100, []);
-
   const ParticleComponent =
     customSVG || PARTICLE_DICTIONARY[name || randomParticle];
 
   return (
-    <Container {...rest} rotation={rotation || randomRotation}>
+    <Container {...rest} rotation={rotation}>
       <ParticleComponent />
     </Container>
   );

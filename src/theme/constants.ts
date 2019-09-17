@@ -11,6 +11,7 @@ export const themeConstants = {
     purple: "#D299ED",
     green: "#84EEA8",
     blue: "#15D1DD",
+    darkBlue: "#0b5394",
     red: "#ED6F6F",
   },
   fontSize: {

@@ -21,6 +21,7 @@ export interface TextProps extends BaseElementProps {
    * What HTML element type to use to render the component.
    */
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "div";
+
   /**
    * Specifies a predefined set of styles to apply to the Text component.
    * If `variant` is supplied, its styles can be overriden by specifying individual

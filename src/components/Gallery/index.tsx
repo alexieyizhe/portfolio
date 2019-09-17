@@ -79,7 +79,7 @@ const ParticleTop = styled(Particle)`
 const ParticleLeft = styled(Particle)`
   position: absolute;
   bottom: 40px;
-  left: 6%;
+  left: 5%;
 `;
 
 const ParticleRight = styled(Particle)`

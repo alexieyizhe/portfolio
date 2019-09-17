@@ -15,8 +15,8 @@ import CardSection from "~sections/design-system/card";
 
 const DesignSystemPage = () => (
   <PageWrapper
-    title={copy.designSystemSection.title}
-    subtitle={copy.designSystemSection.subtitle}
+    heading={copy.designSystemSection.heading}
+    subheading={copy.designSystemSection.subheading}
   >
     <IntroSection />
     <PaletteSection />

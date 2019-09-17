@@ -7,8 +7,8 @@ import Card, { CARD_VERT_PADDING } from "~components/Card";
 import Text from "~components/Text";
 import Icon from "~components/Icon";
 import { UnstyledLink } from "~components/Link";
-import ParticleGroup, { ParticleGroupProps } from "~components/ParticleGroup";
 import { ParticleInfo } from "~components/Particle";
+import ParticleGroup, { ParticleGroupProps } from "./ParticleGroup";
 
 import { Size } from "~types/Size";
 
@@ -20,12 +20,13 @@ export interface ShowcaseCardProps extends ParticleGroupProps {
   linkText?: string;
   linkHref?: string;
   particles?: boolean;
+  particlesInfo?: ParticleInfo[];
   color?: string;
 }
 
 type transFn = (params: number[]) => string;
 
-const calc = (x: number, y: number) => [
+const calcPerspective = (x: number, y: number) => [
   -(y - window.innerHeight / 2) / 60,
   (x - window.innerWidth / 2) / 150,
   1.05,
@@ -33,14 +34,6 @@ const calc = (x: number, y: number) => [
 
 const trans = (x: number, y: number, s: number) =>
   `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
-
-const showcaseCardParticleInfo: ParticleInfo[] = [
-  { x: 60, y: 94, s: 0.8, color: "red" },
-  { x: 23, y: 96, s: 0.4, color: "blue" },
-  { x: -2, y: 28, s: 0.5, color: "purple" },
-  { x: 98, y: 60, s: 0.6, color: "green" },
-  { x: 45, y: -2, s: 0.75, color: "red" },
-];
 
 const CardContainer = styled(animated(Card))`
   display: grid;
@@ -150,6 +143,7 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
   linkHref,
   particles,
   customParticle,
+  particlesInfo,
   color,
   ...rest
 }) => {
@@ -173,13 +167,23 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
     <UnstyledLink href={linkHref}>
       <Waypoint onEnter={onCardEnter} onLeave={onCardLeave}>
         <CardContainer
-          onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
+          onMouseMove={({ clientX: x, clientY: y }) =>
+            set({ xys: calcPerspective(x, y) })
+          }
           onMouseLeave={() => set({ xys: [0, 0, 1] })}
           style={{
             transform: xys.interpolate((trans as unknown) as transFn),
           }}
           {...rest}
         >
+          {particles && (
+            <ParticleGroup
+              className="particles-container"
+              particlesInfo={particlesInfo}
+              customParticle={customParticle}
+            />
+          )}
+
           <Subheading
             variant="subheading"
             className="subheading"
@@ -216,14 +220,6 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
               animate={false}
             />
           </LinkArrow>
-
-          {particles && (
-            <ParticleGroup
-              className="particles-container"
-              particlesInfo={showcaseCardParticleInfo}
-              customParticle={customParticle}
-            />
-          )}
         </CardContainer>
       </Waypoint>
     </UnstyledLink>

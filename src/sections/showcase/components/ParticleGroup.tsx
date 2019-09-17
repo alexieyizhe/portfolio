@@ -1,22 +1,17 @@
 /**
- * Provides a handy group of particles.
+ * Provides a handy way of displaying a group of particles,
+ * usually on the edges of a container.
  */
-
 import React, { useMemo } from "react";
 import styled from "styled-components";
 
-import Particle, { ParticleInfo } from "../Particle";
+import Particle, { ParticleInfo } from "~components/Particle";
 import { BaseElementProps } from "~src/types/BaseElementProps";
 
 export interface ParticleGroupProps extends BaseElementProps {
   particlesInfo?: ParticleInfo[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customParticle?: any;
+  customParticle?: string;
 }
-
-const defaultParticlesInfo: ParticleInfo[] = [
-  { x: 0, y: 0, s: 1, color: "black" },
-];
 
 const ParticlesContainer = styled.div`
   position: absolute;
@@ -37,17 +32,21 @@ const ParticleContainer = styled.div<ParticleInfo>`
 const ParticleGroup: React.FC<ParticleGroupProps> = ({
   className,
   id,
-  particlesInfo = defaultParticlesInfo,
+  particlesInfo,
   customParticle,
 }) => {
   const randomizedParticlesInfo = useMemo(
     () =>
-      particlesInfo.map(({ x, y, s, color }) => ({
-        x: x + (Math.random() * 4 - 2),
-        y: y + (Math.random() * 4 - 2),
-        s: s + (Math.random() - 0.6) / 3,
-        color,
-      })),
+      particlesInfo
+        ? particlesInfo.map(({ x, y, s, color }) => ({
+            x: x + (Math.random() * 2 - 1),
+            y: y + (Math.random() * 2 - 1),
+            s: s + (Math.random() - 0.6) / 3,
+            r: Math.random() * 120 - 60,
+            color,
+            custom: Math.random() < 0.7,
+          }))
+        : [],
     [particlesInfo]
   );
 
@@ -64,7 +63,8 @@ const ParticleGroup: React.FC<ParticleGroupProps> = ({
           <Particle
             float
             color={info.color}
-            customSVG={Math.random() < 0.7 ? customParticle : undefined}
+            customSVG={info.custom ? customParticle : undefined}
+            rotation={info.r}
           />
         </ParticleContainer>
       ))}

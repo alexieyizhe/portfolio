@@ -23,7 +23,7 @@ const QuickLinks: React.FC<BaseElementProps> = props => (
     <IconLink
       iconName="file-text"
       color="purple"
-      href={copy.mainLandingSection.links.resume}
+      to={copy.mainLandingSection.links.resume}
       size={36}
       mobileSize={30}
     >
@@ -33,7 +33,7 @@ const QuickLinks: React.FC<BaseElementProps> = props => (
     <IconLink
       iconName="github"
       color="blue"
-      href={copy.mainLandingSection.links.github}
+      to={copy.mainLandingSection.links.github}
       size={36}
       mobileSize={30}
     >
@@ -43,7 +43,7 @@ const QuickLinks: React.FC<BaseElementProps> = props => (
     <IconLink
       iconName="send"
       color="green"
-      href={copy.mainLandingSection.links.mail}
+      to={copy.mainLandingSection.links.mail}
       size={36}
       mobileSize={30}
     >

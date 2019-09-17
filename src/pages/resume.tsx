@@ -6,10 +6,6 @@ import { Card, Button, UnstyledButton } from "~src/components";
 
 import copy from "~assets/copy";
 
-// const LETTER_PAGE_WIDTH_TO_HEIGHT_RATIO = 1.2941;
-// const RESUME_WIDTH = 400;
-// const RESUME_HEIGHT = RESUME_WIDTH * LETTER_PAGE_WIDTH_TO_HEIGHT_RATIO;
-
 const DividedPageContainer = styled(PageWrapper)`
   display: grid;
   grid-template-areas:
@@ -93,8 +89,8 @@ const ResumePage = () => {
 
   return (
     <DividedPageContainer
-      title={copy.resumePage.title} // TODO: figure out how to add a star icon for Current
-      subtitle={copy.resumePage.resumes[displayedResume].name}
+      heading={copy.resumePage.heading} // TODO: figure out how to add a star icon for Current
+      subheading={copy.resumePage.resumes[displayedResume].name}
       sideButton
       iconName="arrow-left"
       iconOnClick={() => {

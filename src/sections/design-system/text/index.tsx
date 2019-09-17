@@ -15,7 +15,7 @@ const TextSection = () => (
     <Text variant="heading">A Heading</Text>
     <Text variant="subheading">A Subheading</Text>
     <Text variant="body">Some body text</Text>
-    <Link variant="body" href="" color="blue">
+    <Link variant="body" to="" color="blue">
       Chuck a colored link in there
     </Link>
     <Text bold color="red" size={Size.XSMALL} as="span">

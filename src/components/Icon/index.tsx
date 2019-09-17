@@ -1,29 +1,20 @@
 import React, { useContext, useState, useMemo } from "react";
 import styled, { ThemeContext } from "styled-components";
-import SvgLines from "react-mt-svg-lines"; // ES6+
-import {
-  ArrowLeft,
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-  ChevronsUp,
-  Download,
-  GitHub,
-  Linkedin,
-  FileText,
-  Send,
-  Icon as FeatherIconType,
-} from "react-feather";
+import SvgLines from "react-mt-svg-lines";
 
 import { Size } from "~types/Size";
 import { BaseElementProps } from "~types/BaseElementProps";
+
 import { useWindowWidth } from "~utils/hooks/useWindowWidth";
 import { deviceBreakpoints } from "~theme/breakpoints";
+
+import icons from "./icons";
 
 export interface IconProps extends BaseElementProps {
   name: string;
   animate?: boolean;
   animateType?: number | true; // if not specified, will animate on hover
+  animateDuration?: number;
   color?: string;
   size?: Size | number;
   mobileSize?: Size | number;
@@ -31,20 +22,8 @@ export interface IconProps extends BaseElementProps {
   hover?: boolean; // used to override hover
 }
 
-const ICON_DICTIONARY: { [name: string]: FeatherIconType } = {
-  "arrow-left": ArrowLeft,
-  "arrow-right": ArrowRight,
-  "chevron-left": ChevronLeft,
-  "chevron-right": ChevronRight,
-  "chevrons-up": ChevronsUp,
-  download: Download,
-  github: GitHub,
-  linkedin: Linkedin,
-  "file-text": FileText,
-  send: Send,
-};
-
 const DEFAULT_ICON_SIZE = Size.MEDIUM;
+const DEFAULT_ANIM_DURATION = 600;
 
 const Container = styled.span`
   display: inline-grid;
@@ -80,6 +59,7 @@ const Icon: React.FC<IconProps> = ({
   animate = true,
   hover = false,
   animateType,
+  animateDuration,
   onClick,
 }) => {
   const windowWidth = useWindowWidth();
@@ -91,7 +71,7 @@ const Icon: React.FC<IconProps> = ({
   const [isHovering, setHovering] = useState(false);
   const { fontSize, color: themeColors } = useContext(ThemeContext);
 
-  const IconComponent = ICON_DICTIONARY[name];
+  const iconElements = icons[name];
 
   const iconSize = sizeForWidth
     ? fontSize[sizeForWidth] || sizeForWidth
@@ -100,23 +80,44 @@ const Icon: React.FC<IconProps> = ({
 
   const RenderedComponent = useMemo(
     () =>
-      IconComponent ? (
+      iconElements ? (
         <Container
           onMouseEnter={() => setHovering(true)}
           onMouseLeave={() => setHovering(false)}
           onClick={onClick}
           className={className}
         >
-          <IconComponent
-            size={iconSize}
-            color={animate ? themeColors.greyMedium : iconColor}
-          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={iconSize}
+            height={iconSize}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke={animate ? themeColors.greyMedium : iconColor}
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {iconElements}
+          </svg>
           {animate && (
             <SvgLines
               animate={animateType || (isHovering || hover) || "hide"}
-              duration={200}
+              duration={animateDuration || DEFAULT_ANIM_DURATION}
             >
-              <IconComponent size={iconSize} color={iconColor} />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={iconSize}
+                height={iconSize}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke={iconColor}
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                {iconElements}
+              </svg>
             </SvgLines>
           )}
         </Container>
@@ -129,12 +130,13 @@ const Icon: React.FC<IconProps> = ({
         />
       ),
     [
-      IconComponent,
       animate,
+      animateDuration,
       animateType,
       className,
       hover,
       iconColor,
+      iconElements,
       iconSize,
       isHovering,
       name,
