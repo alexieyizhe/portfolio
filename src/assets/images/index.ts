@@ -14,7 +14,7 @@ export {
 /**
  * Hero section
  */
-export { default as HeroMe } from "./hero-main.png";
+export { default as HeroMe } from "./hero-main-alt.png";
 
 /**
  * Featured section

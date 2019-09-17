@@ -176,6 +176,14 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
           }}
           {...rest}
         >
+          {particles && (
+            <ParticleGroup
+              className="particles-container"
+              particlesInfo={particlesInfo}
+              customParticle={customParticle}
+            />
+          )}
+
           <Subheading
             variant="subheading"
             className="subheading"
@@ -212,14 +220,6 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
               animate={false}
             />
           </LinkArrow>
-
-          {particles && (
-            <ParticleGroup
-              className="particles-container"
-              particlesInfo={particlesInfo}
-              customParticle={customParticle}
-            />
-          )}
         </CardContainer>
       </Waypoint>
     </UnstyledLink>
