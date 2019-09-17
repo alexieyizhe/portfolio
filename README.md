@@ -5,7 +5,7 @@
 </p>
 <h3 align="center">
   Alex Xie
-</h2>
+</h3>
 <h6 align="center">
   Personal Website & Portfolio
 </h6>
