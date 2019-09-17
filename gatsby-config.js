@@ -35,9 +35,15 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        fonts: [`roboto`],
+        fonts: [
+          {
+            family: `Overpass`,
+            variants: [`400`, `600`, `700`],
+          },
+          { family: `Roboto` },
+        ],
       },
     },
   ],

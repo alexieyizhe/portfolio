@@ -5,6 +5,8 @@ import {
   HacktheNorthShowcaseImg,
   EquithonShowcaseImg,
   GearIcon,
+  LightbulbIcon,
+  ShoppingCartIcon,
 } from "~assets/images";
 
 import {
@@ -82,7 +84,7 @@ export default {
         title: "Building a cohesive design system",
         desc: [
           "Even for personal projects, my goal maintainability and consistency.",
-          "That’s why I built a component library system for use on this very portfolio site you’re looking at, and wrote about my process.",
+          "That’s why I built a component library system for use on this very portfolio site you’re looking at. Take a look at the process.",
         ],
         linkText: "Check it out",
         linkHref: "/design-system",
@@ -111,6 +113,7 @@ export default {
         imgAlt: "Flipp's main dashboard for digital publishing",
         linkText: "Learn more",
         linkHref: "https://eng.flipp.com/",
+        customParticle: ShoppingCartIcon,
       },
       {
         title: "Building Canada's largest hackathon.",
@@ -128,6 +131,7 @@ export default {
         imgAlt: "Equithon's web platform after a rebuild",
         linkText: "See my work",
         linkHref: "https://github.com/equithon",
+        customParticle: LightbulbIcon,
       },
     ],
   },
@@ -146,23 +150,25 @@ export default {
       palette: {
         title: "Palette",
         desc: [
-          "Apart from grey and black, I chose to use playful pastel colors to contrast with the monotone white and blacks of text. These allow the particles to feel....",
+          "Apart from grey and black, I chose to use playful pastel colors to contrast with the monotone white and blacks of text. These allow elements like the particle to bring a splash of color whenever needed.",
         ],
       },
       typeface: {
         title: "Typeface",
-        desc: ["I decided to go with this font for....."],
+        desc: ["It's a nice font"],
       },
       text: {
         title: "Text",
         desc: [
-          "Apart from grey and black, I chose to use playful pastel colors to contrast with the monotone white and blacks of text. These allow the particles to feel....",
+          "Every heading, subtitle, or block of text that you see on the site is styled through the Text component. This means it needs to be extremely versatile, but I didn't want to sacrifice consistency in order to accomplish this.",
+          "As a result, the Text component allows for preset variants like 'heading' or 'body' to be specified, which will apply preset properties to the wrapped text. However, for flexibility, you can also specify each individual attribute (size, color, font weight, etc.) individually.",
         ],
       },
       icon: {
         title: "Icon",
         desc: [
-          "Icons are a visual text-free tool to quickly identify the function or type of a component....",
+          "Icons are a visual text-free way of conveying information.",
+          "Just like text, you can specify every property of an icon individually for flexibility, and the icon drawing can be animated if desired.",
         ],
       },
       linkandbutton: {
@@ -174,12 +180,15 @@ export default {
       },
       gallery: {
         title: "Gallery",
-        desc: ["Iwegowjepgwegpewjgpoewjpgwejogonent...."],
+        desc: [
+          "Useful for displaying pictures, a Gallery dynamically adjusts available buttons based on number of pictures.",
+        ],
       },
       card: {
         title: "Cards",
         desc: [
-          "As cards are used for dozens of types of contents and layouts, they have to be versatile and flexible....",
+          "As cards are used for dozens of types of contents and layouts, they are essentially the Text component of the container world.",
+          "There are currently two variants of a simple card: a ShowcaseCard and ContentCard that allow for display of content in appealing ways.",
         ],
       },
       particle: {

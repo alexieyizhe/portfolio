@@ -6,6 +6,10 @@ export { default as SquareParticle } from "./particles/square.inline.svg";
 export { default as TriangleParticle } from "./particles/triangle.inline.svg";
 export { default as ZigzagParticle } from "./particles/zigzag.inline.svg";
 export { default as GearIcon } from "./particles/gear.inline.svg";
+export { default as LightbulbIcon } from "./particles/lightbulb.inline.svg";
+export {
+  default as ShoppingCartIcon,
+} from "./particles/shopping-cart.inline.svg";
 
 /**
  * Hero section

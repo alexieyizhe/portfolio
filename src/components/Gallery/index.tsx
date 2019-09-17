@@ -51,7 +51,7 @@ const ImageContainer = styled.div`
   }
 
   &:after {
-    box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
     content: "";
     display: block;
     position: absolute;

@@ -37,14 +37,18 @@ const QuickLinks: React.FC = props => {
 
   return (
     <Container {...props}>
-      <Text as="span">{displayedGreeting}</Text>
-      <Text bold as="h1">
+      <Text as="span" heading>
+        {displayedGreeting}
+      </Text>
+      <Text bold as="h1" heading>
         {copy.mainLandingSection.name}
       </Text>
-      <Text as="span">{copy.mainLandingSection.taglinePrefix}</Text>
+      <Text as="span" heading>
+        {copy.mainLandingSection.taglinePrefix}
+      </Text>
       <TextLoop>
         {copy.mainLandingSection.taglines.map(line => (
-          <Text key={line} as="span" bold>
+          <Text key={line} as="span" heading bold>
             {line}
           </Text>
         ))}
