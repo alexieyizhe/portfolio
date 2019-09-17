@@ -6,9 +6,9 @@
 <h3 align="center">
   Alex Xie
 </h2>
-<span align="center">
+<h6 align="center">
   Personal Website & Portfolio
-</span>
+</h6>
 
 Custom built, from the props up.  
 Powered by [React](https://reactjs.org/) and [GatsbyJS](https://www.gatsbyjs.org/).  
