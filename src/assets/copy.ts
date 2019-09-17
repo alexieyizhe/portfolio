@@ -114,6 +114,7 @@ export default {
         linkText: "Learn more",
         linkHref: "https://eng.flipp.com/",
         customParticle: ShoppingCartIcon,
+        color: "blue",
       },
       {
         title: "Building Canada's largest hackathon.",
@@ -123,6 +124,7 @@ export default {
         linkText: "Learn more",
         linkHref: "http://hackthenorth.com",
         customParticle: GearIcon,
+        color: "rgb(24, 50, 73)",
       },
       {
         title: "Enabling social innovation through tech.",
@@ -132,6 +134,7 @@ export default {
         linkText: "See my work",
         linkHref: "https://github.com/equithon",
         customParticle: LightbulbIcon,
+        color: "rgb(160, 94, 204)",
       },
     ],
   },

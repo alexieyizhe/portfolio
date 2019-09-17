@@ -40,6 +40,7 @@ const Showcase = () => (
           subtitle={card.subtitle}
           imgSrc={card.imgSrc}
           imgAlt={card.imgAlt}
+          color={card.color}
           linkHref={card.linkHref}
           linkText={card.linkText}
           particles
