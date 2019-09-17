@@ -17,6 +17,7 @@
     "react-feather": "^2.0.3",
     "react-helmet": "^5.2.1",
     "react-mt-svg-lines": "^0.9.1",
+    "react-particles-js": "^2.7.0",
     "react-spring": "^8.0.27",
     "react-text-loop": "^2.0.2",
     "react-waypoint": "^9.0.2",

@@ -15,19 +15,22 @@ interface PageWrapperProps extends BaseElementProps {
   iconOnClick?: () => void;
 }
 
+export const PAGE_VERT_PADDING = 15;
+export const PAGE_HORIZ_PADDING = 15;
+
 export const PageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  padding: 15vh 15vw;
+  padding: ${PAGE_VERT_PADDING}vh ${PAGE_HORIZ_PADDING}vw;
 
   ${({ theme }) => theme.mediaQueries.tablet`
-    padding: 10vh 10vw;
+    padding: ${PAGE_VERT_PADDING - 5}vh ${PAGE_HORIZ_PADDING - 5}vw;
   `}
 
   ${({ theme }) => theme.mediaQueries.largeMobile`
-    padding: 10vh 10vw;
+    padding: ${PAGE_VERT_PADDING - 5}vh ${PAGE_HORIZ_PADDING - 5}vw;
   `}
 `;
 

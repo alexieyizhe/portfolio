@@ -47,7 +47,7 @@ export default {
       "happy wallflower.",
       "struggling rock climber.",
       "lover of bad puns.",
-      "computer science student.",
+      "cs student.",
       "budding developer.",
       "soccer fanatic.",
     ],
@@ -64,7 +64,7 @@ export default {
       first: {
         title: "Catch ya on the Flipp side ✌️",
         desc: [
-          "Learn about my experience as a Software Engineer Intern at Flipp Corp!",
+          "Learn about my experience as a Software Engineer Intern at Flipp!",
         ],
         linkText: "Read the article",
         linkHref:
@@ -114,6 +114,7 @@ export default {
         linkText: "Learn more",
         linkHref: "https://eng.flipp.com/",
         customParticle: ShoppingCartIcon,
+        color: "blue",
       },
       {
         title: "Building Canada's largest hackathon.",
@@ -123,6 +124,7 @@ export default {
         linkText: "Learn more",
         linkHref: "http://hackthenorth.com",
         customParticle: GearIcon,
+        color: "rgb(24, 50, 73)",
       },
       {
         title: "Enabling social innovation through tech.",
@@ -132,6 +134,7 @@ export default {
         linkText: "See my work",
         linkHref: "https://github.com/equithon",
         customParticle: LightbulbIcon,
+        color: "rgb(160, 94, 204)",
       },
     ],
   },

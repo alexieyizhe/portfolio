@@ -88,7 +88,7 @@ const Particle: React.FC<ParticleProps> = ({
     []
   );
 
-  const randomRotation = useMemo(() => Math.random() * 100, []);
+  const randomRotation = useMemo(() => Math.random() * 300 - 100, []);
 
   const ParticleComponent =
     customSVG || PARTICLE_DICTIONARY[name || randomParticle];

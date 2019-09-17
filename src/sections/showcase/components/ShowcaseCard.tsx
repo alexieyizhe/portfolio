@@ -20,6 +20,7 @@ export interface ShowcaseCardProps extends ParticleGroupProps {
   linkText?: string;
   linkHref?: string;
   particles?: boolean;
+  color?: string;
 }
 
 type transFn = (params: number[]) => string;
@@ -149,6 +150,7 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
   linkHref,
   particles,
   customParticle,
+  color,
   ...rest
 }) => {
   const [cardVisible, setCardVisible] = useState(false);
@@ -181,12 +183,18 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
           <Subheading
             variant="subheading"
             className="subheading"
+            color={color}
             style={animProps}
           >
             {subtitle}
           </Subheading>
 
-          <Title variant="heading" className="title" style={animProps}>
+          <Title
+            variant="heading"
+            className="title"
+            color={color}
+            style={animProps}
+          >
             {title}
           </Title>
 
@@ -198,8 +206,15 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
           />
 
           <LinkArrow className="link" style={animProps}>
-            <Text variant="subheading">{linkText}</Text>
-            <Icon name="arrow-right" size={Size.SMALL} animate={false} />
+            <Text variant="subheading" color={color}>
+              {linkText}
+            </Text>
+            <Icon
+              name="arrow-right"
+              size={Size.SMALL}
+              color={color}
+              animate={false}
+            />
           </LinkArrow>
 
           {particles && (
