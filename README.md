@@ -6,7 +6,6 @@
 <h3 align="center">
   Alex Xie
 </h3>
-
 <h6 align="center">
   Personal Website & Portfolio
 </h6>
@@ -14,6 +13,7 @@
 <br />
 <br />
 
+#### 🥞 Tech Stack
 
 Custom built, from the props up.  
 Powered by [React](https://reactjs.org/) and [GatsbyJS](https://www.gatsbyjs.org/).  
