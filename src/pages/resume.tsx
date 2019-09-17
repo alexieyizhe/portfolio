@@ -6,10 +6,6 @@ import { Card, Button, UnstyledButton } from "~src/components";
 
 import copy from "~assets/copy";
 
-// const LETTER_PAGE_WIDTH_TO_HEIGHT_RATIO = 1.2941;
-// const RESUME_WIDTH = 400;
-// const RESUME_HEIGHT = RESUME_WIDTH * LETTER_PAGE_WIDTH_TO_HEIGHT_RATIO;
-
 const DividedPageContainer = styled(PageWrapper)`
   display: grid;
   grid-template-areas:

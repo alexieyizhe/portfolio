@@ -15,10 +15,10 @@ interface PageWrapperProps extends BaseElementProps {
   iconOnClick?: () => void;
 }
 
-export const PAGE_VERT_PADDING = 15;
-export const PAGE_HORIZ_PADDING = 15;
+const PAGE_VERT_PADDING = 15;
+const PAGE_HORIZ_PADDING = 15;
 
-export const PageContainer = styled.div`
+const PageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,5 +104,10 @@ const withPageWrapper = <T extends {}>(
   </>
 );
 
-export { withPageWrapper };
+export {
+  PAGE_VERT_PADDING,
+  PAGE_HORIZ_PADDING,
+  PageContainer,
+  withPageWrapper,
+};
 export default PageWrapper;

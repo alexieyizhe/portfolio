@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface IconDict {
-  [name: string]: any;
+  [name: string]: JSX.Element[];
 }
 
 const iconDict: IconDict = {
