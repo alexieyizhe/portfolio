@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Text from "~components/Text";
 import Icon from "~components/Icon";
 import { UnstyledLink } from "~components/Link";
+import { UnstyledButton } from "~components/Button";
 
 import { Size } from "~types/Size";
 import copy from "~assets/copy";
@@ -40,27 +41,23 @@ const Container = styled.div`
 const Footer = () => (
   <Container>
     <div className="icons">
-      <UnstyledLink href={landingSectionCopy.links.github}>
+      <UnstyledLink to={landingSectionCopy.links.github}>
         <Icon name="github" color="blue" animate />
       </UnstyledLink>
 
-      <UnstyledLink href={landingSectionCopy.links.resume}>
+      <UnstyledLink to={landingSectionCopy.links.resume}>
         <Icon name="file-text" color="purple" animate />
       </UnstyledLink>
 
-      <Icon
-        name="chevrons-up"
-        color="black"
-        animate
-        size={Size.XLARGE}
-        onClick={scrollToTop}
-      />
+      <UnstyledButton onClick={scrollToTop}>
+        <Icon name="chevrons-up" color="black" animate size={Size.XLARGE} />
+      </UnstyledButton>
 
-      <UnstyledLink href={landingSectionCopy.links.mail}>
+      <UnstyledLink to={landingSectionCopy.links.mail}>
         <Icon name="send" color="green" animate />
       </UnstyledLink>
 
-      <UnstyledLink href={landingSectionCopy.links.linkedin}>
+      <UnstyledLink to={landingSectionCopy.links.linkedin}>
         <Icon name="linkedin" color="darkBlue" animate />
       </UnstyledLink>
     </div>

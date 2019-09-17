@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 import { TextProps } from "~components/Text";
@@ -22,16 +22,18 @@ export interface LinkProps extends TextProps {
   noAnim?: boolean;
 }
 
-export const Unstyled = styled.a`
+const unstyledLinkStyles = css`
   position: relative;
   text-decoration: none;
   color: inherit;
 `;
 
+export const Unstyled = styled.a`
+  ${unstyledLinkStyles}
+`;
+
 export const UnstyledGatsby = styled(AniLink)`
-  position: relative;
-  text-decoration: none;
-  color: inherit;
+  ${unstyledLinkStyles}
 `;
 
 const UnstyledLink: React.FC<LinkProps> = ({
@@ -46,7 +48,7 @@ const UnstyledLink: React.FC<LinkProps> = ({
 
   if (isInternalLink) {
     return (
-      <UnstyledGatsby to={to} cover bg={randomColor} {...rest}>
+      <UnstyledGatsby to={to} tabIndex={0} cover bg={randomColor} {...rest}>
         {children}
       </UnstyledGatsby>
     );

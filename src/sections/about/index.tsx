@@ -87,7 +87,7 @@ const About = () => (
         <Link
           variant="body"
           bold
-          href={sectionCopy.readMore.linkHref}
+          to={sectionCopy.readMore.linkHref}
           as="span"
           color="greyMedium"
         >

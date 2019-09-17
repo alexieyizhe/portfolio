@@ -164,7 +164,7 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
   }));
 
   return (
-    <UnstyledLink href={linkHref}>
+    <UnstyledLink to={linkHref}>
       <Waypoint onEnter={onCardEnter} onLeave={onCardLeave}>
         <CardContainer
           onMouseMove={({ clientX: x, clientY: y }) =>
