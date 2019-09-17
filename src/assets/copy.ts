@@ -47,7 +47,7 @@ export default {
       "happy wallflower.",
       "struggling rock climber.",
       "lover of bad puns.",
-      "computer science student.",
+      "cs student.",
       "budding developer.",
       "soccer fanatic.",
     ],
@@ -64,7 +64,7 @@ export default {
       first: {
         title: "Catch ya on the Flipp side ✌️",
         desc: [
-          "Learn about my experience as a Software Engineer Intern at Flipp Corp!",
+          "Learn about my experience as a Software Engineer Intern at Flipp!",
         ],
         linkText: "Read the article",
         linkHref:

@@ -54,10 +54,6 @@ const particlesConfig: IParticlesParams = {
       value: 10,
       random: true,
     },
-    opacity: {
-      value: 0.02,
-      random: true
-    }
   },
   retina_detect: false,
 };
@@ -70,6 +66,15 @@ const ParticlesContainer = styled.div`
   height: ${100 + PAGE_VERT_PADDING}vh;
 
   opacity: 0.4;
+  mask-image: linear-gradient(
+    to top,
+    transparent,
+    black,
+    black,
+    black,
+    black,
+    transparent
+  );
 `;
 
 const BackgroundParticles = () => (
