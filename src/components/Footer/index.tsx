@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Text from "~components/Text";
 import Icon from "~components/Icon";
 import { UnstyledLink } from "~components/Link";
+
 import { Size } from "~types/Size";
 import copy from "~assets/copy";
 
@@ -40,26 +41,27 @@ const Footer = () => {
     <Container>
       <div className="icons">
         <UnstyledLink href={copy.mainLandingSection.links.github}>
-          <Icon name="github" color="greyMedium" />
+          <Icon name="github" color="blue" animate />
         </UnstyledLink>
 
         <UnstyledLink href={copy.mainLandingSection.links.resume}>
-          <Icon name="file-text" color="greyMedium" />
+          <Icon name="file-text" color="purple" animate />
         </UnstyledLink>
 
         <Icon
           name="chevrons-up"
-          color="greyMedium"
+          color="black"
+          animate
           size={Size.XLARGE}
           onClick={scrollToTop}
         />
 
         <UnstyledLink href={copy.mainLandingSection.links.mail}>
-          <Icon name="send" color="greyMedium" />
+          <Icon name="send" color="green" animate />
         </UnstyledLink>
 
         <UnstyledLink href={copy.mainLandingSection.links.linkedin}>
-          <Icon name="linkedin" color="greyMedium" />
+          <Icon name="linkedin" color="blue" animate />
         </UnstyledLink>
       </div>
 
