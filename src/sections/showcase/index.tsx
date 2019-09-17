@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Text } from "~src/components";
+import { Text, ParticleInfo } from "~src/components";
 import ShowcaseCard from "./components/ShowcaseCard";
 
 import copy from "~assets/copy";

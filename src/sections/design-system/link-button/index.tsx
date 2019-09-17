@@ -11,7 +11,7 @@ const LinkAndButtonSection = () => (
     title={copy.designSystemSection.sections.linkandbutton.title}
     desc={copy.designSystemSection.sections.linkandbutton.desc}
   >
-    <Link href="/" variant="body">
+    <Link to="/" variant="body">
       Here&apos;s a link
     </Link>
     <UnstyledLink href="/">An unstyled link</UnstyledLink>

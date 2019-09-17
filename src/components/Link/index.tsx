@@ -8,7 +8,7 @@ export interface LinkProps
   extends TextProps,
     Pick<IconProps, Exclude<keyof IconProps, "name">> {
   newTab?: boolean;
-  href: string;
+  to: string;
 
   iconPos?: "left" | "right"; // if specified, `iconName` must be specified
   iconName?: string;
@@ -76,7 +76,7 @@ const Link: React.FC<LinkProps> = ({
   id,
   className,
   newTab,
-  href,
+  to,
   iconPos = "right",
   iconName,
   children,
@@ -91,7 +91,7 @@ const Link: React.FC<LinkProps> = ({
     className={className}
     target={newTab ? "_blank" : undefined}
     rel={newTab ? "noopener noreferrer" : ""}
-    href={href}
+    href={to}
     tabIndex={0}
     color={color}
     iconPos={iconPos}
