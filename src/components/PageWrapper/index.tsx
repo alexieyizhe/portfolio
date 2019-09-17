@@ -7,18 +7,19 @@ import Button, { BUTTON_SIZE } from "~components/Button";
 import { BaseElementProps } from "~types/BaseElementProps";
 
 interface PageWrapperProps extends BaseElementProps {
-  title?: string; // The largest and main title on the page
-  subtitle?: string; // Smaller text, displayed above the title and in line with the back button if there is one.
+  title?: string; // Title for display in tab
+  heading?: string; // The largest and main title on the page
+  subheading?: string; // Smaller text, displayed above the title and in line with the back button if there is one.
 
   sideButton?: boolean;
   iconName?: string;
   iconOnClick?: () => void;
 }
 
-const PAGE_VERT_PADDING = 15;
-const PAGE_HORIZ_PADDING = 15;
+export const PAGE_VERT_PADDING = 15;
+export const PAGE_HORIZ_PADDING = 15;
 
-const PageContainer = styled.div`
+export const PageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,7 +60,8 @@ const SideButton = styled(Button)`
 
 const PageWrapper: React.FC<PageWrapperProps> = ({
   title,
-  subtitle,
+  heading,
+  subheading,
   children,
   className,
   sideButton = false,
@@ -68,20 +70,20 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
   id,
 }) => (
   <>
-    <Helmet />
+    <Helmet title={title} />
     <PageContainer>
       <InnerContainer className={className} id={id}>
-        {subtitle && (
+        {subheading && (
           <NarrowHeading
             className="PageWrapper--Subheading"
             variant="subheading"
           >
-            {subtitle}
+            {subheading}
           </NarrowHeading>
         )}
-        {title && (
+        {heading && (
           <NarrowHeading className="PageWrapper--Heading" variant="heading">
-            {title}
+            {heading}
           </NarrowHeading>
         )}
         {sideButton && <SideButton name={iconName} onClick={iconOnClick} />}
@@ -94,7 +96,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
 /**
  * A HOC to wrap your component with the PageWrapper component.
  */
-const withPageWrapper = <T extends {}>(
+export const withPageWrapper = <T extends {}>(
   Component: React.FC<T>
 ): React.FC<T> => props => (
   <>
@@ -104,10 +106,4 @@ const withPageWrapper = <T extends {}>(
   </>
 );
 
-export {
-  PAGE_VERT_PADDING,
-  PAGE_HORIZ_PADDING,
-  PageContainer,
-  withPageWrapper,
-};
 export default PageWrapper;

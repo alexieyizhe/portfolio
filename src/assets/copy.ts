@@ -59,7 +59,7 @@ export default {
     },
   },
   featuredSection: {
-    title: "Featured Highlights",
+    heading: "Featured Highlights",
     cards: {
       first: {
         title: "Catch ya on the Flipp side ✌️",
@@ -92,7 +92,7 @@ export default {
     },
   },
   aboutSection: {
-    title: "Look, it me!",
+    heading: "Look, it me!",
     avatarImg: AboutMainImg,
     desc: [
       "I'm Alex Yizhe Xie, a computer science student in my junior year at the University of Waterloo.",
@@ -104,7 +104,7 @@ export default {
     },
   },
   showcaseSection: {
-    title: "Stuff I've Done",
+    heading: "Stuff I've Done",
     cards: [
       {
         title: "Bringing print flyers into the digital medium.",
@@ -139,8 +139,8 @@ export default {
     ],
   },
   designSystemSection: {
-    title: "Maintaining consistency, even in the small details.",
-    subtitle: "Design System",
+    heading: "Maintaining consistency, even in the small details.",
+    subheading: "Design System",
     sections: {
       intro: {
         title: "Why a design system?",
@@ -207,7 +207,7 @@ export default {
     text: "made with a ⌨️ and a whole lotta googling.",
   },
   resumePage: {
-    title: "Resume",
+    heading: "Resume",
     resumes: [
       {
         name: "A very, very old",

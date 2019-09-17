@@ -8,6 +8,8 @@ export interface ButtonProps extends IconProps {
   disabled?: boolean;
 }
 
+export const BUTTON_SIZE = 45;
+
 export const UnstyledButton = styled.button`
   padding: 0;
   border: none;
@@ -16,8 +18,6 @@ export const UnstyledButton = styled.button`
   background-color: transparent;
   cursor: pointer;
 `;
-
-export const BUTTON_SIZE = 45;
 
 const Container = styled(UnstyledButton)<{ disabled?: boolean }>`
   border-radius: 50%;

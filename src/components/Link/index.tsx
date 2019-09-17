@@ -2,38 +2,22 @@ import React from "react";
 import styled from "styled-components";
 
 import Text, { TextProps } from "~components/Text";
-import Icon, { IconProps } from "~components/Icon";
 
-export interface LinkProps
-  extends TextProps,
-    Pick<IconProps, Exclude<keyof IconProps, "name">> {
+export interface LinkProps extends TextProps {
   newTab?: boolean;
   to: string;
-
-  iconPos?: "left" | "right"; // if specified, `iconName` must be specified
-  iconName?: string;
 
   noAnim?: boolean;
 }
 
-const UnstyledLink = styled.a`
+export const UnstyledLink = styled.a`
   position: relative;
   text-decoration: none;
   color: inherit;
 `;
 
-const Container = styled(UnstyledLink)<{ iconPos: "left" | "right" }>`
-  display: flex;
-  flex-direction: ${({ iconPos }) =>
-    iconPos === "left" ? "row-reverse" : "row"};
-  justify-content: space-between;
-  align-items: center;
+const Container = styled(UnstyledLink)`
   cursor: pointer;
-
-  & > *:nth-child(2) {
-    margin-left: ${({ iconPos }) => (iconPos === "left" ? "0" : "4px")};
-    margin-right: ${({ iconPos }) => (iconPos === "left" ? "4px" : "0")};
-  }
 
   &:focus,
   &:hover {
@@ -41,11 +25,7 @@ const Container = styled(UnstyledLink)<{ iconPos: "left" | "right" }>`
   }
 `;
 
-const TextContainer = styled.span`
-  position: relative;
-`;
-
-const BottomLineText = styled(Text)`
+export const BottomLineText = styled(Text)`
   &:before {
     content: "";
     position: absolute;
@@ -77,8 +57,6 @@ const Link: React.FC<LinkProps> = ({
   className,
   newTab,
   to,
-  iconPos = "right",
-  iconName,
   children,
   color,
   noAnim,
@@ -94,24 +72,16 @@ const Link: React.FC<LinkProps> = ({
     href={to}
     tabIndex={0}
     color={color}
-    iconPos={iconPos}
     {...rest}
   >
-    <TextContainer>
-      <BottomLineText
-        className={noAnim ? "no-anim" : ""}
-        color={color}
-        variant={variant}
-      >
-        {children}
-      </BottomLineText>
-    </TextContainer>
-
-    {iconName && (
-      <Icon name={iconName} color={color} animate={false} {...rest} />
-    )}
+    <BottomLineText
+      className={noAnim ? "no-anim" : ""}
+      color={color}
+      variant={variant}
+    >
+      {children}
+    </BottomLineText>
   </Container>
 );
 
-export { UnstyledLink, BottomLineText };
 export default Link;

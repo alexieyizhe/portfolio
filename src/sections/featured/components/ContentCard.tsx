@@ -15,9 +15,6 @@ interface ContentCardProps extends ParticleGroupProps {
   imgAlt?: string;
   linkText?: string;
   linkHref?: string;
-
-  // TODO: add particle positions
-  particles?: boolean;
 }
 
 const CardContainer = styled(Card)<{ linkHref?: string }>`

@@ -56,7 +56,7 @@ const CardContainer = styled.div`
 
 const Showcase = () => (
   <Container>
-    <HeaderText variant="heading">{sectionCopy.title}</HeaderText>
+    <HeaderText variant="heading">{sectionCopy.heading}</HeaderText>
     {sectionCopy.cards.map((card, i) => (
       <CardContainer key={card.title}>
         <ShowcaseCard

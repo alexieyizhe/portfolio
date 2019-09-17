@@ -74,7 +74,7 @@ const About = () => (
     <Gallery images={[sectionCopy.avatarImg]} particles />
     <TextContainer>
       <Text variant="heading" as="h3">
-        {sectionCopy.title}
+        {sectionCopy.heading}
       </Text>
 
       <div>
