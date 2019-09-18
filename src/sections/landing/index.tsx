@@ -21,7 +21,7 @@ const Container = styled(animated.div)`
 
   ${({ theme }) => theme.mediaQueries.xlMobile`
     height: 80vh;
-    margin: 5vh 0;
+    margin: 2vh 0;
   `}
 `;
 

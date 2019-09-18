@@ -8,18 +8,24 @@ const ParticleTop = styled(Particle)`
   position: absolute;
   top: 0;
   left: 25%;
+
+  z-index: 3;
 `;
 
 const ParticleLeft = styled(Particle)`
   position: absolute;
   bottom: 40px;
   left: 5%;
+
+  z-index: 3;
 `;
 
 const ParticleRight = styled(Particle)`
   position: absolute;
   bottom: 2px;
   right: 15%;
+
+  z-index: 3;
 `;
 
 const GalleryParticles: React.FC = () => (
