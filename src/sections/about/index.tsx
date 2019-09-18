@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Text, Gallery } from "~src/components";
 import copy from "~assets/copy";
+import { useSiteContext } from "~utils/context";
 
 const sectionCopy = copy.aboutSection;
 
@@ -68,39 +69,47 @@ const TextContainer = styled.div`
 //   margin-top: 20px;
 // `;
 
-const About = () => (
-  <Container>
-    <Gallery
-      images={sectionCopy.galleryImages}
-      particles
-      hideButtons
-      autoScroll={4000}
-    />
-    <TextContainer>
-      <Text variant="heading" as="h3">
-        {sectionCopy.heading}
-      </Text>
+const About = () => {
+  const { easterEggActive } = useSiteContext();
 
-      <div>
-        {sectionCopy.desc.map(paragraph => (
-          <Text key={paragraph}>{paragraph}</Text>
-        ))}
-      </div>
+  return (
+    <Container>
+      <Gallery
+        images={
+          easterEggActive
+            ? sectionCopy.galleryEasterEggImages
+            : sectionCopy.galleryImages
+        }
+        particles
+        hideButtons
+        autoScroll={4000}
+      />
+      <TextContainer>
+        <Text variant="heading" as="h3">
+          {sectionCopy.heading}
+        </Text>
 
-      {/* <ReadMoreLink>
-        <Link
-          variant="body"
-          bold
-          to={sectionCopy.readMore.linkHref}
-          as="span"
-          color="greyMedium"
-        >
-          {sectionCopy.readMore.linkText}
-        </Link>
-        <Icon name="arrow-right" color="greyMedium" />
-      </ReadMoreLink> */}
-    </TextContainer>
-  </Container>
-);
+        <div>
+          {sectionCopy.desc.map(paragraph => (
+            <Text key={paragraph}>{paragraph}</Text>
+          ))}
+        </div>
+
+        {/* <ReadMoreLink>
+          <Link
+            variant="body"
+            bold
+            to={sectionCopy.readMore.linkHref}
+            as="span"
+            color="greyMedium"
+          >
+            {sectionCopy.readMore.linkText}
+          </Link>
+          <Icon name="arrow-right" color="greyMedium" />
+        </ReadMoreLink> */}
+      </TextContainer>
+    </Container>
+  );
+};
 
 export default About;

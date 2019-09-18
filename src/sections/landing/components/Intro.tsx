@@ -21,8 +21,10 @@ const Container = styled(animated.div)`
   & > h1 {
     font-size: 70px;
     cursor: pointer;
+    display: inline-block;
   }
 
+  & div,
   & span {
     font-size: 30px;
   }
@@ -62,7 +64,7 @@ const QuickLinks: React.FC<BaseElementProps> = props => {
 
   return (
     <Container {...props}>
-      <Text as="span" heading>
+      <Text as="div" heading>
         {displayedGreeting}
       </Text>
       <Text
@@ -75,16 +77,18 @@ const QuickLinks: React.FC<BaseElementProps> = props => {
       >
         {copy.mainLandingSection.name}
       </Text>
-      <Text as="span" heading>
-        {copy.mainLandingSection.taglinePrefix}
-      </Text>
-      <TextLoop>
-        {copy.mainLandingSection.taglines.map(line => (
-          <Text key={line} as="span" heading bold>
-            {line}
-          </Text>
-        ))}
-      </TextLoop>
+      <div>
+        <Text as="span" heading>
+          {copy.mainLandingSection.taglinePrefix}
+        </Text>
+        <TextLoop>
+          {copy.mainLandingSection.taglines.map(line => (
+            <Text key={line} as="span" heading bold>
+              {line}
+            </Text>
+          ))}
+        </TextLoop>
+      </div>
     </Container>
   );
 };

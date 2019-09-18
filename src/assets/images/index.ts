@@ -46,3 +46,7 @@ export { default as SpookyScaryImg } from "./404/spookyscary.png";
  * Super cool easter egg stuff
  */
 export { default as RotatingAlexGif } from "./easter-egg/rotating-alex.gif";
+export { default as SaluteImg } from "./easter-egg/salute.jpg";
+export { default as YelpLyfeImg } from "./easter-egg/yelplyfe.jpg";
+export { default as HmmPic } from "./easter-egg/hmm.jpg";
+export { default as UhhPic } from "./easter-egg/uhh.png";
