@@ -9,4 +9,5 @@ export interface BaseElementProps {
   onMouseLeave?: () => void;
   onFocus?: () => void;
   onBlur?: () => void;
+  onAnimationEnd?: () => void;
 }
