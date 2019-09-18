@@ -29,12 +29,11 @@ const HeroImg = styled.img`
   max-width: 70%;
 
   ${({ theme }) => theme.mediaQueries.tablet`
-    bottom: 9vh;
+    bottom: 10vh;
     max-width: 90%;
   `}
 
   ${({ theme }) => theme.mediaQueries.largeMobile`
-    bottom: 0;
     max-width: 100%;
   `}
 `;
