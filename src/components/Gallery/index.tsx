@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useEffect } from "react";
 import styled from "styled-components";
 
+import { BaseElementProps } from "~types/BaseElementProps";
+
 import Button from "~components/Button";
-import Particle from "~components/Particle";
-import { BaseElementProps } from "~src/types/BaseElementProps";
-import { Size } from "~types/Size";
+import GalleryParticles from "./GalleryParticles";
 
 export interface GalleryProps extends BaseElementProps {
   images: string[];
@@ -75,24 +75,6 @@ const GalleryImage = styled.img<{ show: boolean }>`
   opacity: ${({ show }) => (show ? 1 : 0)};
 `;
 
-const ParticleTop = styled(Particle)`
-  position: absolute;
-  top: 0;
-  left: 25%;
-`;
-
-const ParticleLeft = styled(Particle)`
-  position: absolute;
-  bottom: 40px;
-  left: 5%;
-`;
-
-const ParticleRight = styled(Particle)`
-  position: absolute;
-  bottom: 2px;
-  right: 15%;
-`;
-
 const Gallery: React.FC<GalleryProps> = ({
   images,
   particles,
@@ -151,13 +133,7 @@ const Gallery: React.FC<GalleryProps> = ({
         />
       )}
 
-      {particles && (
-        <>
-          <ParticleTop float color="green" size={Size.SMALL} />
-          <ParticleLeft float color="red" size={0.6} />
-          <ParticleRight float color="blue" size={0.75} />
-        </>
-      )}
+      {particles && <GalleryParticles />}
     </Container>
   );
 };
