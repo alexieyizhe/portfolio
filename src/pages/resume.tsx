@@ -38,14 +38,30 @@ const DividedPageContainer = styled(PageWrapper)`
   & > .content-container {
     grid-area: content;
   }
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    grid-template-areas:
+    "subheading"
+    "heading"
+    "content"
+    "side-content";
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 100%;
+  `}
 `;
 
 const ActionButtonContainer = styled.div`
+  display: flex;
   justify-content: flex-start;
 
   & > *:first-child {
     margin-right: 10px;
   }
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    margin-top: 20px;
+    justify-content: center;
+  `}
 `;
 
 const ResumeCard = styled(Card)`

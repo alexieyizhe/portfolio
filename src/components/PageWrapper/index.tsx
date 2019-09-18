@@ -27,7 +27,7 @@ export const PageContainer = styled.div`
   padding: ${PAGE_VERT_PADDING}vh ${PAGE_HORIZ_PADDING}vw;
 
   ${({ theme }) => theme.mediaQueries.tablet`
-    padding: ${PAGE_VERT_PADDING - 5}vh ${PAGE_HORIZ_PADDING - 5}vw;
+    padding: ${PAGE_VERT_PADDING - 5}vh ${PAGE_HORIZ_PADDING}vw;
   `}
 `;
 
@@ -55,7 +55,7 @@ const SideButtonContainer = styled.div`
 
   ${({ theme }) => theme.mediaQueries.tablet`
     top: ${PAGE_VERT_PADDING - 5}vh;
-    left: calc(${PAGE_HORIZ_PADDING - 5}vw - ${BUTTON_SIZE + 10}px);
+    left: calc(${PAGE_HORIZ_PADDING}vw - ${BUTTON_SIZE + 20}px);
   `}
 `;
 
