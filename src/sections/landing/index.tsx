@@ -53,7 +53,7 @@ const Landing = () => {
   return (
     <>
       <BackgroundParticles />
-      <Waypoint onEnter={onLandingEnter}>
+      <Waypoint onEnter={onLandingEnter} scrollableAncestor="window">
         <Container>
           <HeroImg src={HeroMe} />
           <Intro style={entryAnimStyles} />

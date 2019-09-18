@@ -15,12 +15,11 @@ const Container = styled.div`
 
   ${({ theme }) => theme.mediaQueries.tablet`
     flex-direction: column;
+    justify-content: center;
   `}
 
   ${({ theme }) => theme.mediaQueries.largeMobile`
     min-height: 120vh;
-    
-    justify-content: center;
   `}
 `;
 
@@ -71,7 +70,12 @@ const TextContainer = styled.div`
 
 const About = () => (
   <Container>
-    <Gallery images={[sectionCopy.avatarImg]} particles />
+    <Gallery
+      images={sectionCopy.galleryImages}
+      particles
+      hideButtons
+      autoScroll={4000}
+    />
     <TextContainer>
       <Text variant="heading" as="h3">
         {sectionCopy.heading}
@@ -87,7 +91,7 @@ const About = () => (
         <Link
           variant="body"
           bold
-          href={sectionCopy.readMore.linkHref}
+          to={sectionCopy.readMore.linkHref}
           as="span"
           color="greyMedium"
         >

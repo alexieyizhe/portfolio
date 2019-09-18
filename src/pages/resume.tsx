@@ -2,9 +2,16 @@ import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 
 import PageWrapper from "~components/PageWrapper";
-import { Card, Button, UnstyledButton } from "~src/components";
+import {
+  Card,
+  HomeButtonMarkup,
+  Button,
+  UnstyledButton,
+} from "~src/components";
 
 import copy from "~assets/copy";
+
+const pageCopy = copy.resumePage;
 
 const DividedPageContainer = styled(PageWrapper)`
   display: grid;
@@ -13,7 +20,7 @@ const DividedPageContainer = styled(PageWrapper)`
     "heading      content"
     "side-content content";
   grid-template-rows: auto auto 1fr;
-  grid-template-columns: 50% 39%;
+  grid-template-columns: 40% 45%;
   grid-column-gap: 15%;
 
   position: relative;
@@ -33,14 +40,30 @@ const DividedPageContainer = styled(PageWrapper)`
   & > .content-container {
     grid-area: content;
   }
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    grid-template-areas:
+    "subheading"
+    "heading"
+    "content"
+    "side-content";
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 100%;
+  `}
 `;
 
 const ActionButtonContainer = styled.div`
+  display: flex;
   justify-content: flex-start;
 
   & > *:first-child {
     margin-right: 10px;
   }
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    margin-top: 20px;
+    justify-content: center;
+  `}
 `;
 
 const ResumeCard = styled(Card)`
@@ -59,9 +82,23 @@ const ResumeCard = styled(Card)`
     transform: translateY(-5px);
   }
 
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  & > * {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
   & img {
     max-width: 100%;
   }
+`;
+
+const ResumeButton = styled(UnstyledButton)<{ show: boolean }>`
+  transition: opacity 150ms ease-in;
+  opacity: ${({ show }) => (show ? 1 : 0)};
 `;
 
 const ResumePage = () => {
@@ -91,11 +128,7 @@ const ResumePage = () => {
     <DividedPageContainer
       heading={copy.resumePage.heading} // TODO: figure out how to add a star icon for Current
       subheading={copy.resumePage.resumes[displayedResume].name}
-      sideButton
-      iconName="arrow-left"
-      iconOnClick={() => {
-        window.location.href = "/";
-      }}
+      sideButton={HomeButtonMarkup}
     >
       <ActionButtonContainer className="side-content-container">
         <Button
@@ -109,10 +142,17 @@ const ResumePage = () => {
           disabled={displayedResume === copy.resumePage.resumes.length - 1}
         />
       </ActionButtonContainer>
+
       <ResumeCard className="content-container">
-        <UnstyledButton onClick={viewResumePDF}>
-          <img src={copy.resumePage.resumes[displayedResume].img} />
-        </UnstyledButton>
+        {pageCopy.resumes.map(({ img }, i) => (
+          <ResumeButton
+            key={img}
+            onClick={viewResumePDF}
+            show={displayedResume === i}
+          >
+            <img src={img} />
+          </ResumeButton>
+        ))}
       </ResumeCard>
     </DividedPageContainer>
   );

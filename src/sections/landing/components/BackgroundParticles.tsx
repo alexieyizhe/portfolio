@@ -63,7 +63,7 @@ const ParticlesContainer = styled.div`
   top: -${PAGE_VERT_PADDING}vh;
   left: -${PAGE_HORIZ_PADDING}vw;
   width: 100vw;
-  height: ${100 + PAGE_VERT_PADDING}vh;
+  height: ${120 + PAGE_VERT_PADDING}vh;
 
   opacity: 0.4;
   mask-image: linear-gradient(
@@ -81,7 +81,7 @@ const BackgroundParticles = () => (
   <ParticlesContainer>
     <Particles
       width="100vw"
-      height={`${100 + PAGE_VERT_PADDING}vh`}
+      height={`${120 + PAGE_VERT_PADDING}vh`}
       params={particlesConfig}
     />
   </ParticlesContainer>

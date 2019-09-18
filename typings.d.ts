@@ -19,3 +19,4 @@ declare module "*.woff2";
 
 declare module "react-text-loop";
 declare module "react-mt-svg-lines";
+declare module "gatsby-plugin-transition-link/AniLink";

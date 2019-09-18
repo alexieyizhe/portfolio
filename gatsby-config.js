@@ -8,6 +8,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-transition-link`,
     `gatsby-plugin-remove-trailing-slashes`,
     {
       resolve: `gatsby-plugin-alias-imports`,

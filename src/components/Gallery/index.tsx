@@ -1,34 +1,39 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import styled from "styled-components";
 
+import { BaseElementProps } from "~types/BaseElementProps";
+
 import Button from "~components/Button";
-import Particle from "~components/Particle";
-import { BaseElementProps } from "~src/types/BaseElementProps";
-import { Size } from "~types/Size";
+import GalleryParticles from "./GalleryParticles";
 
 export interface GalleryProps extends BaseElementProps {
   images: string[];
   particles?: boolean;
   defaultIndex?: number;
+  hideButtons?: boolean;
+  autoScroll?: number;
 }
 
 const BUTTON_OFFSET = 20;
 
-const Container = styled.div`
+const Container = styled.div<{ hideButtons?: boolean }>`
   position: relative;
 
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
 
   & > .left-button {
-    position: relative;
-    right: -${BUTTON_OFFSET}px;
+    ${({ hideButtons }) => hideButtons && `display: none;`}
+    position: absolute;
+    left: -${BUTTON_OFFSET}px;
     z-index: 2;
   }
 
   & > .right-button {
-    position: relative;
-    left: -${BUTTON_OFFSET}px;
+    ${({ hideButtons }) => hideButtons && `display: none;`}
+    position: absolute;
+    right: -${BUTTON_OFFSET}px;
     z-index: 2;
   }
 `;
@@ -63,35 +68,19 @@ const ImageContainer = styled.div`
   }
 `;
 
-const GalleryImage = styled.img<{ shown: boolean }>`
+const GalleryImage = styled.img<{ show: boolean }>`
   width: 100%;
 
-  transition: opacity 150ms ease-in;
-  opacity: ${({ shown }) => (shown ? 1 : 0)};
-`;
-
-const ParticleTop = styled(Particle)`
-  position: absolute;
-  top: 0;
-  left: 25%;
-`;
-
-const ParticleLeft = styled(Particle)`
-  position: absolute;
-  bottom: 40px;
-  left: 5%;
-`;
-
-const ParticleRight = styled(Particle)`
-  position: absolute;
-  bottom: 2px;
-  right: 15%;
+  transition: opacity 400ms ease;
+  opacity: ${({ show }) => (show ? 1 : 0)};
 `;
 
 const Gallery: React.FC<GalleryProps> = ({
   images,
   particles,
   defaultIndex = 0,
+  hideButtons,
+  autoScroll,
 }) => {
   const [curImgIndex, setCurImgIndex] = useState(defaultIndex);
 
@@ -105,8 +94,21 @@ const Gallery: React.FC<GalleryProps> = ({
     [images.length]
   );
 
+  useEffect(() => {
+    let timer: NodeJS.Timer;
+
+    if (autoScroll) {
+      timer = setInterval(
+        () => setCurImgIndex(curIndex => (curIndex + 1) % images.length),
+        autoScroll
+      );
+    }
+
+    return () => clearInterval(timer);
+  }, [autoScroll, images.length]);
+
   return (
-    <Container>
+    <Container hideButtons={hideButtons}>
       {images.length > 1 && (
         <Button
           name="chevron-left"
@@ -115,9 +117,10 @@ const Gallery: React.FC<GalleryProps> = ({
           disabled={curImgIndex === 0}
         />
       )}
+
       <ImageContainer>
         {images.map((image, i) => (
-          <GalleryImage key={image} src={image} shown={i === curImgIndex} />
+          <GalleryImage key={image} src={image} show={i === curImgIndex} />
         ))}
       </ImageContainer>
 
@@ -130,13 +133,7 @@ const Gallery: React.FC<GalleryProps> = ({
         />
       )}
 
-      {particles && (
-        <>
-          <ParticleTop float color="green" size={Size.SMALL} />
-          <ParticleLeft float color="red" size={0.6} />
-          <ParticleRight float color="blue" size={0.75} />
-        </>
-      )}
+      {particles && <GalleryParticles />}
     </Container>
   );
 };

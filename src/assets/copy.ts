@@ -1,5 +1,7 @@
 import {
   AboutMainImg,
+  AboutMtlImg,
+  AboutPrideImg,
   FlippCoverPhoto,
   FlippShowcaseImg,
   HacktheNorthShowcaseImg,
@@ -86,14 +88,14 @@ export default {
           "Even for personal projects, my goal is maintainability and consistency.",
           "That’s why I built a component system for use on this very site you’re looking at.",
         ],
-        linkText: "Check it out",
+        linkText: "See the system",
         linkHref: "/design-system",
       },
     },
   },
   aboutSection: {
     heading: "Look, it me!",
-    avatarImg: AboutMainImg,
+    galleryImages: [AboutMainImg, AboutMtlImg, AboutPrideImg],
     desc: [
       "I'm Alex Yizhe Xie, a computer science student in my junior year at the University of Waterloo.",
       "My passions include rock climbing, coding for good, and human-computer interaction design.",
@@ -104,7 +106,7 @@ export default {
     },
   },
   showcaseSection: {
-    heading: "Stuff I've Done",
+    heading: "I've worked on...",
     cards: [
       {
         title: "Bringing print flyers into the digital medium.",

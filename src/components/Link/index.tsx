@@ -1,20 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import Text, { TextProps } from "~components/Text";
-
-export interface LinkProps extends TextProps {
-  newTab?: boolean;
-  to: string;
-
-  noAnim?: boolean;
-}
-
-export const UnstyledLink = styled.a`
-  position: relative;
-  text-decoration: none;
-  color: inherit;
-`;
+import Text from "~components/Text";
+import UnstyledLink, { LinkProps } from "./UnstyledLink";
 
 const Container = styled(UnstyledLink)`
   cursor: pointer;
@@ -50,13 +38,10 @@ export const BottomLineText = styled(Text)`
     transform: scaleX(1);
   }
 `;
-// TODO: add gatsby link to allow for better internal linking
 
 const Link: React.FC<LinkProps> = ({
   id,
   className,
-  newTab,
-  to,
   children,
   color,
   noAnim,
@@ -64,16 +49,7 @@ const Link: React.FC<LinkProps> = ({
   variant,
   ...rest
 }) => (
-  <Container
-    id={id}
-    className={className}
-    target={newTab ? "_blank" : undefined}
-    rel={newTab ? "noopener noreferrer" : ""}
-    href={to}
-    tabIndex={0}
-    color={color}
-    {...rest}
-  >
+  <Container id={id} className={className} color={color} {...rest}>
     <BottomLineText
       className={noAnim ? "no-anim" : ""}
       color={color}
@@ -84,4 +60,6 @@ const Link: React.FC<LinkProps> = ({
   </Container>
 );
 
+export { UnstyledLink };
+export * from "./UnstyledLink";
 export default Link;

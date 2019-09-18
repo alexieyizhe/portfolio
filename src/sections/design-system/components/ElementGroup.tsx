@@ -11,12 +11,12 @@ interface ElementGroupProps extends BaseElementProps {
 
 const ElementGroupContainer = styled.div`
   display: grid;
-  grid-row-gap: 1em;
-  grid-template-rows: 2em auto;
-  grid-template-columns: 55% 45%;
   grid-template-areas:
     "title desc"
     "nodes desc";
+  grid-row-gap: 1em;
+  grid-template-rows: 2em auto;
+  grid-template-columns: 55% 45%;
 
   margin-bottom: 5em;
 
@@ -34,6 +34,16 @@ const ElementGroupContainer = styled.div`
   & .nodes {
     grid-area: nodes;
   }
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    grid-template-areas:
+      "title"
+      "nodes"
+      "desc";
+    grid-row-gap: 1em;
+    grid-template-rows: 2em auto auto;
+    grid-template-columns: 100%;
+  `}
 `;
 
 const ElementGroup: React.FC<ElementGroupProps> = ({

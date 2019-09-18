@@ -11,3 +11,9 @@ export const floatAnim = keyframes`
       transform: rotate(10deg) translateY(0)
   }
 `;
+
+export const boopAnim = keyframes`
+  50% {
+    transform: scale(1.05);
+  }
+`;
