@@ -165,7 +165,11 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
 
   return (
     <UnstyledLink to={linkHref}>
-      <Waypoint onEnter={onCardEnter} onLeave={onCardLeave}>
+      <Waypoint
+        onEnter={onCardEnter}
+        onLeave={onCardLeave}
+        scrollableAncestor="window"
+      >
         <CardContainer
           onMouseMove={({ clientX: x, clientY: y }) =>
             set({ xys: calcPerspective(x, y) })
