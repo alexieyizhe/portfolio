@@ -5,10 +5,13 @@ import { animated } from "react-spring";
 
 import copy from "~assets/copy";
 import { boopAnim } from "~utils/animations";
+import { useSiteContext } from "~utils/context";
+
 import { BaseElementProps } from "~types/BaseElementProps";
 import { Text } from "~src/components";
 
 const greetings = copy.mainLandingSection.greetings;
+const BOOPS_REQUIRED_TO_ACTIVATE = 5;
 
 const Container = styled(animated.div)`
   & .boop {
@@ -17,7 +20,7 @@ const Container = styled(animated.div)`
 
   & > h1 {
     font-size: 70px;
-    transform-origin: center center;
+    cursor: pointer;
   }
 
   & span {
@@ -36,7 +39,10 @@ const Container = styled(animated.div)`
 `;
 
 const QuickLinks: React.FC<BaseElementProps> = props => {
+  const { activateEasterEgg } = useSiteContext();
+
   const [isBooping, startBoop] = useState(false);
+  const [boopedTimes, setBoopTimes] = useState(0);
 
   const displayedGreeting = useMemo(() => {
     const randomGreeting =
@@ -44,7 +50,14 @@ const QuickLinks: React.FC<BaseElementProps> = props => {
     return `${randomGreeting} My name's`;
   }, []);
 
-  const nameOnClick = useCallback(() => startBoop(true), []);
+  const nameOnClick = useCallback(() => {
+    startBoop(true);
+    setBoopTimes(prevTimes => prevTimes + 1);
+    if (boopedTimes >= BOOPS_REQUIRED_TO_ACTIVATE) {
+      activateEasterEgg();
+    }
+  }, [activateEasterEgg, boopedTimes]);
+
   const nameAnimEnd = useCallback(() => startBoop(false), []);
 
   return (

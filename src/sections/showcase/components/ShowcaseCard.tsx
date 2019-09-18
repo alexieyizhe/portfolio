@@ -82,9 +82,14 @@ const CardContainer = styled(animated(Card))`
   ${({ theme }) => theme.mediaQueries.tablet`
     grid-template-columns: 45% 50%;
     grid-column-gap: 5%;
+
+
+    & > .particles-container {
+      opacity: 0.3;
+    }
   `}
 
-  ${({ theme }) => theme.mediaQueries.largeMobile`
+  ${({ theme }) => theme.mediaQueries.xlMobile`
     grid-template-rows: auto auto auto auto;
     grid-template-columns: 100%;
     grid-template-areas:
@@ -95,10 +100,6 @@ const CardContainer = styled(animated(Card))`
 
     & > .title {
       margin-top: 10px;
-    }
-
-    & > .particles-container {
-      display: none;
     }
   `}
 `;
@@ -119,7 +120,7 @@ const ShowcaseImage = styled(animated.img)`
   position: relative;
   top: -${CARD_VERT_PADDING * 3}px;
 
-  ${({ theme }) => theme.mediaQueries.largeMobile`
+  ${({ theme }) => theme.mediaQueries.xlMobile`
     top: 0;
 
     margin: 20px auto;

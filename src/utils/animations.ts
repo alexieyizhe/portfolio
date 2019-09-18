@@ -14,6 +14,6 @@ export const floatAnim = keyframes`
 
 export const boopAnim = keyframes`
   50% {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 `;
