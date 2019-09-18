@@ -18,6 +18,11 @@ const Container = styled(animated.div)`
     height: 85vh;
     margin: 7.5vh 0;
   `}
+
+  ${({ theme }) => theme.mediaQueries.xlMobile`
+    height: 90vh;
+    margin: 5vh 0;
+  `}
 `;
 
 const HeroImg = styled.img`
