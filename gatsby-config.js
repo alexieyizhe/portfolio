@@ -1,93 +1,51 @@
 module.exports = {
   siteMetadata: {
-    title: `Alex Xie - Portfolio Website`,
-    siteUrl: `https://www.alexieyizhe.me`,
-    description: `Personal website/portfolio of Alex Xie, a computer science student at the University of Waterloo.`,
+    title: `alexxie.ca`,
+    description: ``,
+    author: `@alexieyizhe`,
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-transition-link`,
+    `gatsby-plugin-remove-trailing-slashes`,
     {
-      resolve: 'gatsby-source-medium',
+      resolve: `gatsby-plugin-alias-imports`,
       options: {
-        username: `@alexieyizhe`,
+        alias: {
+          "~assets": "src/assets",
+          "~components": "src/components",
+          "~layouts": "src/layouts",
+          "~pages": "src/pages",
+          "~sections": "src/sections",
+          "~theme": "src/theme",
+          "~types": "src/types",
+          "~utils": "src/utils",
+          "~src": "src",
+        },
+        extensions: ["ts", "tsx", "json"],
       },
     },
     {
-      resolve: 'gatsby-plugin-react-next',
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\.inline\.svg$/,
+        },
+      },
     },
     {
-      resolve: 'gatsby-plugin-styled-components',
-    },
-    {
-      resolve: 'gatsby-transformer-sharp',
-    },
-    {
-      resolve: 'gatsby-plugin-sharp',
-    },
-    {
-      resolve: 'gatsby-transformer-remark',
-    },
-    {
-      resolve: 'gatsby-plugin-sass',
-    },
-    {
-      resolve: 'gatsby-plugin-google-fonts',
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
-          `Didact Gothic`,
-          `PT Sans`,
-          `PT Serif`,
-          `lato`,
-          'expletus sans',
-          `cabin`,
-        ]
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: `images`,
-        path: `${__dirname}/static/img/`
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: `UA-114911192-3`,
-        // Puts tracking script in the head instead of the body
-        head: false,
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-sentry',
-      options: {
-        dsn: 'https://306524562ee347dfaa73bbebd7ae2ba3@sentry.io/1251887',
-      }
-    },
-    {
-      resolve: `gatsby-plugin-remove-trailing-slashes`
-    },
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        query: `
           {
-            site {
-              siteMetadata {
-                title
-                siteUrl
-                description
-              }
-            }
-
-            allSitePage {
-              edges {
-                node {
-                  path
-                }
-              }
-            }
-        }`
-      }
+            family: `Overpass`,
+            variants: [`400`, `600`, `700`],
+          },
+          { family: `Roboto` },
+        ],
+      },
     },
   ],
-}
+};
