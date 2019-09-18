@@ -61,8 +61,15 @@ const ActionButtonContainer = styled.div`
   }
 
   ${({ theme }) => theme.mediaQueries.tablet`
-    margin-top: 20px;
-    justify-content: center;
+    position: relative;
+    margin: -45vh -20px 0 -20px;
+    justify-content: space-between;
+  `}
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    position: relative;
+    margin: 20px 20px 0 20px;
+    justify-content: space-between;
   `}
 `;
 
@@ -130,6 +137,18 @@ const ResumePage = () => {
       subheading={copy.resumePage.resumes[displayedResume].name}
       sideButton={HomeButtonMarkup}
     >
+      <ResumeCard className="content-container">
+        {pageCopy.resumes.map(({ img }, i) => (
+          <ResumeButton
+            key={img}
+            onClick={viewResumePDF}
+            show={displayedResume === i}
+          >
+            <img src={img} />
+          </ResumeButton>
+        ))}
+      </ResumeCard>
+
       <ActionButtonContainer className="side-content-container">
         <Button
           name="chevron-left"
@@ -142,18 +161,6 @@ const ResumePage = () => {
           disabled={displayedResume === copy.resumePage.resumes.length - 1}
         />
       </ActionButtonContainer>
-
-      <ResumeCard className="content-container">
-        {pageCopy.resumes.map(({ img }, i) => (
-          <ResumeButton
-            key={img}
-            onClick={viewResumePDF}
-            show={displayedResume === i}
-          >
-            <img src={img} />
-          </ResumeButton>
-        ))}
-      </ResumeCard>
     </DividedPageContainer>
   );
 };

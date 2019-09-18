@@ -47,7 +47,7 @@ const CardSection = () => (
       </ContentCard>
     </CardDisplay>
 
-    <CardDisplay style={{ position: "relative", width: "180%" }}>
+    <CardDisplay>
       <ShowcaseCard
         title="Building Canada's largest hackathon."
         subtitle="Hack de nort"

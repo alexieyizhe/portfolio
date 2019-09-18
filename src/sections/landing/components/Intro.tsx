@@ -19,7 +19,7 @@ const Container = styled(animated.div)`
   }
 
   & > h1 {
-    font-size: 70px;
+    font-size: 90px;
     cursor: pointer;
     display: inline-block;
   }
@@ -29,13 +29,25 @@ const Container = styled(animated.div)`
     font-size: 30px;
   }
 
+  ${({ theme }) => theme.mediaQueries.tablet`
+    & > h1 {
+      font-size: 80px;
+    }
+
+    & div, 
+    & span {
+      font-size: 26px;
+    }
+  `}
+
   ${({ theme }) => theme.mediaQueries.largeMobile`
     & > h1 {
       font-size: 50px;
     }
 
+    & div, 
     & span {
-      font-size: 22px;
+      font-size: 20px;
     }
   `}
 `;
