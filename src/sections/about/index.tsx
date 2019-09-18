@@ -70,7 +70,12 @@ const TextContainer = styled.div`
 
 const About = () => (
   <Container>
-    <Gallery images={[sectionCopy.avatarImg]} particles />
+    <Gallery
+      images={sectionCopy.galleryImages}
+      particles
+      hideButtons
+      autoScroll={4000}
+    />
     <TextContainer>
       <Text variant="heading" as="h3">
         {sectionCopy.heading}

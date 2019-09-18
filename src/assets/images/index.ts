@@ -34,6 +34,8 @@ export { default as FlippShowcaseImg } from "./showcase/flipp.png";
  */
 export { default as AboutAvatar } from "./about/avatar.jpg";
 export { default as AboutMainImg } from "./about/main.jpg";
+export { default as AboutMtlImg } from "./about/mtl.jpg";
+export { default as AboutPrideImg } from "./about/pride.jpg";
 
 /**
  * 404 page

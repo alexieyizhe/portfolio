@@ -1,5 +1,7 @@
 import {
   AboutMainImg,
+  AboutMtlImg,
+  AboutPrideImg,
   FlippCoverPhoto,
   FlippShowcaseImg,
   HacktheNorthShowcaseImg,
@@ -93,7 +95,7 @@ export default {
   },
   aboutSection: {
     heading: "Look, it me!",
-    avatarImg: AboutMainImg,
+    galleryImages: [AboutMainImg, AboutMtlImg, AboutPrideImg],
     desc: [
       "I'm Alex Yizhe Xie, a computer science student in my junior year at the University of Waterloo.",
       "My passions include rock climbing, coding for good, and human-computer interaction design.",
