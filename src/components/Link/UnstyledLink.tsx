@@ -20,6 +20,8 @@ export interface LinkProps extends TextProps {
   to?: string;
 
   noAnim?: boolean;
+
+  transitionDir?: "left" | "up" | "right" | "down";
 }
 
 const unstyledLinkStyles = css`
@@ -42,6 +44,7 @@ const UnstyledLink: React.FC<LinkProps> = ({
   to = "",
   newTab,
   children,
+  transitionDir = "left",
   ...rest
 }) => {
   const isInternalLink = useMemo(() => /^\/(?!\/)/.test(to), [to]);
@@ -49,7 +52,14 @@ const UnstyledLink: React.FC<LinkProps> = ({
 
   if (isInternalLink) {
     return (
-      <UnstyledGatsby to={to} tabIndex={0} cover bg={randomColor} {...rest}>
+      <UnstyledGatsby
+        to={to}
+        tabIndex={0}
+        cover
+        direction={transitionDir}
+        bg={randomColor}
+        {...rest}
+      >
         {children}
       </UnstyledGatsby>
     );

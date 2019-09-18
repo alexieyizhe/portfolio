@@ -14,7 +14,6 @@ const PaletteSection = () => (
     <PaletteSquare color="greyDark" />
     <PaletteSquare color="greyMedium" />
     <PaletteSquare color="greyLight" />
-    <PaletteSquare color="white" />
   </ElementGroup>
 );
 

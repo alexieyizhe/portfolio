@@ -63,11 +63,11 @@ const ImageContainer = styled.div`
   }
 `;
 
-const GalleryImage = styled.img<{ shown: boolean }>`
+const GalleryImage = styled.img<{ show: boolean }>`
   width: 100%;
 
   transition: opacity 150ms ease-in;
-  opacity: ${({ shown }) => (shown ? 1 : 0)};
+  opacity: ${({ show }) => (show ? 1 : 0)};
 `;
 
 const ParticleTop = styled(Particle)`
@@ -115,9 +115,10 @@ const Gallery: React.FC<GalleryProps> = ({
           disabled={curImgIndex === 0}
         />
       )}
+
       <ImageContainer>
         {images.map((image, i) => (
-          <GalleryImage key={image} src={image} shown={i === curImgIndex} />
+          <GalleryImage key={image} src={image} show={i === curImgIndex} />
         ))}
       </ImageContainer>
 

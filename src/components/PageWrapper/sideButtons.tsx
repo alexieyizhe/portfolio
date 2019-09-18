@@ -5,7 +5,7 @@ import Icon from "~components/Icon";
 
 export const HomeButtonMarkup = (
   <ButtonCard>
-    <UnstyledLink to="/">
+    <UnstyledLink to="/" transitionDir="right">
       <Icon name="arrow-left" animate={false} />
     </UnstyledLink>
   </ButtonCard>

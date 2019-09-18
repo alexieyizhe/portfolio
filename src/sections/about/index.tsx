@@ -15,12 +15,11 @@ const Container = styled.div`
 
   ${({ theme }) => theme.mediaQueries.tablet`
     flex-direction: column;
+    justify-content: center;
   `}
 
   ${({ theme }) => theme.mediaQueries.largeMobile`
     min-height: 120vh;
-    
-    justify-content: center;
   `}
 `;
 

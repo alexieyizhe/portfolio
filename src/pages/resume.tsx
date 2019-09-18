@@ -11,6 +11,8 @@ import {
 
 import copy from "~assets/copy";
 
+const pageCopy = copy.resumePage;
+
 const DividedPageContainer = styled(PageWrapper)`
   display: grid;
   grid-template-areas:
@@ -18,7 +20,7 @@ const DividedPageContainer = styled(PageWrapper)`
     "heading      content"
     "side-content content";
   grid-template-rows: auto auto 1fr;
-  grid-template-columns: 50% 39%;
+  grid-template-columns: 40% 45%;
   grid-column-gap: 15%;
 
   position: relative;
@@ -80,9 +82,23 @@ const ResumeCard = styled(Card)`
     transform: translateY(-5px);
   }
 
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  & > * {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
   & img {
     max-width: 100%;
   }
+`;
+
+const ResumeButton = styled(UnstyledButton)<{ show: boolean }>`
+  transition: opacity 150ms ease-in;
+  opacity: ${({ show }) => (show ? 1 : 0)};
 `;
 
 const ResumePage = () => {
@@ -113,10 +129,6 @@ const ResumePage = () => {
       heading={copy.resumePage.heading} // TODO: figure out how to add a star icon for Current
       subheading={copy.resumePage.resumes[displayedResume].name}
       sideButton={HomeButtonMarkup}
-      iconName="arrow-left"
-      iconOnClick={() => {
-        window.location.href = "/"; // TODO: make icon an AniLink
-      }}
     >
       <ActionButtonContainer className="side-content-container">
         <Button
@@ -130,10 +142,17 @@ const ResumePage = () => {
           disabled={displayedResume === copy.resumePage.resumes.length - 1}
         />
       </ActionButtonContainer>
+
       <ResumeCard className="content-container">
-        <UnstyledButton onClick={viewResumePDF}>
-          <img src={copy.resumePage.resumes[displayedResume].img} />
-        </UnstyledButton>
+        {pageCopy.resumes.map(({ img }, i) => (
+          <ResumeButton
+            key={img}
+            onClick={viewResumePDF}
+            show={displayedResume === i}
+          >
+            <img src={img} />
+          </ResumeButton>
+        ))}
       </ResumeCard>
     </DividedPageContainer>
   );
