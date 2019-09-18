@@ -87,7 +87,13 @@ const IconLink: React.FC<IconLinkProps> = ({
         hover={isHovering}
       />
       <PopoutLink className={isHovering ? "hover" : ""}>
-        <Text size={linkTextSize} color="greyMedium" as="span" {...rest}>
+        <Text
+          size={linkTextSize}
+          color="greyMedium"
+          as="span"
+          heading
+          {...rest}
+        >
           {children}
         </Text>
       </PopoutLink>
