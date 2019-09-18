@@ -104,7 +104,7 @@ export default {
     },
   },
   showcaseSection: {
-    heading: "Stuff I've Done",
+    heading: "I've worked on...",
     cards: [
       {
         title: "Bringing print flyers into the digital medium.",
