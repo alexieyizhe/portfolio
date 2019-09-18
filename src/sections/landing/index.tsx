@@ -11,14 +11,12 @@ import BackgroundParticles from "./components/BackgroundParticles";
 
 const Container = styled(animated.div)`
   position: relative;
-  height: 85vh;
+  height: 80vh;
+  margin: 10vh 0;
 
   ${({ theme }) => theme.mediaQueries.tablet`
-    height: 88vh;
-  `}
-
-  ${({ theme }) => theme.mediaQueries.largeMobile`
-    height: 90vh;
+    height: 85vh;
+    margin: 7.5vh 0;
   `}
 `;
 
@@ -34,6 +32,7 @@ const HeroImg = styled.img`
   `}
 
   ${({ theme }) => theme.mediaQueries.largeMobile`
+    bottom: 100px;
     max-width: 100%;
   `}
 `;
