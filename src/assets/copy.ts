@@ -165,7 +165,7 @@ export default {
       },
       typeface: {
         title: "Typeface",
-        desc: ["It's a nice font"],
+        desc: ["This is Overpass. It's a nice font. I like it."],
       },
       text: {
         title: "Text",
