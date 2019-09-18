@@ -41,3 +41,8 @@ export { default as AboutPrideImg } from "./about/pride.jpg";
  * 404 page
  */
 export { default as SpookyScaryImg } from "./404/spookyscary.png";
+
+/**
+ * Super cool easter egg stuff
+ */
+export { default as RotatingAlexGif } from "./easter-egg/rotating-alex.gif";

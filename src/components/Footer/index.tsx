@@ -7,6 +7,7 @@ import { UnstyledLink } from "~components/Link";
 import { UnstyledButton } from "~components/Button";
 
 import { Size } from "~types/Size";
+import { useSiteContext } from "~utils/context";
 import copy from "~assets/copy";
 
 const landingSectionCopy = copy.mainLandingSection;
@@ -38,34 +39,38 @@ const Container = styled.div`
   `}
 `;
 
-const Footer = () => (
-  <Container>
-    <div className="icons">
-      <UnstyledLink to={landingSectionCopy.links.github}>
-        <Icon name="github" color="blue" animate />
-      </UnstyledLink>
+const Footer = () => {
+  const { easterEggActive } = useSiteContext();
 
-      <UnstyledLink to={landingSectionCopy.links.resume}>
-        <Icon name="file-text" color="purple" animate />
-      </UnstyledLink>
+  return (
+    <Container>
+      <div className="icons">
+        <UnstyledLink to={landingSectionCopy.links.github}>
+          <Icon name="github" color="blue" animate />
+        </UnstyledLink>
 
-      <UnstyledButton onClick={scrollToTop}>
-        <Icon name="chevrons-up" color="black" animate size={Size.XLARGE} />
-      </UnstyledButton>
+        <UnstyledLink to={landingSectionCopy.links.resume}>
+          <Icon name="file-text" color="purple" animate />
+        </UnstyledLink>
 
-      <UnstyledLink to={landingSectionCopy.links.mail}>
-        <Icon name="send" color="green" animate />
-      </UnstyledLink>
+        <UnstyledButton onClick={scrollToTop}>
+          <Icon name="chevrons-up" color="black" animate size={Size.XLARGE} />
+        </UnstyledButton>
 
-      <UnstyledLink to={landingSectionCopy.links.linkedin}>
-        <Icon name="linkedin" color="darkBlue" animate />
-      </UnstyledLink>
-    </div>
+        <UnstyledLink to={landingSectionCopy.links.mail}>
+          <Icon name="send" color="green" animate />
+        </UnstyledLink>
 
-    <Text size={Size.XSMALL} align="center" color="greyMedium">
-      {footerCopy.text}
-    </Text>
-  </Container>
-);
+        <UnstyledLink to={landingSectionCopy.links.linkedin}>
+          <Icon name="linkedin" color="darkBlue" animate />
+        </UnstyledLink>
+      </div>
+
+      <Text size={Size.XSMALL} align="center" color="greyMedium">
+        {easterEggActive ? footerCopy.easterEggText : footerCopy.text}
+      </Text>
+    </Container>
+  );
+};
 
 export default Footer;

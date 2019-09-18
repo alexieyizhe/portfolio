@@ -26,10 +26,7 @@ export const SiteProvider: React.FC = ({ children, ...rest }) => {
   const [easterEggActive, setEasterEggActive] = useState(false);
   const [darkModeActive, setDarkModeActive] = useState(false);
 
-  const activateEasterEgg = useCallback(() => {
-    console.log("activated");
-    setEasterEggActive(true);
-  }, []);
+  const activateEasterEgg = useCallback(() => setEasterEggActive(true), []);
   const toggleDarkMode = useCallback(
     () => setDarkModeActive(prevVal => !prevVal),
     []

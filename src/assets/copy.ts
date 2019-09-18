@@ -207,6 +207,7 @@ export default {
   },
   footer: {
     text: "made with a ⌨️ and a whole lotta googling.",
+    easterEggText: "you found the easter egg :0 wow cool",
   },
   resumePage: {
     heading: "Resume",

@@ -15,7 +15,7 @@ const BOOPS_REQUIRED_TO_ACTIVATE = 5;
 
 const Container = styled(animated.div)`
   & .boop {
-    animation: ${boopAnim} 0.3s ease-in-out 1;
+    animation: ${boopAnim} 250ms ease-in-out 1;
   }
 
   & > h1 {
@@ -53,7 +53,7 @@ const QuickLinks: React.FC<BaseElementProps> = props => {
   const nameOnClick = useCallback(() => {
     startBoop(true);
     setBoopTimes(prevTimes => prevTimes + 1);
-    if (boopedTimes >= BOOPS_REQUIRED_TO_ACTIVATE) {
+    if (boopedTimes + 1 >= BOOPS_REQUIRED_TO_ACTIVATE) {
       activateEasterEgg();
     }
   }, [activateEasterEgg, boopedTimes]);

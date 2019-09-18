@@ -1,15 +1,18 @@
 import React, { useMemo } from "react";
 import styled, { css } from "styled-components";
 
-import { BaseElementProps } from "~src/types/BaseElementProps";
 import { floatAnim } from "~utils/animations";
+import { useSiteContext } from "~utils/context";
 
 import { Size } from "~types/Size";
+import { BaseElementProps } from "~types/BaseElementProps";
+
 import {
   ZigzagParticle,
   CircleParticle,
   SquareParticle,
   TriangleParticle,
+  RotatingAlexGif,
 } from "~assets/images";
 
 export interface ParticleInfo {
@@ -76,23 +79,35 @@ const Container = styled.span<ParticleProps>`
   }
 `;
 
+const EasterEggImg = styled.img`
+  max-width: 70px;
+`;
+
 const Particle: React.FC<ParticleProps> = ({
   name,
   rotation = 0,
   customSVG,
   ...rest
 }) => {
+  const { easterEggActive } = useSiteContext();
+
   const randomParticle = useMemo(
     () => PARTICLE_OPTIONS[Math.floor(Math.random() * PARTICLE_OPTIONS.length)],
     []
   );
 
-  const ParticleComponent =
-    customSVG || PARTICLE_DICTIONARY[name || randomParticle];
+  const ParticleComponent = useMemo(() => {
+    if (easterEggActive) {
+      return <EasterEggImg src={RotatingAlexGif} />;
+    } else {
+      const Markup = customSVG || PARTICLE_DICTIONARY[name || randomParticle];
+      return <Markup />;
+    }
+  }, [customSVG, easterEggActive, name, randomParticle]);
 
   return (
     <Container {...rest} rotation={rotation}>
-      <ParticleComponent />
+      {ParticleComponent}
     </Container>
   );
 };
