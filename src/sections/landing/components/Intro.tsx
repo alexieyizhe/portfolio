@@ -5,38 +5,58 @@ import { animated } from "react-spring";
 
 import copy from "~assets/copy";
 import { boopAnim } from "~utils/animations";
+import { useSiteContext } from "~utils/context";
+
 import { BaseElementProps } from "~types/BaseElementProps";
 import { Text } from "~src/components";
 
 const greetings = copy.mainLandingSection.greetings;
+const BOOPS_REQUIRED_TO_ACTIVATE = 5;
 
 const Container = styled(animated.div)`
   & .boop {
-    animation: ${boopAnim} 0.3s ease-in-out 1;
+    animation: ${boopAnim} 250ms ease-in-out 1;
   }
 
   & > h1 {
-    font-size: 70px;
-    transform-origin: center center;
+    font-size: 90px;
+    cursor: pointer;
+    display: inline-block;
   }
 
+  & div,
   & span {
     font-size: 30px;
   }
+
+  ${({ theme }) => theme.mediaQueries.tablet`
+    & > h1 {
+      font-size: 80px;
+    }
+
+    & div, 
+    & span {
+      font-size: 26px;
+    }
+  `}
 
   ${({ theme }) => theme.mediaQueries.largeMobile`
     & > h1 {
       font-size: 50px;
     }
 
+    & div, 
     & span {
-      font-size: 22px;
+      font-size: 20px;
     }
   `}
 `;
 
 const QuickLinks: React.FC<BaseElementProps> = props => {
+  const { activateEasterEgg } = useSiteContext();
+
   const [isBooping, startBoop] = useState(false);
+  const [boopedTimes, setBoopTimes] = useState(0);
 
   const displayedGreeting = useMemo(() => {
     const randomGreeting =
@@ -44,12 +64,19 @@ const QuickLinks: React.FC<BaseElementProps> = props => {
     return `${randomGreeting} My name's`;
   }, []);
 
-  const nameOnClick = useCallback(() => startBoop(true), []);
+  const nameOnClick = useCallback(() => {
+    startBoop(true);
+    setBoopTimes(prevTimes => prevTimes + 1);
+    if (boopedTimes + 1 >= BOOPS_REQUIRED_TO_ACTIVATE) {
+      activateEasterEgg();
+    }
+  }, [activateEasterEgg, boopedTimes]);
+
   const nameAnimEnd = useCallback(() => startBoop(false), []);
 
   return (
     <Container {...props}>
-      <Text as="span" heading>
+      <Text as="div" heading>
         {displayedGreeting}
       </Text>
       <Text
@@ -62,16 +89,18 @@ const QuickLinks: React.FC<BaseElementProps> = props => {
       >
         {copy.mainLandingSection.name}
       </Text>
-      <Text as="span" heading>
-        {copy.mainLandingSection.taglinePrefix}
-      </Text>
-      <TextLoop>
-        {copy.mainLandingSection.taglines.map(line => (
-          <Text key={line} as="span" heading bold>
-            {line}
-          </Text>
-        ))}
-      </TextLoop>
+      <div>
+        <Text as="span" heading>
+          {copy.mainLandingSection.taglinePrefix}
+        </Text>
+        <TextLoop>
+          {copy.mainLandingSection.taglines.map(line => (
+            <Text key={line} as="span" heading bold>
+              {line}
+            </Text>
+          ))}
+        </TextLoop>
+      </div>
     </Container>
   );
 };

@@ -34,6 +34,7 @@ export const themeConstants = {
   fontFamily: {
     heading: "Overpass, sans-serif",
     body: "Roboto, sans-serif",
+    easterEgg: '"Comic Sans MS", cursive, sans-serif',
   },
   boxShadow: {
     main: "0 2px 10px 0 rgba(0, 0, 0, 8%)",

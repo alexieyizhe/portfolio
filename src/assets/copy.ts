@@ -2,6 +2,10 @@ import {
   AboutMainImg,
   AboutMtlImg,
   AboutPrideImg,
+  SaluteImg,
+  YelpLyfeImg,
+  HmmPic,
+  UhhPic,
   FlippCoverPhoto,
   FlippShowcaseImg,
   HacktheNorthShowcaseImg,
@@ -96,6 +100,7 @@ export default {
   aboutSection: {
     heading: "Look, it me!",
     galleryImages: [AboutMainImg, AboutMtlImg, AboutPrideImg],
+    galleryEasterEggImages: [SaluteImg, YelpLyfeImg, HmmPic, UhhPic],
     desc: [
       "I'm Alex Yizhe Xie, a computer science student in my junior year at the University of Waterloo.",
       "My passions include rock climbing, coding for good, and human-computer interaction design.",
@@ -160,7 +165,7 @@ export default {
       },
       typeface: {
         title: "Typeface",
-        desc: ["It's a nice font"],
+        desc: ["This is Overpass. It's a nice font. I like it."],
       },
       text: {
         title: "Text",
@@ -207,6 +212,7 @@ export default {
   },
   footer: {
     text: "made with a ⌨️ and a whole lotta googling.",
+    easterEggText: "you found the easter egg :0 wow cool",
   },
   resumePage: {
     heading: "Resume",

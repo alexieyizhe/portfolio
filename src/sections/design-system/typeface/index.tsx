@@ -10,7 +10,7 @@ const TypefaceSection = () => (
     title={copy.designSystemSection.sections.typeface.title}
     desc={copy.designSystemSection.sections.typeface.desc}
   >
-    <Text variant="heading">Typeface</Text>
+    <Text variant="heading">Overpass</Text>
     <Text variant="body">ABCDEFGHIJKLMNOPQRSTUVWXYZ !?#()[]</Text>
     <Text variant="body">abcdefghijklmnopqrstuvwxyz 1234567890</Text>
   </ElementGroup>

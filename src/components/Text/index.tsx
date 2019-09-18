@@ -2,7 +2,8 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 
 import { Size } from "~types/Size";
-import { BaseElementProps } from "~src/types/BaseElementProps";
+import { BaseElementProps } from "~types/BaseElementProps";
+import { useSiteContext } from "~utils/context";
 
 export interface TextProps extends BaseElementProps {
   /**
@@ -30,14 +31,14 @@ export interface TextProps extends BaseElementProps {
   variant?: string;
 }
 
-interface VariantList {
-  [variant: string]: Partial<TextProps>;
-}
-
 /**
  * Predefined variants for the Text component. Ensures consistency across multiple
  * parts of the site using the same style (i.e. different pages using Body text).
  */
+interface VariantList {
+  [variant: string]: Partial<TextProps>;
+}
+
 const TEXT_VARIANTS: VariantList = {
   heading: {
     size: Size.XLARGE,
@@ -54,9 +55,15 @@ const TEXT_VARIANTS: VariantList = {
   },
 };
 
-const BaseText = styled.span<TextProps>`
-  font-family: ${({ theme, heading }) =>
-    theme.fontFamily[heading ? "heading" : "body"]};
+interface BaseTextProps extends TextProps {
+  easterEggActive?: boolean;
+}
+
+const BaseText = styled.span<BaseTextProps>`
+  font-family: ${({ theme, heading, easterEggActive }) =>
+    theme.fontFamily[
+      easterEggActive ? "easterEgg" : heading ? "heading" : "body"
+    ]};
   font-size: ${({ theme, size = Size.MEDIUM }) =>
     theme.fontSize[size] || size}px;
 
@@ -83,6 +90,8 @@ const Text: React.FC<TextProps> = ({
   children,
   ...rest
 }) => {
+  const { easterEggActive } = useSiteContext();
+
   /**
    * Calculate the styles that will be applied to the Text component from the providede props.
    * If a variant is supplied, use those styles, and override with other props.
@@ -100,7 +109,13 @@ const Text: React.FC<TextProps> = ({
   }, [rest, variant]);
 
   return (
-    <BaseText as={as} id={id} className={className} {...stylesToApply}>
+    <BaseText
+      as={as}
+      id={id}
+      className={className}
+      easterEggActive={easterEggActive}
+      {...stylesToApply}
+    >
       {children}
     </BaseText>
   );
