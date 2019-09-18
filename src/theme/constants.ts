@@ -37,6 +37,6 @@ export const themeConstants = {
     easterEgg: '"Comic Sans MS", cursive, sans-serif',
   },
   boxShadow: {
-    main: "0 2px 10px 0 rgba(0, 0, 0, 8%)",
+    main: "0 2px 10px 0 rgba(0, 0, 0, 0.08)",
   },
 };

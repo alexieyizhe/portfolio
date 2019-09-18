@@ -24,7 +24,6 @@ export { default as FlippCoverPhoto } from "./featured/flipp-cover.jpg";
 /**
  * Showcase section
  */
-export { default as TestShowcaseImage } from "./showcase/test.png";
 export { default as EquithonShowcaseImg } from "./showcase/equithon.png";
 export { default as HacktheNorthShowcaseImg } from "./showcase/htn.png";
 export { default as FlippShowcaseImg } from "./showcase/flipp.png";
@@ -32,7 +31,6 @@ export { default as FlippShowcaseImg } from "./showcase/flipp.png";
 /**
  * About section
  */
-export { default as AboutAvatar } from "./about/avatar.jpg";
 export { default as AboutMainImg } from "./about/main.jpg";
 export { default as AboutMtlImg } from "./about/mtl.jpg";
 export { default as AboutPrideImg } from "./about/pride.jpg";
