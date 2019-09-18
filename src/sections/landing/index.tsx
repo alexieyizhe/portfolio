@@ -20,7 +20,7 @@ const Container = styled(animated.div)`
   `}
 
   ${({ theme }) => theme.mediaQueries.xlMobile`
-    height: 90vh;
+    height: 80vh;
     margin: 5vh 0;
   `}
 `;
