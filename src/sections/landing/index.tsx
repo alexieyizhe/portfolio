@@ -2,8 +2,8 @@ import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { Waypoint } from "react-waypoint";
 import { useSpring, animated, config } from "react-spring";
-
-import { HeroMe } from "~assets/images";
+import Img from "gatsby-image";
+import { useStaticQuery, graphql } from "gatsby";
 
 import Intro from "./components/Intro";
 import QuickLinks from "./components/QuickLinks";
@@ -22,20 +22,20 @@ const Container = styled(animated.div)`
   `}
 `;
 
-const HeroImg = styled.img`
+const HeroImgContainer = styled.div`
   position: absolute;
   bottom: 0;
   right: 0;
-  max-width: 70%;
+  width: 60%;
 
   ${({ theme }) => theme.mediaQueries.tablet`
     bottom: 10vh;
-    max-width: 90%;
+    width: 90%;
   `}
 
   ${({ theme }) => theme.mediaQueries.largeMobile`
     bottom: 100px;
-    max-width: 100%;
+    width: 100%;
   `}
 `;
 
@@ -50,12 +50,30 @@ const Landing = () => {
     config: config.stiff,
   });
 
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "hero-main.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 700) {
+            # Choose either the fragment including a small base64ed image, a traced placeholder SVG, or one without.
+            ...GatsbyImageSharpFluid_noBase64
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <>
       <BackgroundParticles />
       <Waypoint onEnter={onLandingEnter} scrollableAncestor="window">
         <Container>
-          <HeroImg src={HeroMe} alt="Landing page image of Alex Xie" />
+          <HeroImgContainer>
+            <Img
+              fluid={data.file.childImageSharp.fluid}
+              alt="Landing page image of Alex Xie"
+            />
+          </HeroImgContainer>
           <Intro style={entryAnimStyles} />
           <QuickLinks style={entryAnimStyles} />
         </Container>

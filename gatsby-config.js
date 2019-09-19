@@ -1,3 +1,5 @@
+const path = require(`path`); // eslint-disable-line
+
 module.exports = {
   siteMetadata: {
     title: `alexxie.ca`,
@@ -8,8 +10,17 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     `gatsby-plugin-transition-link`,
     `gatsby-plugin-remove-trailing-slashes`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `assets`, `images`),
+      },
+    },
     {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
