@@ -10,7 +10,7 @@ const importAbout = () =>
 const importShowcase = () =>
   import("../sections/showcase").then(component => component.default);
 const importFooter = () =>
-  import("../components/footer").then(component => component.default);
+  import("../components/Footer").then(component => component.default);
 
 const IndexPage = () => {
   const [FeaturedSection, setFeaturedSection] = useState<React.FC | null>(null);
