@@ -30,7 +30,7 @@ const HeroImgContainer = styled.div`
 
   ${({ theme }) => theme.mediaQueries.tablet`
     bottom: 10vh;
-    width: 90%;
+    width: 80%;
   `}
 
   ${({ theme }) => theme.mediaQueries.largeMobile`
@@ -50,13 +50,15 @@ const Landing = () => {
     config: config.stiff,
   });
 
-  const data = useStaticQuery(graphql`
+  // query for hero image with graphQL
+  const {
+    file: { childImageSharp },
+  } = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "hero-main.png" }) {
         childImageSharp {
           fluid(maxWidth: 700) {
-            # Choose either the fragment including a small base64ed image, a traced placeholder SVG, or one without.
-            ...GatsbyImageSharpFluid_noBase64
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
@@ -70,7 +72,7 @@ const Landing = () => {
         <Container>
           <HeroImgContainer>
             <Img
-              fluid={data.file.childImageSharp.fluid}
+              fluid={childImageSharp.fluid}
               alt="Landing page image of Alex Xie"
             />
           </HeroImgContainer>
