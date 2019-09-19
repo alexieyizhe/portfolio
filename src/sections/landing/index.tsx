@@ -57,7 +57,7 @@ const Landing = () => {
     query {
       file(relativePath: { eq: "hero-main.png" }) {
         childImageSharp {
-          fluid(maxWidth: 700) {
+          fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }

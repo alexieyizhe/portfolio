@@ -9,10 +9,10 @@ import { PAGE_VERT_PADDING, PAGE_HORIZ_PADDING } from "~components/PageWrapper";
 const particlesConfig: IParticlesParams = {
   particles: {
     number: {
-      value: 25,
+      value: 30,
       density: {
         enable: true,
-        value_area: 1000,
+        value_area: 800,
       },
     },
     line_linked: {
@@ -61,11 +61,11 @@ const particlesConfig: IParticlesParams = {
 const ParticlesContainer = styled.div`
   position: absolute;
   top: -${PAGE_VERT_PADDING}vh;
-  left: -${PAGE_HORIZ_PADDING}vw;
+  left: -${PAGE_HORIZ_PADDING - 5}vw;
   width: 100vw;
   height: ${120 + PAGE_VERT_PADDING}vh;
 
-  opacity: 0.4;
+  opacity: 0.3;
   mask-image: linear-gradient(
     to top,
     transparent,

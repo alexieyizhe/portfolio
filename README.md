@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.alexxie.ca">
+  <a href="https://alexxie.ca">
     <img alt="Me!" src="./readme-main.png" width="120" />
   </a>
 </p>
@@ -21,4 +21,4 @@ Developed in [TypeScript](https://www.typescriptlang.org/).
 Code quality enforced with [eslint](https://eslint.org/) and [Prettier](https://prettier.io/).  
 Continuous integration with [Github Actions](https://github.com/features/actions).
 
-###### Questions? [Shoot Alex an email.](mailto:alexieyizhe@gmail.com)
+###### Questions? [Shoot Alex an email.](mailto:hi@alexxie.ca)
