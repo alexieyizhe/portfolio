@@ -60,7 +60,7 @@ export default {
     links: {
       resume: "/resume",
       github: "https://github.com/alexieyizhe",
-      mail: "mailto:hi@alexieyizhe.me",
+      mail: "mailto:hi@alexxie.ca",
       linkedin: "http://linkedin.com/in/alexieyizhe",
     },
   },

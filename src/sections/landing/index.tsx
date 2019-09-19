@@ -55,7 +55,7 @@ const Landing = () => {
       <BackgroundParticles />
       <Waypoint onEnter={onLandingEnter} scrollableAncestor="window">
         <Container>
-          <HeroImg src={HeroMe} />
+          <HeroImg src={HeroMe} alt="Landing page image of Alex Xie" />
           <Intro style={entryAnimStyles} />
           <QuickLinks style={entryAnimStyles} />
         </Container>
