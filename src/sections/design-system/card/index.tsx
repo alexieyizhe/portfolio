@@ -7,7 +7,7 @@ import ShowcaseCard from "~sections/showcase/components/ShowcaseCard";
 import ElementGroup from "~sections/design-system/components/ElementGroup";
 
 import copy from "~assets/copy";
-import { TestShowcaseImage, FlippCoverPhoto } from "~assets/images";
+import { EquithonShowcaseImg, FlippCoverPhoto } from "~assets/images";
 
 const CardDisplay = styled.div`
   margin-bottom: 30px;
@@ -53,7 +53,7 @@ const CardSection = () => (
         subtitle="Hack de nort"
         linkText="Read more"
         linkHref=""
-        imgSrc={TestShowcaseImage}
+        imgSrc={EquithonShowcaseImg}
         imgAlt="Some pic"
         particles
       />

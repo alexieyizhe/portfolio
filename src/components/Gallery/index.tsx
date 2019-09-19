@@ -50,6 +50,8 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
 
+  z-index: 1;
+
   & > * {
     grid-row: 1;
     grid-column: 1;
