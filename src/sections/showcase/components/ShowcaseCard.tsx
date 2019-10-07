@@ -51,6 +51,7 @@ const CardContainer = styled(animated(Card))`
   height: auto;
   margin: 50px 0;
 
+  will-change: transform;
   cursor: pointer;
 
   & > .title {
