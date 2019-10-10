@@ -3,7 +3,12 @@ import styled from "styled-components";
 import Particles, { IParticlesParams } from "react-particles-js";
 
 import { PAGE_VERT_PADDING, PAGE_HORIZ_PADDING } from "~components/PageWrapper";
-import { CircleParticle } from "~assets/images";
+import {
+  CircleParticleImg,
+  TriangleParticleImg,
+  ZigzagParticleImg,
+  SquareParticleImg,
+} from "~assets/images";
 
 /* eslint-disable @typescript-eslint/camelcase */
 
@@ -24,10 +29,25 @@ const particlesConfig: IParticlesParams = {
       out_mode: "out",
     },
     shape: {
-      type: "images",
+      type: ["images"],
       images: [
         {
-          src: CircleParticle,
+          src: CircleParticleImg,
+          height: 10,
+          width: 10,
+        },
+        {
+          src: TriangleParticleImg,
+          height: 10,
+          width: 10,
+        },
+        {
+          src: SquareParticleImg,
+          height: 10,
+          width: 10,
+        },
+        {
+          src: ZigzagParticleImg,
           height: 10,
           width: 10,
         },
