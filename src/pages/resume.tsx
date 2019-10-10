@@ -20,13 +20,14 @@ const DividedPageContainer = styled(PageWrapper)`
     "heading      content"
     "side-content content";
   grid-template-rows: auto auto 1fr;
-  grid-template-columns: 40% 45%;
+  grid-template-columns: 45% 40%;
   grid-column-gap: 15%;
 
   position: relative;
 
   & > .PageWrapper--Subheading {
     grid-area: subheading;
+    max-width: 100%;
   }
 
   & > .PageWrapper--Heading {

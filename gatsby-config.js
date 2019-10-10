@@ -3,17 +3,18 @@ const path = require(`path`); // eslint-disable-line
 module.exports = {
   siteMetadata: {
     title: `alexxie.ca`,
-    description: ``,
+    description: `Personal website and portfolio of Alex Yizhe Xie, a Computer Science student at the University of Waterloo.`,
     author: `@alexieyizhe`,
+    siteUrl: `https://alexxie.ca`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-typescript`,
-    `gatsby-plugin-styled-components`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-transition-link`,
-    `gatsby-plugin-remove-trailing-slashes`,
+    { resolve: `gatsby-plugin-react-helmet` },
+    { resolve: `gatsby-plugin-typescript` },
+    { resolve: `gatsby-plugin-styled-components` },
+    { resolve: `gatsby-transformer-sharp` },
+    { resolve: `gatsby-plugin-sharp` },
+    { resolve: `gatsby-plugin-transition-link` },
+    { resolve: `gatsby-plugin-remove-trailing-slashes` },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -65,5 +66,6 @@ module.exports = {
         ],
       },
     },
+    { resolve: `gatsby-plugin-sitemap` },
   ],
 };
