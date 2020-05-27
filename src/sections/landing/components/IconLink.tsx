@@ -9,7 +9,7 @@ import Text from "~components/Text";
 import { Size } from "~types/Size";
 
 interface IconLinkProps
-  extends Pick<IconProps, Exclude<keyof IconProps, "name">>, // rename `name` to `iconName`
+  extends Omit<IconProps, "name">, // rename `name` to `iconName`
     LinkProps {
   iconName: string;
 }
@@ -22,6 +22,10 @@ const Container = styled(animated(UnstyledLink))`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 
   & > * {
     grid-row: 1;
