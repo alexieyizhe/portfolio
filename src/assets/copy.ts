@@ -125,7 +125,7 @@ export default {
         linkText: "Learn more",
         linkHref: "https://www.faire.com/about",
         customParticle: PresentIcon,
-        color: "rgb(0, 0, 0)",
+        color: "#CEAD00",
       },
       {
         title: "Helping peers find high quality internships.",
