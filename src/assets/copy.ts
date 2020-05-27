@@ -26,6 +26,38 @@ import {
   ResumeCurrentImg,
 } from "~assets/resume";
 
+const FEATURED_CARDS = [
+  {
+    title: "Behind the scenes of building intern+",
+    desc: [
+      "Get a look behind the design process of the internship resource site I created.",
+    ],
+    linkText: "Check it out",
+    linkHref: "https://www.youtube.com/watch?v=0Ioruq2xIXw",
+    videoSrc: "https://www.youtube.com/embed/0Ioruq2xIXw?controls=0&autoplay=1",
+  },
+  {
+    title: "Catch ya on the Flipp side ✌️",
+    desc: ["Learn about my experience as a Software Engineer Intern at Flipp!"],
+    linkText: "Read the article",
+    linkHref:
+      "https://medium.com/@alexieyizhe/catch-ya-on-the-flipp-side-ae3b41c1514f",
+    imgSrc: FlippCoverPhoto,
+    imgAlt: "A phone in a background displaying the Flipp app",
+  },
+  {
+    title: "Building a cohesive design system ✨",
+    desc: [
+      "Even for personal projects, my goal is maintainability and consistency.",
+      "That’s why I built a component system for use on this very site you’re looking at!",
+    ],
+    linkText: "See the system",
+    linkHref: "/design-system",
+  },
+];
+
+const SHOWN_CARDS = FEATURED_CARDS.sort(() => 0.5 - Math.random()).slice(0, 2);
+
 export default {
   seo: {
     title: "Alex Xie",
@@ -65,16 +97,7 @@ export default {
   featuredSection: {
     heading: "Featured Highlights",
     cards: {
-      first: {
-        title: "Behind the scenes of intern+",
-        desc: [
-          "Get a look behind the design process of the internship resource site I built!",
-        ],
-        linkText: "Check it out",
-        linkHref: "https://www.youtube.com/watch?v=0Ioruq2xIXw",
-        videoSrc:
-          "https://www.youtube.com/embed/0Ioruq2xIXw?controls=0&autoplay=1",
-      },
+      first: SHOWN_CARDS[0],
       second: {
         title: "Seeking internship opportunities!",
         desc: [
@@ -83,15 +106,7 @@ export default {
         linkText: "Check out my resume",
         linkHref: "/resume",
       },
-      third: {
-        title: "Building a cohesive design system ✨",
-        desc: [
-          "Even for personal projects, my goal is maintainability and consistency.",
-          "That’s why I built a component system for use on this very site you’re looking at.",
-        ],
-        linkText: "See the system",
-        linkHref: "/design-system",
-      },
+      third: SHOWN_CARDS[1],
     },
   },
   aboutSection: {
