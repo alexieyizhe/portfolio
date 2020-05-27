@@ -49,6 +49,10 @@ const UnstyledLink: React.FC<LinkProps> = ({
 }) => {
   const isInternalLink = useMemo(() => /^\/(?!\/)/.test(to), [to]);
   const randomColor = useMemo(() => getRandomColor(), []);
+  const shouldNewTab = useMemo(() => newTab || !isInternalLink, [
+    isInternalLink,
+    newTab,
+  ]);
 
   if (isInternalLink) {
     return (
@@ -68,8 +72,8 @@ const UnstyledLink: React.FC<LinkProps> = ({
       <Unstyled
         tabIndex={0}
         href={to}
-        target={newTab ? "_blank" : undefined}
-        rel={newTab ? "noopener noreferrer" : ""}
+        target={shouldNewTab ? "_blank" : undefined}
+        rel={shouldNewTab ? "noopener noreferrer" : ""}
         {...rest}
       >
         {children}

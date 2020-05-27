@@ -62,6 +62,7 @@ const CardContainer = styled(Card)<{ linkHref?: string }>`
   &:hover,
   &:focus,
   &:focus-within {
+    outline: none;
     ${({ linkHref }) => linkHref && "transform: translateY(-5px);"}
   }
 `;
@@ -70,6 +71,12 @@ const CardImage = styled.img`
   position: relative;
   width: calc(100% + ${CARD_HORIZ_PADDING * 2}px);
   top: -${CARD_VERT_PADDING}px;
+`;
+
+const CardLink = styled(UnstyledLink)`
+  &:focus {
+    outline: none;
+  }
 `;
 
 const LinkArrow = styled.div`
@@ -89,7 +96,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
   children,
   ...rest
 }) => (
-  <UnstyledLink to={linkHref}>
+  <CardLink to={linkHref}>
     <CardContainer id={id} className={className} linkHref={linkHref} {...rest}>
       {imgSrc && <CardImage className="image" src={imgSrc} alt={imgAlt} />}
 
@@ -112,7 +119,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
         </LinkArrow>
       )}
     </CardContainer>
-  </UnstyledLink>
+  </CardLink>
 );
 
 export default ContentCard;
