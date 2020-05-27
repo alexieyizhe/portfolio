@@ -56,7 +56,7 @@ const FEATURED_CARDS = [
   },
 ];
 
-const SHOWN_CARDS = FEATURED_CARDS.sort(() => 0.5 - Math.random()).slice(0, 2);
+const SHOWN_CARDS = FEATURED_CARDS.sort(() => 0.5 - Math.random());
 
 export default {
   seo: {
