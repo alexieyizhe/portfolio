@@ -11,6 +11,7 @@ import { BaseElementProps } from "~types/BaseElementProps";
 
 interface ContentCardProps extends BaseElementProps {
   title?: string;
+  videoSrc?: string; //link to embed of video
   imgSrc?: string;
   imgAlt?: string;
   linkText?: string;
@@ -32,7 +33,7 @@ const CardContainer = styled(Card)<{ linkHref?: string }>`
     margin-bottom: 10px;
   }
 
-  & > .image {
+  & > .media {
     justify-self: flex-start;
     align-self: center;
   }
@@ -67,10 +68,14 @@ const CardContainer = styled(Card)<{ linkHref?: string }>`
   }
 `;
 
-const CardImage = styled.img`
+const TopContainer = styled.div`
   position: relative;
   width: calc(100% + ${CARD_HORIZ_PADDING * 2}px);
   top: -${CARD_VERT_PADDING}px;
+
+  & > * {
+    max-width: 100%;
+  }
 `;
 
 const CardLink = styled(UnstyledLink)`
@@ -89,6 +94,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
   id,
   className,
   title,
+  videoSrc,
   imgSrc,
   imgAlt,
   linkText,
@@ -98,7 +104,26 @@ const ContentCard: React.FC<ContentCardProps> = ({
 }) => (
   <CardLink to={linkHref}>
     <CardContainer id={id} className={className} linkHref={linkHref} {...rest}>
-      {imgSrc && <CardImage className="image" src={imgSrc} alt={imgAlt} />}
+      <TopContainer className="media">
+        {imgSrc && <img src={imgSrc} alt={imgAlt} />}
+        {videoSrc && (
+          <div style={{ position: "relative", paddingTop: "56.25%" }}>
+            <iframe
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                top: 0,
+                left: 0,
+              }}
+              src={videoSrc}
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        )}
+      </TopContainer>
 
       {title && (
         <Text className="title" variant="subheading">

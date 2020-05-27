@@ -66,15 +66,14 @@ export default {
     heading: "Featured Highlights",
     cards: {
       first: {
-        title: "Catch ya on the Flipp side ✌️",
+        title: "Behind the scenes of intern+",
         desc: [
-          "Learn about my experience as a Software Engineer Intern at Flipp!",
+          "Get a look behind the design process of the internship resource site I built!",
         ],
-        linkText: "Read the article",
-        linkHref:
-          "https://medium.com/@alexieyizhe/catch-ya-on-the-flipp-side-ae3b41c1514f",
-        imgSrc: FlippCoverPhoto,
-        imgAlt: "A phone in a background displaying the Flipp app",
+        linkText: "Check it out",
+        linkHref: "https://www.youtube.com/watch?v=0Ioruq2xIXw",
+        videoSrc:
+          "https://www.youtube.com/embed/0Ioruq2xIXw?controls=0&autoplay=1",
       },
       second: {
         title: "Seeking internship opportunities!",
@@ -85,7 +84,7 @@ export default {
         linkHref: "/resume",
       },
       third: {
-        title: "Building a cohesive design system",
+        title: "Building a cohesive design system ✨",
         desc: [
           "Even for personal projects, my goal is maintainability and consistency.",
           "That’s why I built a component system for use on this very site you’re looking at.",
