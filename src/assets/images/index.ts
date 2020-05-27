@@ -6,6 +6,8 @@ export { default as SquareParticle } from "./particles/square.inline.svg";
 export { default as TriangleParticle } from "./particles/triangle.inline.svg";
 export { default as ZigzagParticle } from "./particles/zigzag.inline.svg";
 export { default as GearIcon } from "./particles/gear.inline.svg";
+export { default as PlusIcon } from "./particles/plus.inline.svg";
+export { default as PresentIcon } from "./particles/present.inline.svg";
 export { default as LightbulbIcon } from "./particles/lightbulb.inline.svg";
 export {
   default as ShoppingCartIcon,
@@ -31,6 +33,8 @@ export { default as FlippCoverPhoto } from "./featured/flipp-cover.jpg";
 export { default as EquithonShowcaseImg } from "./showcase/equithon.png";
 export { default as HacktheNorthShowcaseImg } from "./showcase/htn.png";
 export { default as FlippShowcaseImg } from "./showcase/flipp.png";
+export { default as FaireShowcaseImg } from "./showcase/faire.png";
+export { default as InternPlusShowcaseImg } from "./showcase/intern.png";
 
 /**
  * About section

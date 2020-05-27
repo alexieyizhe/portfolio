@@ -130,6 +130,14 @@ const ShowcaseImage = styled(animated.img)`
   `}
 `;
 
+const CardLink = styled(UnstyledLink)`
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
 const LinkArrow = styled(animated.div)`
   & > *:nth-child(2) {
     margin-left: 5px;
@@ -166,7 +174,7 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
   }));
 
   return (
-    <UnstyledLink to={linkHref}>
+    <CardLink to={linkHref}>
       <Waypoint
         onEnter={onCardEnter}
         onLeave={onCardLeave}
@@ -228,7 +236,7 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
           </LinkArrow>
         </CardContainer>
       </Waypoint>
-    </UnstyledLink>
+    </CardLink>
   );
 };
 
