@@ -11,6 +11,8 @@ import {
   HacktheNorthShowcaseImg,
   EquithonShowcaseImg,
   GearIcon,
+  PlusIcon,
+  PresentIcon,
   LightbulbIcon,
   ShoppingCartIcon,
 } from "~assets/images";
@@ -120,8 +122,8 @@ export default {
         imgAlt: "Home page of Faire",
         linkText: "Learn more",
         linkHref: "https://www.faire.com/about",
-        // customParticle: GearIcon,
-        // color: "rgb(0, 0, 0)",
+        customParticle: PresentIcon,
+        color: "rgb(0, 0, 0)",
       },
       {
         title: "Helping peers find high quality internships.",
@@ -130,8 +132,8 @@ export default {
         imgAlt: "Home page of intern.plus",
         linkText: "Check it out",
         linkHref: "https://intern.plus",
-        // customParticle: GearIcon,
-        // color: "rgb(24, 50, 73)",
+        customParticle: PlusIcon,
+        color: "rgb(24, 50, 73)",
       },
       {
         title:
