@@ -33,6 +33,8 @@ export { default as FlippCoverPhoto } from "./featured/flipp-cover.jpg";
 export { default as EquithonShowcaseImg } from "./showcase/equithon.png";
 export { default as HacktheNorthShowcaseImg } from "./showcase/htn.png";
 export { default as FlippShowcaseImg } from "./showcase/flipp.png";
+export { default as FaireShowcaseImg } from "./showcase/faire.png";
+export { default as InternPlusShowcaseImg } from "./showcase/intern.png";
 
 /**
  * About section

@@ -10,6 +10,8 @@ import {
   FlippShowcaseImg,
   HacktheNorthShowcaseImg,
   EquithonShowcaseImg,
+  InternPlusShowcaseImg,
+  FaireShowcaseImg,
   GearIcon,
   PlusIcon,
   PresentIcon,
@@ -118,7 +120,7 @@ export default {
       {
         title: "Making an impact on the future of local retail.",
         subtitle: "Faire",
-        // imgSrc: HacktheNorthShowcaseImg,
+        imgSrc: FaireShowcaseImg,
         imgAlt: "Home page of Faire",
         linkText: "Learn more",
         linkHref: "https://www.faire.com/about",
@@ -128,7 +130,7 @@ export default {
       {
         title: "Helping peers find high quality internships.",
         subtitle: "intern+",
-        // imgSrc: HacktheNorthShowcaseImg,
+        imgSrc: InternPlusShowcaseImg,
         imgAlt: "Home page of intern.plus",
         linkText: "Check it out",
         linkHref: "https://intern.plus",
