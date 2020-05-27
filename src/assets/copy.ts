@@ -22,12 +22,6 @@ import {
 import {
   Resume2013PDF,
   Resume2013Img,
-  Resume201710PDF,
-  Resume201710Img,
-  Resume201802PDF,
-  Resume201802Img,
-  Resume201807PDF,
-  Resume201807Img,
   ResumeCurrentPDF,
   ResumeCurrentImg,
 } from "~assets/resume";
@@ -248,22 +242,7 @@ export default {
         file: Resume2013PDF,
       },
       {
-        name: "Fall 2017",
-        img: Resume201710Img,
-        file: Resume201710PDF,
-      },
-      {
-        name: "Winter 2018",
-        img: Resume201802Img,
-        file: Resume201802PDF,
-      },
-      {
-        name: "Summer 2018",
-        img: Resume201807Img,
-        file: Resume201807PDF,
-      },
-      {
-        name: "Fall 2019 (Current)",
+        name: "Summer 2020 (Current)",
         img: ResumeCurrentImg,
         file: ResumeCurrentPDF,
         current: true,
