@@ -61,13 +61,7 @@ const BodyText = styled(Text)`
 const Featured = () => (
   <Container>
     <Column>
-      <FeaturedCard
-        title={sectionCopy.cards.first.title}
-        linkHref={sectionCopy.cards.first.linkHref}
-        linkText={sectionCopy.cards.first.linkText}
-        imgSrc={sectionCopy.cards.first.imgSrc}
-        imgAlt={sectionCopy.cards.first.imgAlt}
-      >
+      <FeaturedCard {...sectionCopy.cards.first}>
         {sectionCopy.cards.first.desc.map((paragraph, i) => (
           <BodyText variant="body" key={`${paragraph}-${i}`}>
             {paragraph}
@@ -78,11 +72,7 @@ const Featured = () => (
 
     <Column className="heading-column">
       <HeaderText variant="heading">{sectionCopy.heading}</HeaderText>
-      <FeaturedCard
-        title={sectionCopy.cards.second.title}
-        linkHref={sectionCopy.cards.second.linkHref}
-        linkText={sectionCopy.cards.second.linkText}
-      >
+      <FeaturedCard {...sectionCopy.cards.second}>
         {sectionCopy.cards.second.desc.map((paragraph, i) => (
           <BodyText variant="body" key={`${paragraph}-${i}`}>
             {paragraph}
@@ -92,11 +82,7 @@ const Featured = () => (
     </Column>
 
     <Column>
-      <FeaturedCard
-        title={sectionCopy.cards.third.title}
-        linkHref={sectionCopy.cards.third.linkHref}
-        linkText={sectionCopy.cards.third.linkText}
-      >
+      <FeaturedCard {...sectionCopy.cards.third}>
         {sectionCopy.cards.third.desc.map((paragraph, i) => (
           <BodyText variant="body" key={`${paragraph}-${i}`}>
             {paragraph}
