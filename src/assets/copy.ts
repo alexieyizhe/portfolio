@@ -28,15 +28,6 @@ import {
 
 const FEATURED_CARDS = [
   {
-    title: "Behind the scenes of building intern+",
-    desc: [
-      "Get a look behind the design process of the internship resource site I created.",
-    ],
-    linkText: "Check it out",
-    linkHref: "https://www.youtube.com/watch?v=0Ioruq2xIXw",
-    videoSrc: "https://www.youtube.com/embed/0Ioruq2xIXw?controls=0&autoplay=1",
-  },
-  {
     title: "Catch ya on the Flipp side ✌️",
     desc: ["Learn about my experience as a Software Engineer Intern at Flipp!"],
     linkText: "Read the article",
@@ -97,7 +88,16 @@ export default {
   featuredSection: {
     heading: "Featured Highlights",
     cards: {
-      first: SHOWN_CARDS[0],
+      first: {
+        title: "Behind the scenes of building intern+",
+        desc: [
+          "Get a look behind the design process of the internship resource site I created.",
+        ],
+        linkText: "Check it out",
+        linkHref: "https://www.youtube.com/watch?v=0Ioruq2xIXw",
+        videoSrc:
+          "https://www.youtube.com/embed/0Ioruq2xIXw?controls=0&autoplay=1",
+      },
       second: {
         title: "Seeking internship opportunities!",
         desc: [
@@ -106,7 +106,7 @@ export default {
         linkText: "Check out my resume",
         linkHref: "/resume",
       },
-      third: SHOWN_CARDS[1],
+      third: SHOWN_CARDS[0],
     },
   },
   aboutSection: {
