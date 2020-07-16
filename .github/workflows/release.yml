@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Install
         run: npm ci
@@ -22,7 +24,8 @@ jobs:
 
           npm run build
 
-          git checkout -b v$VERSION_TAG
+          git checkout master
           npm version $VERSION_TAG --git-tag-version=false
-          git commit -am "Release version $VERSION_TAG [ci skip]"
-          git push origin HEAD:release
+          git commit -am "ci: release version $VERSION_TAG [ci skip]"
+          git push origin -f HEAD:release
+          git push origin HEAD:master
