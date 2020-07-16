@@ -12,8 +12,9 @@ jobs:
           fetch-depth: 1
 
       - name: Install
-        run: npm ci
-        run: echo "Release version ${{ github.event.release.tag_name }} [ci skip]"
+        run: |
+          npm ci
+          echo "Release version ${{ github.event.release.tag_name }} [ci skip]"
 
       - name: Lint
         run: npm run lint
