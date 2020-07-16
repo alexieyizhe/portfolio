@@ -25,7 +25,6 @@
     "react-feather": "^2.0.3",
     "react-helmet": "^5.2.1",
     "react-mt-svg-lines": "^0.9.1",
-    "react-particles-js": "^2.7.0",
     "react-spring": "^8.0.27",
     "react-text-loop": "^2.1.1",
     "react-tsparticles": "^1.17.1",
@@ -50,7 +49,7 @@
     "eslint-plugin-react-hooks": "^2.1.2",
     "gatsby-plugin-remove-trailing-slashes": "^2.1.10",
     "prettier": "^1.18.2",
-    "typescript": "^3.6.4"
+    "typescript": "^3.9.6"
   },
   "keywords": [
     "gatsby",
