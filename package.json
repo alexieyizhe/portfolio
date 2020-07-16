@@ -2,7 +2,7 @@
   "name": "alexxie.ca",
   "private": true,
   "description": "Portfolio and personal website of Alex Yizhe Xie.",
-  "version": "3.0.0",
+  "version": "3.1.9",
   "author": "Alex Xie <alexieyizhe@gmail.com>",
   "dependencies": {
     "@loadable/component": "^5.13.1",
