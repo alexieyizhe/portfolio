@@ -16,12 +16,14 @@ jobs:
         run: npm ci
 
       - name: Build & release
+        env:
+          VERSION_TAG: ${{ github.event.release.tag_name }}
         run: |
           git config --global user.name "Beep boop bot"
           git config --global user.email "alexieyizhe@gmail.com"
 
           npm run build
 
-          npm version ${{ github.event.release.tag_name }} --git-tag-version=false
-          git commit -am "Release version ${{ github.event.release.tag_name }} [ci skip]"
+          npm version $VERSION_TAG --git-tag-version=false
+          git commit -am "Release version $VERSION_TAG [ci skip]"
           git push -u origin release
