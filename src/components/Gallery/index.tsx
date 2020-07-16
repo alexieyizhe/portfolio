@@ -97,7 +97,7 @@ const Gallery: React.FC<GalleryProps> = ({
   );
 
   useEffect(() => {
-    let timer: NodeJS.Timer;
+    let timer: number;
 
     if (autoScroll) {
       timer = setInterval(
