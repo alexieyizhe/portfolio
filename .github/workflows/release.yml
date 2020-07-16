@@ -23,6 +23,7 @@ jobs:
 
           npm run build
 
+          git checkout -b v$VERSION_TAG
           npm version $VERSION_TAG --git-tag-version=false
           git commit -am "Release version $VERSION_TAG [ci skip]"
           git push origin release
