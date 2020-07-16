@@ -5,7 +5,7 @@
   "version": "3.0.0",
   "author": "Alex Xie <alexieyizhe@gmail.com>",
   "dependencies": {
-    "gatsby": "^2.15.35",
+    "gatsby": "^2.24.3",
     "gatsby-image": "^2.2.26",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-google-analytics": "^2.1.21",
@@ -28,6 +28,7 @@
     "react-particles-js": "^2.7.0",
     "react-spring": "^8.0.27",
     "react-text-loop": "^2.1.1",
+    "react-tsparticles": "^1.17.1",
     "react-waypoint": "^9.0.2",
     "styled-components": "^4.4.0"
   },
