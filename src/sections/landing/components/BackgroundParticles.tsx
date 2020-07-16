@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Particles, { IParticlesParams } from "react-particles-js";
+import Particles, { IParticlesParams } from "react-tsparticles";
 
 import { PAGE_VERT_PADDING, PAGE_HORIZ_PADDING } from "~components/PageWrapper";
 import {
@@ -11,7 +11,6 @@ import {
 } from "~assets/images";
 
 /* eslint-disable @typescript-eslint/camelcase */
-
 const particlesConfig: IParticlesParams = {
   particles: {
     number: {
@@ -25,6 +24,7 @@ const particlesConfig: IParticlesParams = {
       enable: false,
     },
     move: {
+      enable: true,
       speed: 1,
       out_mode: "out",
     },

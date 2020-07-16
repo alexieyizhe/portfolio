@@ -1,0 +1,29 @@
+name: Release
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+
+      - name: Install
+        run: npm ci
+
+      - name: Build & release
+        env:
+          VERSION_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          git config --global user.name "Beep boop bot"
+          git config --global user.email "alexieyizhe@gmail.com"
+
+          npm run build
+
+          npm version $VERSION_TAG --git-tag-version=false
+          git commit -am "Release version $VERSION_TAG [ci skip]"
+          git push -u origin release

@@ -181,7 +181,10 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({
         scrollableAncestor="window"
       >
         <CardContainer
-          onMouseMove={({ clientX: x, clientY: y }) =>
+          onMouseMove={({
+            clientX: x,
+            clientY: y,
+          }: React.MouseEvent<HTMLDivElement>) =>
             set({ xys: calcPerspective(x, y) })
           }
           onMouseLeave={() => set({ xys: [0, 0, 1] })}

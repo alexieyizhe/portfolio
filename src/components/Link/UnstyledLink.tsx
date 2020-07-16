@@ -45,6 +45,7 @@ const UnstyledLink: React.FC<LinkProps> = ({
   newTab,
   children,
   transitionDir = "left",
+  as, // eslint-disable-line
   ...rest
 }) => {
   const isInternalLink = useMemo(() => /^\/(?!\/)/.test(to), [to]);
