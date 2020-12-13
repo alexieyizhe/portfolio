@@ -1,14 +1,11 @@
 import { h, FunctionalComponent } from 'preact';
 import { styled } from 'goober';
 
-
-interface Props {}
-
 const Text = styled('div')`
   color: lightblue;
 `;
 
-const App: FunctionalComponent<Props> = () => (
+const App: FunctionalComponent = () => (
   <div>
     <Text color={'blue'}>Home</Text>
     <p>This is the App.</p>
