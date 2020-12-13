@@ -73,10 +73,10 @@ export default {
     taglines: [
       `keyboard puncher.`,
       "happy wallflower.",
-      "comic sans advocate.",
       "lover of bad puns.",
       "struggling rock climber.",
       "cs student.",
+      "comic sans advocate.",
       "soccer fanatic.",
     ],
     links: {

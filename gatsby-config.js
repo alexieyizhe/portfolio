@@ -55,15 +55,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          {
-            family: `Overpass`,
-            variants: [`400`, `600`, `700`],
-          },
-          { family: `Roboto` },
-        ],
+        // eslint-disable-next-line no-useless-escape
+        fonts: [`Overpass\:400,600,700`, `Roboto`],
+        display: "swap",
       },
     },
     { resolve: `gatsby-plugin-sitemap` },
