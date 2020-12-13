@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://alexxie.ca">
+  <a href="https://alexxie.com">
     <img alt="Me!" src="./readme-main.png" width="120" />
   </a>
 </p>
@@ -7,7 +7,7 @@
   Alex Xie
 </h3>
 <h6 align="center">
-  Personal Website & Portfolio
+  Personal Website & Portfolio (2nd iteration)
 </h6>
 
 <br />
