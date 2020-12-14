@@ -1,7 +1,6 @@
 import { h, FunctionalComponent } from 'preact';
 import { styled } from 'goober';
 
-import { MainImg } from 'assets';
 import { useCopyContext } from 'services/copy';
 
 const H1 = styled('h1')`

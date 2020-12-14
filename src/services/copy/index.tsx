@@ -1,27 +1,13 @@
 import { h, createContext, FunctionalComponent } from 'preact';
 import { useContext } from 'preact/hooks';
+import { getDateInZone, getRandomItem } from 'services/utils';
 import {
   ACTIVITIES,
   DEFAULT_GREETING,
+  GREETINGS,
   TAGLINES,
   TALKING_POINTS,
 } from './config';
-
-function changeTimezone(ianatz: string): Date {
-  const cur = new Date();
-
-  const dateInTimezone = new Date(
-    cur.toLocaleString('en-US', {
-      timeZone: ianatz,
-    })
-  );
-
-  const diff = cur.getTime() - dateInTimezone.getTime();
-
-  return new Date(cur.getTime() - diff);
-}
-
-type TInfoType = 'now-playing' | 'activity';
 
 type TNowPlayingInfo = {
   type: 'now-playing';
@@ -42,7 +28,7 @@ export type TCopyContextValue = {
   talkingPoint: string; // wanna chat about ...
 };
 
-const currentEDTDate = changeTimezone('America/Toronto');
+const currentEDTDate = getDateInZone('America/Toronto');
 
 const CopyContext = createContext<TCopyContextValue>({
   greeting: DEFAULT_GREETING,
@@ -59,17 +45,21 @@ const useCopyContext = () => useContext(CopyContext);
 
 // todo: actually do stuff here
 const CopyContextProvider: FunctionalComponent = ({ children }) => {
+  const greeting = getRandomItem(GREETINGS);
+  const additionalInfo = {
+    type: 'activity' as const,
+    content: ACTIVITIES[0],
+  };
+  const talkingPoint = getRandomItem(TALKING_POINTS);
+
   return (
     <CopyContext.Provider
       value={{
-        greeting: DEFAULT_GREETING,
+        greeting,
         taglines: TAGLINES,
         currentDate: currentEDTDate,
-        additionalInfo: {
-          type: 'activity',
-          content: ACTIVITIES[0],
-        },
-        talkingPoint: TALKING_POINTS[0],
+        additionalInfo,
+        talkingPoint,
       }}
       children={children}
     />

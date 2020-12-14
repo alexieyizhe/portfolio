@@ -5,7 +5,13 @@ import { useCopyContext, TCopyContextValue } from 'services/copy';
 
 const Container = styled('div')`
   margin-top: 1em;
+
+  font-size: 18px;
   color: green;
+
+  & span.dynamic {
+    font-weight: bold;
+  }
 `;
 
 const timeHourMarkup = (hour: number) => {
@@ -37,13 +43,17 @@ const Bio: FunctionalComponent = () => {
   return (
     <Container>
       <p>
-        I’m a <span>{taglines[0]}</span> studying computer science at the
-        University of Waterloo. It’s currently {currentTime} for me
+        I’m a <span className="dynamic">{taglines[0]}</span> studying computer
+        science at the University of Waterloo.
+      </p>
+      <p>
+        It’s currently <span className="dynamic">{currentTime}</span> for me
         {info}
       </p>
       <p>
-        Wanna chat about <span>{talkingPoint}</span>? Lets talk. You can reach
-        me at <a href="mailto:hi@alexxie.com">hi@alexxie.com</a>.
+        Wanna chat about <span className="dynamic">{talkingPoint}</span>? Lets
+        talk. You can reach me at{' '}
+        <a href="mailto:hi@alexxie.com">hi@alexxie.com</a>.
       </p>
     </Container>
   );
