@@ -6,6 +6,9 @@ import { useCopyContext } from 'services/copy';
 
 const H1 = styled('h1')`
   color: lightblue;
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 16px;
 `;
 
 const Heading: FunctionalComponent = () => {

@@ -1,10 +1,10 @@
 import { h, FunctionalComponent } from 'preact';
 import { styled } from 'goober';
 
-import { MainImg } from 'assets';
 import { useCopyContext, TCopyContextValue } from 'services/copy';
 
-const P = styled('p')`
+const Container = styled('div')`
+  margin-top: 1em;
   color: green;
 `;
 
@@ -35,17 +35,17 @@ const Bio: FunctionalComponent = () => {
   const info = infoMarkup(additionalInfo);
 
   return (
-    <>
-      <P>
+    <Container>
+      <p>
         I’m a <span>{taglines[0]}</span> studying computer science at the
         University of Waterloo. It’s currently {currentTime} for me
         {info}
-      </P>
-      <P>
+      </p>
+      <p>
         Wanna chat about <span>{talkingPoint}</span>? Lets talk. You can reach
         me at <a href="mailto:hi@alexxie.com">hi@alexxie.com</a>.
-      </P>
-    </>
+      </p>
+    </Container>
   );
 };
 

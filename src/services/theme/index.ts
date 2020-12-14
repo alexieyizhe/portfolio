@@ -20,5 +20,3 @@ glob`
     box-sizing: inherit;
   }
 `;
-
-export const theme = {};
