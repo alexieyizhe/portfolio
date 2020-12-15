@@ -1,7 +1,8 @@
 import { h, FunctionalComponent } from 'preact';
 import { styled } from 'goober';
 
-import { useCopyContext, TCopyContextValue } from 'services/copy';
+import { useCopyContext } from 'services/copy';
+import { useNowPlayingContext } from 'services/now-playing';
 import { Text } from 'components/core';
 
 const Container = styled('div')`
@@ -20,9 +21,10 @@ const CoverArt = styled('a')`
   & > img {
     border-radius: 3px;
     width: 18px;
+    transition: transform 100ms;
 
     &:hover {
-      transform: scale(2);
+      transform: scale(1.1);
     }
   }
 `;
@@ -33,40 +35,25 @@ const timeHourMarkup = (hour: number) => {
   return `${interpretedHour}${timeOfDay}`;
 };
 
-const infoMarkup = (info: TCopyContextValue['additionalInfo']) => {
-  switch (info.type) {
-    case 'activity':
-      return `; if you can’t reach me right now, there’s a good chance I’m ${info.content}`;
-    case 'now-playing': {
-      return info.artist ? (
-        <>
-          {' '}
-          and I'm jammin' out to {info.name} by {info.artist}{' '}
-          <CoverArt src={info.coverArtSrc} />
-        </>
-      ) : (
-        <>
-          {' '}
-          and I'm listening to {info.name}{' '}
-          <CoverArt href={info.link}>
-            <img src={info.coverArtSrc} />
-          </CoverArt>
-        </>
-      );
-    }
-  }
+const infoMarkup = ({ name, artist, link, coverArtSrc }: any) => {
+  return (
+    // todo: this is so ugly
+    <>
+      {' '}
+      and I'm jammin' out to {name} {artist ? ` by ${artist}` : ''}{' '}
+      <CoverArt href={link} target="_blank" rel="noopener noreferrer">
+        <img src={coverArtSrc} />
+      </CoverArt>
+    </>
+  );
 };
 
 const Bio: FunctionalComponent = () => {
-  const {
-    taglines,
-    currentDate,
-    additionalInfo,
-    talkingPoint,
-  } = useCopyContext();
+  const { taglines, currentDate, talkingPoint } = useCopyContext();
+  const nowPlayingData = useNowPlayingContext();
 
   const currentTime = timeHourMarkup(currentDate.getHours());
-  const info = infoMarkup(additionalInfo);
+  const info = infoMarkup(nowPlayingData);
 
   return (
     <Container>
