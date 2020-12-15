@@ -1,5 +1,6 @@
 import { h, FunctionalComponent } from 'preact';
 import { styled } from 'goober';
+import TextLoop from 'react-text-loop';
 
 import { useCopyContext } from 'services/copy';
 import { useNowPlayingContext } from 'services/now-playing';
@@ -58,8 +59,15 @@ const Bio: FunctionalComponent = () => {
   return (
     <Container>
       <Text>
-        I’m a <span className="dynamic">{taglines[0]}</span> studying computer
-        science at the University of Waterloo.
+        I’m a{' '}
+        <span className="dynamic">
+          <TextLoop>
+            {taglines.map((tl) => (
+              <span>{tl}</span>
+            ))}
+          </TextLoop>
+        </span>{' '}
+        studying computer science at the University of Waterloo.
       </Text>
       <Text>
         It’s currently <span className="dynamic">{currentTime}</span> for me
