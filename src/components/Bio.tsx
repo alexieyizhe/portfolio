@@ -2,16 +2,21 @@ import { h, FunctionalComponent } from 'preact';
 import { styled } from 'goober';
 
 import { useCopyContext, TCopyContextValue } from 'services/copy';
+import { Text } from 'components/core';
 
 const Container = styled('div')`
   margin-top: 1em;
 
-  font-size: 18px;
-  color: green;
-
   & span.dynamic {
     font-weight: bold;
   }
+`;
+
+const CoverArtImage = styled('img')`
+  position: relative;
+  top: 3px;
+  width: 18px;
+  border-radius: 3px;
 `;
 
 const timeHourMarkup = (hour: number) => {
@@ -24,8 +29,18 @@ const infoMarkup = (info: TCopyContextValue['additionalInfo']) => {
   switch (info.type) {
     case 'activity':
       return `; if you can’t reach me right now, there’s a good chance I’m ${info.content}`;
-    case 'now-playing':
-      return ` and I'm jammin' out to ${info.name} by ${info.by}`;
+    case 'now-playing': {
+      if (info.artist) {
+        return (
+          <>
+            {' '}
+            and I'm jammin' out to {info.name} by {info.artist}{' '}
+            <CoverArtImage src={info.coverArtSrc} />
+          </>
+        );
+      }
+      return ` and I'm listening to ${info.name}.`;
+    }
   }
 };
 
@@ -42,19 +57,19 @@ const Bio: FunctionalComponent = () => {
 
   return (
     <Container>
-      <p>
+      <Text>
         I’m a <span className="dynamic">{taglines[0]}</span> studying computer
         science at the University of Waterloo.
-      </p>
-      <p>
+      </Text>
+      <Text>
         It’s currently <span className="dynamic">{currentTime}</span> for me
         {info}
-      </p>
-      <p>
+      </Text>
+      <Text>
         Wanna chat about <span className="dynamic">{talkingPoint}</span>? Lets
         talk. You can reach me at{' '}
         <a href="mailto:hi@alexxie.com">hi@alexxie.com</a>.
-      </p>
+      </Text>
     </Container>
   );
 };

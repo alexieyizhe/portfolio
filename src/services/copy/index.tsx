@@ -10,8 +10,10 @@ import {
 } from './config';
 
 type TNowPlayingData = {
-  name: string;
-  by: string; // artist or author or show or whatnot
+  name: string; // name of song or name of podcast
+  artist?: string; // name of artist or undefined if podcast
+  coverArtSrc: string;
+  link: string;
 };
 
 type TNowPlayingInfo = {
@@ -43,26 +45,49 @@ const getNowPlaying = async (): Promise<TNowPlayingData | null | undefined> => {
         },
       }
     );
-    console.log(res);
 
     const isPlaying = res.status === 200; // API returns 204 if nothing is playing
 
     if (!isPlaying) return null;
 
-    console.log(await res.json());
+    const data = await res.json();
+    console.log(data);
 
-    const {
-      item: {
-        name,
-        artists: [{ name: artistName }],
-      },
-    } = await res.json();
+    switch (data.currently_playing_type as 'track' | 'episode') {
+      case 'track': {
+        const {
+          item: {
+            name,
+            album: { images },
+            external_urls: { spotify },
+            artists: [{ name: artistName }],
+          },
+        } = data;
+        return {
+          name,
+          artist: artistName,
+          link: spotify,
+          coverArtSrc: images.find((i: any) => i.width === 64)?.url,
+        };
+      }
+      case 'episode': {
+        const {
+          item: {
+            images,
+            external_urls: { spotify },
+            show: { name },
+          },
+        } = data;
 
-    return {
-      name,
-      by: artistName,
-    };
-  } catch {
+        return {
+          name,
+          link: spotify,
+          coverArtSrc: images.find((i: any) => i.width === 64)?.url,
+        };
+      }
+    }
+  } catch (e) {
+    console.error(e);
     return undefined;
   }
 };
@@ -99,9 +124,8 @@ const CopyContextProvider: FunctionalComponent = ({ children }) => {
       : { type: 'now-playing' as const, ...nowPlayingData };
 
   useEffect(() => {
-    (async function fetchNowPlaying() {
-      const nowPlaying = await getNowPlaying();
-      setNowPlayingData(nowPlaying);
+    (async () => {
+      setNowPlayingData(await getNowPlaying());
     })();
   }, []);
 
