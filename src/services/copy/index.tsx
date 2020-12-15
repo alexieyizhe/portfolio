@@ -12,7 +12,7 @@ type TCopyContextValue = {
   talkingPoint: string; // wanna chat about ...
 };
 
-const CopyContext = createContext<TCopyContextValue>({} as any);
+const CopyContext = createContext<TCopyContextValue>({} as any); // eslint-disable-line
 
 const useCopyContext = () => useContext(CopyContext);
 
