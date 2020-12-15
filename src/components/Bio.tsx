@@ -12,11 +12,19 @@ const Container = styled('div')`
   }
 `;
 
-const CoverArtImage = styled('img')`
+const CoverArt = styled('a')`
   position: relative;
   top: 3px;
   width: 18px;
-  border-radius: 3px;
+
+  & > img {
+    border-radius: 3px;
+    width: 18px;
+
+    &:hover {
+      transform: scale(2);
+    }
+  }
 `;
 
 const timeHourMarkup = (hour: number) => {
@@ -30,16 +38,21 @@ const infoMarkup = (info: TCopyContextValue['additionalInfo']) => {
     case 'activity':
       return `; if you can’t reach me right now, there’s a good chance I’m ${info.content}`;
     case 'now-playing': {
-      if (info.artist) {
-        return (
-          <>
-            {' '}
-            and I'm jammin' out to {info.name} by {info.artist}{' '}
-            <CoverArtImage src={info.coverArtSrc} />
-          </>
-        );
-      }
-      return ` and I'm listening to ${info.name}.`;
+      return info.artist ? (
+        <>
+          {' '}
+          and I'm jammin' out to {info.name} by {info.artist}{' '}
+          <CoverArt src={info.coverArtSrc} />
+        </>
+      ) : (
+        <>
+          {' '}
+          and I'm listening to {info.name}{' '}
+          <CoverArt href={info.link}>
+            <img src={info.coverArtSrc} />
+          </CoverArt>
+        </>
+      );
     }
   }
 };
