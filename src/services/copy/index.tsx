@@ -51,7 +51,6 @@ const getNowPlaying = async (): Promise<TNowPlayingData | null | undefined> => {
     if (!isPlaying) return null;
 
     const data = await res.json();
-    console.log(data);
 
     switch (data.currently_playing_type as 'track' | 'episode') {
       case 'track': {
@@ -87,7 +86,6 @@ const getNowPlaying = async (): Promise<TNowPlayingData | null | undefined> => {
       }
     }
   } catch (e) {
-    console.error(e);
     return undefined;
   }
 };
@@ -107,41 +105,6 @@ const CopyContext = createContext<TCopyContextValue>({
 
 const useCopyContext = () => useContext(CopyContext);
 
-// todo: actually do stuff here
-const CopyContextProvider: FunctionalComponent = ({ children }) => {
-  const [nowPlayingData, setNowPlayingData] = useState<
-    TNowPlayingData | undefined | null
-  >(undefined);
 
-  const greeting = getRandomItem(GREETINGS);
-  const talkingPoint = getRandomItem(TALKING_POINTS);
-
-  const additionalInfo =
-    nowPlayingData === undefined
-      ? { type: 'activity' as const, content: ACTIVITIES[0] }
-      : nowPlayingData === null
-      ? { type: 'activity' as const, content: ACTIVITIES[0] }
-      : { type: 'now-playing' as const, ...nowPlayingData };
-
-  useEffect(() => {
-    (async () => {
-      setNowPlayingData(await getNowPlaying());
-    })();
-  }, []);
-
-  return (
-    <CopyContext.Provider
-      value={{
-        greeting,
-        taglines: TAGLINES,
-        currentDate: currentEDTDate,
-        additionalInfo,
-        talkingPoint,
-      }}
-      children={children}
-    />
-  );
-};
-
-export { CopyContextProvider, useCopyContext };
+export { useCopyContext };
 export default CopyContext;
