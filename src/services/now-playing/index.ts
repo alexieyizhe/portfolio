@@ -1,13 +1,11 @@
-import { createContext, useContext } from 'react';
+import { StorageKey } from 'services/storage';
 
-const NowPlayingContext = createContext({
-  name: 'Test', // name of song or name of podcast
-  artist: 'Test', // name of artist or undefined if podcast
-  coverArtSrc: 'Test',
-  link: 'Test',
-});
-
-const useNowPlayingContext = () => useContext(NowPlayingContext);
+export type TNowPlayingData = {
+  name: string; // name of song or name of podcast
+  artist?: string; // name of artist or undefined if podcast
+  coverArtSrc: string;
+  link: string;
+};
 
 const requestNewToken = async () => {
   try {
@@ -98,8 +96,29 @@ const fetchNowPlaying = async (accessToken) => {
     console.error(e);
   }
 
-  return undefined;
+  return null;
 };
 
-export { fetchNowPlaying, useNowPlayingContext, requestNewToken };
-export default NowPlayingContext;
+const getNowPlayingData = async (client): Promise<TNowPlayingData> => {
+  const accessTokenExpiry = await client.get(StorageKey.ACCESS_TOKEN_EXPIRY);
+  console.log(new Date(Number(accessTokenExpiry)).toLocaleString());
+
+  if (Number(accessTokenExpiry) < Date.now()) {
+    console.log('access token expired, requesting new');
+    const { access_token } = await requestNewToken();
+    await client.set(StorageKey.ACCESS_TOKEN, access_token);
+    await client.set(StorageKey.ACCESS_TOKEN_EXPIRY, Date.now() + 3600 * 1000); // spotify tokens expire in an hour
+    console.log(
+      `set access token ${access_token} expiry to ${new Date(
+        Date.now() + 3600 * 1000
+      ).toLocaleDateString()}`
+    );
+  }
+
+  const accessToken = await client.get(StorageKey.ACCESS_TOKEN);
+  const nowPlayingData = await fetchNowPlaying(accessToken);
+
+  return nowPlayingData;
+};
+
+export { getNowPlayingData };

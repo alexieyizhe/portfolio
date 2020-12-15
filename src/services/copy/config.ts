@@ -31,9 +31,9 @@ export const TALKING_POINTS = ['how comic sans is the best font'];
  * Links
  */
 export const LINKS = [
-  { label: 'resume', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
-  { label: 'past work', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
+  { label: 'resume', href: '/resume.pdf' },
+  // { label: 'past work', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
   { label: 'github', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
   { label: 'blog', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
-  { label: 'my kit', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
+  // { label: 'my kit', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
 ];

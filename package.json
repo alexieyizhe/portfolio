@@ -18,7 +18,8 @@
     "eslint-config-preact": "^1.1.3",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3"
   },
   "dependencies": {
     "goober": "^2.0.19-next.1",
