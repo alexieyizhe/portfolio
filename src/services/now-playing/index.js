@@ -9,7 +9,7 @@ const NowPlayingContext = createContext({
 
 const useNowPlayingContext = () => useContext(NowPlayingContext);
 
-export const requestNewToken = async () => {
+const requestNewToken = async () => {
   try {
     const ENCODED_CLIENT_INFO = Buffer.from(
       `${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`
@@ -36,29 +36,29 @@ export const requestNewToken = async () => {
     const data = await res.json();
 
     if (res.status === 200 && res.ok) {
-      console.log(data);
-    } else {
-      throw new Error(`Request error ${res.status}: ${data}`);
+      return data;
     }
+    throw new Error(`Request error ${res.status}: ${data}`);
   } catch (e) {
     console.error(`Encountered error attempting to refresh access token: ${e}`);
   }
 };
 
-const fetchNowPlaying = async () => {
+const fetchNowPlaying = async (accessToken) => {
   try {
     const res = await fetch(
       'https://api.spotify.com/v1/me/player/currently-playing?additional_types=track,episode',
       {
         method: 'GET',
         headers: {
-          Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+          Authorization: `Bearer ${accessToken}`,
         },
       }
     );
     const data = await res.json();
 
-    if (!res.ok) throw new Error(`Request error ${res.status}: ${data}`);
+    if (!res.ok)
+      throw new Error(`Request error ${res.status}: ${JSON.stringify(data)}`);
     if (res.status === 204) return null; // API returns 204 if nothing is playing
 
     switch (data.currently_playing_type) {
@@ -98,8 +98,8 @@ const fetchNowPlaying = async () => {
     console.error(e);
   }
 
-  return;
+  return undefined;
 };
 
-export { fetchNowPlaying, useNowPlayingContext };
+export { fetchNowPlaying, useNowPlayingContext, requestNewToken };
 export default NowPlayingContext;
