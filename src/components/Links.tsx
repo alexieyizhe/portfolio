@@ -20,7 +20,9 @@ const Links: FunctionalComponent = () => {
   return (
     <Container>
       {LINKS.map(({ label, href }) => (
-        <a href={href}>{label}</a>
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {label}
+        </a>
       ))}
     </Container>
   );

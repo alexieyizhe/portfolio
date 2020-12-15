@@ -1,4 +1,14 @@
 {
-  "extends": ["eslint:recommended", "preact", "plugin:prettier/recommended"],
-  "plugins": ["prettier"]
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "preact",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["prettier", "@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": "off"
+  }
 }

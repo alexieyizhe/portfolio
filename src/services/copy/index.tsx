@@ -1,49 +1,18 @@
-import { h, createContext, FunctionalComponent } from 'preact';
-import { useContext, useEffect, useState } from 'preact/hooks';
-import { getDateInZone, getRandomItem } from 'services/utils';
-import {
-  ACTIVITIES,
-  DEFAULT_GREETING,
-  TAGLINES,
-  TALKING_POINTS,
-} from './config';
+import { createContext } from 'preact';
+import { useContext } from 'preact/hooks';
 
-type TNowPlayingData = {
-  name: string; // name of song or name of podcast
-  artist?: string; // name of artist or undefined if podcast
-  coverArtSrc: string;
-  link: string;
-};
+import type { TNowPlayingData } from 'services/now-playing';
 
-type TNowPlayingInfo = {
-  type: 'now-playing';
-} & TNowPlayingData;
-
-type TActivityInfo = {
-  type: 'activity';
-  content: string;
-};
-
-export type TCopyContextValue = {
+type TCopyContextValue = {
   greeting: string;
   taglines: string[];
   currentDate: Date;
-  additionalInfo: TNowPlayingInfo | TActivityInfo;
+  nowPlaying?: TNowPlayingData;
+  activity: string;
   talkingPoint: string; // wanna chat about ...
 };
 
-const currentEDTDate = getDateInZone('America/Toronto');
-
-const CopyContext = createContext<TCopyContextValue>({
-  greeting: DEFAULT_GREETING,
-  taglines: TAGLINES,
-  currentDate: currentEDTDate,
-  additionalInfo: {
-    type: 'activity',
-    content: ACTIVITIES[0],
-  },
-  talkingPoint: TALKING_POINTS[0],
-});
+const CopyContext = createContext<TCopyContextValue>({} as any); // eslint-disable-line
 
 const useCopyContext = () => useContext(CopyContext);
 
