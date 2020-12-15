@@ -6,6 +6,7 @@ import Bio from 'components/Bio';
 import Links from 'components/Links';
 import NowPlayingContext, { fetchNowPlaying } from 'services/now-playing';
 import 'services/theme';
+import { requestNewToken } from '../services/now-playing';
 
 const AppContainer = styled('div')`
   position: relative;
@@ -49,6 +50,8 @@ const IndexPage = ({ nowPlayingData }) => {
 
 export async function getStaticProps() {
   const nowPlayingData = await fetchNowPlaying();
+
+  await requestNewToken();
 
   return {
     props: {
