@@ -48,7 +48,7 @@ const IndexPage = ({ nowPlayingData }) => {
 };
 
 export async function getStaticProps() {
-  const Redis = require('ioredis');
+  const Redis = require('ioredis'); // TODO: maybe move this to its own service?
   let client = new Redis(
     'redis://:e22f6050ce1449d7962e9f7edd053940@us1-apparent-grouper-31548.lambda.store:31548',
     {
@@ -72,6 +72,8 @@ export async function getStaticProps() {
 
   const accessToken = await client.get('access-token');
   const nowPlayingData = await fetchNowPlaying(accessToken);
+
+  client.disconnect();
 
   // todo: clean this up
   return {

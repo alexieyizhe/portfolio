@@ -1,7 +1,7 @@
 import { h, FunctionalComponent } from 'preact';
 import { styled } from 'goober';
 
-import { useCopyContext, TCopyContextValue } from 'services/copy';
+import { useCopyContext } from 'services/copy';
 import { useNowPlayingContext } from 'services/now-playing';
 import { Text } from 'components/core';
 
@@ -37,6 +37,7 @@ const timeHourMarkup = (hour: number) => {
 
 const infoMarkup = ({ name, artist, link, coverArtSrc }: any) => {
   return (
+    // todo: this is so ugly
     <>
       {' '}
       and I'm jammin' out to {name} {artist ? ` by ${artist}` : ''}{' '}
