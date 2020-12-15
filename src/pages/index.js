@@ -1,10 +1,8 @@
-import { h, FunctionalComponent } from 'preact';
 import { styled } from 'goober';
+import Image from 'next/image';
 
-import { MainImg } from 'assets';
 import { CopyContextProvider } from 'services/copy';
 import 'services/theme';
-import { Image } from 'components/core';
 import Heading from 'components/Heading';
 import Bio from 'components/Bio';
 import Links from 'components/Links';
@@ -33,12 +31,12 @@ const ContentContainer = styled('main')`
   justify-content: center;
 `;
 
-const App: FunctionalComponent = () => (
+const App = () => (
   <CopyContextProvider>
     <AppContainer>
       <ContentContainer>
         <Heading />
-        <Image src={MainImg} />
+        <Image src="/me.png" width={500} height={288} priority />
         <Bio />
         <Links />
       </ContentContainer>
