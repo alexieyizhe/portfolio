@@ -4,6 +4,7 @@ export enum StorageKey {
   ACCESS_TOKEN = 'access-token',
   ACCESS_TOKEN_EXPIRY = 'access-token-expiry',
   CURRENT_IANA_TIMEZONE = 'current-iana-tz',
+  STATUS = 'custom-status',
 }
 
 export const createStorageClient = () =>

@@ -53,11 +53,11 @@ const fetchNowPlaying = async (accessToken) => {
         },
       }
     );
-    const data = await res.json();
+    if (res.status === 204) return null; // API returns 204 if nothing is playing
 
+    const data = await res.json();
     if (!res.ok)
       throw new Error(`Request error ${res.status}: ${JSON.stringify(data)}`);
-    if (res.status === 204) return null; // API returns 204 if nothing is playing
 
     switch (data.currently_playing_type) {
       case 'track': {
@@ -101,17 +101,21 @@ const fetchNowPlaying = async (accessToken) => {
 
 const getNowPlayingData = async (client): Promise<TNowPlayingData> => {
   const accessTokenExpiry = await client.get(StorageKey.ACCESS_TOKEN_EXPIRY);
-  console.log(new Date(Number(accessTokenExpiry)).toLocaleString());
+  console.debug(
+    `Existing token expires at ${new Date(
+      Number(accessTokenExpiry)
+    ).toLocaleString()}`
+  );
 
   if (Number(accessTokenExpiry) < Date.now()) {
-    console.log('access token expired, requesting new');
+    console.debug('Access token expired, requesting new');
     const { access_token } = await requestNewToken();
     await client.set(StorageKey.ACCESS_TOKEN, access_token);
     await client.set(StorageKey.ACCESS_TOKEN_EXPIRY, Date.now() + 3600 * 1000); // spotify tokens expire in an hour
-    console.log(
-      `set access token ${access_token} expiry to ${new Date(
+    console.debug(
+      `Setting new token ${access_token} expiry to ${new Date(
         Date.now() + 3600 * 1000
-      ).toLocaleDateString()}`
+      ).toLocaleString()}`
     );
   }
 

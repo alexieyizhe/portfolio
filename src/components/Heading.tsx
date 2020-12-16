@@ -4,7 +4,7 @@ import { styled } from 'goober';
 import { useCopyContext } from 'services/copy';
 
 const H1 = styled('h1')`
-  color: lightblue;
+  font-family: 'Verona Serial', 'Franklin Gothic Medium', Arial, sans-serif;
   font-size: 48px;
   text-align: center;
   margin-bottom: 16px;

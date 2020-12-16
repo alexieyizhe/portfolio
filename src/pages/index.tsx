@@ -1,5 +1,6 @@
 import { styled } from 'goober';
 import Image from 'next/image';
+import Head from 'next/head';
 
 import Heading from 'components/Heading';
 import Bio from 'components/Bio';
@@ -40,40 +41,65 @@ const ContentContainer = styled('main')`
   justify-content: center;
 `;
 
-const IndexPage = ({ nowPlayingData, currentTimeZone }) => {
+const IndexPage = ({ nowPlayingData, currentTimeZone, customStatus }) => {
   return (
-    <CopyContext.Provider
-      value={{
-        greeting: getRandomItem(GREETINGS),
-        taglines: TAGLINES,
-        currentDate: getDateInZone(currentTimeZone),
-        nowPlaying: nowPlayingData,
-        activity: getRandomItem(ACTIVITIES),
-        talkingPoint: getRandomItem(TALKING_POINTS),
-      }}
-    >
-      <AppContainer>
-        <ContentContainer>
-          <Heading />
-          <Image src="/me.png" width={500} height={288} priority />
-          <Bio />
-          <Links />
-        </ContentContainer>
-      </AppContainer>
-    </CopyContext.Provider>
+    <>
+      <Head>
+        <title>Alex Xie</title>
+        <meta
+          property="og:title"
+          content="Alex Xie's personal website"
+          key="title"
+        />
+        <meta
+          name="description"
+          content="Alex Xie is a web developer and a senior at the University of Waterloo, majoring in computer science."
+        />
+        <meta
+          property="og:description"
+          content="Alex Xie is a web developer and a senior at the University of Waterloo, majoring in computer science."
+        />
+        <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+
+        <meta property="og:type" content="website" />
+      </Head>
+
+      <CopyContext.Provider
+        value={{
+          greeting: getRandomItem(GREETINGS),
+          taglines: TAGLINES,
+          currentDate: getDateInZone(currentTimeZone),
+          nowPlaying: nowPlayingData,
+          activity: customStatus ?? getRandomItem(ACTIVITIES),
+          talkingPoint: getRandomItem(TALKING_POINTS),
+        }}
+      >
+        <AppContainer>
+          <ContentContainer>
+            <Heading />
+            <Image src="/me-2.png" width={300} height={250} priority />
+            <Bio />
+            <Links />
+          </ContentContainer>
+        </AppContainer>
+      </CopyContext.Provider>
+    </>
   );
 };
 
 export async function getStaticProps() {
   const client = createStorageClient();
+  console.debug('Retreving now playing data and timezone...');
   const nowPlayingData = await getNowPlayingData(client);
   const currentTimeZone = await client.get(StorageKey.CURRENT_IANA_TIMEZONE);
+  const customStatus = await client.get(StorageKey.STATUS);
   client.disconnect();
 
   return {
     props: {
       nowPlayingData,
       currentTimeZone,
+      customStatus,
     },
     revalidate: 60, // regenerate page at most every minute
   };

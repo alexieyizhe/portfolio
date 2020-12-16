@@ -2,6 +2,7 @@ import { h, FunctionalComponent } from 'preact';
 import { styled } from 'goober';
 
 import { LINKS } from 'services/copy/config';
+import { Link, Text } from 'components/core';
 
 const Container = styled('footer')`
   display: flex;
@@ -20,9 +21,9 @@ const Links: FunctionalComponent = () => {
   return (
     <Container>
       {LINKS.map(({ label, href }) => (
-        <a href={href} target="_blank" rel="noopener noreferrer">
-          {label}
-        </a>
+        <Link href={href} target="_blank" rel="noopener noreferrer">
+          <Text>{label}</Text>
+        </Link>
       ))}
     </Container>
   );
