@@ -35,7 +35,8 @@ const getBestTextColor = (colors: number[][]) => {
     }
   }
 
-  return `hsl(${bestH}, ${bestS}%, ${bestL > 60 ? bestL * 0.6 : bestL}%)`;
+  // upper bound lightness value at 40 to make it readable
+  return `hsl(${bestH}, ${bestS}%, ${Math.min(bestL, 40)}%)`;
 };
 
 const activityMarkup = (activity: string) => `probably ${activity}`;

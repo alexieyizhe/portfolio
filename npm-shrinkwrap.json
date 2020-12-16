@@ -5,11 +5,12 @@
   "requires": true,
   "packages": {
     "": {
-      "version": "0.0.0",
+      "version": "2020.12.2",
       "license": "MIT",
       "dependencies": {
         "color.js": "^1.1.0",
         "goober": "^2.0.19-next.1",
+        "goober-autoprefixer": "^1.2.1",
         "ioredis": "^4.19.4",
         "next": "10.0.0",
         "next-plugin-preact": "^3.0.3",
@@ -5138,6 +5139,14 @@
         "csstype": "^2.6.2"
       }
     },
+    "node_modules/goober-autoprefixer": {
+      "version": "1.2.1",
+      "resolved": "https://registry.npmjs.org/goober-autoprefixer/-/goober-autoprefixer-1.2.1.tgz",
+      "integrity": "sha512-KmDblp2q2AkrT1o1p1tQOGqMEMJPZDX6O/ECj+IrsVaAKyGmxMttWp82ila+EuLMGPk8AuMBjt51GXp4zSwNrg==",
+      "dependencies": {
+        "tiny-css-prefixer": "^1.1.4"
+      }
+    },
     "node_modules/graceful-fs": {
       "version": "4.2.4",
       "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.4.tgz",
@@ -9253,6 +9262,11 @@
       "engines": {
         "node": ">=0.6.0"
       }
+    },
+    "node_modules/tiny-css-prefixer": {
+      "version": "1.1.4",
+      "resolved": "https://registry.npmjs.org/tiny-css-prefixer/-/tiny-css-prefixer-1.1.4.tgz",
+      "integrity": "sha512-QLnDGLUmMkNlSuWogBaSu92uQnvWhcQwUc+MG8L4YgBkjSmBkAz29pTq+8Rh3YWR1TwPrjuZDKWzO7v4PXkipQ=="
     },
     "node_modules/to-arraybuffer": {
       "version": "1.0.1",
@@ -14629,6 +14643,14 @@
       "integrity": "sha512-1HlFxG2rYS6cag21p7stYv5f+sa0CQm8TCegcMIffBKDmfN30tLpCN0op4pDh2Xo34pwLe7PFYF6ZZRqovRX5A==",
       "requires": {}
     },
+    "goober-autoprefixer": {
+      "version": "1.2.1",
+      "resolved": "https://registry.npmjs.org/goober-autoprefixer/-/goober-autoprefixer-1.2.1.tgz",
+      "integrity": "sha512-KmDblp2q2AkrT1o1p1tQOGqMEMJPZDX6O/ECj+IrsVaAKyGmxMttWp82ila+EuLMGPk8AuMBjt51GXp4zSwNrg==",
+      "requires": {
+        "tiny-css-prefixer": "^1.1.4"
+      }
+    },
     "graceful-fs": {
       "version": "4.2.4",
       "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.4.tgz",
@@ -18007,6 +18029,11 @@
       "requires": {
         "setimmediate": "^1.0.4"
       }
+    },
+    "tiny-css-prefixer": {
+      "version": "1.1.4",
+      "resolved": "https://registry.npmjs.org/tiny-css-prefixer/-/tiny-css-prefixer-1.1.4.tgz",
+      "integrity": "sha512-QLnDGLUmMkNlSuWogBaSu92uQnvWhcQwUc+MG8L4YgBkjSmBkAz29pTq+8Rh3YWR1TwPrjuZDKWzO7v4PXkipQ=="
     },
     "to-arraybuffer": {
       "version": "1.0.1",
