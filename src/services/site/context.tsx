@@ -1,6 +1,6 @@
-import { createContext, FunctionalComponent } from 'preact';
+import { Dispatch, SetStateAction, useState, FC } from 'react';
+import { createContext } from 'preact';
 import { useContext } from 'preact/hooks';
-import { Dispatch, SetStateAction, useState } from 'react';
 
 import type { TNowPlayingData } from 'services/now-playing';
 import { getDateInZone, getRandomItem } from 'services/utils';
@@ -36,7 +36,7 @@ const greeting = getRandomItem(GREETINGS);
 const activity = getRandomItem(ACTIVITIES);
 const talkingPoint = getRandomItem(TALKING_POINTS);
 
-const SiteContextProvider: FunctionalComponent<SiteContextProviderProps> = ({
+const SiteContextProvider: FC<SiteContextProviderProps> = ({
   nowPlayingData,
   currentTimeZone,
   children,

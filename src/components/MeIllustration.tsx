@@ -55,12 +55,20 @@ const GRIN_HAPPY = (
 
 const MeIllustration: FC = memo(() => {
   const { isHoveringLink } = useSiteContext();
+  const [, setNumClicks] = useState(0);
   const [isHovering, setHovering] = useState(false);
   const expression = isHoveringLink
     ? SURPRISED
     : isHovering
     ? WEIRD
     : GRIN_HAPPY;
+
+  const onIllustrationClick = () =>
+    setNumClicks((prev) => {
+      if (prev + 1 === 3)
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+      return prev + 1;
+    });
 
   return (
     <svg
@@ -69,6 +77,7 @@ const MeIllustration: FC = memo(() => {
       viewBox="233.511 78 682.97 695.5"
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
+      onClick={onIllustrationClick}
       style={{ transition: 'transform 200ms' }}
       transform={`scale(${isHovering ? 1.02 : 1})`}
     >

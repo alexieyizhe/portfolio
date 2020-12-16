@@ -1,6 +1,5 @@
 import { memo, FC, useEffect, useState } from 'react';
 import { styled } from 'goober';
-
 import { prominent } from 'color.js';
 
 import { Link } from 'components/core';

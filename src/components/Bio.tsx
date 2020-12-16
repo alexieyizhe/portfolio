@@ -1,4 +1,4 @@
-import { FunctionalComponent } from 'preact';
+import { FC } from 'react';
 import { styled } from 'goober';
 
 import { useSiteContext } from 'services/site/context';
@@ -15,7 +15,7 @@ const Container = styled('div')`
   }
 `;
 
-const Bio: FunctionalComponent = () => {
+const Bio: FC = () => {
   const { talkingPoint } = useSiteContext();
 
   return (

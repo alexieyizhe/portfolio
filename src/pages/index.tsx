@@ -1,4 +1,5 @@
 import { styled } from 'goober';
+import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
@@ -36,7 +37,7 @@ const ContentContainer = styled('main')`
   justify-content: center;
 `;
 
-const IndexPage = (props) => {
+const IndexPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
