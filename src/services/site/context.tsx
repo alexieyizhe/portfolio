@@ -1,6 +1,11 @@
-import { Dispatch, SetStateAction, useState, FC } from 'react';
-import { createContext } from 'preact';
-import { useContext } from 'preact/hooks';
+import {
+  Dispatch,
+  SetStateAction,
+  useState,
+  createContext,
+  useContext,
+  FC,
+} from 'react';
 
 import type { TNowPlayingData } from 'services/now-playing';
 import { getDateInZone, getRandomItem } from 'services/utils';

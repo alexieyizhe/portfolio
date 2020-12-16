@@ -9541,10 +9541,27 @@
         "node": ">=6"
       }
     },
+<<<<<<< Updated upstream:package-lock.json
     "node_modules/querystring": {
       "version": "0.2.0",
       "resolved": "https://registry.npmjs.org/querystring/-/querystring-0.2.0.tgz",
       "integrity": "sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=",
+=======
+    "node_modules/tiny-css-prefixer": {
+      "version": "1.1.4",
+      "resolved": "https://registry.npmjs.org/tiny-css-prefixer/-/tiny-css-prefixer-1.1.4.tgz",
+      "integrity": "sha512-QLnDGLUmMkNlSuWogBaSu92uQnvWhcQwUc+MG8L4YgBkjSmBkAz29pTq+8Rh3YWR1TwPrjuZDKWzO7v4PXkipQ=="
+    },
+    "node_modules/to-arraybuffer": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/to-arraybuffer/-/to-arraybuffer-1.0.1.tgz",
+      "integrity": "sha1-fSKbH8xjfkZsoIEYCDanqr/4P0M="
+    },
+    "node_modules/to-fast-properties": {
+      "version": "2.0.0",
+      "resolved": "https://registry.npmjs.org/to-fast-properties/-/to-fast-properties-2.0.0.tgz",
+      "integrity": "sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=",
+>>>>>>> Stashed changes:npm-shrinkwrap.json
       "engines": {
         "node": ">=0.4.x"
       }
@@ -14273,6 +14290,7 @@
       "integrity": "sha512-+dt5w1+Lqyd7wIPMa4XhJxUuE8+YF+vxQ6zxHyhLGHJjHiunPf0wSV8LtQwkpmAsRi1lEOoOIR30FG5S2HS33g==",
       "dev": true
     },
+<<<<<<< Updated upstream:package-lock.json
     "@typescript-eslint/typescript-estree": {
       "version": "4.10.0",
       "resolved": "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-4.10.0.tgz",
@@ -14288,6 +14306,20 @@
         "semver": "^7.3.2",
         "tsutils": "^3.17.1"
       }
+=======
+    "goober-autoprefixer": {
+      "version": "1.2.1",
+      "resolved": "https://registry.npmjs.org/goober-autoprefixer/-/goober-autoprefixer-1.2.1.tgz",
+      "integrity": "sha512-KmDblp2q2AkrT1o1p1tQOGqMEMJPZDX6O/ECj+IrsVaAKyGmxMttWp82ila+EuLMGPk8AuMBjt51GXp4zSwNrg==",
+      "requires": {
+        "tiny-css-prefixer": "^1.1.4"
+      }
+    },
+    "graceful-fs": {
+      "version": "4.2.4",
+      "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.4.tgz",
+      "integrity": "sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw=="
+>>>>>>> Stashed changes:npm-shrinkwrap.json
     },
     "@typescript-eslint/visitor-keys": {
       "version": "4.10.0",

@@ -2,6 +2,7 @@ import Document, {
   DocumentContext,
   Head,
   Main,
+  Html,
   NextScript,
 } from 'next/document';
 import { extractCss } from 'goober';
@@ -17,7 +18,7 @@ export default class CustomDocument extends Document<{ css: any }> {
 
   render() {
     return (
-      <html>
+      <Html>
         <Head>
           <style
             id={'_goober'}
@@ -29,7 +30,7 @@ export default class CustomDocument extends Document<{ css: any }> {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
