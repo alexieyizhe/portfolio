@@ -7,7 +7,8 @@ type LinkProps = React.ComponentPropsWithoutRef<'a'> & { bare?: boolean };
 
 const A = styled<LinkProps>('a')`
   font-size: 16px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, Roboto,
+    Ubuntu, 'Helvetica Neue', sans-serif;
   color: inherit;
 
   cursor: pointer;

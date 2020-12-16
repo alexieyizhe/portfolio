@@ -1,15 +1,30 @@
 import { h } from 'preact';
 import { setup, glob } from 'goober';
+import { prefix } from 'goober-autoprefixer';
 
-setup(h);
+setup(h, prefix);
 
 glob`
   @font-face {
     font-family: 'Space Grotesk';
     font-weight: 100 1000;
     font-display: swap;
-    src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf')  format('truetype supports variations'),
-    url('/fonts/SpaceGrotesk-VariableFont_wght.ttf')  format('truetype-variations'); 
+    src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype supports variations'),
+    url('/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype-variations'); 
+  }
+
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/SpaceGrotesk-Regular.ttf') format('truetype'); 
+  }
+
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-weight: 500;
+    font-display: swap;
+    src: url('/fonts/SpaceGrotesk-Medium.ttf') format('truetype'); 
   }
 
   @font-face {
