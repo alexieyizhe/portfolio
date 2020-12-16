@@ -1,23 +1,28 @@
 import { memo, FC, useEffect, useState } from 'react';
 import { styled } from 'goober';
+
+import { prominent } from 'color.js';
+
+import { Link } from 'components/core';
+import { rgbToHsl } from 'services/utils';
 import { useSiteContext } from 'services/site/context';
 import { TNowPlayingData } from 'services/now-playing';
-import { prominent } from 'color.js';
-import { rgbToHsl } from 'services/utils';
 
-const CoverArt = styled('a')`
+const NowPlayingInfo = styled<{ color: string }>('span')`
   position: relative;
-  top: 3px;
-  width: 18px;
+  transition: color 1s;
+  color: ${({ color }) => color};
 
   & > img {
+    position: relative;
+    top: 3px;
     border-radius: 3px;
     width: 20px;
-    transition: transform 100ms;
+    transition: transform 250ms;
+  }
 
-    &:hover {
-      transform: scale(1.1);
-    }
+  &:hover > img {
+    transform: scale(1.1);
   }
 `;
 
@@ -41,16 +46,17 @@ const nowPlayingMarkup = (
   color: string
 ) => {
   const isTrack = !!artist;
-  const action = isTrack ? "jammin' out" : 'listening to';
+  const action = isTrack ? "jammin' out to " : 'listening to ';
   const label = `${name}${isTrack ? ` by ${artist}` : ''}`;
 
   return (
     <>
-      {action} to{' '}
-      <span style={{ transition: 'color 1000ms', color }}>{label}</span>{' '}
-      <CoverArt href={link} target="_blank" rel="noopener noreferrer">
-        <img src={coverArtSrc} />
-      </CoverArt>
+      {action}
+      <Link href={link} target="_blank" rel="noopener noreferrer" bare>
+        <NowPlayingInfo color={color}>
+          {label} <img src={coverArtSrc} />
+        </NowPlayingInfo>
+      </Link>
     </>
   );
 };
