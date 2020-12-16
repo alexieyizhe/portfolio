@@ -1,7 +1,8 @@
-import { h, FunctionalComponent } from 'preact';
+import { FC, memo } from 'react';
 import { styled } from 'goober';
 
-import { LINKS } from 'services/copy/config';
+import { LINKS } from 'services/site/copy';
+import { Link, Text } from 'components/core';
 
 const Container = styled('footer')`
   display: flex;
@@ -16,16 +17,16 @@ const Container = styled('footer')`
   }
 `;
 
-const Links: FunctionalComponent = () => {
+const Links: FC = memo(() => {
   return (
     <Container>
       {LINKS.map(({ label, href }) => (
-        <a href={href} target="_blank" rel="noopener noreferrer">
-          {label}
-        </a>
+        <Link href={href} target="_blank" rel="noopener noreferrer">
+          <Text>{label}</Text>
+        </Link>
       ))}
     </Container>
   );
-};
+});
 
 export default Links;

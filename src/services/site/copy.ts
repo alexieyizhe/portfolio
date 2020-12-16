@@ -1,8 +1,15 @@
 /**
  * Greetings
  */
-export const GREETINGS = ['Hi, Alex here.', "Hey, how's it going?"];
-export const DEFAULT_GREETING = GREETINGS[0];
+export const GREETINGS = [
+  'Hi, Alex here.',
+  'Hey, Alex here.',
+  'How goes it? Alex here.',
+  'Howdy pardner! Alex here.',
+  "👋! I'm Alex.",
+  "你好! I'm Alex.",
+  'It me, Alex!',
+];
 
 /**
  * Taglines
@@ -12,7 +19,6 @@ export const TAGLINES = [
   'happy wallflower',
   'lover of bad puns',
   'struggling rock climber',
-  'cs student',
   'comic sans advocate',
   'soccer fanatic',
 ];
@@ -20,7 +26,13 @@ export const TAGLINES = [
 /**
  * Activities
  */
-export const ACTIVITIES = ['chilling with Hubert, my croton plant.'];
+export const ACTIVITIES = [
+  'being dragged around by Storm, my husky.',
+  'falling on my face at the climbing gym.',
+  'setting the kitchen on fire.',
+  'clickety clacking, furiously typing.',
+  "chillin' with my plants – Hubert, Dipsy, and Elise.",
+];
 
 /**
  * Talking points
@@ -33,7 +45,7 @@ export const TALKING_POINTS = ['how comic sans is the best font'];
 export const LINKS = [
   { label: 'resume', href: '/resume.pdf' },
   // { label: 'past work', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
-  { label: 'github', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
-  { label: 'blog', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
+  { label: 'github', href: 'https://github.com/alexieyizhe' },
+  { label: 'blog', href: 'https://medium.com/@alexieyizhe' },
   // { label: 'my kit', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
 ];

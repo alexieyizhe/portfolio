@@ -1,20 +1,16 @@
 import { styled } from 'goober';
-import Image from 'next/image';
+import Head from 'next/head';
+import dynamic from 'next/dynamic';
 
 import Heading from 'components/Heading';
 import Bio from 'components/Bio';
 import Links from 'components/Links';
-import CopyContext from 'services/copy';
+import { SiteContextProvider } from 'services/site/context';
 import 'services/theme';
-import { getDateInZone, getRandomItem } from 'services/utils';
-import {
-  ACTIVITIES,
-  GREETINGS,
-  TAGLINES,
-  TALKING_POINTS,
-} from 'services/copy/config';
 import { getNowPlayingData } from 'services/now-playing';
 import { createStorageClient, StorageKey } from 'services/storage';
+
+const MeIllustration = dynamic(() => import('components/MeIllustration'));
 
 const AppContainer = styled('div')`
   position: relative;
@@ -40,40 +36,51 @@ const ContentContainer = styled('main')`
   justify-content: center;
 `;
 
-const IndexPage = ({ nowPlayingData, currentTimeZone }) => {
+const IndexPage = (props) => {
   return (
-    <CopyContext.Provider
-      value={{
-        greeting: getRandomItem(GREETINGS),
-        taglines: TAGLINES,
-        currentDate: getDateInZone(currentTimeZone),
-        nowPlaying: nowPlayingData,
-        activity: getRandomItem(ACTIVITIES),
-        talkingPoint: getRandomItem(TALKING_POINTS),
-      }}
-    >
-      <AppContainer>
-        <ContentContainer>
-          <Heading />
-          <Image src="/me.png" width={500} height={288} priority />
-          <Bio />
-          <Links />
-        </ContentContainer>
-      </AppContainer>
-    </CopyContext.Provider>
+    <>
+      <Head>
+        <title>Alex Xie</title>
+        <meta property="og:title" content="Alex Xie's personal website" />
+        <meta
+          name="description"
+          content="Alex Xie is a web developer and a senior at the University of Waterloo, majoring in computer science."
+        />
+        <meta
+          property="og:description"
+          content="Alex Xie is a web developer and a senior at the University of Waterloo, majoring in computer science."
+        />
+        <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+        <meta property="og:type" content="website" />
+      </Head>
+
+      <SiteContextProvider {...props}>
+        <AppContainer>
+          <ContentContainer>
+            <Heading />
+            <MeIllustration />
+            <Bio />
+            <Links />
+          </ContentContainer>
+        </AppContainer>
+      </SiteContextProvider>
+    </>
   );
 };
 
 export async function getStaticProps() {
   const client = createStorageClient();
+  console.debug('Retreving now playing data and timezone...');
   const nowPlayingData = await getNowPlayingData(client);
   const currentTimeZone = await client.get(StorageKey.CURRENT_IANA_TIMEZONE);
+  const customStatus = await client.get(StorageKey.STATUS);
   client.disconnect();
 
   return {
     props: {
       nowPlayingData,
       currentTimeZone,
+      customStatus,
     },
     revalidate: 60, // regenerate page at most every minute
   };

@@ -1,9 +1,9 @@
-import { FunctionalComponent } from 'preact';
+import { memo, FC } from 'react';
 import TextLoop from 'react-text-loop';
-import { useCopyContext } from 'services/copy';
+import { useSiteContext } from 'services/site/context';
 
-const DynamicTagline: FunctionalComponent = () => {
-  const { taglines } = useCopyContext();
+const DynamicTagline: FC = memo(() => {
+  const { taglines } = useSiteContext();
 
   return (
     <TextLoop>
@@ -12,6 +12,6 @@ const DynamicTagline: FunctionalComponent = () => {
       ))}
     </TextLoop>
   );
-};
+});
 
 export default DynamicTagline;

@@ -1,31 +1,52 @@
 import { FunctionalComponent } from 'preact';
 import { styled } from 'goober';
 
-import { useCopyContext } from 'services/copy';
-// import { Text } from 'components/core';
+import { useSiteContext } from 'services/site/context';
+import { Link, Text } from 'components/core';
 import DynamicTime from 'components/DynamicTime';
 import DynamicTagline from 'components/DynamicTagline';
 import DynamicCurrentStatus from 'components/DynamicCurrentStatus';
 
 const Container = styled('div')`
-  margin-top: 1em;
+  margin-top: 1.6em;
+
+  & .dynamic {
+    font-weight: 450;
+  }
 `;
 
 const Bio: FunctionalComponent = () => {
-  const { talkingPoint } = useCopyContext();
+  const { talkingPoint } = useSiteContext();
 
   return (
     <Container>
       <p>
-        I’m a <DynamicTagline /> studying computer science at the University of
-        Waterloo.
+        <Text>
+          I’m a{' '}
+          <span className="dynamic">
+            <DynamicTagline />
+          </span>{' '}
+          that's currently studying computer science at the University of
+          Waterloo.
+        </Text>
       </p>
-      <path>
-        It’s currently <DynamicTime /> for me and I'm <DynamicCurrentStatus />
-      </path>
+
       <p>
-        Wanna chat about {talkingPoint}? Lets talk. You can reach me at{' '}
-        <a href="mailto:hi@alexxie.com">hi@alexxie.com</a>.
+        <Text>
+          It’s currently{' '}
+          <span className="dynamic">
+            <DynamicTime />
+          </span>{' '}
+          for me; I'm <DynamicCurrentStatus />
+        </Text>
+      </p>
+
+      <p>
+        <Text>
+          Wanna chat about <span className="dynamic">{talkingPoint}</span>? Lets
+          talk. You can reach me at{' '}
+          <Link href="mailto:hi@alexxie.com">hi@alexxie.com</Link>.
+        </Text>
       </p>
     </Container>
   );
