@@ -69,6 +69,8 @@ const DynamicCurrentStatus: FunctionalComponent = () => {
         const colors = await prominent(nowPlaying.coverArtSrc, {
           amount: 3,
           group: 20,
+          format: 'array',
+          sample: 10,
         });
         const bestTextColor = getBestTextColor(colors as number[][]);
         setColor(bestTextColor);

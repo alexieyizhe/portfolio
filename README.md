@@ -11,3 +11,5 @@ still to do
 - [ ] theme & dark mode?
 - [ ] 404 page
 - [ ] easter egg
+- [ ] dev mocks for redis
+- [ ] accessibility (contrast/reduce motion), dark mode options

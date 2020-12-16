@@ -23,7 +23,6 @@ const timeHourMarkup = (hour: number) => {
   return `${twelveHourTime}${timeOfDay}`;
 };
 
-// TODO: fill this
 const timeToColor = (hour: number, time: string): TextGradientInfo => {
   switch (time) {
     case '1AM':
@@ -31,51 +30,46 @@ const timeToColor = (hour: number, time: string): TextGradientInfo => {
     case '3AM':
     case '4AM':
     case '5AM':
-      return ['45deg', '#000', '#aaa'];
+      return [`${40 + hour * 2}deg`, '#062B79', '#477792'];
 
     case '6AM': // sunrise
-      return ['0deg', '#000', '#aaa'];
+      return ['35deg', '#477792', '#5995B7'];
 
     case '7AM': // sunrise
-      return ['0deg', '#000', '#aaa'];
+      return ['200deg', '#5995B7', '#FF8C18'];
 
     case '8AM': // sunrise
-      return ['0deg', '#000', '#aaa'];
+      return ['210deg', '#5995B7', '#FFCE32'];
 
     case '9AM':
     case '10AM':
-      return ['0deg', '#000', '#aaa'];
-
     case '11AM':
     case '12PM':
     case '1PM':
-      return ['0deg', '#000', '#aaa'];
-
     case '2PM':
     case '3PM':
     case '4PM':
-      return ['0deg', '#000', '#aaa'];
+      return [`${140 + hour * 3}deg`, '#FFCE32', '#5995B7'];
 
     case '5PM': // sunset
-      return ['0deg', '#000', '#aaa'];
+      return ['120deg', '#5995B7', '#FF8C18'];
 
     case '6PM': // sunset
-      return ['0deg', '#000', '#aaa'];
+      return ['120deg', '#5995B7', '#D36C50'];
 
     case '7PM': // sunset
-      return ['0deg', '#000', '#aaa'];
+      return ['145deg', '#477792', '#A8131C'];
 
     case '8PM':
+      return ['120deg', '#2D1D7A', '#5995B7'];
+
     case '9PM':
     case '10PM':
-      return ['30deg', '#000', '#aaa'];
+      return [`${110 + hour * 2}deg`, '#2D1D7A', '#5995B7'];
 
     case '11PM':
     case '12AM':
-      return ['0deg', '#000', '#aaa'];
-
-    default:
-      return ['0deg', '#000', '#aaa'];
+      return [`${110 + hour * 2}deg`, '#271F3F', '#062B79'];
   }
 };
 
