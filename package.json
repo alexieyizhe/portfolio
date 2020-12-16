@@ -7,8 +7,7 @@
     "dev": "cross-env NODE_ENV=development next",
     "lint": "eslint src --fix",
     "type-check": "tsc --noEmit",
-    "build:ssg": "cross-env NODE_ENV=production next build && next export -o build",
-    "build:ssr": "cross-env NODE_ENV=production next build",
+    "build": "cross-env NODE_ENV=production next build && next export -o build",
     "start": "cross-env NODE_ENV=production next start"
   },
   "devDependencies": {
