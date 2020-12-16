@@ -11,7 +11,7 @@ const Container = styled('div')`
   margin-top: 1.6em;
 
   & .dynamic {
-    font-weight: 450;
+    font-weight: 500;
   }
 `;
 
