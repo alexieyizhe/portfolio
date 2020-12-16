@@ -3,8 +3,6 @@
 type `npm run dev` to do dev stuff
 type `npm run build` to do production stuff
 
-major thank you to [Vijay Verma and Blush Design](https://blush.design/) for illustration.
-
 still to do
 
 - [ ] visual regression testing
@@ -13,3 +11,5 @@ still to do
 - [ ] easter egg
 - [ ] dev mocks for redis
 - [ ] accessibility (contrast/reduce motion), dark mode options
+- [ ] add api routes for custom status and location check-in
+- [ ] add 'my work' page

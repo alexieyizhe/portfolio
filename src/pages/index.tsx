@@ -65,14 +65,14 @@ const IndexPage = ({ nowPlayingData, currentTimeZone, customStatus }) => {
           taglines: TAGLINES,
           currentDate: getDateInZone(currentTimeZone),
           nowPlaying: nowPlayingData,
-          activity: customStatus ?? getRandomItem(ACTIVITIES),
+          activity: getRandomItem(ACTIVITIES), // todo: add back customStatus
           talkingPoint: getRandomItem(TALKING_POINTS),
         }}
       >
         <AppContainer>
           <ContentContainer>
             <Heading />
-            <Image src="/me-2.png" width={300} height={250} priority />
+            <Image src="/me.svg" width={400} height={280} priority />
             <Bio />
             <Links />
           </ContentContainer>

@@ -7,7 +7,7 @@ const H1 = styled('h1')`
   font-family: 'Verona Serial', 'Franklin Gothic Medium', Arial, serif;
   font-size: 48px;
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 28px;
 `;
 
 const Heading: FunctionalComponent = () => {

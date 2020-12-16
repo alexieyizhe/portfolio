@@ -6,10 +6,10 @@ setup(h);
 glob`
   @font-face {
     font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 400;
+    font-weight: 100 1000;
     font-display: swap;
-    src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf'); 
+    src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf')  format('truetype supports variations'),
+    url('/fonts/SpaceGrotesk-VariableFont_wght.ttf')  format('truetype-variations'); 
   }
 
   @font-face {
@@ -30,7 +30,6 @@ glob`
   body {
     margin: 0;
     padding: 0;
-    background-color: #FFFAF0;
   }
 
   *, *:before, *:after {

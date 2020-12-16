@@ -1,7 +1,7 @@
 /**
  * Greetings
  */
-export const GREETINGS = ['Hi, Alex here.', "Hey, how's it going?"];
+export const GREETINGS = ['Hi, Alex here.'];
 export const DEFAULT_GREETING = GREETINGS[0];
 
 /**

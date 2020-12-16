@@ -9,6 +9,10 @@ import DynamicCurrentStatus from 'components/DynamicCurrentStatus';
 
 const Container = styled('div')`
   margin-top: 1em;
+
+  & .dynamic {
+    font-weight: 450;
+  }
 `;
 
 const Bio: FunctionalComponent = () => {
@@ -25,13 +29,18 @@ const Bio: FunctionalComponent = () => {
 
       <p>
         <Text>
-          It’s currently <DynamicTime /> for me; I'm <DynamicCurrentStatus />
+          It’s currently{' '}
+          <span className="dynamic">
+            <DynamicTime />
+          </span>{' '}
+          for me; I'm <DynamicCurrentStatus />
         </Text>
       </p>
 
       <p>
         <Text>
-          Wanna chat about {talkingPoint}? Lets talk. You can reach me at{' '}
+          Wanna chat about <span className="dynamic">{talkingPoint}</span>? Lets
+          talk. You can reach me at{' '}
           <Link href="mailto:hi@alexxie.com">hi@alexxie.com</Link>.
         </Text>
       </p>

@@ -13,6 +13,7 @@ const GradientContainer = styled<{ gradient: TextGradientInfo }>('span')`
   color: ${({ gradient }) => gradient[1]};
   background: ${({ gradient }) =>
     `linear-gradient(${gradient[0]}, ${gradient[1]}, ${gradient[2]})`};
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
