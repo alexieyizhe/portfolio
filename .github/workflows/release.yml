@@ -26,6 +26,6 @@ jobs:
 
           git checkout master
           npm version $VERSION_TAG --git-tag-version=false
-          git commit -am "chore: bump version to $VERSION_TAG [ci skip]"
+          git commit -am "🤖: bump version to $VERSION_TAG"
           git push origin -f HEAD:release
           git push origin -f HEAD:master

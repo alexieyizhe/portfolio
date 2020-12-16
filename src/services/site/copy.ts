@@ -37,7 +37,11 @@ export const ACTIVITIES = [
 /**
  * Talking points
  */
-export const TALKING_POINTS = ['how comic sans is the best font'];
+export const TALKING_POINTS = [
+  'why comic sans is the best font',
+  'dark patterns and how they affect human behaviour',
+  'summer 2021 internship opportunities',
+];
 
 /**
  * Links
