@@ -51,7 +51,7 @@ const SiteContextProvider: FunctionalComponent<SiteContextProviderProps> = ({
         taglines: TAGLINES,
         currentDate: getDateInZone(currentTimeZone),
         nowPlaying: nowPlayingData,
-        activity, // todo: add back customStatus
+        activity,
         talkingPoint,
 
         isEasterEggActive,
