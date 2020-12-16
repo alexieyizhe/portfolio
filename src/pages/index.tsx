@@ -45,14 +45,15 @@ const IndexPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <meta property="og:title" content="Alex Xie's personal website" />
         <meta
           name="description"
-          content="Alex Xie is a web developer and a senior at the University of Waterloo, majoring in computer science."
+          content="Alex is a web developer and a senior at the University of Waterloo, majoring in computer science."
         />
         <meta
           property="og:description"
-          content="Alex Xie is a web developer and a senior at the University of Waterloo, majoring in computer science."
+          content="Alex is a web developer and a senior at the University of Waterloo, majoring in computer science."
         />
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://alexxie.com/preview.png" />
       </Head>
 
       <SiteContextProvider {...props}>
