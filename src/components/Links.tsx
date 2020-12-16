@@ -1,7 +1,7 @@
-import { h, FunctionalComponent } from 'preact';
+import { FC } from 'react';
 import { styled } from 'goober';
 
-import { LINKS } from 'services/copy/config';
+import { LINKS } from 'services/site/copy';
 import { Link, Text } from 'components/core';
 
 const Container = styled('footer')`
@@ -17,7 +17,7 @@ const Container = styled('footer')`
   }
 `;
 
-const Links: FunctionalComponent = () => {
+const Links: FC = () => {
   return (
     <Container>
       {LINKS.map(({ label, href }) => (

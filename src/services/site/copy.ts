@@ -1,8 +1,15 @@
 /**
  * Greetings
  */
-export const GREETINGS = ['Hi, Alex here.'];
-export const DEFAULT_GREETING = GREETINGS[0];
+export const GREETINGS = [
+  'Hi, Alex here.',
+  'Hey, Alex here.',
+  'How goes it? Alex here.',
+  'Howdy pardner! Alex here.',
+  "👋! I'm Alex.",
+  "你好! I'm Alex.",
+  'It me, Alex!',
+];
 
 /**
  * Taglines
@@ -20,8 +27,11 @@ export const TAGLINES = [
  * Activities
  */
 export const ACTIVITIES = [
-  'hanging out with my husky, Storm.',
-  'chilling with Hubert, my croton plant.',
+  'being dragged around by Storm, my husky.',
+  'falling on my face at the climbing gym.',
+  'setting the kitchen on fire.',
+  'clickety clacking, furiously typing.',
+  "chillin' with my plants – Hubert, Dipsy, and Elise.",
 ];
 
 /**

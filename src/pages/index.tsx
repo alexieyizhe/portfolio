@@ -1,21 +1,14 @@
 import { styled } from 'goober';
-import Image from 'next/image';
 import Head from 'next/head';
 
 import Heading from 'components/Heading';
 import Bio from 'components/Bio';
 import Links from 'components/Links';
-import CopyContext from 'services/copy';
+import { SiteContextProvider } from 'services/site/context';
 import 'services/theme';
-import { getDateInZone, getRandomItem } from 'services/utils';
-import {
-  ACTIVITIES,
-  GREETINGS,
-  TAGLINES,
-  TALKING_POINTS,
-} from 'services/copy/config';
 import { getNowPlayingData } from 'services/now-playing';
 import { createStorageClient, StorageKey } from 'services/storage';
+import MeIllustration from 'components/MeIllustration';
 
 const AppContainer = styled('div')`
   position: relative;
@@ -41,7 +34,7 @@ const ContentContainer = styled('main')`
   justify-content: center;
 `;
 
-const IndexPage = ({ nowPlayingData, currentTimeZone, customStatus }) => {
+const IndexPage = (props) => {
   return (
     <>
       <Head>
@@ -59,25 +52,16 @@ const IndexPage = ({ nowPlayingData, currentTimeZone, customStatus }) => {
         <meta property="og:type" content="website" />
       </Head>
 
-      <CopyContext.Provider
-        value={{
-          greeting: getRandomItem(GREETINGS),
-          taglines: TAGLINES,
-          currentDate: getDateInZone(currentTimeZone),
-          nowPlaying: nowPlayingData,
-          activity: getRandomItem(ACTIVITIES), // todo: add back customStatus
-          talkingPoint: getRandomItem(TALKING_POINTS),
-        }}
-      >
+      <SiteContextProvider {...props}>
         <AppContainer>
           <ContentContainer>
             <Heading />
-            <Image src="/me.svg" width={400} height={280} priority />
+            <MeIllustration />
             <Bio />
             <Links />
           </ContentContainer>
         </AppContainer>
-      </CopyContext.Provider>
+      </SiteContextProvider>
     </>
   );
 };

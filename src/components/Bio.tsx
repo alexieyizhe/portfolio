@@ -1,14 +1,14 @@
 import { FunctionalComponent } from 'preact';
 import { styled } from 'goober';
 
-import { useCopyContext } from 'services/copy';
+import { useSiteContext } from 'services/site/context';
 import { Link, Text } from 'components/core';
 import DynamicTime from 'components/DynamicTime';
 import DynamicTagline from 'components/DynamicTagline';
 import DynamicCurrentStatus from 'components/DynamicCurrentStatus';
 
 const Container = styled('div')`
-  margin-top: 1em;
+  margin-top: 1.6em;
 
   & .dynamic {
     font-weight: 450;
@@ -16,7 +16,7 @@ const Container = styled('div')`
 `;
 
 const Bio: FunctionalComponent = () => {
-  const { talkingPoint } = useCopyContext();
+  const { talkingPoint } = useSiteContext();
 
   return (
     <Container>

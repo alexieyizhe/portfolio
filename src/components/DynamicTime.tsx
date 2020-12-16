@@ -1,7 +1,7 @@
 import { styled } from 'goober';
-import { FunctionalComponent } from 'preact';
+import { memo, FC } from 'react';
 
-import { useCopyContext } from 'services/copy';
+import { useSiteContext } from 'services/site/context';
 
 type TextGradientInfo = [
   gradientDirection: string,
@@ -74,14 +74,14 @@ const timeToColor = (hour: number, time: string): TextGradientInfo => {
   }
 };
 
-const DynamicTime: FunctionalComponent = () => {
-  const { currentDate } = useCopyContext();
+const DynamicTime: FC = memo(() => {
+  const { currentDate } = useSiteContext();
   const timeMarkup = timeHourMarkup(currentDate.getHours());
   const gradient = timeToColor(currentDate.getHours(), timeMarkup);
 
   return (
     <GradientContainer gradient={gradient}>{timeMarkup}</GradientContainer>
   );
-};
+});
 
 export default DynamicTime;

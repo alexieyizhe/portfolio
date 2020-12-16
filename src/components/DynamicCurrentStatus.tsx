@@ -1,8 +1,7 @@
-import { FunctionalComponent } from 'preact';
+import { memo, FC, useEffect, useState } from 'react';
 import { styled } from 'goober';
-import { useCopyContext } from 'services/copy';
+import { useSiteContext } from 'services/site/context';
 import { TNowPlayingData } from 'services/now-playing';
-import { useEffect, useState } from 'react';
 import { prominent } from 'color.js';
 import { rgbToHsl } from 'services/utils';
 
@@ -56,8 +55,8 @@ const nowPlayingMarkup = (
   );
 };
 
-const DynamicCurrentStatus: FunctionalComponent = () => {
-  const { nowPlaying, activity } = useCopyContext();
+const DynamicCurrentStatus: FC = memo(() => {
+  const { nowPlaying, activity } = useSiteContext();
   const [coverArtColor, setColor] = useState('#000');
   const statusMarkup = nowPlaying
     ? nowPlayingMarkup(nowPlaying, coverArtColor)
@@ -80,6 +79,6 @@ const DynamicCurrentStatus: FunctionalComponent = () => {
   }, []);
 
   return <span>{statusMarkup}</span>;
-};
+});
 
 export default DynamicCurrentStatus;
