@@ -1,7 +1,9 @@
 # hello friend this is my website
 
-`npm run dev` to do dev stuff
-`npm run build` to do production stuff
+type `npm run dev` to do dev stuff
+type `npm run build` to do production stuff
+
+major thank you to [Vijay Verma and Blush Design](https://blush.design/) for illustration.
 
 still to do
 
