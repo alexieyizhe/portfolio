@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { styled } from 'goober';
 
 import { LINKS } from 'services/site/copy';
@@ -17,7 +17,7 @@ const Container = styled('footer')`
   }
 `;
 
-const Links: FC = () => {
+const Links: FC = memo(() => {
   return (
     <Container>
       {LINKS.map(({ label, href }) => (
@@ -27,6 +27,6 @@ const Links: FC = () => {
       ))}
     </Container>
   );
-};
+});
 
 export default Links;

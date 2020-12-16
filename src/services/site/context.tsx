@@ -15,6 +15,9 @@ type TSiteContextValue = {
   activity: string;
   talkingPoint: string; // wanna chat about ...
 
+  isEasterEggActive: boolean;
+  setIsEasterEggActive: Dispatch<SetStateAction<boolean>>;
+
   isHoveringLink: boolean;
   setIsHoveringLink: Dispatch<SetStateAction<boolean>>;
 };
@@ -24,18 +27,21 @@ type SiteContextProviderProps = {
   currentTimeZone: string;
 };
 
-const SiteContext = createContext<TSiteContextValue>({} as any); // eslint-disable-line
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const SiteContext = createContext<TSiteContextValue>({} as any);
 
 const useSiteContext = () => useContext(SiteContext);
 
 const greeting = getRandomItem(GREETINGS);
 const activity = getRandomItem(ACTIVITIES);
 const talkingPoint = getRandomItem(TALKING_POINTS);
+
 const SiteContextProvider: FunctionalComponent<SiteContextProviderProps> = ({
   nowPlayingData,
   currentTimeZone,
   children,
 }) => {
+  const [isEasterEggActive, setIsEasterEggActive] = useState(false);
   const [isHoveringLink, setIsHoveringLink] = useState(false);
 
   return (
@@ -47,6 +53,9 @@ const SiteContextProvider: FunctionalComponent<SiteContextProviderProps> = ({
         nowPlaying: nowPlayingData,
         activity, // todo: add back customStatus
         talkingPoint,
+
+        isEasterEggActive,
+        setIsEasterEggActive,
 
         isHoveringLink,
         setIsHoveringLink,

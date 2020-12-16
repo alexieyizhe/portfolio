@@ -22,8 +22,12 @@ const Bio: FunctionalComponent = () => {
     <Container>
       <p>
         <Text>
-          I’m a <DynamicTagline /> that's currently studying computer science at
-          the University of Waterloo.
+          I’m a{' '}
+          <span className="dynamic">
+            <DynamicTagline />
+          </span>{' '}
+          that's currently studying computer science at the University of
+          Waterloo.
         </Text>
       </p>
 

@@ -1,6 +1,5 @@
-import { h, FunctionalComponent } from 'preact';
+import { FC, memo, useState } from 'react';
 
-import { useState } from 'react';
 import { useSiteContext } from 'services/site/context';
 
 const WEIRD = (
@@ -54,14 +53,22 @@ const GRIN_HAPPY = (
   </g>
 );
 
-const MeIllustration: FunctionalComponent = () => {
-  const { isHoveringLink } = useSiteContext();
+const MeIllustration: FC = memo(() => {
+  const { isHoveringLink, setIsEasterEggActive } = useSiteContext();
+  const [, setNumClicks] = useState(0);
   const [isHovering, setHovering] = useState(false);
   const expression = isHoveringLink
     ? SURPRISED
     : isHovering
     ? WEIRD
     : GRIN_HAPPY;
+
+  const onIllustrationClick = () =>
+    setNumClicks((prev) => {
+      console.log(prev);
+      if ((prev + 1) % 3 === 0) setIsEasterEggActive((prev) => !prev);
+      return prev + 1;
+    });
 
   return (
     <svg
@@ -70,6 +77,7 @@ const MeIllustration: FunctionalComponent = () => {
       viewBox="233.511 78 682.97 695.5"
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
+      onClick={onIllustrationClick}
       style={{ transition: 'transform 200ms' }}
       transform={`scale(${isHovering ? 1.02 : 1})`}
     >
@@ -262,6 +270,6 @@ const MeIllustration: FunctionalComponent = () => {
       </g>
     </svg>
   );
-};
+});
 
 export default MeIllustration;

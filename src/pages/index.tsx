@@ -1,5 +1,6 @@
 import { styled } from 'goober';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 
 import Heading from 'components/Heading';
 import Bio from 'components/Bio';
@@ -8,7 +9,8 @@ import { SiteContextProvider } from 'services/site/context';
 import 'services/theme';
 import { getNowPlayingData } from 'services/now-playing';
 import { createStorageClient, StorageKey } from 'services/storage';
-import MeIllustration from 'components/MeIllustration';
+
+const MeIllustration = dynamic(() => import('components/MeIllustration'));
 
 const AppContainer = styled('div')`
   position: relative;
