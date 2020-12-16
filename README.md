@@ -9,3 +9,5 @@ still to do
 
 - [ ] visual regression testing
 - [ ] theme & dark mode?
+- [ ] 404 page
+- [ ] easter egg
