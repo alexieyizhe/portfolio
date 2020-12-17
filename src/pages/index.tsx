@@ -84,7 +84,7 @@ export async function getStaticProps() {
       currentTimeZone,
       customStatus,
     },
-    revalidate: 60, // regenerate page at most every minute
+    revalidate: 10, // regenerate page at most every 10 seconds
   };
 }
 
