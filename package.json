@@ -4,12 +4,12 @@
   "version": "2020.12.4",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development next",
+    "start": "next dev",
     "lint": "eslint src --fix",
     "type-check": "tsc --noEmit",
-    "analyze": "ANALYZE=true next build",
-    "build": "cross-env NODE_ENV=production next build && next export -o build",
-    "start": "cross-env NODE_ENV=production next start"
+    "analyze": "ANALYZE=true npm run build",
+    "build": "next build",
+    "serve": "next start"
   },
   "devDependencies": {
     "@types/ioredis": "^4.17.8",
@@ -17,7 +17,6 @@
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
-    "cross-env": "^7.0.2",
     "eslint": "^7.15.0",
     "eslint-config-preact": "^1.1.3",
     "eslint-config-prettier": "^7.0.0",
