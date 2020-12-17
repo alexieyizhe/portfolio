@@ -1,5 +1,5 @@
 import { styled } from 'goober';
-import { InferGetStaticPropsType } from 'next';
+import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
@@ -37,7 +37,9 @@ const ContentContainer = styled('main')`
   justify-content: center;
 `;
 
-const IndexPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+const IndexPage = (
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) => {
   return (
     <>
       <Head>
@@ -70,7 +72,7 @@ const IndexPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const client = createStorageClient();
   console.debug('Retreving now playing data and timezone...');
   const nowPlayingData = await getNowPlayingData(client);
