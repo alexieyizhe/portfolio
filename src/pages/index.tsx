@@ -86,7 +86,6 @@ export async function getServerSideProps() {
       currentTimeZone,
       customStatus,
     },
-    revalidate: 10, // regenerate page at most every 10 seconds
   };
 }
 
