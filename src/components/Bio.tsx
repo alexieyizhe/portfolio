@@ -45,7 +45,7 @@ const Bio: FC = () => {
         <Text>
           Wanna chat about <span className="dynamic">{talkingPoint}</span>? Lets
           talk. You can reach me at{' '}
-          <Link href="mailto:hi@alexxie.com">hi@alexxie.com</Link>.
+          <Link href="mailto:alex@xie.codes">alex@xie.codes</Link>.
         </Text>
       </p>
     </Container>

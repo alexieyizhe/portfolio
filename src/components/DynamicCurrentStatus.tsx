@@ -1,35 +1,13 @@
 import { memo, FC, useEffect, useState, useCallback } from 'react';
-import { prominent } from 'color.js';
-
-import { rgbToHsl, useVisibilityChange } from 'services/utils';
-import { useSiteContext } from 'services/site/context';
-import {
-  isNowPlayingData,
-  fetchNowPlaying,
-  TNowPlayingData,
-} from 'services/now-playing/fetch';
 import TextLoop from 'react-text-loop';
 
-const getBestTextColor = async (coverArt: string) => {
-  const colors = (await prominent(coverArt, {
-    amount: 3,
-    group: 20,
-    format: 'array',
-    sample: 10,
-  })) as number[][];
-
-  let [bestH, bestS, bestL] = rgbToHsl(colors[0]);
-  for (const rgb of colors) {
-    const [h, s, l] = rgbToHsl(rgb);
-    if (s > 40) {
-      [bestH, bestS, bestL] = [h, s, l];
-      break;
-    }
-  }
-
-  // upper bound lightness value at 40 to make it readable
-  return `hsl(${bestH}, ${bestS}%, ${Math.min(bestL, 40)}%)`;
-};
+import { useVisibilityChange } from 'services/utils';
+import { useSiteContext } from 'services/site/context';
+import {
+  TNowPlayingData,
+  isNowPlayingData,
+  getNowPlaying,
+} from 'services/now-playing';
 
 const CoverArtLink = ({ href, children }) => {
   const [hover, setHover] = useState(false);
@@ -65,7 +43,7 @@ const nowPlayingMarkup = ({
   const label = `${name}${isTrack ? ` by ${artist}` : ''}`;
 
   return [
-    ...action.split(' ').map((a) => <span style={{ color: '#000' }}>{a}</span>),
+    ...action.split(' ').map((a) => <span>{a}</span>),
     ...label.split(' ').map((a) => (
       <span
         className="dynamic"
@@ -97,21 +75,14 @@ const DynamicCurrentStatus: FC = memo(() => {
   const refetchNp = useCallback(async () => {
     const lastStatus = statuses[statuses.length - 1];
     const lastNowPlayingData = isNowPlayingData(lastStatus) ? lastStatus : null;
-    const updatedNowPlayingData = await fetchNowPlaying(spotifyToken);
+    const updatedNowPlayingData = await getNowPlaying(spotifyToken);
 
     if (
       updatedNowPlayingData &&
       updatedNowPlayingData.uri !== lastNowPlayingData?.uri
     ) {
       console.debug('New now playing data found...', updatedNowPlayingData);
-      const color = await getBestTextColor(updatedNowPlayingData.coverArtSrc);
-      setStatuses((prev) => [
-        ...prev,
-        {
-          ...updatedNowPlayingData,
-          coverArtColor: color,
-        },
-      ]);
+      setStatuses((prev) => [...prev, updatedNowPlayingData]);
     }
   }, [statuses, spotifyToken]);
 

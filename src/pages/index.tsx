@@ -2,14 +2,15 @@ import { styled } from 'goober';
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import { createCanvas, Image as CanvasImage } from 'canvas';
 
 import Heading from 'components/Heading';
 import Bio from 'components/Bio';
 import Links from 'components/Links';
 import { SiteContextProvider } from 'services/site/context';
 import 'services/theme';
-import { getNowPlayingData } from 'services/now-playing';
-import { createStorageClient, StorageKey } from 'services/storage';
+import { requestNowPlayingData } from 'services/now-playing/server';
+import { StorageClient, StorageKey } from 'services/storage';
 import DynamicFavicon from 'components/DynamicFavicon';
 
 const MeIllustration = dynamic(() => import('components/MeIllustration'));
@@ -71,10 +72,18 @@ const IndexPage = (props: TPageProps) => (
   </>
 );
 
+const serversideColorOptions = {
+  canvasBuilder: () => createCanvas(64, 64),
+  imageClass: CanvasImage,
+};
+
 export async function getStaticProps() {
   console.debug('Retreving now playing data and timezone...');
-  const client = createStorageClient();
-  const { nowPlayingData, spotifyToken } = await getNowPlayingData(client);
+  const client = new StorageClient();
+  const { nowPlayingData, spotifyToken } = await requestNowPlayingData(
+    client,
+    serversideColorOptions
+  );
   const currentTimeZone = await client.get(StorageKey.CURRENT_IANA_TIMEZONE);
   const customStatus = await client.get(StorageKey.STATUS);
   client.disconnect();

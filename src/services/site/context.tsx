@@ -7,18 +7,13 @@ import {
   FC,
 } from 'react';
 
-import type { TNowPlayingData } from 'services/now-playing/fetch';
+import type { TPageProps } from 'pages/index';
+import type { TNowPlayingData } from 'services/now-playing';
 import { getDateInZone, getRandomItem } from 'services/utils';
 
 import { ACTIVITIES, GREETINGS, TAGLINES, TALKING_POINTS } from './copy';
 
-type TSiteContextProviderProps = {
-  nowPlayingData: TNowPlayingData;
-  currentTimeZone: string;
-  spotifyToken: string;
-};
-
-type TSiteContextValue = TSiteContextProviderProps & {
+type TSiteContextValue = TPageProps & {
   greeting: string;
   taglines: string[];
   currentDate: Date;
@@ -43,7 +38,7 @@ const greeting = getRandomItem(GREETINGS);
 const activity = getRandomItem(ACTIVITIES);
 const talkingPoint = getRandomItem(TALKING_POINTS);
 
-const SiteContextProvider: FC<TSiteContextProviderProps> = ({
+const SiteContextProvider: FC<TPageProps> = ({
   currentTimeZone,
   children,
   ...rest
