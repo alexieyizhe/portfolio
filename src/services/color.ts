@@ -154,7 +154,7 @@ const getBestTextColor = async (
 
   const colors = (await prominent(coverArt, {
     amount: 3,
-    group: 20,
+    group: 10,
     format: 'array',
     sample: 10,
     ...colorArgs,
@@ -168,10 +168,9 @@ const getBestTextColor = async (
       break;
     }
   }
-  // TODO: look into accuracy of this formula
 
-  // upper bound lightness value at 40 to make it readable
-  return `hsl(${bestH}, ${bestS}%, ${Math.min(bestL, 40)}%)`;
+  // clamp lightness value to preserve both colorfulness and readability
+  return `hsl(${bestH}, ${bestS}%, ${Math.max(Math.min(bestL, 40), 30)}%)`;
 };
 
 export default prominent;

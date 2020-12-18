@@ -2,11 +2,13 @@ import { getBestTextColor, ProminentOptions } from 'services/color';
 
 type TNowPlayingData = {
   uri: string;
+  type: 'episode' | 'track';
   name: string; // name of song or name of podcast
-  artist?: string; // name of artist or undefined if podcast
+  artistName?: string; // name of artist or undefined if podcast
+  podcastName?: string;
   coverArtSrc: string;
   coverArtColor: string;
-  link: string;
+  link: string; //  song link, podcast episode link, or playlist link
 };
 
 const isNowPlayingData = (
@@ -47,6 +49,8 @@ const requestNewToken = async () => {
 };
 
 const extractNowPlayingData = (data: any) => {
+  const isPlaylist = data?.context?.type === 'playlist';
+
   switch (data.currently_playing_type) {
     case 'track': {
       const {
@@ -60,10 +64,11 @@ const extractNowPlayingData = (data: any) => {
       } = data;
 
       return {
+        type: 'track' as const,
         uri,
         name,
-        artist: artistName,
-        link: spotify,
+        artistName,
+        link: isPlaylist ? data.context?.external_urls.spotify : spotify,
         images,
       };
     }
@@ -72,16 +77,20 @@ const extractNowPlayingData = (data: any) => {
       const {
         item: {
           uri,
+          name,
           images,
           external_urls: { spotify },
-          show: { name },
+          show: { name: podcastName },
         },
       } = data;
 
       return {
+        type: 'episode' as const,
         uri,
         name,
-        link: spotify,
+        artistName: null,
+        podcastName,
+        link: isPlaylist ? data.context?.external_urls.spotify : spotify,
         images,
       };
     }
@@ -108,15 +117,12 @@ const getNowPlaying = async (
     if (!res.ok)
       throw new Error(`Request error ${res.status}: ${JSON.stringify(data)}`);
 
-    const { uri, name, artist, link, images } = extractNowPlayingData(data);
+    const { images, ...nowPlayingData } = extractNowPlayingData(data);
     const coverArtSrc = images.find((i: any) => i.width === 64)?.url;
     const coverArtColor = await getBestTextColor(coverArtSrc, colorOptions);
 
     return {
-      uri,
-      name,
-      artist,
-      link,
+      ...nowPlayingData,
       coverArtSrc,
       coverArtColor,
     };

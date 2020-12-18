@@ -1,5 +1,6 @@
 import { memo, FC, useEffect, useState, useCallback } from 'react';
 import TextLoop from 'react-text-loop';
+import { styled } from 'goober';
 
 import { useVisibilityChange } from 'services/utils';
 import { useSiteContext } from 'services/site/context';
@@ -9,39 +10,38 @@ import {
   getNowPlaying,
 } from 'services/now-playing';
 
-const CoverArtLink = ({ href, children }) => {
-  const [hover, setHover] = useState(false);
+const CoverArtLink = styled('a')`
+  position: relative;
+  display: inline-block;
 
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer noopener"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      // react-text-loop doesn't play well with goober, so we need to use inline styles
-      style={{
-        position: 'relative',
-        display: 'inline-block',
-        transform: `scale(${hover ? 1.1 : 1})`,
-        transition: 'transform 250ms',
-      }}
-    >
-      {children}
-    </a>
-  );
-};
+  transition: transform 250ms;
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  & img {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    transform: translateY(1px);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+`;
 
 const nowPlayingMarkup = ({
   name,
-  artist,
+  artistName,
+  podcastName,
   link,
   coverArtSrc,
   coverArtColor,
 }: TNowPlayingData) => {
-  const isTrack = !!artist;
-  const action = isTrack ? "jammin' out to" : 'listening to';
-  const label = `${name}${isTrack ? ` by ${artist}` : ''}`;
+  const isPodcast = !!podcastName;
+  const hasArtist = !!artistName;
+  const action = isPodcast ? 'listening to an episode of' : "jammin' out to";
+  const label = `${isPodcast ? podcastName : name}${
+    hasArtist ? ` by ${artistName}` : ''
+  }`;
 
   return [
     ...action.split(' ').map((a) => <span>{a}</span>),
@@ -53,16 +53,8 @@ const nowPlayingMarkup = ({
         {a}
       </span>
     )),
-    <CoverArtLink href={link}>
-      <img
-        src={coverArtSrc}
-        style={{
-          height: '18px',
-          borderRadius: '3px',
-          transform: 'translateY(1px)',
-          boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
-        }}
-      />
+    <CoverArtLink href={link} target="_blank" rel="noreferrer noopener">
+      <img src={coverArtSrc} />
     </CoverArtLink>,
   ];
 };
