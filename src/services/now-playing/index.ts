@@ -1,16 +1,7 @@
 import { StorageKey } from 'services/storage';
 import { getBestTextColor } from 'services/color';
 
-import { fetchNowPlaying } from './fetch';
-
-export type TNowPlayingData = {
-  uri: string;
-  name: string; // name of song or name of podcast
-  artist?: string; // name of artist or undefined if podcast
-  coverArtSrc: string;
-  coverArtColor: string;
-  link: string;
-};
+import { fetchNowPlaying, TNowPlayingData } from './fetch';
 
 const requestNewToken = async () => {
   try {
@@ -47,9 +38,12 @@ const requestNewToken = async () => {
   }
 };
 
-const getNowPlayingData = async (
+export const getNowPlayingData = async (
   client
-): Promise<{ spotifyToken: string; nowPlayingData: TNowPlayingData }> => {
+): Promise<{
+  spotifyToken: string;
+  nowPlayingData: TNowPlayingData | null;
+}> => {
   const accessTokenExpiry = await client.get(StorageKey.ACCESS_TOKEN_EXPIRY);
   console.debug(
     `Existing token expires at ${new Date(
@@ -73,7 +67,7 @@ const getNowPlayingData = async (
   const nowPlayingData = await fetchNowPlaying(accessToken);
 
   if (nowPlayingData)
-    console.log(await getBestTextColor(nowPlayingData.coverArtSrc));
+    console.debug(await getBestTextColor(nowPlayingData.coverArtSrc));
 
   return {
     nowPlayingData: nowPlayingData
@@ -85,5 +79,3 @@ const getNowPlayingData = async (
     spotifyToken: accessToken,
   };
 };
-
-export { getNowPlayingData };

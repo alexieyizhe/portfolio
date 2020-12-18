@@ -7,12 +7,18 @@ import {
   FC,
 } from 'react';
 
-import type { TNowPlayingData } from 'services/now-playing';
+import type { TNowPlayingData } from 'services/now-playing/fetch';
 import { getDateInZone, getRandomItem } from 'services/utils';
 
 import { ACTIVITIES, GREETINGS, TAGLINES, TALKING_POINTS } from './copy';
 
-type TSiteContextValue = {
+type TSiteContextProviderProps = {
+  nowPlayingData: TNowPlayingData;
+  currentTimeZone: string;
+  spotifyToken: string;
+};
+
+type TSiteContextValue = TSiteContextProviderProps & {
   greeting: string;
   taglines: string[];
   currentDate: Date;
@@ -28,13 +34,6 @@ type TSiteContextValue = {
   setIsHoveringLink: Dispatch<SetStateAction<boolean>>;
 };
 
-type SiteContextProviderProps = {
-  nowPlayingData: TNowPlayingData;
-  currentTimeZone: string;
-  spotifyToken: string;
-  // todo: clean this up and infer from getStaticProps
-};
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const SiteContext = createContext<TSiteContextValue>({} as any);
 
@@ -44,11 +43,10 @@ const greeting = getRandomItem(GREETINGS);
 const activity = getRandomItem(ACTIVITIES);
 const talkingPoint = getRandomItem(TALKING_POINTS);
 
-const SiteContextProvider: FC<SiteContextProviderProps> = ({
-  nowPlayingData,
+const SiteContextProvider: FC<TSiteContextProviderProps> = ({
   currentTimeZone,
   children,
-  spotifyToken,
+  ...rest
 }) => {
   const [isEasterEggActive, setIsEasterEggActive] = useState(false);
   const [isHoveringLink, setIsHoveringLink] = useState(false);
@@ -58,11 +56,11 @@ const SiteContextProvider: FC<SiteContextProviderProps> = ({
       value={{
         greeting,
         taglines: TAGLINES,
+        currentTimeZone,
         currentDate: getDateInZone(currentTimeZone),
-        nowPlaying: nowPlayingData,
         activity,
         talkingPoint,
-        spotifyToken,
+        ...rest,
 
         isEasterEggActive,
         setIsEasterEggActive,

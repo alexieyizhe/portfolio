@@ -3,8 +3,11 @@ import { prominent } from 'color.js';
 
 import { rgbToHsl, useVisibilityChange } from 'services/utils';
 import { useSiteContext } from 'services/site/context';
-import { TNowPlayingData } from 'services/now-playing';
-import { fetchNowPlaying } from 'services/now-playing/fetch';
+import {
+  isNowPlayingData,
+  fetchNowPlaying,
+  TNowPlayingData,
+} from 'services/now-playing/fetch';
 import TextLoop from 'react-text-loop';
 
 const getBestTextColor = async (coverArt: string) => {
@@ -86,16 +89,15 @@ const nowPlayingMarkup = ({
 
 const DynamicCurrentStatus: FC = memo(() => {
   const { nowPlaying, activity, spotifyToken } = useSiteContext();
-  const [np, setNp] = useState<(TNowPlayingData | string)[]>([
+  const [statuses, setStatuses] = useState<(TNowPlayingData | string)[]>([
     nowPlaying ?? `probably ${activity}`,
   ]);
   const [shouldFetchNew, setShouldFetchNew] = useState(true);
 
   const refetchNp = useCallback(async () => {
-    const lastNp = np[np.length - 1];
-    const lastNowPlayingData = typeof lastNp === 'string' ? null : lastNp;
+    const lastStatus = statuses[statuses.length - 1];
+    const lastNowPlayingData = isNowPlayingData(lastStatus) ? lastStatus : null;
     const updatedNowPlayingData = await fetchNowPlaying(spotifyToken);
-    console.debug(updatedNowPlayingData, lastNowPlayingData);
 
     if (
       updatedNowPlayingData &&
@@ -103,7 +105,7 @@ const DynamicCurrentStatus: FC = memo(() => {
     ) {
       console.debug('New now playing data found...', updatedNowPlayingData);
       const color = await getBestTextColor(updatedNowPlayingData.coverArtSrc);
-      setNp((prev) => [
+      setStatuses((prev) => [
         ...prev,
         {
           ...updatedNowPlayingData,
@@ -111,8 +113,14 @@ const DynamicCurrentStatus: FC = memo(() => {
         },
       ]);
     }
-  }, [np, spotifyToken]);
+  }, [statuses, spotifyToken]);
 
+  /**
+   * Indicate that we should refetch now playing data when tab receives focus.
+   * We don't use `refetchNp` to update status directly here because
+   * `useVisibilityChange` takes in a function that forms a closure
+   * over the original state of `refetchNp`, not the most updated state.
+   */
   useVisibilityChange((isHidden) => {
     if (!isHidden) {
       console.debug('Received focus, refreshing now playing...');
@@ -120,6 +128,9 @@ const DynamicCurrentStatus: FC = memo(() => {
     }
   });
 
+  /**
+   * Refetch what's currently playing on Spotify when it's indicated we should do so.
+   */
   useEffect(() => {
     (async () => {
       if (shouldFetchNew) {
@@ -129,27 +140,27 @@ const DynamicCurrentStatus: FC = memo(() => {
     })();
   }, [refetchNp, shouldFetchNew]);
 
-  const npMarkup = np.map((e) => {
-    return typeof e === 'string' ? e.split(' ') : nowPlayingMarkup(e);
-  });
+  const npMarkup = statuses.map((e) =>
+    typeof e === 'string' ? e.split(' ') : nowPlayingMarkup(e)
+  );
 
   return (
     <span>
-      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map(
-        (i) => {
-          return (
-            <>
-              <TextLoop
-                interval={np.map((_, i) => (i === np.length - 1 ? -1 : 2000))} // don't transition from the last data back to the initial data
-                children={npMarkup.map((e) => e[i] ?? ' ')}
-              />{' '}
-            </>
-          );
-        }
-      )}
+      {new Array(20).fill('').map((_, wordIdx) => {
+        return (
+          <>
+            <TextLoop
+              // transition to next status, but don't transition from last back to first
+              interval={statuses.map((_, i) =>
+                i === statuses.length - 1 ? -1 : 2000
+              )}
+              children={npMarkup.map((e) => e[wordIdx] ?? '')}
+            />{' '}
+          </>
+        );
+      })}
     </span>
   );
 });
-// TODO: remove react-motion
 
 export default DynamicCurrentStatus;

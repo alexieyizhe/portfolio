@@ -1,3 +1,17 @@
+export type TNowPlayingData = {
+  uri: string;
+  name: string; // name of song or name of podcast
+  artist?: string; // name of artist or undefined if podcast
+  coverArtSrc: string;
+  coverArtColor: string;
+  link: string;
+};
+
+export const isNowPlayingData = (
+  status: string | TNowPlayingData
+): status is TNowPlayingData =>
+  typeof status === 'object' && !!status.name && !!status.coverArtSrc;
+
 export const fetchNowPlaying = async (accessToken: string) => {
   try {
     const res = await fetch(

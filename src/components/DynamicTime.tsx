@@ -50,7 +50,7 @@ const timeToColor = (hour: number, time: string): TextGradientInfo => {
     case '2PM':
     case '3PM':
     case '4PM':
-      return [`${140 + hour * 3}deg`, '#FFCE32', '#5995B7'];
+      return [`${140 + hour * 3}deg`, '#FFCE32', '#45B6F7'];
 
     case '5PM': // sunset
       return ['120deg', '#5995B7', '#FF8C18'];
