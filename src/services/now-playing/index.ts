@@ -1,6 +1,8 @@
 import { StorageKey } from 'services/storage';
 
+import { fetchNowPlaying } from './fetch';
 export type TNowPlayingData = {
+  uri: string;
   name: string; // name of song or name of podcast
   artist?: string; // name of artist or undefined if podcast
   coverArtSrc: string;
@@ -41,63 +43,6 @@ const requestNewToken = async () => {
   } catch (e) {
     console.error(`Encountered error attempting to refresh access token: ${e}`);
   }
-};
-
-const fetchNowPlaying = async (accessToken: string) => {
-  try {
-    const res = await fetch(
-      'https://api.spotify.com/v1/me/player/currently-playing?additional_types=track,episode',
-      {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
-    if (res.status === 204) return null; // API returns 204 if nothing is playing
-
-    const data = await res.json();
-    if (!res.ok)
-      throw new Error(`Request error ${res.status}: ${JSON.stringify(data)}`);
-
-    switch (data.currently_playing_type) {
-      case 'track': {
-        const {
-          item: {
-            name,
-            album: { images },
-            external_urls: { spotify },
-            artists: [{ name: artistName }],
-          },
-        } = data;
-        return {
-          name,
-          artist: artistName,
-          link: spotify,
-          coverArtSrc: images.find((i) => i.width === 64)?.url,
-        };
-      }
-      case 'episode': {
-        const {
-          item: {
-            images,
-            external_urls: { spotify },
-            show: { name },
-          },
-        } = data;
-
-        return {
-          name,
-          link: spotify,
-          coverArtSrc: images.find((i) => i.width === 64)?.url,
-        };
-      }
-    }
-  } catch (e) {
-    console.error(e);
-  }
-
-  return null;
 };
 
 const getNowPlayingData = async (

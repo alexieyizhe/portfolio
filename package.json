@@ -26,7 +26,6 @@
     "webpack-bundle-analyzer": "^4.3.0"
   },
   "dependencies": {
-    "canvas": "^2.6.1",
     "color.js": "^1.1.0",
     "goober": "^2.0.19-next.1",
     "goober-autoprefixer": "^1.2.1",
@@ -37,7 +36,6 @@
     "preact-render-to-string": "^5.1.11",
     "react": "npm:@preact/compat@0.0.3",
     "react-dom": "npm:@preact/compat@0.0.3",
-    "react-motion": "^0.5.2",
     "react-ssr-prepass": "npm:preact-ssr-prepass@^1.1.2",
     "react-text-loop": "^2.3.0"
   }
