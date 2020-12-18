@@ -1,0 +1,10 @@
+name: Refresh Now Playing
+on:
+  schedule:
+    - cron: '0 * * * *'
+jobs:
+  refresh-now-playing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refresh
+        run: curl https://alexxie.com/api/refresh
