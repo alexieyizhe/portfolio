@@ -5,6 +5,7 @@ export type TNowPlayingData = {
   artist?: string; // name of artist or undefined if podcast
   coverArtSrc: string;
   link: string;
+  token: string;
 };
 
 const requestNewToken = async () => {
@@ -42,7 +43,7 @@ const requestNewToken = async () => {
   }
 };
 
-const fetchNowPlaying = async (accessToken) => {
+const fetchNowPlaying = async (accessToken: string) => {
   try {
     const res = await fetch(
       'https://api.spotify.com/v1/me/player/currently-playing?additional_types=track,episode',
@@ -122,7 +123,7 @@ const getNowPlayingData = async (client): Promise<TNowPlayingData> => {
   const accessToken = await client.get(StorageKey.ACCESS_TOKEN);
   const nowPlayingData = await fetchNowPlaying(accessToken);
 
-  return nowPlayingData;
+  return { ...nowPlayingData, token: accessToken };
 };
 
 export { getNowPlayingData };

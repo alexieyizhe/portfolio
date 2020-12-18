@@ -79,7 +79,7 @@ const MeIllustration: FC = memo(() => {
       onMouseLeave={() => setHovering(false)}
       onClick={onIllustrationClick}
       style={{ transition: 'transform 200ms' }}
-      transform={`scale(${isHovering ? 1.02 : 1})`}
+      transform={`scale(${isHovering ? 1.01 : 1})`}
     >
       <g
         id="Master/Character/Sitting"
