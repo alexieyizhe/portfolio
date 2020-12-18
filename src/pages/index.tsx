@@ -3,11 +3,10 @@ import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
-import { getNowPlayingDataServerSide } from 'services/_server_';
+import { getNowPlayingDataServerSide, StorageClient } from 'services/_server_';
 
 import 'services/theme';
 import { SiteContextProvider } from 'services/site/context';
-import { StorageClient } from 'services/storage';
 import DynamicFavicon from 'components/DynamicFavicon';
 import Heading from 'components/Heading';
 import Bio from 'components/Bio';

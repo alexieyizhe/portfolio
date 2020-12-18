@@ -67,6 +67,7 @@ const extractNowPlayingData = (data: any) => {
         images,
       };
     }
+
     case 'episode': {
       const {
         item: {

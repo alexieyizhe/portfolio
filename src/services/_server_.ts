@@ -21,6 +21,8 @@ enum StorageKey {
   STATUS = 'custom-status',
 }
 
+const FALLBACK_TIMEZONE = 'America/Toronto';
+
 class StorageClient {
   private client: Redis.Redis;
   connected = false;
@@ -35,48 +37,40 @@ class StorageClient {
     this.connected = true;
   }
 
-  async getSpotifyCredentials(): Promise<{
-    token: string | null;
-    expiry: number;
-  }> {
-    try {
-      const accessTokenExpiry = Number(
-        await this.client.get(StorageKey.ACCESS_TOKEN_EXPIRY)
+  async getSpotifyCredentials(): Promise<{ token: string; expiry: number }> {
+    const accessTokenExpiry = Number(
+      await this.client.get(StorageKey.ACCESS_TOKEN_EXPIRY)
+    );
+
+    if (accessTokenExpiry < Date.now()) {
+      console.debug(
+        `Access token expired, requesting new and setting token expiry to ${new Date(
+          Date.now() + 3600 * 1000
+        ).toLocaleString()}`
       );
 
-      if (accessTokenExpiry < Date.now()) {
-        console.debug(
-          `Access token expired, requesting new and setting token expiry to ${new Date(
-            Date.now() + 3600 * 1000
-          ).toLocaleString()}`
-        );
+      const { access_token } = await requestNewToken();
+      const newExpiry = Date.now() + 3600 * 1000; // spotify tokens expire in an hour
 
-        const { access_token } = await requestNewToken();
-        const newExpiry = Date.now() + 3600 * 1000; // spotify tokens expire in an hour
+      await this.client.set(StorageKey.ACCESS_TOKEN, access_token);
+      await this.client.set(StorageKey.ACCESS_TOKEN_EXPIRY, newExpiry);
 
-        await this.client.set(StorageKey.ACCESS_TOKEN, access_token);
-        await this.client.set(StorageKey.ACCESS_TOKEN_EXPIRY, newExpiry);
-
-        return { token: access_token, expiry: newExpiry };
-      }
-
-      const accessToken = await this.client.get(StorageKey.ACCESS_TOKEN);
-
-      return { token: accessToken, expiry: accessTokenExpiry };
-    } catch (e) {
-      console.error(e);
-      return { token: null, expiry: -1 };
+      return { token: access_token, expiry: newExpiry };
     }
+
+    const accessToken = await this.client.get(StorageKey.ACCESS_TOKEN);
+
+    return { token: accessToken, expiry: accessTokenExpiry };
   }
 
   async getTimezone() {
     try {
       return (
         (await this.client.get(StorageKey.CURRENT_IANA_TIMEZONE)) ??
-        'America/Toronto'
+        FALLBACK_TIMEZONE
       );
     } catch {
-      return 'America/Toronto';
+      return FALLBACK_TIMEZONE;
     }
   }
 

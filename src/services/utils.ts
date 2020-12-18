@@ -19,8 +19,8 @@ const getDateInZone = (timeZoneIANA: string): Date => {
 };
 
 /**
- * A hook into tab visibility changes through
- * an event handler that receives a flag indicating whether
+ * A hook into tab visibility changes through an
+ * event handler that receives a flag indicating whether
  * the tab has lost or gained focus
  */
 const useVisibilityChange = (
