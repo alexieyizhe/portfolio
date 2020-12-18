@@ -1,5 +1,5 @@
-import { useState, FC } from 'react';
 import Head from 'next/head';
+import { useState, FC } from 'react';
 
 import { useVisibilityChange } from 'services/utils';
 
