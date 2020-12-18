@@ -26,6 +26,7 @@
     "webpack-bundle-analyzer": "^4.3.0"
   },
   "dependencies": {
+    "canvas": "^2.6.1",
     "color.js": "^1.1.0",
     "goober": "^2.0.19-next.1",
     "goober-autoprefixer": "^1.2.1",

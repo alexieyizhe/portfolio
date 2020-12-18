@@ -1,6 +1,8 @@
 import { StorageKey } from 'services/storage';
+import { getBestTextColor } from 'services/color';
 
 import { fetchNowPlaying } from './fetch';
+
 export type TNowPlayingData = {
   uri: string;
   name: string; // name of song or name of podcast
@@ -70,9 +72,15 @@ const getNowPlayingData = async (
   const accessToken = await client.get(StorageKey.ACCESS_TOKEN);
   const nowPlayingData = await fetchNowPlaying(accessToken);
 
+  if (nowPlayingData)
+    console.log(await getBestTextColor(nowPlayingData.coverArtSrc));
+
   return {
     nowPlayingData: nowPlayingData
-      ? { ...nowPlayingData, coverArtColor: '#000' }
+      ? {
+          ...nowPlayingData,
+          coverArtColor: await getBestTextColor(nowPlayingData.coverArtSrc),
+        }
       : null,
     spotifyToken: accessToken,
   };

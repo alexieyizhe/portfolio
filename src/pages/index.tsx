@@ -12,6 +12,7 @@ import { getNowPlayingData } from 'services/now-playing';
 import { createStorageClient, StorageKey } from 'services/storage';
 import { useState } from 'react';
 import { useVisibilityChange } from 'services/utils';
+import { prominent } from 'services/color';
 
 const MeIllustration = dynamic(() => import('components/MeIllustration'));
 
