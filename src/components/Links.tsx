@@ -10,7 +10,7 @@ const Container = styled('footer')`
   align-items: center;
   justify-content: center;
 
-  margin: 1em 0 2em 0;
+  margin: 0 0 2em 0;
 
   & > a {
     margin: 0 6px;

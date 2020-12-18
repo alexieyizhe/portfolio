@@ -1,6 +1,15 @@
 import { FC, memo, useState } from 'react';
+import { styled } from 'goober';
 
 import { useSiteContext } from 'services/site/context';
+
+const Container = styled('svg')`
+  height: 280px;
+
+  @media only screen and (max-width: 600px) {
+    height: 220px;
+  }
+`;
 
 const WEIRD = (
   <g id="Face">
@@ -72,8 +81,7 @@ const MeIllustration: FC = memo(() => {
     });
 
   return (
-    <svg
-      height="280"
+    <Container
       overflow="visible"
       viewBox="233.511 78 682.97 695.5"
       onMouseEnter={() => setHovering(true)}
@@ -267,7 +275,7 @@ const MeIllustration: FC = memo(() => {
           </g>
         </g>
       </g>
-    </svg>
+    </Container>
   );
 });
 

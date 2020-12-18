@@ -27,7 +27,6 @@ type TSiteContextValue = TPageProps & {
   setIsHoveringLink: Dispatch<SetStateAction<boolean>>;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const SiteContext = createContext<TSiteContextValue>({} as any);
 
 const useSiteContext = () => useContext(SiteContext);

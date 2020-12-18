@@ -60,6 +60,7 @@ const nowPlayingMarkup = ({
           height: '18px',
           borderRadius: '3px',
           transform: 'translateY(1px)',
+          boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
         }}
       />
     </CoverArtLink>,
@@ -108,19 +109,21 @@ const DynamicCurrentStatus: FC = memo(() => {
 
   return (
     <span>
-      {new Array(25).fill('').map((_, wordIdx) => {
-        return (
-          <>
-            <TextLoop
-              // transition to next status, but don't transition from last back to first
-              interval={statuses.map((_, i) =>
-                i === statuses.length - 1 ? -1 : 1000
-              )}
-              children={statusesMarkup.map((m) => m[wordIdx] ?? '')}
-            />{' '}
-          </>
-        );
-      })}
+      {new Array(Math.max(...statusesMarkup.map((s) => s.length)))
+        .fill('')
+        .map((_, wordIdx) => {
+          return (
+            <>
+              <TextLoop
+                // transition to next status, but don't transition from last back to first
+                interval={statuses.map((_, i) =>
+                  i === statuses.length - 1 ? -1 : 1000
+                )}
+                children={statusesMarkup.map((m) => m[wordIdx] ?? '')}
+              />{' '}
+            </>
+          );
+        })}
     </span>
   );
 });
