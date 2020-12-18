@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Refresh
-        run: curl https://alexxie.com/api/refresh
+        run: curl https://alexxie.com/api/api/refresh-now-playing

@@ -7,6 +7,7 @@ const DynamicFavicon: FC = () => {
   const [isAway, setAway] = useState(false);
   useVisibilityChange(setAway);
 
+  console.log(isAway);
   return (
     <Head>
       <link
