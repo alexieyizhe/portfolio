@@ -1,4 +1,4 @@
-import { memo, FC, useEffect, useState } from 'react';
+import { memo, FC, useEffect, useState, useMemo } from 'react';
 import { styled } from 'goober';
 import { prominent } from 'color.js';
 
@@ -67,7 +67,10 @@ const fetchNowPlaying = async (accessToken: string) => {
   return null;
 };
 
-const NowPlayingInfo = styled<{ color: string }>('span')`
+// TODO: add color and album cover art back
+const NowPlayingInfo = styled<
+  { color: string } & React.ComponentPropsWithoutRef<'a'>
+>('a')`
   position: relative;
   transition: color 1s;
   color: ${({ color }) => color};
@@ -114,27 +117,16 @@ const nowPlayingMarkup = ({
   coverArtColor,
 }: TNowPlayingDataWithColor) => {
   const isTrack = !!artist;
-  const action = isTrack ? "jammin' out to " : 'listening to ';
+  const action = isTrack ? "jammin' out to" : 'listening to';
   const label = `${name}${isTrack ? ` by ${artist}` : ''}`;
 
-  return `${action}${label}` as string;
-  return (
-    <>
-      {action}
-      <Link href={link} target="_blank" rel="noopener noreferrer" bare>
-        <NowPlayingInfo color={coverArtColor}>
-          {label} <img src={coverArtSrc} />
-        </NowPlayingInfo>
-      </Link>
-    </>
-  );
+  return [...action.split(' '), ...label.split(' ')];
 };
 
 const DynamicCurrentStatus: FC = memo(() => {
   const { nowPlaying, activity, spotifyToken } = useSiteContext();
   const [np, setNp] = useState<TNowPlayingData>(nowPlaying);
   const [updatedNp, setUpdatedNp] = useState<TNowPlayingData>(null);
-  const [items, setItems] = useState(['a', 'b']);
 
   useEffect(() => {
     (async () => {
@@ -149,20 +141,20 @@ const DynamicCurrentStatus: FC = memo(() => {
       const updatedNowPlayingData = await fetchNowPlaying(spotifyToken);
       console.log(updatedNowPlayingData);
 
-      getBestTextColor(updatedNowPlayingData.coverArtSrc).then((color) =>
-        setUpdatedNp({
-          ...updatedNowPlayingData,
-          coverArtColor: color,
-        })
-      );
+      if (updatedNowPlayingData) {
+        getBestTextColor(updatedNowPlayingData.coverArtSrc).then((color) =>
+          setUpdatedNp({
+            ...updatedNowPlayingData,
+            coverArtColor: color,
+          })
+        );
+      }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const statusMarkup = np ? nowPlayingMarkup(np) : `probably ${activity}`;
-  const otherStatusMarkup = updatedNp ? nowPlayingMarkup(updatedNp) : null;
-  const statusMarkupList = statusMarkup?.split(' ') ?? [];
-  const otherStatusMarkupList = otherStatusMarkup?.split(' ') ?? [];
+  const markup = np ? nowPlayingMarkup(np) : `probably ${activity}`.split(' ');
+  const updatedMarkup = updatedNp ? nowPlayingMarkup(updatedNp) : [];
 
   return (
     <span>
@@ -170,11 +162,8 @@ const DynamicCurrentStatus: FC = memo(() => {
         return (
           <>
             <TextLoop
-              interval={[3000, -1]} // don't transition from the updated data to the initial data
-              children={[
-                statusMarkupList[num] ?? ' ',
-                otherStatusMarkupList[num] ?? ' ',
-              ]}
+              interval={[updatedMarkup.length > 0 ? 3000 : -1, -1]} // don't transition from the updated data back to the initial data
+              children={[markup[num] ?? ' ', updatedMarkup[num] ?? ' ']}
             />{' '}
           </>
         );

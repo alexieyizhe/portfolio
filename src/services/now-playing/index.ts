@@ -125,10 +125,10 @@ const getNowPlayingData = async (
   const accessToken = await client.get(StorageKey.ACCESS_TOKEN);
   const nowPlayingData = await fetchNowPlaying(accessToken);
 
-  if (!nowPlayingData) return null;
-
   return {
-    nowPlayingData: { ...nowPlayingData, coverArtColor: '#000' },
+    nowPlayingData: nowPlayingData
+      ? { ...nowPlayingData, coverArtColor: '#000' }
+      : null,
     spotifyToken: accessToken,
   };
 };

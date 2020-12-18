@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 export const getRandomItem = <T = unknown>(arr: T[]) =>
   arr[Math.floor(Math.random() * arr.length)];
 
@@ -42,4 +44,34 @@ export const rgbToHsl = ([r, g, b]: number[]) => {
   l = +(l * 100).toFixed(1);
 
   return [h, s, l];
+};
+
+export const useVisibilityChange = (
+  visibilityChangeHandler: (isHidden: boolean) => void
+) => {
+  useEffect(() => {
+    if (process.browser) {
+      const [hidden, CHANGE_EVENT_NAME] =
+        typeof document.hidden !== 'undefined'
+          ? ['hidden', 'visibilitychange']
+          : typeof (document as any).msHidden !== 'undefined'
+          ? ['msHidden', 'msvisibilitychange']
+          : typeof (document as any).webkitHidden !== 'undefined'
+          ? ['webkitHidden', 'webkitvisibilitychange']
+          : [undefined, undefined];
+
+      if (hidden && CHANGE_EVENT_NAME) {
+        const onVisibilityChange = () =>
+          visibilityChangeHandler(document[hidden]);
+
+        document.addEventListener(CHANGE_EVENT_NAME, onVisibilityChange, false);
+        return () =>
+          document.removeEventListener(
+            CHANGE_EVENT_NAME,
+            onVisibilityChange,
+            false
+          );
+      }
+    }
+  }, []);
 };
