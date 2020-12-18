@@ -1,68 +1,50 @@
 import { memo, FC, useEffect, useState, useCallback } from 'react';
-import { prominent } from 'color.js';
-
-import { rgbToHsl, useVisibilityChange } from 'services/utils';
-import { useSiteContext } from 'services/site/context';
-import { TNowPlayingData } from 'services/now-playing';
-import { fetchNowPlaying } from 'services/now-playing/fetch';
 import TextLoop from 'react-text-loop';
+import { styled } from 'goober';
 
-const getBestTextColor = async (coverArt: string) => {
-  const colors = (await prominent(coverArt, {
-    amount: 3,
-    group: 20,
-    format: 'array',
-    sample: 10,
-  })) as number[][];
+import { useVisibilityChange } from 'services/utils';
+import { useSiteContext } from 'services/site/context';
+import {
+  TNowPlayingData,
+  isNowPlayingData,
+  getNowPlaying,
+} from 'services/now-playing';
 
-  let [bestH, bestS, bestL] = rgbToHsl(colors[0]);
-  for (const rgb of colors) {
-    const [h, s, l] = rgbToHsl(rgb);
-    if (s > 40) {
-      [bestH, bestS, bestL] = [h, s, l];
-      break;
-    }
+const CoverArtLink = styled('a')`
+  position: relative;
+  display: inline-block;
+
+  transition: transform 250ms;
+  &:hover {
+    transform: scale(1.1);
   }
 
-  // upper bound lightness value at 40 to make it readable
-  return `hsl(${bestH}, ${bestS}%, ${Math.min(bestL, 40)}%)`;
-};
-
-const CoverArtLink = ({ href, children }) => {
-  const [hover, setHover] = useState(false);
-
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer noopener"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      style={{
-        position: 'relative',
-        display: 'inline-block',
-        transform: `scale(${hover ? 1.1 : 1})`,
-        transition: 'transform 250ms',
-      }}
-    >
-      {children}
-    </a>
-  );
-};
+  & img {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    transform: translateY(1px);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+`;
 
 const nowPlayingMarkup = ({
   name,
-  artist,
+  artistName,
+  podcastName,
   link,
   coverArtSrc,
   coverArtColor,
 }: TNowPlayingData) => {
-  const isTrack = !!artist;
-  const action = isTrack ? "jammin' out to" : 'listening to';
-  const label = `${name}${isTrack ? ` by ${artist}` : ''}`;
+  const isPodcast = !!podcastName;
+  const hasArtist = !!artistName;
+  const action = isPodcast ? 'listening to an episode of' : "jammin' out to";
+  const label = `${isPodcast ? podcastName : name}${
+    hasArtist ? ` by ${artistName}` : ''
+  }`;
 
   return [
-    ...action.split(' ').map((a) => <span style={{ color: '#000' }}>{a}</span>),
+    ...action.split(' ').map((a) => <span>{a}</span>),
     ...label.split(' ').map((a) => (
       <span
         className="dynamic"
@@ -71,85 +53,71 @@ const nowPlayingMarkup = ({
         {a}
       </span>
     )),
-    <CoverArtLink href={link}>
-      <img
-        src={coverArtSrc}
-        style={{
-          height: '18px',
-          borderRadius: '3px',
-          transform: 'translateY(1px)',
-        }}
-      />
+    <CoverArtLink href={link} target="_blank" rel="noreferrer noopener">
+      <img src={coverArtSrc} />
     </CoverArtLink>,
   ];
 };
 
 const DynamicCurrentStatus: FC = memo(() => {
-  const { nowPlaying, activity, spotifyToken } = useSiteContext();
-  const [np, setNp] = useState<(TNowPlayingData | string)[]>([
-    nowPlaying ?? `probably ${activity}`,
+  const { nowPlayingData, activity, spotifyToken } = useSiteContext();
+  const [statuses, setStatuses] = useState<(TNowPlayingData | string)[]>([
+    nowPlayingData ?? `probably ${activity}`,
   ]);
-  const [shouldFetchNew, setShouldFetchNew] = useState(true);
 
   const refetchNp = useCallback(async () => {
-    const lastNp = np[np.length - 1];
-    const lastNowPlayingData = typeof lastNp === 'string' ? null : lastNp;
-    const updatedNowPlayingData = await fetchNowPlaying(spotifyToken);
-    console.debug(updatedNowPlayingData, lastNowPlayingData);
+    const updatedNowPlayingData = await getNowPlaying(spotifyToken);
 
-    if (
-      updatedNowPlayingData &&
-      updatedNowPlayingData.uri !== lastNowPlayingData?.uri
-    ) {
+    const lastStatus = statuses[statuses.length - 1];
+    const lastNowPlayingData = isNowPlayingData(lastStatus) ? lastStatus : null;
+    const hasNewNowPlayingData =
+      !!updatedNowPlayingData &&
+      updatedNowPlayingData.uri !== lastNowPlayingData?.uri;
+
+    if (hasNewNowPlayingData) {
       console.debug('New now playing data found...', updatedNowPlayingData);
-      const color = await getBestTextColor(updatedNowPlayingData.coverArtSrc);
-      setNp((prev) => [
-        ...prev,
-        {
-          ...updatedNowPlayingData,
-          coverArtColor: color,
-        },
-      ]);
+      setStatuses((prev) => [...prev, updatedNowPlayingData]);
     }
-  }, [np, spotifyToken]);
+  }, [statuses, spotifyToken]);
 
+  /**
+   *Refetch what's currently playing on Spotify when tab receives focus, and on mount.
+   */
   useVisibilityChange((isHidden) => {
     if (!isHidden) {
       console.debug('Received focus, refreshing now playing...');
-      setShouldFetchNew(true);
+      refetchNp();
     }
   });
 
   useEffect(() => {
-    (async () => {
-      if (shouldFetchNew) {
-        await refetchNp();
-        setShouldFetchNew(false);
-      }
-    })();
-  }, [refetchNp, shouldFetchNew]);
+    refetchNp();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const npMarkup = np.map((e) => {
-    return typeof e === 'string' ? e.split(' ') : nowPlayingMarkup(e);
-  });
+  const statusesMarkup = statuses.map((status) =>
+    isNowPlayingData(status) ? nowPlayingMarkup(status) : status.split(' ')
+  );
 
   return (
     <span>
-      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map(
-        (i) => {
+      {new Array(Math.max(...statusesMarkup.map((s) => s.length)))
+        .fill('')
+        .map((_, wordIdx) => {
           return (
             <>
               <TextLoop
-                interval={np.map((_, i) => (i === np.length - 1 ? -1 : 2000))} // don't transition from the last data back to the initial data
-                children={npMarkup.map((e) => e[i] ?? ' ')}
+                // transition to next status, but don't transition from last back to first
+                interval={statuses.map((_, i) =>
+                  i === statuses.length - 1 ? -1 : 1000
+                )}
+                children={statusesMarkup.map((m) => m[wordIdx] ?? '')}
               />{' '}
             </>
           );
-        }
-      )}
+        })}
     </span>
   );
 });
-// TODO: remove react-motion
 
 export default DynamicCurrentStatus;

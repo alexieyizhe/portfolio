@@ -8,6 +8,10 @@ const H1 = styled('h1')`
   font-size: 48px;
   text-align: center;
   margin-bottom: 32px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 32px;
+  }
 `;
 
 const Heading: FC = memo(() => {

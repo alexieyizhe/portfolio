@@ -7,11 +7,10 @@ import Document, {
 } from 'next/document';
 import { extractCss } from 'goober';
 
-export default class CustomDocument extends Document<{ css: any }> {
+export default class CustomDocument extends Document<{ css: string }> {
   static async getInitialProps({ renderPage }: DocumentContext) {
+    // inline critical css for page render
     const page = renderPage();
-
-    // extract the css for each page render
     const css = extractCss();
     return { ...page, css };
   }
