@@ -147,9 +147,11 @@ const prominent = (item: Item, opts?: ProminentOptions) =>
   processImage(getProminent, item, opts);
 
 const getBestTextColor = async (
-  coverArt: string,
+  coverArt: string | undefined,
   colorArgs?: ProminentOptions
-) => {
+): Promise<string> => {
+  if (!coverArt) return '#000';
+
   const colors = (await prominent(coverArt, {
     amount: 3,
     group: 20,
@@ -166,6 +168,7 @@ const getBestTextColor = async (
       break;
     }
   }
+  // TODO: look into accuracy of this formula
 
   // upper bound lightness value at 40 to make it readable
   return `hsl(${bestH}, ${bestS}%, ${Math.min(bestL, 40)}%)`;

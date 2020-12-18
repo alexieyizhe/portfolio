@@ -17,6 +17,7 @@ const WEIRD = (
     </g>
   </g>
 );
+
 const SURPRISED = (
   <g
     id="Face/Surprise"
@@ -65,7 +66,7 @@ const MeIllustration: FC = memo(() => {
 
   const onIllustrationClick = () =>
     setNumClicks((prev) => {
-      if (prev + 1 === 3)
+      if ((prev + 1) % 3 === 0)
         window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
       return prev + 1;
     });

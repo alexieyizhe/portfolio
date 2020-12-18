@@ -9,15 +9,6 @@ type TextGradientInfo = [
   gradientTo: string
 ];
 
-const GradientContainer = styled<{ gradient: TextGradientInfo }>('span')`
-  color: ${({ gradient }) => gradient[1]};
-  background: ${({ gradient }) =>
-    `linear-gradient(${gradient[0]}, ${gradient[1]}, ${gradient[2]})`};
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`;
-
 const timeHourMarkup = (hour: number) => {
   const twelveHourTime = hour % 12 || 12; // 0 or 24 becomes 12am
   const timeOfDay = hour < 12 || hour === 24 ? 'AM' : 'PM';
@@ -73,6 +64,15 @@ const timeToColor = (hour: number, time: string): TextGradientInfo => {
       return [`${110 + hour * 2}deg`, '#271F3F', '#062B79'];
   }
 };
+
+const GradientContainer = styled<{ gradient: TextGradientInfo }>('span')`
+  color: ${({ gradient }) => gradient[1]};
+  background: ${({ gradient }) =>
+    `linear-gradient(${gradient[0]}, ${gradient[1]}, ${gradient[2]})`};
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
 
 const DynamicTime: FC = memo(() => {
   const { currentDate } = useSiteContext();

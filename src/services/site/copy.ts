@@ -31,6 +31,7 @@ export const ACTIVITIES = [
   'falling on my face at the climbing gym.',
   'setting the kitchen on fire.',
   'clickety clacking, furiously typing.',
+  'playing a lil ukelelelele.',
   "chillin' with my plants – Hubert, Dipsy, and Elise.",
 ];
 

@@ -2,16 +2,16 @@ import { styled } from 'goober';
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { createCanvas, Image as CanvasImage } from 'canvas';
 
+import { getNowPlayingDataServerSide } from 'services/_server_';
+
+import 'services/theme';
+import { SiteContextProvider } from 'services/site/context';
+import { StorageClient } from 'services/storage';
+import DynamicFavicon from 'components/DynamicFavicon';
 import Heading from 'components/Heading';
 import Bio from 'components/Bio';
 import Links from 'components/Links';
-import { SiteContextProvider } from 'services/site/context';
-import 'services/theme';
-import { requestNowPlayingData } from 'services/now-playing/server';
-import { StorageClient, StorageKey } from 'services/storage';
-import DynamicFavicon from 'components/DynamicFavicon';
 
 const MeIllustration = dynamic(() => import('components/MeIllustration'));
 
@@ -72,26 +72,20 @@ const IndexPage = (props: TPageProps) => (
   </>
 );
 
-const serversideColorOptions = {
-  canvasBuilder: () => createCanvas(64, 64),
-  imageClass: CanvasImage,
-};
-
 export async function getStaticProps() {
   console.debug('Retreving now playing data and timezone...');
   const client = new StorageClient();
-  const { nowPlayingData, spotifyToken } = await requestNowPlayingData(
-    client,
-    serversideColorOptions
-  );
-  const currentTimeZone = await client.get(StorageKey.CURRENT_IANA_TIMEZONE);
-  const customStatus = await client.get(StorageKey.STATUS);
+  const { token } = await client.getSpotifyCredentials();
+  const currentTimeZone = await client.getTimezone();
+  const customStatus = await client.getStatus();
   client.disconnect();
+
+  const nowPlayingData = await getNowPlayingDataServerSide(token);
 
   return {
     props: {
       nowPlayingData,
-      spotifyToken,
+      spotifyToken: token,
       currentTimeZone,
       customStatus,
     },

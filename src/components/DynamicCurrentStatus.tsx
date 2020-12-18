@@ -19,6 +19,7 @@ const CoverArtLink = ({ href, children }) => {
       rel="noreferrer noopener"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      // react-text-loop doesn't play well with goober, so we need to use inline styles
       style={{
         position: 'relative',
         display: 'inline-block',
@@ -66,66 +67,56 @@ const nowPlayingMarkup = ({
 };
 
 const DynamicCurrentStatus: FC = memo(() => {
-  const { nowPlaying, activity, spotifyToken } = useSiteContext();
+  const { nowPlayingData, activity, spotifyToken } = useSiteContext();
   const [statuses, setStatuses] = useState<(TNowPlayingData | string)[]>([
-    nowPlaying ?? `probably ${activity}`,
+    nowPlayingData ?? `probably ${activity}`,
   ]);
-  const [shouldFetchNew, setShouldFetchNew] = useState(true);
 
   const refetchNp = useCallback(async () => {
-    const lastStatus = statuses[statuses.length - 1];
-    const lastNowPlayingData = isNowPlayingData(lastStatus) ? lastStatus : null;
     const updatedNowPlayingData = await getNowPlaying(spotifyToken);
 
-    if (
-      updatedNowPlayingData &&
-      updatedNowPlayingData.uri !== lastNowPlayingData?.uri
-    ) {
+    const lastStatus = statuses[statuses.length - 1];
+    const lastNowPlayingData = isNowPlayingData(lastStatus) ? lastStatus : null;
+    const hasNewNowPlayingData =
+      !!updatedNowPlayingData &&
+      updatedNowPlayingData.uri !== lastNowPlayingData?.uri;
+
+    if (hasNewNowPlayingData) {
       console.debug('New now playing data found...', updatedNowPlayingData);
       setStatuses((prev) => [...prev, updatedNowPlayingData]);
     }
   }, [statuses, spotifyToken]);
 
   /**
-   * Indicate that we should refetch now playing data when tab receives focus.
-   * We don't use `refetchNp` to update status directly here because
-   * `useVisibilityChange` takes in a function that forms a closure
-   * over the original state of `refetchNp`, not the most updated state.
+   *Refetch what's currently playing on Spotify when tab receives focus, and on mount.
    */
   useVisibilityChange((isHidden) => {
     if (!isHidden) {
       console.debug('Received focus, refreshing now playing...');
-      setShouldFetchNew(true);
+      refetchNp();
     }
   });
 
-  /**
-   * Refetch what's currently playing on Spotify when it's indicated we should do so.
-   */
   useEffect(() => {
-    (async () => {
-      if (shouldFetchNew) {
-        await refetchNp();
-        setShouldFetchNew(false);
-      }
-    })();
-  }, [refetchNp, shouldFetchNew]);
+    refetchNp();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const npMarkup = statuses.map((e) =>
-    typeof e === 'string' ? e.split(' ') : nowPlayingMarkup(e)
+  const statusesMarkup = statuses.map((status) =>
+    isNowPlayingData(status) ? nowPlayingMarkup(status) : status.split(' ')
   );
 
   return (
     <span>
-      {new Array(20).fill('').map((_, wordIdx) => {
+      {new Array(25).fill('').map((_, wordIdx) => {
         return (
           <>
             <TextLoop
               // transition to next status, but don't transition from last back to first
               interval={statuses.map((_, i) =>
-                i === statuses.length - 1 ? -1 : 2000
+                i === statuses.length - 1 ? -1 : 1000
               )}
-              children={npMarkup.map((e) => e[wordIdx] ?? '')}
+              children={statusesMarkup.map((m) => m[wordIdx] ?? '')}
             />{' '}
           </>
         );

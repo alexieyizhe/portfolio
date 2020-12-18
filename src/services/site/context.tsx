@@ -8,7 +8,6 @@ import {
 } from 'react';
 
 import type { TPageProps } from 'pages/index';
-import type { TNowPlayingData } from 'services/now-playing';
 import { getDateInZone, getRandomItem } from 'services/utils';
 
 import { ACTIVITIES, GREETINGS, TAGLINES, TALKING_POINTS } from './copy';
@@ -17,7 +16,6 @@ type TSiteContextValue = TPageProps & {
   greeting: string;
   taglines: string[];
   currentDate: Date;
-  nowPlaying?: TNowPlayingData;
   activity: string;
   talkingPoint: string; // wanna chat about ...
   spotifyToken: string;
