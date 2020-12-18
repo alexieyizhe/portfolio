@@ -9,6 +9,7 @@
     "type-check": "tsc --noEmit",
     "analyze": "ANALYZE=true npm run build",
     "build": "next build",
+    "vercel-build": "yum install libuuid-devel libmount-devel && cp /lib64/{libuuid,libmount,libblkid}.so.1 node_modules/canvas/build/Release/ && npm run build",
     "serve": "next start"
   },
   "devDependencies": {
@@ -26,6 +27,7 @@
     "webpack-bundle-analyzer": "^4.3.0"
   },
   "dependencies": {
+    "canvas": "^2.6.1",
     "color.js": "^1.1.0",
     "goober": "^2.0.19-next.1",
     "goober-autoprefixer": "^1.2.1",

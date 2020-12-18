@@ -1,9 +1,14 @@
 import { StorageKey } from 'services/storage';
+import { getBestTextColor } from 'services/color';
+
+import { fetchNowPlaying } from './fetch';
 
 export type TNowPlayingData = {
+  uri: string;
   name: string; // name of song or name of podcast
   artist?: string; // name of artist or undefined if podcast
   coverArtSrc: string;
+  coverArtColor: string;
   link: string;
 };
 
@@ -42,64 +47,9 @@ const requestNewToken = async () => {
   }
 };
 
-const fetchNowPlaying = async (accessToken) => {
-  try {
-    const res = await fetch(
-      'https://api.spotify.com/v1/me/player/currently-playing?additional_types=track,episode',
-      {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
-    if (res.status === 204) return null; // API returns 204 if nothing is playing
-
-    const data = await res.json();
-    if (!res.ok)
-      throw new Error(`Request error ${res.status}: ${JSON.stringify(data)}`);
-
-    switch (data.currently_playing_type) {
-      case 'track': {
-        const {
-          item: {
-            name,
-            album: { images },
-            external_urls: { spotify },
-            artists: [{ name: artistName }],
-          },
-        } = data;
-        return {
-          name,
-          artist: artistName,
-          link: spotify,
-          coverArtSrc: images.find((i) => i.width === 64)?.url,
-        };
-      }
-      case 'episode': {
-        const {
-          item: {
-            images,
-            external_urls: { spotify },
-            show: { name },
-          },
-        } = data;
-
-        return {
-          name,
-          link: spotify,
-          coverArtSrc: images.find((i) => i.width === 64)?.url,
-        };
-      }
-    }
-  } catch (e) {
-    console.error(e);
-  }
-
-  return null;
-};
-
-const getNowPlayingData = async (client): Promise<TNowPlayingData> => {
+const getNowPlayingData = async (
+  client
+): Promise<{ spotifyToken: string; nowPlayingData: TNowPlayingData }> => {
   const accessTokenExpiry = await client.get(StorageKey.ACCESS_TOKEN_EXPIRY);
   console.debug(
     `Existing token expires at ${new Date(
@@ -122,7 +72,18 @@ const getNowPlayingData = async (client): Promise<TNowPlayingData> => {
   const accessToken = await client.get(StorageKey.ACCESS_TOKEN);
   const nowPlayingData = await fetchNowPlaying(accessToken);
 
-  return nowPlayingData;
+  if (nowPlayingData)
+    console.log(await getBestTextColor(nowPlayingData.coverArtSrc));
+
+  return {
+    nowPlayingData: nowPlayingData
+      ? {
+          ...nowPlayingData,
+          coverArtColor: await getBestTextColor(nowPlayingData.coverArtSrc),
+        }
+      : null,
+    spotifyToken: accessToken,
+  };
 };
 
 export { getNowPlayingData };

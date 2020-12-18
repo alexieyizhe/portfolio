@@ -6,13 +6,7 @@ import { useSiteContext } from 'services/site/context';
 const DynamicTagline: FC = memo(() => {
   const { taglines } = useSiteContext();
 
-  return (
-    <TextLoop>
-      {taglines.map((tl) => (
-        <span>{tl}</span>
-      ))}
-    </TextLoop>
-  );
+  return <TextLoop children={taglines} />;
 });
 
 export default DynamicTagline;

@@ -19,6 +19,7 @@ type TSiteContextValue = {
   nowPlaying?: TNowPlayingData;
   activity: string;
   talkingPoint: string; // wanna chat about ...
+  spotifyToken: string;
 
   isEasterEggActive: boolean;
   setIsEasterEggActive: Dispatch<SetStateAction<boolean>>;
@@ -30,6 +31,8 @@ type TSiteContextValue = {
 type SiteContextProviderProps = {
   nowPlayingData: TNowPlayingData;
   currentTimeZone: string;
+  spotifyToken: string;
+  // todo: clean this up and infer from getStaticProps
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -45,6 +48,7 @@ const SiteContextProvider: FC<SiteContextProviderProps> = ({
   nowPlayingData,
   currentTimeZone,
   children,
+  spotifyToken,
 }) => {
   const [isEasterEggActive, setIsEasterEggActive] = useState(false);
   const [isHoveringLink, setIsHoveringLink] = useState(false);
@@ -58,6 +62,7 @@ const SiteContextProvider: FC<SiteContextProviderProps> = ({
         nowPlaying: nowPlayingData,
         activity,
         talkingPoint,
+        spotifyToken,
 
         isEasterEggActive,
         setIsEasterEggActive,

@@ -10,6 +10,9 @@ import { SiteContextProvider } from 'services/site/context';
 import 'services/theme';
 import { getNowPlayingData } from 'services/now-playing';
 import { createStorageClient, StorageKey } from 'services/storage';
+import { useState } from 'react';
+import { useVisibilityChange } from 'services/utils';
+import { prominent } from 'services/color';
 
 const MeIllustration = dynamic(() => import('components/MeIllustration'));
 
@@ -38,6 +41,10 @@ const ContentContainer = styled('main')`
 `;
 
 const IndexPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const [isAway, setAway] = useState(false);
+
+  useVisibilityChange(setAway);
+
   return (
     <>
       <Head>
@@ -51,7 +58,11 @@ const IndexPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           property="og:description"
           content="Alex is a web developer and a senior at the University of Waterloo, majoring in computer science."
         />
-        <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+        <link
+          rel="shortcut icon"
+          type="image/png"
+          href={isAway ? '/favicon-away.png' : '/favicon.png'}
+        />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://alexxie.com/preview.png" />
       </Head>
@@ -73,7 +84,7 @@ const IndexPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 export async function getStaticProps() {
   const client = createStorageClient();
   console.debug('Retreving now playing data and timezone...');
-  const nowPlayingData = await getNowPlayingData(client);
+  const { nowPlayingData, spotifyToken } = await getNowPlayingData(client);
   const currentTimeZone = await client.get(StorageKey.CURRENT_IANA_TIMEZONE);
   const customStatus = await client.get(StorageKey.STATUS);
   client.disconnect();
@@ -81,10 +92,11 @@ export async function getStaticProps() {
   return {
     props: {
       nowPlayingData,
+      spotifyToken,
       currentTimeZone,
       customStatus,
     },
-    revalidate: 10, // regenerate page at most every 10 seconds
+    revalidate: 60, // regenerate page at most every minute
   };
 }
 
