@@ -7,14 +7,13 @@ const DynamicFavicon: FC = () => {
   const [isAway, setAway] = useState(false);
   useVisibilityChange(setAway);
 
-  console.log(isAway);
-  return (
+  return isAway ? (
     <Head>
-      <link
-        rel="shortcut icon"
-        type="image/png"
-        href={isAway ? '/favicon-away.png' : '/favicon.png'}
-      />
+      <link rel="shortcut icon" type="image/png" href="/favicon-away.png" />
+    </Head>
+  ) : (
+    <Head>
+      <link rel="shortcut icon" type="image/png" href="/favicon.png" />
     </Head>
   );
 };
