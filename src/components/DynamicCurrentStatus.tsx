@@ -1,7 +1,6 @@
 import { memo, FC, useEffect, useState } from 'react';
 import { styled } from 'goober';
 import { prominent } from 'color.js';
-import { TransitionMotion, spring } from 'react-motion';
 
 import { Link } from 'components/core';
 import { rgbToHsl } from 'services/utils';
@@ -118,6 +117,7 @@ const nowPlayingMarkup = ({
   const action = isTrack ? "jammin' out to " : 'listening to ';
   const label = `${name}${isTrack ? ` by ${artist}` : ''}`;
 
+  return `${action}${label}` as string;
   return (
     <>
       {action}
@@ -131,87 +131,57 @@ const nowPlayingMarkup = ({
 };
 
 const DynamicCurrentStatus: FC = memo(() => {
-  const { nowPlaying, activity } = useSiteContext();
-  const [np, setNp] = useState<TNowPlayingDataWithColor>({
-    ...nowPlaying,
-    coverArtColor: '#000',
-  });
-  const [otherNp, setOtherNp] = useState<TNowPlayingDataWithColor>({
-    ...nowPlaying,
-    coverArtColor: '#000',
-  });
+  const { nowPlaying, activity, spotifyToken } = useSiteContext();
+  const [np, setNp] = useState<TNowPlayingData>(nowPlaying);
+  const [updatedNp, setUpdatedNp] = useState<TNowPlayingData>(null);
   const [items, setItems] = useState(['a', 'b']);
 
   useEffect(() => {
     (async () => {
-      setNp({
-        ...np,
-        coverArtColor: await getBestTextColor(np.coverArtSrc),
-      });
+      // todo: clean this up
+      if (np) {
+        setNp({
+          ...np,
+          coverArtColor: await getBestTextColor(np.coverArtSrc),
+        });
+      }
 
-      const data = await fetchNowPlaying(np.token);
+      const updatedNowPlayingData = await fetchNowPlaying(spotifyToken);
+      console.log(updatedNowPlayingData);
 
-      setTimeout(() => {
-        getBestTextColor(
-          'https://i.scdn.co/image/ab67616d00004851f1b41c8370eca6d344394533'
-        ).then((color) =>
-          setOtherNp({
-            name: 'study abroad',
-            artist: 'Crucial Star',
-            link: 'https://open.spotify.com/track/6O4S5bDDOrhnHcVkwyAx1L',
-            coverArtSrc:
-              'https://i.scdn.co/image/ab67616d00004851f1b41c8370eca6d344394533',
-            token: nowPlaying.token,
-            coverArtColor: color,
-          })
-        );
-      }, 2000);
+      getBestTextColor(updatedNowPlayingData.coverArtSrc).then((color) =>
+        setUpdatedNp({
+          ...updatedNowPlayingData,
+          coverArtColor: color,
+        })
+      );
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const statusMarkup = np ? nowPlayingMarkup(np) : `probably ${activity}`;
+  const otherStatusMarkup = updatedNp ? nowPlayingMarkup(updatedNp) : null;
+  const statusMarkupList = statusMarkup?.split(' ') ?? [];
+  const otherStatusMarkupList = otherStatusMarkup?.split(' ') ?? [];
 
   return (
     <span>
-      {"jammin' out to "}
-      {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-        <>
-          <TextLoop
-            interval={[3000, -1]}
-            children={[
-              np.name.split(' ')[num],
-              otherNp.name.split(' ')[num] ?? ' ',
-            ]}
-          />{' '}
-        </>
-      ))}
-      {/* <TransitionMotion
-        willEnter={() => ({ opacity: 0 })}
-        styles={items.map((item) => ({
-          key: item,
-          style: { opacity: 1 },
-        }))}
-      >
-        {(interpolatedStyles) => (
-          <div>
-            {interpolatedStyles.map((config) => {
-              console.log(config.key, config.style);
-              return (
-                <div
-                  key={config.key}
-                  style={{ ...config.style }}
-                  onClick={() => setItems(['a', 'b', 'c'])}
-                >
-                  {config.key}
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </TransitionMotion> */}
+      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((num) => {
+        return (
+          <>
+            <TextLoop
+              interval={[3000, -1]} // don't transition from the updated data to the initial data
+              children={[
+                statusMarkupList[num] ?? ' ',
+                otherStatusMarkupList[num] ?? ' ',
+              ]}
+            />{' '}
+          </>
+        );
+      })}
     </span>
   );
 });
+// TODO: remove react-motion
 
 export default DynamicCurrentStatus;

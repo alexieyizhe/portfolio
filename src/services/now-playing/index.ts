@@ -4,8 +4,8 @@ export type TNowPlayingData = {
   name: string; // name of song or name of podcast
   artist?: string; // name of artist or undefined if podcast
   coverArtSrc: string;
+  coverArtColor: string;
   link: string;
-  token: string;
 };
 
 const requestNewToken = async () => {
@@ -100,7 +100,9 @@ const fetchNowPlaying = async (accessToken: string) => {
   return null;
 };
 
-const getNowPlayingData = async (client): Promise<TNowPlayingData> => {
+const getNowPlayingData = async (
+  client
+): Promise<{ spotifyToken: string; nowPlayingData: TNowPlayingData }> => {
   const accessTokenExpiry = await client.get(StorageKey.ACCESS_TOKEN_EXPIRY);
   console.debug(
     `Existing token expires at ${new Date(
@@ -123,7 +125,12 @@ const getNowPlayingData = async (client): Promise<TNowPlayingData> => {
   const accessToken = await client.get(StorageKey.ACCESS_TOKEN);
   const nowPlayingData = await fetchNowPlaying(accessToken);
 
-  return { ...nowPlayingData, token: accessToken };
+  if (!nowPlayingData) return null;
+
+  return {
+    nowPlayingData: { ...nowPlayingData, coverArtColor: '#000' },
+    spotifyToken: accessToken,
+  };
 };
 
 export { getNowPlayingData };

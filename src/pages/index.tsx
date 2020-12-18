@@ -10,6 +10,7 @@ import { SiteContextProvider } from 'services/site/context';
 import 'services/theme';
 import { getNowPlayingData } from 'services/now-playing';
 import { createStorageClient, StorageKey } from 'services/storage';
+import { useEffect, useState } from 'react';
 
 const MeIllustration = dynamic(() => import('components/MeIllustration'));
 
@@ -38,6 +39,40 @@ const ContentContainer = styled('main')`
 `;
 
 const IndexPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const [isAway, setAway] = useState(false);
+
+  useEffect(() => {
+    // todo: clean dis up
+    // Set the name of the hidden property and the change event for viletility
+    let hidden, visibilityChange;
+    if (process.browser) {
+      if (typeof document.hidden !== 'undefined') {
+        // Opera 12.10 and Firefox 18 and later suplett
+        hidden = 'hidden';
+        visibilityChange = 'visibilitychange';
+      } else if (typeof document.msHidden !== 'undefined') {
+        hidden = 'msHidden';
+        visibilityChange = 'msvisibilitychange';
+      } else if (typeof document.webkitHidden !== 'undefined') {
+        hidden = 'webkitHidden';
+        visibilityChange = 'webkitvisibilitychange';
+      }
+    }
+
+    function handleVisibilityChange() {
+      console.log(document[hidden]);
+      setAway(document[hidden]);
+    }
+
+    document.addEventListener(visibilityChange, handleVisibilityChange, false);
+    return () =>
+      document?.removeEventListener(
+        visibilityChange,
+        handleVisibilityChange,
+        false
+      );
+  }, []);
+
   return (
     <>
       <Head>
@@ -51,7 +86,11 @@ const IndexPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           property="og:description"
           content="Alex is a web developer and a senior at the University of Waterloo, majoring in computer science."
         />
-        <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+        <link
+          rel="shortcut icon"
+          type="image/png"
+          href={isAway ? '/favicon-away.png' : '/favicon.png'}
+        />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://alexxie.com/preview.png" />
       </Head>
@@ -73,14 +112,15 @@ const IndexPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 export async function getStaticProps() {
   const client = createStorageClient();
   console.debug('Retreving now playing data and timezone...');
-  const nowPlayingData = await getNowPlayingData(client);
+  const { nowPlayingData, spotifyToken } = await getNowPlayingData(client);
   const currentTimeZone = await client.get(StorageKey.CURRENT_IANA_TIMEZONE);
   const customStatus = await client.get(StorageKey.STATUS);
   client.disconnect();
 
   return {
     props: {
-      nowPlayingData,
+      nowPlayingData: null,
+      spotifyToken,
       currentTimeZone,
       customStatus,
     },
