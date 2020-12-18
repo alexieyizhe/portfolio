@@ -90,7 +90,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      nowPlayingData: null,
+      nowPlayingData,
       spotifyToken,
       currentTimeZone,
       customStatus,

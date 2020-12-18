@@ -67,27 +67,6 @@ const fetchNowPlaying = async (accessToken: string) => {
   return null;
 };
 
-// TODO: add color and album cover art back
-const NowPlayingInfo = styled<
-  { color: string } & React.ComponentPropsWithoutRef<'a'>
->('a')`
-  position: relative;
-  transition: color 1s;
-  color: ${({ color }) => color};
-
-  & > img {
-    position: relative;
-    top: 3px;
-    border-radius: 3px;
-    width: 20px;
-    transition: transform 250ms;
-  }
-
-  &:hover > img {
-    transform: scale(1.1);
-  }
-`;
-
 const getBestTextColor = async (coverArt: string) => {
   const colors = (await prominent(coverArt, {
     amount: 3,
@@ -109,6 +88,28 @@ const getBestTextColor = async (coverArt: string) => {
   return `hsl(${bestH}, ${bestS}%, ${Math.min(bestL, 40)}%)`;
 };
 
+const CoverArtLink = ({ href, children }) => {
+  const [hover, setHover] = useState(false);
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        position: 'relative',
+        display: 'inline-block',
+        transform: `scale(${hover ? 1.1 : 1})`,
+        transition: 'transform 250ms',
+      }}
+    >
+      {children}
+    </a>
+  );
+};
+
 const nowPlayingMarkup = ({
   name,
   artist,
@@ -120,54 +121,93 @@ const nowPlayingMarkup = ({
   const action = isTrack ? "jammin' out to" : 'listening to';
   const label = `${name}${isTrack ? ` by ${artist}` : ''}`;
 
-  return [...action.split(' '), ...label.split(' ')];
+  console.log(coverArtColor);
+  return [
+    ...action.split(' ').map((a) => <span>{a}</span>),
+    ...label.split(' ').map((a) => (
+      <span
+        className="dynamic"
+        style={{ color: coverArtColor, transition: 'color 1s' }}
+      >
+        {a}
+      </span>
+    )),
+    <CoverArtLink href={link}>
+      <img
+        src={coverArtSrc}
+        style={{
+          height: '18px',
+          borderRadius: '3px',
+          transform: 'translateY(1px)',
+        }}
+      />
+    </CoverArtLink>,
+  ];
 };
+
+const Container = styled('div')<{ color: string }>`
+  color: ${({ color }) => color};
+`;
 
 const DynamicCurrentStatus: FC = memo(() => {
   const { nowPlaying, activity, spotifyToken } = useSiteContext();
-  const [np, setNp] = useState<TNowPlayingData>(nowPlaying);
-  const [updatedNp, setUpdatedNp] = useState<TNowPlayingData>(null);
+  const [np, setNp] = useState<JSX.Element[][]>([
+    nowPlaying
+      ? nowPlayingMarkup(nowPlaying)
+      : (`probably ${activity}`.split(' ') as any),
+  ]);
 
   useEffect(() => {
     (async () => {
       // todo: clean this up
-      if (np) {
-        setNp({
-          ...np,
-          coverArtColor: await getBestTextColor(np.coverArtSrc),
-        });
-      }
+      // if (nowPlaying) {
+      //   const col = await getBestTextColor(nowPlaying.coverArtSrc);
+      //   console.log(col);
+      //   setNp((prev) => [
+      //     ...prev,
+      //     nowPlayingMarkup({
+      //       ...nowPlaying,
+      //       coverArtColor: col,
+      //     }),
+      //   ]);
+      // }
 
       const updatedNowPlayingData = await fetchNowPlaying(spotifyToken);
       console.log(updatedNowPlayingData);
 
-      if (updatedNowPlayingData) {
+      if (
+        updatedNowPlayingData &&
+        updatedNowPlayingData.name !== nowPlaying?.name
+      ) {
         getBestTextColor(updatedNowPlayingData.coverArtSrc).then((color) =>
-          setUpdatedNp({
-            ...updatedNowPlayingData,
-            coverArtColor: color,
-          })
+          setNp((prev) => [
+            ...prev,
+            nowPlayingMarkup({
+              ...updatedNowPlayingData,
+              coverArtColor: color,
+            }),
+          ])
         );
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const markup = np ? nowPlayingMarkup(np) : `probably ${activity}`.split(' ');
-  const updatedMarkup = updatedNp ? nowPlayingMarkup(updatedNp) : [];
-
+  console.log(np);
   return (
     <span>
-      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((num) => {
-        return (
-          <>
-            <TextLoop
-              interval={[updatedMarkup.length > 0 ? 3000 : -1, -1]} // don't transition from the updated data back to the initial data
-              children={[markup[num] ?? ' ', updatedMarkup[num] ?? ' ']}
-            />{' '}
-          </>
-        );
-      })}
+      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map(
+        (i) => {
+          return (
+            <>
+              <TextLoop
+                interval={np.map((_, i) => (i === np.length - 1 ? -1 : 500))} // don't transition from the last data back to the initial data
+                children={np.map((e) => e?.[i] ?? ' ')}
+              />{' '}
+            </>
+          );
+        }
+      )}
     </span>
   );
 });
