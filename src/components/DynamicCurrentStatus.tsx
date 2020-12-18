@@ -178,6 +178,7 @@ const DynamicCurrentStatus: FC = memo(() => {
       {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
         <>
           <TextLoop
+            interval={[3000, -1]}
             children={[
               np.name.split(' ')[num],
               otherNp.name.split(' ')[num] ?? ' ',
