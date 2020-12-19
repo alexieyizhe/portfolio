@@ -15,6 +15,7 @@ export default async function handler(
       const client = new StorageClient();
       const statusSetOk = await client.set(StorageKey.STATUS, status);
       client.disconnect();
+
       res.statusCode = 200;
       res.end(JSON.stringify({ success: !!statusSetOk, status }));
     } catch (e) {

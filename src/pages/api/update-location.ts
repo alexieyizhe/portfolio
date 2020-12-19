@@ -12,6 +12,7 @@ export default async function handler(
   const newDate = req.query['date'] as string;
   const newTimestamp = req.query['ts'] as string;
 
+  // TODO: add security for these endpoints
   if (newLocation && (newDate || newTimestamp)) {
     try {
       const now = new Date();
