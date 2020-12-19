@@ -4,6 +4,28 @@ const getRandomItem = <T = unknown>(arr: T[]) =>
   arr[Math.floor(Math.random() * arr.length)];
 
 /**
+ * Compute current Date in the time zone provided by offset mins
+ */
+export const getDateFromOffset = (offsetMins: string): Date => {
+  const offsetMinsNum = Number(offsetMins);
+
+  console.log(offsetMins);
+  const now = new Date();
+  const curUTC = new Date(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate(),
+    now.getUTCHours(),
+    now.getUTCMinutes(),
+    now.getUTCSeconds(),
+    now.getUTCMilliseconds()
+  );
+  curUTC.setMinutes(curUTC.getMinutes() + offsetMinsNum);
+  console.log(curUTC.toString());
+  return curUTC;
+};
+
+/**
  * Compute a Date set to the current time in a time zone string
  * @param timeZoneIANA IANA time zone string
  */

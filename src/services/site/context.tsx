@@ -8,7 +8,7 @@ import {
 } from 'react';
 
 import type { TPageProps } from 'pages/index';
-import { getDateInZone, getRandomItem } from 'services/utils';
+import { getDateFromOffset, getRandomItem } from 'services/utils';
 
 import { ACTIVITIES, GREETINGS, TAGLINES, TALKING_POINTS } from './copy';
 
@@ -36,7 +36,7 @@ const activity = getRandomItem(ACTIVITIES);
 const talkingPoint = getRandomItem(TALKING_POINTS);
 
 const SiteContextProvider: FC<TPageProps> = ({
-  currentTimeZone,
+  currentOffset,
   children,
   ...rest
 }) => {
@@ -48,8 +48,8 @@ const SiteContextProvider: FC<TPageProps> = ({
       value={{
         greeting,
         taglines: TAGLINES,
-        currentTimeZone,
-        currentDate: getDateInZone(currentTimeZone),
+        currentOffset,
+        currentDate: getDateFromOffset(currentOffset),
         activity,
         talkingPoint,
         ...rest,

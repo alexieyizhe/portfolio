@@ -9,29 +9,55 @@ export default async function handler(
   res.setHeader('Content-Type', 'application/json');
 
   const newLocation = req.query['loc'];
-  const newTimezone = req.query['tz'];
-  if (newLocation && newTimezone) {
+  const newDate = req.query['date'] as string;
+  const newTimestamp = req.query['ts'] as string;
+
+  if (newLocation && (newDate || newTimestamp)) {
     try {
-      const client = new StorageClient();
-      const tzOk = await client.set(
-        StorageKey.CURRENT_IANA_TIMEZONE,
-        newTimezone
+      const now = new Date();
+      const cur = new Date(newDate ?? Number(newTimestamp));
+      const curUTC = new Date(
+        now.getUTCFullYear(),
+        now.getUTCMonth(),
+        now.getUTCDate(),
+        now.getUTCHours(),
+        now.getUTCMinutes(),
+        now.getUTCSeconds(),
+        now.getUTCMilliseconds()
       );
-      const locOk = await client.set(
-        StorageKey.CURRENT_IANA_TIMEZONE,
-        newTimezone
+
+      // get minutes from milliseconds
+      const offsetMins = (cur.getTime() - curUTC.getTime()) / 1000 / 60;
+      // some amount of time will have elapsed between sending request and this processing logic.
+      // to compensate, we want to round to the closest PAST hour
+      // note: there are non-hour interval time zones but that's complex for what we're doing
+      const closestOffsetMins = Math.ceil(offsetMins / 60) * 60;
+
+      console.log(
+        `Setting new location to ${newLocation} and offset to ${closestOffsetMins}`
+      );
+      const client = new StorageClient();
+      const locOk = await client.set(StorageKey.CURRENT_CITY, newLocation);
+      const dateOk = await client.set(
+        StorageKey.CURRENT_UTC_OFFSET_MINS,
+        closestOffsetMins
       );
       client.disconnect();
+
       res.statusCode = 200;
-      res.end(JSON.stringify({ success: !!locOk && !!tzOk }));
+      res.end(
+        JSON.stringify({
+          success: !!locOk && !!dateOk,
+          location: newLocation,
+          offset: closestOffsetMins,
+        })
+      );
     } catch (e) {
       res.statusCode = 500;
-      res.end(JSON.stringify({ reason: JSON.stringify(e) }));
+      res.end(JSON.stringify({ reason: JSON.stringify(e.msg) }));
     }
   } else {
     res.statusCode = 400;
-    res.end(
-      JSON.stringify({ reason: 'No timezone and/or location provided!' })
-    );
+    res.end(JSON.stringify({ reason: 'No date and/or location provided!' }));
   }
 }

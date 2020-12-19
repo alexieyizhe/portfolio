@@ -79,7 +79,8 @@ export async function getStaticProps() {
   console.debug('Retreving now playing data and timezone...');
   const client = new StorageClient();
   const { token } = await client.getSpotifyCredentials();
-  const currentTimeZone = await client.getTimezone();
+  const currentOffset = await client.getTimezoneOffset();
+  const currentCity = await client.getCurrentCity();
   const customStatus = await client.get(StorageKey.STATUS);
   client.disconnect();
 
@@ -89,7 +90,8 @@ export async function getStaticProps() {
     props: {
       nowPlayingData,
       spotifyToken: token,
-      currentTimeZone,
+      currentOffset,
+      currentCity,
       customStatus,
     },
     revalidate: 60, // regenerate page at most every minute

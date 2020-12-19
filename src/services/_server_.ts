@@ -17,12 +17,13 @@ const getNowPlayingDataServerSide = async (accessToken: string) =>
 enum StorageKey {
   ACCESS_TOKEN = 'access-token',
   ACCESS_TOKEN_EXPIRY = 'access-token-expiry',
-  CURRENT_IANA_TIMEZONE = 'current-iana-tz',
+  CURRENT_UTC_OFFSET_MINS = 'current-utc-offset-mins',
   CURRENT_CITY = 'current-city',
   STATUS = 'custom-status',
 }
 
-const FALLBACK_TIMEZONE = 'America/Toronto';
+const FALLBACK_OFFSET = '-300';
+const FALLBACK_CITY = 'Waterloo';
 
 class StorageClient {
   private client: Redis.Redis;
@@ -71,14 +72,22 @@ class StorageClient {
     }
   }
 
-  async getTimezone() {
+  async getTimezoneOffset() {
     try {
       return (
-        (await this.client.get(StorageKey.CURRENT_IANA_TIMEZONE)) ??
-        FALLBACK_TIMEZONE
+        (await this.client.get(StorageKey.CURRENT_UTC_OFFSET_MINS)) ??
+        FALLBACK_OFFSET
       );
     } catch {
-      return FALLBACK_TIMEZONE;
+      return FALLBACK_OFFSET;
+    }
+  }
+
+  async getCurrentCity() {
+    try {
+      return (await this.client.get(StorageKey.CURRENT_CITY)) ?? FALLBACK_CITY;
+    } catch {
+      return FALLBACK_CITY;
     }
   }
 

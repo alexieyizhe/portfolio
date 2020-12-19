@@ -16,7 +16,7 @@ const Container = styled('div')`
 `;
 
 const Bio: FC = () => {
-  const { talkingPoint } = useSiteContext();
+  const { talkingPoint, currentCity } = useSiteContext();
 
   return (
     <Container>
@@ -37,7 +37,8 @@ const Bio: FC = () => {
           <span className="dynamic">
             <DynamicTime />
           </span>{' '}
-          for me; I'm <DynamicCurrentStatus />
+          for me in <span className="dynamic">{currentCity}</span>
+          ; I'm <DynamicCurrentStatus />
         </Text>
       </p>
 
