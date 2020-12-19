@@ -18,6 +18,7 @@ enum StorageKey {
   ACCESS_TOKEN = 'access-token',
   ACCESS_TOKEN_EXPIRY = 'access-token-expiry',
   CURRENT_IANA_TIMEZONE = 'current-iana-tz',
+  CURRENT_CITY = 'current-city',
   STATUS = 'custom-status',
 }
 
@@ -81,11 +82,11 @@ class StorageClient {
     }
   }
 
-  async getStatus() {
+  async get(key: StorageKey, fallbackValue?: any) {
     try {
-      return await this.client.get(StorageKey.STATUS);
+      return await this.client.get(key);
     } catch {
-      return null;
+      return fallbackValue;
     }
   }
 

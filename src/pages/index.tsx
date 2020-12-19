@@ -3,7 +3,11 @@ import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
-import { getNowPlayingDataServerSide, StorageClient } from 'services/_server_';
+import {
+  getNowPlayingDataServerSide,
+  StorageClient,
+  StorageKey,
+} from 'services/_server_';
 
 import 'services/theme';
 import { SiteContextProvider } from 'services/site/context';
@@ -76,7 +80,7 @@ export async function getStaticProps() {
   const client = new StorageClient();
   const { token } = await client.getSpotifyCredentials();
   const currentTimeZone = await client.getTimezone();
-  const customStatus = await client.getStatus();
+  const customStatus = await client.get(StorageKey.STATUS);
   client.disconnect();
 
   const nowPlayingData = await getNowPlayingDataServerSide(token);
