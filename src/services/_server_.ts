@@ -37,30 +37,37 @@ class StorageClient {
     this.connected = true;
   }
 
-  async getSpotifyCredentials(): Promise<{ token: string; expiry: number }> {
-    const accessTokenExpiry = Number(
-      await this.client.get(StorageKey.ACCESS_TOKEN_EXPIRY)
-    );
-
-    if (accessTokenExpiry < Date.now()) {
-      console.debug(
-        `Access token expired, requesting new and setting token expiry to ${new Date(
-          Date.now() + 3600 * 1000
-        ).toLocaleString()}`
+  async getSpotifyCredentials(): Promise<{
+    token: string | null;
+    expiry: number;
+  }> {
+    try {
+      const accessTokenExpiry = Number(
+        await this.client.get(StorageKey.ACCESS_TOKEN_EXPIRY)
       );
 
-      const { access_token } = await requestNewToken();
-      const newExpiry = Date.now() + 3600 * 1000; // spotify tokens expire in an hour
+      if (accessTokenExpiry < Date.now()) {
+        console.debug(
+          `Access token expired, requesting new and setting token expiry to ${new Date(
+            Date.now() + 3600 * 1000
+          ).toLocaleString()}`
+        );
 
-      await this.client.set(StorageKey.ACCESS_TOKEN, access_token);
-      await this.client.set(StorageKey.ACCESS_TOKEN_EXPIRY, newExpiry);
+        const { access_token } = await requestNewToken();
+        const newExpiry = Date.now() + 3600 * 1000; // spotify tokens expire in an hour
 
-      return { token: access_token, expiry: newExpiry };
+        await this.client.set(StorageKey.ACCESS_TOKEN, access_token);
+        await this.client.set(StorageKey.ACCESS_TOKEN_EXPIRY, newExpiry);
+
+        return { token: access_token, expiry: newExpiry };
+      }
+
+      const accessToken = await this.client.get(StorageKey.ACCESS_TOKEN);
+
+      return { token: accessToken, expiry: accessTokenExpiry };
+    } catch {
+      return { token: null, expiry: -1 };
     }
-
-    const accessToken = await this.client.get(StorageKey.ACCESS_TOKEN);
-
-    return { token: accessToken, expiry: accessTokenExpiry };
   }
 
   async getTimezone() {
@@ -77,6 +84,14 @@ class StorageClient {
   async getStatus() {
     try {
       return await this.client.get(StorageKey.STATUS);
+    } catch {
+      return null;
+    }
+  }
+
+  async set(key: StorageKey, value: any) {
+    try {
+      return await this.client.set(key, value);
     } catch {
       return null;
     }
