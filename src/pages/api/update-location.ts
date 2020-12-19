@@ -37,20 +37,24 @@ export default async function handler(
       console.log(
         `Setting new location to ${newLocation} and offset to ${closestOffsetMins}`
       );
-      const client = new StorageClient();
-      const locOk = await client.set(StorageKey.CURRENT_CITY, newLocation);
-      const dateOk = await client.set(
-        StorageKey.CURRENT_UTC_OFFSET_MINS,
-        closestOffsetMins
-      );
-      client.disconnect();
+      // const client = new StorageClient();
+      // const locOk = await client.set(StorageKey.CURRENT_CITY, newLocation);
+      // const dateOk = await client.set(
+      //   StorageKey.CURRENT_UTC_OFFSET_MINS,
+      //   closestOffsetMins
+      // );
+      // client.disconnect();
 
       res.statusCode = 200;
       res.end(
         JSON.stringify({
-          success: !!locOk && !!dateOk,
+          success: !!true && !!true,
           location: newLocation,
           offset: closestOffsetMins,
+          curUTC: curUTC.getTime(),
+          cur: cur.getTime(),
+          curUTCStr: curUTC.toString(),
+          curStr: cur.toString(),
         })
       );
     } catch (e) {
