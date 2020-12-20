@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import {
   allowIfAuthorized,
-  allowPOSTOnly,
   StorageClient,
   StorageKey,
 } from 'services/_server_';
@@ -31,4 +30,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default allowPOSTOnly(allowIfAuthorized(handler));
+export default allowIfAuthorized(handler);
