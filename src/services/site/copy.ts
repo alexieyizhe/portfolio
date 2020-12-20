@@ -4,6 +4,7 @@
 export const GREETINGS = [
   'Hi, Alex here.',
   'Hey, Alex here.',
+  "Hi friend, I'm Alex.",
   'How goes it? Alex here.',
   'Howdy pardner! Alex here.',
   "👋! I'm Alex.",
@@ -20,7 +21,7 @@ export const TAGLINES = [
   'lover of bad puns',
   'struggling rock climber',
   'comic sans advocate',
-  'soccer fanatic',
+  'guy that likes soccer',
 ];
 
 /**
@@ -31,8 +32,8 @@ export const ACTIVITIES = [
   'falling on my face at the climbing gym.',
   'setting the kitchen on fire.',
   'clickety clacking, furiously typing.',
-  'playing a lil ukelelelele.',
-  "chillin' with my plants – Hubert, Dipsy, and Elise.",
+  'jamming out on my tiny guitar.',
+  "chillin' with my plant pals Ube, Hubert, Dipsy, and Elise.",
 ];
 
 /**
