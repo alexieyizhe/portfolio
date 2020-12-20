@@ -53,8 +53,7 @@ export const LINKS = [
   { label: 'github', href: 'https://github.com/alexieyizhe' },
   {
     label: 'blog',
-    href:
-      'https://www.notion.so/89e78bd148c74c29ba1985d97e3b7d54?v=cabc4da83e1c47b087565d6085fdb815',
+    href: 'https://www.notion.so/89e78bd148c74c29ba1985d97e3b7d54',
   },
   // { label: 'my kit', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
 ];
