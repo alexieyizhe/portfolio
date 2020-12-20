@@ -81,7 +81,7 @@ export async function getStaticProps() {
   const { token } = await client.getSpotifyCredentials();
   const currentOffset = await client.getTimezoneOffset();
   const currentCity = await client.getCurrentCity();
-  const customStatus = await client.get(StorageKey.STATUS);
+  const customStatus = (await client.get(StorageKey.STATUS)) || null; // empty string means no status
   client.disconnect();
 
   const nowPlayingData = await getNowPlayingDataServerSide(token);
@@ -94,7 +94,7 @@ export async function getStaticProps() {
       currentCity,
       customStatus,
     },
-    revalidate: 60, // regenerate page at most every minute
+    revalidate: 10, // regenerate page at most every N seconds
   };
 }
 

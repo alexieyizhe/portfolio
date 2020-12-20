@@ -74,7 +74,7 @@ class StorageClient {
     }
   }
 
-  async get(key: StorageKey, fallbackValue?: any) {
+  async get(key: StorageKey, fallbackValue = null) {
     try {
       return await this.client.get(key);
     } catch {
@@ -88,10 +88,6 @@ class StorageClient {
     } catch {
       return null;
     }
-  }
-
-  async del(key: StorageKey) {
-    return this.client.del(key);
   }
 
   disconnect() {
