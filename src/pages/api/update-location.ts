@@ -9,52 +9,36 @@ export default async function handler(
   res.setHeader('Content-Type', 'application/json');
 
   const newLocation = req.query['loc'];
-  const newDate = req.query['date'] as string;
-  const newTimestamp = req.query['ts'] as string;
+  const newISODate = req.query['isoDate'] as string;
 
   // TODO: add security for these endpoints
-  if (newLocation && (newDate || newTimestamp)) {
+  if (newLocation && newISODate) {
     try {
-      const now = new Date();
-      const cur = new Date(newDate ?? Number(newTimestamp));
-      const curUTC = new Date(
-        now.getUTCFullYear(),
-        now.getUTCMonth(),
-        now.getUTCDate(),
-        now.getUTCHours(),
-        now.getUTCMinutes(),
-        now.getUTCSeconds(),
-        now.getUTCMilliseconds()
-      );
+      const [hourDiff, minDiff] = [
+        Number(newISODate.slice(-6, -3)),
+        Number(newISODate.slice(-2)),
+      ];
 
       // get minutes from milliseconds
-      const offsetMins = (cur.getTime() - curUTC.getTime()) / 1000 / 60;
-      // some amount of time will have elapsed between sending request and this processing logic.
-      // to compensate, we want to round to the closest PAST hour
-      // note: there are non-hour interval time zones but that's complex for what we're doing
-      const closestOffsetMins = Math.ceil(offsetMins / 60) * 60;
+      const offsetMins = hourDiff * 60 + minDiff;
 
       console.log(
-        `Setting new location to ${newLocation} and offset to ${closestOffsetMins}`
+        `Setting new location to ${newLocation} and offset to ${offsetMins}`
       );
-      // const client = new StorageClient();
-      // const locOk = await client.set(StorageKey.CURRENT_CITY, newLocation);
-      // const dateOk = await client.set(
-      //   StorageKey.CURRENT_UTC_OFFSET_MINS,
-      //   closestOffsetMins
-      // );
-      // client.disconnect();
+      const client = new StorageClient();
+      const locOk = await client.set(StorageKey.CURRENT_CITY, newLocation);
+      const dateOk = await client.set(
+        StorageKey.CURRENT_UTC_OFFSET_MINS,
+        offsetMins
+      );
+      client.disconnect();
 
       res.statusCode = 200;
       res.end(
         JSON.stringify({
-          success: !!true && !!true,
+          success: !!locOk && !!dateOk,
           location: newLocation,
-          offset: closestOffsetMins,
-          curUTC: curUTC.getTime(),
-          cur: cur.getTime(),
-          curUTCStr: curUTC.toString(),
-          curStr: cur.toString(),
+          offset: offsetMins,
         })
       );
     } catch (e) {
