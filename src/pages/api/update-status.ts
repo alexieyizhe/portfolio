@@ -5,9 +5,11 @@ import { authMiddleware, StorageClient, StorageKey } from 'services/_server_';
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader('Content-Type', 'application/json');
 
-  const status = req.query['status'];
+  const shouldClearStatus = !!req.query['clear'];
+  console.log({ shouldClearStatus });
+  const status = shouldClearStatus ? null : req.query['status'];
 
-  if (status) {
+  if (status !== undefined) {
     try {
       const client = new StorageClient();
       const statusSetOk = await client.set(StorageKey.STATUS, status);

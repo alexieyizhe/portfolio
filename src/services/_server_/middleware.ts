@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-const authMiddleware = (handler) => (
+const authMiddleware = (handler: any) => async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
@@ -11,7 +11,7 @@ const authMiddleware = (handler) => (
     return false;
   }
 
-  handler(req, res);
+  await handler(req, res);
 };
 
 export { authMiddleware };
