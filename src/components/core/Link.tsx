@@ -32,7 +32,7 @@ const Link: FC<LinkProps> = ({ bare = false, children, ...rest }) => {
       onMouseLeave={() => setIsHoveringLink(false)}
       {...rest}
     >
-      {children}
+      {children as any}
     </A>
   );
 };

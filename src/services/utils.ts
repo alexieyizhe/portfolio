@@ -18,7 +18,6 @@ const getShuffledArray = <T = unknown>(arr: T[]) => {
 const getDateFromOffset = (offsetMins: string): Date => {
   const offsetMinsNum = Number(offsetMins);
 
-  console.log(offsetMins);
   const now = new Date();
   const curUTC = new Date(
     now.getUTCFullYear(),
@@ -30,7 +29,6 @@ const getDateFromOffset = (offsetMins: string): Date => {
     now.getUTCMilliseconds()
   );
   curUTC.setMinutes(curUTC.getMinutes() + offsetMinsNum);
-  console.log(curUTC.toString());
   return curUTC;
 };
 
@@ -70,7 +68,7 @@ const useVisibilityChange = (
 
       if (hidden && CHANGE_EVENT_NAME) {
         const onVisibilityChange = () =>
-          visibilityChangeHandler(document[hidden]);
+          visibilityChangeHandler((document as any)[hidden]);
 
         document.addEventListener(CHANGE_EVENT_NAME, onVisibilityChange, false);
         return () =>

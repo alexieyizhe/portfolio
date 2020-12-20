@@ -7,7 +7,7 @@ const SERVER_SIDE_COLOR_OPTIONS = {
   imageClass: CanvasImage,
 };
 
-const getNowPlayingDataServerSide = async (accessToken: string) =>
+const getNowPlayingDataServerSide = async (accessToken: string | null) =>
   getNowPlaying(accessToken, SERVER_SIDE_COLOR_OPTIONS);
 
 export { getNowPlayingDataServerSide };

@@ -75,11 +75,11 @@ const DynamicCurrentStatus: FC = memo(() => {
 
     const lastStatus = statuses[statuses.length - 1];
     const lastNowPlayingData = isNowPlayingData(lastStatus) ? lastStatus : null;
-    const hasNewNowPlayingData =
-      !!updatedNowPlayingData &&
-      updatedNowPlayingData.uri !== lastNowPlayingData?.uri;
 
-    if (hasNewNowPlayingData) {
+    if (
+      !!updatedNowPlayingData &&
+      updatedNowPlayingData.uri !== lastNowPlayingData?.uri
+    ) {
       console.debug('New now playing data found...', updatedNowPlayingData);
       setStatuses((prev) => [...prev, updatedNowPlayingData]);
     }

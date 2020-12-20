@@ -26,7 +26,8 @@ const requestNewToken = async () => {
     refresh_token: process.env.REFRESH_TOKEN,
   })
     .map(
-      ([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`
+      ([key, val]) =>
+        `${encodeURIComponent(key)}=${encodeURIComponent(val as string)}`
     )
     .join('&');
 
@@ -51,7 +52,7 @@ const requestNewToken = async () => {
 const extractNowPlayingData = (data: any) => {
   const isPlaylist = data?.context?.type === 'playlist';
 
-  switch (data.currently_playing_type) {
+  switch (data.currently_playing_type as 'track' | 'episode') {
     case 'track': {
       const {
         item: {
@@ -88,7 +89,6 @@ const extractNowPlayingData = (data: any) => {
         type: 'episode' as const,
         uri,
         name,
-        artistName: null,
         podcastName,
         link: isPlaylist ? data.context?.external_urls.spotify : spotify,
         images,
@@ -119,12 +119,12 @@ const getNowPlaying = async (
     if (!res.ok)
       throw new Error(`Request error ${res.status}: ${JSON.stringify(data)}`);
 
-    const { images, ...nowPlayingData } = extractNowPlayingData(data);
-    const coverArtSrc = images.find((i: any) => i.width === 64)?.url;
+    const np = extractNowPlayingData(data);
+    const coverArtSrc = np.images.find((i: any) => i.width === 64)?.url;
     const coverArtColor = await getBestTextColor(coverArtSrc, colorOptions);
 
     return {
-      ...nowPlayingData,
+      ...np,
       coverArtSrc,
       coverArtColor,
     };

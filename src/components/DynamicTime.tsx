@@ -62,6 +62,9 @@ const timeToColor = (hour: number, time: string): TextGradientInfo => {
     case '11PM':
     case '12AM':
       return [`${110 + hour * 2}deg`, '#271F3F', '#062B79'];
+
+    default:
+      return [`90deg`, '#000', '#000'];
   }
 };
 

@@ -42,6 +42,7 @@ const shuffledTaglines = getShuffledArray(TAGLINES);
 
 const SiteContextProvider: FC<TPageProps> = ({
   currentOffset,
+  spotifyToken,
   children,
   ...rest
 }) => {
@@ -57,6 +58,7 @@ const SiteContextProvider: FC<TPageProps> = ({
         currentDate: getDateFromOffset(currentOffset),
         activity,
         talkingPoint,
+        spotifyToken: spotifyToken ?? '',
         ...rest,
 
         isEasterEggActive,

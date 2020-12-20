@@ -76,7 +76,7 @@ const IndexPage = (props: TPageProps) => (
 );
 
 export async function getStaticProps() {
-  console.debug('Retreving now playing data and timezone...');
+  console.log('Retrieving now playing data and timezone...');
   const client = new StorageClient();
   const { token } = await client.getSpotifyCredentials();
   const currentOffset = await client.getTimezoneOffset();
