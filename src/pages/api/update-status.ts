@@ -6,13 +6,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader('Content-Type', 'application/json');
 
   const shouldClearStatus = !!req.query['clear'];
-  const status = shouldClearStatus ? null : req.query['status'];
+  const status = req.query['status'];
 
-  if (status !== undefined) {
+  if (status || shouldClearStatus) {
     try {
       console.log(`Updating status to ${status}`);
       const client = new StorageClient();
-      const statusSetOk = await client.set(StorageKey.STATUS, status);
+      const statusSetOk = shouldClearStatus
+        ? await client.del(StorageKey.STATUS)
+        : await client.set(StorageKey.STATUS, status);
       client.disconnect();
 
       res.statusCode = 200;
