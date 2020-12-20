@@ -3,7 +3,11 @@ import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
-import { getNowPlayingDataServerSide, StorageClient } from 'services/_server_';
+import {
+  getNowPlayingDataServerSide,
+  StorageClient,
+  StorageKey,
+} from 'services/_server_';
 
 import 'services/theme';
 import { SiteContextProvider } from 'services/site/context';
@@ -75,8 +79,9 @@ export async function getStaticProps() {
   console.debug('Retreving now playing data and timezone...');
   const client = new StorageClient();
   const { token } = await client.getSpotifyCredentials();
-  const currentTimeZone = await client.getTimezone();
-  const customStatus = await client.getStatus();
+  const currentOffset = await client.getTimezoneOffset();
+  const currentCity = await client.getCurrentCity();
+  const customStatus = await client.get(StorageKey.STATUS);
   client.disconnect();
 
   const nowPlayingData = await getNowPlayingDataServerSide(token);
@@ -85,7 +90,8 @@ export async function getStaticProps() {
     props: {
       nowPlayingData,
       spotifyToken: token,
-      currentTimeZone,
+      currentOffset,
+      currentCity,
       customStatus,
     },
     revalidate: 60, // regenerate page at most every minute

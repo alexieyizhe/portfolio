@@ -3,6 +3,37 @@ import { useEffect } from 'react';
 const getRandomItem = <T = unknown>(arr: T[]) =>
   arr[Math.floor(Math.random() * arr.length)];
 
+const getShuffledArray = <T = unknown>(arr: T[]) => {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+
+  return arr;
+};
+
+/**
+ * Compute current Date in the time zone provided by offset mins
+ */
+const getDateFromOffset = (offsetMins: string): Date => {
+  const offsetMinsNum = Number(offsetMins);
+
+  console.log(offsetMins);
+  const now = new Date();
+  const curUTC = new Date(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate(),
+    now.getUTCHours(),
+    now.getUTCMinutes(),
+    now.getUTCSeconds(),
+    now.getUTCMilliseconds()
+  );
+  curUTC.setMinutes(curUTC.getMinutes() + offsetMinsNum);
+  console.log(curUTC.toString());
+  return curUTC;
+};
+
 /**
  * Compute a Date set to the current time in a time zone string
  * @param timeZoneIANA IANA time zone string
@@ -53,4 +84,10 @@ const useVisibilityChange = (
   }, [visibilityChangeHandler]);
 };
 
-export { getRandomItem, getDateInZone, useVisibilityChange };
+export {
+  getRandomItem,
+  getShuffledArray,
+  getDateInZone,
+  getDateFromOffset,
+  useVisibilityChange,
+};

@@ -4,6 +4,7 @@
 export const GREETINGS = [
   'Hi, Alex here.',
   'Hey, Alex here.',
+  "Hi friend, I'm Alex.",
   'How goes it? Alex here.',
   'Howdy pardner! Alex here.',
   "👋! I'm Alex.",
@@ -20,7 +21,6 @@ export const TAGLINES = [
   'lover of bad puns',
   'struggling rock climber',
   'comic sans advocate',
-  'soccer fanatic',
 ];
 
 /**
@@ -31,8 +31,8 @@ export const ACTIVITIES = [
   'falling on my face at the climbing gym.',
   'setting the kitchen on fire.',
   'clickety clacking, furiously typing.',
-  'playing a lil ukelelelele.',
-  "chillin' with my plants – Hubert, Dipsy, and Elise.",
+  'jamming out on my tiny guitar.',
+  "chillin' with my plant pals Ube, Hubert, Dipsy, and Elise.",
 ];
 
 /**
@@ -51,6 +51,9 @@ export const LINKS = [
   { label: 'resume', href: '/resume.pdf' },
   // { label: 'past work', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
   { label: 'github', href: 'https://github.com/alexieyizhe' },
-  { label: 'blog', href: 'https://medium.com/@alexieyizhe' },
+  {
+    label: 'blog',
+    href: 'https://www.notion.so/89e78bd148c74c29ba1985d97e3b7d54',
+  },
   // { label: 'my kit', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
 ];

@@ -8,7 +8,11 @@ import {
 } from 'react';
 
 import type { TPageProps } from 'pages/index';
-import { getDateInZone, getRandomItem } from 'services/utils';
+import {
+  getDateFromOffset,
+  getRandomItem,
+  getShuffledArray,
+} from 'services/utils';
 
 import { ACTIVITIES, GREETINGS, TAGLINES, TALKING_POINTS } from './copy';
 
@@ -34,9 +38,10 @@ const useSiteContext = () => useContext(SiteContext);
 const greeting = getRandomItem(GREETINGS);
 const activity = getRandomItem(ACTIVITIES);
 const talkingPoint = getRandomItem(TALKING_POINTS);
+const shuffledTaglines = getShuffledArray(TAGLINES);
 
 const SiteContextProvider: FC<TPageProps> = ({
-  currentTimeZone,
+  currentOffset,
   children,
   ...rest
 }) => {
@@ -47,9 +52,9 @@ const SiteContextProvider: FC<TPageProps> = ({
     <SiteContext.Provider
       value={{
         greeting,
-        taglines: TAGLINES,
-        currentTimeZone,
-        currentDate: getDateInZone(currentTimeZone),
+        taglines: shuffledTaglines,
+        currentOffset,
+        currentDate: getDateFromOffset(currentOffset),
         activity,
         talkingPoint,
         ...rest,

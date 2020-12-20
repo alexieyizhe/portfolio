@@ -98,9 +98,11 @@ const extractNowPlayingData = (data: any) => {
 };
 
 const getNowPlaying = async (
-  accessToken: string,
+  accessToken: string | null,
   colorOptions?: ProminentOptions
 ): Promise<TNowPlayingData | null> => {
+  if (!accessToken) return null;
+
   try {
     const res = await fetch(
       'https://api.spotify.com/v1/me/player/currently-playing?additional_types=track,episode',

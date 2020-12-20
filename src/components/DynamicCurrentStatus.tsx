@@ -60,9 +60,14 @@ const nowPlayingMarkup = ({
 };
 
 const DynamicCurrentStatus: FC = memo(() => {
-  const { nowPlayingData, activity, spotifyToken } = useSiteContext();
+  const {
+    nowPlayingData,
+    customStatus,
+    activity,
+    spotifyToken,
+  } = useSiteContext();
   const [statuses, setStatuses] = useState<(TNowPlayingData | string)[]>([
-    nowPlayingData ?? `probably ${activity}`,
+    nowPlayingData ?? customStatus ?? `probably ${activity}`,
   ]);
 
   const refetchNp = useCallback(async () => {

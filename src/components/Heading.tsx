@@ -10,7 +10,7 @@ const H1 = styled('h1')`
   margin-bottom: 32px;
 
   @media only screen and (max-width: 600px) {
-    font-size: 32px;
+    font-size: 40px;
   }
 `;
 
