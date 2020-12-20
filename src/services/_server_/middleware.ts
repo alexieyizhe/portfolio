@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-const authMiddleware = (handler: any) => async (
+const allowIfAuthorized = (handler: any) => async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
@@ -14,4 +14,16 @@ const authMiddleware = (handler: any) => async (
   await handler(req, res);
 };
 
-export { authMiddleware };
+const allowPOSTOnly = (handler: any) => async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
+  if (req.method !== 'POST') {
+    res.redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+    return;
+  }
+
+  await handler(req, res);
+};
+
+export { allowIfAuthorized, allowPOSTOnly };

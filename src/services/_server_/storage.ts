@@ -90,6 +90,10 @@ class StorageClient {
     }
   }
 
+  async del(key: StorageKey) {
+    return this.client.del(key);
+  }
+
   disconnect() {
     this.client.disconnect();
     this.connected = false;
