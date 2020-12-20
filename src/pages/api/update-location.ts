@@ -1,6 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { authMiddleware, StorageClient, StorageKey } from 'services/_server_';
+import {
+  allowIfAuthorized,
+  allowPOSTOnly,
+  StorageClient,
+  StorageKey,
+} from 'services/_server_';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader('Content-Type', 'application/json');
@@ -29,22 +34,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       );
       client.disconnect();
 
-      res.statusCode = 200;
-      res.end(
-        JSON.stringify({
-          success: !!locOk && !!dateOk,
-          location: newLocation,
-          offset: offsetMins,
-        })
-      );
+      res.status(200).json({
+        success: !!locOk && !!dateOk,
+        location: newLocation,
+        offset: offsetMins,
+      });
     } catch (e) {
-      res.statusCode = 500;
-      res.end(JSON.stringify({ reason: JSON.stringify(e.msg) }));
+      res.status(500).json({ reason: JSON.stringify(e.msg) });
     }
   } else {
-    res.statusCode = 400;
-    res.end(JSON.stringify({ reason: 'No date and/or location provided!' }));
+    res.status(400).json({ reason: 'No date and/or location provided!' });
   }
 };
 
-export default authMiddleware(handler);
+export default allowPOSTOnly(allowIfAuthorized(handler));
