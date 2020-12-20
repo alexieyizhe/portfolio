@@ -21,7 +21,6 @@ export const TAGLINES = [
   'lover of bad puns',
   'struggling rock climber',
   'comic sans advocate',
-  'guy that likes soccer',
 ];
 
 /**
