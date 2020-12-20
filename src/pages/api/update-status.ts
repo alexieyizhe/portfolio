@@ -1,11 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { StorageClient, StorageKey } from 'services/_server_';
+import { authMiddleware, StorageClient, StorageKey } from 'services/_server_';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader('Content-Type', 'application/json');
 
   const status = req.query['status'];
@@ -26,4 +23,6 @@ export default async function handler(
     res.statusCode = 400;
     res.end(JSON.stringify({ reason: 'No status provided!' }));
   }
-}
+};
+
+export default authMiddleware(handler);

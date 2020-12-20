@@ -1,17 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { StorageClient, StorageKey } from 'services/_server_';
+import { authMiddleware, StorageClient, StorageKey } from 'services/_server_';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader('Content-Type', 'application/json');
 
   const newLocation = req.query['loc'];
   const newISODate = req.query['isoDate'] as string;
 
-  // TODO: add security for these endpoints
   if (newLocation && newISODate) {
     try {
       const [hourDiff, minDiff] = [
@@ -49,4 +45,6 @@ export default async function handler(
     res.statusCode = 400;
     res.end(JSON.stringify({ reason: 'No date and/or location provided!' }));
   }
-}
+};
+
+export default authMiddleware(handler);

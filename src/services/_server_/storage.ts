@@ -1,19 +1,7 @@
 import Redis from 'ioredis';
-import { createCanvas, Image as CanvasImage } from 'canvas';
 
-import { requestNewToken, getNowPlaying } from 'services/now-playing';
+import { requestNewToken } from 'services/now-playing';
 
-const SERVER_SIDE_COLOR_OPTIONS = {
-  canvasBuilder: () => createCanvas(64, 64),
-  imageClass: CanvasImage,
-};
-
-const getNowPlayingDataServerSide = async (accessToken: string) =>
-  getNowPlaying(accessToken, SERVER_SIDE_COLOR_OPTIONS);
-
-/**
- * ----- STORAGE SERVICE ----
- */
 enum StorageKey {
   ACCESS_TOKEN = 'access-token',
   ACCESS_TOKEN_EXPIRY = 'access-token-expiry',
@@ -113,4 +101,4 @@ class StorageClient {
   }
 }
 
-export { StorageKey, StorageClient, getNowPlayingDataServerSide };
+export { StorageKey, StorageClient };
