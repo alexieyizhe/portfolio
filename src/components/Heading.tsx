@@ -1,7 +1,7 @@
 import { memo, FC } from 'react';
 import { styled } from 'goober';
 
-import { useSiteContext } from 'services/site/context';
+import { useSiteContext } from 'services/site/store';
 
 const H1 = styled('h1')`
   font-family: 'Verona Serial', 'Franklin Gothic Medium', Arial, serif;

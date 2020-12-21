@@ -1,7 +1,7 @@
 import { styled } from 'goober';
 import { FC } from 'react';
 
-import { useSiteContext } from 'services/site/context';
+import { useSiteContext } from 'services/site/store';
 
 type LinkProps = React.ComponentPropsWithoutRef<'a'> & { bare?: boolean };
 

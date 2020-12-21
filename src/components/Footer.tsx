@@ -3,7 +3,7 @@ import { styled } from 'goober';
 
 import { LINKS } from 'services/site/copy';
 import { Link, Text } from 'components/core';
-import { useSiteContext } from 'services/site/context';
+import { useSiteContext } from 'services/site/store';
 
 const Container = styled('footer')`
   display: flex;

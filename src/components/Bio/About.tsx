@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { useSiteContext } from 'services/site/context';
+import { useSiteContext } from 'services/site/store';
 import { Link, Text } from 'components/core';
 import DynamicTime from 'components/DynamicTime';
 import DynamicTagline from 'components/DynamicTagline';

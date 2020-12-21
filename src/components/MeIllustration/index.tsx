@@ -1,7 +1,7 @@
 import { FC, memo, useState } from 'react';
 import { styled } from 'goober';
 
-import { useSiteContext } from 'services/site/context';
+import { useSiteContext } from 'services/site/store';
 
 import Layers from './layers';
 

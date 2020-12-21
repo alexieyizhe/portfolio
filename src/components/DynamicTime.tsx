@@ -1,7 +1,7 @@
 import { memo, FC } from 'react';
 import { styled } from 'goober';
 
-import { useSiteContext } from 'services/site/context';
+import { useSiteContext } from 'services/site/store';
 
 type TextGradientInfo = [
   gradientDirection: string,

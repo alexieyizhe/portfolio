@@ -10,7 +10,7 @@ import {
 } from 'services/_server_';
 
 import 'services/theme';
-import { SiteContextProvider } from 'services/site/context';
+import { SiteContextProvider } from 'services/site/store';
 import DynamicFavicon from 'components/DynamicFavicon';
 import Heading from 'components/Heading';
 import Bio from 'components/Bio';

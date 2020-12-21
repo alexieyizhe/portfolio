@@ -3,7 +3,7 @@ import TextLoop from 'react-text-loop';
 import { styled } from 'goober';
 
 import { useVisibilityChange } from 'services/utils';
-import { useSiteContext } from 'services/site/context';
+import { useSiteContext } from 'services/site/store';
 import {
   TNowPlayingData,
   isNowPlayingData,
