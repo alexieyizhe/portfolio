@@ -27,12 +27,12 @@ export const TAGLINES = [
  * Activities
  */
 export const ACTIVITIES = [
-  'being dragged around by Storm, my husky.',
-  'falling on my face at the climbing gym.',
-  'setting the kitchen on fire.',
-  'wondering why my code not work!',
-  'jamming out on my tiny guitar.',
-  "chillin' with my plant pals Ube, Hubert, Dipsy, and Elise.",
+  'probably being dragged around by Storm, my husky.',
+  'probably falling on my face at the climbing gym.',
+  'probably setting the kitchen on fire.',
+  'probably wondering why my code not work!',
+  'probably jamming out on my tiny guitar.',
+  "probably chillin' with my plant pals Ube, Hubert, Dipsy, and Elise.",
 ];
 
 /**
@@ -42,6 +42,7 @@ export const TALKING_POINTS = [
   'why comic sans is the best font',
   'dark patterns and how they affect human behaviour',
   'summer 2021 internship opportunities',
+  'how power lines are the ugliest form of infrastructure',
 ];
 
 /**

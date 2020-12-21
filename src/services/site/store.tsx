@@ -1,95 +1,65 @@
-import {
-  Dispatch,
-  SetStateAction,
-  useState,
-  createContext,
-  useContext,
-  FC,
-  useMemo,
-} from 'react';
+import { StoreonModule, createStoreon } from 'storeon';
+import { useStoreon } from 'storeon/preact';
 
-import type { TPageProps } from 'pages/index';
-import {
-  getDateFromOffset,
-  getRandomItem,
-  getShuffledArray,
-} from 'services/utils';
-
+import { TPageInitialProps } from 'pages/index';
+import { TNowPlayingData } from 'services/now-playing';
+import { getRandomItem, getShuffledArray } from 'services/utils';
 import { ACTIVITIES, GREETINGS, TAGLINES, TALKING_POINTS } from './copy';
 
-type TSiteContextValue = TPageProps & {
+type TSection = 'about' | 'work';
+
+type TStoreState = TPageInitialProps & {
   greeting: string;
   taglines: string[];
-  currentDate: Date;
-  status: string;
+  statuses: (TNowPlayingData | string)[];
   talkingPoint: string; // wanna chat about ...
-  spotifyToken: string;
 
-  displayedSection: 'about' | 'work';
-  setDisplayedSection: Dispatch<SetStateAction<'about' | 'work'>>;
+  displayedSection: TSection;
 
   isEasterEggActive: boolean;
-  setIsEasterEggActive: Dispatch<SetStateAction<boolean>>;
-
   isHoveringLink: boolean;
-  setIsHoveringLink: Dispatch<SetStateAction<boolean>>;
 };
 
-const SiteContext = createContext<TSiteContextValue>({} as any);
-
-const useSiteContext = () => useContext(SiteContext);
-
-const greeting = getRandomItem(GREETINGS);
-const activity = getRandomItem(ACTIVITIES);
-const talkingPoint = getRandomItem(TALKING_POINTS);
-const shuffledTaglines = getShuffledArray(TAGLINES);
-
-const SiteContextProvider: FC<TPageProps> = ({
-  currentOffset,
-  customStatus,
-  spotifyToken,
-  children,
-  ...rest
-}) => {
-  const [displayedSection, setDisplayedSection] = useState<'about' | 'work'>(
-    'about'
-  );
-  const [isEasterEggActive, setIsEasterEggActive] = useState(false);
-  const [isHoveringLink, setIsHoveringLink] = useState(false);
-
-  const status = useMemo(
-    () =>
-      getRandomItem([`probably ${activity}`, customStatus].filter((s) => !!s)),
-    [customStatus]
-  ) as string;
-
-  return (
-    <SiteContext.Provider
-      value={{
-        greeting,
-        taglines: shuffledTaglines,
-        currentOffset,
-        customStatus,
-        currentDate: getDateFromOffset(currentOffset),
-        status,
-        talkingPoint,
-        spotifyToken: spotifyToken ?? '',
-        ...rest,
-
-        displayedSection,
-        setDisplayedSection,
-
-        isEasterEggActive,
-        setIsEasterEggActive,
-
-        isHoveringLink,
-        setIsHoveringLink,
-      }}
-    >
-      {children}
-    </SiteContext.Provider>
-  );
+type TStoreEvents = {
+  'status/add': TNowPlayingData | string;
+  'section/show': TSection;
+  'easter-egg/toggle': undefined;
+  'link-hover/toggle': undefined;
 };
 
-export { useSiteContext, SiteContextProvider };
-export default SiteContext;
+const createSiteStore = (initialProps: TPageInitialProps) => {
+  const status = getRandomItem([
+    getRandomItem(ACTIVITIES),
+    initialProps.customStatus ?? getRandomItem(ACTIVITIES),
+  ]);
+
+  const initialState: TStoreState = {
+    ...initialProps,
+    greeting: getRandomItem(GREETINGS),
+    taglines: getShuffledArray(TAGLINES),
+    statuses: [initialProps.initialNowPlayingData ?? status],
+    talkingPoint: getRandomItem(TALKING_POINTS),
+
+    displayedSection: 'about',
+
+    isEasterEggActive: false,
+    isHoveringLink: false,
+  };
+
+  const siteModule: StoreonModule<TStoreState, TStoreEvents> = (store) => {
+    store.on('@init', () => initialState);
+    store.on('status/add', (state, newStatus) => ({
+      statuses: [...state.statuses, newStatus],
+    }));
+    store.on('section/show', (_, sectionName) => ({
+      displayedSection: sectionName,
+    }));
+  };
+
+  return createStoreon<TStoreState, TStoreEvents>([siteModule]);
+};
+
+const useSiteStoreValue = (key: keyof TStoreState) =>
+  useStoreon<TStoreState, TStoreEvents>(key);
+
+export { createSiteStore, useSiteStoreValue };

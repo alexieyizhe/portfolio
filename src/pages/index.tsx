@@ -10,11 +10,21 @@ import {
 } from 'services/_server_';
 
 import 'services/theme';
-import { SiteContextProvider } from 'services/site/store';
+import { createSiteStore } from 'services/site/store';
 import DynamicFavicon from 'components/DynamicFavicon';
 import Heading from 'components/Heading';
 import Bio from 'components/Bio';
 import Footer from 'components/Footer';
+import { StoreContext } from 'storeon/preact';
+import { TNowPlayingData } from 'services/now-playing';
+
+type TPageInitialProps = {
+  initialNowPlayingData: TNowPlayingData | null;
+  spotifyToken: string | null;
+  currentTimezoneOffset: string;
+  currentCity: string;
+  customStatus: string | null;
+};
 
 const MeIllustration = dynamic(() => import('components/MeIllustration'));
 
@@ -44,7 +54,7 @@ const ContentContainer = styled('main')`
 
 export type TPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const IndexPage = (props: TPageProps) => (
+const IndexPage = ({ store }: TPageProps) => (
   <>
     <Head>
       <title>Alex Xie</title>
@@ -62,7 +72,7 @@ const IndexPage = (props: TPageProps) => (
     </Head>
     <DynamicFavicon />
 
-    <SiteContextProvider {...props}>
+    <StoreContext.Provider value={store}>
       <AppContainer>
         <ContentContainer>
           <Heading />
@@ -71,31 +81,37 @@ const IndexPage = (props: TPageProps) => (
           <Footer />
         </ContentContainer>
       </AppContainer>
-    </SiteContextProvider>
+    </StoreContext.Provider>
   </>
 );
 
-export async function getStaticProps() {
+async function getStaticProps() {
   console.log('Retrieving now playing data and timezone...');
   const client = new StorageClient();
-  const { token } = await client.getSpotifyCredentials();
-  const currentOffset = await client.getTimezoneOffset();
+  const { token: spotifyToken } = await client.getSpotifyCredentials();
+  const currentTimezoneOffset = await client.getTimezoneOffset();
   const currentCity = await client.getCurrentCity();
   const customStatus = (await client.get(StorageKey.STATUS)) || null; // empty string means no status
   client.disconnect();
 
-  const nowPlayingData = await getNowPlayingDataServerSide(token);
+  const initialNowPlayingData = await getNowPlayingDataServerSide(spotifyToken);
+
+  const initialProps: TPageInitialProps = {
+    initialNowPlayingData,
+    spotifyToken,
+    currentTimezoneOffset,
+    currentCity,
+    customStatus,
+  };
 
   return {
     props: {
-      nowPlayingData,
-      spotifyToken: token,
-      currentOffset,
-      currentCity,
-      customStatus,
+      store: createSiteStore(initialProps),
     },
     revalidate: 10, // regenerate page at most every N seconds
   };
 }
 
+export type { TPageInitialProps };
+export { getStaticProps };
 export default IndexPage;

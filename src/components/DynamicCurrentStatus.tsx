@@ -3,7 +3,7 @@ import TextLoop from 'react-text-loop';
 import { styled } from 'goober';
 
 import { useVisibilityChange } from 'services/utils';
-import { useSiteContext } from 'services/site/store';
+import { useSiteStoreValue } from 'services/site/store';
 import {
   TNowPlayingData,
   isNowPlayingData,
@@ -60,38 +60,39 @@ const nowPlayingMarkup = ({
 };
 
 const DynamicCurrentStatus: FC = memo(() => {
-  const { nowPlayingData, status, spotifyToken } = useSiteContext();
-  const [statuses, setStatuses] = useState([nowPlayingData ?? status]);
+  const { dispatch, statuses } = useSiteStoreValue('statuses');
+  // const { nowPlayingData, status, spotifyToken } = useSiteContext();
+  // const [statuses, setStatuses] = useState([nowPlayingData ?? status]);
 
-  const refetchNp = useCallback(async () => {
-    const updatedNowPlayingData = await getNowPlaying(spotifyToken);
+  // const refetchNp = useCallback(async () => {
+  //   const updatedNowPlayingData = await getNowPlaying(spotifyToken);
 
-    const lastStatus = statuses[statuses.length - 1];
-    const lastNowPlayingData = isNowPlayingData(lastStatus) ? lastStatus : null;
+  //   const lastStatus = statuses[statuses.length - 1];
+  //   const lastNowPlayingData = isNowPlayingData(lastStatus) ? lastStatus : null;
 
-    if (
-      !!updatedNowPlayingData &&
-      updatedNowPlayingData.uri !== lastNowPlayingData?.uri
-    ) {
-      console.debug('New now playing data found...', updatedNowPlayingData);
-      setStatuses((prev) => [...prev, updatedNowPlayingData]);
-    }
-  }, [statuses, spotifyToken]);
+  //   if (
+  //     !!updatedNowPlayingData &&
+  //     updatedNowPlayingData.uri !== lastNowPlayingData?.uri
+  //   ) {
+  //     console.debug('New now playing data found...', updatedNowPlayingData);
+  //     setStatuses((prev) => [...prev, updatedNowPlayingData]);
+  //   }
+  // }, [statuses, spotifyToken]);
 
-  /**
-   *Refetch what's currently playing on Spotify when tab receives focus, and on mount.
-   */
-  useVisibilityChange((isHidden) => {
-    if (!isHidden) {
-      console.debug('Received focus, refreshing now playing...');
-      refetchNp();
-    }
-  });
+  // /**
+  //  *Refetch what's currently playing on Spotify when tab receives focus, and on mount.
+  //  */
+  // useVisibilityChange((isHidden) => {
+  //   if (!isHidden) {
+  //     console.debug('Received focus, refreshing now playing...');
+  //     refetchNp();
+  //   }
+  // });
 
-  useEffect(() => {
-    refetchNp();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   refetchNp();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const statusesMarkup = statuses.map((status) =>
     isNowPlayingData(status) ? nowPlayingMarkup(status) : status.split(' ')
