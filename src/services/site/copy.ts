@@ -30,7 +30,7 @@ export const ACTIVITIES = [
   'being dragged around by Storm, my husky.',
   'falling on my face at the climbing gym.',
   'setting the kitchen on fire.',
-  'clickety clacking, furiously typing.',
+  'wondering why my code not work!',
   'jamming out on my tiny guitar.',
   "chillin' with my plant pals Ube, Hubert, Dipsy, and Elise.",
 ];

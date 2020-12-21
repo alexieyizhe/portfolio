@@ -60,15 +60,8 @@ const nowPlayingMarkup = ({
 };
 
 const DynamicCurrentStatus: FC = memo(() => {
-  const {
-    nowPlayingData,
-    customStatus,
-    activity,
-    spotifyToken,
-  } = useSiteContext();
-  const [statuses, setStatuses] = useState<(TNowPlayingData | string)[]>([
-    nowPlayingData ?? customStatus ?? `probably ${activity}`,
-  ]);
+  const { nowPlayingData, status, spotifyToken } = useSiteContext();
+  const [statuses, setStatuses] = useState([nowPlayingData ?? status]);
 
   const refetchNp = useCallback(async () => {
     const updatedNowPlayingData = await getNowPlaying(spotifyToken);
@@ -114,7 +107,7 @@ const DynamicCurrentStatus: FC = memo(() => {
               <TextLoop
                 // transition to next status, but don't transition from last back to first
                 interval={statuses.map((_, i) =>
-                  i === statuses.length - 1 ? -1 : 1000
+                  i === statuses.length - 1 ? -1 : 1500
                 )}
                 children={statusesMarkup.map((m) => m[wordIdx] ?? '')}
               />{' '}
