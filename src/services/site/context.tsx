@@ -25,6 +25,9 @@ type TSiteContextValue = TPageProps & {
   talkingPoint: string; // wanna chat about ...
   spotifyToken: string;
 
+  displayedSection: 'about' | 'work';
+  setDisplayedSection: Dispatch<SetStateAction<'about' | 'work'>>;
+
   isEasterEggActive: boolean;
   setIsEasterEggActive: Dispatch<SetStateAction<boolean>>;
 
@@ -48,6 +51,9 @@ const SiteContextProvider: FC<TPageProps> = ({
   children,
   ...rest
 }) => {
+  const [displayedSection, setDisplayedSection] = useState<'about' | 'work'>(
+    'about'
+  );
   const [isEasterEggActive, setIsEasterEggActive] = useState(false);
   const [isHoveringLink, setIsHoveringLink] = useState(false);
 
@@ -69,6 +75,9 @@ const SiteContextProvider: FC<TPageProps> = ({
         talkingPoint,
         spotifyToken: spotifyToken ?? '',
         ...rest,
+
+        displayedSection,
+        setDisplayedSection,
 
         isEasterEggActive,
         setIsEasterEggActive,

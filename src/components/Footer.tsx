@@ -3,6 +3,7 @@ import { styled } from 'goober';
 
 import { LINKS } from 'services/site/copy';
 import { Link, Text } from 'components/core';
+import { useSiteContext } from 'services/site/context';
 
 const Container = styled('footer')`
   display: flex;
@@ -17,7 +18,8 @@ const Container = styled('footer')`
   }
 `;
 
-const Links: FC = memo(() => {
+const Footer: FC = memo(() => {
+  const { displayedSection, setDisplayedSection } = useSiteContext();
   return (
     <Container>
       {LINKS.map(({ label, href }) => (
@@ -25,8 +27,15 @@ const Links: FC = memo(() => {
           <Text>{label}</Text>
         </Link>
       ))}
+      <Link
+        onClick={() =>
+          setDisplayedSection((prev) => (prev === 'about' ? 'work' : 'about'))
+        }
+      >
+        <Text>{displayedSection === 'about' ? 'my work' : 'about me'}</Text>
+      </Link>
     </Container>
   );
 });
 
-export default Links;
+export default Footer;

@@ -14,7 +14,7 @@ import { SiteContextProvider } from 'services/site/context';
 import DynamicFavicon from 'components/DynamicFavicon';
 import Heading from 'components/Heading';
 import Bio from 'components/Bio';
-import Links from 'components/Links';
+import Footer from 'components/Footer';
 
 const MeIllustration = dynamic(() => import('components/MeIllustration'));
 
@@ -68,7 +68,7 @@ const IndexPage = (props: TPageProps) => (
           <Heading />
           <MeIllustration />
           <Bio />
-          <Links />
+          <Footer />
         </ContentContainer>
       </AppContainer>
     </SiteContextProvider>

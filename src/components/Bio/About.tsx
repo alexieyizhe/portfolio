@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { styled } from 'goober';
 
 import { useSiteContext } from 'services/site/context';
 import { Link, Text } from 'components/core';
@@ -7,19 +6,11 @@ import DynamicTime from 'components/DynamicTime';
 import DynamicTagline from 'components/DynamicTagline';
 import DynamicCurrentStatus from 'components/DynamicCurrentStatus';
 
-const Container = styled('div')`
-  margin-top: 1.6em;
-
-  & .dynamic {
-    font-weight: 500;
-  }
-`;
-
-const Bio: FC = () => {
+const About: FC = () => {
   const { talkingPoint, currentCity } = useSiteContext();
 
   return (
-    <Container>
+    <>
       <p>
         <Text>
           I’m a{' '}
@@ -49,8 +40,8 @@ const Bio: FC = () => {
           <Link href="mailto:alex@xie.codes">alex@xie.codes</Link>.
         </Text>
       </p>
-    </Container>
+    </>
   );
 };
 
-export default Bio;
+export default About;
