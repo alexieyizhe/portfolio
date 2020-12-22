@@ -28,15 +28,22 @@ const nowPlayingMarkup = ({
   }`;
 
   return [
-    ...action.split(' ').map((a) => <span>{a}</span>),
-    ...label.split(' ').map((a) => (
-      <span
-        className="dynamic"
-        style={{ color: coverArtColor, transition: 'color 1s' }}
-      >
-        {a}
-      </span>
-    )),
+    ...action.split(' ').map((s) => <span>{s}</span>),
+    ...label.split(' ').map((s) =>
+      s === 'by' ? (
+        s
+      ) : (
+        <span
+          className="dynamic"
+          style={{
+            color: coverArtColor,
+            transition: 'color 1s',
+          }}
+        >
+          {s}
+        </span>
+      )
+    ),
     <CoverArt link={link} src={coverArtSrc} />,
   ];
 };

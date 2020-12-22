@@ -1,4 +1,4 @@
-import { FC, useLayoutEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { styled } from 'goober';
 
 import { useSiteStore } from 'services/store';
@@ -37,7 +37,7 @@ const Subcontainer = styled('div')`
 const Bio: FC = () => {
   const { dispatch, displayedSection } = useSiteStore('displayedSection');
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (process.browser && window.location.pathname === '/work') {
       dispatch('section/set', 'work');
     }
