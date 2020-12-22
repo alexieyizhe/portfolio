@@ -1,7 +1,7 @@
 import { FC, memo, useState } from 'react';
 import { styled } from 'goober';
 
-import { useSiteStore } from 'services/store';
+import { useStore } from 'services/store';
 import { screen } from 'services/utils';
 
 import Layers from './layers';
@@ -17,8 +17,7 @@ const Container = styled('svg')`
 const SantaHat = memo(() => Layers.SANTA_HAT);
 
 const MeIllustration: FC = () => {
-  const { isFocusingOnSomething } = useSiteStore('isFocusingOnSomething');
-  const [, setNumClicks] = useState(0);
+  const { dispatch, isFocusingOnSomething } = useStore('isFocusingOnSomething');
   const [isHovering, setHovering] = useState(false);
   const expression = isFocusingOnSomething
     ? Layers.SURPRISED
@@ -26,12 +25,7 @@ const MeIllustration: FC = () => {
     ? Layers.WEIRD
     : Layers.GRIN_HAPPY;
 
-  const onIllustrationClick = () =>
-    setNumClicks((prev) => {
-      if ((prev + 1) % 3 === 0)
-        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
-      return prev + 1;
-    });
+  const onIllustrationClick = () => dispatch('easter-egg/toggle');
 
   return (
     <Container

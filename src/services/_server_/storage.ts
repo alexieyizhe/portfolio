@@ -44,12 +44,12 @@ class StorageClient {
         await this.client.set(StorageKey.ACCESS_TOKEN, access_token);
         await this.client.set(StorageKey.ACCESS_TOKEN_EXPIRY, newExpiry);
 
-        return { token: access_token, expiry: newExpiry };
+        return { token: access_token ?? null, expiry: newExpiry };
       }
 
       const accessToken = await this.client.get(StorageKey.ACCESS_TOKEN);
 
-      return { token: accessToken, expiry: accessTokenExpiry };
+      return { token: accessToken ?? null, expiry: accessTokenExpiry };
     } catch {
       return { token: null, expiry: -1 };
     }

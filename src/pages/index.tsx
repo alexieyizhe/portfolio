@@ -3,7 +3,7 @@ import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
-import 'services/theme';
+import { s } from 'services/theme';
 import {
   getNowPlayingDataServerSide,
   StorageClient,
@@ -11,7 +11,7 @@ import {
 } from 'services/_server_';
 import { createSiteStore } from 'services/store';
 import DynamicFavicon from 'components/DynamicFavicon';
-import Heading from 'components/Heading';
+import Title from 'components/Title';
 import Bio from 'components/Bio';
 import Footer from 'components/Footer';
 import { StoreContext } from 'storeon/preact';
@@ -22,7 +22,14 @@ type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const MeIllustration = dynamic(() => import('components/MeIllustration'));
 
-const AppContainer = styled('div')`
+const AppContainer = s('div')`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: ${({ theme }) => theme!.backgroundColor};
+`;
+
+const ContentContainer = styled('div')`
   position: relative;
   width: 100vw;
   min-height: 100vh;
@@ -37,7 +44,7 @@ const AppContainer = styled('div')`
   }
 `;
 
-const ContentContainer = styled('main')`
+const InnerContentContainer = styled('main')`
   position: relative;
   width: 100%;
   height: 100%;
@@ -72,10 +79,12 @@ const IndexPage = (initialProps: TPageInitialProps) => {
       <StoreContext.Provider value={createSiteStore(initialProps)}>
         <AppContainer>
           <ContentContainer>
-            <Heading />
-            <MeIllustration />
-            <Bio />
-            <Footer />
+            <InnerContentContainer>
+              <Title />
+              <MeIllustration />
+              <Bio />
+              <Footer />
+            </InnerContentContainer>
           </ContentContainer>
         </AppContainer>
       </StoreContext.Provider>

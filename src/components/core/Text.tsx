@@ -1,6 +1,7 @@
-import { styled } from 'goober';
 import { ComponentPropsWithoutRef } from 'react';
+
 import { screen } from 'services/utils';
+import { s } from 'services/theme';
 
 // the `as` prop isn't typed by Goober for some reason, but it exists (https://github.com/cristianbote/goober#using-as-prop)
 type TTextProps = {
@@ -9,10 +10,10 @@ type TTextProps = {
   italic?: boolean;
 } & ComponentPropsWithoutRef<'span'>;
 
-export const Text = styled<TTextProps>('span')`
+const Text = s<TTextProps>('span')`
+  color: ${({ theme, color }) => color ?? theme!.textPrimaryColor};
+  font-family: ${({ theme }) => theme!.bodyFont};
   font-size: 16px;
-  font-family: 'Space Grotesk Variable', 'Space Grotesk', -apple-system,
-    BlinkMacSystemFont, Roboto, Ubuntu, 'Helvetica Neue', sans-serif;
 
   ${({ bold }) => (bold ? `font-weight: 500;` : '')}
   ${({ italic }) => (italic ? `font-style: italic;` : '')}
@@ -21,3 +22,5 @@ export const Text = styled<TTextProps>('span')`
     font-size: 15px;
   }
 `;
+
+export { Text };

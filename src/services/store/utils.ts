@@ -1,7 +1,7 @@
-import { useSiteStore } from '.';
+import { useStore } from '.';
 
 const useStoreFocusListeners = () => {
-  const { dispatch } = useSiteStore();
+  const { dispatch } = useStore();
 
   return {
     onMouseEnter: () => dispatch('focusing/set', true),

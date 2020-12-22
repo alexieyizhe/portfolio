@@ -1,5 +1,4 @@
-import { StoreonModule, createStoreon } from 'storeon';
-import { useStoreon } from 'storeon/preact';
+import { StoreonModule } from 'storeon';
 
 import type { TPageInitialProps } from 'pages/index';
 import {
@@ -22,7 +21,7 @@ import {
 
 type TSection = 'about' | 'work';
 
-type TStoreState = TPageInitialProps & {
+type TSiteModuleState = TPageInitialProps & {
   greeting: string;
   taglines: string[];
   currentDate: Date;
@@ -35,16 +34,16 @@ type TStoreState = TPageInitialProps & {
   isFocusingOnSomething: boolean;
 };
 
-type TStoreEvents = {
+type TSiteModuleEvents = {
   'status/add': TNowPlayingData | string;
   'section/toggle': undefined;
   'section/set': TSection;
-  'easter-egg/activate': undefined;
+  'easter-egg/toggle': undefined;
   'focusing/set': boolean;
   'data/refresh': undefined;
 };
 
-const createSiteStore = (initialProps: TPageInitialProps) => {
+const createSiteModule = (initialProps: TPageInitialProps) => {
   const prefix = getRandomItem(PREFIXES);
   const activity = getRandomItem([
     ...ACTIVITIES,
@@ -55,7 +54,7 @@ const createSiteStore = (initialProps: TPageInitialProps) => {
 
   const status = `${prefix} ${activity}.`;
 
-  const initialState: TStoreState = {
+  const initialState: TSiteModuleState = {
     ...initialProps,
     greeting: getRandomItem(GREETINGS),
     taglines: getShuffledArray(TAGLINES),
@@ -69,7 +68,9 @@ const createSiteStore = (initialProps: TPageInitialProps) => {
     isFocusingOnSomething: false,
   };
 
-  const siteModule: StoreonModule<TStoreState, TStoreEvents> = (siteStore) => {
+  const siteModule: StoreonModule<TSiteModuleState, TSiteModuleEvents> = (
+    siteStore
+  ) => {
     siteStore.on('@init', () => initialState);
 
     siteStore.on('status/add', (state, newStatus) => ({
@@ -84,8 +85,8 @@ const createSiteStore = (initialProps: TPageInitialProps) => {
       displayedSection: newSection,
     }));
 
-    siteStore.on('easter-egg/activate', () => ({
-      isEasterEggActive: true,
+    siteStore.on('easter-egg/toggle', (state) => ({
+      isEasterEggActive: !state.isEasterEggActive,
     }));
 
     siteStore.on('focusing/set', (_, focusing) => ({
@@ -117,10 +118,8 @@ const createSiteStore = (initialProps: TPageInitialProps) => {
     }));
   };
 
-  return createStoreon<TStoreState, TStoreEvents>([siteModule]);
+  return siteModule;
 };
 
-const useSiteStore = (...keys: (keyof TStoreState)[]) =>
-  useStoreon<TStoreState, TStoreEvents>(...keys);
-
-export { createSiteStore, useSiteStore };
+export type { TSiteModuleState, TSiteModuleEvents };
+export { createSiteModule };
