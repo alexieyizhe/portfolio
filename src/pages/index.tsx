@@ -20,12 +20,16 @@ import { getGithubStats } from 'services/github';
 export type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const MeIllustration = dynamic(() => import('components/MeIllustration'));
+const Background = dynamic(
+  () => import('components/MeIllustration/Background')
+);
 
 const AppContainer = s('div')`
   position: relative;
   width: 100vw;
   height: 100vh;
   background-color: ${({ theme }) => theme!.colors.background};
+  transition: background-color 400ms;
 `;
 
 const ContentContainer = styled('div')`
@@ -80,7 +84,10 @@ export default function IndexPage(initialProps: TPageInitialProps) {
           <ContentContainer>
             <InnerContentContainer>
               <Title />
-              <MeIllustration />
+              <div>
+                <Background />
+                <MeIllustration />
+              </div>
               <Bio />
               <Footer />
             </InnerContentContainer>
