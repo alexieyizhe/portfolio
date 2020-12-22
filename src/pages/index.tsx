@@ -24,7 +24,7 @@ const MeIllustration = dynamic(() => import('components/MeIllustration'));
 const AppContainer = styled('div')`
   position: relative;
   width: 100vw;
-  min-height: 100vh;
+  min-height: 80vh;
 
   display: flex;
   flex-direction: column;
