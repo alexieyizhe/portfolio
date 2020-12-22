@@ -2,7 +2,7 @@ import { FC, memo, useState } from 'react';
 import { styled } from 'goober';
 
 import { useStore } from 'services/store';
-import { screen } from 'services/utils';
+import { screen } from 'services/style';
 
 import Layers from './layers';
 

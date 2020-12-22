@@ -21,7 +21,7 @@ import {
 
 type TSection = 'about' | 'work';
 
-type TSiteModuleState = TPageInitialProps & {
+export type TSiteModuleState = TPageInitialProps & {
   greeting: string;
   taglines: string[];
   currentDate: Date;
@@ -34,7 +34,7 @@ type TSiteModuleState = TPageInitialProps & {
   isFocusingOnSomething: boolean;
 };
 
-type TSiteModuleEvents = {
+export type TSiteModuleEvents = {
   'status/add': TNowPlayingData | string;
   'section/toggle': undefined;
   'section/set': TSection;
@@ -43,7 +43,7 @@ type TSiteModuleEvents = {
   'data/refresh': undefined;
 };
 
-const createSiteModule = (initialProps: TPageInitialProps) => {
+export const createSiteModule = (initialProps: TPageInitialProps) => {
   const prefix = getRandomItem(PREFIXES);
   const activity = getRandomItem([
     ...ACTIVITIES,
@@ -120,6 +120,3 @@ const createSiteModule = (initialProps: TPageInitialProps) => {
 
   return siteModule;
 };
-
-export type { TSiteModuleState, TSiteModuleEvents };
-export { createSiteModule };

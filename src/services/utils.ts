@@ -1,21 +1,17 @@
 import { useEffect } from 'react';
 
-const base64Encode = (s: string) => Buffer.from(s).toString('base64');
-
-const screen = {
-  mobile: '@media only screen and (max-width: 600px)',
-};
+export const base64Encode = (s: string) => Buffer.from(s).toString('base64');
 
 // transition intervals that cause text-loop to keep transitioning to next status, but DO NOT transition from last back to first
-const textLoopIntervals = (len: number) => [
+export const textLoopIntervals = (len: number) => [
   ...new Array(len - 1).fill(1500),
   -1,
 ];
 
-const getRandomItem = <T = unknown>(arr: T[]) =>
+export const getRandomItem = <T = unknown>(arr: T[]) =>
   arr[Math.floor(Math.random() * arr.length)];
 
-const getShuffledArray = <T = unknown>(arr: T[]) => {
+export const getShuffledArray = <T = unknown>(arr: T[]) => {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -27,7 +23,7 @@ const getShuffledArray = <T = unknown>(arr: T[]) => {
 /**
  * Compute current Date in the time zone provided by offset mins
  */
-const getDateFromOffset = (offsetMins: string): Date => {
+export const getDateFromOffset = (offsetMins: string): Date => {
   const offsetMinsNum = Number(offsetMins);
 
   const now = new Date();
@@ -44,13 +40,13 @@ const getDateFromOffset = (offsetMins: string): Date => {
   return curUTC;
 };
 
-type TVisibilityChangeHandler = (isHidden: boolean) => unknown;
+export type TVisibilityChangeHandler = (isHidden: boolean) => unknown;
 /**
  * A hook into tab visibility changes through an
  * event handler that receives a flag indicating whether
  * the tab has lost or gained focus.
  */
-const useVisibilityChange = (handler: TVisibilityChangeHandler) => {
+export const useVisibilityChange = (handler: TVisibilityChangeHandler) => {
   useEffect(() => {
     if (process.browser) {
       const [hidden, CHANGE_EVENT_NAME] =
@@ -75,15 +71,4 @@ const useVisibilityChange = (handler: TVisibilityChangeHandler) => {
       }
     }
   }, [handler]);
-};
-
-export type { TVisibilityChangeHandler };
-export {
-  screen,
-  base64Encode,
-  textLoopIntervals,
-  getRandomItem,
-  getShuffledArray,
-  getDateFromOffset,
-  useVisibilityChange,
 };

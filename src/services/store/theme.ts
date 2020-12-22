@@ -1,6 +1,6 @@
 import { StoreonModule } from 'storeon';
 
-type TTheme = {
+export type TTheme = {
   backgroundColor: string;
   textPrimaryColor: string;
   headingFont: string;
@@ -25,7 +25,7 @@ const LIGHT_THEME = {
   textPrimaryColor: '#232323',
 };
 
-const THEME_KEYS = Array.from(
+export const THEME_KEYS = Array.from(
   new Set([
     ...Object.keys(DARK_THEME),
     ...Object.keys(LIGHT_THEME),
@@ -33,15 +33,15 @@ const THEME_KEYS = Array.from(
   ])
 ) as (keyof TTheme)[];
 
-type TThemeModuleState = TTheme & {
+export type TThemeModuleState = TTheme & {
   isDarkMode: boolean;
 };
 
-type TThemeModuleEvents = {
+export type TThemeModuleEvents = {
   'dark-mode/toggle': boolean | undefined;
 };
 
-const createThemeModule = () => {
+export const createThemeModule = () => {
   const prefersDarkTheme =
     process.browser &&
     window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -72,6 +72,3 @@ const createThemeModule = () => {
 
   return module;
 };
-
-export type { TTheme, TThemeModuleEvents, TThemeModuleState };
-export { createThemeModule, THEME_KEYS };

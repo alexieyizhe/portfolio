@@ -2,7 +2,7 @@ import Redis from 'ioredis';
 
 import { requestNewToken } from 'services/now-playing';
 
-enum StorageKey {
+export enum StorageKey {
   ACCESS_TOKEN = 'access-token',
   ACCESS_TOKEN_EXPIRY = 'access-token-expiry',
   CURRENT_UTC_OFFSET_MINS = 'current-utc-offset-mins',
@@ -13,7 +13,7 @@ enum StorageKey {
 const FALLBACK_OFFSET = '-300';
 const FALLBACK_CITY = 'Waterloo';
 
-class StorageClient {
+export class StorageClient {
   private client: Redis.Redis;
   connected = false;
 
@@ -95,5 +95,3 @@ class StorageClient {
     this.connected = false;
   }
 }
-
-export { StorageKey, StorageClient };

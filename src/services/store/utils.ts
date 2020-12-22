@@ -1,6 +1,6 @@
 import { useStore } from '.';
 
-const useStoreFocusListeners = () => {
+export const useStoreFocusListeners = () => {
   const { dispatch } = useStore();
 
   return {
@@ -8,5 +8,3 @@ const useStoreFocusListeners = () => {
     onMouseLeave: () => dispatch('focusing/set', false),
   };
 };
-
-export { useStoreFocusListeners };

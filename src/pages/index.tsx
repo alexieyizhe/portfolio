@@ -2,8 +2,9 @@ import { styled } from 'goober';
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import { StoreContext } from 'storeon/preact';
 
-import { s } from 'services/theme';
+import { s, screen } from 'services/style';
 import {
   getNowPlayingDataServerSide,
   StorageClient,
@@ -14,11 +15,9 @@ import DynamicFavicon from 'components/DynamicFavicon';
 import Title from 'components/Title';
 import Bio from 'components/Bio';
 import Footer from 'components/Footer';
-import { StoreContext } from 'storeon/preact';
 import { getGithubStats } from 'services/github';
-import { screen } from 'services/utils';
 
-type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
+export type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const MeIllustration = dynamic(() => import('components/MeIllustration'));
 
@@ -57,7 +56,7 @@ const InnerContentContainer = styled('main')`
   justify-content: center;
 `;
 
-const IndexPage = (initialProps: TPageInitialProps) => {
+export default function IndexPage(initialProps: TPageInitialProps) {
   return (
     <>
       <Head>
@@ -90,7 +89,7 @@ const IndexPage = (initialProps: TPageInitialProps) => {
       </StoreContext.Provider>
     </>
   );
-};
+}
 
 export async function getStaticProps() {
   console.log('Retrieving data...');
@@ -118,6 +117,3 @@ export async function getStaticProps() {
     revalidate: 10, // regenerate page at most every N seconds
   };
 }
-
-export type { TPageInitialProps };
-export default IndexPage;

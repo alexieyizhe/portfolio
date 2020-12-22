@@ -1,7 +1,7 @@
 import { memo, FC } from 'react';
 
 import { useStore } from 'services/store';
-import { s } from 'services/theme';
+import { s } from 'services/style';
 import { H1 } from 'components/core';
 
 const Container = s('header')`

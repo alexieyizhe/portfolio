@@ -2,7 +2,7 @@ import { styled } from 'goober';
 import { FC, memo } from 'react';
 
 import { useStoreFocusListeners } from 'services/store/utils';
-import { screen } from 'services/utils';
+import { screen } from 'services/style';
 
 type LinkProps = React.ComponentPropsWithoutRef<'a'> & {
   bare?: boolean;
@@ -33,7 +33,7 @@ const A = styled<LinkProps>('a')`
   }
 `;
 
-const Link: FC<LinkProps> = memo(
+export const Link: FC<LinkProps> = memo(
   ({ bare = false, newTab = false, children, ...rest }) => {
     const focusListeners = useStoreFocusListeners();
 
@@ -49,5 +49,3 @@ const Link: FC<LinkProps> = memo(
     );
   }
 );
-
-export { Link };

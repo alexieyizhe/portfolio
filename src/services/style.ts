@@ -10,6 +10,10 @@ export const s = <P extends Record<string, unknown>>(
   tag: keyof JSX.IntrinsicElements
 ) => styled<{ theme?: TTheme } & P>(tag);
 
+export const screen = {
+  mobile: '@media only screen and (max-width: 600px)',
+};
+
 setup(h, prefix, () => useStore(...THEME_KEYS));
 
 glob`

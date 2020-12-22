@@ -1,7 +1,6 @@
-import { screen } from 'services/utils';
-import { s } from 'services/theme';
+import { s, screen } from 'services/style';
 
-const H1 = s('h1')`
+export const H1 = s('h1')`
   font-family: ${({ theme }) => theme!.headingFont};
   color: ${({ theme }) => theme!.textPrimaryColor};
   font-size: 48px;
@@ -13,5 +12,3 @@ const H1 = s('h1')`
     margin: 24px 0 28px 0;
   }
 `;
-
-export { H1 };

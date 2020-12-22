@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-const allowIfAuthorized = (handler: any) => async (
+export const allowIfAuthorized = (handler: any) => async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
@@ -11,5 +11,3 @@ const allowIfAuthorized = (handler: any) => async (
 
   await handler(req, res);
 };
-
-export { allowIfAuthorized };

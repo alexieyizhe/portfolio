@@ -1,7 +1,7 @@
 import { styled } from 'goober';
 import Head from 'next/head';
 
-import 'services/theme';
+import 'services/store';
 import DynamicFavicon from 'components/DynamicFavicon';
 import { Text } from 'components/core';
 
@@ -22,18 +22,18 @@ const NotFoundImg = styled('img')`
   max-width: 80vw;
 `;
 
-const NotFoundPage = () => (
-  <>
-    <Head>
-      <title>There's nothing here.</title>
-    </Head>
-    <DynamicFavicon />
+export default function NotFoundPage() {
+  return (
+    <>
+      <Head>
+        <title>There's nothing here.</title>
+      </Head>
+      <DynamicFavicon />
 
-    <AppContainer>
-      <Text>Seems like you're a bit lost.</Text>
-      <NotFoundImg src="/spookyscary.png" />
-    </AppContainer>
-  </>
-);
-
-export default NotFoundPage;
+      <AppContainer>
+        <Text>Seems like you're a bit lost.</Text>
+        <NotFoundImg src="/spookyscary.png" />
+      </AppContainer>
+    </>
+  );
+}
