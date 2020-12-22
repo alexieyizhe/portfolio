@@ -12,7 +12,7 @@ const H1 = styled('h1')`
 
   ${screen.mobile} {
     font-size: 40px;
-    margin: 0;
+    margin: 20px 0;
   }
 `;
 
