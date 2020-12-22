@@ -13,7 +13,7 @@ const Container = styled('footer')`
 
   margin: 0 0 2em 0;
 
-  & > a {
+  & > * {
     margin: 0 6px;
   }
 `;
@@ -23,18 +23,24 @@ const Footer: FC = memo(() => {
   return (
     <Container>
       {LINKS.map(({ label, href }) => (
-        <Link href={href} newTab>
-          <Text>{label}</Text>
-        </Link>
+        <Text>
+          <Link href={href} newTab>
+            {label}
+          </Link>
+        </Text>
       ))}
-      <Link
-        onClick={() => dispatch('section/toggle')}
-        onKeyUp={(e) => (e.key === 'Enter' ? dispatch('section/toggle') : null)}
-        role="button"
-        tabIndex={0}
-      >
-        <Text>{displayedSection === 'about' ? 'my work' : 'about me'}</Text>
-      </Link>
+      <Text>
+        <Link
+          onClick={() => dispatch('section/toggle')}
+          onKeyUp={(e) =>
+            e.key === 'Enter' ? dispatch('section/toggle') : null
+          }
+          role="button"
+          tabIndex={0}
+        >
+          {displayedSection === 'about' ? 'my work' : 'about me'}
+        </Link>
+      </Text>
     </Container>
   );
 });

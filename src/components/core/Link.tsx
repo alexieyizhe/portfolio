@@ -16,8 +16,8 @@ const A = styled<LinkProps>('a')`
   text-decoration: ${({ bare }) => (bare ? 'none' : 'underline')};
 
   &:hover {
-    text-decoration: underline dotted;
-    opacity: ${({ bare }) => (bare ? 0.8 : 1)};
+    text-decoration: none;
+    opacity: ${({ bare }) => (bare ? 0.65 : 1)};
   }
 
   &:focus {
