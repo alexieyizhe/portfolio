@@ -28,7 +28,7 @@ const nowPlayingMarkup = ({
   }`;
 
   return [
-    ...action.split(' ').map((s) => <span>{s}</span>),
+    ...action.split(' '),
     ...label.split(' ').map((s) =>
       s === 'by' ? (
         s
@@ -37,7 +37,6 @@ const nowPlayingMarkup = ({
           className="dynamic"
           style={{
             color: coverArtColor,
-            transition: 'color 1s',
           }}
         >
           {s}
