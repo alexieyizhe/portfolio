@@ -1,7 +1,7 @@
 import { styled } from 'goober';
 import { FC } from 'react';
 
-import { useSiteContext } from 'services/site/store';
+import { useStoreFocusListeners } from 'services/store/utils';
 
 type LinkProps = React.ComponentPropsWithoutRef<'a'> & { bare?: boolean };
 
@@ -23,15 +23,10 @@ const A = styled<LinkProps>('a')`
 `;
 
 const Link: FC<LinkProps> = ({ bare = false, children, ...rest }) => {
-  const { setIsHoveringLink } = useSiteContext();
+  const focusListeners = useStoreFocusListeners();
 
   return (
-    <A
-      bare={bare}
-      onMouseEnter={() => setIsHoveringLink(true)}
-      onMouseLeave={() => setIsHoveringLink(false)}
-      {...rest}
-    >
+    <A bare={bare} {...focusListeners} {...rest}>
       {children as any}
     </A>
   );

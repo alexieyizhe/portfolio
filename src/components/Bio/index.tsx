@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { styled } from 'goober';
 
-import { useSiteContext } from 'services/site/store';
+import { useSiteStore } from 'services/store';
 
 import About from './About';
 import Work from './Work';
@@ -34,7 +34,7 @@ const Subcontainer = styled('div')`
 `;
 
 const Bio: FC = () => {
-  const { displayedSection } = useSiteContext();
+  const { displayedSection } = useSiteStore('displayedSection');
 
   return (
     <Container>

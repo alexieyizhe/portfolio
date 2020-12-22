@@ -3,28 +3,20 @@ import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
+import 'services/theme';
 import {
   getNowPlayingDataServerSide,
   StorageClient,
   StorageKey,
 } from 'services/_server_';
-
-import 'services/theme';
-import { createSiteStore } from 'services/site/store';
+import { createSiteStore } from 'services/store';
 import DynamicFavicon from 'components/DynamicFavicon';
 import Heading from 'components/Heading';
 import Bio from 'components/Bio';
 import Footer from 'components/Footer';
 import { StoreContext } from 'storeon/preact';
-import { TNowPlayingData } from 'services/now-playing';
 
-type TPageInitialProps = {
-  initialNowPlayingData: TNowPlayingData | null;
-  spotifyToken: string | null;
-  currentTimezoneOffset: string;
-  currentCity: string;
-  customStatus: string | null;
-};
+type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const MeIllustration = dynamic(() => import('components/MeIllustration'));
 
@@ -52,9 +44,7 @@ const ContentContainer = styled('main')`
   justify-content: center;
 `;
 
-export type TPageProps = InferGetStaticPropsType<typeof getStaticProps>;
-
-const IndexPage = ({ store }: TPageProps) => (
+const IndexPage = (initialProps: TPageInitialProps) => (
   <>
     <Head>
       <title>Alex Xie</title>
@@ -72,7 +62,7 @@ const IndexPage = ({ store }: TPageProps) => (
     </Head>
     <DynamicFavicon />
 
-    <StoreContext.Provider value={store}>
+    <StoreContext.Provider value={createSiteStore(initialProps)}>
       <AppContainer>
         <ContentContainer>
           <Heading />
@@ -85,7 +75,7 @@ const IndexPage = ({ store }: TPageProps) => (
   </>
 );
 
-async function getStaticProps() {
+export async function getStaticProps() {
   console.log('Retrieving now playing data and timezone...');
   const client = new StorageClient();
   const { token: spotifyToken } = await client.getSpotifyCredentials();
@@ -96,7 +86,7 @@ async function getStaticProps() {
 
   const initialNowPlayingData = await getNowPlayingDataServerSide(spotifyToken);
 
-  const initialProps: TPageInitialProps = {
+  const initialProps = {
     initialNowPlayingData,
     spotifyToken,
     currentTimezoneOffset,
@@ -105,13 +95,10 @@ async function getStaticProps() {
   };
 
   return {
-    props: {
-      store: createSiteStore(initialProps),
-    },
+    props: initialProps,
     revalidate: 10, // regenerate page at most every N seconds
   };
 }
 
 export type { TPageInitialProps };
-export { getStaticProps };
 export default IndexPage;

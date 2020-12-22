@@ -1,9 +1,9 @@
 import { FC, memo } from 'react';
 import { styled } from 'goober';
 
-import { LINKS } from 'services/site/copy';
+import { LINKS } from 'services/copy';
 import { Link, Text } from 'components/core';
-import { useSiteContext } from 'services/site/store';
+import { useSiteStore } from 'services/store';
 
 const Container = styled('footer')`
   display: flex;
@@ -19,7 +19,7 @@ const Container = styled('footer')`
 `;
 
 const Footer: FC = memo(() => {
-  const { displayedSection, setDisplayedSection } = useSiteContext();
+  const { dispatch, displayedSection } = useSiteStore('displayedSection');
   return (
     <Container>
       {LINKS.map(({ label, href }) => (
@@ -27,11 +27,7 @@ const Footer: FC = memo(() => {
           <Text>{label}</Text>
         </Link>
       ))}
-      <Link
-        onClick={() =>
-          setDisplayedSection((prev) => (prev === 'about' ? 'work' : 'about'))
-        }
-      >
+      <Link onClick={() => dispatch('section/toggle')}>
         <Text>{displayedSection === 'about' ? 'my work' : 'about me'}</Text>
       </Link>
     </Container>

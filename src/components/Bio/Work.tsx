@@ -1,12 +1,9 @@
 import { FC, memo } from 'react';
 import { styled } from 'goober';
 
-import { useSiteContext } from 'services/site/store';
 import { Text } from 'components/core';
 
 const Work: FC = memo(() => {
-  const {} = useSiteContext();
-
   return (
     <>
       <p>

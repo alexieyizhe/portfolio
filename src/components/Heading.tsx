@@ -1,7 +1,7 @@
 import { memo, FC } from 'react';
 import { styled } from 'goober';
 
-import { useSiteContext } from 'services/site/store';
+import { useSiteStore } from 'services/store';
 
 const H1 = styled('h1')`
   font-family: 'Verona Serial', 'Franklin Gothic Medium', Arial, serif;
@@ -15,7 +15,7 @@ const H1 = styled('h1')`
 `;
 
 const Heading: FC = memo(() => {
-  const { greeting } = useSiteContext();
+  const { greeting } = useSiteStore('greeting');
   return <H1>{greeting}</H1>;
 });
 

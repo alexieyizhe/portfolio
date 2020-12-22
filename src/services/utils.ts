@@ -1,5 +1,11 @@
 import { useEffect } from 'react';
 
+// transition intervals that cause text-loop to keep transitioning to next status, but DO NOT transition from last back to first
+const textLoopIntervals = (len: number) => [
+  ...new Array(len - 1).fill(1500),
+  -1,
+];
+
 const getRandomItem = <T = unknown>(arr: T[]) =>
   arr[Math.floor(Math.random() * arr.length)];
 
@@ -47,14 +53,13 @@ const getDateInZone = (timeZoneIANA: string): Date => {
   return new Date(cur.getTime() - diff);
 };
 
+type TVisibilityChangeHandler = (isHidden: boolean) => unknown;
 /**
  * A hook into tab visibility changes through an
  * event handler that receives a flag indicating whether
- * the tab has lost or gained focus
+ * the tab has lost or gained focus.
  */
-const useVisibilityChange = (
-  visibilityChangeHandler: (isHidden: boolean) => void
-) => {
+const useVisibilityChange = (handler: TVisibilityChangeHandler) => {
   useEffect(() => {
     if (process.browser) {
       const [hidden, CHANGE_EVENT_NAME] =
@@ -67,8 +72,7 @@ const useVisibilityChange = (
           : [undefined, undefined];
 
       if (hidden && CHANGE_EVENT_NAME) {
-        const onVisibilityChange = () =>
-          visibilityChangeHandler((document as any)[hidden]);
+        const onVisibilityChange = () => handler((document as any)[hidden]);
 
         document.addEventListener(CHANGE_EVENT_NAME, onVisibilityChange, false);
         return () =>
@@ -79,10 +83,12 @@ const useVisibilityChange = (
           );
       }
     }
-  }, [visibilityChangeHandler]);
+  }, [handler]);
 };
 
+export type { TVisibilityChangeHandler };
 export {
+  textLoopIntervals,
   getRandomItem,
   getShuffledArray,
   getDateInZone,

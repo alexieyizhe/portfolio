@@ -1,13 +1,16 @@
 import { FC } from 'react';
 
-import { useSiteContext } from 'services/site/store';
+import { useSiteStore } from 'services/store';
 import { Link, Text } from 'components/core';
 import DynamicTime from 'components/DynamicTime';
 import DynamicTagline from 'components/DynamicTagline';
 import DynamicCurrentStatus from 'components/DynamicCurrentStatus';
 
 const About: FC = () => {
-  const { talkingPoint, currentCity } = useSiteContext();
+  const { talkingPoint, currentCity } = useSiteStore(
+    'talkingPoint',
+    'currentCity'
+  );
 
   return (
     <>

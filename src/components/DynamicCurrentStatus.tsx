@@ -1,32 +1,14 @@
-import { memo, FC, useEffect, useState, useCallback } from 'react';
+import { memo, FC, useCallback } from 'react';
 import TextLoop from 'react-text-loop';
-import { styled } from 'goober';
 
-import { useVisibilityChange } from 'services/utils';
-import { useSiteStoreValue } from 'services/site/store';
+import { useSiteStore } from 'services/store';
+import { TNowPlayingData, isNowPlayingData } from 'services/now-playing';
 import {
-  TNowPlayingData,
-  isNowPlayingData,
-  getNowPlaying,
-} from 'services/now-playing';
-
-const CoverArtLink = styled('a')`
-  position: relative;
-  display: inline-block;
-
-  transition: transform 250ms;
-  &:hover {
-    transform: scale(1.1);
-  }
-
-  & img {
-    width: 18px;
-    height: 18px;
-    border-radius: 3px;
-    transform: translateY(1px);
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  }
-`;
+  textLoopIntervals,
+  TVisibilityChangeHandler,
+  useVisibilityChange,
+} from 'services/utils';
+import CoverArt from 'components/CoverArt';
 
 const nowPlayingMarkup = ({
   name,
@@ -53,68 +35,38 @@ const nowPlayingMarkup = ({
         {a}
       </span>
     )),
-    <CoverArtLink href={link} target="_blank" rel="noreferrer noopener">
-      <img src={coverArtSrc} />
-    </CoverArtLink>,
+    <CoverArt link={link} src={coverArtSrc} />,
   ];
 };
 
 const DynamicCurrentStatus: FC = memo(() => {
-  const { dispatch, statuses } = useSiteStoreValue('statuses');
-  // const { nowPlayingData, status, spotifyToken } = useSiteContext();
-  // const [statuses, setStatuses] = useState([nowPlayingData ?? status]);
-
-  // const refetchNp = useCallback(async () => {
-  //   const updatedNowPlayingData = await getNowPlaying(spotifyToken);
-
-  //   const lastStatus = statuses[statuses.length - 1];
-  //   const lastNowPlayingData = isNowPlayingData(lastStatus) ? lastStatus : null;
-
-  //   if (
-  //     !!updatedNowPlayingData &&
-  //     updatedNowPlayingData.uri !== lastNowPlayingData?.uri
-  //   ) {
-  //     console.debug('New now playing data found...', updatedNowPlayingData);
-  //     setStatuses((prev) => [...prev, updatedNowPlayingData]);
-  //   }
-  // }, [statuses, spotifyToken]);
-
-  // /**
-  //  *Refetch what's currently playing on Spotify when tab receives focus, and on mount.
-  //  */
-  // useVisibilityChange((isHidden) => {
-  //   if (!isHidden) {
-  //     console.debug('Received focus, refreshing now playing...');
-  //     refetchNp();
-  //   }
-  // });
-
-  // useEffect(() => {
-  //   refetchNp();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  const { dispatch, statuses } = useSiteStore('statuses');
 
   const statusesMarkup = statuses.map((status) =>
     isNowPlayingData(status) ? nowPlayingMarkup(status) : status.split(' ')
   );
 
+  const visibilityChangeHandler = useCallback<TVisibilityChangeHandler>(
+    (isHidden) => {
+      if (!isHidden) dispatch('window/focus');
+    },
+    [dispatch]
+  );
+
+  useVisibilityChange(visibilityChangeHandler);
+
   return (
     <span>
       {new Array(Math.max(...statusesMarkup.map((s) => s.length)))
-        .fill('')
-        .map((_, wordIdx) => {
-          return (
-            <>
-              <TextLoop
-                // transition to next status, but don't transition from last back to first
-                interval={statuses.map((_, i) =>
-                  i === statuses.length - 1 ? -1 : 1500
-                )}
-                children={statusesMarkup.map((m) => m[wordIdx] ?? '')}
-              />{' '}
-            </>
-          );
-        })}
+        .fill(null)
+        .map((_, wordIdx) => (
+          <>
+            <TextLoop
+              interval={textLoopIntervals(statusesMarkup.length)}
+              children={statusesMarkup.map((m) => m[wordIdx] ?? '')}
+            />{' '}
+          </>
+        ))}
     </span>
   );
 });
