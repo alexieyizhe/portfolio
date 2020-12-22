@@ -19,10 +19,17 @@ const A = styled<LinkProps>('a')`
   transition: opacity 250ms;
   text-decoration: ${({ bare }) => (bare ? 'none' : 'underline')};
 
-  &:hover,
-  &:focus-visible {
-    text-decoration: none;
+  &:hover {
+    text-decoration: underline dotted;
     opacity: ${({ bare }) => (bare ? 0.8 : 1)};
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 1px solid blue;
   }
 
   ${screen.mobile} {

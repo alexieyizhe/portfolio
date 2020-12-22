@@ -27,7 +27,12 @@ const Footer: FC = memo(() => {
           <Text>{label}</Text>
         </Link>
       ))}
-      <Link onClick={() => dispatch('section/toggle')}>
+      <Link
+        onClick={() => dispatch('section/toggle')}
+        onKeyUp={(e) => (e.key === 'Enter' ? dispatch('section/toggle') : null)}
+        role="button"
+        tabIndex={0}
+      >
         <Text>{displayedSection === 'about' ? 'my work' : 'about me'}</Text>
       </Link>
     </Container>
