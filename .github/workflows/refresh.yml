@@ -8,3 +8,6 @@ jobs:
     steps:
       - name: Refresh
         run: curl https://alexxie.com/api/refresh-now-playing
+        run: curl https://alex.xie.codes/api/refresh-now-playing
+        run: curl https://xie.codes/api/refresh-now-playing
+        run: curl https://alexxie.ca/api/refresh-now-playing
