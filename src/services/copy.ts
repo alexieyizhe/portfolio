@@ -50,11 +50,18 @@ export const TALKING_POINTS = [
  */
 export const LINKS = [
   { label: 'resume', href: '/resume.pdf' },
-  // { label: 'past work', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
   { label: 'github', href: 'https://github.com/alexieyizhe' },
   {
     label: 'blog',
     href: 'https://www.notion.so/89e78bd148c74c29ba1985d97e3b7d54',
   },
-  // { label: 'my kit', href: 'https://www.youtube.com/watch?v=DLzxrzFCyOs' },
+];
+
+export const PAST_EXPERIENCE = [
+  { label: 'Shopify', href: 'https://shopify.engineering/' },
+  { label: 'Hack the North', href: 'https://hackthenorth.com/' },
+  { label: 'Faire', href: 'https://www.faire.com/about' },
+  { label: 'Equithon', href: 'https://cs.uwaterloo.ca/events/equithon-2018' },
+  { label: 'TEDxUW', href: 'https://tedxuw.com/' },
+  { label: 'Flipp', href: 'https://corp.flipp.com/about-us/' },
 ];

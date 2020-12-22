@@ -1,20 +1,44 @@
-const getLatestCommitRepo = async () => {
+type TGithubStats = {
+  numCommitsSinceLastKnownEvent: number;
+  reposCommittedTo: { name: string; url: string }[];
+};
+
+const getGithubStats = async (): Promise<TGithubStats | null> => {
   try {
     const res = await fetch(
-      'https://api.github.com/users/alexieyizhe/events/public?per_page=1&page=1'
+      'https://api.github.com/users/alexieyizhe/events/public?per_page=100&page=1'
     );
 
     const data = await res.json();
-    if (!res.ok)
+    if (!res.ok || !data)
       throw new Error(`Request error ${res.status}: ${JSON.stringify(data)}`);
 
-    const repo = data?.[0].repo.name;
-    console.log(repo);
-    return repo as string;
+    const lastKnownEventDate = new Date(data[data.length - 1].created_at);
+    const pushEvents = data.filter((event: any) => event.type === 'PushEvent');
+    const pushEventRepos = Object.entries<string>(
+      pushEvents.reduce((acc: Record<string, string>, curEvent: any) => {
+        acc[curEvent.repo.name] = curEvent.repo.url as string;
+        return acc;
+      }, {})
+    ).map(([name, url]) => ({ name, url }));
+    const numCommitsSinceLastKnownEvent = pushEvents.reduce(
+      (acc: number, curEvent: any) => acc + curEvent.payload.size,
+      0
+    );
+
+    if (numCommitsSinceLastKnownEvent === 0) {
+      throw new Error(`No commits since ${lastKnownEventDate.toString()}!`);
+    }
+
+    return {
+      numCommitsSinceLastKnownEvent,
+      reposCommittedTo: pushEventRepos,
+    };
   } catch (e) {
     console.error(e);
     return null;
   }
 };
 
-export { getLatestCommitRepo };
+export type { TGithubStats };
+export { getGithubStats };

@@ -87,7 +87,11 @@ const createSiteStore = (initialProps: TPageInitialProps) => {
         !!updatedNowPlayingData &&
         updatedNowPlayingData.uri !== lastNowPlayingData?.uri
       ) {
-        console.debug('New now playing data found...', updatedNowPlayingData);
+        console.debug(
+          `Now playing: ${
+            updatedNowPlayingData.podcastName ?? updatedNowPlayingData.name
+          }`
+        );
         siteStore.dispatch('status/add', updatedNowPlayingData);
       }
     });

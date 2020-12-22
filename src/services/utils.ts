@@ -38,21 +38,6 @@ const getDateFromOffset = (offsetMins: string): Date => {
   return curUTC;
 };
 
-/**
- * Compute a Date set to the current time in a time zone string
- * @param timeZoneIANA IANA time zone string
- */
-const getDateInZone = (timeZoneIANA: string): Date => {
-  const cur = new Date();
-  const dateInTimezone = new Date(
-    cur.toLocaleString('en-US', {
-      timeZone: timeZoneIANA,
-    })
-  );
-  const diff = cur.getTime() - dateInTimezone.getTime();
-  return new Date(cur.getTime() - diff);
-};
-
 type TVisibilityChangeHandler = (isHidden: boolean) => unknown;
 /**
  * A hook into tab visibility changes through an
@@ -91,7 +76,6 @@ export {
   textLoopIntervals,
   getRandomItem,
   getShuffledArray,
-  getDateInZone,
   getDateFromOffset,
   useVisibilityChange,
 };

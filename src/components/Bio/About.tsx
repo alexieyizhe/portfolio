@@ -14,35 +14,29 @@ const About: FC = () => {
 
   return (
     <>
-      <p>
-        <Text>
-          I’m a{' '}
-          <span className="dynamic">
-            <DynamicTagline />
-          </span>{' '}
-          that's currently studying computer science at the University of
-          Waterloo.
-        </Text>
-      </p>
+      <Text as="p">
+        I’m a{' '}
+        <span className="dynamic">
+          <DynamicTagline />
+        </span>{' '}
+        that's currently studying computer science at the University of
+        Waterloo.
+      </Text>
 
-      <p>
-        <Text>
-          It’s currently{' '}
-          <span className="dynamic">
-            <DynamicTime />
-          </span>{' '}
-          for me in <span className="dynamic">{currentCity}</span>
-          ; I'm <DynamicCurrentStatus />
-        </Text>
-      </p>
+      <Text as="p">
+        It’s currently{' '}
+        <span className="dynamic">
+          <DynamicTime />
+        </span>{' '}
+        for me in <span className="dynamic">{currentCity}</span>
+        ; I'm <DynamicCurrentStatus />
+      </Text>
 
-      <p>
-        <Text>
-          Wanna chat about <span className="dynamic">{talkingPoint}</span>? Lets
-          talk. You can reach me at{' '}
-          <Link href="mailto:alex@xie.codes">alex@xie.codes</Link>.
-        </Text>
-      </p>
+      <Text as="p">
+        Wanna chat about <span className="dynamic">{talkingPoint}</span>? Lets
+        talk. You can reach me at{' '}
+        <Link href="mailto:alex@xie.codes">alex@xie.codes</Link>.
+      </Text>
     </>
   );
 };

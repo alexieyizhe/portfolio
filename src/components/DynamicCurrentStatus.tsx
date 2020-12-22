@@ -41,7 +41,6 @@ const nowPlayingMarkup = ({
 
 const DynamicCurrentStatus: FC = memo(() => {
   const { dispatch, statuses } = useSiteStore('statuses');
-
   const statusesMarkup = statuses.map((status) =>
     isNowPlayingData(status) ? nowPlayingMarkup(status) : status.split(' ')
   );

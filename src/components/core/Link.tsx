@@ -3,7 +3,10 @@ import { FC } from 'react';
 
 import { useStoreFocusListeners } from 'services/store/utils';
 
-type LinkProps = React.ComponentPropsWithoutRef<'a'> & { bare?: boolean };
+type LinkProps = React.ComponentPropsWithoutRef<'a'> & {
+  bare?: boolean;
+  newTab?: boolean;
+};
 
 const A = styled<LinkProps>('a')`
   font-size: 16px;
@@ -22,11 +25,21 @@ const A = styled<LinkProps>('a')`
   }
 `;
 
-const Link: FC<LinkProps> = ({ bare = false, children, ...rest }) => {
+const Link: FC<LinkProps> = ({
+  bare = false,
+  newTab = false,
+  children,
+  ...rest
+}) => {
   const focusListeners = useStoreFocusListeners();
 
   return (
-    <A bare={bare} {...focusListeners} {...rest}>
+    <A
+      bare={bare}
+      {...(newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      {...focusListeners}
+      {...rest}
+    >
       {children as any}
     </A>
   );

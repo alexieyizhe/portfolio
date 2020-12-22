@@ -15,6 +15,7 @@ import Heading from 'components/Heading';
 import Bio from 'components/Bio';
 import Footer from 'components/Footer';
 import { StoreContext } from 'storeon/preact';
+import { getGithubStats } from 'services/github';
 
 type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -85,9 +86,11 @@ export async function getStaticProps() {
   client.disconnect();
 
   const initialNowPlayingData = await getNowPlayingDataServerSide(spotifyToken);
+  const githubStats = await getGithubStats();
 
   const initialProps = {
     initialNowPlayingData,
+    githubStats,
     spotifyToken,
     currentTimezoneOffset,
     currentCity,
