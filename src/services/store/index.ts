@@ -18,5 +18,8 @@ export const createSiteStore = (initialProps: TPageInitialProps) =>
     createThemeModule(),
   ]);
 
+export const createThemeStore = () =>
+  createStoreon<TThemeModuleState, TThemeModuleEvents>([createThemeModule()]);
+
 export const useStore = (...keys: (keyof TStoreState)[]) =>
   useStoreon<TStoreState, TStoreEvents>(...keys);

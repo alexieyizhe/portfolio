@@ -1,7 +1,9 @@
 import { styled } from 'goober';
 import Head from 'next/head';
+import { StoreContext } from 'storeon/preact';
 
-import 'services/store';
+import 'services/style';
+import { createThemeStore } from 'services/store';
 import DynamicFavicon from 'components/DynamicFavicon';
 import { Text } from 'components/core';
 
@@ -30,10 +32,12 @@ export default function NotFoundPage() {
       </Head>
       <DynamicFavicon />
 
-      <AppContainer>
-        <Text>Seems like you're a bit lost.</Text>
-        <NotFoundImg src="/spookyscary.png" />
-      </AppContainer>
+      <StoreContext.Provider value={createThemeStore()}>
+        <AppContainer>
+          <Text>Seems like you're a bit lost.</Text>
+          <NotFoundImg src="/spookyscary.png" />
+        </AppContainer>
+      </StoreContext.Provider>
     </>
   );
 }

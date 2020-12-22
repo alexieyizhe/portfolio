@@ -8,12 +8,14 @@ type TTextProps = {
   as?: keyof JSX.IntrinsicElements;
   bold?: boolean;
   italic?: boolean;
-  color?: TThemeColor;
+  color?: string;
 } & ComponentPropsWithoutRef<'span'>;
 
 export const Text = s<TTextProps>('span')`
   color: ${({ theme, color }) =>
-    color ? theme!.colors[color] ?? color : theme!.colors.textPrimary};
+    color
+      ? theme!.colors[color as TThemeColor] ?? color
+      : theme!.colors.textPrimary};
   font-family: ${({ theme }) => theme!.bodyFont};
   font-size: 16px;
 

@@ -120,9 +120,12 @@ const Tree = () => {
       <g
         id="Group"
         onClick={onIllustrationClick}
+        onKeyUp={(e) => (e.key === 'Enter' ? onIllustrationClick() : null)}
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: 'pointer', outline: 'none' }}
+        role="button"
+        tabIndex={0}
       >
         <g id="Tree" transform="translate(118.297468, 165.000000)">
           <g id="Shadow" transform="translate(350 1125)">
