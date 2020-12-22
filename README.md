@@ -1,3 +1,3 @@
-# hello friend this is my website
+# hey pal, here is the code that builds my website
 
-built with preact, next.js, and a whole lotta googling.
+made with [preact](https://preactjs.com/), [next.js](https://nextjs.org/), [typescript](https://www.typescriptlang.org/), [goober](https://github.com/cristianbote/goober), [storeon](https://github.com/storeon/storeon), and a whole lotta googling.
