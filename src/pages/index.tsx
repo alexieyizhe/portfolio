@@ -16,6 +16,7 @@ import Bio from 'components/Bio';
 import Footer from 'components/Footer';
 import { StoreContext } from 'storeon/preact';
 import { getGithubStats } from 'services/github';
+import { screen } from 'services/utils';
 
 type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -24,12 +25,16 @@ const MeIllustration = dynamic(() => import('components/MeIllustration'));
 const AppContainer = styled('div')`
   position: relative;
   width: 100vw;
-  min-height: 80vh;
+  min-height: 100vh;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  ${screen.mobile} {
+    min-height: 90vh;
+  }
 `;
 
 const ContentContainer = styled('main')`

@@ -41,7 +41,7 @@ type TStoreEvents = {
   'section/set': TSection;
   'easter-egg/activate': undefined;
   'focusing/set': boolean;
-  'window/focus': undefined;
+  'data/refresh': undefined;
 };
 
 const createSiteStore = (initialProps: TPageInitialProps) => {
@@ -90,7 +90,7 @@ const createSiteStore = (initialProps: TPageInitialProps) => {
       isFocusingOnSomething: focusing,
     }));
 
-    siteStore.on('window/focus', async (state) => {
+    siteStore.on('data/refresh', async (state) => {
       const updatedNowPlayingData = await getNowPlaying(state.spotifyToken);
       const lastStatus = state.statuses[state.statuses.length - 1];
       const lastNowPlayingData = isNowPlayingData(lastStatus)
@@ -110,7 +110,7 @@ const createSiteStore = (initialProps: TPageInitialProps) => {
       }
     });
 
-    siteStore.on('window/focus', (state) => ({
+    siteStore.on('data/refresh', (state) => ({
       currentDate: getDateFromOffset(state.currentTimezoneOffset),
     }));
   };

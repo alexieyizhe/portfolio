@@ -1,4 +1,4 @@
-import { memo, FC, useCallback } from 'react';
+import { memo, FC, useCallback, useEffect } from 'react';
 import TextLoop from 'react-text-loop';
 
 import { useSiteStore } from 'services/store';
@@ -49,12 +49,14 @@ const DynamicCurrentStatus: FC = memo(() => {
 
   const visibilityChangeHandler = useCallback<TVisibilityChangeHandler>(
     (isHidden) => {
-      if (!isHidden) dispatch('window/focus');
+      if (!isHidden) dispatch('data/refresh');
     },
     [dispatch]
   );
 
   useVisibilityChange(visibilityChangeHandler);
+
+  useEffect(() => dispatch('data/refresh'), []); //eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <span>
