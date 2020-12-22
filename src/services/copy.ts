@@ -66,7 +66,6 @@ export const LINKS = [
   },
 ];
 
-// TODO: give these color
 export const PAST_EXPERIENCE = [
   { label: 'Shopify', href: 'https://shopify.engineering/', color: '#008060' },
   {

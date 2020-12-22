@@ -1,4 +1,5 @@
 import { styled } from 'goober';
+import { ComponentPropsWithoutRef } from 'react';
 import { screen } from 'services/utils';
 
 // the `as` prop isn't typed by Goober for some reason, but it exists (https://github.com/cristianbote/goober#using-as-prop)
@@ -6,7 +7,7 @@ type TTextProps = {
   as?: keyof JSX.IntrinsicElements;
   bold?: boolean;
   italic?: boolean;
-};
+} & ComponentPropsWithoutRef<'span'>;
 
 export const Text = styled<TTextProps>('span')`
   font-size: 16px;

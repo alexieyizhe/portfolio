@@ -17,9 +17,9 @@ const About: FC = () => {
       <div>
         <Text as="p">
           I’m a{' '}
-          <span className="dynamic">
+          <Text bold>
             <DynamicTagline />
-          </span>{' '}
+          </Text>{' '}
           that's currently studying computer science at the University of
           Waterloo.
         </Text>
@@ -28,19 +28,17 @@ const About: FC = () => {
       <div>
         <Text as="p">
           It’s currently{' '}
-          <span className="dynamic">
+          <Text bold>
             <DynamicTime />
-          </span>{' '}
-          for me in <span className="dynamic">{currentCity}</span>;{' '}
-          <DynamicCurrentStatus />
+          </Text>{' '}
+          for me in <Text bold>{currentCity}</Text>; <DynamicCurrentStatus />
         </Text>
       </div>
 
       <div>
         <Text as="p">
-          Wanna chat about <span className="dynamic">{talkingPoint}</span>?
-          Shoot me a message at{' '}
-          <Link href="mailto:alex@xie.codes">alex@xie.codes</Link> and let's
+          Wanna chat about <Text bold>{talkingPoint}</Text>? Shoot me a message
+          at <Link href="mailto:alex@xie.codes">alex@xie.codes</Link> and let's
           talk.
         </Text>
       </div>

@@ -9,6 +9,7 @@ import {
   useVisibilityChange,
 } from 'services/utils';
 import CoverArt from 'components/CoverArt';
+import { Text } from 'components/core';
 
 const nowPlayingMarkup = ({
   name,
@@ -29,21 +30,17 @@ const nowPlayingMarkup = ({
 
   return [
     ...action.split(' '),
-    ...label.split(' ').map((s) =>
-      s === 'by' ? (
-        s
-      ) : (
-        <span
-          className="dynamic"
-          style={{
-            color: coverArtColor,
-          }}
-        >
-          {s}
-        </span>
-      )
-    ),
-    <CoverArt link={link} src={coverArtSrc} />,
+    ...label.split(' ').map((s) => (
+      <Text
+        bold={s !== 'by'}
+        style={{
+          color: coverArtColor,
+        }}
+      >
+        {s}
+      </Text>
+    )),
+    <CoverArt link={link} src={coverArtSrc} color={coverArtColor} />,
   ];
 };
 

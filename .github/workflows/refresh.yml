@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Refresh
-        run: curl https://alexxie.com
-        run: curl https://alex.xie.codes
-        run: curl https://xie.codes
-        run: curl https://alexxie.ca
+        run: |
+          curl https://alexxie.com
+          curl https://alex.xie.codes
+          curl https://xie.codes
+          curl https://alexxie.ca

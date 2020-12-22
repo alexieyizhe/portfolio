@@ -14,10 +14,6 @@ const Container = styled('div')`
   justify-content: center;
   align-items: start;
 
-  & .dynamic {
-    font-weight: 500;
-  }
-
   ${screen.mobile} {
     margin: 1em 0 0 0;
   }
