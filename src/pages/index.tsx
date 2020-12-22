@@ -33,7 +33,7 @@ const AppContainer = styled('div')`
   justify-content: center;
 
   ${screen.mobile} {
-    min-height: 90vh;
+    min-height: unset;
   }
 `;
 
