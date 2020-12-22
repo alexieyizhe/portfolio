@@ -48,7 +48,9 @@ const createSiteStore = (initialProps: TPageInitialProps) => {
   const prefix = getRandomItem(PREFIXES);
   const activity = getRandomItem([
     ...ACTIVITIES,
-    new Array(ACTIVITIES.length).fill(initialProps.customStatus), // larger weight for custom status
+    ...(initialProps.customStatus
+      ? new Array(ACTIVITIES.length).fill(initialProps.customStatus) // larger weight for custom status
+      : []),
   ]);
 
   const status = `${prefix} ${activity}.`;

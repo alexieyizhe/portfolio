@@ -28,7 +28,6 @@ export const TAGLINES = [
  */
 
 export const PREFIXES = [
-  "99% of the time, I'm",
   "I'm probably",
   "I'm most likely",
   "There's a good chance I'm",

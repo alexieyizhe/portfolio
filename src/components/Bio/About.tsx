@@ -31,7 +31,7 @@ const About: FC = () => {
           <Text bold>
             <DynamicTime />
           </Text>{' '}
-          for me in <Text bold>{currentCity}</Text>; <DynamicCurrentStatus />
+          for me in <Text bold>{currentCity}</Text>. <DynamicCurrentStatus />
         </Text>
       </div>
 
