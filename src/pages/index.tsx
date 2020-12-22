@@ -11,18 +11,15 @@ import {
   StorageKey,
 } from 'services/_server_';
 import { createSiteStore } from 'services/store';
+import { getGithubStats } from 'services/github';
 import DynamicFavicon from 'components/DynamicFavicon';
 import Title from 'components/Title';
 import Bio from 'components/Bio';
 import Footer from 'components/Footer';
-import { getGithubStats } from 'services/github';
 
 export type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const MeIllustration = dynamic(() => import('components/MeIllustration'));
-const Background = dynamic(
-  () => import('components/MeIllustration/Background')
-);
+const MainIllustration = dynamic(() => import('components/MainIllustration'));
 
 const AppContainer = s('div')`
   position: relative;
@@ -84,10 +81,7 @@ export default function IndexPage(initialProps: TPageInitialProps) {
           <ContentContainer>
             <InnerContentContainer>
               <Title />
-              <div>
-                <Background />
-                <MeIllustration />
-              </div>
+              <MainIllustration />
               <Bio />
               <Footer />
             </InnerContentContainer>

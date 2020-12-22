@@ -1,18 +1,8 @@
 import { FC, memo, useState } from 'react';
-import { styled } from 'goober';
 
 import { useStore } from 'services/store';
-import { screen } from 'services/style';
 
 import Layers from './layers';
-
-const Container = styled('svg')`
-  height: 280px;
-
-  ${screen.mobile} {
-    height: 180px;
-  }
-`;
 
 const SantaHat = memo(() => Layers.SANTA_HAT);
 
@@ -28,12 +18,13 @@ const MeIllustration: FC = () => {
   const onIllustrationClick = () => dispatch('easter-egg/toggle');
 
   return (
-    <Container
+    <svg
       overflow="visible"
       viewBox="233.511 78 682.97 695.5"
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
       onClick={onIllustrationClick}
+      id="illustration-me"
     >
       <g
         id="Master/Character/Sitting"
@@ -223,7 +214,7 @@ const MeIllustration: FC = () => {
         </g>
         <SantaHat />
       </g>
-    </Container>
+    </svg>
   );
 };
 

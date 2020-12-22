@@ -19,10 +19,7 @@ const Container = styled('footer')`
 `;
 
 const Footer: FC = memo(() => {
-  const { dispatch, displayedSection, isDarkMode } = useStore(
-    'displayedSection',
-    'isDarkMode'
-  );
+  const { dispatch, displayedSection } = useStore('displayedSection');
   return (
     <Container>
       {LINKS.map(({ label, href }) => (
@@ -37,16 +34,6 @@ const Footer: FC = memo(() => {
         tabIndex={0}
       >
         <Text>{displayedSection === 'about' ? 'my work' : 'about me'}</Text>
-      </Link>
-      <Link
-        onClick={() => dispatch('dark-mode/toggle', undefined)}
-        onKeyUp={(e) =>
-          e.key === 'Enter' ? dispatch('dark-mode/toggle', undefined) : null
-        }
-        role="button"
-        tabIndex={0}
-      >
-        <Text>{isDarkMode ? 'lights on' : 'lights off'}</Text>
       </Link>
     </Container>
   );
