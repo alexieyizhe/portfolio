@@ -13,8 +13,8 @@ const Work: FC = memo(() => {
         My absolute favourite way to learn is by doing. I'm the creator of{' '}
         <Link href="https://github.com/alexieyizhe/intern.plus/" newTab>
           intern+
-        </Link>{' '}
-        and I contribute to projects
+        </Link>
+        , and I contribute to projects
         {latestRepo ? (
           <>
             {' '}

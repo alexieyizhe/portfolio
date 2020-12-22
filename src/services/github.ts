@@ -1,3 +1,5 @@
+import { base64Encode } from './utils';
+
 type TGithubStats = {
   numCommitsSinceLastKnownEvent: number;
   reposCommittedTo: { name: string; url: string }[];
@@ -5,8 +7,15 @@ type TGithubStats = {
 
 const getGithubStats = async (): Promise<TGithubStats | null> => {
   try {
+    const BASIC_AUTH = base64Encode(`alexieyizhe:${process.env.GITHUB_TOKEN}`);
+
     const res = await fetch(
-      'https://api.github.com/users/alexieyizhe/events/public?per_page=100&page=1'
+      'https://api.github.com/users/alexieyizhe/events/public?per_page=100&page=1',
+      {
+        headers: {
+          Authorization: `Basic ${BASIC_AUTH}`,
+        },
+      }
     );
 
     const data = await res.json();
