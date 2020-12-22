@@ -1,25 +1,26 @@
 import { FC, memo, useState } from 'react';
 import { styled } from 'goober';
 
-import { useSiteContext } from 'services/site/context';
+import { useSiteStore } from 'services/store';
+import { screen } from 'services/utils';
 
 import Layers from './layers';
 
 const Container = styled('svg')`
   height: 280px;
 
-  @media only screen and (max-width: 600px) {
-    height: 220px;
+  ${screen.mobile} {
+    height: 180px;
   }
 `;
 
 const SantaHat = memo(() => Layers.SANTA_HAT);
 
 const MeIllustration: FC = () => {
-  const { isHoveringLink } = useSiteContext();
+  const { isFocusingOnSomething } = useSiteStore('isFocusingOnSomething');
   const [, setNumClicks] = useState(0);
   const [isHovering, setHovering] = useState(false);
-  const expression = isHoveringLink
+  const expression = isFocusingOnSomething
     ? Layers.SURPRISED
     : isHovering
     ? Layers.WEIRD

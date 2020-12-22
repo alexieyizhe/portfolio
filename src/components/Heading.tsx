@@ -1,21 +1,23 @@
 import { memo, FC } from 'react';
 import { styled } from 'goober';
 
-import { useSiteContext } from 'services/site/context';
+import { useSiteStore } from 'services/store';
+import { screen } from 'services/utils';
 
 const H1 = styled('h1')`
   font-family: 'Verona Serial', 'Franklin Gothic Medium', Arial, serif;
   font-size: 48px;
   text-align: center;
-  margin-bottom: 32px;
+  margin: 48px 0;
 
-  @media only screen and (max-width: 600px) {
+  ${screen.mobile} {
     font-size: 40px;
+    margin: 24px 0 28px 0;
   }
 `;
 
 const Heading: FC = memo(() => {
-  const { greeting } = useSiteContext();
+  const { greeting } = useSiteStore('greeting');
   return <H1>{greeting}</H1>;
 });
 

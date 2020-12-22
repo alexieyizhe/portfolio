@@ -1,7 +1,9 @@
-import { memo, FC } from 'react';
-import { styled } from 'goober';
+import { FC, useState, useEffect } from 'react';
+import TextLoop from 'react-text-loop';
 
-import { useSiteContext } from 'services/site/context';
+import { useSiteStore } from 'services/store';
+import { textLoopIntervals } from 'services/utils';
+import GradientText from 'components/GradientText';
 
 type TextGradientInfo = [
   gradientDirection: string,
@@ -9,13 +11,13 @@ type TextGradientInfo = [
   gradientTo: string
 ];
 
-const timeHourMarkup = (hour: number) => {
+const timeToTwelveHour = (hour: number) => {
   const twelveHourTime = hour % 12 || 12; // 0 or 24 becomes 12am
   const timeOfDay = hour < 12 || hour === 24 ? 'AM' : 'PM';
   return `${twelveHourTime}${timeOfDay}`;
 };
 
-const timeToColor = (hour: number, time: string): TextGradientInfo => {
+const timeToGradient = (hour: number, time: string): TextGradientInfo => {
   switch (time) {
     case '1AM':
     case '2AM':
@@ -68,23 +70,38 @@ const timeToColor = (hour: number, time: string): TextGradientInfo => {
   }
 };
 
-const GradientContainer = styled<{ gradient: TextGradientInfo }>('span')`
-  color: ${({ gradient }) => gradient[1]};
-  background: ${({ gradient }) =>
-    `linear-gradient(${gradient[0]}, ${gradient[1]}, ${gradient[2]})`};
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`;
+const DynamicTime: FC = () => {
+  const { currentDate } = useSiteStore('currentDate');
+  const [dates, setDates] = useState<Date[]>([currentDate]);
 
-const DynamicTime: FC = memo(() => {
-  const { currentDate } = useSiteContext();
-  const timeMarkup = timeHourMarkup(currentDate.getHours());
-  const gradient = timeToColor(currentDate.getHours(), timeMarkup);
+  useEffect(() => {
+    setDates((prev) => {
+      const lastDate = prev[prev.length - 1];
+      // current date is displayed in UI with a granularity of hours
+      const isSameDate = lastDate.getHours() !== currentDate.getHours();
+
+      return isSameDate ? [...prev, currentDate] : prev;
+    });
+  }, [currentDate]);
+
+  const timeMarkups = dates.map((date) => {
+    const hours = date.getHours();
+    const timeMarkup = timeToTwelveHour(hours);
+    const [angle, fromColor, toColor] = timeToGradient(hours, timeMarkup);
+    const gradient = `linear-gradient(${angle}, ${fromColor}, ${toColor})`;
+
+    return (
+      <GradientText fallbackColor={fromColor} gradient={gradient}>
+        {timeMarkup}
+      </GradientText>
+    );
+  });
 
   return (
-    <GradientContainer gradient={gradient}>{timeMarkup}</GradientContainer>
+    <TextLoop interval={textLoopIntervals(timeMarkups.length)}>
+      {timeMarkups}
+    </TextLoop>
   );
-});
+};
 
 export default DynamicTime;

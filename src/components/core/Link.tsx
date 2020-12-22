@@ -1,9 +1,13 @@
 import { styled } from 'goober';
 import { FC } from 'react';
 
-import { useSiteContext } from 'services/site/context';
+import { useStoreFocusListeners } from 'services/store/utils';
+import { screen } from 'services/utils';
 
-type LinkProps = React.ComponentPropsWithoutRef<'a'> & { bare?: boolean };
+type LinkProps = React.ComponentPropsWithoutRef<'a'> & {
+  bare?: boolean;
+  newTab?: boolean;
+};
 
 const A = styled<LinkProps>('a')`
   font-size: 16px;
@@ -20,16 +24,25 @@ const A = styled<LinkProps>('a')`
     text-decoration: none;
     opacity: ${({ bare }) => (bare ? 0.8 : 1)};
   }
+
+  ${screen.mobile} {
+    font-size: 15px;
+  }
 `;
 
-const Link: FC<LinkProps> = ({ bare = false, children, ...rest }) => {
-  const { setIsHoveringLink } = useSiteContext();
+const Link: FC<LinkProps> = ({
+  bare = false,
+  newTab = false,
+  children,
+  ...rest
+}) => {
+  const focusListeners = useStoreFocusListeners();
 
   return (
     <A
       bare={bare}
-      onMouseEnter={() => setIsHoveringLink(true)}
-      onMouseLeave={() => setIsHoveringLink(false)}
+      {...(newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      {...focusListeners}
       {...rest}
     >
       {children as any}

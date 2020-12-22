@@ -1,10 +1,9 @@
 still to do
 
 - [ ] visual regression testing
-- [ ] theme & dark mode?
 - [x] 404 page
+- [ ] themeing & dark mode
 - [ ] easter egg
-- [ ] dev mocks for redis
-- [ ] accessibility (contrast/reduce motion), dark mode options
+- [ ] accessibility (contrast/reduce motion) options
 - [x] add api routes for custom status and location check-in
-- [ ] add 'my work' page
+- [x] add 'my work' page

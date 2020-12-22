@@ -1,4 +1,5 @@
 import { getBestTextColor, ProminentOptions } from 'services/color';
+import { base64Encode } from './utils';
 
 type TNowPlayingData = {
   uri: string;
@@ -17,9 +18,9 @@ const isNowPlayingData = (
   typeof status === 'object' && !!status.name && !!status.coverArtSrc;
 
 const requestNewToken = async () => {
-  const ENCODED_CLIENT_INFO = Buffer.from(
+  const ENCODED_CLIENT_INFO = base64Encode(
     `${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`
-  ).toString('base64');
+  );
 
   const reqBody = Object.entries({
     grant_type: 'refresh_token',

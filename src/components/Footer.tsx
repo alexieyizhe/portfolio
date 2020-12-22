@@ -1,8 +1,9 @@
 import { FC, memo } from 'react';
 import { styled } from 'goober';
 
-import { LINKS } from 'services/site/copy';
+import { LINKS } from 'services/copy';
 import { Link, Text } from 'components/core';
+import { useSiteStore } from 'services/store';
 
 const Container = styled('footer')`
   display: flex;
@@ -17,16 +18,20 @@ const Container = styled('footer')`
   }
 `;
 
-const Links: FC = memo(() => {
+const Footer: FC = memo(() => {
+  const { dispatch, displayedSection } = useSiteStore('displayedSection');
   return (
     <Container>
       {LINKS.map(({ label, href }) => (
-        <Link href={href} target="_blank" rel="noopener noreferrer">
+        <Link href={href} newTab>
           <Text>{label}</Text>
         </Link>
       ))}
+      <Link onClick={() => dispatch('section/toggle')}>
+        <Text>{displayedSection === 'about' ? 'my work' : 'about me'}</Text>
+      </Link>
     </Container>
   );
 });
 
-export default Links;
+export default Footer;

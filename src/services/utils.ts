@@ -1,5 +1,17 @@
 import { useEffect } from 'react';
 
+const base64Encode = (s: string) => Buffer.from(s).toString('base64');
+
+const screen = {
+  mobile: '@media only screen and (max-width: 600px)',
+};
+
+// transition intervals that cause text-loop to keep transitioning to next status, but DO NOT transition from last back to first
+const textLoopIntervals = (len: number) => [
+  ...new Array(len - 1).fill(1500),
+  -1,
+];
+
 const getRandomItem = <T = unknown>(arr: T[]) =>
   arr[Math.floor(Math.random() * arr.length)];
 
@@ -32,29 +44,13 @@ const getDateFromOffset = (offsetMins: string): Date => {
   return curUTC;
 };
 
-/**
- * Compute a Date set to the current time in a time zone string
- * @param timeZoneIANA IANA time zone string
- */
-const getDateInZone = (timeZoneIANA: string): Date => {
-  const cur = new Date();
-  const dateInTimezone = new Date(
-    cur.toLocaleString('en-US', {
-      timeZone: timeZoneIANA,
-    })
-  );
-  const diff = cur.getTime() - dateInTimezone.getTime();
-  return new Date(cur.getTime() - diff);
-};
-
+type TVisibilityChangeHandler = (isHidden: boolean) => unknown;
 /**
  * A hook into tab visibility changes through an
  * event handler that receives a flag indicating whether
- * the tab has lost or gained focus
+ * the tab has lost or gained focus.
  */
-const useVisibilityChange = (
-  visibilityChangeHandler: (isHidden: boolean) => void
-) => {
+const useVisibilityChange = (handler: TVisibilityChangeHandler) => {
   useEffect(() => {
     if (process.browser) {
       const [hidden, CHANGE_EVENT_NAME] =
@@ -67,8 +63,7 @@ const useVisibilityChange = (
           : [undefined, undefined];
 
       if (hidden && CHANGE_EVENT_NAME) {
-        const onVisibilityChange = () =>
-          visibilityChangeHandler((document as any)[hidden]);
+        const onVisibilityChange = () => handler((document as any)[hidden]);
 
         document.addEventListener(CHANGE_EVENT_NAME, onVisibilityChange, false);
         return () =>
@@ -79,13 +74,16 @@ const useVisibilityChange = (
           );
       }
     }
-  }, [visibilityChangeHandler]);
+  }, [handler]);
 };
 
+export type { TVisibilityChangeHandler };
 export {
+  screen,
+  base64Encode,
+  textLoopIntervals,
   getRandomItem,
   getShuffledArray,
-  getDateInZone,
   getDateFromOffset,
   useVisibilityChange,
 };
