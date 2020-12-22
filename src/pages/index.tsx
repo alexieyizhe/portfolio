@@ -25,7 +25,7 @@ const AppContainer = s('div')`
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: ${({ theme }) => theme!.backgroundColor};
+  background-color: ${({ theme }) => theme!.colors.background};
 `;
 
 const ContentContainer = styled('div')`

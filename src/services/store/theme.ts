@@ -1,12 +1,16 @@
 import { StoreonModule } from 'storeon';
 
 export type TTheme = {
-  backgroundColor: string;
-  textPrimaryColor: string;
+  colors: {
+    background: string;
+    textPrimary: string;
+  };
   headingFont: string;
   bodyFont: string;
   easterEggFont: string;
 };
+
+export type TThemeColor = keyof TTheme['colors'];
 
 const SHARED_THEME = {
   headingFont: "'Verona Serial', 'Franklin Gothic Medium', Arial, serif",
@@ -16,13 +20,11 @@ const SHARED_THEME = {
 };
 
 const DARK_THEME = {
-  backgroundColor: '#121212',
-  textPrimaryColor: '#efefef',
+  colors: { background: '#121212', textPrimary: '#efefef' },
 };
 
 const LIGHT_THEME = {
-  backgroundColor: '#fff',
-  textPrimaryColor: '#232323',
+  colors: { background: '#fff', textPrimary: '#232323' },
 };
 
 export const THEME_KEYS = Array.from(

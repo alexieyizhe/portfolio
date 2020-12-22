@@ -66,13 +66,13 @@ export const LINKS = [
 ];
 
 export const PAST_EXPERIENCE = [
-  { label: 'Shopify', href: 'https://shopify.engineering/', color: '#008060' },
+  { label: 'Shopify', href: 'https://shopify.engineering/', color: '#007060' },
   {
     label: 'Hack the North',
     href: 'https://hackthenorth.com/',
-    color: '#004d85',
+    color: '#004f85',
   },
-  { label: 'Faire', href: 'https://www.faire.com/about', color: '#333333' },
+  { label: 'Faire', href: 'https://www.faire.com/about', color: 'textPrimary' },
   { label: 'TEDxUW', href: 'https://tedxuw.com/', color: '#c9200c' },
   {
     label: 'Flipp',
