@@ -2,6 +2,10 @@ import { useEffect } from 'react';
 
 const base64Encode = (s: string) => Buffer.from(s).toString('base64');
 
+const screen = {
+  mobile: '@media only screen and (max-width: 600px)',
+};
+
 // transition intervals that cause text-loop to keep transitioning to next status, but DO NOT transition from last back to first
 const textLoopIntervals = (len: number) => [
   ...new Array(len - 1).fill(1500),
@@ -75,6 +79,7 @@ const useVisibilityChange = (handler: TVisibilityChangeHandler) => {
 
 export type { TVisibilityChangeHandler };
 export {
+  screen,
   base64Encode,
   textLoopIntervals,
   getRandomItem,

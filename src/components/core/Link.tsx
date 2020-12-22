@@ -2,6 +2,7 @@ import { styled } from 'goober';
 import { FC } from 'react';
 
 import { useStoreFocusListeners } from 'services/store/utils';
+import { screen } from 'services/utils';
 
 type LinkProps = React.ComponentPropsWithoutRef<'a'> & {
   bare?: boolean;
@@ -22,6 +23,10 @@ const A = styled<LinkProps>('a')`
   &:focus-visible {
     text-decoration: none;
     opacity: ${({ bare }) => (bare ? 0.8 : 1)};
+  }
+
+  ${screen.mobile} {
+    font-size: 15px;
   }
 `;
 

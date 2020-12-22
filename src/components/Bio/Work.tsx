@@ -18,11 +18,12 @@ const Work: FC = memo(() => {
   return (
     <>
       <Text as="p">
-        My absolute favourite way to learn is by doing. I'm the creator of{' '}
+        My absolute favourite way to learn is by <Text bold>doing</Text>. I
+        built{' '}
         <Link href="https://github.com/alexieyizhe/intern.plus/" newTab>
           intern+
-        </Link>
-        , and I contribute to projects
+        </Link>{' '}
+        and contribute to projects
         {latestRepo ? (
           <>
             {' '}
@@ -38,9 +39,8 @@ const Work: FC = memo(() => {
       </Text>
 
       <Text as="p">
-        Next spring, I'll be working at a stealth startup that empowers
-        companies to build applications around their ML models. In the past,
-        I've been a part of{' '}
+        Next spring, I'll be working at an ML stealth startup. I've previously
+        been a part of{' '}
         {PAST_EXPERIENCE.map((experience, i, arr) => {
           const isLast = i === arr.length - 1;
           return (
@@ -56,8 +56,8 @@ const Work: FC = memo(() => {
       </Text>
 
       <Text as="p">
-        I'm looking for <Text bold>summer and winter 2021 opportunities</Text>!
-        Take a peek at my resume below or{' '}
+        I'm looking for <Text bold>summer 2021 opportunities</Text>! Take a peek
+        at my resume below or{' '}
         <Link href="mailto:alex@xie.codes">get in touch</Link>.
       </Text>
     </>

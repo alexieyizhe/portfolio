@@ -1,4 +1,5 @@
 import { styled } from 'goober';
+import { screen } from 'services/utils';
 
 // the `as` prop isn't typed by Goober for some reason, but it exists (https://github.com/cristianbote/goober#using-as-prop)
 type TTextProps = {
@@ -14,4 +15,8 @@ export const Text = styled<TTextProps>('span')`
 
   ${({ bold }) => (bold ? `font-weight: 500;` : '')}
   ${({ italic }) => (italic ? `font-style: italic;` : '')}
+
+  ${screen.mobile} {
+    font-size: 15px;
+  }
 `;

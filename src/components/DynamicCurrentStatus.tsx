@@ -20,7 +20,9 @@ const nowPlayingMarkup = ({
 }: TNowPlayingData) => {
   const isPodcast = !!podcastName;
   const hasArtist = !!artistName;
-  const action = isPodcast ? 'listening to an episode of' : "jammin' out to";
+  const action = isPodcast
+    ? "I'm listening to an episode of"
+    : "I'm jammin' out to";
   const label = `${isPodcast ? podcastName : name}${
     hasArtist ? ` by ${artistName}` : ''
   }`;

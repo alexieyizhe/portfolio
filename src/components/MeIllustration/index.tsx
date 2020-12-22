@@ -2,14 +2,15 @@ import { FC, memo, useState } from 'react';
 import { styled } from 'goober';
 
 import { useSiteStore } from 'services/store';
+import { screen } from 'services/utils';
 
 import Layers from './layers';
 
 const Container = styled('svg')`
   height: 280px;
 
-  @media only screen and (max-width: 600px) {
-    height: 220px;
+  ${screen.mobile} {
+    height: 180px;
   }
 `;
 

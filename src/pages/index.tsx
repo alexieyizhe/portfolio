@@ -37,7 +37,7 @@ const ContentContainer = styled('main')`
   width: 100%;
   height: 100%;
   width: 80vw;
-  max-width: 500px;
+  max-width: 510px;
 
   display: flex;
   flex-direction: column;

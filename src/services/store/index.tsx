@@ -12,7 +12,13 @@ import {
   getRandomItem,
   getShuffledArray,
 } from 'services/utils';
-import { ACTIVITIES, GREETINGS, TAGLINES, TALKING_POINTS } from 'services/copy';
+import {
+  ACTIVITIES,
+  GREETINGS,
+  TAGLINES,
+  TALKING_POINTS,
+  PREFIXES,
+} from 'services/copy';
 
 type TSection = 'about' | 'work';
 
@@ -38,10 +44,13 @@ type TStoreEvents = {
 };
 
 const createSiteStore = (initialProps: TPageInitialProps) => {
-  const status = getRandomItem([
-    getRandomItem(ACTIVITIES),
-    initialProps.customStatus ?? getRandomItem(ACTIVITIES),
+  const prefix = getRandomItem(PREFIXES);
+  const activity = getRandomItem([
+    ...ACTIVITIES,
+    new Array(ACTIVITIES.length).fill(initialProps.customStatus), // larger weight for custom status
   ]);
+
+  const status = `${prefix} ${activity}.`;
 
   const initialState: TStoreState = {
     ...initialProps,
@@ -51,7 +60,10 @@ const createSiteStore = (initialProps: TPageInitialProps) => {
     statuses: [initialProps.initialNowPlayingData ?? status],
     talkingPoint: getRandomItem(TALKING_POINTS),
 
-    displayedSection: 'about',
+    displayedSection:
+      process.browser && window.location.pathname === '/work'
+        ? 'work'
+        : 'about',
 
     isEasterEggActive: false,
     isFocusingOnSomething: false,

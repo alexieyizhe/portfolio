@@ -2,27 +2,28 @@ import { FC } from 'react';
 import { styled } from 'goober';
 
 import { useSiteStore } from 'services/store';
+import { screen } from 'services/utils';
 
 import About from './About';
 import Work from './Work';
 
 const Container = styled('div')`
   margin: 1.6em 0 1em 0;
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-items: start;
 
   & .dynamic {
     font-weight: 500;
   }
 
-  width: 100%;
-  position: relative;
-  display: grid;
-  justify-content: center;
-  align-items: center;
+  ${screen.mobile} {
+    margin: 1em 0 0 0;
+  }
 `;
 
 const Subcontainer = styled('div')`
-  width: 100%;
-
   grid-column: 1;
   grid-row: 1;
 

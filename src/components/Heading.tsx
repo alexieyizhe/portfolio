@@ -2,6 +2,7 @@ import { memo, FC } from 'react';
 import { styled } from 'goober';
 
 import { useSiteStore } from 'services/store';
+import { screen } from 'services/utils';
 
 const H1 = styled('h1')`
   font-family: 'Verona Serial', 'Franklin Gothic Medium', Arial, serif;
@@ -9,8 +10,9 @@ const H1 = styled('h1')`
   text-align: center;
   margin: 48px 0;
 
-  @media only screen and (max-width: 600px) {
+  ${screen.mobile} {
     font-size: 40px;
+    margin: 32px 0;
   }
 `;
 
