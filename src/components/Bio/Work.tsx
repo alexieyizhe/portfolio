@@ -34,13 +34,13 @@ const Work: FC = memo(() => {
       <Text as="p">
         Next spring, I'll be working at an ML stealth startup. I've previously
         been a part of{' '}
-        {PAST_EXPERIENCE.map((experience, i, arr) => {
+        {PAST_EXPERIENCE.map(({ label, href, color }, i, arr) => {
           const isLast = i === arr.length - 1;
           return (
             <>
               {isLast ? ' and ' : ' '}
-              <Link href={experience.href} newTab>
-                {experience.label}
+              <Link href={href} newTab style={{ color }} bare>
+                <Text bold>{label}</Text>
               </Link>
               {isLast ? '.' : ','}
             </>

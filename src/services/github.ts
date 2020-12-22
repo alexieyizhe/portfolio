@@ -26,10 +26,11 @@ const getGithubStats = async (): Promise<TGithubStats | null> => {
     const pushEvents = data.filter((event: any) => event.type === 'PushEvent');
     const pushEventRepos = Object.entries<string>(
       pushEvents.reduce((acc: Record<string, string>, curEvent: any) => {
-        acc[curEvent.repo.name] = curEvent.repo.url as string;
+        acc[curEvent.repo.name] = `https://github.com/${curEvent.repo.name}`;
         return acc;
       }, {})
     ).map(([name, url]) => ({ name, url }));
+
     const numCommitsSinceLastKnownEvent = pushEvents.reduce(
       (acc: number, curEvent: any) => acc + curEvent.payload.size,
       0

@@ -66,10 +66,19 @@ export const LINKS = [
   },
 ];
 
+// TODO: give these color
 export const PAST_EXPERIENCE = [
-  { label: 'Shopify', href: 'https://shopify.engineering/' },
-  { label: 'Hack the North', href: 'https://hackthenorth.com/' },
-  { label: 'Faire', href: 'https://www.faire.com/about' },
-  { label: 'TEDxUW', href: 'https://tedxuw.com/' },
-  { label: 'Flipp', href: 'https://corp.flipp.com/about-us/' },
+  { label: 'Shopify', href: 'https://shopify.engineering/', color: '#008060' },
+  {
+    label: 'Hack the North',
+    href: 'https://hackthenorth.com/',
+    color: '#004d85',
+  },
+  { label: 'Faire', href: 'https://www.faire.com/about', color: '#333333' },
+  { label: 'TEDxUW', href: 'https://tedxuw.com/', color: '#c9200c' },
+  {
+    label: 'Flipp',
+    href: 'https://corp.flipp.com/about-us/',
+    color: '#007cba',
+  },
 ];
