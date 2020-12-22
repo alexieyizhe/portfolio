@@ -38,8 +38,9 @@ const About: FC = () => {
 
       <div>
         <Text as="p">
-          Wanna chat about <span className="dynamic">{talkingPoint}</span>?{' '}
-          <Link href="mailto:alex@xie.codes">Shoot me an email</Link> and let's
+          Wanna chat about <span className="dynamic">{talkingPoint}</span>?
+          Shoot me a message at
+          <Link href="mailto:alex@xie.codes">alex@xie.codes</Link> and let's
           talk.
         </Text>
       </div>
