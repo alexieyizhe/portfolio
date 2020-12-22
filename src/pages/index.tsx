@@ -45,36 +45,38 @@ const ContentContainer = styled('main')`
   justify-content: center;
 `;
 
-const IndexPage = (initialProps: TPageInitialProps) => (
-  <>
-    <Head>
-      <title>Alex Xie</title>
-      <meta property="og:title" content="Alex Xie's personal website" />
-      <meta
-        name="description"
-        content="Alex is a web developer and a senior at the University of Waterloo, majoring in computer science."
-      />
-      <meta
-        property="og:description"
-        content="Alex is a web developer and a senior at the University of Waterloo, majoring in computer science."
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:image" content="https://alexxie.com/preview.png" />
-    </Head>
-    <DynamicFavicon />
+const IndexPage = (initialProps: TPageInitialProps) => {
+  return (
+    <>
+      <Head>
+        <title>Alex Xie</title>
+        <meta property="og:title" content="Alex Xie's personal website" />
+        <meta
+          name="description"
+          content="Alex is a web developer and a senior at the University of Waterloo, majoring in computer science."
+        />
+        <meta
+          property="og:description"
+          content="Alex is a web developer and a senior at the University of Waterloo, majoring in computer science."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://alexxie.com/preview.png" />
+      </Head>
+      <DynamicFavicon />
 
-    <StoreContext.Provider value={createSiteStore(initialProps)}>
-      <AppContainer>
-        <ContentContainer>
-          <Heading />
-          <MeIllustration />
-          <Bio />
-          <Footer />
-        </ContentContainer>
-      </AppContainer>
-    </StoreContext.Provider>
-  </>
-);
+      <StoreContext.Provider value={createSiteStore(initialProps)}>
+        <AppContainer>
+          <ContentContainer>
+            <Heading />
+            <MeIllustration />
+            <Bio />
+            <Footer />
+          </ContentContainer>
+        </AppContainer>
+      </StoreContext.Provider>
+    </>
+  );
+};
 
 export async function getStaticProps() {
   console.log('Retrieving data...');

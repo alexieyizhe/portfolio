@@ -1,12 +1,20 @@
-import { FC, memo } from 'react';
+import { FC, memo, useEffect } from 'react';
 
 import { Link, Text } from 'components/core';
 import { PAST_EXPERIENCE } from 'services/copy';
 import { useSiteStore } from 'services/store';
 
 const Work: FC = memo(() => {
-  const { githubStats } = useSiteStore('githubStats');
+  const { dispatch, githubStats } = useSiteStore('githubStats');
   const latestRepo = githubStats?.reposCommittedTo[0] ?? null;
+
+  useEffect(() => {
+    if (process.browser && window.location.pathname === '/work') {
+      dispatch('section/toggle');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <Text as="p">

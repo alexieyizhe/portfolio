@@ -7,7 +7,7 @@ import About from './About';
 import Work from './Work';
 
 const Container = styled('div')`
-  margin-top: 1.6em;
+  margin: 1.6em 0 1em 0;
 
   & .dynamic {
     font-weight: 500;

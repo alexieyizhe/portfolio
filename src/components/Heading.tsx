@@ -7,7 +7,7 @@ const H1 = styled('h1')`
   font-family: 'Verona Serial', 'Franklin Gothic Medium', Arial, serif;
   font-size: 48px;
   text-align: center;
-  margin-bottom: 32px;
+  margin: 48px 0;
 
   @media only screen and (max-width: 600px) {
     font-size: 40px;
