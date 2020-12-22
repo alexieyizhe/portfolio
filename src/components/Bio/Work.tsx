@@ -11,8 +11,8 @@ const Work: FC = memo(() => {
   return (
     <>
       <Text as="p">
-        My absolute favourite way to learn is by <Text bold>doing</Text>. I
-        built{' '}
+        As a developer, my absolute favourite way to learn is by{' '}
+        <Text bold>doing</Text>. I built{' '}
         <Link href="https://github.com/alexieyizhe/intern.plus/" newTab>
           intern+
         </Link>{' '}
@@ -28,7 +28,7 @@ const Work: FC = memo(() => {
         ) : (
           ' '
         )}
-        to grow as a developer.
+        to do exactly that.
       </Text>
 
       <Text as="p">
