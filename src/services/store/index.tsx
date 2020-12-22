@@ -38,6 +38,7 @@ type TStoreState = TPageInitialProps & {
 type TStoreEvents = {
   'status/add': TNowPlayingData | string;
   'section/toggle': undefined;
+  'section/set': TSection;
   'easter-egg/activate': undefined;
   'focusing/set': boolean;
   'window/focus': undefined;
@@ -60,10 +61,7 @@ const createSiteStore = (initialProps: TPageInitialProps) => {
     statuses: [initialProps.initialNowPlayingData ?? status],
     talkingPoint: getRandomItem(TALKING_POINTS),
 
-    displayedSection:
-      process.browser && window.location.pathname === '/work'
-        ? 'work'
-        : 'about',
+    displayedSection: 'about',
 
     isEasterEggActive: false,
     isFocusingOnSomething: false,
@@ -78,6 +76,10 @@ const createSiteStore = (initialProps: TPageInitialProps) => {
 
     siteStore.on('section/toggle', (state) => ({
       displayedSection: state.displayedSection === 'about' ? 'work' : 'about',
+    }));
+
+    siteStore.on('section/set', (_, newSection) => ({
+      displayedSection: newSection,
     }));
 
     siteStore.on('easter-egg/activate', () => ({
