@@ -14,11 +14,7 @@ import DynamicFavicon from 'components/DynamicFavicon';
 import Title from 'components/Title';
 import Bio from 'components/Bio';
 import Footer from 'components/Footer';
-import {
-  AppContainer,
-  ContentContainer,
-  InnerContentContainer,
-} from 'components/core';
+import { Page } from 'components/core';
 
 export type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -44,16 +40,12 @@ export default function IndexPage(initialProps: TPageInitialProps) {
       <DynamicFavicon />
 
       <StoreContext.Provider value={createSiteStore(initialProps)}>
-        <AppContainer>
-          <ContentContainer>
-            <InnerContentContainer>
-              <Title />
-              <MainIllustration />
-              <Bio />
-              <Footer />
-            </InnerContentContainer>
-          </ContentContainer>
-        </AppContainer>
+        <Page>
+          <Title />
+          <MainIllustration />
+          <Bio />
+          <Footer />
+        </Page>
       </StoreContext.Provider>
     </>
   );

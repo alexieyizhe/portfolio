@@ -12,20 +12,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install
-        run: npm ci
-
-      - name: Build & release
+      - name: Release
         env:
           VERSION_TAG: ${{ github.event.release.tag_name }}
         run: |
-          git config --global user.name "Beep boop bot"
+          git config --global user.name "🤖 Beep boop bot"
           git config --global user.email "alexieyizhe@gmail.com"
 
-          npm run build
-
-          git checkout master
           npm version $VERSION_TAG --git-tag-version=false
           git commit -am "🤖: bump version to $VERSION_TAG"
+
           git push origin -f HEAD:release
           git push origin -f HEAD:master

@@ -1,6 +1,8 @@
+import { FC } from 'react';
 import { s, screen } from 'services/style';
+import { useBootstrap } from 'services/utils';
 
-export const AppContainer = s('div')`
+const PageContainer = s('div')`
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -8,7 +10,7 @@ export const AppContainer = s('div')`
   transition: background-color 400ms;
 `;
 
-export const ContentContainer = s('div')`
+const ContentContainer = s('div')`
   position: relative;
   width: 100vw;
   min-height: 100vh;
@@ -23,7 +25,7 @@ export const ContentContainer = s('div')`
   }
 `;
 
-export const InnerContentContainer = s('main')`
+const InnerContentContainer = s('main')`
   position: relative;
   width: 100%;
   height: 100%;
@@ -35,3 +37,14 @@ export const InnerContentContainer = s('main')`
   align-items: center;
   justify-content: center;
 `;
+
+export const Page: FC = ({ children }) => {
+  useBootstrap();
+  return (
+    <PageContainer>
+      <ContentContainer>
+        <InnerContentContainer>{children}</InnerContentContainer>
+      </ContentContainer>
+    </PageContainer>
+  );
+};

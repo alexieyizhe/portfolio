@@ -44,18 +44,10 @@ export type TThemeModuleEvents = {
 };
 
 export const createThemeModule = () => {
-  const prefersDarkTheme =
-    process.browser &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const isNighttime =
-    process.browser &&
-    (new Date().getHours() > 19 || new Date().getHours() < 8);
-  const initialIsDarkMode = prefersDarkTheme || isNighttime;
-
   const initialState: TThemeModuleState = {
     ...SHARED_THEME,
-    ...(initialIsDarkMode ? DARK_THEME : LIGHT_THEME),
-    isDarkMode: initialIsDarkMode,
+    ...LIGHT_THEME,
+    isDarkMode: false,
   };
 
   const module: StoreonModule<TThemeModuleState, TThemeModuleEvents> = (

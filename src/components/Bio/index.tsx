@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { styled } from 'goober';
 
 import { useStore } from 'services/store';
@@ -31,14 +31,7 @@ const Subcontainer = styled('div')`
 `;
 
 const Bio: FC = () => {
-  const { dispatch, displayedSection } = useStore('displayedSection');
-
-  useEffect(() => {
-    if (process.browser && window.location.pathname === '/work') {
-      dispatch('section/set', 'work');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { displayedSection } = useStore('displayedSection');
 
   return (
     <Container>

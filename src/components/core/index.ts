@@ -1,4 +1,4 @@
 export * from './Heading';
-export * from './Layout';
+export { Page } from './Page';
 export { Text } from './Text';
 export { Link } from './Link';

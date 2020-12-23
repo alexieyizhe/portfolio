@@ -1,9 +1,12 @@
 import { h } from 'preact';
-import { setup, glob, styled } from 'goober';
+import { setup, styled } from 'goober';
 import { prefix } from 'goober-autoprefixer';
+import { createGlobalStyles } from 'goober/global';
 
 import { THEME_KEYS, TTheme } from 'services/store/theme';
 import { useStore } from 'services/store';
+
+setup(h, prefix, () => useStore(...THEME_KEYS, 'isDarkMode'));
 
 // fixes `goober` bug where TS thinks `theme` isn't defined as a prop
 export const s = <P extends Record<string, unknown>>(
@@ -14,9 +17,7 @@ export const screen = {
   mobile: '@media only screen and (max-width: 600px)',
 };
 
-setup(h, prefix, () => useStore(...THEME_KEYS));
-
-glob`
+export const GlobalStyles = createGlobalStyles`
   @font-face {
     font-family: 'Space Grotesk Variable';
     font-weight: 100 1000;
@@ -24,9 +25,7 @@ glob`
     src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype supports variations'),
         url('/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype-variations'); 
   }
-`;
 
-glob`
   @font-face {
     font-family: 'Space Grotesk';
     font-weight: 400;
@@ -35,9 +34,7 @@ glob`
     src: url('/fonts/SpaceGrotesk-Regular.woff2') format('woff2'), 
          url('/fonts/SpaceGrotesk-Regular.ttf')  format('truetype'); 
   }
-`;
 
-glob`
   @font-face {
     font-family: 'Space Grotesk';
     font-weight: 500;
@@ -47,9 +44,7 @@ glob`
          url('/fonts/SpaceGrotesk-Medium.ttf')  format('truetype'); 
          
   }
-`;
 
-glob`
   @font-face {
     font-family: 'Verona Serial';
     font-style: normal;
@@ -57,9 +52,7 @@ glob`
     font-display: fallback;
     src: url('/fonts/verona-serial-medium-regular.ttf') format('truetype');
   }
-`;
 
-glob`
   html {
     height: 100%;
     margin: 0;

@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
+import { useStore } from 'services/store';
+
 export const base64Encode = (s: string) => Buffer.from(s).toString('base64');
 
 // transition intervals that cause text-loop to keep transitioning to next status, but DO NOT transition from last back to first
@@ -89,4 +91,25 @@ export const useHoverListeners = () => {
       onMouseLeave: useCallback(() => setHovering(false), []),
     },
   };
+};
+
+export const useBootstrap = () => {
+  const { dispatch } = useStore();
+
+  useEffect(() => {
+    const prefersDarkTheme =
+      process.browser &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isNighttime =
+      process.browser &&
+      (new Date().getHours() > 19 || new Date().getHours() < 8);
+    const isDark = prefersDarkTheme || isNighttime;
+
+    const isWorkPage = process.browser && window.location.pathname === '/work';
+
+    if (isWorkPage) dispatch('section/set', 'work');
+    if (isDark) dispatch('dark-mode/toggle', true);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 };
