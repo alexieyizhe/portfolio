@@ -75,4 +75,10 @@ glob`
   *, *:before, *:after {
     box-sizing: inherit;
   }
+
+  @media (prefers-reduced-motion) {
+    & * {
+      animation: none;
+    }
+  }
 `;

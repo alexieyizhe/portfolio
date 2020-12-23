@@ -7,3 +7,4 @@ still to do
 - [x] accessibility (contrast/reduce motion) options
 - [x] add api routes for custom status and location check-in
 - [x] add 'my work' page
+- [ ] move blog to craft

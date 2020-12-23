@@ -27,10 +27,6 @@ const CoverArtLink = css`
 
     animation: ${rotate} 5s linear infinite;
 
-    @media (prefers-reduced-motion) {
-      animation: none;
-    }
-
     & > * {
       grid-row: 1;
       grid-column: 1;
