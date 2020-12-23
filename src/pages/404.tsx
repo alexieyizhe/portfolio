@@ -5,7 +5,7 @@ import { StoreContext } from 'storeon/preact';
 import 'services/style';
 import { createThemeStore } from 'services/store';
 import DynamicFavicon from 'components/DynamicFavicon';
-import { Text, AppContainer } from 'components/core';
+import { Text, AppContainer, ContentContainer } from 'components/core';
 
 const NotFoundImg = styled('img')`
   margin-top: 1em;
@@ -19,12 +19,14 @@ export default function NotFoundPage() {
       <Head>
         <title>There's nothing here.</title>
       </Head>
-      <DynamicFavicon />
+      <DynamicFavicon face="mad" />
 
       <StoreContext.Provider value={createThemeStore()}>
         <AppContainer>
-          <Text>Seems like you're a bit lost.</Text>
-          <NotFoundImg src="/spookyscary.png" />
+          <ContentContainer>
+            <Text>Seems like you're a bit lost.</Text>
+            <NotFoundImg src="/spookyscary.png" />
+          </ContentContainer>
         </AppContainer>
       </StoreContext.Provider>
     </>
