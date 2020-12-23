@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { StoreContext } from 'storeon/preact';
 
-import 'services/style';
 import { createThemeStore } from 'services/store';
 import DynamicFavicon from 'components/DynamicFavicon';
 import { Text, Page } from 'components/core';

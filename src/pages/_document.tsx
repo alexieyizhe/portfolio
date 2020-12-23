@@ -7,7 +7,7 @@ import Document, {
 } from 'next/document';
 import { extractCss } from 'goober';
 
-import { GlobalStyles } from 'services/style';
+import 'services/style';
 
 export default class CustomDocument extends Document<{ css: string }> {
   static async getInitialProps({ renderPage }: DocumentContext) {
@@ -28,7 +28,6 @@ export default class CustomDocument extends Document<{ css: string }> {
           />
         </Head>
         <body>
-          <GlobalStyles />
           <Main />
           <NextScript />
         </body>
