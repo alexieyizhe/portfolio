@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { keyframes } from 'goober';
 
 import { useStore } from 'services/store';
@@ -98,7 +97,7 @@ const BLINKING_LIGHTS = [
   />
 ));
 
-const Tree = (): FC => {
+const Tree = () => {
   const { dispatch, isDarkMode } = useStore('isDarkMode');
   const {
     isHovering,
