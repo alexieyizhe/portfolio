@@ -61,7 +61,7 @@ export const LINKS = [
   { label: 'github', href: 'https://github.com/alexieyizhe' },
   {
     label: 'blog',
-    href: 'https://www.notion.so/89e78bd148c74c29ba1985d97e3b7d54',
+    href: 'https://www.craft.do/s/essARjCAB2DclB',
   },
 ];
 
