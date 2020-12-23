@@ -1,10 +1,8 @@
-import { styled } from 'goober';
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { StoreContext } from 'storeon/preact';
 
-import { s, screen } from 'services/style';
 import {
   getNowPlayingDataServerSide,
   StorageClient,
@@ -16,46 +14,15 @@ import DynamicFavicon from 'components/DynamicFavicon';
 import Title from 'components/Title';
 import Bio from 'components/Bio';
 import Footer from 'components/Footer';
+import {
+  AppContainer,
+  ContentContainer,
+  InnerContentContainer,
+} from 'components/core';
 
 export type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const MainIllustration = dynamic(() => import('components/MainIllustration'));
-
-const AppContainer = s('div')`
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-color: ${({ theme }) => theme!.colors.background};
-  transition: background-color 400ms;
-`;
-
-const ContentContainer = styled('div')`
-  position: relative;
-  width: 100vw;
-  min-height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  ${screen.mobile} {
-    min-height: unset;
-  }
-`;
-
-const InnerContentContainer = styled('main')`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  width: 80vw;
-  max-width: 510px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
 
 export default function IndexPage(initialProps: TPageInitialProps) {
   return (
@@ -115,6 +82,6 @@ export async function getStaticProps() {
 
   return {
     props: initialProps,
-    revalidate: 10, // regenerate page at most every N seconds
+    revalidate: 600,
   };
 }

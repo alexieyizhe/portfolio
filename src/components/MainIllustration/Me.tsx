@@ -21,9 +21,6 @@ const MeIllustration: FC = () => {
     <svg
       overflow="visible"
       viewBox="233.511 78 682.97 695.5"
-      onMouseEnter={() => setHovering(true)}
-      onMouseLeave={() => setHovering(false)}
-      onClick={onIllustrationClick}
       id="illustration-me"
     >
       <g
@@ -32,6 +29,13 @@ const MeIllustration: FC = () => {
         fillRule="evenodd"
         stroke="none"
         strokeWidth="1"
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+        onClick={onIllustrationClick}
+        onKeyUp={(e) => (e.key === 'Enter' ? onIllustrationClick() : null)}
+        style={{ cursor: 'pointer', outline: 'none' }}
+        role="button"
+        tabIndex={0}
       >
         <g id="Shadow" transform="translate(585 715)">
           <ellipse rx="275" ry="55" fill="#e0f8ff" />
