@@ -1,7 +1,7 @@
 import { memo, FC, useCallback, useEffect } from 'react';
 import TextLoop from 'react-text-loop';
 
-import { useSiteStore } from 'services/store';
+import { useStore } from 'services/store';
 import { TNowPlayingData, isNowPlayingData } from 'services/now-playing';
 import {
   textLoopIntervals,
@@ -45,7 +45,7 @@ const nowPlayingMarkup = ({
 };
 
 const DynamicCurrentStatus: FC = memo(() => {
-  const { dispatch, statuses } = useSiteStore('statuses');
+  const { dispatch, statuses } = useStore('statuses');
   const statusesMarkup = statuses.map((status) =>
     isNowPlayingData(status) ? nowPlayingMarkup(status) : status.split(' ')
   );

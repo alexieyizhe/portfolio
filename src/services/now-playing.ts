@@ -1,7 +1,7 @@
 import { getBestTextColor, ProminentOptions } from 'services/color';
 import { base64Encode } from './utils';
 
-type TNowPlayingData = {
+export type TNowPlayingData = {
   uri: string;
   type: 'episode' | 'track';
   name: string; // name of song or name of podcast
@@ -12,12 +12,12 @@ type TNowPlayingData = {
   link: string; //  song link, podcast episode link, or playlist link
 };
 
-const isNowPlayingData = (
+export const isNowPlayingData = (
   status: string | TNowPlayingData
 ): status is TNowPlayingData =>
   typeof status === 'object' && !!status.name && !!status.coverArtSrc;
 
-const requestNewToken = async () => {
+export const requestNewToken = async () => {
   const ENCODED_CLIENT_INFO = base64Encode(
     `${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`
   );
@@ -98,7 +98,7 @@ const extractNowPlayingData = (data: any) => {
   }
 };
 
-const getNowPlaying = async (
+export const getNowPlaying = async (
   accessToken: string | null,
   colorOptions?: ProminentOptions
 ): Promise<TNowPlayingData | null> => {
@@ -134,6 +134,3 @@ const getNowPlaying = async (
     return null;
   }
 };
-
-export type { TNowPlayingData };
-export { isNowPlayingData, requestNewToken, getNowPlaying };

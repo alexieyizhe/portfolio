@@ -1,8 +1,20 @@
 import { h } from 'preact';
-import { setup, glob } from 'goober';
+import { setup, glob, styled } from 'goober';
 import { prefix } from 'goober-autoprefixer';
 
-setup(h, prefix);
+import { THEME_KEYS, TTheme } from 'services/store/theme';
+import { useStore } from 'services/store';
+
+// fixes `goober` bug where TS thinks `theme` isn't defined as a prop
+export const s = <P extends Record<string, unknown>>(
+  tag: keyof JSX.IntrinsicElements
+) => styled<{ theme?: TTheme } & P>(tag);
+
+export const screen = {
+  mobile: '@media only screen and (max-width: 600px)',
+};
+
+setup(h, prefix, () => useStore(...THEME_KEYS));
 
 glob`
   @font-face {
@@ -62,5 +74,11 @@ glob`
 
   *, *:before, *:after {
     box-sizing: inherit;
+  }
+
+  @media (prefers-reduced-motion) {
+    & * {
+      animation: none;
+    }
   }
 `;

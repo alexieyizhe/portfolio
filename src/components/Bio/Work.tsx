@@ -2,10 +2,10 @@ import { FC, memo } from 'react';
 
 import { Link, Text } from 'components/core';
 import { PAST_EXPERIENCE } from 'services/copy';
-import { useSiteStore } from 'services/store';
+import { useStore } from 'services/store';
 
 const Work: FC = memo(() => {
-  const { githubStats } = useSiteStore('githubStats');
+  const { githubStats } = useStore('githubStats');
   const latestRepo = githubStats?.reposCommittedTo[0] ?? null;
 
   return (
@@ -39,8 +39,10 @@ const Work: FC = memo(() => {
           return (
             <>
               {isLast ? ' and ' : ' '}
-              <Link href={href} newTab style={{ color }} bare>
-                <Text bold>{label}</Text>
+              <Link href={href} newTab bare>
+                <Text bold color={color}>
+                  {label}
+                </Text>
               </Link>
               {isLast ? '.' : ','}
             </>

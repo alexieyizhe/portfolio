@@ -1,18 +1,23 @@
-import { styled } from 'goober';
 import { ComponentPropsWithoutRef } from 'react';
-import { screen } from 'services/utils';
+
+import { TThemeColor } from 'services/store/theme';
+import { s, screen } from 'services/style';
 
 // the `as` prop isn't typed by Goober for some reason, but it exists (https://github.com/cristianbote/goober#using-as-prop)
 type TTextProps = {
   as?: keyof JSX.IntrinsicElements;
   bold?: boolean;
   italic?: boolean;
+  color?: string;
 } & ComponentPropsWithoutRef<'span'>;
 
-export const Text = styled<TTextProps>('span')`
+export const Text = s<TTextProps>('span')`
+  color: ${({ theme, color }) =>
+    color
+      ? theme!.colors[color as TThemeColor] ?? color
+      : theme!.colors.textPrimary};
+  font-family: ${({ theme }) => theme!.bodyFont};
   font-size: 16px;
-  font-family: 'Space Grotesk Variable', 'Space Grotesk', -apple-system,
-    BlinkMacSystemFont, Roboto, Ubuntu, 'Helvetica Neue', sans-serif;
 
   ${({ bold }) => (bold ? `font-weight: 500;` : '')}
   ${({ italic }) => (italic ? `font-style: italic;` : '')}

@@ -1,5 +1,5 @@
 // from https://css-tricks.com/converting-color-spaces-in-javascript/
-const rgbToHsl = ([r, g, b]: number[]) => {
+export const rgbToHsl = ([r, g, b]: number[]) => {
   r /= 255;
   g /= 255;
   b /= 255;
@@ -27,7 +27,7 @@ const rgbToHsl = ([r, g, b]: number[]) => {
   return [h, s, l];
 };
 
-const rgbToHex = (rgb: Rgb): Hex =>
+export const rgbToHex = (rgb: Rgb): Hex =>
   `#${rgb
     .map((val) => {
       const hex = val.toString(16);
@@ -43,7 +43,7 @@ type Args = {
   canvasBuilder: () => any;
   imageClass: any;
 };
-type ProminentOptions = Partial<Args>;
+export type ProminentOptions = Partial<Args>;
 
 type Data = Uint8ClampedArray;
 type Handler = (data: Data, args: Args) => Output;
@@ -146,7 +146,7 @@ const processImage = (
 const prominent = (item: Item, opts?: ProminentOptions) =>
   processImage(getProminent, item, opts);
 
-const getBestTextColor = async (
+export const getBestTextColor = async (
   coverArt: string | undefined,
   colorArgs?: ProminentOptions
 ): Promise<string> => {
@@ -172,7 +172,3 @@ const getBestTextColor = async (
   // clamp lightness value to preserve both colorfulness and readability
   return `hsl(${bestH}, ${bestS}%, ${Math.max(Math.min(bestL, 40), 30)}%)`;
 };
-
-export default prominent;
-export { getBestTextColor, rgbToHex, rgbToHsl };
-export type { ProminentOptions };

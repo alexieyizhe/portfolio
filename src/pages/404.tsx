@@ -1,20 +1,11 @@
 import { styled } from 'goober';
 import Head from 'next/head';
+import { StoreContext } from 'storeon/preact';
 
-import 'services/theme';
+import 'services/style';
+import { createThemeStore } from 'services/store';
 import DynamicFavicon from 'components/DynamicFavicon';
-import { Text } from 'components/core';
-
-const AppContainer = styled('div')`
-  position: relative;
-  width: 100vw;
-  min-height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
+import { Text, AppContainer, ContentContainer } from 'components/core';
 
 const NotFoundImg = styled('img')`
   margin-top: 1em;
@@ -22,18 +13,22 @@ const NotFoundImg = styled('img')`
   max-width: 80vw;
 `;
 
-const NotFoundPage = () => (
-  <>
-    <Head>
-      <title>There's nothing here.</title>
-    </Head>
-    <DynamicFavicon />
+export default function NotFoundPage() {
+  return (
+    <>
+      <Head>
+        <title>There's nothing here.</title>
+      </Head>
+      <DynamicFavicon face="mad" />
 
-    <AppContainer>
-      <Text>Seems like you're a bit lost.</Text>
-      <NotFoundImg src="/spookyscary.png" />
-    </AppContainer>
-  </>
-);
-
-export default NotFoundPage;
+      <StoreContext.Provider value={createThemeStore()}>
+        <AppContainer>
+          <ContentContainer>
+            <Text>Seems like you're a bit lost.</Text>
+            <NotFoundImg src="/spookyscary.png" />
+          </ContentContainer>
+        </AppContainer>
+      </StoreContext.Provider>
+    </>
+  );
+}

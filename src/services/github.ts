@@ -1,11 +1,11 @@
 import { base64Encode } from './utils';
 
-type TGithubStats = {
+export type TGithubStats = {
   numCommitsSinceLastKnownEvent: number;
   reposCommittedTo: { name: string; url: string }[];
 };
 
-const getGithubStats = async (): Promise<TGithubStats | null> => {
+export const getGithubStats = async (): Promise<TGithubStats | null> => {
   try {
     const BASIC_AUTH = base64Encode(`alexieyizhe:${process.env.GITHUB_TOKEN}`);
 
@@ -49,6 +49,3 @@ const getGithubStats = async (): Promise<TGithubStats | null> => {
     return null;
   }
 };
-
-export type { TGithubStats };
-export { getGithubStats };

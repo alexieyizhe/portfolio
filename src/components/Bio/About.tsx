@@ -1,16 +1,13 @@
 import { FC } from 'react';
 
-import { useSiteStore } from 'services/store';
+import { useStore } from 'services/store';
 import { Link, Text } from 'components/core';
 import DynamicTime from 'components/DynamicTime';
 import DynamicTagline from 'components/DynamicTagline';
 import DynamicCurrentStatus from 'components/DynamicCurrentStatus';
 
 const About: FC = () => {
-  const { talkingPoint, currentCity } = useSiteStore(
-    'talkingPoint',
-    'currentCity'
-  );
+  const { talkingPoint, currentCity } = useStore('talkingPoint', 'currentCity');
 
   return (
     <>

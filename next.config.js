@@ -14,14 +14,12 @@ module.exports = withPreact({
     }
     return config;
   },
-  rewrites: async () => {
-    return [
-      {
-        source: '/work',
-        destination: '/',
-      },
-    ];
-  },
+  rewrites: async () => [
+    {
+      source: '/work',
+      destination: '/',
+    },
+  ],
   experimental: {
     modern: true,
   },

@@ -1,8 +1,8 @@
 import { styled } from 'goober';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import { useStoreFocusListeners } from 'services/store/utils';
-import { screen } from 'services/utils';
+import { screen } from 'services/style';
 
 type LinkProps = React.ComponentPropsWithoutRef<'a'> & {
   bare?: boolean;
@@ -10,18 +10,14 @@ type LinkProps = React.ComponentPropsWithoutRef<'a'> & {
 };
 
 const A = styled<LinkProps>('a')`
-  font-size: 16px;
-  font-family: 'Space Grotesk Variable', 'Space Grotesk', -apple-system,
-    BlinkMacSystemFont, Roboto, Ubuntu, 'Helvetica Neue', sans-serif;
   color: inherit;
-
   cursor: pointer;
   transition: opacity 250ms;
   text-decoration: ${({ bare }) => (bare ? 'none' : 'underline')};
 
   &:hover {
-    text-decoration: underline dotted;
-    opacity: ${({ bare }) => (bare ? 0.8 : 1)};
+    text-decoration: none;
+    opacity: ${({ bare }) => (bare ? 0.65 : 1)};
   }
 
   &:focus {
@@ -37,24 +33,19 @@ const A = styled<LinkProps>('a')`
   }
 `;
 
-const Link: FC<LinkProps> = ({
-  bare = false,
-  newTab = false,
-  children,
-  ...rest
-}) => {
-  const focusListeners = useStoreFocusListeners();
+export const Link: FC<LinkProps> = memo(
+  ({ bare = false, newTab = false, children, ...rest }) => {
+    const focusListeners = useStoreFocusListeners();
 
-  return (
-    <A
-      bare={bare}
-      {...(newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      {...focusListeners}
-      {...rest}
-    >
-      {children as any}
-    </A>
-  );
-};
-
-export { Link };
+    return (
+      <A
+        bare={bare}
+        {...(newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        {...focusListeners}
+        {...rest}
+      >
+        {children as any}
+      </A>
+    );
+  }
+);

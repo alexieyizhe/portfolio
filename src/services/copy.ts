@@ -61,18 +61,18 @@ export const LINKS = [
   { label: 'github', href: 'https://github.com/alexieyizhe' },
   {
     label: 'blog',
-    href: 'https://www.notion.so/89e78bd148c74c29ba1985d97e3b7d54',
+    href: 'https://www.craft.do/s/essARjCAB2DclB',
   },
 ];
 
 export const PAST_EXPERIENCE = [
-  { label: 'Shopify', href: 'https://shopify.engineering/', color: '#008060' },
+  { label: 'Shopify', href: 'https://shopify.engineering/', color: '#007060' },
   {
     label: 'Hack the North',
     href: 'https://hackthenorth.com/',
-    color: '#004d85',
+    color: '#004f85',
   },
-  { label: 'Faire', href: 'https://www.faire.com/about', color: '#333333' },
+  { label: 'Faire', href: 'https://www.faire.com/about', color: 'textPrimary' },
   { label: 'TEDxUW', href: 'https://tedxuw.com/', color: '#c9200c' },
   {
     label: 'Flipp',

@@ -1,8 +1,8 @@
 import { FC, useEffect } from 'react';
 import { styled } from 'goober';
 
-import { useSiteStore } from 'services/store';
-import { screen } from 'services/utils';
+import { useStore } from 'services/store';
+import { screen } from 'services/style';
 
 import About from './About';
 import Work from './Work';
@@ -31,7 +31,7 @@ const Subcontainer = styled('div')`
 `;
 
 const Bio: FC = () => {
-  const { dispatch, displayedSection } = useSiteStore('displayedSection');
+  const { dispatch, displayedSection } = useStore('displayedSection');
 
   useEffect(() => {
     if (process.browser && window.location.pathname === '/work') {
