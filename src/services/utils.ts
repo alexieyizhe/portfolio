@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export const base64Encode = (s: string) => Buffer.from(s).toString('base64');
 
@@ -71,4 +71,22 @@ export const useVisibilityChange = (handler: TVisibilityChangeHandler) => {
       }
     }
   }, [handler]);
+};
+
+export const onClickListeners = (handler: () => unknown) => ({
+  onClick: handler,
+  onKeyDown: (e: React.KeyboardEvent) =>
+    e.key === 'Enter' ? handler() : undefined,
+});
+
+export const useHoverListeners = () => {
+  const [isHovering, setHovering] = useState(false);
+  return {
+    isHovering,
+    setHovering,
+    listeners: {
+      onMouseEnter: useCallback(() => setHovering(true), []),
+      onMouseLeave: useCallback(() => setHovering(false), []),
+    },
+  };
 };

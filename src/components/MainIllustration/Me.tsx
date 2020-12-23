@@ -1,6 +1,7 @@
-import { FC, memo, useState } from 'react';
+import { FC, memo } from 'react';
 
 import { useStore } from 'services/store';
+import { onClickListeners, useHoverListeners } from 'services/utils';
 
 import Layers from './layers';
 
@@ -8,14 +9,22 @@ const SantaHat = memo(() => Layers.SANTA_HAT);
 
 const MeIllustration: FC = () => {
   const { dispatch, isFocusingOnSomething } = useStore('isFocusingOnSomething');
-  const [isHovering, setHovering] = useState(false);
+  const {
+    isHovering,
+    setHovering,
+    listeners: hoverListeners,
+  } = useHoverListeners();
+
   const expression = isFocusingOnSomething
     ? Layers.SURPRISED
     : isHovering
     ? Layers.WEIRD
     : Layers.GRIN_HAPPY;
 
-  const onIllustrationClick = () => dispatch('easter-egg/toggle');
+  const onIllustrationClick = () => {
+    setHovering(false);
+    dispatch('easter-egg/toggle');
+  };
 
   return (
     <svg
@@ -29,10 +38,8 @@ const MeIllustration: FC = () => {
         fillRule="evenodd"
         stroke="none"
         strokeWidth="1"
-        onMouseEnter={() => setHovering(true)}
-        onMouseLeave={() => setHovering(false)}
-        onClick={onIllustrationClick}
-        onKeyUp={(e) => (e.key === 'Enter' ? onIllustrationClick() : null)}
+        {...onClickListeners(onIllustrationClick)}
+        {...hoverListeners}
         style={{ cursor: 'pointer', outline: 'none' }}
         role="button"
         tabIndex={0}

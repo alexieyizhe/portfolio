@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import { keyframes } from 'goober';
-import { useState } from 'react';
 
 import { useStore } from 'services/store';
+import { onClickListeners, useHoverListeners } from 'services/utils';
 
 const LIT_STYLES = {
   fill: '#FFC81A',
@@ -91,14 +92,19 @@ const BLINKING_LIGHTS = [
   <path
     {...props}
     style={{
+      fill: '#FFC81A',
       animation: `${blink} ${i * 100 + 2000}ms linear infinite`,
     }}
   />
 ));
 
-const Tree = () => {
+const Tree = (): FC => {
   const { dispatch, isDarkMode } = useStore('isDarkMode');
-  const [isHovering, setHovering] = useState(false);
+  const {
+    isHovering,
+    setHovering,
+    listeners: hoverListeners,
+  } = useHoverListeners();
 
   const onIllustrationClick = () => {
     setHovering(false);
@@ -114,10 +120,8 @@ const Tree = () => {
     <svg viewBox="0 0 870 1385" id="illustration-tree">
       <g
         id="Group"
-        onClick={onIllustrationClick}
-        onKeyUp={(e) => (e.key === 'Enter' ? onIllustrationClick() : null)}
-        onMouseEnter={() => setHovering(true)}
-        onMouseLeave={() => setHovering(false)}
+        {...onClickListeners(onIllustrationClick)}
+        {...hoverListeners}
         style={{ cursor: 'pointer', outline: 'none' }}
         role="button"
         tabIndex={0}

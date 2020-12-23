@@ -4,6 +4,7 @@ import { styled } from 'goober';
 import { LINKS } from 'services/copy';
 import { Link, Text } from 'components/core';
 import { useStore } from 'services/store';
+import { onClickListeners } from 'services/utils';
 
 const Container = styled('footer')`
   display: flex;
@@ -31,10 +32,7 @@ const Footer: FC = memo(() => {
       ))}
       <Text>
         <Link
-          onClick={() => dispatch('section/toggle')}
-          onKeyUp={(e) =>
-            e.key === 'Enter' ? dispatch('section/toggle') : null
-          }
+          {...onClickListeners(() => dispatch('section/toggle'))}
           role="button"
           tabIndex={0}
         >
