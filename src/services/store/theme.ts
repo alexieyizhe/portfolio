@@ -47,7 +47,10 @@ export const createThemeModule = () => {
   const prefersDarkTheme =
     process.browser &&
     window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initialIsDarkMode = prefersDarkTheme;
+  const isNighttime =
+    process.browser &&
+    (new Date().getHours() > 19 || new Date().getHours() < 8);
+  const initialIsDarkMode = prefersDarkTheme || isNighttime;
 
   const initialState: TThemeModuleState = {
     ...SHARED_THEME,
