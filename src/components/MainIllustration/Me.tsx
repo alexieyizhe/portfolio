@@ -48,6 +48,7 @@ const MeIllustration: FC = () => {
           rx="275"
           ry="55"
           fill={isDarkMode ? '#3b474a' : '#e0f8ff'}
+          style={{ transition: 'fill 250ms' }}
         />
         <g id="Upper Body" transform="translate(272 187)">
           <g id="Hand-2" transform="translate(346.853 -91.843)">

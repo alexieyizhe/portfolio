@@ -132,6 +132,7 @@ const Tree = () => {
             ry="30"
             fill={isDarkMode ? '#3b474a' : '#e0f8ff'}
             transform="translate(350 1125)"
+            style={{ transition: 'fill 250ms' }}
           />
           <polygon
             id="leg"
