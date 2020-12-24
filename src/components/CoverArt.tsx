@@ -1,10 +1,13 @@
 import { css, keyframes } from 'goober';
 import { FC, memo } from 'react';
+import { TNowPlayingData } from 'services/now-playing';
 
 import { useStoreFocusListeners } from 'services/store/utils';
 import { screen } from 'services/style';
 
-type TCoverArtProps = { link: string; src: string; color: string };
+type TCoverArtProps = Pick<TNowPlayingData, 'link' | 'coverArtSrc'> & {
+  color: string | undefined;
+};
 
 const rotate = keyframes`
     from { transform: rotate(0deg); }
@@ -59,7 +62,7 @@ const CoverArtLink = css`
   }
 `;
 
-const CoverArt: FC<TCoverArtProps> = memo(({ link, src, color }) => {
+const CoverArt: FC<TCoverArtProps> = memo(({ link, coverArtSrc, color }) => {
   return (
     <a
       href={link}
@@ -69,7 +72,7 @@ const CoverArt: FC<TCoverArtProps> = memo(({ link, src, color }) => {
       {...useStoreFocusListeners()}
     >
       <div style={{ color }}>
-        <img src={src} />
+        <img src={coverArtSrc} />
         <span />
       </div>
     </a>

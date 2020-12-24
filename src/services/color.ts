@@ -1,5 +1,5 @@
 // from https://css-tricks.com/converting-color-spaces-in-javascript/
-export const rgbToHsl = ([r, g, b]: number[]) => {
+const rgbToHsl = ([r, g, b]: number[]) => {
   r /= 255;
   g /= 255;
   b /= 255;
@@ -27,17 +27,8 @@ export const rgbToHsl = ([r, g, b]: number[]) => {
   return [h, s, l];
 };
 
-export const rgbToHex = (rgb: Rgb): Hex =>
-  `#${rgb
-    .map((val) => {
-      const hex = val.toString(16);
-      return hex.length === 1 ? `0${hex}` : hex;
-    })
-    .join('')}`;
-
 type Args = {
   amount: number;
-  format: string;
   group: number;
   sample: number;
   canvasBuilder: () => any;
@@ -61,14 +52,12 @@ const getSrc = (item: Item): string =>
 
 const getArgs = ({
   amount = 3,
-  format = 'array',
   group = 20,
   sample = 10,
   canvasBuilder = browserCanvasBuilder,
   imageClass = Image,
 }: ProminentOptions = {}): Args => ({
   amount,
-  format,
   group,
   sample,
   canvasBuilder,
@@ -77,8 +66,7 @@ const getArgs = ({
 
 const format = (input: Input, args: Args): Output => {
   const list = input.map((val) => {
-    const rgb = Array.isArray(val) ? val : (val.split(',').map(Number) as Rgb);
-    return args.format === 'hex' ? rgbToHex(rgb) : rgb;
+    return Array.isArray(val) ? val : (val.split(',').map(Number) as Rgb);
   });
 
   return args.amount === 1 || list.length === 1 ? list[0] : list;
@@ -143,32 +131,23 @@ const processImage = (
       .catch((error) => reject(error))
   );
 
+// from https://github.com/luukdv/color.js
 const prominent = (item: Item, opts?: ProminentOptions) =>
   processImage(getProminent, item, opts);
 
 export const getBestTextColor = async (
   coverArt: string | undefined,
   colorArgs?: ProminentOptions
-): Promise<string> => {
-  if (!coverArt) return '#000';
+): Promise<[h: number, s: number, l: number] | undefined> => {
+  if (!coverArt) return undefined;
 
-  const colors = (await prominent(coverArt, {
+  const colors = ((await prominent(coverArt, {
     amount: 3,
     group: 10,
-    format: 'array',
-    sample: 10,
     ...colorArgs,
-  })) as number[][];
+  })) as number[][]).map(rgbToHsl);
 
-  let [bestH, bestS, bestL] = rgbToHsl(colors[0]);
-  for (const rgb of colors) {
-    const [h, s, l] = rgbToHsl(rgb);
-    if (s > 40) {
-      [bestH, bestS, bestL] = [h, s, l];
-      break;
-    }
-  }
+  const saturatedColors = [...colors.filter(([, s]) => s > 10), ...colors];
 
-  // clamp lightness value to preserve both colorfulness and readability
-  return `hsl(${bestH}, ${bestS}%, ${Math.max(Math.min(bestL, 40), 30)}%)`;
+  return saturatedColors[0] as Rgb;
 };

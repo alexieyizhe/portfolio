@@ -104,7 +104,7 @@ export const createSiteModule = (initialProps: TPageInitialProps) => {
         !!updatedNowPlayingData &&
         updatedNowPlayingData.uri !== lastNowPlayingData?.uri
       ) {
-        console.debug(
+        console.log(
           `Now playing: ${
             updatedNowPlayingData.podcastName ?? updatedNowPlayingData.name
           }`

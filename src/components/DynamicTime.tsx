@@ -52,7 +52,7 @@ const timeToGradient = (hour: number, time: string): TextGradientInfo => {
       return ['120deg', '#5995B7', '#D36C50'];
 
     case '7PM': // sunset
-      return ['145deg', '#477792', '#A8131C'];
+      return ['145deg', '#477792', '#b54800'];
 
     case '8PM':
       return ['120deg', '#2D1D7A', '#5995B7'];

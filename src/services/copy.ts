@@ -70,13 +70,13 @@ export const PAST_EXPERIENCE = [
   {
     label: 'Hack the North',
     href: 'https://hackthenorth.com/',
-    color: '#004f85',
+    color: '#007cba',
   },
   { label: 'Faire', href: 'https://www.faire.com/about', color: 'textPrimary' },
   { label: 'TEDxUW', href: 'https://tedxuw.com/', color: '#c9200c' },
   {
     label: 'Flipp',
     href: 'https://corp.flipp.com/about-us/',
-    color: '#007cba',
+    color: '#0e9cba',
   },
 ];

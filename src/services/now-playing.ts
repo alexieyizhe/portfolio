@@ -8,7 +8,7 @@ export type TNowPlayingData = {
   artistName?: string; // name of artist or undefined if podcast
   podcastName?: string;
   coverArtSrc: string;
-  coverArtColor: string;
+  coverArtColor?: [h: number, s: number, l: number];
   link: string; //  song link, podcast episode link, or playlist link
 };
 

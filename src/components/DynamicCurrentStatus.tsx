@@ -11,6 +11,19 @@ import {
 import CoverArt from 'components/CoverArt';
 import { Text } from 'components/core';
 
+const clamp = (v: number, min: number, max: number) =>
+  Math.max(Math.min(v, max), min);
+
+const hslColor = (color: TNowPlayingData['coverArtColor'] = [0, 0, 0]) => {
+  const [h, s, l] = [
+    color[0],
+    clamp(color[1], 0, 60),
+    // clamp lightness value to make it colorful but still readable
+    clamp(color[1], 50, 70),
+  ];
+  return `hsl(${h}, ${s}%, ${l}%)`;
+};
+
 const nowPlayingMarkup = ({
   name,
   artistName,
@@ -27,6 +40,7 @@ const nowPlayingMarkup = ({
   const label = `${isPodcast ? podcastName : name}${
     hasArtist ? ` by ${artistName}` : ''
   }`;
+  const color = hslColor(coverArtColor);
 
   return [
     ...action.split(' '),
@@ -34,13 +48,13 @@ const nowPlayingMarkup = ({
       <Text
         bold={s !== 'by'}
         style={{
-          color: coverArtColor,
+          color,
         }}
       >
         {s}
       </Text>
     )),
-    <CoverArt link={link} src={coverArtSrc} color={coverArtColor} />,
+    <CoverArt link={link} coverArtSrc={coverArtSrc} color={color} />,
   ];
 };
 
