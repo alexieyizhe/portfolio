@@ -4,7 +4,6 @@ import { useBootstrap } from 'services/utils';
 
 const PageContainer = s('div')`
   position: relative;
-  width: 100vw;
   min-height: 100vh;
   background-color: ${({ theme }) => theme!.colors.background};
   transition: background-color 400ms;
@@ -16,7 +15,7 @@ const ContentContainer = s('div')`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  min-height: 100%;
   ${screen.mobile} {
     min-height: unset;
   }
@@ -24,7 +23,6 @@ const ContentContainer = s('div')`
 
 const InnerContentContainer = s('main')`
   position: relative;
-  height: 100%;
   width: 80vw;
   max-width: 510px;
 
