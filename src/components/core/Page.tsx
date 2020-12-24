@@ -5,16 +5,13 @@ import { useBootstrap } from 'services/utils';
 const PageContainer = s('div')`
   position: relative;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${({ theme }) => theme!.colors.background};
   transition: background-color 400ms;
 `;
 
 const ContentContainer = s('div')`
   position: relative;
-  width: 100vw;
-  min-height: 100vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +24,6 @@ const ContentContainer = s('div')`
 
 const InnerContentContainer = s('main')`
   position: relative;
-  width: 100%;
   height: 100%;
   width: 80vw;
   max-width: 510px;
