@@ -2,10 +2,10 @@ import { FC, memo } from 'react';
 
 import { Link, Text } from 'components/core';
 import { PAST_EXPERIENCE } from 'services/copy';
-import { useStore } from 'services/store';
+import { useInitialProps } from 'services/store/new';
 
 const Work: FC = memo(() => {
-  const { githubStats } = useStore('githubStats');
+  const { githubStats } = useInitialProps();
   const latestRepo = githubStats?.reposCommittedTo[0] ?? null;
 
   return (

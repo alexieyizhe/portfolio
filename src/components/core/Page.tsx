@@ -32,6 +32,17 @@ const InnerContentContainer = s('main')`
   justify-content: center;
 `;
 
+// const visibilityChangeHandler = useCallback<TVisibilityChangeHandler>(
+//   (isHidden) => {
+//     if (!isHidden) dispatch('data/refresh');
+//   },
+//   [dispatch]
+// );
+
+// useVisibilityChange(visibilityChangeHandler);
+
+// useEffect(() => dispatch('data/refresh'), []); //eslint-disable-line react-hooks/exhaustive-deps
+
 export const Page: FC = ({ children }) => {
   useBootstrap();
   return (

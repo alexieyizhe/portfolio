@@ -4,6 +4,7 @@ import TextLoop from 'react-text-loop';
 import { useStore } from 'services/store';
 import { textLoopIntervals } from 'services/utils';
 import GradientText from 'components/GradientText';
+import { useCurrentDate } from 'services/store/new';
 
 type TextGradientInfo = [
   gradientDirection: string,
@@ -71,7 +72,7 @@ const timeToGradient = (hour: number, time: string): TextGradientInfo => {
 };
 
 const DynamicTime: FC = () => {
-  const { currentDate } = useStore('currentDate');
+  const currentDate = useCurrentDate();
   const [dates, setDates] = useState<Date[]>([currentDate]);
 
   useEffect(() => {

@@ -94,8 +94,6 @@ export const useHoverListeners = () => {
 };
 
 export const useBootstrap = () => {
-  const { dispatch } = useStore();
-
   useEffect(() => {
     const prefersDarkTheme =
       process.browser &&
@@ -107,8 +105,9 @@ export const useBootstrap = () => {
 
     const isWorkPage = process.browser && window.location.pathname === '/work';
 
-    if (isWorkPage) dispatch('section/set', 'work');
-    if (isDark) dispatch('dark-mode/toggle', true);
+    console.log({ prefersDarkTheme, isNighttime, isDark, isWorkPage });
+    // if (isWorkPage) dispatch('section/set', 'work');
+    // if (isDark) dispatch('dark-mode/toggle', true);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

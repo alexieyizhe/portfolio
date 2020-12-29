@@ -1,10 +1,10 @@
-import { useStore } from '.';
+import { useToggleFocusing } from './new';
 
 export const useStoreFocusListeners = () => {
-  const { dispatch } = useStore();
+  const toggleFocusing = useToggleFocusing();
 
   return {
-    onMouseEnter: () => dispatch('focusing/set', true),
-    onMouseLeave: () => dispatch('focusing/set', false),
+    onMouseEnter: () => toggleFocusing(true),
+    onMouseLeave: () => toggleFocusing(false),
   };
 };

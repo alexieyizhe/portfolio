@@ -1,13 +1,14 @@
 import { FC } from 'react';
 
-import { useStore } from 'services/store';
 import { Link, Text } from 'components/core';
 import DynamicTime from 'components/DynamicTime';
 import DynamicTagline from 'components/DynamicTagline';
 import DynamicCurrentStatus from 'components/DynamicCurrentStatus';
+import { useInitialProps, useTalkingPoint } from 'services/store/new';
 
 const About: FC = () => {
-  const { talkingPoint, currentCity } = useStore('talkingPoint', 'currentCity');
+  const talkingPoint = useTalkingPoint();
+  const { currentCity } = useInitialProps();
 
   return (
     <>

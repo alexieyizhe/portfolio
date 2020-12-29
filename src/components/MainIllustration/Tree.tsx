@@ -1,6 +1,7 @@
 import { keyframes } from 'goober';
 
 import { useStore } from 'services/store';
+import { useDarkMode, useToggleDarkMode } from 'services/store/new';
 import { onClickListeners, useHoverListeners } from 'services/utils';
 
 import { Group } from './styles';
@@ -100,7 +101,8 @@ const BLINKING_LIGHTS = [
 ));
 
 const Tree = () => {
-  const { dispatch, isDarkMode } = useStore('isDarkMode');
+  const isDarkMode = useDarkMode();
+  const toggleDarkMode = useToggleDarkMode();
   const {
     isHovering,
     setHovering,
@@ -109,7 +111,7 @@ const Tree = () => {
 
   const onIllustrationClick = () => {
     setHovering(false);
-    dispatch('dark-mode/toggle', undefined);
+    toggleDarkMode();
   };
 
   const starStyles =

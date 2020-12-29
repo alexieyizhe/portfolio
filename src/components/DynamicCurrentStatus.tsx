@@ -1,15 +1,11 @@
-import { memo, FC, useCallback, useEffect } from 'react';
+import { memo, FC } from 'react';
 import TextLoop from 'react-text-loop';
 
-import { useStore } from 'services/store';
 import { TNowPlayingData, isNowPlayingData } from 'services/now-playing';
-import {
-  textLoopIntervals,
-  TVisibilityChangeHandler,
-  useVisibilityChange,
-} from 'services/utils';
+import { textLoopIntervals } from 'services/utils';
 import CoverArt from 'components/CoverArt';
 import { Text } from 'components/core';
+import { useStatuses } from 'services/store/new';
 
 const clamp = (v: number, min: number, max: number) =>
   Math.max(Math.min(v, max), min);
@@ -59,21 +55,10 @@ const nowPlayingMarkup = ({
 };
 
 const DynamicCurrentStatus: FC = memo(() => {
-  const { dispatch, statuses } = useStore('statuses');
+  const statuses = useStatuses();
   const statusesMarkup = statuses.map((status) =>
     isNowPlayingData(status) ? nowPlayingMarkup(status) : status.split(' ')
   );
-
-  const visibilityChangeHandler = useCallback<TVisibilityChangeHandler>(
-    (isHidden) => {
-      if (!isHidden) dispatch('data/refresh');
-    },
-    [dispatch]
-  );
-
-  useVisibilityChange(visibilityChangeHandler);
-
-  useEffect(() => dispatch('data/refresh'), []); //eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <span>

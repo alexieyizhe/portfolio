@@ -35,13 +35,13 @@ const A = styled<LinkProps>('a')`
 
 export const Link: FC<LinkProps> = memo(
   ({ bare = false, newTab = false, children, ...rest }) => {
-    const focusListeners = useStoreFocusListeners();
+    // const focusListeners = useStoreFocusListeners();
 
     return (
       <A
         bare={bare}
         {...(newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-        {...focusListeners}
+        // {...focusListeners}
         {...rest}
       >
         {children as any}

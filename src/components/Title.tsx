@@ -1,8 +1,8 @@
 import { memo, FC } from 'react';
 
-import { useStore } from 'services/store';
 import { s } from 'services/style';
 import { H1 } from 'components/core';
+import { useEasterEggActive, useGreeting } from 'services/store/new';
 
 const Container = s('header')`
   & > h1.eeActive {
@@ -11,10 +11,9 @@ const Container = s('header')`
 `;
 
 const Title: FC = memo(() => {
-  const { greeting, isEasterEggActive } = useStore(
-    'greeting',
-    'isEasterEggActive'
-  );
+  const greeting = useGreeting();
+  const isEasterEggActive = useEasterEggActive();
+
   return (
     <Container>
       <H1 className={isEasterEggActive ? 'eeActive' : undefined}>{greeting}</H1>

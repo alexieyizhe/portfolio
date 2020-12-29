@@ -6,6 +6,7 @@ import { screen } from 'services/style';
 
 import About from './About';
 import Work from './Work';
+import { useDisplayedSection } from 'services/store/new';
 
 const Container = styled('div')`
   margin: 1.6em 0 1em 0;
@@ -31,7 +32,7 @@ const Subcontainer = styled('div')`
 `;
 
 const Bio: FC = () => {
-  const { displayedSection } = useStore('displayedSection');
+  const displayedSection = useDisplayedSection();
 
   return (
     <Container>

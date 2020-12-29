@@ -1,10 +1,10 @@
 import { memo, FC } from 'react';
 import TextLoop from 'react-text-loop';
 
-import { useStore } from 'services/store';
+import { useTaglines } from 'services/store/new';
 
 const DynamicTagline: FC = memo(() => {
-  const { taglines } = useStore('taglines');
+  const taglines = useTaglines();
 
   return <TextLoop children={taglines} />;
 });

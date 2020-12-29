@@ -1,20 +1,19 @@
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { StoreContext } from 'storeon/preact';
 
 import {
   getNowPlayingDataServerSide,
   StorageClient,
   StorageKey,
 } from 'services/_server_';
-import { createSiteStore } from 'services/store';
 import { getGithubStats } from 'services/github';
 import DynamicFavicon from 'components/DynamicFavicon';
 import Title from 'components/Title';
 import Bio from 'components/Bio';
 import Footer from 'components/Footer';
 import { Page } from 'components/core';
+import { SiteStateProvider } from 'services/store/new';
 
 export type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -39,14 +38,14 @@ export default function IndexPage(initialProps: TPageInitialProps) {
       </Head>
       <DynamicFavicon />
 
-      <StoreContext.Provider value={createSiteStore(initialProps)}>
+      <SiteStateProvider {...initialProps}>
         <Page>
           <Title />
           <MainIllustration />
           <Bio />
           <Footer />
         </Page>
-      </StoreContext.Provider>
+      </SiteStateProvider>
     </>
   );
 }

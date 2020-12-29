@@ -1,6 +1,10 @@
 import { FC, memo } from 'react';
 
-import { useStore } from 'services/store';
+import {
+  useDarkMode,
+  useFocusing,
+  useToggleEasterEgg,
+} from 'services/store/new';
 import { onClickListeners, useHoverListeners } from 'services/utils';
 
 import Layers from './layers';
@@ -9,10 +13,10 @@ import { Group } from './styles';
 const SantaHat = memo(() => Layers.SANTA_HAT);
 
 const MeIllustration: FC = () => {
-  const { dispatch, isFocusingOnSomething, isDarkMode } = useStore(
-    'isFocusingOnSomething',
-    'isDarkMode'
-  );
+  const isFocusingOnSomething = useFocusing();
+  const toggleEasterEgg = useToggleEasterEgg();
+  const isDarkMode = useDarkMode();
+
   const {
     isHovering,
     setHovering,
@@ -27,7 +31,7 @@ const MeIllustration: FC = () => {
 
   const onIllustrationClick = () => {
     setHovering(false);
-    dispatch('easter-egg/toggle');
+    toggleEasterEgg();
   };
 
   return (

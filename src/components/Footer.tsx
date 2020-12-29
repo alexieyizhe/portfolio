@@ -5,6 +5,7 @@ import { LINKS } from 'services/copy';
 import { Link, Text } from 'components/core';
 import { useStore } from 'services/store';
 import { onClickListeners } from 'services/utils';
+import { useDisplayedSection, useShowSection } from 'services/store/new';
 
 const Container = styled('footer')`
   display: flex;
@@ -20,7 +21,11 @@ const Container = styled('footer')`
 `;
 
 const Footer: FC = memo(() => {
-  const { dispatch, displayedSection } = useStore('displayedSection');
+  const displayedSection = useDisplayedSection();
+  const showSection = useShowSection();
+
+  console.log({ displayedSection });
+
   return (
     <Container>
       {LINKS.map(({ label, href }) => (
@@ -32,7 +37,7 @@ const Footer: FC = memo(() => {
       ))}
       <Text>
         <Link
-          {...onClickListeners(() => dispatch('section/toggle'))}
+          {...onClickListeners(() => showSection())}
           role="button"
           tabIndex={0}
         >
