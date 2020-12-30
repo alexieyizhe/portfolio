@@ -1,7 +1,9 @@
 import { FC, memo } from 'react';
 
-import { useStore } from 'services/store';
+import { useSiteStore } from 'services/store';
+import { useTheme } from 'services/context/theme';
 import { onClickListeners, useHoverListeners } from 'services/utils';
+import Face from './Face';
 
 import Layers from './layers';
 import { Group } from './styles';
@@ -9,25 +11,18 @@ import { Group } from './styles';
 const SantaHat = memo(() => Layers.SANTA_HAT);
 
 const MeIllustration: FC = () => {
-  const { dispatch, isFocusingOnSomething, isDarkMode } = useStore(
-    'isFocusingOnSomething',
-    'isDarkMode'
-  );
+  const { isDarkMode } = useTheme();
+  const toggleEasterEgg = useSiteStore((state) => state.toggleEasterEgg);
+
   const {
     isHovering,
     setHovering,
     listeners: hoverListeners,
   } = useHoverListeners();
 
-  const expression = isFocusingOnSomething
-    ? Layers.SURPRISED
-    : isHovering
-    ? Layers.WEIRD
-    : Layers.GRIN_HAPPY;
-
   const onIllustrationClick = () => {
     setHovering(false);
-    dispatch('easter-egg/toggle');
+    toggleEasterEgg();
   };
 
   return (
@@ -166,16 +161,13 @@ const MeIllustration: FC = () => {
             d="M59.202 16.873C72.657-1.857 88.715-3.949 95.96 5.47c5.852 7.607 7.516 8.528 13.392 4.048 15.138-11.541 23.407-.936 24.363 13.787 12.442 2.792 10.738 18.986.452 27.649 5.072 8.503 8.232 33.717 3.336 42.982 2.828 23.967-1.687 45.631-12.795 59.676-25.905 32.732-77.82 14.431-90.27-17.449-12.032-4.008-36.785-31.227-23.43-78.88C9.09 55.502-1.72 59.46.234 55.605c.561-1.106 9.13-3.149 11.774-3.937.236-.576-3.907-28.796 3.6-8.835 18.978-28.152 32.674-10.759 43.593-25.96zm31.152 35c-6.045-2.396-13.626 8.124-29.937 5.083-19.574-3.65-20.138 7.099-17.736 19.262 3.693 18.701-9.059 12.895-13.018 7.618-2.626-2.369-5.812-3.721-9.074-2.686-10.375 3.699-6.636 18.679-.542 26.016 4.461 5.89 10.993 1.091 11.952 5.155 7.124 70.114 103.726 76.401 102.332-3.711.14-17.244-4.139-38.223-12.459-52.469-9.208 1.645-20.512.096-31.518-4.268zM23.38 89.782c1.075-.175 2.53.513 2.95 3.09.42 2.577-.513 5.108-1.588 5.283-1.075.174-2.287-1.773-2.706-4.35-.419-2.577.27-3.848 1.344-4.023z"
           />
         </g>
-        <g id="Face" transform="translate(499 178)">
-          {expression}
-        </g>
+        <Face isHovering={isHovering} />
         <path
           id="Glasses"
           fill="#aaa9ad"
           transform="translate(491 176)"
           d="M77.205 44.267c-9.315 0-16.34-7.253-16.34-16.87C60.865 17.803 68.352 10 77.556 10c9.555 0 17.041 7.34 17.041 16.708 0 9.518-7.965 17.56-17.392 17.56m-51.98 6.686C15.888 50.954 8 41.917 8 31.222c0-9.846 8.265-17.855 18.424-17.855 9.666 0 17.53 8.61 17.53 19.192 0 9.971-8.577 18.395-18.729 18.395M77.556 6c-8.768 0-16.259 5.677-19.268 13.655-3.714-.274-10.353.59-13.247 1.277C41.31 14.024 34.364 9.367 26.424 9.367 14.06 9.367 4 19.171 4 31.222c0 13.086 9.521 23.732 21.225 23.732 12.32 0 22.73-10.256 22.73-22.395 0-2.787-.46-5.46-1.3-7.938 2.474-.494 7.83-1.055 10.561-1.054a22.04 22.04 0 00-.35 3.83c0 11.703 8.934 20.87 20.34 20.87 11.595 0 21.391-9.873 21.391-21.559C98.597 15.096 89.354 6 77.557 6"
         />
-
         <SantaHat />
       </Group>
     </svg>

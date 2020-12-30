@@ -1,6 +1,6 @@
 import { createCanvas, Image as CanvasImage } from 'canvas';
 
-import { getNowPlaying } from 'services/now-playing';
+import { getNowPlaying } from 'services/api';
 
 // document `canvas` and Image don't exist server-side
 const SERVER_SIDE_COLOR_OPTIONS = {

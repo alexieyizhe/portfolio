@@ -1,15 +1,17 @@
-import { memo, FC, useCallback, useEffect } from 'react';
+import { memo, FC, useState, useCallback } from 'react';
 import TextLoop from 'react-text-loop';
 
-import { useStore } from 'services/store';
-import { TNowPlayingData, isNowPlayingData } from 'services/now-playing';
+import { TNowPlayingData, isNowPlayingData, getNowPlaying } from 'services/api';
 import {
+  getRandomItem,
   textLoopIntervals,
   TVisibilityChangeHandler,
   useVisibilityChange,
 } from 'services/utils';
 import CoverArt from 'components/CoverArt';
 import { Text } from 'components/core';
+import { useInitialProps } from 'services/context/initial-props';
+import { ACTIVITIES, PREFIXES } from 'services/copy';
 
 const clamp = (v: number, min: number, max: number) =>
   Math.max(Math.min(v, max), min);
@@ -58,22 +60,64 @@ const nowPlayingMarkup = ({
   ];
 };
 
+const getInitialStatus = (initialStatus: string | null) => {
+  const prefix = getRandomItem(PREFIXES);
+  const activity = getRandomItem([
+    ...ACTIVITIES,
+    ...(initialStatus
+      ? new Array(ACTIVITIES.length).fill(initialStatus) // larger weight for custom status
+      : []),
+  ]);
+
+  return `${prefix} ${activity}.`;
+};
+
+const useStatuses = () => {
+  const {
+    initialNowPlayingData,
+    customStatus,
+    spotifyToken,
+  } = useInitialProps();
+
+  const [statuses, setStatuses] = useState([
+    initialNowPlayingData ?? getInitialStatus(customStatus),
+  ]);
+
+  const updateNowPlaying = useCallback<TVisibilityChangeHandler>(
+    async (isHidden) => {
+      if (!isHidden) {
+        const updatedNowPlayingData = await getNowPlaying(spotifyToken);
+        const lastStatus = statuses[statuses.length - 1];
+        const lastNowPlayingData = isNowPlayingData(lastStatus)
+          ? lastStatus
+          : null;
+
+        if (
+          !!updatedNowPlayingData &&
+          updatedNowPlayingData.uri !== lastNowPlayingData?.uri
+        ) {
+          console.log(
+            `Now playing: ${
+              updatedNowPlayingData.podcastName ?? updatedNowPlayingData.name
+            }`
+          );
+          setStatuses((prev) => [...prev, updatedNowPlayingData]);
+        }
+      }
+    },
+    [spotifyToken, statuses]
+  );
+
+  useVisibilityChange(updateNowPlaying);
+
+  return statuses;
+};
+
 const DynamicCurrentStatus: FC = memo(() => {
-  const { dispatch, statuses } = useStore('statuses');
+  const statuses = useStatuses();
   const statusesMarkup = statuses.map((status) =>
     isNowPlayingData(status) ? nowPlayingMarkup(status) : status.split(' ')
   );
-
-  const visibilityChangeHandler = useCallback<TVisibilityChangeHandler>(
-    (isHidden) => {
-      if (!isHidden) dispatch('data/refresh');
-    },
-    [dispatch]
-  );
-
-  useVisibilityChange(visibilityChangeHandler);
-
-  useEffect(() => dispatch('data/refresh'), []); //eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <span>

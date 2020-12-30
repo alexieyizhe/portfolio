@@ -8,11 +8,14 @@ const DynamicFavicon: FC<{ face?: 'smile' | 'mad' }> = ({ face }) => {
   useVisibilityChange(setAway);
 
   const dynamicFace = face ?? isAway ? 'mad' : 'smile';
-  const href = dynamicFace === 'mad' ? '/favicon-away.png' : '/favicon.png';
 
   return (
     <Head>
-      <link rel="shortcut icon" type="image/png" href={href} />
+      <link
+        rel="shortcut icon"
+        type="image/png"
+        href={dynamicFace === 'mad' ? '/favicon-mad.png' : '/favicon.png'}
+      />
     </Head>
   );
 };

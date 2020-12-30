@@ -2,8 +2,7 @@ import { h } from 'preact';
 import { setup, glob, styled } from 'goober';
 import { prefix } from 'goober-autoprefixer';
 
-import { THEME_KEYS, TTheme } from 'services/store/theme';
-import { useStore } from 'services/store';
+import { useTheme, TTheme } from 'services/context/theme';
 
 // fixes `goober` bug where TS thinks `theme` isn't defined as a prop
 export const s = <P extends Record<string, unknown>>(
@@ -14,7 +13,7 @@ export const screen = {
   mobile: '@media only screen and (max-width: 600px)',
 };
 
-setup(h, prefix, () => useStore(...THEME_KEYS, 'isDarkMode'));
+setup(h, prefix, useTheme);
 
 glob`
   @font-face {

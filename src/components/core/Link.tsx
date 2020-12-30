@@ -1,7 +1,7 @@
 import { styled } from 'goober';
 import { FC, memo } from 'react';
 
-import { useStoreFocusListeners } from 'services/store/utils';
+import { useStoreFocusListeners } from 'services/utils';
 import { screen } from 'services/style';
 
 type LinkProps = React.ComponentPropsWithoutRef<'a'> & {

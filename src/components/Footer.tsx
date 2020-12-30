@@ -1,10 +1,10 @@
 import { FC, memo } from 'react';
 import { styled } from 'goober';
 
-import { LINKS } from 'services/copy';
 import { Link, Text } from 'components/core';
-import { useStore } from 'services/store';
+import { LINKS } from 'services/copy';
 import { onClickListeners } from 'services/utils';
+import { useSiteStore } from 'services/store';
 
 const Container = styled('footer')`
   display: flex;
@@ -20,7 +20,11 @@ const Container = styled('footer')`
 `;
 
 const Footer: FC = memo(() => {
-  const { dispatch, displayedSection } = useStore('displayedSection');
+  const displayedSection = useSiteStore((state) => state.displayedSection);
+  const toggleDisplayedSection = useSiteStore(
+    (state) => state.toggleDisplayedSection
+  );
+
   return (
     <Container>
       {LINKS.map(({ label, href }) => (
@@ -32,7 +36,7 @@ const Footer: FC = memo(() => {
       ))}
       <Text>
         <Link
-          {...onClickListeners(() => dispatch('section/toggle'))}
+          {...onClickListeners(() => toggleDisplayedSection())}
           role="button"
           tabIndex={0}
         >

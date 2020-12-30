@@ -9,8 +9,8 @@
     "type-check": "tsc --noEmit",
     "analyze": "ANALYZE=true npm run build",
     "build": "next build",
-    "vercel-build": "yum install libuuid-devel libmount-devel && cp /lib64/{libuuid,libmount,libblkid}.so.1 node_modules/canvas/build/Release/ && npm run build",
-    "serve": "next start"
+    "serve": "next start",
+    "vercel-build": "yum install libuuid-devel libmount-devel && cp /lib64/{libuuid,libmount,libblkid}.so.1 node_modules/canvas/build/Release/ && npm run build"
   },
   "devDependencies": {
     "@types/ioredis": "^4.17.8",
@@ -40,6 +40,6 @@
     "react-dom": "npm:@preact/compat@0.0.3",
     "react-ssr-prepass": "npm:preact-ssr-prepass@^1.1.2",
     "react-text-loop": "^2.3.0",
-    "storeon": "^3.1.2"
+    "zustand": "^3.2.0"
   }
 }

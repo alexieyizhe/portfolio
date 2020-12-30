@@ -1,20 +1,19 @@
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { StoreContext } from 'storeon/preact';
 
 import {
   getNowPlayingDataServerSide,
   StorageClient,
   StorageKey,
 } from 'services/_server_';
-import { createSiteStore } from 'services/store';
-import { getGithubStats } from 'services/github';
+import { getGithubStats } from 'services/api';
 import DynamicFavicon from 'components/DynamicFavicon';
 import Title from 'components/Title';
 import Bio from 'components/Bio';
 import Footer from 'components/Footer';
 import { Page } from 'components/core';
+import { InitialPropsContextProvider } from 'services/context/initial-props';
 
 export type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -39,14 +38,14 @@ export default function IndexPage(initialProps: TPageInitialProps) {
       </Head>
       <DynamicFavicon />
 
-      <StoreContext.Provider value={createSiteStore(initialProps)}>
+      <InitialPropsContextProvider value={initialProps}>
         <Page>
           <Title />
           <MainIllustration />
           <Bio />
           <Footer />
         </Page>
-      </StoreContext.Provider>
+      </InitialPropsContextProvider>
     </>
   );
 }
@@ -55,7 +54,7 @@ export async function getStaticProps() {
   console.log('Retrieving data...');
   const client = new StorageClient();
   const { token: spotifyToken } = await client.getSpotifyCredentials();
-  const currentTimezoneOffset = await client.getTimezoneOffset();
+  const timezoneOffset = await client.getTimezoneOffset();
   const currentCity = await client.getCurrentCity();
   const customStatus = (await client.get(StorageKey.STATUS)) || null; // empty string means no status
   client.disconnect();
@@ -67,13 +66,13 @@ export async function getStaticProps() {
     initialNowPlayingData,
     githubStats,
     spotifyToken,
-    currentTimezoneOffset,
+    timezoneOffset,
     currentCity,
     customStatus,
   };
 
   return {
     props: initialProps,
-    revalidate: 600,
+    revalidate: 300,
   };
 }

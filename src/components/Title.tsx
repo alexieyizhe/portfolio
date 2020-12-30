@@ -1,24 +1,27 @@
 import { memo, FC } from 'react';
 
-import { useStore } from 'services/store';
-import { s } from 'services/style';
 import { H1 } from 'components/core';
+import { useSiteStore } from 'services/store';
+import { getRandomItem } from 'services/utils';
+import { GREETINGS } from 'services/copy';
+import { useTheme } from 'services/context/theme';
 
-const Container = s('header')`
-  & > h1.eeActive {
-    font-family: ${({ theme }) => theme!.easterEggFont} !important;
-  }
-`;
+const greeting = getRandomItem(GREETINGS);
 
 const Title: FC = memo(() => {
-  const { greeting, isEasterEggActive } = useStore(
-    'greeting',
-    'isEasterEggActive'
-  );
+  const { headingFont } = useTheme();
+  const isEasterEggActive = useSiteStore((state) => state.isEasterEggActive);
+
   return (
-    <Container>
-      <H1 className={isEasterEggActive ? 'eeActive' : undefined}>{greeting}</H1>
-    </Container>
+    <H1
+      style={
+        isEasterEggActive
+          ? { fontFamily: `Comic Sans MS, ${headingFont}` }
+          : undefined
+      }
+    >
+      {greeting}
+    </H1>
   );
 });
 

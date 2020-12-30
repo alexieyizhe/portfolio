@@ -1,8 +1,8 @@
 import { css, keyframes } from 'goober';
 import { FC, memo } from 'react';
-import { TNowPlayingData } from 'services/now-playing';
 
-import { useStoreFocusListeners } from 'services/store/utils';
+import { TNowPlayingData } from 'services/api';
+import { useStoreFocusListeners } from 'services/utils';
 import { screen } from 'services/style';
 
 type TCoverArtProps = Pick<TNowPlayingData, 'link' | 'coverArtSrc'> & {

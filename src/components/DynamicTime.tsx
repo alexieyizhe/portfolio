@@ -1,15 +1,35 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useCallback, memo } from 'react';
 import TextLoop from 'react-text-loop';
 
-import { useStore } from 'services/store';
-import { textLoopIntervals } from 'services/utils';
 import GradientText from 'components/GradientText';
+import { textLoopIntervals, useVisibilityChange } from 'services/utils';
+import { useInitialProps } from 'services/context/initial-props';
 
 type TextGradientInfo = [
   gradientDirection: string,
   gradientFrom: string,
   gradientTo: string
 ];
+
+/**
+ * Compute current Date in the time zone provided by offset mins
+ */
+const getDateFromOffset = (offsetMins: string): Date => {
+  const offsetMinsNum = Number(offsetMins);
+
+  const now = new Date();
+  const curUTC = new Date(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate(),
+    now.getUTCHours(),
+    now.getUTCMinutes(),
+    now.getUTCSeconds(),
+    now.getUTCMilliseconds()
+  );
+  curUTC.setMinutes(curUTC.getMinutes() + offsetMinsNum);
+  return curUTC;
+};
 
 const timeToTwelveHour = (hour: number) => {
   const twelveHourTime = hour % 12 || 12; // 0 or 24 becomes 12am
@@ -55,53 +75,60 @@ const timeToGradient = (hour: number, time: string): TextGradientInfo => {
       return ['145deg', '#477792', '#b54800'];
 
     case '8PM':
-      return ['120deg', '#2D1D7A', '#5995B7'];
-
     case '9PM':
     case '10PM':
-      return [`${110 + hour * 2}deg`, '#2D1D7A', '#5995B7'];
-
     case '11PM':
     case '12AM':
-      return [`${110 + hour * 2}deg`, '#271F3F', '#062B79'];
+      return [`${110 + hour * 2}deg`, '#2D1D7A', '#5995B7'];
 
     default:
       return [`90deg`, '#000', '#000'];
   }
 };
 
-const DynamicTime: FC = () => {
-  const { currentDate } = useStore('currentDate');
-  const [dates, setDates] = useState<Date[]>([currentDate]);
+const getTimeMarkup = (date: Date) => {
+  const hours = date.getHours();
+  const timeMarkup = timeToTwelveHour(hours);
+  const [angle, fromColor, toColor] = timeToGradient(hours, timeMarkup);
+  const gradient = `linear-gradient(${angle}, ${fromColor}, ${toColor})`;
 
-  useEffect(() => {
-    setDates((prev) => {
-      const lastDate = prev[prev.length - 1];
-      // current date is displayed in UI with a granularity of hours
-      const isSameDate = lastDate.getHours() !== currentDate.getHours();
+  return (
+    <GradientText fallbackColor={fromColor} gradient={gradient}>
+      {timeMarkup}
+    </GradientText>
+  );
+};
 
-      return isSameDate ? [...prev, currentDate] : prev;
-    });
-  }, [currentDate]);
+const useDates = () => {
+  const { timezoneOffset } = useInitialProps();
 
-  const timeMarkups = dates.map((date) => {
-    const hours = date.getHours();
-    const timeMarkup = timeToTwelveHour(hours);
-    const [angle, fromColor, toColor] = timeToGradient(hours, timeMarkup);
-    const gradient = `linear-gradient(${angle}, ${fromColor}, ${toColor})`;
+  const [dates, setDates] = useState<Date[]>([
+    getDateFromOffset(timezoneOffset),
+  ]);
 
-    return (
-      <GradientText fallbackColor={fromColor} gradient={gradient}>
-        {timeMarkup}
-      </GradientText>
-    );
-  });
+  const updateTime = useCallback(() => {
+    const lastDate = dates[dates.length - 1];
+    const currentDate = getDateFromOffset(timezoneOffset);
+
+    if (lastDate.getHours() !== currentDate.getHours()) {
+      setDates((prev) => [...prev, currentDate]);
+    }
+  }, [timezoneOffset, dates]);
+
+  useVisibilityChange(updateTime);
+
+  return dates;
+};
+
+const DynamicTime: FC = memo(() => {
+  const dates = useDates();
+  const timeMarkups = dates.map(getTimeMarkup);
 
   return (
     <TextLoop interval={textLoopIntervals(timeMarkups.length)}>
       {timeMarkups}
     </TextLoop>
   );
-};
+});
 
 export default DynamicTime;

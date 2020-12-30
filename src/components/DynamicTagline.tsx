@@ -1,12 +1,11 @@
-import { memo, FC } from 'react';
+import { memo } from 'react';
 import TextLoop from 'react-text-loop';
 
-import { useStore } from 'services/store';
+import { TAGLINES } from 'services/copy';
+import { getShuffledArray } from 'services/utils';
 
-const DynamicTagline: FC = memo(() => {
-  const { taglines } = useStore('taglines');
+const taglines = getShuffledArray(TAGLINES);
 
-  return <TextLoop children={taglines} />;
-});
+const DynamicTagline = memo(() => <TextLoop children={taglines} />);
 
 export default DynamicTagline;

@@ -11,7 +11,7 @@ import 'services/style';
 
 export default class CustomDocument extends Document<{ css: string }> {
   static async getInitialProps({ renderPage }: DocumentContext) {
-    // inline critical css for page render
+    // inline critical css for initial page render
     const page = renderPage();
     const css = extractCss();
     return { ...page, css };
