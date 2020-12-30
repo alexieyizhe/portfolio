@@ -1,13 +1,12 @@
 import { useTheme } from 'services/context/theme';
-import { onClickListeners, useHoverListeners } from 'services/utils';
+import {
+  onClickListeners,
+  useHoverListeners,
+  useStoreFocusListeners,
+} from 'services/utils';
 
 import Layers from './layers';
 import { Group } from './styles';
-
-const LIT_STYLES = {
-  fill: '#FFC81A',
-};
-const DIM_STYLES = { fill: '#eee' };
 
 const Tree = () => {
   const { isDarkMode, toggleDarkMode } = useTheme();
@@ -16,22 +15,31 @@ const Tree = () => {
     setHovering,
     listeners: hoverListeners,
   } = useHoverListeners();
+  const storeFocusListeners = useStoreFocusListeners();
 
   const onIllustrationClick = () => {
     setHovering(false);
     toggleDarkMode();
   };
 
-  const starStyles =
-    (isDarkMode && !isHovering) || (!isDarkMode && isHovering)
-      ? LIT_STYLES
-      : DIM_STYLES;
+  const onIllustrationEnter = () => {
+    hoverListeners.onMouseEnter();
+    storeFocusListeners.onMouseEnter();
+  };
+
+  const onIllustrationLeave = () => {
+    hoverListeners.onMouseLeave();
+    storeFocusListeners.onMouseLeave();
+  };
+
+  const starIsLit = (isDarkMode && !isHovering) || (!isDarkMode && isHovering);
 
   return (
     <svg viewBox="0 0 870 1385" id="illustration-tree">
       <Group
         {...onClickListeners(onIllustrationClick)}
-        {...hoverListeners}
+        onMouseEnter={onIllustrationEnter}
+        onMouseLeave={onIllustrationLeave}
         role="button"
         tabIndex={0}
       >
@@ -87,7 +95,10 @@ const Tree = () => {
         <g
           id="Star"
           transform="translate(388.297468, 0.000000)"
-          style={{ transition: 'fill 100ms', ...starStyles }}
+          style={{
+            transition: 'fill 100ms',
+            fill: starIsLit ? '#FFC81A' : '#EEE',
+          }}
         >
           <polygon
             id="top"
