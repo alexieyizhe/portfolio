@@ -11,7 +11,6 @@ export const s = <P extends Record<string, unknown>>(
 
 export const screen = {
   mobile: '@media only screen and (max-width: 600px)',
-  prefersDark: '(prefers-color-scheme: dark)',
 };
 
 setup(h, prefix, useTheme);

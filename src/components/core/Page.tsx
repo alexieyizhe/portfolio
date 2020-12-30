@@ -41,9 +41,9 @@ const useInitialize = () => {
     if (!process.browser) return;
 
     // because next.js renders server-side, we cannot rely on these checks during initial render and must update them after
-    const prefersDark = window.matchMedia(screen.prefersDark).matches;
+    const prefDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const isNighttime = new Date().getHours() > 19 || new Date().getHours() < 8;
-    if (prefersDark || isNighttime) toggleDarkMode(true);
+    if (prefDark || isNighttime) toggleDarkMode(true);
 
     const isWorkPage = window.location.pathname === '/work';
     if (isWorkPage) toggleDisplayedSection('work');

@@ -1,6 +1,6 @@
 import Redis from 'ioredis';
 
-import { requestNewToken } from 'services/now-playing';
+import { requestNewSpotifyToken } from 'services/api';
 
 export enum StorageKey {
   ACCESS_TOKEN = 'access-token',
@@ -37,7 +37,7 @@ export class StorageClient {
       );
 
       if (accessTokenExpiry < Date.now()) {
-        const { access_token } = await requestNewToken();
+        const { access_token } = await requestNewSpotifyToken();
         const newExpiry = Date.now() + 3600 * 1000; // spotify tokens expire in an hour
 
         console.debug(`Token expired, new with expiry ${newExpiry.toString()}`);

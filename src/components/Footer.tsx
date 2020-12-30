@@ -1,8 +1,8 @@
 import { FC, memo } from 'react';
 import { styled } from 'goober';
 
-import { LINKS } from 'services/copy';
 import { Link, Text } from 'components/core';
+import { LINKS } from 'services/copy';
 import { onClickListeners } from 'services/utils';
 import { useSiteStore } from 'services/store';
 

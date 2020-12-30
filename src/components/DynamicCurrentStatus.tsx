@@ -1,11 +1,7 @@
 import { memo, FC, useState, useCallback } from 'react';
 import TextLoop from 'react-text-loop';
 
-import {
-  TNowPlayingData,
-  isNowPlayingData,
-  getNowPlaying,
-} from 'services/now-playing';
+import { TNowPlayingData, isNowPlayingData, getNowPlaying } from 'services/api';
 import {
   getRandomItem,
   textLoopIntervals,

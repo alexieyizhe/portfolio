@@ -22,26 +22,6 @@ export const getShuffledArray = <T = unknown>(arr: T[]) => {
   return arr;
 };
 
-/**
- * Compute current Date in the time zone provided by offset mins
- */
-export const getDateFromOffset = (offsetMins: string): Date => {
-  const offsetMinsNum = Number(offsetMins);
-
-  const now = new Date();
-  const curUTC = new Date(
-    now.getUTCFullYear(),
-    now.getUTCMonth(),
-    now.getUTCDate(),
-    now.getUTCHours(),
-    now.getUTCMinutes(),
-    now.getUTCSeconds(),
-    now.getUTCMilliseconds()
-  );
-  curUTC.setMinutes(curUTC.getMinutes() + offsetMinsNum);
-  return curUTC;
-};
-
 export type TVisibilityChangeHandler = (isHidden: boolean) => unknown;
 /**
  * A hook into tab visibility changes through an

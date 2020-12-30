@@ -1,12 +1,8 @@
-import { FC, useState, useCallback } from 'react';
+import { FC, useState, useCallback, memo } from 'react';
 import TextLoop from 'react-text-loop';
 
 import GradientText from 'components/GradientText';
-import {
-  getDateFromOffset,
-  textLoopIntervals,
-  useVisibilityChange,
-} from 'services/utils';
+import { textLoopIntervals, useVisibilityChange } from 'services/utils';
 import { useInitialProps } from 'services/context/initial-props';
 
 type TextGradientInfo = [
@@ -14,6 +10,26 @@ type TextGradientInfo = [
   gradientFrom: string,
   gradientTo: string
 ];
+
+/**
+ * Compute current Date in the time zone provided by offset mins
+ */
+const getDateFromOffset = (offsetMins: string): Date => {
+  const offsetMinsNum = Number(offsetMins);
+
+  const now = new Date();
+  const curUTC = new Date(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate(),
+    now.getUTCHours(),
+    now.getUTCMinutes(),
+    now.getUTCSeconds(),
+    now.getUTCMilliseconds()
+  );
+  curUTC.setMinutes(curUTC.getMinutes() + offsetMinsNum);
+  return curUTC;
+};
 
 const timeToTwelveHour = (hour: number) => {
   const twelveHourTime = hour % 12 || 12; // 0 or 24 becomes 12am
@@ -104,7 +120,7 @@ const useDates = () => {
   return dates;
 };
 
-const DynamicTime: FC = () => {
+const DynamicTime: FC = memo(() => {
   const dates = useDates();
   const timeMarkups = dates.map(getTimeMarkup);
 
@@ -113,6 +129,6 @@ const DynamicTime: FC = () => {
       {timeMarkups}
     </TextLoop>
   );
-};
+});
 
 export default DynamicTime;

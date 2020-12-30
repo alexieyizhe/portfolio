@@ -7,7 +7,7 @@ import {
   StorageClient,
   StorageKey,
 } from 'services/_server_';
-import { getGithubStats } from 'services/github';
+import { getGithubStats } from 'services/api';
 import DynamicFavicon from 'components/DynamicFavicon';
 import Title from 'components/Title';
 import Bio from 'components/Bio';
