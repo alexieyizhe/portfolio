@@ -2,7 +2,7 @@ import { FC, memo } from 'react';
 
 import { Link, Text } from 'components/core';
 import { PAST_EXPERIENCE } from 'services/copy';
-import { useInitialProps } from 'services/store/new';
+import { useInitialProps } from 'services/context/initial-props';
 
 const Work: FC = memo(() => {
   const { githubStats } = useInitialProps();

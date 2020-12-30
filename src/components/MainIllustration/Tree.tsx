@@ -1,7 +1,6 @@
 import { keyframes } from 'goober';
 
-import { useStore } from 'services/store';
-import { useDarkMode, useToggleDarkMode } from 'services/store/new';
+import { useTheme } from 'services/context/theme';
 import { onClickListeners, useHoverListeners } from 'services/utils';
 
 import { Group } from './styles';
@@ -101,8 +100,7 @@ const BLINKING_LIGHTS = [
 ));
 
 const Tree = () => {
-  const isDarkMode = useDarkMode();
-  const toggleDarkMode = useToggleDarkMode();
+  const { isDarkMode, toggleDarkMode } = useTheme();
   const {
     isHovering,
     setHovering,

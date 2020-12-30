@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import { ThemeContextProvider, useTheme } from 'services/context/theme';
+import { useSiteStore } from 'services/store';
 import { s, screen } from 'services/style';
-import { useBootstrap } from 'services/utils';
 
 const PageContainer = s('div')`
   position: relative;
@@ -32,24 +33,34 @@ const InnerContentContainer = s('main')`
   justify-content: center;
 `;
 
-// const visibilityChangeHandler = useCallback<TVisibilityChangeHandler>(
-//   (isHidden) => {
-//     if (!isHidden) dispatch('data/refresh');
-//   },
-//   [dispatch]
-// );
+const useInitialize = () => {
+  const { toggleDarkMode } = useTheme();
+  const { toggleDisplayedSection } = useSiteStore();
 
-// useVisibilityChange(visibilityChangeHandler);
+  useEffect(() => {
+    if (!process.browser) return;
 
-// useEffect(() => dispatch('data/refresh'), []); //eslint-disable-line react-hooks/exhaustive-deps
+    // because next.js renders server-side, we cannot rely on these checks during initial render and must update them after
+    const prefersDark = window.matchMedia(screen.prefersDark).matches;
+    const isNighttime = new Date().getHours() > 19 || new Date().getHours() < 8;
+    if (prefersDark || isNighttime) toggleDarkMode(true);
+
+    const isWorkPage = window.location.pathname === '/work';
+    if (isWorkPage) toggleDisplayedSection('work');
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+};
 
 export const Page: FC = ({ children }) => {
-  useBootstrap();
+  useInitialize();
   return (
-    <PageContainer>
-      <ContentContainer>
-        <InnerContentContainer>{children}</InnerContentContainer>
-      </ContentContainer>
-    </PageContainer>
+    <ThemeContextProvider>
+      <PageContainer>
+        <ContentContainer>
+          <InnerContentContainer>{children}</InnerContentContainer>
+        </ContentContainer>
+      </PageContainer>
+    </ThemeContextProvider>
   );
 };

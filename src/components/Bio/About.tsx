@@ -1,13 +1,14 @@
-import { FC } from 'react';
-
 import { Link, Text } from 'components/core';
 import DynamicTime from 'components/DynamicTime';
 import DynamicTagline from 'components/DynamicTagline';
 import DynamicCurrentStatus from 'components/DynamicCurrentStatus';
-import { useInitialProps, useTalkingPoint } from 'services/store/new';
+import { useInitialProps } from 'services/context/initial-props';
+import { getRandomItem } from 'services/utils';
+import { TALKING_POINTS } from 'services/copy';
 
-const About: FC = () => {
-  const talkingPoint = useTalkingPoint();
+const talkingPoint = getRandomItem(TALKING_POINTS);
+
+const About = () => {
   const { currentCity } = useInitialProps();
 
   return (

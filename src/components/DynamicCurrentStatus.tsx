@@ -1,11 +1,21 @@
-import { memo, FC } from 'react';
+import { memo, FC, useState, useCallback } from 'react';
 import TextLoop from 'react-text-loop';
 
-import { TNowPlayingData, isNowPlayingData } from 'services/now-playing';
-import { textLoopIntervals } from 'services/utils';
+import {
+  TNowPlayingData,
+  isNowPlayingData,
+  getNowPlaying,
+} from 'services/now-playing';
+import {
+  getRandomItem,
+  textLoopIntervals,
+  TVisibilityChangeHandler,
+  useVisibilityChange,
+} from 'services/utils';
 import CoverArt from 'components/CoverArt';
 import { Text } from 'components/core';
-import { useStatuses } from 'services/store/new';
+import { useInitialProps } from 'services/context/initial-props';
+import { ACTIVITIES, PREFIXES } from 'services/copy';
 
 const clamp = (v: number, min: number, max: number) =>
   Math.max(Math.min(v, max), min);
@@ -52,6 +62,59 @@ const nowPlayingMarkup = ({
     )),
     <CoverArt link={link} coverArtSrc={coverArtSrc} color={color} />,
   ];
+};
+
+const getInitialStatus = (initialStatus: string | null) => {
+  const prefix = getRandomItem(PREFIXES);
+  const activity = getRandomItem([
+    ...ACTIVITIES,
+    ...(initialStatus
+      ? new Array(ACTIVITIES.length).fill(initialStatus) // larger weight for custom status
+      : []),
+  ]);
+
+  return `${prefix} ${activity}.`;
+};
+
+const useStatuses = () => {
+  const {
+    initialNowPlayingData,
+    customStatus,
+    spotifyToken,
+  } = useInitialProps();
+
+  const [statuses, setStatuses] = useState([
+    initialNowPlayingData ?? getInitialStatus(customStatus),
+  ]);
+
+  const updateNowPlaying = useCallback<TVisibilityChangeHandler>(
+    async (isHidden) => {
+      if (!isHidden) {
+        const updatedNowPlayingData = await getNowPlaying(spotifyToken);
+        const lastStatus = statuses[statuses.length - 1];
+        const lastNowPlayingData = isNowPlayingData(lastStatus)
+          ? lastStatus
+          : null;
+
+        if (
+          !!updatedNowPlayingData &&
+          updatedNowPlayingData.uri !== lastNowPlayingData?.uri
+        ) {
+          console.log(
+            `Now playing: ${
+              updatedNowPlayingData.podcastName ?? updatedNowPlayingData.name
+            }`
+          );
+          setStatuses((prev) => [...prev, updatedNowPlayingData]);
+        }
+      }
+    },
+    [spotifyToken, statuses]
+  );
+
+  useVisibilityChange(updateNowPlaying);
+
+  return statuses;
 };
 
 const DynamicCurrentStatus: FC = memo(() => {

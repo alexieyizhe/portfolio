@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { useStore } from 'services/store';
+import { useSiteStore } from 'services/store';
 
 export const base64Encode = (s: string) => Buffer.from(s).toString('base64');
 
@@ -51,6 +51,8 @@ export type TVisibilityChangeHandler = (isHidden: boolean) => unknown;
 export const useVisibilityChange = (handler: TVisibilityChangeHandler) => {
   useEffect(() => {
     if (process.browser) {
+      handler(false);
+
       const [hidden, CHANGE_EVENT_NAME] =
         typeof document.hidden !== 'undefined'
           ? ['hidden', 'visibilitychange']
@@ -93,22 +95,11 @@ export const useHoverListeners = () => {
   };
 };
 
-export const useBootstrap = () => {
-  useEffect(() => {
-    const prefersDarkTheme =
-      process.browser &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isNighttime =
-      process.browser &&
-      (new Date().getHours() > 19 || new Date().getHours() < 8);
-    const isDark = prefersDarkTheme || isNighttime;
+export const useStoreFocusListeners = () => {
+  const toggleInterest = useSiteStore((state) => state.toggleInterest);
 
-    const isWorkPage = process.browser && window.location.pathname === '/work';
-
-    console.log({ prefersDarkTheme, isNighttime, isDark, isWorkPage });
-    // if (isWorkPage) dispatch('section/set', 'work');
-    // if (isDark) dispatch('dark-mode/toggle', true);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  return {
+    onMouseEnter: () => toggleInterest(true),
+    onMouseLeave: () => toggleInterest(false),
+  };
 };

@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react';
 
-import { TThemeColor } from 'services/store/theme';
+import { TThemeColor } from 'services/context/theme';
 import { s, screen } from 'services/style';
 
 // the `as` prop isn't typed by Goober for some reason, but it exists (https://github.com/cristianbote/goober#using-as-prop)

@@ -3,9 +3,8 @@ import { styled } from 'goober';
 
 import { LINKS } from 'services/copy';
 import { Link, Text } from 'components/core';
-import { useStore } from 'services/store';
 import { onClickListeners } from 'services/utils';
-import { useDisplayedSection, useShowSection } from 'services/store/new';
+import { useSiteStore } from 'services/store';
 
 const Container = styled('footer')`
   display: flex;
@@ -21,10 +20,10 @@ const Container = styled('footer')`
 `;
 
 const Footer: FC = memo(() => {
-  const displayedSection = useDisplayedSection();
-  const showSection = useShowSection();
-
-  console.log({ displayedSection });
+  const displayedSection = useSiteStore((state) => state.displayedSection);
+  const toggleDisplayedSection = useSiteStore(
+    (state) => state.toggleDisplayedSection
+  );
 
   return (
     <Container>
@@ -37,7 +36,7 @@ const Footer: FC = memo(() => {
       ))}
       <Text>
         <Link
-          {...onClickListeners(() => showSection())}
+          {...onClickListeners(() => toggleDisplayedSection())}
           role="button"
           tabIndex={0}
         >
