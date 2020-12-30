@@ -73,6 +73,6 @@ export async function getStaticProps() {
 
   return {
     props: initialProps,
-    revalidate: 600,
+    revalidate: 300,
   };
 }
