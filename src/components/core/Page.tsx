@@ -11,7 +11,6 @@ const PageContainer = s('div')`
   justify-content: center;
 
   min-height: 100vh;
-  min-height: -webkit-fill-available;
   width: 100vw;
   overflow: hidden;
 
