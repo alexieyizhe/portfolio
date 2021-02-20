@@ -32,8 +32,7 @@ const Work: FC = memo(() => {
       </Text>
 
       <Text as="p">
-        Next spring, I'll be working at an ML stealth startup. I've previously
-        been a part of{' '}
+        When not in school, I've previously been a part of{' '}
         {PAST_EXPERIENCE.map(({ label, href, color }, i, arr) => {
           const isLast = i === arr.length - 1;
           return (
@@ -51,9 +50,8 @@ const Work: FC = memo(() => {
       </Text>
 
       <Text as="p">
-        I'm looking for <Text bold>summer 2021 opportunities</Text>! Take a peek
-        at my resume below or{' '}
-        <Link href="mailto:alex@xie.codes">get in touch</Link>.
+        I'm looking for <Text bold>fall 2021 opportunities</Text>!{" "}
+        <Link href="mailto:alex@xie.codes">Get in touch</Link>.
       </Text>
     </>
   );
