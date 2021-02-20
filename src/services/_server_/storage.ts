@@ -19,7 +19,7 @@ export class StorageClient {
 
   constructor() {
     this.client = new Redis(
-      'redis://:e22f6050ce1449d7962e9f7edd053940@us1-apparent-grouper-31548.lambda.store:31548',
+      'redis://:e22f6050ce1449d7962e9f7edd053940@us1-apparent-grouper-31548.upstash.io:31548',
       {
         enableAutoPipelining: true,
       }
