@@ -10,6 +10,7 @@ export const GREETINGS = [
   "👋! I'm Alex.",
   "你好! I'm Alex.",
   'It me, Alex!',
+  'What\'s crackalackin?'
 ];
 
 /**
@@ -49,7 +50,7 @@ export const ACTIVITIES = [
 export const TALKING_POINTS = [
   'why comic sans is the best font',
   'dark patterns and how they affect human behaviour',
-  'summer 2021 internship opportunities',
+  'fall 2021 internship opportunities',
   'how power lines are the ugliest form of infrastructure',
 ];
 
@@ -57,7 +58,6 @@ export const TALKING_POINTS = [
  * Links
  */
 export const LINKS = [
-  { label: 'resume', href: '/resume.pdf' },
   { label: 'github', href: 'https://github.com/alexieyizhe' },
   {
     label: 'blog',

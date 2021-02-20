@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Refresh
         run: |
-          curl https://alexxie.com
-          curl https://alex.xie.codes
-          curl https://xie.codes
-          curl https://alexxie.ca
+          curl https://alexxie.com/ping
+          curl https://alex.xie.codes/ping
+          curl https://xie.codes/ping
+          curl https://alexxie.ca/ping
