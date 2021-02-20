@@ -30,6 +30,8 @@ export default class CustomDocument extends Document<{ css: string }> {
         <body>
           <Main />
           <NextScript />
+          <script data-skip-dnt="true" data-hostname="alexxie.com" async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+          <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""/></noscript>
         </body>
       </Html>
     );
