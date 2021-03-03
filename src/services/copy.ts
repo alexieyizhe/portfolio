@@ -39,8 +39,9 @@ export const ACTIVITIES = [
   'being dragged around by Storm, my husky',
   'falling on my face at the climbing gym',
   'setting the kitchen on fire',
-  'wondering why my code not work',
+  'wondering why mY c0dE NoT WoRk',
   'jamming out on my tiny guitar',
+  'reading a good book while spazzed out on coffee',
   "chillin' with my plant pals Ube, Hubert, Dipsy, and Elise",
 ];
 
@@ -49,8 +50,10 @@ export const ACTIVITIES = [
  */
 export const TALKING_POINTS = [
   'why comic sans is the best font',
+  'why cities should embrace biking',
+  'the time i got locked in a London train station overnight',
+  'tiny homes and how awesome they are',
   'dark patterns and how they affect human behaviour',
-  'fall 2021 internship opportunities',
   'how power lines are the ugliest form of infrastructure',
 ];
 
@@ -58,6 +61,8 @@ export const TALKING_POINTS = [
  * Links
  */
 export const LINKS = [
+  { label: "yumtown", href: "https://www.instagram.com/alexplores.cuisine/" },
+  { label: "uses", href: "https://www.notion.so/Uses-754d5447cf16442f9ce5f444ecce01d0" },
   { label: 'github', href: 'https://github.com/alexieyizhe' },
   {
     label: 'blog',
