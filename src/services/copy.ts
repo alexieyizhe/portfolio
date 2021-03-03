@@ -51,7 +51,7 @@ export const ACTIVITIES = [
 export const TALKING_POINTS = [
   'why comic sans is the best font',
   'why cities should embrace biking',
-  'the time i got locked in a London train station overnight',
+  'the time I got locked in a London train station overnight',
   'tiny homes and how awesome they are',
   'dark patterns and how they affect human behaviour',
   'how power lines are the ugliest form of infrastructure',
@@ -63,11 +63,11 @@ export const TALKING_POINTS = [
 export const LINKS = [
   { label: "yumtown", href: "https://www.instagram.com/alexplores.cuisine/" },
   { label: "uses", href: "https://www.notion.so/Uses-754d5447cf16442f9ce5f444ecce01d0" },
-  { label: 'github', href: 'https://github.com/alexieyizhe' },
   {
     label: 'blog',
     href: 'https://www.craft.do/s/essARjCAB2DclB',
   },
+  { label: 'gh', href: 'https://github.com/alexieyizhe' },
 ];
 
 export const PAST_EXPERIENCE = [
