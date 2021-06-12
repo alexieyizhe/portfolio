@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "portfolio",
-  "version": "2021.1.2",
+  "version": "2021.6.12",
   "license": "MIT",
   "scripts": {
     "start": "next dev",
