@@ -19,8 +19,7 @@ const About = () => {
           <Text bold>
             <DynamicTagline />
           </Text>{' '}
-          that's currently studying computer science at the University of
-          Waterloo.
+          in my senior year of computer science at the University of Waterloo.
         </Text>
       </div>
 

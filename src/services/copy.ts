@@ -10,7 +10,7 @@ export const GREETINGS = [
   "👋! I'm Alex.",
   "你好! I'm Alex.",
   'It me, Alex!',
-  'What\'s crackalackin?'
+  "What's crackalackin?",
 ];
 
 /**
@@ -61,13 +61,21 @@ export const TALKING_POINTS = [
  * Links
  */
 export const LINKS = [
-  { label: "yumtown", href: "https://www.instagram.com/alexplores.cuisine/" },
-  { label: "uses", href: "https://www.notion.so/Uses-754d5447cf16442f9ce5f444ecce01d0" },
   {
-    label: 'blog',
+    label: 'yumtown',
+    title: 'Food blog',
+    href: 'https://www.instagram.com/alexplores.cuisine/',
+  },
+  {
+    label: 'word vomit',
+    title: 'Blog',
     href: 'https://www.craft.do/s/essARjCAB2DclB',
   },
-  { label: 'gh', href: 'https://github.com/alexieyizhe' },
+  {
+    label: 'beep boop',
+    title: 'Github profile',
+    href: 'https://github.com/alexieyizhe',
+  },
 ];
 
 export const PAST_EXPERIENCE = [

@@ -16,7 +16,7 @@ const Work: FC = memo(() => {
         <Link href="https://github.com/alexieyizhe/intern.plus/" newTab>
           intern+
         </Link>{' '}
-        and contribute to projects
+        and contribute to other projects
         {latestRepo ? (
           <>
             {' '}
@@ -50,7 +50,7 @@ const Work: FC = memo(() => {
       </Text>
 
       <Text as="p">
-        I'm looking for <Text bold>fall 2021 opportunities</Text>!{" "}
+        I'm looking for <Text bold>new grad full time opportunities</Text>!{' '}
         <Link href="mailto:alex@xie.codes">Get in touch</Link>.
       </Text>
     </>

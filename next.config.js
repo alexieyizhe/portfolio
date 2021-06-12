@@ -19,10 +19,6 @@ module.exports = withPreact({
       source: '/work',
       destination: '/',
     },
-    {
-      source: '/ping',
-      destination: '/',
-    },
   ],
   experimental: {
     modern: true,

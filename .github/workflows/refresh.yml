@@ -1,14 +1,18 @@
 name: Refresh data
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/10 * * * *'
 jobs:
   refresh-data:
     runs-on: ubuntu-latest
     steps:
       - name: Refresh
         run: |
-          curl https://alexxie.com/ping
-          curl https://alex.xie.codes/ping
-          curl https://xie.codes/ping
-          curl https://alexxie.ca/ping
+          curl https://alexxie.com/?utm_source=github_refresh_data_action
+          curl https://alex.xie.codes//?utm_source=github_refresh_data_action
+          curl https://xie.codes//?utm_source=github_refresh_data_action
+          curl https://alexxie.ca//?utm_source=github_refresh_data_action
+          curl https://alexxie.com/work/?utm_source=github_refresh_data_action
+          curl https://alex.xie.codes/work/?utm_source=github_refresh_data_action
+          curl https://xie.codes/work/?utm_source=github_refresh_data_action
+          curl https://alexxie.ca/work/?utm_source=github_refresh_data_action
