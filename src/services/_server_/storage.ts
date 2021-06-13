@@ -38,7 +38,7 @@ export class StorageClient {
 
       if (accessTokenExpiry < Date.now()) {
         const { access_token } = await requestNewSpotifyToken();
-        const newExpiry = Date.now() + 3600 * 1000; // spotify tokens expire in an hour
+        const newExpiry = Date.now() + 1800 * 1000; // spotify tokens expire in an hour, pre-emptively refresh access token
 
         console.log(`Token expired, new with expiry ${newExpiry.toString()}`);
         await this.client.set(StorageKey.ACCESS_TOKEN, access_token);
