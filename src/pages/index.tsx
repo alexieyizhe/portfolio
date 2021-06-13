@@ -71,8 +71,10 @@ export async function getStaticProps() {
     customStatus,
   };
 
+  console.log('Retrieved initial props of', initialProps);
+
   return {
     props: initialProps,
-    revalidate: 300,
+    revalidate: 60,
   };
 }
