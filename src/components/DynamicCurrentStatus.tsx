@@ -56,7 +56,12 @@ const nowPlayingMarkup = ({
         {s}
       </Text>
     )),
-    <CoverArt link={link} coverArtSrc={coverArtSrc} color={color} />,
+    <CoverArt
+      link={link}
+      coverArtSrc={coverArtSrc}
+      color={color}
+      isPodcast={isPodcast}
+    />,
   ];
 };
 
