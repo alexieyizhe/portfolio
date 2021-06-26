@@ -20,7 +20,7 @@ const hslColor = (color: TNowPlayingData['coverArtColor'] = [0, 0, 0]) => {
   const [h, s, l] = [
     color[0],
     clamp(color[1], 0, 60),
-    // clamp lightness value to make it colorful but still readable
+    // clamp lightness for colorful but still readable text
     clamp(color[1], 50, 70),
   ];
   return `hsl(${h}, ${s}%, ${l}%)`;
@@ -58,6 +58,21 @@ const nowPlayingMarkup = ({
     )),
     <CoverArt link={link} coverArtSrc={coverArtSrc} color={color} />,
   ];
+};
+
+const printNowPlaying = ({
+  name,
+  artistName,
+  podcastName,
+  coverArtColor,
+}: TNowPlayingData) => {
+  const color = hslColor(coverArtColor);
+  console.log(
+    `Now Playing:\n%c${podcastName ?? name}%c by %c${artistName}`,
+    `font-weight: bold; font-style: italic; background-color: ${color}; color: white; padding: 2px 0 2px 5px`,
+    `font-weight: normal; font-style: italic; background-color: ${color}; color: white; padding: 2px 0`,
+    `font-weight: bold; font-style: italic; background-color: ${color}; color: white; padding: 2px 5px 2px 0`
+  );
 };
 
 const getInitialStatus = (initialStatus: string | null) => {
@@ -117,11 +132,7 @@ const useStatuses = () => {
           !!updatedNowPlayingData &&
           updatedNowPlayingData.uri !== lastNowPlayingData?.uri
         ) {
-          console.log(
-            `Now playing: ${
-              updatedNowPlayingData.podcastName ?? updatedNowPlayingData.name
-            }`
-          );
+          printNowPlaying(updatedNowPlayingData);
           setStatuses((prev) => [...prev, updatedNowPlayingData]);
         }
       }

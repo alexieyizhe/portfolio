@@ -1,3 +1,4 @@
+import { access } from 'fs';
 import { getBestTextColor, ProminentOptions } from 'services/color';
 import { base64Encode } from './utils';
 
@@ -93,7 +94,7 @@ export const requestNewSpotifyToken = async () => {
 
   const data = await res.json();
 
-  if (res.status !== 200 && res.ok) {
+  if (res.status !== 200 || !res.ok || data.error) {
     throw new Error(`Request error ${res.status}: ${data}`);
   }
 
@@ -164,6 +165,7 @@ export const getNowPlaying = async (
         },
       }
     );
+
     if (res.status === 204) return null; // API returns 204 if nothing is playing
     if (res.status === 401) return undefined;
     if (!res.ok)
