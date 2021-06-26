@@ -4,9 +4,11 @@ import { FC, memo } from 'react';
 import { TNowPlayingData } from 'services/api';
 import { useStoreFocusListeners } from 'services/utils';
 import { screen } from 'services/style';
+import { useTheme } from 'services/context/theme';
 
 type TCoverArtProps = Pick<TNowPlayingData, 'link' | 'coverArtSrc'> & {
   color: string | undefined;
+  isPodcast: boolean;
 };
 
 const rotate = keyframes`
@@ -41,8 +43,6 @@ const CoverArtLink = css`
       height: 6px;
       border: 0.5px solid;
       border-radius: 50%;
-      background: white;
-      opacity: 0.8;
       margin: auto;
     }
 
@@ -59,24 +59,39 @@ const CoverArtLink = css`
         height: 16px;
       }
     }
+
+    &.podcast {
+      animation: none;
+
+      & span {
+        display: none;
+      }
+
+      & img {
+        border-radius: 4px;
+      }
+    }
   }
 `;
 
-const CoverArt: FC<TCoverArtProps> = memo(({ link, coverArtSrc, color }) => {
-  return (
-    <a
-      href={link}
-      target="_blank"
-      rel="noreferrer noopener"
-      className={CoverArtLink}
-      {...useStoreFocusListeners()}
-    >
-      <div style={{ color }}>
-        <img src={coverArtSrc} />
-        <span />
-      </div>
-    </a>
-  );
-});
+const CoverArt: FC<TCoverArtProps> = memo(
+  ({ link, coverArtSrc, color, isPodcast }) => {
+    const { colors } = useTheme();
+    return (
+      <a
+        href={link}
+        target="_blank"
+        rel="noreferrer noopener"
+        className={CoverArtLink}
+        {...useStoreFocusListeners()}
+      >
+        <div style={{ color }} className={isPodcast ? 'podcast' : 'music'}>
+          <img src={coverArtSrc} />
+          <span style={{ background: colors.background }} />
+        </div>
+      </a>
+    );
+  }
+);
 
 export default CoverArt;

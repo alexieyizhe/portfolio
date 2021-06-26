@@ -20,7 +20,7 @@ const hslColor = (color: TNowPlayingData['coverArtColor'] = [0, 0, 0]) => {
   const [h, s, l] = [
     color[0],
     clamp(color[1], 0, 60),
-    // clamp lightness value to make it colorful but still readable
+    // clamp lightness for colorful but still readable text
     clamp(color[1], 50, 70),
   ];
   return `hsl(${h}, ${s}%, ${l}%)`;
@@ -56,8 +56,28 @@ const nowPlayingMarkup = ({
         {s}
       </Text>
     )),
-    <CoverArt link={link} coverArtSrc={coverArtSrc} color={color} />,
+    <CoverArt
+      link={link}
+      coverArtSrc={coverArtSrc}
+      color={color}
+      isPodcast={isPodcast}
+    />,
   ];
+};
+
+const printNowPlaying = ({
+  name,
+  artistName,
+  podcastName,
+  coverArtColor,
+}: TNowPlayingData) => {
+  const color = hslColor(coverArtColor);
+  console.log(
+    `Now Playing:\n%c${podcastName ?? name}%c by %c${artistName}`,
+    `font-weight: bold; font-style: italic; background-color: ${color}; color: white; padding: 2px 0 2px 5px`,
+    `font-weight: normal; font-style: italic; background-color: ${color}; color: white; padding: 2px 0`,
+    `font-weight: bold; font-style: italic; background-color: ${color}; color: white; padding: 2px 5px 2px 0`
+  );
 };
 
 const getInitialStatus = (initialStatus: string | null) => {
@@ -70,6 +90,23 @@ const getInitialStatus = (initialStatus: string | null) => {
   ]);
 
   return `${prefix} ${activity}.`;
+};
+
+const refreshAndGetNowPlaying = async () => {
+  try {
+    const res = await fetch('/api/spotify-token', {
+      method: 'GET',
+    });
+
+    if (res.status === 200) {
+      const token = ((await res.json()) as { token: string | null }).token;
+      return await getNowPlaying(token);
+    }
+    return null;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
 };
 
 const useStatuses = () => {
@@ -86,7 +123,11 @@ const useStatuses = () => {
   const updateNowPlaying = useCallback<TVisibilityChangeHandler>(
     async (isHidden) => {
       if (!isHidden) {
-        const updatedNowPlayingData = await getNowPlaying(spotifyToken);
+        const nowPlayingData = await getNowPlaying(spotifyToken);
+        const updatedNowPlayingData =
+          nowPlayingData !== undefined
+            ? nowPlayingData
+            : await refreshAndGetNowPlaying(); // try refetching if spotify token is expired
         const lastStatus = statuses[statuses.length - 1];
         const lastNowPlayingData = isNowPlayingData(lastStatus)
           ? lastStatus
@@ -96,11 +137,7 @@ const useStatuses = () => {
           !!updatedNowPlayingData &&
           updatedNowPlayingData.uri !== lastNowPlayingData?.uri
         ) {
-          console.log(
-            `Now playing: ${
-              updatedNowPlayingData.podcastName ?? updatedNowPlayingData.name
-            }`
-          );
+          printNowPlaying(updatedNowPlayingData);
           setStatuses((prev) => [...prev, updatedNowPlayingData]);
         }
       }
