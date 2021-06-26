@@ -72,6 +72,23 @@ const getInitialStatus = (initialStatus: string | null) => {
   return `${prefix} ${activity}.`;
 };
 
+const refreshAndGetNowPlaying = async () => {
+  try {
+    const res = await fetch('/api/spotify-token', {
+      method: 'GET',
+    });
+
+    if (res.status === 200) {
+      const token = ((await res.json()) as { token: string | null }).token;
+      return await getNowPlaying(token);
+    }
+    return null;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+};
+
 const useStatuses = () => {
   const {
     initialNowPlayingData,
@@ -86,7 +103,11 @@ const useStatuses = () => {
   const updateNowPlaying = useCallback<TVisibilityChangeHandler>(
     async (isHidden) => {
       if (!isHidden) {
-        const updatedNowPlayingData = await getNowPlaying(spotifyToken);
+        const nowPlayingData = await getNowPlaying(spotifyToken);
+        const updatedNowPlayingData =
+          nowPlayingData !== undefined
+            ? nowPlayingData
+            : await refreshAndGetNowPlaying(); // try refetching if spotify token is expired
         const lastStatus = statuses[statuses.length - 1];
         const lastNowPlayingData = isNowPlayingData(lastStatus)
           ? lastStatus

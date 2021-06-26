@@ -21,7 +21,7 @@ export const getGithubStats = async (): Promise<TGithubStats | null> => {
 
     const data = await res.json();
     if (!res.ok || !data)
-      throw new Error(`Request error ${res.status}: ${JSON.stringify(data)}`);
+      throw new Error(`${res.status} Request Failed: ${JSON.stringify(data)}`);
 
     const lastKnownEventDate = new Date(data[data.length - 1].created_at);
     const pushEvents = data.filter((event: any) => event.type === 'PushEvent');
@@ -151,7 +151,7 @@ const extractNowPlayingData = (data: any) => {
 export const getNowPlaying = async (
   accessToken: string | null,
   colorOptions?: ProminentOptions
-): Promise<TNowPlayingData | null> => {
+): Promise<TNowPlayingData | null | undefined> => {
   if (!accessToken) return null;
 
   try {
@@ -165,11 +165,11 @@ export const getNowPlaying = async (
       }
     );
     if (res.status === 204) return null; // API returns 204 if nothing is playing
+    if (res.status === 401) return undefined;
+    if (!res.ok)
+      throw new Error(`Request error ${res.status}: ${JSON.stringify(res)}`);
 
     const data = await res.json();
-    if (!res.ok)
-      throw new Error(`Request error ${res.status}: ${JSON.stringify(data)}`);
-
     const np = extractNowPlayingData(data);
     const coverArtSrc = np.images.find((i: any) => i.width === 64)?.url;
     const coverArtColor = await getBestTextColor(coverArtSrc, colorOptions);
