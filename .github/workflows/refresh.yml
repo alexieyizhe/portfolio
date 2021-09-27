@@ -9,10 +9,4 @@ jobs:
       - name: Refresh
         run: |
           curl https://alexxie.com/?utm_source=github_refresh_data_action
-          curl https://alex.xie.codes//?utm_source=github_refresh_data_action
-          curl https://xie.codes//?utm_source=github_refresh_data_action
-          curl https://alexxie.ca//?utm_source=github_refresh_data_action
           curl https://alexxie.com/work/?utm_source=github_refresh_data_action
-          curl https://alex.xie.codes/work/?utm_source=github_refresh_data_action
-          curl https://xie.codes/work/?utm_source=github_refresh_data_action
-          curl https://alexxie.ca/work/?utm_source=github_refresh_data_action
