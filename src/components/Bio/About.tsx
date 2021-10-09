@@ -36,8 +36,8 @@ const About = () => {
       <div>
         <Text as="p">
           Wanna chat about <Text bold>{talkingPoint}</Text>? Shoot me a message
-          at <Link href="mailto:alex@xie.codes">alex@xie.codes</Link> and let's
-          talk.
+          at <Link href="mailto:hey@alexxie.com">hey@alexxie.com</Link> and
+          let's talk.
         </Text>
       </div>
     </>

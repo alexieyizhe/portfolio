@@ -41,8 +41,9 @@ export const ACTIVITIES = [
   'setting the kitchen on fire',
   'wondering why mY c0dE NoT WoRk',
   'jamming out on my tiny guitar',
+  'singing obnoxiously in my room',
   'reading a good book while spazzed out on coffee',
-  "chillin' with my plant pals Ube, Hubert, Dipsy, and Elise",
+  "chillin' with my plant pals Ube, Ruth, Dipsy, and Elise",
 ];
 
 /**
@@ -55,6 +56,10 @@ export const TALKING_POINTS = [
   'tiny homes and how awesome they are',
   'dark patterns and how they affect human behaviour',
   'how power lines are the ugliest form of infrastructure',
+  'how avocado is grossly overrated',
+  'your favourite book',
+  "whatever's on your mind",
+  "your car's extended warranty",
 ];
 
 /**
