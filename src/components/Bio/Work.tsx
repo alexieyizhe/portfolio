@@ -50,7 +50,7 @@ const Work: FC = memo(() => {
       </Text>
 
       <Text as="p">
-        I'm looking for <Text bold>new grad full time opportunities</Text>!{' '}
+        Want to connect with me?{' '}
         <Link href="mailto:hey@alexxie.com">Get in touch</Link>.
       </Text>
     </>
