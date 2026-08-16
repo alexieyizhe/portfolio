@@ -14,7 +14,13 @@ import Work from './Work';
  * instead of height lets that collapse ease alongside the cross-fade.
  */
 const Container = styled('div')`
-  margin: 1em 0 1em 0;
+  /* Runs wider than the column the rest of the page sits in. At 510px the
+     opening paragraph strands "software development." on a line of its own,
+     and text-wrap: pretty only rescues a last line of a single word. This
+     matches the scene's own 122%, so the copy squares up under the
+     illustration. */
+  width: 122%;
+  margin: 1em -11%;
   position: relative;
   display: grid;
   justify-content: center;
@@ -22,6 +28,7 @@ const Container = styled('div')`
   transition: grid-template-rows 600ms;
 
   ${screen.mobile} {
+    width: 100%;
     margin: 1em 0 0 0;
   }
 `;

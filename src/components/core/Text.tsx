@@ -19,9 +19,9 @@ export const Text = s<TTextProps>('span')`
   font-family: ${({ theme }) => theme!.bodyFont};
   font-size: 16px;
 
-  /* Keeps the last line from stranding a single word. Widening the column
-     doesn't help here, because the tagline rotates and every length still ends
-     up leaving one word behind. No-op when this is rendered inline. */
+  /* Keeps the last line from stranding a single word. Only a single word,
+     though, so it can't be relied on alone: the column width still has to suit
+     the copy. No-op when this is rendered inline. */
   text-wrap: pretty;
 
   ${({ bold }) => (bold ? `font-weight: 500;` : '')}

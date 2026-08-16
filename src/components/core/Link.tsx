@@ -13,6 +13,10 @@ const A = styled<LinkProps>('a')`
   color: inherit;
   cursor: pointer;
   transition: opacity 250ms;
+
+  /* Every link here is a short label or a name, so breaking one across lines
+     only ever splits a phrase that should read as one thing. */
+  white-space: nowrap;
   text-decoration: ${({ bare }) => (bare ? 'none' : 'underline')};
 
   &:hover {
