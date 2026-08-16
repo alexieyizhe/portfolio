@@ -11,68 +11,75 @@ type TCoverArtProps = Pick<TNowPlayingData, 'link' | 'coverArtSrc'> & {
   isPodcast: boolean;
 };
 
-const rotate = keyframes`
+/**
+ * Built per render rather than at module scope: `extractCss` drains goober's
+ * sheet, so a rule registered once at import time is missing from every
+ * server render after the first. Class names stay stable across calls.
+ */
+const buildCoverArtLink = () => {
+  const rotate = keyframes`
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
-`;
+  `;
 
-const CoverArtLink = css`
-  position: relative;
-  display: inline-block;
+  return css`
+    position: relative;
+    display: inline-block;
 
-  transition: transform 250ms;
-  &:hover {
-    transform: scale(1.1);
-  }
-
-  & div {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-
-    animation: ${rotate} 5s linear infinite;
-
-    & > * {
-      grid-row: 1;
-      grid-column: 1;
+    transition: transform 250ms;
+    &:hover {
+      transform: scale(1.1);
     }
 
-    & span {
-      z-index: 3;
-      width: 6px;
-      height: 6px;
-      border: 0.5px solid;
-      border-radius: 50%;
-      margin: auto;
-    }
+    & div {
+      display: grid;
+      justify-content: center;
+      align-items: center;
 
-    & img {
-      z-index: 2;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 0.5px solid;
-      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      animation: ${rotate} 5s linear infinite;
 
-      ${screen.mobile} {
-        width: 16px;
-        height: 16px;
+      & > * {
+        grid-row: 1;
+        grid-column: 1;
       }
-    }
-
-    &.podcast {
-      animation: none;
 
       & span {
-        display: none;
+        z-index: 3;
+        width: 6px;
+        height: 6px;
+        border: 0.5px solid;
+        border-radius: 50%;
+        margin: auto;
       }
 
       & img {
-        border-radius: 4px;
+        z-index: 2;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 0.5px solid;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+        ${screen.mobile} {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      &.podcast {
+        animation: none;
+
+        & span {
+          display: none;
+        }
+
+        & img {
+          border-radius: 4px;
+        }
       }
     }
-  }
-`;
+  `;
+};
 
 const CoverArt: FC<TCoverArtProps> = memo(
   ({ link, coverArtSrc, color, isPodcast }) => {
@@ -82,11 +89,13 @@ const CoverArt: FC<TCoverArtProps> = memo(
         href={link}
         target="_blank"
         rel="noreferrer noopener"
-        className={CoverArtLink}
+        className={buildCoverArtLink()}
         {...useStoreFocusListeners()}
       >
         <div style={{ color }} className={isPodcast ? 'podcast' : 'music'}>
-          <img src={coverArtSrc} />
+          {/* remote Spotify CDN art at a fixed 64px; next/image adds no value */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={coverArtSrc} alt="" />
           <span style={{ background: colors.background }} />
         </div>
       </a>

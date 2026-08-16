@@ -27,7 +27,7 @@ export const TAGLINES = [
  * Bio
  */
 export const EXPERIENCE_BLURB =
-  'based out of Toronto 🇨🇦 with over 6 years of experience in frontend and full-stack software development';
+  'based out of Toronto, Canada 🇨🇦 with over 6 years of experience in frontend and full-stack software development';
 
 export const SITE_DESCRIPTION =
   'Alex is a software developer based out of Toronto with over 6 years of experience in frontend and full-stack development.';

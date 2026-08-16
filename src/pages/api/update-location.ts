@@ -39,7 +39,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         offset: offsetMins,
       });
     } catch (e) {
-      res.status(500).json({ reason: JSON.stringify(e.msg) });
+      res.status(500).json({ reason: JSON.stringify(e) });
     }
   } else {
     res.status(400).json({ reason: 'No date and/or location provided!' });

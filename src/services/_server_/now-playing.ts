@@ -1,12 +1,19 @@
-import { createCanvas, Image as CanvasImage } from 'canvas';
+import sharp from 'sharp';
 
 import { getNowPlaying } from 'services/api';
 
-// document `canvas` and Image don't exist server-side
-const SERVER_SIDE_COLOR_OPTIONS = {
-  canvasBuilder: () => createCanvas(64, 64),
-  imageClass: CanvasImage,
+// there's no DOM canvas server-side, so decode cover art with sharp instead
+const getPixels = async (src: string): Promise<Uint8ClampedArray> => {
+  const res = await fetch(src);
+  if (!res.ok) throw new Error(`Cover art fetch failed: ${res.status}`);
+
+  const data = await sharp(Buffer.from(await res.arrayBuffer()))
+    .ensureAlpha()
+    .raw()
+    .toBuffer();
+
+  return new Uint8ClampedArray(data.buffer, data.byteOffset, data.byteLength);
 };
 
 export const getNowPlayingDataServerSide = async (accessToken: string | null) =>
-  getNowPlaying(accessToken, SERVER_SIDE_COLOR_OPTIONS);
+  getNowPlaying(accessToken, { getPixels });

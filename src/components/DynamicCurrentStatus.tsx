@@ -1,6 +1,6 @@
-import { memo, FC, useState, useCallback } from 'react';
-import TextLoop from 'react-text-loop';
+import { memo, FC, Fragment, useState, useCallback } from 'react';
 
+import TextLoop from 'components/TextLoop';
 import { TNowPlayingData, isNowPlayingData, getNowPlaying } from 'services/api';
 import {
   textLoopIntervals,
@@ -45,8 +45,9 @@ const nowPlayingMarkup = ({
 
   return [
     ...action.split(' '),
-    ...label.split(' ').map((s) => (
+    ...label.split(' ').map((s, i) => (
       <Text
+        key={`${s}-${i}`}
         bold={s !== 'by'}
         style={{
           color,
@@ -56,6 +57,7 @@ const nowPlayingMarkup = ({
       </Text>
     )),
     <CoverArt
+      key="cover-art"
       link={link}
       coverArtSrc={coverArtSrc}
       color={color}
@@ -97,11 +99,8 @@ const refreshAndGetNowPlaying = async () => {
 };
 
 const useStatuses = () => {
-  const {
-    initialNowPlayingData,
-    customStatus,
-    spotifyToken,
-  } = useInitialProps();
+  const { initialNowPlayingData, customStatus, spotifyToken } =
+    useInitialProps();
 
   const [statuses, setStatuses] = useState([
     initialNowPlayingData ?? customStatus ?? OUTSIDE_OF_WORK,
@@ -148,12 +147,11 @@ const DynamicCurrentStatus: FC = memo(() => {
       {new Array(Math.max(...statusesMarkup.map((s) => s.length)))
         .fill(null)
         .map((_, wordIdx) => (
-          <>
-            <TextLoop
-              interval={textLoopIntervals(statusesMarkup.length)}
-              children={statusesMarkup.map((m) => m[wordIdx] ?? '')}
-            />{' '}
-          </>
+          <Fragment key={wordIdx}>
+            <TextLoop interval={textLoopIntervals(statusesMarkup.length)}>
+              {statusesMarkup.map((m) => m[wordIdx] ?? '')}
+            </TextLoop>{' '}
+          </Fragment>
         ))}
     </span>
   );

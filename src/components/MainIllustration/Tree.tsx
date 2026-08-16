@@ -90,7 +90,7 @@ const Tree = () => {
           id="Lights"
           transform="translate(493.797468, 672.000000) scale(-1, 1) translate(-493.797468, -672.000000) translate(269.297468, 282.000000)"
         >
-          {Layers.BLINKING_LIGHTS}
+          <Layers.BLINKING_LIGHTS />
         </g>
         <g
           id="Star"

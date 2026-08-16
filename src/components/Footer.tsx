@@ -28,7 +28,7 @@ const Footer: FC = memo(() => {
   return (
     <Container>
       {LINKS.map(({ label, href, title }) => (
-        <Text>
+        <Text key={label}>
           <Link href={href} newTab title={title}>
             {label}
           </Link>

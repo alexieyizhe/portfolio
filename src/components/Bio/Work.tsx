@@ -32,7 +32,7 @@ const Work: FC = memo(() => {
       </Text>
 
       <Text as="p">
-        Over the years, I've been a part of{' '}
+        Over the years, I&apos;ve been a part of{' '}
         {PAST_EXPERIENCE.map(({ label, href, color }, i, arr) => {
           const isLast = i === arr.length - 1;
           const name = (

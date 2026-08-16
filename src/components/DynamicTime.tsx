@@ -1,6 +1,6 @@
 import { FC, useState, useCallback, memo } from 'react';
-import TextLoop from 'react-text-loop';
 
+import TextLoop from 'components/TextLoop';
 import GradientText from 'components/GradientText';
 import { textLoopIntervals, useVisibilityChange } from 'services/utils';
 import { useInitialProps } from 'services/context/initial-props';
@@ -8,7 +8,7 @@ import { useInitialProps } from 'services/context/initial-props';
 type TextGradientInfo = [
   gradientDirection: string,
   gradientFrom: string,
-  gradientTo: string
+  gradientTo: string,
 ];
 
 /**

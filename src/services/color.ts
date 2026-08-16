@@ -7,9 +7,7 @@ const rgbToHsl = ([r, g, b]: number[]) => {
   const cmin = Math.min(r, g, b),
     cmax = Math.max(r, g, b),
     delta = cmax - cmin;
-  let h = 0,
-    s = 0,
-    l = 0;
+  let h: number, s: number, l: number;
 
   if (delta == 0) h = 0;
   else if (cmax == r) h = ((g - b) / delta) % 6;
@@ -27,41 +25,49 @@ const rgbToHsl = ([r, g, b]: number[]) => {
   return [h, s, l];
 };
 
+type Data = Uint8ClampedArray;
+
 type Args = {
   amount: number;
   group: number;
   sample: number;
-  canvasBuilder: () => any;
-  imageClass: any;
+  /** returns RGBA bytes for an image url; swapped out server-side for sharp */
+  getPixels: (src: string) => Promise<Data>;
 };
 export type ProminentOptions = Partial<Args>;
 
-type Data = Uint8ClampedArray;
-type Handler = (data: Data, args: Args) => Output;
 type Hex = string;
 type Input = (Hex | Rgb)[];
-type Item = Url | HTMLImageElement;
 type Output = Hex | Rgb | (Hex | Rgb)[];
 type Rgb = [r: number, g: number, b: number];
-type Url = string;
 
-const browserCanvasBuilder = () => document.createElement('canvas');
+const browserGetPixels = (src: string): Promise<Data> =>
+  new Promise((resolve, reject) => {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+    const img = new Image();
 
-const getSrc = (item: Item): string =>
-  typeof item === 'string' ? item : item.src;
+    img.onload = () => {
+      canvas.height = img.height;
+      canvas.width = img.width;
+      context.drawImage(img, 0, 0);
+      resolve(context.getImageData(0, 0, img.width, img.height).data);
+    };
+    img.onerror = () => reject(Error('Image loading failed.'));
+    img.crossOrigin = '';
+    img.src = src;
+  });
 
 const getArgs = ({
   amount = 3,
   group = 20,
   sample = 10,
-  canvasBuilder = browserCanvasBuilder,
-  imageClass = Image,
+  getPixels = browserGetPixels,
 }: ProminentOptions = {}): Args => ({
   amount,
   group,
   sample,
-  canvasBuilder,
-  imageClass,
+  getPixels,
 });
 
 const format = (input: Input, args: Args): Output => {
@@ -76,26 +82,6 @@ const group = (number: number, grouping: number): number => {
   const grouped = Math.round(number / grouping) * grouping;
   return Math.min(grouped, 255);
 };
-
-const getImageData = (src: Url, args: Args): Promise<Data> =>
-  new Promise((resolve, reject) => {
-    const canvas = args.canvasBuilder();
-    const context = <CanvasRenderingContext2D>canvas.getContext('2d');
-    const img = new args.imageClass();
-
-    img.onload = () => {
-      canvas.height = img.height;
-      canvas.width = img.width;
-      context.drawImage(img as any, 0, 0);
-
-      const data = context.getImageData(0, 0, img.width, img.height).data;
-
-      resolve(data);
-    };
-    img.onerror = () => reject(Error('Image loading failed.'));
-    (img as any).crossOrigin = '';
-    img.src = src;
-  });
 
 const getProminent = (data: Data, args: Args): Output => {
   const gap = 4 * args.sample;
@@ -120,20 +106,11 @@ const getProminent = (data: Data, args: Args): Output => {
   );
 };
 
-const processImage = (
-  handler: Handler,
-  item: Item,
-  opts?: ProminentOptions
-): Promise<Output> =>
-  new Promise((resolve, reject) =>
-    getImageData(getSrc(item), getArgs(opts))
-      .then((data) => resolve(handler(data, getArgs(opts))))
-      .catch((error) => reject(error))
-  );
-
 // from https://github.com/luukdv/color.js
-const prominent = (item: Item, opts?: ProminentOptions) =>
-  processImage(getProminent, item, opts);
+const prominent = async (src: string, opts?: ProminentOptions) => {
+  const args = getArgs(opts);
+  return getProminent(await args.getPixels(src), args);
+};
 
 export const getBestTextColor = async (
   coverArt: string | undefined,
@@ -141,11 +118,13 @@ export const getBestTextColor = async (
 ): Promise<[h: number, s: number, l: number] | undefined> => {
   if (!coverArt) return undefined;
 
-  const colors = ((await prominent(coverArt, {
-    amount: 3,
-    group: 10,
-    ...colorArgs,
-  })) as number[][]).map(rgbToHsl);
+  const colors = (
+    (await prominent(coverArt, {
+      amount: 3,
+      group: 10,
+      ...colorArgs,
+    })) as number[][]
+  ).map(rgbToHsl);
 
   const saturatedColors = [...colors.filter(([, s]) => s > 10), ...colors];
 

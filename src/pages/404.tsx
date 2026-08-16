@@ -15,13 +15,14 @@ export default function NotFoundPage() {
   return (
     <>
       <Head>
-        <title>There's nothing here.</title>
+        <title>There&apos;s nothing here.</title>
       </Head>
       <DynamicFavicon face="mad" />
 
       <Page>
         <Text>
-          Seems like you're a bit lost. Wanna <Link href="/">go home</Link>?
+          Seems like you&apos;re a bit lost. Wanna <Link href="/">go home</Link>
+          ?
         </Text>
 
         <NotFoundImg src="/spookyscary.png" />
