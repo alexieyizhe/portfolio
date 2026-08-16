@@ -7,7 +7,7 @@ const DynamicFavicon: FC<{ face?: 'smile' | 'mad' }> = ({ face }) => {
   const [isAway, setAway] = useState(false);
   useVisibilityChange(setAway);
 
-  const dynamicFace = face ?? isAway ? 'mad' : 'smile';
+  const dynamicFace = face ?? (isAway ? 'mad' : 'smile');
 
   return (
     <Head>

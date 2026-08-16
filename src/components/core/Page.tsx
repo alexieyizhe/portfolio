@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, PropsWithChildren, useEffect } from 'react';
 import { ThemeContextProvider, useTheme } from 'services/context/theme';
 import { useSiteStore } from 'services/store';
 import { s } from 'services/style';
@@ -34,7 +34,7 @@ const useInitialize = () => {
   const { toggleDisplayedSection } = useSiteStore();
 
   useEffect(() => {
-    if (!process.browser) return;
+    if (typeof window === 'undefined') return;
 
     // because next.js renders server-side, we cannot rely on these checks during initial render and must update them after
     const prefDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -48,7 +48,7 @@ const useInitialize = () => {
   }, []);
 };
 
-export const Page: FC = ({ children }) => {
+export const Page: FC<PropsWithChildren> = ({ children }) => {
   useInitialize();
   return (
     <ThemeContextProvider>

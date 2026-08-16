@@ -1,6 +1,7 @@
 import {
   createContext,
   FC,
+  PropsWithChildren,
   useCallback,
   useContext,
   useMemo,
@@ -46,10 +47,9 @@ const ThemeContext = createContext<TThemeContextValue>({
 
 export const useTheme = () => useContext(ThemeContext);
 
-export const ThemeContextProvider: FC = ({ children }) => {
-  const [isDarkMode, setDarkMode] = useState<TThemeContextValue['isDarkMode']>(
-    true
-  );
+export const ThemeContextProvider: FC<PropsWithChildren> = ({ children }) => {
+  const [isDarkMode, setDarkMode] =
+    useState<TThemeContextValue['isDarkMode']>(true);
   const toggleDarkMode = useCallback<TThemeContextValue['toggleDarkMode']>(
     (dark) => setDarkMode((prevMode) => dark ?? !prevMode),
     []

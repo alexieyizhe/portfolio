@@ -8,7 +8,7 @@ export const GREETINGS = [
   'Hi, how goes it?',
   'Howdy pardner!',
   "👋! I'm Alex.",
-  "你好! I'm Alex.",
+  '你好! 我是Alex.',
   'It me, Alex!',
   "What's crackalackin?",
 ];
@@ -18,33 +18,30 @@ export const GREETINGS = [
  */
 export const TAGLINES = [
   `keyboard puncher`,
-  'happy wallflower',
+  'happy homebody',
   'lover of bad puns',
-  'struggling rock climber',
   'comic sans advocate',
 ];
 
 /**
- * Activities
+ * Bio
  */
+export const EXPERIENCE_BLURB =
+  'based out of Toronto, Canada 🇨🇦 with over 6 years of experience in frontend and full-stack software development';
 
-export const PREFIXES = [
-  "I'm probably",
-  "I'm most likely",
-  "There's a good chance I'm",
-  "Can't reach me? I'm probs",
-];
+export const SITE_DESCRIPTION =
+  'Alex is a software developer based out of Toronto with over 6 years of experience in frontend and full-stack development.';
 
-export const ACTIVITIES = [
-  'being dragged around by Storm, my husky',
-  'falling on my face at the climbing gym',
-  'setting the kitchen on fire',
-  'wondering why mY c0dE NoT WoRk',
-  'jamming out on my tiny guitar',
-  'singing obnoxiously in my room',
-  'reading a good book while spazzed out on coffee',
-  "chillin' with my plant pals Ube, Ruth, Dipsy, and Elise",
-];
+export const OUTSIDE_OF_WORK =
+  'Outside of work, I enjoy learning new recipes to cook, tinkering with my camper van and other DIY projects, obsessively planning travel, making bad jokes, and being in the great outdoors :^)';
+
+/**
+ * Illustration attribution
+ */
+export const ILLUSTRATION_CREDITS = [
+  'Open Peeps by Pablo Stanley (https://openpeeps.com/)',
+  'Amico by Storyset (https://storyset.com/)',
+].join(', ');
 
 /**
  * Talking points
@@ -53,11 +50,10 @@ export const TALKING_POINTS = [
   'why comic sans is the best font',
   'why cities should embrace biking',
   'the time I got locked in a London train station overnight',
-  'tiny homes and how awesome they are',
+  'tiny homes and off-grid self-sufficiency',
   'dark patterns and how they affect human behaviour',
   'how power lines are the ugliest form of infrastructure',
   'how avocado is grossly overrated',
-  'your favourite book',
   "whatever's on your mind",
   "your car's extended warranty",
 ];
@@ -72,18 +68,15 @@ export const LINKS = [
     href: 'https://www.instagram.com/alexplores.cuisine/',
   },
   {
-    label: 'word vomit',
-    title: 'Blog',
-    href: 'https://www.craft.do/s/essARjCAB2DclB',
-  },
-  {
     label: 'beep boop',
     title: 'Github profile',
     href: 'https://github.com/alexieyizhe',
   },
 ];
 
-export const PAST_EXPERIENCE = [
+type TExperience = { label: string; href?: string; color: string };
+
+export const PAST_EXPERIENCE: TExperience[] = [
   { label: 'Shopify', href: 'https://shopify.engineering/', color: '#007060' },
   {
     label: 'Hack the North',
@@ -91,7 +84,7 @@ export const PAST_EXPERIENCE = [
     color: '#007cba',
   },
   { label: 'Faire', href: 'https://www.faire.com/about', color: 'textPrimary' },
-  { label: 'TEDxUW', href: 'https://tedxuw.com/', color: '#c9200c' },
+  { label: 'TEDxUW', color: '#c9200c' },
   {
     label: 'Flipp',
     href: 'https://corp.flipp.com/about-us/',

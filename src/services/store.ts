@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 type TSiteState = {
   isInterested: boolean;
@@ -27,6 +27,6 @@ export const useSiteStore = create<TSiteStoreValue>((set) => ({
   toggleDisplayedSection: (section?: 'about' | 'work') =>
     set((state) => ({
       displayedSection:
-        section ?? state.displayedSection === 'about' ? 'work' : 'about',
+        section ?? (state.displayedSection === 'about' ? 'work' : 'about'),
     })),
 }));

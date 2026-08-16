@@ -7,7 +7,13 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
 
       - name: Install
         run: npm ci
@@ -17,3 +23,6 @@ jobs:
 
       - name: Type-check
         run: npm run type-check
+
+      - name: Build
+        run: npm run build

@@ -8,8 +8,8 @@ const Face: FC<{ isHovering: boolean }> = memo(({ isHovering }) => {
   const expression = isInterested
     ? Layers.SURPRISED
     : isHovering
-    ? Layers.WEIRD
-    : Layers.GRIN_HAPPY;
+      ? Layers.WEIRD
+      : Layers.GRIN_HAPPY;
 
   return (
     <g id="Face" transform="translate(499 178)">

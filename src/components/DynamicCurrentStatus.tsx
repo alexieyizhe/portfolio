@@ -1,9 +1,8 @@
-import { memo, FC, useState, useCallback } from 'react';
-import TextLoop from 'react-text-loop';
+import { memo, FC, Fragment, useState, useCallback } from 'react';
 
+import TextLoop from 'components/TextLoop';
 import { TNowPlayingData, isNowPlayingData, getNowPlaying } from 'services/api';
 import {
-  getRandomItem,
   textLoopIntervals,
   TVisibilityChangeHandler,
   useVisibilityChange,
@@ -11,7 +10,7 @@ import {
 import CoverArt from 'components/CoverArt';
 import { Text } from 'components/core';
 import { useInitialProps } from 'services/context/initial-props';
-import { ACTIVITIES, PREFIXES } from 'services/copy';
+import { OUTSIDE_OF_WORK } from 'services/copy';
 
 const clamp = (v: number, min: number, max: number) =>
   Math.max(Math.min(v, max), min);
@@ -46,8 +45,9 @@ const nowPlayingMarkup = ({
 
   return [
     ...action.split(' '),
-    ...label.split(' ').map((s) => (
+    ...label.split(' ').map((s, i) => (
       <Text
+        key={`${s}-${i}`}
         bold={s !== 'by'}
         style={{
           color,
@@ -57,6 +57,7 @@ const nowPlayingMarkup = ({
       </Text>
     )),
     <CoverArt
+      key="cover-art"
       link={link}
       coverArtSrc={coverArtSrc}
       color={color}
@@ -80,18 +81,6 @@ const printNowPlaying = ({
   );
 };
 
-const getInitialStatus = (initialStatus: string | null) => {
-  const prefix = getRandomItem(PREFIXES);
-  const activity = getRandomItem([
-    ...ACTIVITIES,
-    ...(initialStatus
-      ? new Array(ACTIVITIES.length).fill(initialStatus) // larger weight for custom status
-      : []),
-  ]);
-
-  return `${prefix} ${activity}.`;
-};
-
 const refreshAndGetNowPlaying = async () => {
   try {
     const res = await fetch('/api/spotify-token', {
@@ -110,14 +99,11 @@ const refreshAndGetNowPlaying = async () => {
 };
 
 const useStatuses = () => {
-  const {
-    initialNowPlayingData,
-    customStatus,
-    spotifyToken,
-  } = useInitialProps();
+  const { initialNowPlayingData, customStatus, spotifyToken } =
+    useInitialProps();
 
   const [statuses, setStatuses] = useState([
-    initialNowPlayingData ?? getInitialStatus(customStatus),
+    initialNowPlayingData ?? customStatus ?? OUTSIDE_OF_WORK,
   ]);
 
   const updateNowPlaying = useCallback<TVisibilityChangeHandler>(
@@ -161,12 +147,11 @@ const DynamicCurrentStatus: FC = memo(() => {
       {new Array(Math.max(...statusesMarkup.map((s) => s.length)))
         .fill(null)
         .map((_, wordIdx) => (
-          <>
-            <TextLoop
-              interval={textLoopIntervals(statusesMarkup.length)}
-              children={statusesMarkup.map((m) => m[wordIdx] ?? '')}
-            />{' '}
-          </>
+          <Fragment key={wordIdx}>
+            <TextLoop interval={textLoopIntervals(statusesMarkup.length)}>
+              {statusesMarkup.map((m) => m[wordIdx] ?? '')}
+            </TextLoop>{' '}
+          </Fragment>
         ))}
     </span>
   );

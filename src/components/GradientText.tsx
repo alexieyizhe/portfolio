@@ -1,6 +1,9 @@
-import { FC, memo } from 'react';
+import { FC, PropsWithChildren, memo } from 'react';
 
-type TGradientTextProps = { fallbackColor: string; gradient: string };
+type TGradientTextProps = PropsWithChildren<{
+  fallbackColor: string;
+  gradient: string;
+}>;
 
 const GradientText: FC<TGradientTextProps> = memo(
   ({ fallbackColor, gradient, children }) => (

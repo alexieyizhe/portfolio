@@ -30,17 +30,17 @@ export type TVisibilityChangeHandler = (isHidden: boolean) => unknown;
  */
 export const useVisibilityChange = (handler: TVisibilityChangeHandler) => {
   useEffect(() => {
-    if (process.browser) {
+    if (typeof window !== 'undefined') {
       handler(false);
 
       const [hidden, CHANGE_EVENT_NAME] =
         typeof document.hidden !== 'undefined'
           ? ['hidden', 'visibilitychange']
           : typeof (document as any).msHidden !== 'undefined'
-          ? ['msHidden', 'msvisibilitychange']
-          : typeof (document as any).webkitHidden !== 'undefined'
-          ? ['webkitHidden', 'webkitvisibilitychange']
-          : [undefined, undefined];
+            ? ['msHidden', 'msvisibilitychange']
+            : typeof (document as any).webkitHidden !== 'undefined'
+              ? ['webkitHidden', 'webkitvisibilitychange']
+              : [undefined, undefined];
 
       if (hidden && CHANGE_EVENT_NAME) {
         const onVisibilityChange = () => handler((document as any)[hidden]);

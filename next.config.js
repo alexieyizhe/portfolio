@@ -1,26 +1,13 @@
-const withPreact = require('next-plugin-preact');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
-module.exports = withPreact({
-  webpack: (config, { isServer }) => {
-    if (process.env.ANALYZE) {
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: 'server',
-          analyzerPort: isServer ? 8888 : 8889,
-          openAnalyzer: true,
-        })
-      );
-    }
-    return config;
-  },
+/** @type {import('next').NextConfig} */
+module.exports = withBundleAnalyzer({
   rewrites: async () => [
     {
       source: '/work',
       destination: '/',
     },
   ],
-  experimental: {
-    modern: true,
-  },
 });

@@ -11,10 +11,10 @@ export enum StorageKey {
 }
 
 const FALLBACK_OFFSET = '-300';
-const FALLBACK_CITY = 'Waterloo';
+const FALLBACK_CITY = 'Toronto';
 
 export class StorageClient {
-  private client: Redis.Redis;
+  private client: Redis;
   connected = false;
 
   constructor() {

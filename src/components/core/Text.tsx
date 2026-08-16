@@ -5,7 +5,7 @@ import { s, screen } from 'services/style';
 
 // the `as` prop isn't typed by Goober for some reason, but it exists (https://github.com/cristianbote/goober#using-as-prop)
 type TTextProps = {
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   bold?: boolean;
   italic?: boolean;
   color?: string;
@@ -14,7 +14,7 @@ type TTextProps = {
 export const Text = s<TTextProps>('span')`
   color: ${({ theme, color }) =>
     color
-      ? theme!.colors[color as TThemeColor] ?? color
+      ? (theme!.colors[color as TThemeColor] ?? color)
       : theme!.colors.textPrimary};
   font-family: ${({ theme }) => theme!.bodyFont};
   font-size: 16px;

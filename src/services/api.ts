@@ -1,4 +1,3 @@
-import { access } from 'fs';
 import { getBestTextColor, ProminentOptions } from 'services/color';
 import { base64Encode } from './utils';
 
