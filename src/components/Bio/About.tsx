@@ -1,16 +1,12 @@
 import { Link, Text } from 'components/core';
-import DynamicTime from 'components/DynamicTime';
 import DynamicTagline from 'components/DynamicTagline';
 import DynamicCurrentStatus from 'components/DynamicCurrentStatus';
-import { useInitialProps } from 'services/context/initial-props';
 import { getRandomItem } from 'services/utils';
-import { TALKING_POINTS } from 'services/copy';
+import { EXPERIENCE_BLURB, TALKING_POINTS } from 'services/copy';
 
 const talkingPoint = getRandomItem(TALKING_POINTS);
 
 const About = () => {
-  const { currentCity } = useInitialProps();
-
   return (
     <>
       <div>
@@ -19,17 +15,13 @@ const About = () => {
           <Text bold>
             <DynamicTagline />
           </Text>{' '}
-          in my senior year of computer science at the University of Waterloo.
+          {EXPERIENCE_BLURB}.
         </Text>
       </div>
 
       <div>
         <Text as="p">
-          It’s currently{' '}
-          <Text bold>
-            <DynamicTime />
-          </Text>{' '}
-          for me in <Text bold>{currentCity}</Text>. <DynamicCurrentStatus />
+          <DynamicCurrentStatus />
         </Text>
       </div>
 

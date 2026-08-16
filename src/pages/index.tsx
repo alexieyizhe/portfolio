@@ -14,6 +14,7 @@ import Bio from 'components/Bio';
 import Footer from 'components/Footer';
 import { Page } from 'components/core';
 import { InitialPropsContextProvider } from 'services/context/initial-props';
+import { SITE_DESCRIPTION } from 'services/copy';
 
 export type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -25,14 +26,8 @@ export default function IndexPage(initialProps: TPageInitialProps) {
       <Head>
         <title>Alex Xie</title>
         <meta property="og:title" content="Alex Xie's personal website" />
-        <meta
-          name="description"
-          content="Alex is a web developer and a senior at the University of Waterloo, majoring in computer science."
-        />
-        <meta
-          property="og:description"
-          content="Alex is a web developer and a senior at the University of Waterloo, majoring in computer science."
-        />
+        <meta name="description" content={SITE_DESCRIPTION} />
+        <meta property="og:description" content={SITE_DESCRIPTION} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://alexxie.com/preview.png" />
       </Head>

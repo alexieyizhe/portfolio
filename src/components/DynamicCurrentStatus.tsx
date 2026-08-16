@@ -3,7 +3,6 @@ import TextLoop from 'react-text-loop';
 
 import { TNowPlayingData, isNowPlayingData, getNowPlaying } from 'services/api';
 import {
-  getRandomItem,
   textLoopIntervals,
   TVisibilityChangeHandler,
   useVisibilityChange,
@@ -11,7 +10,7 @@ import {
 import CoverArt from 'components/CoverArt';
 import { Text } from 'components/core';
 import { useInitialProps } from 'services/context/initial-props';
-import { ACTIVITIES, PREFIXES } from 'services/copy';
+import { OUTSIDE_OF_WORK } from 'services/copy';
 
 const clamp = (v: number, min: number, max: number) =>
   Math.max(Math.min(v, max), min);
@@ -80,18 +79,6 @@ const printNowPlaying = ({
   );
 };
 
-const getInitialStatus = (initialStatus: string | null) => {
-  const prefix = getRandomItem(PREFIXES);
-  const activity = getRandomItem([
-    ...ACTIVITIES,
-    ...(initialStatus
-      ? new Array(ACTIVITIES.length).fill(initialStatus) // larger weight for custom status
-      : []),
-  ]);
-
-  return `${prefix} ${activity}.`;
-};
-
 const refreshAndGetNowPlaying = async () => {
   try {
     const res = await fetch('/api/spotify-token', {
@@ -117,7 +104,7 @@ const useStatuses = () => {
   } = useInitialProps();
 
   const [statuses, setStatuses] = useState([
-    initialNowPlayingData ?? getInitialStatus(customStatus),
+    initialNowPlayingData ?? customStatus ?? OUTSIDE_OF_WORK,
   ]);
 
   const updateNowPlaying = useCallback<TVisibilityChangeHandler>(
