@@ -6,7 +6,6 @@ import {
   StorageClient,
   StorageKey,
 } from 'services/_server_';
-import { getGithubStats } from 'services/api';
 import DynamicFavicon from 'components/DynamicFavicon';
 import Hero from 'components/Hero';
 import Bio from 'components/Bio';
@@ -62,11 +61,9 @@ export async function getStaticProps() {
   client.disconnect();
 
   const initialNowPlayingData = await getNowPlayingDataServerSide(spotifyToken);
-  const githubStats = await getGithubStats();
 
   const initialProps = {
     initialNowPlayingData,
-    githubStats,
     spotifyToken,
     timezoneOffset,
     currentCity,
