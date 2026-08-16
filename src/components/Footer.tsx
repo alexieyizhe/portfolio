@@ -12,7 +12,9 @@ const Container = styled('footer')`
   align-items: center;
   justify-content: center;
 
-  margin: 0 0 2em 0;
+  /* The page itself now reserves the space below the fold, so a trailing margin
+     here would only push the content off centre. */
+  margin: 0;
 
   & > * {
     margin: 0 6px;

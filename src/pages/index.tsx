@@ -1,6 +1,5 @@
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
 
 import {
   getNowPlayingDataServerSide,
@@ -9,7 +8,7 @@ import {
 } from 'services/_server_';
 import { getGithubStats } from 'services/api';
 import DynamicFavicon from 'components/DynamicFavicon';
-import Title from 'components/Title';
+import Hero from 'components/Hero';
 import Bio from 'components/Bio';
 import Footer from 'components/Footer';
 import { Page } from 'components/core';
@@ -24,8 +23,6 @@ import {
 } from 'services/copy';
 
 export type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
-
-const MainIllustration = dynamic(() => import('components/MainIllustration'));
 
 export default function IndexPage(initialProps: TPageInitialProps) {
   return (
@@ -46,8 +43,7 @@ export default function IndexPage(initialProps: TPageInitialProps) {
 
       <InitialPropsContextProvider value={initialProps}>
         <Page>
-          <Title />
-          <MainIllustration />
+          <Hero />
           <Bio />
           <Footer />
         </Page>

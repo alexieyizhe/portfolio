@@ -8,6 +8,10 @@ import {
 import Layers from './layers';
 import { Group } from './styles';
 
+/**
+ * The original Christmas tree illustration. No longer on the page — the room
+ * in Room.tsx replaced it — but kept intact for a seasonal feature later on.
+ */
 const Tree = () => {
   const { isDarkMode, toggleDarkMode } = useTheme();
   const {

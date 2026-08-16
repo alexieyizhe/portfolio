@@ -19,15 +19,16 @@ export const GREETINGS = [
 export const TAGLINES = [
   `keyboard puncher`,
   'happy homebody',
-  'lover of bad puns',
-  'comic sans advocate',
+  'bad pun enjoyer',
+  'serial overthinker',
+  '"type 2 fun"-haver',
 ];
 
 /**
  * Bio
  */
 export const EXPERIENCE_BLURB =
-  'based out of Toronto, Canada 🇨🇦 with over 6 years of experience in frontend and full-stack software development';
+  'based out of Toronto, Canada 🇨🇦 with over 6 years of experience in frontend and full-stack software development.';
 
 export const SITE_DESCRIPTION =
   'Alex is a software developer based out of Toronto with over 6 years of experience in frontend and full-stack development.';
@@ -76,6 +77,13 @@ export const LINKS = [
 
 type TExperience = { label: string; href?: string; color: string };
 
+/** Called out on its own, so it is kept apart from the list below. */
+export const CURRENT_EXPERIENCE: TExperience = {
+  label: 'Faire',
+  href: 'https://www.faire.com/about',
+  color: 'textPrimary',
+};
+
 export const PAST_EXPERIENCE: TExperience[] = [
   { label: 'Shopify', href: 'https://shopify.engineering/', color: '#007060' },
   {
@@ -83,7 +91,6 @@ export const PAST_EXPERIENCE: TExperience[] = [
     href: 'https://hackthenorth.com/',
     color: '#007cba',
   },
-  { label: 'Faire', href: 'https://www.faire.com/about', color: 'textPrimary' },
   { label: 'TEDxUW', color: '#c9200c' },
   {
     label: 'Flipp',

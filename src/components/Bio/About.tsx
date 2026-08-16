@@ -15,7 +15,7 @@ const About = () => {
           <Text bold>
             <DynamicTagline />
           </Text>{' '}
-          {EXPERIENCE_BLURB}.
+          {EXPERIENCE_BLURB}
         </Text>
       </div>
 
@@ -27,9 +27,8 @@ const About = () => {
 
       <div>
         <Text as="p">
-          Wanna chat about <Text bold>{talkingPoint}</Text>? Shoot me a message
-          at <Link href="mailto:hey@alexxie.com">hey@alexxie.com</Link> and
-          let&apos;s talk.
+          Wanna chat about <Text bold>{talkingPoint}</Text>?{' '}
+          <Link href="mailto:hey@alexxie.com">Get in touch</Link>.
         </Text>
       </div>
     </>
