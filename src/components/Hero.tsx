@@ -3,7 +3,6 @@ import { styled } from 'goober';
 
 import Title from 'components/Title';
 import { screen } from 'services/style';
-import { DARK_THEME, LIGHT_THEME, useTheme } from 'services/context/theme';
 
 const MainIllustration = dynamic(() => import('components/MainIllustration'));
 
@@ -19,27 +18,40 @@ const DEAD_TOP = 21.7 / 500;
 const DEAD_BOTTOM = 36.1 / 500;
 
 /**
- * Fades the top of the scene out so the greeting isn't competing with the
- * window's bright frame. Painted in the page background rather than black: at
- * night that darkens the frame, by day it lightens it, and either way the room
- * reads as emerging from underneath the heading.
+ * The band over which the scene fades out, as fractions of its height. It
+ * begins above the top edge so the greeting has an even field behind it.
  */
-const shade = (color: string) =>
-  `linear-gradient(to bottom,
-     color-mix(in srgb, ${color} 98%, transparent) 0%,
-     color-mix(in srgb, ${color} 80%, transparent) 38%,
-     color-mix(in srgb, ${color} 45%, transparent) 58%,
-     color-mix(in srgb, ${color} 15%, transparent) 76%,
-     color-mix(in srgb, ${color} 0%, transparent) 100%)`;
+const FADE_TOP = -0.11;
+const FADE_HEIGHT = 0.53;
 
-const Scrim = styled('div')`
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -11%;
-  height: 53%;
-  pointer-events: none;
-  transition: opacity 400ms;
+/** How much of the scene shows through, from the top of that band down. */
+const FADE = [
+  [0, 0.02],
+  [0.38, 0.2],
+  [0.58, 0.55],
+  [0.76, 0.85],
+  [1, 1],
+];
+
+const fade = `linear-gradient(to bottom, ${FADE.map(
+  ([at, shown]) =>
+    `rgba(0, 0, 0, ${shown}) ${((FADE_TOP + at * FADE_HEIGHT) * 100).toFixed(2)}%`
+).join(', ')})`;
+
+/**
+ * The greeting sits over the top of the room, so the room fades out underneath
+ * it rather than competing with the window's bright frame.
+ *
+ * Masking the artwork away, rather than washing the page colour over it: a
+ * wash has to be repainted whenever the theme changes, and a gradient can't be
+ * transitioned, so the two never quite agree while the page eases from one
+ * background to the other — which reads as a hard edge down each side of the
+ * scene. A mask has nothing to keep in step, since what shows through is the
+ * page itself, whatever colour it happens to be at that moment.
+ */
+const Scene = styled('div')`
+  -webkit-mask-image: ${fade};
+  mask-image: ${fade};
 `;
 
 /**
@@ -82,35 +94,15 @@ const TitleOverlay = styled('div')`
   }
 `;
 
-const Hero = () => {
-  const { isDarkMode } = useTheme();
-
-  return (
-    <Container>
+const Hero = () => (
+  <Container>
+    <Scene>
       <MainIllustration />
-      {/*
-        Two stacked layers cross-faded on opacity rather than one layer swapping
-        colour: a gradient can't be transitioned, so recolouring it would snap
-        the wash to the new theme while the page behind it was still easing
-        over.
-      */}
-      <Scrim
-        style={{
-          background: shade(DARK_THEME.colors.background),
-          opacity: isDarkMode ? 1 : 0,
-        }}
-      />
-      <Scrim
-        style={{
-          background: shade(LIGHT_THEME.colors.background),
-          opacity: isDarkMode ? 0 : 1,
-        }}
-      />
-      <TitleOverlay>
-        <Title />
-      </TitleOverlay>
-    </Container>
-  );
-};
+    </Scene>
+    <TitleOverlay>
+      <Title />
+    </TitleOverlay>
+  </Container>
+);
 
 export default Hero;
