@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, Fragment, memo } from 'react';
 
 import { Link, Text } from 'components/core';
 import { PAST_EXPERIENCE } from 'services/copy';
@@ -35,16 +35,23 @@ const Work: FC = memo(() => {
         Over the years, I've been a part of{' '}
         {PAST_EXPERIENCE.map(({ label, href, color }, i, arr) => {
           const isLast = i === arr.length - 1;
+          const name = (
+            <Text bold color={color}>
+              {label}
+            </Text>
+          );
           return (
-            <>
+            <Fragment key={label}>
               {isLast ? ' and ' : ' '}
-              <Link href={href} newTab bare>
-                <Text bold color={color}>
-                  {label}
-                </Text>
-              </Link>
+              {href ? (
+                <Link href={href} newTab bare>
+                  {name}
+                </Link>
+              ) : (
+                name
+              )}
               {isLast ? '.' : ','}
-            </>
+            </Fragment>
           );
         })}
       </Text>

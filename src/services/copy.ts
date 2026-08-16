@@ -36,6 +36,14 @@ export const OUTSIDE_OF_WORK =
   'Outside of work, I enjoy learning new recipes to cook, tinkering with my camper van and other DIY projects, obsessively planning travel, making bad jokes, and being in the great outdoors :^)';
 
 /**
+ * Illustration attribution
+ */
+export const ILLUSTRATION_CREDITS = [
+  'Open Peeps by Pablo Stanley (https://openpeeps.com/)',
+  'Amico by Storyset (https://storyset.com/)',
+].join(', ');
+
+/**
  * Talking points
  */
 export const TALKING_POINTS = [
@@ -66,7 +74,9 @@ export const LINKS = [
   },
 ];
 
-export const PAST_EXPERIENCE = [
+type TExperience = { label: string; href?: string; color: string };
+
+export const PAST_EXPERIENCE: TExperience[] = [
   { label: 'Shopify', href: 'https://shopify.engineering/', color: '#007060' },
   {
     label: 'Hack the North',
@@ -74,7 +84,7 @@ export const PAST_EXPERIENCE = [
     color: '#007cba',
   },
   { label: 'Faire', href: 'https://www.faire.com/about', color: 'textPrimary' },
-  { label: 'TEDxUW', href: 'https://tedxuw.com/', color: '#c9200c' },
+  { label: 'TEDxUW', color: '#c9200c' },
   {
     label: 'Flipp',
     href: 'https://corp.flipp.com/about-us/',

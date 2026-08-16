@@ -1,11 +1,12 @@
 import { memo } from 'react';
 import TextLoop from 'react-text-loop';
 
-import { TAGLINES } from 'services/copy';
-import { getShuffledArray } from 'services/utils';
+import { useInitialProps } from 'services/context/initial-props';
 
-const taglines = getShuffledArray(TAGLINES);
+const DynamicTagline = memo(() => {
+  const { taglines } = useInitialProps();
 
-const DynamicTagline = memo(() => <TextLoop children={taglines} />);
+  return <TextLoop children={taglines} />;
+});
 
 export default DynamicTagline;

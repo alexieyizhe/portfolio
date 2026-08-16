@@ -1,12 +1,12 @@
 import { Link, Text } from 'components/core';
 import DynamicTagline from 'components/DynamicTagline';
 import DynamicCurrentStatus from 'components/DynamicCurrentStatus';
-import { getRandomItem } from 'services/utils';
-import { EXPERIENCE_BLURB, TALKING_POINTS } from 'services/copy';
-
-const talkingPoint = getRandomItem(TALKING_POINTS);
+import { useInitialProps } from 'services/context/initial-props';
+import { EXPERIENCE_BLURB } from 'services/copy';
 
 const About = () => {
+  const { talkingPoint } = useInitialProps();
+
   return (
     <>
       <div>

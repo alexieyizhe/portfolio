@@ -14,7 +14,14 @@ import Bio from 'components/Bio';
 import Footer from 'components/Footer';
 import { Page } from 'components/core';
 import { InitialPropsContextProvider } from 'services/context/initial-props';
-import { SITE_DESCRIPTION } from 'services/copy';
+import { getRandomItem, getShuffledArray } from 'services/utils';
+import {
+  GREETINGS,
+  ILLUSTRATION_CREDITS,
+  SITE_DESCRIPTION,
+  TAGLINES,
+  TALKING_POINTS,
+} from 'services/copy';
 
 export type TPageInitialProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -30,6 +37,10 @@ export default function IndexPage(initialProps: TPageInitialProps) {
         <meta property="og:description" content={SITE_DESCRIPTION} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://alexxie.com/preview.png" />
+        <meta
+          name="attribution"
+          content={`Illustrations: ${ILLUSTRATION_CREDITS}`}
+        />
       </Head>
       <DynamicFavicon />
 
@@ -64,6 +75,10 @@ export async function getStaticProps() {
     timezoneOffset,
     currentCity,
     customStatus,
+    // randomized server-side so SSR output and client hydration agree
+    greeting: getRandomItem(GREETINGS),
+    talkingPoint: getRandomItem(TALKING_POINTS),
+    taglines: getShuffledArray([...TAGLINES]),
   };
 
   console.log('Retrieved initial props of', initialProps);

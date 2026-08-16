@@ -2,13 +2,11 @@ import { memo, FC } from 'react';
 
 import { H1 } from 'components/core';
 import { useSiteStore } from 'services/store';
-import { getRandomItem } from 'services/utils';
-import { GREETINGS } from 'services/copy';
+import { useInitialProps } from 'services/context/initial-props';
 import { useTheme } from 'services/context/theme';
 
-const greeting = getRandomItem(GREETINGS);
-
 const Title: FC = memo(() => {
+  const { greeting } = useInitialProps();
   const { headingFont } = useTheme();
   const isEasterEggActive = useSiteStore((state) => state.isEasterEggActive);
 
