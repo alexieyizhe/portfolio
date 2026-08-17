@@ -1,4 +1,4 @@
-import { css, keyframes } from 'goober';
+import { css } from 'goober';
 import { FC, memo } from 'react';
 
 import { TNowPlayingData } from 'services/api';
@@ -14,14 +14,10 @@ type TCoverArtProps = Pick<TNowPlayingData, 'link' | 'coverArtSrc'> & {
 /**
  * Built per render rather than at module scope: `extractCss` drains goober's
  * sheet, so a rule registered once at import time is missing from every
- * server render after the first. Class names stay stable across calls.
+ * server render after the first. Class names stay stable across calls. The
+ * keyframes this names are declared in globals.css.
  */
 const buildCoverArtLink = () => {
-  const rotate = keyframes`
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  `;
-
   return css`
     position: relative;
     display: inline-block;
@@ -36,7 +32,7 @@ const buildCoverArtLink = () => {
       justify-content: center;
       align-items: center;
 
-      animation: ${rotate} 5s linear infinite;
+      animation: rotate 5s linear infinite;
 
       & > * {
         grid-row: 1;
