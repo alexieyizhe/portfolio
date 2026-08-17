@@ -61,6 +61,57 @@ body {
   box-sizing: inherit;
 }
 
+/*
+ * Keyframes are global whichever way they are declared, so the scoping goober
+ * would give them buys nothing, and declaring them here means they ship with
+ * every render rather than only the first one of a server process. Components
+ * reference these by name.
+ */
+
+/* the tree's lights, each on its own slightly different cycle */
+@keyframes blink {
+  from,
+  to {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* the record spinning behind the cover art */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* one line of a TextLoop leaving, and the next arriving behind it */
+@keyframes slide-out-up {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-0.5em);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    transform: translateY(0.5em);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion) {
   * {
     animation: none;

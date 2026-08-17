@@ -13,6 +13,18 @@ export const textLoopIntervals = (len: number) => [
 export const getRandomItem = <T = unknown>(arr: T[]) =>
   arr[Math.floor(Math.random() * arr.length)];
 
+/**
+ * Whether the tree is up in the room: from the last week of October until the
+ * end of January. A longer run than the holidays themselves, on the grounds
+ * that the whole point of a lit tree is the dark half of the year.
+ */
+export const isFestiveSeason = (date: Date) => {
+  const [month, day] = [date.getMonth(), date.getDate()];
+  const isLateOctober = month === 9 && day >= 25;
+
+  return isLateOctober || month === 10 || month === 11 || month === 0;
+};
+
 export const getShuffledArray = <T = unknown>(arr: T[]) => {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

@@ -12,7 +12,11 @@ import Bio from 'components/Bio';
 import Footer from 'components/Footer';
 import { Page } from 'components/core';
 import { InitialPropsContextProvider } from 'services/context/initial-props';
-import { getRandomItem, getShuffledArray } from 'services/utils';
+import {
+  getRandomItem,
+  getShuffledArray,
+  isFestiveSeason,
+} from 'services/utils';
 import {
   GREETINGS,
   ILLUSTRATION_CREDITS,
@@ -68,6 +72,11 @@ export async function getStaticProps() {
     timezoneOffset,
     currentCity,
     customStatus,
+    // decided here rather than from the visitor's own clock so the room is
+    // right in the very first paint, instead of swapping a plant for a tree
+    // once hydration catches up. Revalidation is a minute, so the tree is never
+    // more than that late going up
+    isFestiveSeason: isFestiveSeason(new Date()),
     // randomized server-side so SSR output and client hydration agree
     greeting: getRandomItem(GREETINGS),
     talkingPoint: getRandomItem(TALKING_POINTS),

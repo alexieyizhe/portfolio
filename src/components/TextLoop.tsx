@@ -1,5 +1,5 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
-import { css, keyframes } from 'goober';
+import { css } from 'goober';
 
 type TTextLoopProps = {
   children: ReactNode[];
@@ -12,30 +12,20 @@ const SLIDE_MS = 220;
 /**
  * Built per render rather than at module scope: `extractCss` drains goober's
  * sheet, so a rule registered once at import time is missing from every
- * server render after the first. Class names stay stable across calls.
+ * server render after the first. Class names stay stable across calls. The
+ * keyframes these name are declared in globals.css.
  */
-const buildStyles = () => {
-  const slideOutUp = keyframes`
-    from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(-0.5em); opacity: 0; }
-  `;
-  const slideInUp = keyframes`
-    from { transform: translateY(0.5em); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  `;
-
-  return {
-    item: css`
-      display: inline-block;
-    `,
-    entering: css`
-      animation: ${slideInUp} ${SLIDE_MS}ms ease-out both;
-    `,
-    leaving: css`
-      animation: ${slideOutUp} ${SLIDE_MS}ms ease-in both;
-    `,
-  };
-};
+const buildStyles = () => ({
+  item: css`
+    display: inline-block;
+  `,
+  entering: css`
+    animation: slide-in-up ${SLIDE_MS}ms ease-out both;
+  `,
+  leaving: css`
+    animation: slide-out-up ${SLIDE_MS}ms ease-in both;
+  `,
+});
 
 /**
  * Swaps between children by sliding the current one up and out, then sliding

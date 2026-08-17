@@ -1,5 +1,4 @@
 import 'react';
-import { keyframes } from 'goober';
 
 const WEIRD = (
   <g id="Face">
@@ -156,30 +155,22 @@ const BLINKING_LIGHT_PATHS = [
   },
 ];
 
-const BLINKING_LIGHTS = () => {
-  // registered per render: `extractCss` drains goober's sheet, so keyframes
-  // stringified once at import time are missing from later server renders
-  const blink = keyframes`
-    from { fill: #FFC81A; opacity: 0.5; }
-    50% { fill: #FFC81A; opacity: 1; }
-    to { fill: #FFC81A; opacity: 0.5; }
-  `;
-
-  return (
-    <>
-      {BLINKING_LIGHT_PATHS.map((props, i) => (
-        <path
-          key={props.d}
-          {...props}
-          style={{
-            fill: '#FFC81A',
-            animation: `${blink} ${i * 100 + 1000}ms linear infinite`,
-          }}
-        />
-      ))}
-    </>
-  );
-};
+// staggered cycles, so the lights drift out of step with each other instead of
+// pulsing as one
+const BLINKING_LIGHTS = () => (
+  <>
+    {BLINKING_LIGHT_PATHS.map((props, i) => (
+      <path
+        key={props.d}
+        {...props}
+        style={{
+          fill: '#FFC81A',
+          animation: `blink ${i * 100 + 1000}ms linear infinite`,
+        }}
+      />
+    ))}
+  </>
+);
 
 const layers = { WEIRD, SURPRISED, GRIN_HAPPY, SANTA_HAT, BLINKING_LIGHTS };
 
