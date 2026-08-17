@@ -1,38 +1,31 @@
 import { FC, Fragment, memo } from 'react';
 
 import { Link, Text } from 'components/core';
-import { PAST_EXPERIENCE } from 'services/copy';
-import { useInitialProps } from 'services/context/initial-props';
+import { CURRENT_EXPERIENCE, PAST_EXPERIENCE } from 'services/copy';
 
 const Work: FC = memo(() => {
-  const { githubStats } = useInitialProps();
-  const latestRepo = githubStats?.reposCommittedTo[0] ?? null;
-
   return (
     <>
       <Text as="p">
-        As a developer, my absolute favourite way to learn is by{' '}
-        <Text bold>doing</Text>. I built{' '}
-        <Link href="https://github.com/alexieyizhe/intern.plus/" newTab>
-          intern+
-        </Link>{' '}
-        and contribute to other projects
-        {latestRepo ? (
-          <>
-            {' '}
-            like{' '}
-            <Link href={latestRepo.url} newTab>
-              {latestRepo.name}
-            </Link>{' '}
-          </>
-        ) : (
-          ' '
-        )}
-        to do exactly that.
+        I&apos;m a product-minded software engineer with a Bachelor of Computer
+        Science from the University of Waterloo, specializing in User Experience
+        Design.
       </Text>
 
       <Text as="p">
-        Over the years, I&apos;ve been a part of{' '}
+        Most recently at{' '}
+        <Link href={CURRENT_EXPERIENCE.href} newTab bare>
+          <Text bold color={CURRENT_EXPERIENCE.color}>
+            {CURRENT_EXPERIENCE.label}
+          </Text>
+        </Link>
+        , I worked across multiple engineering teams building features and
+        tooling that help local brands and retailers discover each other,
+        effortlessly manage their businesses, and transact confidently at scale.
+      </Text>
+
+      <Text as="p">
+        Over the years, I have also taken on engineering and leadership roles at
         {PAST_EXPERIENCE.map(({ label, href, color }, i, arr) => {
           const isLast = i === arr.length - 1;
           const name = (
@@ -57,8 +50,8 @@ const Work: FC = memo(() => {
       </Text>
 
       <Text as="p">
-        Want to connect with me?{' '}
-        <Link href="mailto:hey@alexxie.com">Get in touch</Link>.
+        Want to learn more or connect? Shoot me a message at{' '}
+        <Link href="mailto:hey@alexxie.com">hey@alexxie.com</Link>.
       </Text>
     </>
   );
