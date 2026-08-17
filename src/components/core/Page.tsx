@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren, useEffect } from 'react';
 import { ThemeContextProvider, useTheme } from 'services/context/theme';
 import { useSiteStore } from 'services/store';
-import { s, screen } from 'services/style';
+import { s } from 'services/style';
 
 const PageContainer = s('div')`
   position: relative;
@@ -11,16 +11,16 @@ const PageContainer = s('div')`
   justify-content: center;
 
   min-height: 100vh;
-  width: 100vw;
+  /* Not 100vw, which counts the scrollbar and so overflows sideways on any
+     window short enough to need one. */
+  width: 100%;
   overflow: hidden;
 
   /* Guarantees breathing room above and below even on a viewport too short to
-     centre the content, where the flex centring has no slack left to give. */
-  padding: 48px 0;
-
-  ${screen.mobile} {
-    padding: 32px 0;
-  }
+     centre the content, where the flex centring has no slack left to give. It
+     is also height the content can't have, so it is kept to the least that
+     still reads as deliberate. */
+  padding: 32px 0;
 
   transition: background-color 400ms;
   background-color: ${({ theme }) => theme!.colors.background};
