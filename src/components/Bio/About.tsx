@@ -28,7 +28,7 @@ const About = () => {
       <div>
         <Text as="p">
           Wanna chat about <Text bold>{talkingPoint}</Text>?{' '}
-          <Link href="mailto:hey@alexxie.com">Get in touch</Link>.
+          <Link href="mailto:hi@alexxie.com">Get in touch</Link>.
         </Text>
       </div>
     </>

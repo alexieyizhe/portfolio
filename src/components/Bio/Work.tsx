@@ -51,7 +51,7 @@ const Work: FC = memo(() => {
 
       <Text as="p">
         Want to learn more or connect? Shoot me a message at{' '}
-        <Link href="mailto:hey@alexxie.com">hey@alexxie.com</Link>.
+        <Link href="mailto:hi@alexxie.com">hi@alexxie.com</Link>.
       </Text>
     </>
   );
