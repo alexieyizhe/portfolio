@@ -30,6 +30,7 @@
     "typescript-eslint": "^8.67.0"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "goober": "^2.1.19",
     "goober-autoprefixer": "^1.2.3",
     "ioredis": "^6.0.0",
