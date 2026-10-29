@@ -67,13 +67,17 @@ const Scene = styled('div')`
  * On a short desktop window (a 13-inch laptop, or any window with browser
  * chrome eating into an 800-900px screen) the scene sized by width alone
  * stands taller than the viewport has room for, and the page scrolls. So on
- * desktop widths the scene is also capped by height: the drawn scene is
- * (1 - DEAD_TOP - DEAD_BOTTOM) of its width tall, and the 290px reserve
- * covers the bio, the footer, and the page padding, with a little slack for
- * font rendering. The cap only binds below about 913px of viewport height,
- * so taller windows render exactly as before, and it never applies below
- * the mobile breakpoint, where the narrow column already keeps the scene
- * short.
+ * desktop widths the scene is also capped by height. Audited numbers
+ * (measured, not estimated, at desktop widths where the text column is
+ * 510px): the page padding is 64px, the bio slot is 252px (a 228px cell for
+ * the longer of the two sections, plus 12px margins each side), and the
+ * footer is 21px, while the negative margins give back about 81px of the
+ * scene's width. So the scene fits exactly when its width is at most
+ * 100vh - 256px; the cap below keeps 24px of slack for copy and
+ * font-rendering differences. It binds whenever the viewport is shorter
+ * than about 960px, so taller windows render exactly as before, and it
+ * never applies below the mobile breakpoint, where the narrow column
+ * already keeps the scene short.
  */
 const Container = styled('div')`
   position: relative;
@@ -82,10 +86,7 @@ const Container = styled('div')`
     ${-DEAD_BOTTOM * SCENE * 100}%;
 
   @media only screen and (min-width: 601px) {
-    width: min(
-      ${SCENE * 100}%,
-      calc((100vh - 290px) * ${1 / (1 - DEAD_TOP - DEAD_BOTTOM)})
-    );
+    width: min(${SCENE * 100}%, calc(100vh - 280px));
   }
 `;
 
