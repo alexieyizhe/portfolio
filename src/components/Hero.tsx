@@ -63,12 +63,30 @@ const Scene = styled('div')`
  * The negative margins pull in the dead bands so the page centres on the
  * drawing rather than on its bounding box. Margin percentages resolve against
  * the parent's width, hence each one is scaled by SCENE.
+ *
+ * On a short desktop window (a 13-inch laptop, or any window with browser
+ * chrome eating into an 800-900px screen) the scene sized by width alone
+ * stands taller than the viewport has room for, and the page scrolls. So on
+ * desktop widths the scene is also capped by height: the drawn scene is
+ * (1 - DEAD_TOP - DEAD_BOTTOM) of its width tall, and the 290px reserve
+ * covers the bio, the footer, and the page padding, with a little slack for
+ * font rendering. The cap only binds below about 913px of viewport height,
+ * so taller windows render exactly as before, and it never applies below
+ * the mobile breakpoint, where the narrow column already keeps the scene
+ * short.
  */
 const Container = styled('div')`
   position: relative;
   width: ${SCENE * 100}%;
   margin: ${-DEAD_TOP * SCENE * 100}% ${(1 - SCENE) * 50}%
     ${-DEAD_BOTTOM * SCENE * 100}%;
+
+  @media only screen and (min-width: 601px) {
+    width: min(
+      ${SCENE * 100}%,
+      calc((100vh - 290px) * ${1 / (1 - DEAD_TOP - DEAD_BOTTOM)})
+    );
+  }
 `;
 
 /**
